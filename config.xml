@@ -10,11 +10,30 @@
   <name>GuiGhost Farms</name>
 
   <description>
-      Farming Simulator app with multiple types of farms to enjoy
+      Farming Simulator with multiple types of farms to enjoy tending to.
   </description>
 
   <author href="http://guighostgames.com" email="info@guighost.com">
       GuiGhost LLC
   </author>
+<allow-intent href="http://*/*" />
+<allow-intent href="https://*/*" />
+<allow-navigation href="http://guighostgames.com/*" />
+ <preference name="DisallowOverscroll" value="true"/>
+<preference name="Fullscreen" value="true" />
+<preference name="BackgroundColor" value="0xff0000ff"/>
+<preference name="HideKeyboardFormAccessoryBar" value="true"/>
+<preference name="Orientation" value="landscape" />
 
+<preference name="KeepRunning" value="false"/>
+<preference name="LoadUrlTimeoutValue" value="10000"/>
+<preference name="InAppBrowserStorageEnabled" value="true"/>
+<preference name="LoadingDialog" value="GuiGhost Farms, Loading...."/>
+
+<preference name="ShowTitle" value="true"/>
+<preference name="LogLevel" value="VERBOSE"/>
+<preference name="AndroidLaunchMode" value="singleTop"/>
+<preference name="DefaultVolumeStream" value="call" />
+<preference name="OverrideUserAgent" value="Mozilla/5.0 My Browser" />
+<preference name="AppendUserAgent" value="My Browser" />
 </widget>
