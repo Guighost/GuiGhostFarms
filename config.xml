@@ -23,7 +23,7 @@
 <preference name="Fullscreen" value="true" />
 <preference name="BackgroundColor" value="0xff0000ff"/>
 <preference name="HideKeyboardFormAccessoryBar" value="true"/>
-<preference name="Orientation" value="landscape" />
+<preference name="Orientation" value="portrait" />
 
 <preference name="KeepRunning" value="false"/>
 <preference name="LoadUrlTimeoutValue" value="10000"/>
