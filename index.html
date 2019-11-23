@@ -7,27 +7,20 @@
     <meta name="theme-color" content="#FFFFFF">
     <meta name="msapplication-navbutton-color" content="#FFFFFF">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="msapplication-starturl" content="http://guighostgames.com/GuiFarm/">
-    <link rel="icon" type="image/png" sizes="40X40" href="../Images/gabbyLogo.png">
-    <link rel="apple-touch-icon" type="image/png" sizes="40X40" href="../Images/gabbyLogo.png">
-    <meta property="og:url" content="http://guighostgames.com/GuiFarm/" />
+    <meta name="msapplication-starturl" content="https://guighostgames.com/GuiFarm/">
+    <link rel="icon" type="image/png" sizes="40X40" href="https://guighostgames.com/Images/gabbyLogo.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="40X40" href="https://guighostgames.com/Images/gabbyLogo.png">
+    <meta property="og:url" content="https://guighostgames.com/GuiFarm/" />
     <meta property="og:type" content="game" />
     <meta property="og:title" content="GuiGhost Farms - Farming Sim - Free online game" />
     <meta property="og:description" content="Mobile Friendly farm simulation game - free online game" />
-    <meta property="og:image" content="http://guighostgames.com/Images/Homepage/GuiFarm.png" />
+    <meta property="og:image" content="https://guighostgames.com/Images/Homepage/GuiFarm.png" />
     <meta property="fb:app_id" content="135527100472746" />
 
 
 
     <title>GuiGhost Farms</title>
-    <!--Adsense stuff-->
-    <!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-1294525458634610",
-            enable_page_level_ads: true
-        });
-    </script>-->
+  
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97706544-2"></script>
@@ -38,7 +31,7 @@
 
   gtag('config', 'UA-97706544-2');
     </script>
-    <script type="text/javascript" src="farmingMin2.js"></script>
+
     <style>
         .lime-scene {
             display: block !important;
@@ -46,28 +39,39 @@
 
         body {
             background-color: black;
-            background-image: url(http://guighostgames.com/Images/Homepage/battleback10.png);
+            background-image: url(images/UI/battleback10.png);
             background-size: cover;
             background-repeat: no-repeat;
         }
-        #leftAdBar {
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            width: 12%;
-            height: 100%;
-            background-color: black;
-        }
 
-        #rightAdBar {
-            position: absolute;
-            left: 88%;
-            top: 0px;
-            width: 12%;
-            height: 100%;
-            background-color: black;
-        }
-
+        <!-- #leftAdBar { -->
+            <!-- position: absolute; -->
+            <!-- left: 5px; -->
+            <!-- top: 5px; -->
+            <!-- width: 130px; -->
+            <!-- height: 99%; -->
+            <!-- color: azure; -->
+            <!-- background-color: black; -->
+            <!-- height: 630px; -->
+            <!-- align-content: center; -->
+            <!-- text-align: center; -->
+        <!-- } -->
+        <!-- #gtAdleft{ -->
+            <!-- margin-left:5px; -->
+        <!-- }  -->
+        <!-- #rightAdBar { -->
+            <!-- position: absolute; -->
+            <!-- right: 20px; -->
+            <!-- top: 5px; -->
+            <!-- width: 160px; -->
+            <!-- height: 99%; -->
+        <!-- } -->
+        <!-- #bigfish1{ -->
+            <!-- text-align:center; -->
+            <!-- background-color:black; -->
+            <!-- color: azure; -->
+            <!-- width:170px; -->
+        <!-- }  -->
         @media (max-width: 60em) {
             #rightAdBar {
                 display: none;
@@ -77,14 +81,13 @@
                 display: none;
             }
         }
-
         #loadingGG {
             position: absolute;
             top: 40%;
             left: 50%;
             min-width: 200px;
             height: 100%;
-            transform: translateX(-100px);
+            transform: translateX(-150px);
             z-index: 15000;
         }
         #fbshare {
@@ -201,13 +204,24 @@
 
  
     </style>
+    <script type="text/javascript" src="farming_NewSwipe.js"></script>
+
 
 </head>
 
+
+
+
+
 <body onload="farming.start()">
-    <div id="loadingGG"><IMG SRC="http://guighostgames.com/Images/Homepage/loading3.gif"></div>
+
+    <!--<script>
+        //window.setTimeout(function () { farming.start(); }, 15000);
+    </script>-->
+    <div id="loadingGG"><IMG SRC="images/UI/loading4.gif"></div>
+   
     <script>
-        var objectToLike = 'http://guighostgames.com/GuiFarm/';
+        var objectToLike = 'https://guighostgames.com/GuiFarm/';
 
       window.fbAsyncInit = function () {
           FB.init({
@@ -306,15 +320,10 @@
 
                        >-->
                 <br/>
-                <div class="fb-like" data-href="http://guighostgames.com/GuiFarm/" data-width="260" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+                <div class="fb-like" data-href="https://guighostgames.com/GuiFarm/" data-width="260" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
                 <!--<div class="fb-follow" data-href="https://www.facebook.com/GuiGhostFarms/" data-width="260" data-height="50" data-layout="standard" data-size="large" data-show-faces="false"></div>-->
             </div>
-            <!--<div id="postInviteToWall" ontouchstart="sendInvite();">
-                <input id="inviteFB" type="button"
-                       onclick="sendInvite(); inviteBonus();">
-                <div id="inviteImg2"></div>
-                <div id="inviteText">Invite friends to play GuiGhost Farms</div>
-            </div>-->
+
 
             <div id="result"></div>
 
@@ -324,30 +333,8 @@
 
     </div>
 
-    <!--<--<div id="leftAdBar">-->
-        <!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-        <!-- Ad unit 1 -->
-        <!--<ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-1294525458634610"
-             data-ad-slot="1936199137"
-             data-ad-format="auto"></ins>-->
-        <!--<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>-->
-    <!--</div>-->
-    <!--<div id="rightAdBar">-->
-        <!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-        <!-- Ad unit 1 -->
-        <!--<ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-1294525458634610"
-             data-ad-slot="1936199137"
-             data-ad-format="auto"></ins>-->
-        <!--<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>-->
-    <!--</div>-->
+    <div id="leftAdBar">            </div>
+    <div id="rightAdBar">    </div>
 
 </body>
 

@@ -424,9 +424,9 @@ lime.audio.Audio = function (filePath) {
      */
     this.playing_ = false;
 
-    if (goog.userAgent.GECKO && (/\.mp3$/).test(filePath)) {
-        filePath = filePath.replace(/\.mp3$/, '.ogg');
-    }
+    //if (goog.userAgent.GECKO && (/\.mp3$/).test(filePath)) {
+    //    filePath = filePath.replace(/\.mp3$/, '.ogg');
+    //}
 
     if (lime.audio.AudioContext) {
         this.volume_ = 1;
@@ -773,7 +773,7 @@ imgArray6[5] = new Image(); imgArray6[5].src = "images/bare_land.png"
 imgArray6[6] = new Image(); imgArray6[6].src = "images/plowed.png"
 
 var moneyBefore = 0;
-
+var startedMove = 0;
 
 	
 
@@ -795,15 +795,49 @@ var farming = {
         var picked = this.crop;
         //console.log(this);
         var where2 = goog.math.Coordinate(this);
-      
+    
+        var firstPick = 0
         //console.log(where2);
+        var firstTouch = 0;
         goog.events.listen(this, ["mousedown", "touchstart"], function (d) {
+            console.log('growIt');
+            if (startedMove == 0 ) {
+                growIt(d);
+                firstTouch = 1
+                setTimeout(function () { firstTouch = 0; }, 500)
+                startedMove = 1;
+                firstPick = 1;
+            }
+        });
+        
+        goog.events.listen(this, ["touchmove"], function (d) {
+            console.log('touchmove');
+            if (firstTouch == 0) {
+                growIt(d);
+                firstTouch = 1
+                setTimeout(function () { firstTouch = 0; }, 500)
+            }
+        });
+        goog.events.listen(this, ["mousemove"], function (d) {
+            console.log('mousemove');
+            if (firstTouch == 0 && startedMove == 1) {
+                 growIt(d);
+                 firstTouch = 1
+                 setTimeout(function () { firstTouch = 0; firstPick = 1; }, 750)
+             }
+        });
+        goog.events.listen(this, ["mouseup"], function (d) {
+            startedMove = 0     
+            firstPick = 0
+        });
+        function growIt(d) {
+            if (scene == 1 && b.currentCrop > 5) { b.currentCrop = homeCrop; };
             if (scene == 32) { b.currentCrop = 9; };
             if (scene == 3) { b.currentCrop = 8; };
             var toPlant = a.crops[b.currentCrop].grow1;
             moneyBefore = player.money;
-            
-            d.event.stopPropagation();
+          
+            //d.event.stopPropagation();
             
 
             c.state == farming.EMPTY ?
@@ -852,10 +886,10 @@ var farming = {
                         a.updateHarvest(posX, posY, c.crop),
                         a.updateStored(),
                         a.haySize()
-                       
-                    )
-         
-        });
+                        
+                        )
+           
+            }
         if (scene == 3 && c.state == farming.EMPTY) { c.setFill("images/Orchard/prune_trees.png") }
         if (scene == 32 && c.state == farming.EMPTY) { c.setFill("images/Orchard/prune_trees.png") }
         if (scene == 5 && c.state == farming.EMPTY) { c.setFill("images/vinyard/grapes_ClearBrush.png") }
@@ -869,7 +903,7 @@ var farming = {
                     (
                         this.state = farming.READY, this.setFill("images/" + a.crops[this.crop].image)
                     ) :
-                    this.ripeTime -= 2000 :
+                    this.ripeTime -= 1000 :
                 this.state == farming.READY &&
                 (
                     0 >= this.deathTime ?
@@ -888,7 +922,7 @@ var farming = {
                 9000 >= this.ripeTime ?
                     (this.setFill("images/" + a.crops[this.crop].grow2)
                         )
-                        : this.deathTime -= 2000
+                        : this.deathTime -= 1000
                 )
             if (scene == 3 && c.state == farming.EMPTY) { c.setFill("images/Orchard/prune_trees.png") }
             if (scene == 32 && c.state == farming.EMPTY) { c.setFill("images/Orchard/prune_trees.png") }
@@ -1587,7 +1621,7 @@ farming.start = function () {
         if (acres[1].owned == 1 && compassVisible) {
             a.sceneBefore = 2;
             closeAcresNav();
-            
+            homeCrop = b.currentCrop;
             cowSound.play(); checkShortage();
             oldCrop = b.currentCrop; b.currentCrop = 6;
             c.replaceScene(pastureScene, lime.transitions.SlideInLeft);
@@ -1634,9 +1668,20 @@ farming.start = function () {
     function checkAcresNav() {
         compassVisible = true;
         if (acres[1].owned == 0) { pastureNavH.setFill("images/UI/lockBtn.png"); pastureNavO.setFill("images/UI/lockBtn.png"); pastureNavP.setFill("images/UI/lockBtn.png"); pastureNavV.setFill("images/UI/lockBtn.png"); pastureNavLS.setFill("images/UI/lockBtn.png");}
-        if (acres[2].owned == 0) { orchardNavH.setFill("images/UI/lockBtn.png"); orchardNavO.setFill("images/UI/lockBtn.png"); orchardNavP.setFill("images/UI/lockBtn.png"); orchardNavV.setFill("images/UI/lockBtn.png"); orchardNavLS.setFill("images/UI/lockBtn.png");  }
-        if (acres[3].owned == 0) { vinyardNavH.setFill("images/UI/lockBtn.png"); vinyardNavO.setFill("images/UI/lockBtn.png"); vinyardNavP.setFill("images/UI/lockBtn.png"); vinyardNavV.setFill("images/UI/lockBtn.png"); vinyardNavLS.setFill("images/UI/lockBtn.png");}
-        if (acres[4].owned == 0) { lsNavH.setFill("images/UI/lockBtn.png"); lsNavO.setFill("images/UI/lockBtn.png"); lsNavP.setFill("images/UI/lockBtn.png"); lsNavV.setFill("images/UI/lockBtn.png"); lsNavLS.setFill("images/UI/lockBtn.png");}
+        if (acres[1].owned == 1) { pastureNavH.setFill("images/UI/pastureBtn.png"); pastureNavO.setFill("images/UI/pastureBtn.png"); pastureNavP.setFill("images/UI/pastureBtn.png"); pastureNavV.setFill("images/UI/pastureBtn.png"); pastureNavLS.setFill("images/UI/pastureBtn.png"); }
+
+        if (acres[2].owned == 0) { orchardNavH.setFill("images/UI/lockBtn.png"); orchardNavO.setFill("images/UI/lockBtn.png"); orchardNavP.setFill("images/UI/lockBtn.png"); orchardNavV.setFill("images/UI/lockBtn.png"); orchardNavLS.setFill("images/UI/lockBtn.png"); }
+        if (acres[2].owned == 1) { orchardNavH.setFill("images/UI/orchardBtn.png"); orchardNavO.setFill("images/UI/orchardBtn.png"); orchardNavP.setFill("images/UI/orchardBtn.png"); orchardNavV.setFill("images/UI/orchardBtn.png"); orchardNavLS.setFill("images/UI/orchardBtn.png"); }
+
+        if (acres[3].owned == 0) { vinyardNavH.setFill("images/UI/lockBtn.png"); vinyardNavO.setFill("images/UI/lockBtn.png"); vinyardNavP.setFill("images/UI/lockBtn.png"); vinyardNavV.setFill("images/UI/lockBtn.png"); vinyardNavLS.setFill("images/UI/lockBtn.png"); }
+        if (acres[3].owned == 1) { vinyardNavH.setFill("images/UI/vinyardBtn.png"); vinyardNavO.setFill("images/UI/vinyardBtn.png"); vinyardNavP.setFill("images/UI/vinyardBtn.png"); vinyardNavV.setFill("images/UI/vinyardBtn.png"); vinyardNavLS.setFill("images/UI/vinyardBtn.png"); }
+
+
+        if (acres[4].owned == 0) { lsNavH.setFill("images/UI/lockBtn.png"); lsNavO.setFill("images/UI/lockBtn.png"); lsNavP.setFill("images/UI/lockBtn.png"); lsNavV.setFill("images/UI/lockBtn.png"); lsNavLS.setFill("images/UI/lockBtn.png"); }
+        if (acres[4].owned == 1) { lsNavH.setFill("images/UI/lsBtn.png"); lsNavO.setFill("images/UI/lsBtn.png"); lsNavP.setFill("images/UI/lsBtn.png"); lsNavV.setFill("images/UI/lsBtn.png"); lsNavLS.setFill("images/UI/lsBtn.png"); }
+
+
+
         compassHBack.setHidden(false); compassOBack.setHidden(false); compassPBack.setHidden(false); compassVBack.setHidden(false); compassLSBack.setHidden(false); 
         treesImgV.setHidden(true);
         treesImgV2.setHidden(true);
@@ -1704,8 +1749,9 @@ farming.start = function () {
         localStorage.setItem('GuiGhostFarms_toolsEver', toolsEver);
         localStorage.setItem('GuiGhostFarms_pickedEver', pickedEver);
         localStorage.setItem('GuiGhostFarms_moneyEver', parseInt(moneyEver));
-        if (player.money < 5 && warningSeen == 0) {
+        if (player.money < (a.crops[b.currentCrop].cost) && warningSeen == 0) {
             outOfCash.setHidden(false); marketBtn1.setHidden(false); buyStarCash.setHidden(false);
+          
             warningSeen = 1;
         }
     
@@ -1931,17 +1977,17 @@ farming.start = function () {
         for (var i = 0; i < a.num_tiles_y; i++) {
             var posX = f * a.tile_size + 8;
             var posY = i * a.tile_size + 181;
-            var j = (new farming.Land(a, b, posX, posY)).setPosition(f * a.tile_size + 8, i * a.tile_size + 166); e.appendChild(j)
+            var j = (new farming.Land(a, b, posX, posY, 1)).setPosition(f * a.tile_size + 8, i * a.tile_size + 166); e.appendChild(j)
 
             posX = f * a.tile_size + 171;
-            var v = (new farming.Land(a, b, posX, posY)).setPosition(f * a.tile_size + 181, i * a.tile_size + 166); e.appendChild(v)
+            var v = (new farming.Land(a, b, posX, posY, 1)).setPosition(f * a.tile_size + 181, i * a.tile_size + 166); e.appendChild(v)
 
             posX = f * a.tile_size + 19;
             posY = i * a.tile_size + 296;
-            var u = (new farming.Land(a, b, posX, posY)).setPosition(f * a.tile_size + 8, i * a.tile_size + 296); e.appendChild(u)
+            var u = (new farming.Land(a, b, posX, posY, 1)).setPosition(f * a.tile_size + 8, i * a.tile_size + 296); e.appendChild(u)
 
             posX = f * a.tile_size + 171;
-            var t = (new farming.Land(a, b, posX, posY)).setPosition(f * a.tile_size + 181, i * a.tile_size + 296); e.appendChild(t)
+            var t = (new farming.Land(a, b, posX, posY, 1)).setPosition(f * a.tile_size + 181, i * a.tile_size + 296); e.appendChild(t)
             //t.setHidden(true);
             if (player.fields < 2) {
                 u.setHidden(false);
@@ -2106,9 +2152,10 @@ farming.start = function () {
     goog.events.listen(confirmBtn, ["mousedown", "touchstart"], function () {            //forsale confirm
         //console.log("clicked it and fsClicked = " + fsClicked);
         confirmSale.setHidden(true);
-        if (fsClicked == 1) { player.money = player.money - 2500; a.updateMoney(); roadLeft.setHidden(false); forSaleP.setHidden(true); confirmSale.setHidden(true); acres[1].owned = 1; }
-        if (fsClicked == 2) { player.money = player.money - 5000; a.updateMoney(); roadRight.setHidden(false); forSaleO.setHidden(true); confirmSale.setHidden(true); acres[2].owned = 1; }
+        if (fsClicked == 1) { acres[1].owned = 1; player.money = (player.money - 2500); a.updateMoney(); roadLeft.setHidden(false); forSaleP.setHidden(true); confirmSale.setHidden(true);  }
+        if (fsClicked == 2) { acres[2].owned = 1; player.money = (player.money - 5000); a.updateMoney(); roadRight.setHidden(false); forSaleO.setHidden(true); confirmSale.setHidden(true);  }
         localStorage.setItem('GuiGhostFarms_acres', JSON.stringify(acres));
+       
     }, { passive: false });
 
     goog.events.listen(cancelBtn, ["mousedown", "touchstart"], function () { sceneBefore = 1; confirmSale.setHidden(true); }, { passive: false });     //forsale cancel
@@ -2260,6 +2307,7 @@ farming.start = function () {
     goog.events.listen(roadLeft2, ["mousedown", "touchstart"], function () {
         a.sceneBefore = 4;
         homeCrop = b.currentCrop;
+        if (homeCrop > 5) { homeCrop = 0 }
         c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
         b.currentCrop = 12;
         checkShortage();
@@ -2615,11 +2663,12 @@ farming.start = function () {
 
     goog.events.listen(confirmBtnV, ["mousedown", "touchstart"], function () {            //forsale confirm
         //console.log("clicked it and fsClicked = " + fsClicked);
-        confirmSaleV.setHidden(true);
-        player.money = player.money - 7500;
+        player.money = (player.money - 7500);
         a.updateMoney();
-        roadLeft2.setHidden(false); forSaleV.setHidden(true); confirmSaleV.setHidden(true); acres[3].owned = 1;
+        acres[3].owned = 1;
         localStorage.setItem('GuiGhostFarms_acres', JSON.stringify(acres));
+        confirmSaleV.setHidden(true);
+        roadLeft2.setHidden(false); forSaleV.setHidden(true); confirmSaleV.setHidden(true); checkAcresNav();
 
     }, { passive: false });
     goog.events.listen(cancelBtnV, ["mousedown", "touchstart"], function () { confirmSaleV.setHidden(true); }, { passive: false });     //forsale cancel
@@ -2684,6 +2733,7 @@ farming.start = function () {
     goog.events.listen(homeNavP, ["mousedown", "touchstart"], function () {
         if (compassVisible) {
             b.currentCrop = homeCrop;
+            if (b.currentCrop > 5) { b.currentCrop = 0; }
             closeAcresNav();
             a.sceneBefore = 1;
           
@@ -2755,7 +2805,12 @@ farming.start = function () {
         count9.setText(player.cropsStored[9].stored);
     });
     goog.events.listen(roadLeft, ["mousedown", "touchstart"], function () { c.replaceScene(pastureScene, lime.transitions.SlideInLeft); oldCrop = b.currentCrop; b.currentCrop = 6; sceneBefore = 2; cowSound.play(); checkShortage(); });                      ///from home to pasture
-    goog.events.listen(roadRight2, ["mousedown", "touchstart"], function () { c.replaceScene(d, lime.transitions.SlideInRight); b.currentCrop = oldCrop; sceneBefore = 1; });                                                ////from pasture to home
+    goog.events.listen(roadRight2, ["mousedown", "touchstart"], function () {
+        c.replaceScene(d, lime.transitions.SlideInRight);
+        b.currentCrop = homeCrop;
+        if (b.currentCrop > 5) {b.currentCrop = 0 }
+        sceneBefore = 1;
+    });                                                ////from pasture to home
 
     // pasture Tree Block
     goog.events.listen(treeUnlockBtnP, ["mousedown", "touchstart"], function () {
@@ -3039,14 +3094,15 @@ farming.start = function () {
     }, { passive: false });
 
     goog.events.listen(confirmBtnLS, ["mousedown", "touchstart"], function () {            //for sale confirm
-        //console.log("clicked it and fsClicked = " + fsClicked);
-        confirmSaleLS.setHidden(true);
-        player.money = player.money - 10000;
+        player.money = (player.money - 10000);
         a.updateMoney();
-        roadRightO.setHidden(false); forSaleLS.setHidden(true); confirmSaleLS.setHidden(true); acres[4].owned = 1;
         localStorage.setItem('GuiGhostFarms_acres', JSON.stringify(acres));
+        acres[4].owned = 1; 
+        confirmSaleLS.setHidden(true);
+        roadRightO.setHidden(false); forSaleLS.setHidden(true); confirmSaleLS.setHidden(true);        
 
     }, { passive: false });
+
     goog.events.listen(cancelBtnLS, ["mousedown", "touchstart"], function () { confirmSaleLS.setHidden(true); }, { passive: false });     //for sale cancel
 
     var menuO = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(7, 473).setSize(30, 30).setFill("images/UI/gearButton.png");
@@ -3149,7 +3205,7 @@ farming.start = function () {
     orchardLayer.appendChild(harvest3);
     harvest3.setHidden(true);
 
-    ////achievement Modal
+    ////achievement Modal from Orchard
     var achieveNotifO = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(45, 130).setSize(210, 220).setFill("images/UI/achieveNotif.png");
     var achieveTextSubO = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#08fcef").setPosition(30, 35).setSize(150, 60).setFontSize(12).setText("Achieve Text");
     achieveNotifO.appendChild(achieveTextSubO);
@@ -3210,6 +3266,37 @@ farming.start = function () {
         count9.setText(player.cropsStored[9].stored);
     });
 
+   
+    //////Orchard Out of cash Modal
+    var outOfCashO = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(45, 100).setSize(210, 220).setFill("images/UI/outOfCash.png");
+    orchardLayer.appendChild(outOfCashO);
+    var buyStarCashO = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(122, 212).setSize(75, 35).setFill("images/UI/buyStarCash.png");
+    outOfCashO.appendChild(buyStarCashO);
+    var marketBtn1O = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(15, 212).setSize(75, 35).setFill("images/UI/marketBtn.png");
+    outOfCashO.appendChild(marketBtn1O);
+    var cancelBtnCashO = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(89, 212).setSize(35, 35).setFill("images/UI/XButton.png");
+    outOfCashO.appendChild(cancelBtnCashO);
+    outOfCashO.setHidden(true); marketBtn1O.setHidden(true); buyStarCashO.setHidden(true);
+    //handle orchard out of cash clicks
+    goog.events.listen(buyStarCashO, ["mousedown", "touchstart"], function () {            //starCash Button
+        outOfCashO.setHidden(true); marketBtn1O.setHidden(true); buyStarCashO.setHidden(true);
+        c.replaceScene(menuScene, lime.transitions.SlideInUp);
+    }, { passive: false });
+    goog.events.listen(marketBtn1O, ["mousedown", "touchstart"], function () {            //market Button
+        outOfCashO.setHidden(true); marketBtn1O.setHidden(true); buyStarCashO.setHidden(true);
+        c.replaceScene(marketScene, lime.transitions.SlideInDown);
+    }, { passive: false });
+    goog.events.listen(cancelBtnCashO, ["mousedown", "touchstart"], function () {            //cancel Button
+        outOfCashO.setHidden(true); marketBtn1O.setHidden(true); buyStarCashO.setHidden(true);
+
+    }, { passive: false });
+
+    if (player.money < (a.crops[b.currentCrop].cost) && warningSeen == 0) {
+        outOfCashO.setHidden(false); marketBtn1O.setHidden(false); buyStarCashO.setHidden(false);
+
+        warningSeen = 1;
+    }
+
     //////Menu Scene//////////////////////////////////////////////////////////////////////////////////////////////////Menu Scene/////////////////////////////////////////////////////////////////////
     var menuScene = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
         menuLayer = (new lime.Layer).setAnchorPoint(0, 0),
@@ -3253,10 +3340,11 @@ farming.start = function () {
         localStorage.setItem('GuiGhostFarms_moneyEver', moneyEver);
 		// window.open("../", "_self");
         c.replaceScene(introScene, lime.transitions.SlideInUp)
+        lime.audio.setMute(true);
         
         
     });
-    goog.events.listen(saveQuit, ['mouseUp', "touchUp"], function () { gdsdk.showBanner(); });
+    goog.events.listen(saveQuit, ['mouseUp', "touchUp"], function () { });
     //clear data
     goog.events.listen(clearData, ["mousedown", "touchstart"], function () {
         localStorage.removeItem('GuiGhostFarms_player'); 
@@ -3711,8 +3799,9 @@ farming.start = function () {
     var introFill2 = (new lime.Sprite).setPosition(157, 260).setSize(300, 490).setFill("images/UI/CoverImg.png");
     introScene.appendChild(introFill2);
     //Intro event handler
+    lime.audio.setMute(true);
     goog.events.listen(playGameBtn, ["mousedown", "touchstart"], function () {
-        c.replaceScene(d, lime.transitions.SlideInUp); sceneBefore = 1; themeSong.play(true); smithSound.play(); a.checkTutSeen();
+        c.replaceScene(d, lime.transitions.SlideInUp); sceneBefore = 1; lime.audio.setMute(false); themeSong.play(true); smithSound.play(); a.checkTutSeen(); 
        
     });
     goog.events.listen(moreGameBtn, ["mousedown", "touchstart"], function () { window.open('https://guighostgames.com', '_system'); lime.audio.setMute(true);  setMute(1);});
@@ -3887,13 +3976,13 @@ farming.start = function () {
     a.LivestockHarvest();
 
     ///egg clicks
-    goog.events.listen(egg1, ["mousedown", "touchstart"], function () {
+    goog.events.listen(egg1, ["mousedown", "touchstart" , "touchmove"], function () {
         a.eggClick(1);
     });
-    goog.events.listen(egg2, ["mousedown", "touchstart"], function () {
+    goog.events.listen(egg2, ["mousedown", "touchstart", "touchmove"], function () {
         a.eggClick(2);
     });
-    goog.events.listen(egg3, ["mousedown", "touchstart"], function () {
+    goog.events.listen(egg3, ["mousedown", "touchstart", "touchmove"], function () {
         a.eggClick(3);
     });
 
@@ -4063,13 +4152,14 @@ farming.start = function () {
                 porkUpIcon.setHidden(true);
                var porkTimer = 0;
                var porkOnce = 0;
+              var acresOwned2 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
                lime.scheduleManager.scheduleWithDelay(function () {
                    //add upgrade anim
                    porkTimer = porkTimer + 1;
                    var porkPos = porkUpCount.getPosition();
                    var porkPosY = porkPos.y - 5;
                    if (porkPosY < 70) { porkPosY = 110 };
-                   if (porkTimer > 240 && player.cropsStored[8].stored >= 1) {
+                   if (porkTimer > 240 && player.cropsStored[8].stored >= 1 && acresOwned2 >= 4) {
                        porkUpCount.setHidden(false);
                        porkUpCount.setPosition(155, porkPosY);
                        porkUpIcon.setHidden(false);
@@ -4221,6 +4311,7 @@ farming.start = function () {
                 goog.events.listen(homeNavLS, ["mousedown", "touchstart"], function () {
                     if (compassVisible) {
                         b.currentCrop = homeCrop;
+                        if (b.currentCrop > 5) { b.currentCrop = 0; }
                         closeAcresNav();
                         a.sceneBefore = 1;
                         waterfallSound.stop();
@@ -4459,16 +4550,19 @@ farming.start = function () {
                     //add upgrade anim
                     var currentPosV = HouseVUnlock3.getPosition();
                     currentPosV.y -= 5;
-                    //console.log(currentPos)/*;*/
+                    //console.log(currentPos)/*;*/ 
                     if (currentPosV.y < 270) { currentPosV.y = 275 };
                     HouseVUnlock3.setPosition(currentPosV);
                 }, this, 500)
                 if (vinyardHouseLevel > 1) { HouseVUnlock3.setHidden(true);   }
                 //if (parseInt(player.barnLevel) >= 5) { HouseVUnlock3.setHidden(true); }; 
                 goog.events.listen(HouseVUnlock3, ["mousedown", "touchstart"], function () {
-                    vinyardBarn.setFill("images/vinyard/house4Upgrade2.png");
-                    HouseVUnlock3.setHidden(true);
-                    vinyardHouseLevel = 2;
+                    if (player.tools >= 500) {
+                        player.tools = (player.tools - 500);
+                        vinyardBarn.setFill("images/vinyard/house4Upgrade2.png");
+                        HouseVUnlock3.setHidden(true);
+                        vinyardHouseLevel = 2;
+                    }
                    
                     treesImgV.setHidden(true);
                     treesImgV2.setHidden(true);
@@ -4707,6 +4801,7 @@ farming.start = function () {
                         closeAcresNav();
                         a.sceneBefore = 1;
                         b.currentCrop = homeCrop;
+                        if (b.currentCrop > 5) { b.currentCrop = 0; }
                         c.replaceScene(d, lime.transitions.SlideInRight);
                     }
                 });
