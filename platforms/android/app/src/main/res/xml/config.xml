@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.wGuiGhostFarms_9861566" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>GuiGhost Farms</name>
+    <description>
+        Free to Play Farming Simulation game
+    </description>
+    <author email="info@guighost.com" href="http://guighost.com">
+        GuiGhost Games
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <icon src="ico/icon.png" />
+    <icon density="ldpi" src="ico/icon36.png" />
+    <icon density="mdpi" src="ico/icon48.png" />
+    <icon density="hdpi" src="ico/icon72.png" />
+    <icon density="xhdpi" src="ico/icon96.png" />
+    <icon density="xxhdpi" src="ico/icon144.png" />
+    <icon density="xxxhdpi" src="ico/icon192.png" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="KeepRunning" value="false" />
+    <preference name="LoadUrlTimeoutValue" value="10000" />
+    <preference name="InAppBrowserStorageEnabled" value="true" />
+    <preference name="LoadingDialog" value="My Title,My Message" />
+    <preference name="ShowTitle" value="true" />
+    <preference name="AndroidLaunchMode" value="singleTop" />
+    <preference name="DefaultVolumeStream" value="call" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="BackgroundColor" value="0xff0000ff" />
+    <preference name="HideKeyboardFormAccessoryBar" value="true" />
+    <preference name="Orientation" value="portrait" />
+    <preference name="Fullscreen" value="true" />
+</widget>
