@@ -1,32 +1,50 @@
 {
-    "prepare_queue": {
-        "installed": [],
-        "uninstalled": []
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-mopub": {
+      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
     },
-    "config_munge": {
-        "files": {}
+    "cordova-plugin-extension": {
+      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
     },
-    "installed_plugins": {
-        "cordova-plugin-mopub": {
-            "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
-        },
-        "cordova-plugin-extension": {
-            "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
-        }
-    },
-    "dependent_plugins": {},
-    "modules": [
-        {
-            "file": "plugins/cordova-plugin-mopub/www/MoPub.js",
-            "id": "cordova-plugin-mopub.MoPub",
-            "pluginId": "cordova-plugin-mopub",
-            "clobbers": [
-                "window.MoPub"
-            ]
-        }
-    ],
-    "plugin_metadata": {
-        "cordova-plugin-mopub": "2.4.1",
-        "cordova-plugin-extension": "1.5.4"
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
     }
+  },
+  "dependent_plugins": {},
+  "modules": [
+    {
+      "file": "plugins/cordova-plugin-mopub/www/MoPub.js",
+      "id": "cordova-plugin-mopub.MoPub",
+      "pluginId": "cordova-plugin-mopub",
+      "clobbers": [
+        "window.MoPub"
+      ]
+    },
+    {
+      "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+      "id": "cordova-plugin-splashscreen.SplashScreen",
+      "pluginId": "cordova-plugin-splashscreen",
+      "clobbers": [
+        "navigator.splashscreen"
+      ]
+    },
+    {
+      "file": "plugins/cordova-plugin-splashscreen/src/browser/SplashScreenProxy.js",
+      "id": "cordova-plugin-splashscreen.SplashScreenProxy",
+      "pluginId": "cordova-plugin-splashscreen",
+      "runs": true
+    }
+  ],
+  "plugin_metadata": {
+    "cordova-plugin-mopub": "2.4.1",
+    "cordova-plugin-extension": "1.5.4",
+    "cordova-plugin-splashscreen": "5.0.3"
+  }
 }

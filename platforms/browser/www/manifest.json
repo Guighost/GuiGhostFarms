@@ -1,24 +1,19 @@
 {
+  "background_color": "#FFF",
+  "display": "standalone",
   "name": "GuiGhost Farms",
   "short_name": "GuiGhost Farms",
-  "description": "Description of your app from template",
-  "start_url": "index.html",
-  "scope": "index.html",
+  "version": "com.wGuiGhostFarms_9861566",
+  "description": "Free to Play Farming Simulation game",
+  "author": "GuiGhost Games",
   "icons": [
     {
-      "src": "img/logo.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "img/splash.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "/ico/icon.png",
+      "type": "image/png",
+      "sizes": "undefinedxundefined"
     }
   ],
-  "default_locale": "en",
-  "display": "standalone",
-  "background_color": "#FFF",
-  "theme_color": "#000",
-  "orientation": "landscape"
+  "orientation": "portrait",
+  "start_url": "index.html",
+  "theme_color": "#FFFFFF"
 }

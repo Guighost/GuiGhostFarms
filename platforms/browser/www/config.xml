@@ -9,7 +9,7 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-    <icon src="ico/icon.png" />
+    <icon src="/ico/icon.png" />
     <preference name="KeepRunning" value="false" />
     <preference name="LoadUrlTimeoutValue" value="10000" />
     <preference name="InAppBrowserStorageEnabled" value="true" />

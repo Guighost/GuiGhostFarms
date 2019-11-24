@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.wGuiGhostFarms_9861566" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
     <name>GuiGhost Farms</name>
     <description>
         Free to Play Farming Simulation game
@@ -9,7 +13,13 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-    <icon src="ico/icon.png" />
+    <icon src="/ico/icon.png" />
+    <icon density="ldpi" src="/ico/icon36.png" />
+    <icon density="mdpi" src="/ico/icon48.png" />
+    <icon density="hdpi" src="/ico/icon72.png" />
+    <icon density="xhdpi" src="/ico/icon96.png" />
+    <icon density="xxhdpi" src="/ico/icon144.png" />
+    <icon density="xxxhdpi" src="/ico/icon192.png" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="KeepRunning" value="false" />
     <preference name="LoadUrlTimeoutValue" value="10000" />
