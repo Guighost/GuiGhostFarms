@@ -10,12 +10,6 @@
     <content src="index.html" />
     <access origin="*" />
     <icon src="ico/icon.png" />
-    <icon density="ldpi" src="ico/icon36.png" />
-    <icon density="mdpi" src="ico/icon48.png" />
-    <icon density="hdpi" src="ico/icon72.png" />
-    <icon density="xhdpi" src="ico/icon96.png" />
-    <icon density="xxhdpi" src="ico/icon144.png" />
-    <icon density="xxxhdpi" src="ico/icon192.png" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="KeepRunning" value="false" />
     <preference name="LoadUrlTimeoutValue" value="10000" />
