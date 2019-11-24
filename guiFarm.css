@@ -3,6 +3,8 @@
     font-family: 'Comic Sans MS';
     text-align: center;
     background-color:cornflowerblue;
+	/* overflow: hidden; */
+    /* position:fixed; */
 }
 #wrappertop {
     position: absolute;
