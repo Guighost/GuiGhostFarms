@@ -12,8 +12,8 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-extension": "1.5.4",
-    "cordova-plugin-mopub": "2.4.1"
+    "cordova-plugin-mopub": "2.4.1",
+    "cordova-plugin-extension": "1.5.4"
 }
 // BOTTOM OF METADATA
 });

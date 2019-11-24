@@ -6,6 +6,27 @@
     "config_munge": {
         "files": {}
     },
-    "installed_plugins": {},
-    "dependent_plugins": {}
+    "installed_plugins": {
+        "cordova-plugin-mopub": {
+            "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
+        },
+        "cordova-plugin-extension": {
+            "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "file": "plugins/cordova-plugin-mopub/www/MoPub.js",
+            "id": "cordova-plugin-mopub.MoPub",
+            "pluginId": "cordova-plugin-mopub",
+            "clobbers": [
+                "window.MoPub"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "cordova-plugin-mopub": "2.4.1",
+        "cordova-plugin-extension": "1.5.4"
+    }
 }
