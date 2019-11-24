@@ -22,6 +22,7 @@ buildscript {
     repositories {
         google()
         jcenter()
+		maven { url "https://s3.amazonaws.com/moat-sdk-builds" }
     }
 
     dependencies {
@@ -29,6 +30,15 @@ buildscript {
         // in the individual module build.gradle files
 
         classpath 'com.android.tools.build:gradle:3.3.0'
+		 maven { url "https://s3.amazonaws.com/moat-sdk-builds" }
+	 
+			//MoPub sdk check
+			implementation('com.mopub:mopub-sdk:+@aar') {        transitive = true    }
+		  // For banners
+			implementation('com.mopub:mopub-sdk-banner:+@aar') {        transitive = true    }
+
+			// For interstitials
+			implementation('com.mopub:mopub-sdk-interstitial:+@aar') {        transitive = true    }
     }
 }
 
@@ -49,4 +59,10 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
