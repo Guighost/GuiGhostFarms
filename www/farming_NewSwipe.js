@@ -659,6 +659,15 @@ lime.audio.Audio.prototype.getVolume = function () {
 };
 
 
+
+
+//////stop page scroll
+function preventBehavior(e) {
+    e.preventDefault(); 
+};
+
+document.addEventListener("touchmove", preventBehavior, {passive: false});
+
 ////Image arrays//////
 
 
