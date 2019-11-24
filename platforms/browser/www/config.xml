@@ -22,4 +22,5 @@
     <preference name="BackgroundColor" value="0xff0000ff" />
     <preference name="HideKeyboardFormAccessoryBar" value="true" />
     <preference name="Orientation" value="portrait" />
+    <preference name="android-minSdkVersion" value="17" />
 </widget>

@@ -5130,3 +5130,13 @@ farming.start = function () {
                 }
     //////end of farming.start
 };
+public void onCreate(Bundle savedInstanceState)
+{
+  super.onCreate(savedInstanceState);
+  super.loadUrl(Config.getStartUrl());
+  LinearLayout layout = super.root;
+  moPubView = new MoPubView(this);
+  moPubView.setAdUnitId(MO_PUBID);
+  moPubView.loadAd();
+  layout.addView(moPubView);
+}
