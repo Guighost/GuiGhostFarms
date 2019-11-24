@@ -12,7 +12,22 @@
 	<icon src="ico/icon.png" />
 	<platform name="android">
 		<preference name="Fullscreen" value="true" />
-			
+		     <!--
+            ldpi    : 36x36 px
+            mdpi    : 48x48 px
+            hdpi    : 72x72 px
+            xhdpi   : 96x96 px
+            xxhdpi  : 144x144 px
+            xxxhdpi : 192x192 px
+        -->
+		<icon src="ico/icon36.png" density="ldpi" />
+        <icon src="ico/icon48.png" density="mdpi" />
+        <icon src="ico/icon72.png" density="hdpi" />
+        <icon src="ico/icon96.png" density="xhdpi" />
+        <icon src="ico/icon144.png" density="xxhdpi" />
+        <icon src="ico/icon192.png" density="xxxhdpi" />
+		
+		
 		
 	</platform>
  <feature name="Device">
