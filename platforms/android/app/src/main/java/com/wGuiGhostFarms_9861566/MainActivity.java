@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.wGuiGhostFarms_9861566;
+package com.wguighostfarms_9861566;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

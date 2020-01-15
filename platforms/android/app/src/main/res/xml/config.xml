@@ -1,47 +1,24 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.wGuiGhostFarms_9861566" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <feature name="SplashScreen">
-        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+<widget id="com.wguighostfarms_9861566" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="FacebookAds">
-        <param name="android-package" value="com.rjfun.cordova.facebookads.FacebookAdPlugin" />
-    </feature>
-    <name>GuiGhost Farms</name>
+    <name>MedievalFarms</name>
     <description>
-        Free to Play Farming Simulation game
+        A sample Apache Cordova application that responds to the deviceready event.
     </description>
-    <author email="info@guighost.com" href="http://guighost.com">
-        GuiGhost Games
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
     </author>
     <content src="index.html" />
     <access origin="*" />
-    <icon src="ico/icon.png" />
-    <icon density="ldpi" src="ico/icon36.png" />
-    <icon density="mdpi" src="ico/icon48.png" />
-    <icon density="hdpi" src="ico/icon72.png" />
-    <icon density="xhdpi" src="ico/icon96.png" />
-    <icon density="xxhdpi" src="ico/icon144.png" />
-    <icon density="xxxhdpi" src="ico/icon192.png" />
-    <splash density="land-hdpi" src="res/screen/android/splash-land-hdpi.png" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
-    <preference name="KeepRunning" value="false" />
-    <preference name="LoadUrlTimeoutValue" value="10000" />
-    <preference name="InAppBrowserStorageEnabled" value="true" />
-    <preference name="LoadingDialog" value="My Title,My Message" />
-    <preference name="ShowTitle" value="true" />
-    <preference name="AndroidLaunchMode" value="singleTop" />
-    <preference name="DefaultVolumeStream" value="call" />
-    <preference name="DisallowOverscroll" value="true" />
-    <preference name="BackgroundColor" value="0xff0000ff" />
-    <preference name="HideKeyboardFormAccessoryBar" value="true" />
-    <preference name="Orientation" value="portrait" />
-    <preference name="android-minSdkVersion" value="17" />
-    <preference name="AutoHideSplashScreen" value="true" />
-    <preference name="SplashScreenDelay" value="3000" />
-    <preference name="ShowSplashScreenSpinner" value="false" />
-    <preference name="SplashMaintainAspectRatio" value="true" />
-    <preference name="SplashShowOnlyFirstTime" value="true" />
-    <preference name="SplashScreenSpinnerColor" value="white" />
-    <preference name="Fullscreen" value="true" />
 </widget>
