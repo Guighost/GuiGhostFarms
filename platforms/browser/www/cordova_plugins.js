@@ -21,6 +21,14 @@ module.exports = [
         "id": "cordova-plugin-splashscreen.SplashScreenProxy",
         "pluginId": "cordova-plugin-splashscreen",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-facebookads/www/FacebookAds.js",
+        "id": "cordova-plugin-facebookads.FacebookAds",
+        "pluginId": "cordova-plugin-facebookads",
+        "clobbers": [
+            "window.FacebookAds"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -28,7 +36,9 @@ module.exports.metadata =
 {
     "cordova-plugin-mopub": "2.4.1",
     "cordova-plugin-extension": "1.5.4",
-    "cordova-plugin-splashscreen": "5.0.3"
+    "cordova-plugin-splashscreen": "5.0.3",
+    "cordova-facebook-audnet-sdk": "4.26.2",
+    "cordova-plugin-facebookads": "4.23.2"
 }
 // BOTTOM OF METADATA
 });

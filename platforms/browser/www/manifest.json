@@ -8,7 +8,7 @@
   "author": "GuiGhost Games",
   "icons": [
     {
-      "src": "/ico/icon.png",
+      "src": "ico/icon.png",
       "type": "image/png",
       "sizes": "undefinedxundefined"
     }

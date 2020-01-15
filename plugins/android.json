@@ -9,7 +9,17 @@
   "installed_plugins": {
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
+    },
+    "cordova-plugin-facebookads": {
+      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-extension": {
+      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
+    },
+    "cordova-facebook-audnet-sdk": {
+      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
+    }
+  }
 }
