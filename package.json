@@ -10,7 +10,7 @@
   "keywords": [
     "ecosystem:cordova"
   ],
-  "author": "Apache Cordova Team",
+  "author": "GuiGhost Games",
   "license": "Apache-2.0",
   "dependencies": {
     "cordova-android": "^8.1.0"
