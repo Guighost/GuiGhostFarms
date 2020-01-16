@@ -50,3 +50,12 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+buildTypes{
+
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFile = file("$project.buildDir/apk/_GuiGhost_Farms_9861566.apk")
+        }
+    }
+
+}
