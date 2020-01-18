@@ -244,6 +244,12 @@
         transform: translate(-70px,-145px);
         display:none;
         }
+        #footBtn {
+            position: absolute;
+            bottom: 5px;
+            left: 30%;
+            z-index: 3000;
+        }
       
     </style>
     <script type="text/javascript" src="farming_NewMenu.js"></script>
@@ -303,8 +309,26 @@
    
   
 
+    <footer> <button id="footBtn" onclick="Enhance.isInterstitialReady(callback)"> Click Here</button> </footer>
 
-
+    <script type="text/javascript">
+            var callback = function (result) {
+                if (!result) {
+                    app.writeLog('Interstitial ad is not ready');
+                    console.log('Interstitial ad is not ready');
+                    return;
+                }
+                console.log('Interstitial ad is ready');
+                Enhance.showInterstitialAd();
+            };
+            void Enhance.isInterstitialReady(
+                resultCallback,
+                placement = 'default'
+            )
+            void Enhance.showInterstitialAd(
+                placement = 'default'
+            )
+    </script>
 
 </body>
 
