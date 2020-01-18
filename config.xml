@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="Medieval Farms" version="1.0.0" android-packageName="com.wGuiGhostFarms_9861566" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" >
-    <name>com.wGuiGhostFarms_9861566</name>
+<widget id="com.wGuiGhostFarms_9861566" version="1.0.0" android-packageName="com.wGuiGhostFarms_9861566" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" >
+    <name>Medieval Farms</name>
     <description>
        Retro Farming Sim
     </description>
