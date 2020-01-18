@@ -23,5 +23,8 @@
     <preference name="loglevel" value="DEBUG" />
     <preference name="android-targetSdkVersion" value="28" />
     <preference name="orientation" value="portrait" />
-	<icon src="images/UI/homeButton512.png" />
+    <icon src="images/UI/homeButton512.png" />
+    <feature name="Enhance">
+        <param name="android-package" value="co.enhance.cordova.enhance.CDVEnhance" />
+    </feature>
 </widget>

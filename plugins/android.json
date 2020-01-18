@@ -9,6 +9,9 @@
   "installed_plugins": {
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.wguighostfarms_9861566"
+    },
+    "cordova-plugin-enhance": {
+      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
     }
   },
   "dependent_plugins": {}
