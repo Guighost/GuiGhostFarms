@@ -2144,6 +2144,12 @@ farming.start = function () {
     f.appendChild(w);
     var z = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(133, a.height - a.controlsLayer_h / 2 - 5).setFill("images/" + a.crops[hh].harvest).setSize(a.tile_size * 1.2, a.tile_size * 1.2);
     f.appendChild(z);
+    var testBtn = (new lime.GlossyButton).setColor("#663300").setText("").setPosition(115, a.height - 20).setSize(20, 20).setOpacity(.8);
+    f.appendChild(testBtn);
+    goog.events.listen(testBtn, ["mousedown", "touchstart"], function () {
+        console.log("yep");
+        Enhance.isInterstitialReady(callback);
+    });
 
     ///market control
     var market = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(205, a.height - a.controlsLayer_h - 4).setSize(103, 65).setFill("images/" + a.barnyard[3].image); f.appendChild(market)
@@ -8016,7 +8022,16 @@ farming.start = function () {
     
                 document.getElementById("starCashOuterLabel").innerHTML = starCash;
 
-
+                var callback = function (result) {
+                    if (!result) {
+                        app.writeLog('Interstitial ad is not ready');
+                      console.log('Interstitial ad is not ready');
+                        return;
+                    }
+                    console.log('Interstitial ad is ready');
+                    Enhance.showInterstitialAd();
+                };
+             
    
                
     //////end of farming.start
