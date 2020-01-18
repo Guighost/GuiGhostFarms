@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-facebook-audience-network"
+        version="4.22.1">
+      
+    <name>Facebook AudienceNetwork SDK for Cordova</name>
+    <description>Add Facebook SDK to Cordova porject, as dependency for other plugins</description>
+    <author>Facebook</author>
+    <keywords>rjfun,cordova,facebook,sdk</keywords>
+    <repo>https://github.com/TearDesign/cordova-facebook-audience-network.git</repo>
+    <issue>https://github.com/TearDesign/cordova-facebook-audience-network/issues</issue>
+
+    <engines>
+        <engine name="cordova" version=">=3.0" />
+    </engines>
+
+    <platform name="android">
+        <source-file src="AudienceNetwork.jar" target-dir="libs" />
+     </platform>
+     
+    <platform name="amazon-fireos">
+        <source-file src="AudienceNetwork.jar" target-dir="libs" />
+     </platform>
+
+     <platform name="ios">
+         <framework src="FBAudienceNetwork.framework" custom="true" />
+    </platform>
+
+</plugin>

@@ -7,7 +7,1432 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d488ef3a-1be9-46bf-99ad-9bdeb4a7b83f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.bin/cordova-browser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.bin/cordova-browser.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.bin/mime" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.bin/mime.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/accepts/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/accepts/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/accepts/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/accepts/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/accepts/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ansi-styles/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ansi-styles/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ansi-styles/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ansi-styles/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-flatten/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-flatten/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-flatten/array-flatten.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/array-flatten/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/lib/read.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/lib/types/json.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/lib/types/raw.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/lib/types/text.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/lib/types/urlencoded.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/node_modules/bytes/History.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/node_modules/bytes/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/node_modules/bytes/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/node_modules/bytes/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/node_modules/bytes/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bytes/History.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bytes/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bytes/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bytes/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bytes/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chalk/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chalk/index.js.flow" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chalk/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chalk/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chalk/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chalk/templates.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chalk/types/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/color-convert/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/color-convert/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/color-convert/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/color-convert/conversions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/color-convert/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/color-convert/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/color-convert/route.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/color-name/.eslintrc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/color-name/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/color-name/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/color-name/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/color-name/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/color-name/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/color-name/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/compressible/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/compressible/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/compressible/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/compressible/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/compressible/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/compression/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/compression/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/compression/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/compression/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/compression/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/content-disposition/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/content-disposition/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/content-disposition/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/content-disposition/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/content-disposition/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/content-type/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/content-type/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/content-type/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/content-type/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/content-type/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cookie-signature/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cookie-signature/History.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cookie-signature/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cookie-signature/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cookie-signature/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cookie/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cookie/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cookie/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cookie/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cookie/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/.eslintignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/.eslintrc.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/.github/PULL_REQUEST_TEMPLATE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/.ratignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/CONTRIBUTING.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/NOTICE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/RELEASENOTES.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/VERSION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/appveyor.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/create" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/create.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/lib/check_reqs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/lib/create.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/lib/update.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/cordova/Api.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/cordova/browser_handler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/cordova/browser_parser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/cordova/build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/cordova/build.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/cordova/clean" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/cordova/clean.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/cordova/defaults.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/cordova/lib/build.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/cordova/lib/clean.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/cordova/lib/run.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/cordova/log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/cordova/run" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/cordova/run.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/cordova/version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/cordova/version.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/www/css/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/www/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/www/img/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/www/img/splash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/www/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/www/js/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/template/www/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/update" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/bin/update.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/cordova-js-src/confighelper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/cordova-js-src/exec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/cordova-js-src/platform.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/cordova-lib/cordova.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/spec/.eslintrc.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/spec/browser_handler.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/spec/create.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/spec/manifest.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/spec/projectApi.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-browser/spec/support/jasmine.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/.eslintrc.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/.github/PULL_REQUEST_TEMPLATE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/.jscs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/.jshintrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/.ratignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/CONTRIBUTION.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/NOTICE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/RELEASENOTES.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/appveyor.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/spec/browser.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/spec/jasmine.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/spec/main.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/spec/server.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/src/browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/src/exec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/src/platform.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/src/server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-serve/src/util.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/.coveralls.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/.eslintrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/component.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/karma.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/node.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/src/browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/src/debug.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/src/inspector-log.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/debug/src/node.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/depd/History.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/depd/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/depd/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/depd/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/depd/lib/browser/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/depd/lib/compat/callsite-tostring.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/depd/lib/compat/event-listener-count.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/depd/lib/compat/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/depd/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/destroy/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/destroy/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/destroy/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/destroy/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ee-first/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ee-first/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ee-first/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ee-first/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/encodeurl/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/encodeurl/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/encodeurl/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/encodeurl/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/encodeurl/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/escape-html/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/escape-html/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/escape-html/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/escape-html/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/escape-string-regexp/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/escape-string-regexp/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/escape-string-regexp/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/escape-string-regexp/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/etag/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/etag/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/etag/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/etag/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/etag/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/express/History.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/express/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/express/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/express/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/express/lib/application.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/express/lib/express.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/express/lib/middleware/init.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/express/lib/middleware/query.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/express/lib/request.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/express/lib/response.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/express/lib/router/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/express/lib/router/layer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/express/lib/router/route.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/express/lib/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/express/lib/view.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/express/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/finalhandler/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/finalhandler/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/finalhandler/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/finalhandler/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/finalhandler/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/forwarded/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/forwarded/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/forwarded/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/forwarded/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/forwarded/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/fresh/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/fresh/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/fresh/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/fresh/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/fresh/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/has-flag/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/has-flag/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/has-flag/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/has-flag/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/http-errors/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/http-errors/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/http-errors/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/http-errors/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/http-errors/node_modules/inherits/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/http-errors/node_modules/inherits/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/http-errors/node_modules/inherits/inherits.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/http-errors/node_modules/inherits/inherits_browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/http-errors/node_modules/inherits/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/http-errors/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/Changelog.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/encodings/dbcs-codec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/encodings/dbcs-data.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/encodings/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/encodings/internal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/encodings/sbcs-codec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/encodings/sbcs-data-generated.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/encodings/sbcs-data.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/encodings/tables/big5-added.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/encodings/tables/cp936.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/encodings/tables/cp949.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/encodings/tables/cp950.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/encodings/tables/eucjp.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/encodings/tables/gb18030-ranges.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/encodings/tables/gbk-added.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/encodings/tables/shiftjis.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/encodings/utf16.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/encodings/utf7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/lib/bom-handling.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/lib/extend-node.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/lib/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/lib/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/lib/streams.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/iconv-lite/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ipaddr.js/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ipaddr.js/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ipaddr.js/ipaddr.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ipaddr.js/lib/ipaddr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ipaddr.js/lib/ipaddr.js.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ipaddr.js/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/is-wsl/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/is-wsl/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/is-wsl/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/is-wsl/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/media-typer/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/media-typer/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/media-typer/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/media-typer/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/media-typer/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/merge-descriptors/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/merge-descriptors/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/merge-descriptors/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/merge-descriptors/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/merge-descriptors/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/methods/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/methods/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/methods/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/methods/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/methods/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime-db/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime-db/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime-db/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime-db/db.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime-db/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime-db/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime-types/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime-types/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime-types/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime-types/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime-types/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime/cli.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime/mime.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime/src/build.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime/src/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mime/types.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ms/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ms/license.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ms/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ms/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/negotiator/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/negotiator/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/negotiator/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/negotiator/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/negotiator/lib/charset.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/negotiator/lib/encoding.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/negotiator/lib/language.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/negotiator/lib/mediaType.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/negotiator/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/on-finished/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/on-finished/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/on-finished/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/on-finished/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/on-finished/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/on-headers/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/on-headers/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/on-headers/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/on-headers/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/on-headers/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/opn/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/opn/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/opn/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/opn/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/opn/xdg-open" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/parseurl/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/parseurl/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/parseurl/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/parseurl/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/parseurl/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/path-to-regexp/History.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/path-to-regexp/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/path-to-regexp/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/path-to-regexp/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/path-to-regexp/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/proxy-addr/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/proxy-addr/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/proxy-addr/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/proxy-addr/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/proxy-addr/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/qs/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/qs/.eslintignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/qs/.eslintrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/qs/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/qs/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/qs/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/qs/dist/qs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/qs/lib/formats.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/qs/lib/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/qs/lib/parse.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/qs/lib/stringify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/qs/lib/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/qs/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/qs/test/.eslintrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/qs/test/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/qs/test/parse.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/qs/test/stringify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/qs/test/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/range-parser/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/range-parser/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/range-parser/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/range-parser/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/range-parser/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/raw-body/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/raw-body/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/raw-body/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/raw-body/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/raw-body/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/raw-body/node_modules/bytes/History.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/raw-body/node_modules/bytes/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/raw-body/node_modules/bytes/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/raw-body/node_modules/bytes/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/raw-body/node_modules/bytes/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/raw-body/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/safe-buffer/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/safe-buffer/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/safe-buffer/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/safe-buffer/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/safe-buffer/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/safer-buffer/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/safer-buffer/Porting-Buffer.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/safer-buffer/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/safer-buffer/dangerous.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/safer-buffer/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/safer-buffer/safer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/safer-buffer/tests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/send/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/send/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/send/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/send/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/send/node_modules/ms/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/send/node_modules/ms/license.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/send/node_modules/ms/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/send/node_modules/ms/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/send/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/serve-static/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/serve-static/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/serve-static/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/serve-static/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/serve-static/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/setprototypeof/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/setprototypeof/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/setprototypeof/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/setprototypeof/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/setprototypeof/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/setprototypeof/test/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/statuses/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/statuses/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/statuses/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/statuses/codes.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/statuses/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/statuses/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/supports-color/browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/supports-color/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/supports-color/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/supports-color/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/supports-color/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/toidentifier/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/toidentifier/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/toidentifier/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/toidentifier/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/type-is/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/type-is/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/type-is/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/type-is/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/type-is/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/unpipe/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/unpipe/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/unpipe/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/unpipe/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/unpipe/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/utils-merge/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/utils-merge/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/utils-merge/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/utils-merge/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/utils-merge/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vary/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vary/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vary/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vary/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vary/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/android.json" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/android.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/cordova_plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/cordova_plugins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/platform_www/cordova_plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/platform_www/cordova_plugins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/browser.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/build.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/clean" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/defaults.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/lib/build.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/lib/check_reqs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/lib/clean.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/adm-zip/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/adm-zip/adm-zip.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/adm-zip/headers/entryHeader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/adm-zip/headers/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/adm-zip/headers/mainHeader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/adm-zip/methods/deflater.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/adm-zip/methods/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/adm-zip/methods/inflater.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/adm-zip/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/adm-zip/util/constants.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/adm-zip/util/errors.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/adm-zip/util/fattr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/adm-zip/util/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/adm-zip/util/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/adm-zip/zipEntry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/adm-zip/zipFile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/.jshintrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/RELEASENOTES.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/ansi-styles/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/ansi-styles/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/ansi-styles/node_modules/color-convert/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/ansi-styles/node_modules/color-convert/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/ansi-styles/node_modules/color-convert/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/ansi-styles/node_modules/color-convert/conversions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/ansi-styles/node_modules/color-convert/css-keywords.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/ansi-styles/node_modules/color-convert/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/ansi-styles/node_modules/color-convert/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/ansi-styles/node_modules/color-convert/route.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/ansi-styles/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/ansi-styles/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/escape-string-regexp/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/escape-string-regexp/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/escape-string-regexp/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/escape-string-regexp/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/has-ansi/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/has-ansi/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/has-ansi/node_modules/ansi-regex/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/has-ansi/node_modules/ansi-regex/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/has-ansi/node_modules/ansi-regex/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/has-ansi/node_modules/ansi-regex/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/has-ansi/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/has-ansi/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/strip-ansi/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/strip-ansi/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/strip-ansi/node_modules/ansi-regex/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/strip-ansi/node_modules/ansi-regex/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/strip-ansi/node_modules/ansi-regex/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/strip-ansi/node_modules/ansi-regex/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/strip-ansi/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/strip-ansi/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/supports-color/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/supports-color/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/supports-color/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/node_modules/supports-color/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/chalk/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/mime-types/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/mime-types/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/mime-types/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/mime-types/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/mime-types/node_modules/mime-db/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/mime-types/node_modules/mime-db/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/mime-types/node_modules/mime-db/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/mime-types/node_modules/mime-db/db.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/mime-types/node_modules/mime-db/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/mime-types/node_modules/mime-db/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/mime-types/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/negotiator/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/negotiator/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/negotiator/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/negotiator/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/negotiator/lib/charset.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/negotiator/lib/encoding.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/negotiator/lib/language.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/negotiator/lib/mediaType.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/node_modules/negotiator/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/accepts/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/bytes/History.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/bytes/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/bytes/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/bytes/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/bytes/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/compressible/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/compressible/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/compressible/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/compressible/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/compressible/node_modules/mime-db/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/compressible/node_modules/mime-db/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/compressible/node_modules/mime-db/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/compressible/node_modules/mime-db/db.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/compressible/node_modules/mime-db/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/compressible/node_modules/mime-db/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/compressible/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/debug/.jshintrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/debug/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/debug/History.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/debug/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/debug/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/debug/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/debug/browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/debug/component.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/debug/debug.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/debug/node.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/debug/node_modules/ms/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/debug/node_modules/ms/History.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/debug/node_modules/ms/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/debug/node_modules/ms/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/debug/node_modules/ms/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/debug/node_modules/ms/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/debug/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/on-headers/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/on-headers/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/on-headers/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/on-headers/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/on-headers/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/vary/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/vary/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/vary/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/vary/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/node_modules/vary/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/compression/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/History.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/lib/application.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/lib/express.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/lib/middleware/init.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/lib/middleware/query.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/lib/request.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/lib/response.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/lib/router/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/lib/router/layer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/lib/router/route.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/lib/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/lib/view.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/mime-types/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/mime-types/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/mime-types/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/mime-types/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/mime-types/node_modules/mime-db/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/mime-types/node_modules/mime-db/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/mime-types/node_modules/mime-db/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/mime-types/node_modules/mime-db/db.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/mime-types/node_modules/mime-db/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/mime-types/node_modules/mime-db/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/mime-types/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/negotiator/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/negotiator/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/negotiator/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/negotiator/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/negotiator/lib/charset.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/negotiator/lib/encoding.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/negotiator/lib/language.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/negotiator/lib/mediaType.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/node_modules/negotiator/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/accepts/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/array-flatten/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/array-flatten/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/array-flatten/array-flatten.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/array-flatten/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/content-disposition/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/content-disposition/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/content-disposition/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/content-disposition/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/content-disposition/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/content-type/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/content-type/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/content-type/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/content-type/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/content-type/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/cookie-signature/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/cookie-signature/History.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/cookie-signature/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/cookie-signature/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/cookie-signature/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/cookie/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/cookie/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/cookie/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/cookie/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/cookie/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/debug/.jshintrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/debug/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/debug/History.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/debug/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/debug/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/debug/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/debug/browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/debug/component.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/debug/debug.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/debug/node.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/debug/node_modules/ms/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/debug/node_modules/ms/History.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/debug/node_modules/ms/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/debug/node_modules/ms/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/debug/node_modules/ms/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/debug/node_modules/ms/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/debug/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/depd/History.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/depd/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/depd/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/depd/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/depd/lib/browser/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/depd/lib/compat/buffer-concat.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/depd/lib/compat/callsite-tostring.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/depd/lib/compat/event-listener-count.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/depd/lib/compat/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/depd/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/escape-html/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/escape-html/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/escape-html/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/escape-html/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/etag/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/etag/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/etag/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/etag/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/etag/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/finalhandler/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/finalhandler/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/finalhandler/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/finalhandler/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/finalhandler/node_modules/unpipe/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/finalhandler/node_modules/unpipe/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/finalhandler/node_modules/unpipe/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/finalhandler/node_modules/unpipe/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/finalhandler/node_modules/unpipe/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/finalhandler/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/fresh/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/fresh/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/fresh/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/fresh/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/fresh/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/merge-descriptors/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/merge-descriptors/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/merge-descriptors/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/merge-descriptors/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/merge-descriptors/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/methods/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/methods/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/methods/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/methods/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/methods/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/on-finished/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/on-finished/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/on-finished/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/on-finished/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/on-finished/node_modules/ee-first/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/on-finished/node_modules/ee-first/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/on-finished/node_modules/ee-first/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/on-finished/node_modules/ee-first/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/on-finished/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/parseurl/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/parseurl/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/parseurl/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/parseurl/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/parseurl/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/path-to-regexp/History.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/path-to-regexp/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/path-to-regexp/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/path-to-regexp/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/path-to-regexp/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/node_modules/forwarded/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/node_modules/forwarded/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/node_modules/forwarded/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/node_modules/forwarded/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/node_modules/forwarded/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/Cakefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/ipaddr.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/lib/ipaddr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/src/ipaddr.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/test/ipaddr.test.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/proxy-addr/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/qs/.eslintignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/qs/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/qs/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/qs/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/qs/CONTRIBUTING.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/qs/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/qs/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/qs/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/qs/lib/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/qs/lib/parse.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/qs/lib/stringify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/qs/lib/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/qs/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/qs/test/parse.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/qs/test/stringify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/qs/test/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/range-parser/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/range-parser/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/range-parser/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/range-parser/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/range-parser/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/destroy/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/destroy/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/destroy/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/destroy/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/http-errors/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/http-errors/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/http-errors/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/http-errors/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/http-errors/node_modules/inherits/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/http-errors/node_modules/inherits/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/http-errors/node_modules/inherits/inherits.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/http-errors/node_modules/inherits/inherits_browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/http-errors/node_modules/inherits/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/http-errors/node_modules/inherits/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/http-errors/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/mime/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/mime/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/mime/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/mime/build/build.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/mime/build/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/mime/cli.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/mime/mime.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/mime/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/mime/types.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/ms/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/ms/History.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/ms/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/ms/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/ms/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/ms/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/statuses/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/statuses/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/statuses/codes.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/statuses/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/node_modules/statuses/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/send/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/serve-static/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/serve-static/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/serve-static/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/serve-static/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/serve-static/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/node_modules/media-typer/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/node_modules/media-typer/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/node_modules/media-typer/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/node_modules/media-typer/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/node_modules/media-typer/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/node_modules/mime-types/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/node_modules/mime-types/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/node_modules/mime-types/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/node_modules/mime-types/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/node_modules/mime-types/node_modules/mime-db/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/node_modules/mime-types/node_modules/mime-db/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/node_modules/mime-types/node_modules/mime-db/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/node_modules/mime-types/node_modules/mime-db/db.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/node_modules/mime-types/node_modules/mime-db/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/node_modules/mime-types/node_modules/mime-db/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/node_modules/mime-types/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/type-is/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/utils-merge/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/utils-merge/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/utils-merge/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/utils-merge/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/utils-merge/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/vary/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/vary/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/vary/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/vary/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/node_modules/vary/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/node_modules/express/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/serve.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/src/browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/src/exec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/src/platform.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/src/server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/cordova-serve/src/util.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/nopt/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/nopt/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/nopt/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/nopt/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/nopt/bin/nopt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/nopt/examples/my-program.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/nopt/lib/nopt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/nopt/node_modules/abbrev/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/nopt/node_modules/abbrev/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/nopt/node_modules/abbrev/CONTRIBUTING.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/nopt/node_modules/abbrev/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/nopt/node_modules/abbrev/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/nopt/node_modules/abbrev/abbrev.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/nopt/node_modules/abbrev/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/nopt/node_modules/abbrev/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/nopt/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/nopt/test/basic.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/q/CHANGES.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/q/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/q/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/q/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/q/q.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/q/queue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/.idea/libraries/shelljs_node_modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/.idea/shelljs.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/MAINTAINERS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/bin/shjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/build/output.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/global.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/make.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/scripts/generate-docs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/scripts/run-tests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/shell.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/cat.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/cd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/chmod.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/common.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/cp.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/dirs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/echo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/error.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/exec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/find.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/grep.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/ln.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/ls.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/mkdir.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/mv.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/popd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/pushd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/pwd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/rm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/sed.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/set.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/tempdir.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/to.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/toEnd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/touch.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/node_modules/shelljs/src/which.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/run" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/run.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/cordova/version.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/css/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/img/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/js/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/manifest.webapp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/platform_www/confighelper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/platform_www/cordova-js-src/confighelper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/platform_www/cordova-js-src/exec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/platform_www/cordova-js-src/platform.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/platform_www/cordova.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/platform_www/cordova_plugins.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/platform_www/exec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/platform_www/platform.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/android/icon-36-ldpi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/android/icon-48-mdpi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/android/icon-72-hdpi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/android/icon-96-xhdpi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/bada-wac/icon-48-type5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/bada-wac/icon-50-type3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/bada-wac/icon-80-type4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/bada/icon-128.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/blackberry/icon-80.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/blackberry10/icon-80.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/ios/icon-57-2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/ios/icon-57.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/ios/icon-72-2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/ios/icon-72.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/tizen/icon-128.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/webos/icon-64.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/windows-phone/icon-173-tile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/windows-phone/icon-48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/res/icon/windows-phone/icon-62-tile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/Assets/blacksmith.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/audio/blacksmith2.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/audio/chickens.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/audio/cow1.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/audio/credits.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/audio/farming2.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/audio/nice.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/audio/ofarm.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/audio/pig3.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/audio/snort.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/audio/waterfallSound.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/confighelper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/cordova-js-src/confighelper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/cordova-js-src/exec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/cordova-js-src/platform.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/cordova.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/cordova_plugins.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/css/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/exec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/farming_NewMenu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/guiFarm.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/CoverImg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/MenuTop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/OrchardBack3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/OrchardBack4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/fertilize_trees.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/girlF1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/girlF2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/girlF3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/girlL1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/girlR1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/girlUp1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/girlUp2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/girlUp3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/growing22_trees.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/growing2_pears.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/growing2_trees.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/growing3_trees.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/growing4_trees.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/prune_trees.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/ready_Apples.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/ready_treesPear.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/treeBlockO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/waterMoving1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/waterMoving2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/waterfall1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/waterfall2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/waterfall3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/waterfall4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/wither_treesApple.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Orchard/wither_treesPear.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/FeedBinsLeft.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/FeedBinsRight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/bridgeVert.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/bucket.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/cowLeft1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/cowLeft2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/cowLeft3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/cowLeft4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/cowRight1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/cowRight2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/cow_eatF1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/cow_eatF2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/cow_eatF3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/cow_eatR1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/cow_eatR2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/cow_eatR4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/cow_walkF1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/dairyBarn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/dirt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/hayCartFull.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/hayPile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/pTree1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/pTree2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/poop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/rocks.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/treeBlockP.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Pasture/water.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/CoverImg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/CoverImg2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/Hourglass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/MenuTop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/MenuTop2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/XButton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/achieveBack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/achieveNotif.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/achieveTile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/barn1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/barn2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/barn3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/barn4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/barn5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/battleback10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/battleback11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/blackButton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/blankBack2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/blankBack3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/blankBack4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/blocker.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/bonusStarCash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/brownBtn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/bucket.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/buyStarCash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/changeSeeds2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/check.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/checkButton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/coin4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/coin500.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/compass22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/compass3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/cropMenuBack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/downBtn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/farmersMarket.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/forSaleDairy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/forSaleOrchard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/gearButton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/greenButton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/greenButtonDark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/greenButtonLg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/greenButtonLg2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/greenButtonVert.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/greenBuy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/greyButton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/greyButtonLg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/greySound.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/greySoundOff.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/homeButton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/homeButton100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/homeButton128.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/homeButton512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/houseButton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/loading4.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/lockBtn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/lsBtn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/lsBtn100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/marketBtn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/nextButton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/orchardBtn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/outOfCash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/pastureBtn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/pastureBtn100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/plus10StarCash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/plus50StarCash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/plus5StarCash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/purpleButtonLg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/rightBtn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/saleBack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/sellBtn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/shortage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/speechBubble.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/starButton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/starCash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/starCashBack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/swipe-right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/toolsIcon2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/topMenuPlain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/touchHere.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/trophyBtn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/tut1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/tut2-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/tut3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/tut4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/tut5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/tut6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/tut7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/tut8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/upBtn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/vinyardBtn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/woodBtn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/UI/woodBtnLarge.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Waterfall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/Wood Block.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/anvil1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/anvil2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/apple.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/artiCrate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/artiGrow1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/artiGrow2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/artichoke.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/artichoke1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/artichoke2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/artichokeWithered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/axe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/bare_land.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/bare_land_ll.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/bare_land_lr.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/bare_land_tl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/bare_land_tr.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/barn1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/barn2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/barn3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/barn4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/barn5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/blacksmith1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/blacksmith10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/blacksmith11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/blacksmith12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/blacksmith13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/blacksmith14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/blacksmith2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/blacksmith3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/blacksmith4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/blacksmith5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/blacksmith6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/blacksmith7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/blacksmith8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/blacksmith9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/blankScrollBack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/carrotGrow1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/carrotGrow2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/carrots.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/carrots1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/carrots2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/carrotsWithered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/cherry.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/clouds.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/corn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/corn1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/corn2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/cornCrate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/cornGrow1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/cornGrow2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/cornWithered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/countBack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/cow_eat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/eggplant.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/eggplant1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/eggplant2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/eggplantCrate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/eggplantGrow1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/eggplantGrow2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/eggplantWithered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/forge1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/gateFence.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/grain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/grass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/greenTrophy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/growing.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/hay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/hayCartFull.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/hayGrow1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/hayGrow2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/hayWithered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/horizFence.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/horizFenceShort.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/horizRoad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/house1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/house2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/house3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/FarmHomeInteriorBlue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/FarmHomeInteriorGreen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/FarmHomeInteriorOrange.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/FarmHomeInteriorPink.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/bedSingle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/bedsideTable.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/bedsideTableWood.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/bookcase.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/bows.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/chest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/clock1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/couchAway.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/couchForward.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/couchRight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/curtains.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/desk.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/dishCabinet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/doubleBed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/drawersTall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/dressingTable.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/fancyChairAway.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/fancyChairFacing.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/fancyChairLeft.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/fancyChairRight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/fancyChairSet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/fancyChairSet2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/fancyTable.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/fire1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/fire2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/fire3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/fireplace.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/largeLamp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/oie_322657xeKEKkOQ.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/painting.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/pottedPlantRed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/sink.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/stool.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/stoveFire1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/stoveFire2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/stoveFire3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/trunk.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/wardrobe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/widePainting.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/woodChairAway.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/woodChairFacing.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/woodChairLeft.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/woodChairRight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/woodChairSet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/woodChairSet2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/houseUpgrades/woodTable.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/inventoryStrip.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/leftTrees.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/lettuce2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_down1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_down2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_down3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_eatLeft1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_eatLeft2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_eatLeft3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_eatLeft4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_eatRight1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_eatRight2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_up1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_up2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_up3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_walkLeft1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_walkLeft2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_walkLeft3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_walkRight1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_walkRight2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_walkRight3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/chicken_walkRight4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/egg3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/eggs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/hams.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/livestockPensBack3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/livestockPensBackUpCoop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/pig_Left3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/pig_down1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/pig_down2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/pig_down3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/pig_right1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/pig_right2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/pig_right3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/pig_up1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/pig_up2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/pig_up3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/pig_walkLeft1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/pig_walkLeft2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/livestockPens/stars4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/marketCoin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/marketNew.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/milk.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/pear.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/pepperGrow1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/pepperGrow2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/peppers.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/peppers1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/peppers2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/peppersWithered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/plowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/removeAds.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/rightTrees.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/sacks.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/scaffold.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/shelter1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/shelter2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/stars4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/tomato.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/tomato1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/tomato2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/tomatoGrow1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/tomatoGrow2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/tomatoWithered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/toolHammer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/toolTable.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/toolUp1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/toolUp2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/toolUp3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/tools100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/tools250.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/tools50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/tools500.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/toolsIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vertFence.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vertRoad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/grapes2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/grapes_ClearBrush.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/grapes_Fertilize.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/grapes_Grow1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/grapes_Grow2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/grapes_ready.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/grapes_withered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/house4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/house4Upgrade2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/jelly.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/jellyBonus2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/treeBlock1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/treeBlock2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/vinFarmer1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/vinFarmer10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/vinFarmer17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/vinFarmer18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/vinFarmer19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/vinFarmer2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/vinFarmer3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/vinFarmer4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/vinFarmer5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/vinFarmer6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/vinFarmer7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/vinFarmer8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/vinFarmer9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/vinyard/vinyardBack5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/well2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/images/wood.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/img/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/js/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/land.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/platform.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/browser/www/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/android.json" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/android.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/browser.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/fetch.json" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/fetch.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,17 +1448,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="60" lean-forward="true" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/platforms/browser/config.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="510">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
             </state>
           </provider>
         </entry>
@@ -80,22 +1496,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/platforms/android/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="50" column="36" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#799#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+            <state relative-caret-position="323">
+              <caret line="19" column="43" lean-forward="true" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -118,13 +1522,13 @@
       <list>
         <option value="$PROJECT_DIR$/node_modules/cordova-android/framework/build.xml" />
         <option value="$PROJECT_DIR$/platforms/android/build.gradle" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/platforms/android/app/src/main/java/com/wguighostfarms_9861566/MainActivity.java" />
         <option value="$PROJECT_DIR$/platforms/android/app/src/main/java/com/wGuiGhostFarms_9861566/MainActivity.java" />
         <option value="$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/platforms/browser/config.xml" />
         <option value="$PROJECT_DIR$/www/js/index.js" />
         <option value="$PROJECT_DIR$/config.xml" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -135,7 +1539,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="2027" />
     <option name="y" value="115" />
     <option name="width" value="1400" />
@@ -164,13 +1568,73 @@
             <path>
               <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
               <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
+              <item name="platforms" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
+              <item name="platforms" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
+              <item name="platforms" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
+              <item name="platforms" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
+              <item name="platforms" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
+              <item name="platforms" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
+              <item name="platforms" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="www" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
               <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
+              <item name="platforms" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
               <item name="www" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
@@ -217,8 +1681,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.4951246" visible="true" weight="0.23507462" />
@@ -318,10 +1781,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+        <state relative-caret-position="-3723" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/browser/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
@@ -332,13 +1803,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3723" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/CordovaLib/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="43" lean-forward="true" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/java/com/wGuiGhostFarms_9861566/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -354,9 +1827,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
@@ -364,17 +1834,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/browser/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="60" lean-forward="true" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
+        <state relative-caret-position="510">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
         </state>
       </provider>
     </entry>

@@ -261,6 +261,7 @@
       
 
     </script>
+    <script type="text/javascript" src="cordova.js"></script>
 </head>
 
 
@@ -309,25 +310,28 @@
    
   
 
-    <footer> <button id="footBtn" onclick="Enhance.isInterstitialReady(callback)"> Click Here</button> </footer>
+    <footer> <button id="footBtn" onclick="FacebookAds.showInterstitial();"> Click Here</button> </footer>
 
     <script type="text/javascript">
-            var callback = function (result) {
-                if (!result) {
-                    app.writeLog('Interstitial ad is not ready');
-                    console.log('Interstitial ad is not ready');
-                    return;
-                }
-                console.log('Interstitial ad is ready');
-                Enhance.showInterstitialAd();
-            };
-            void Enhance.isInterstitialReady(
-                resultCallback,
-                placement = 'default'
-            )
-            void Enhance.showInterstitialAd(
-                placement = 'default'
-            )
+        var ad_units = {
+           
+            android: {
+                banner: "your_ad_place_id",
+                interstitial: "2681362911899152_2732179796817463"
+               
+            }
+        };
+
+        // select the right Ad Id according to platform
+        var adid = (/(android)/i.test(navigator.userAgent)) ? ad_units.android : ad_units.ios;
+
+        // set your hashed device id if testing on device (optional)
+        if (FacebookAds) FacebookAds.setOptions({
+            isTesting: true,
+            deviceHash: 'copy_your_hash_id_from_console_here'
+        });
+        if (FacebookAds) FacebookAds.prepareInterstitial({ adId: adid.interstitial, autoShow: false });
+
     </script>
 
 </body>

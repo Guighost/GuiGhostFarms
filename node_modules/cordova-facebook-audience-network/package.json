@@ -1,0 +1,60 @@
+{
+  "_from": "cordova-facebook-audience-network",
+  "_id": "cordova-facebook-audience-network@4.22.1",
+  "_inBundle": false,
+  "_integrity": "sha1-6xuY1CQprdZL5qcI+TgmyxD2AUQ=",
+  "_location": "/cordova-facebook-audience-network",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-facebook-audience-network",
+    "name": "cordova-facebook-audience-network",
+    "escapedName": "cordova-facebook-audience-network",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-facebook-audience-network/-/cordova-facebook-audience-network-4.22.1.tgz",
+  "_shasum": "eb1b98d42429add64be6a708f93826cb10f60144",
+  "_spec": "cordova-facebook-audience-network",
+  "_where": "c:\\Sites\\phonegap\\GuiFarm0.5",
+  "author": {
+    "name": "Liming Xie + Andy Epifani"
+  },
+  "bugs": {
+    "url": "https://github.com/TearDesign/cordova-facebook-audnet-sdk/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-facebook-audience-network",
+    "platforms": [
+      "android",
+      "amazon-fireos",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Add Facebook AudienceNetwork SDK to Cordova porject, as dependency for other plugins",
+  "homepage": "https://github.com/TearDesign/cordova-facebook-audnet-sdk#readme",
+  "keywords": [
+    "cordova",
+    "ecosystem:cordova",
+    "facebook",
+    "audiencenetwork",
+    "fb",
+    "audnet",
+    "sdk"
+  ],
+  "license": "MIT",
+  "name": "cordova-facebook-audience-network",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TearDesign/cordova-facebook-audnet-sdk.git"
+  },
+  "version": "4.22.1"
+}
