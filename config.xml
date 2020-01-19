@@ -2,11 +2,15 @@
 <widget id="com.wGuiGhostFarms_9861566" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Medieval Farms Retro Farming Sim</name>
     <description>
-        A blank PhoneGap app.
+     Retro Farming Sim with unique gameplay
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="info@guighost.com" href="http://guighostgames.com">
+		GuiGhost Games
     </author>
     <content src="index.html" />
     <access origin="*" />
+	<platform name="android">
+        <allow-intent href="market:*" />
+		<icon src="icon.png" />
+    </platform>
 </widget>
