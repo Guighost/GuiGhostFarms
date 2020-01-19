@@ -1,0 +1,54 @@
+{
+  "_from": "git+https://github.com/enhance-co/cordova-connector.git",
+  "_id": "enhance-cordova-connector@3.0.1",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/enhance-cordova-connector",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/enhance-co/cordova-connector.git",
+    "rawSpec": "https://github.com/enhance-co/cordova-connector.git",
+    "saveSpec": "git+https://github.com/enhance-co/cordova-connector.git",
+    "fetchSpec": "https://github.com/enhance-co/cordova-connector.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/enhance-co/cordova-connector.git#8461d7935f6b14004bb4ac1948d1814d57b8c57a",
+  "_spec": "https://github.com/enhance-co/cordova-connector.git",
+  "_where": "c:\\Sites\\phonegap\\GuiFarm0.5",
+  "author": {
+    "name": "Enhance, Inc."
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-enhance",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Enhance drag and drop library for Cordova.",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.4.0"
+    }
+  ],
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "ISC",
+  "name": "enhance-cordova-connector",
+  "repository": {
+    "type": "git",
+    "url": "-"
+  },
+  "version": "3.0.1"
+}
