@@ -248,7 +248,8 @@
             position: absolute;
             bottom: 5px;
             left: 30%;
-            z-index: 3000;
+            display: block;
+            z-index: 2000;
         }
       
     </style>
@@ -262,6 +263,25 @@
 
     </script>
     <script type="text/javascript" src="cordova.js"></script>
+
+    <script type="text/javascript">
+           var ad_units = {
+
+               android: {
+               
+                   interstitial: "2681362911899152_2732179796817463"
+
+               }
+           };
+
+           // select the right Ad Id according to platform
+           var adid = (/(android)/i.test(navigator.userAgent)) ? ad_units.android : ad_units.ios;
+
+           // set your hashed device id if testing on device (optional)
+      
+           if (FacebookAds) FacebookAds.prepareInterstitial({ adId: adid.interstitial, autoShow: true });
+
+    </script>
 </head>
 
 
@@ -312,27 +332,6 @@
 
     <footer> <button id="footBtn" onclick="FacebookAds.showInterstitial();"> Click Here</button> </footer>
 
-    <script type="text/javascript">
-        var ad_units = {
-           
-            android: {
-                banner: "your_ad_place_id",
-                interstitial: "2681362911899152_2732179796817463"
-               
-            }
-        };
-
-        // select the right Ad Id according to platform
-        var adid = (/(android)/i.test(navigator.userAgent)) ? ad_units.android : ad_units.ios;
-
-        // set your hashed device id if testing on device (optional)
-        if (FacebookAds) FacebookAds.setOptions({
-            isTesting: true,
-            deviceHash: 'copy_your_hash_id_from_console_here'
-        });
-        if (FacebookAds) FacebookAds.prepareInterstitial({ adId: adid.interstitial, autoShow: false });
-
-    </script>
 
 </body>
 
