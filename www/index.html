@@ -244,13 +244,7 @@
         transform: translate(-70px,-145px);
         display:none;
         }
-        #footBtn {
-            position: absolute;
-            bottom: 45px;
-            left: 40%;
-            display: block;
-            z-index: 2000;
-        }
+     
       
     </style>
     <script type="text/javascript" src="farming_NewMenu.js"></script>
@@ -265,15 +259,34 @@
     <script type="text/javascript" src="cordova.js"></script>
 
     <script type="text/javascript">
-           var callback = function (result) {
-               if (!result) {
-                   app.writeLog('Interstitial ad is not ready');
-                   return;
+
+           var ad_units = {
+               ios: {
+                   banner: "0474fe6553214c5fb8a5cb8560a11a96",
+                   interstitial: "cd866ee29bb8449fa171574c5aaa4241"
+               },
+               android: {
+                   banner: "0474fe6553214c5fb8a5cb8560a11a96",
+                   interstitial: "cd866ee29bb8449fa171574c5aaa4241"
                }
-               console.log("made it inside")
-               Enhance.showInterstitialAd();
            };
-       
+
+           // select the right Ad Id according to platform
+           var adid = (/(android)/i.test(navigator.userAgent)) ? ad_units.android : ad_units.ios;
+
+
+           // or, show a default banner at bottom
+           if (MoPub) MoPub.createBanner({
+               adId: adid.banner,
+               position: MoPub.AD_POSITION.BOTTOM_CENTER,
+               autoShow: true
+           });
+
+           // preppare and load ad resource in background, e.g. at begining of game level
+           if (MoPub) MoPub.prepareInterstitial({ adId: adid.interstitial, autoShow: false });
+
+           setTimeout(function () { if (MoPub) MoPub.showInterstitial(); }, 30000);
+           // show the interstitial later, e.g. at end of game level
        
 
     </script>
@@ -325,7 +338,6 @@
    
   
 
-    <footer> <button id="footBtn" onclick="Enhance.isInterstitialReady(callback);"> Click Here</button> </footer>
 
 
 </body>

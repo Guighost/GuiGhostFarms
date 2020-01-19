@@ -18,6 +18,9 @@
     },
     "cordova-plugin-facebookads": {
       "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
+    },
+    "cordova-plugin-mopub": {
+      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
     }
   },
   "dependent_plugins": {
