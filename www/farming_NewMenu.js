@@ -1739,7 +1739,7 @@ farming.start = function () {
     ////////////////////////////// ////start drawing HOME Scene
 
 
-    var c = new lime.Director(document.body, a.width, a.height + 30); c.makeMobileWebAppCapable(); c.setDisplayFPS(!1);
+    var c = new lime.Director(document.body, a.width, a.height + 40); c.makeMobileWebAppCapable(); c.setDisplayFPS(!1);
 
     var d = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
         e = (new lime.Layer).setAnchorPoint(0, 0),
