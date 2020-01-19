@@ -8,15 +8,8 @@
   },
   "installed_plugins": {
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.wguighostfarms_9861566"
-    },
-    "cordova-plugin-mopub": {
       "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
     }
   },
-  "dependent_plugins": {
-    "cordova-plugin-extension": {
-      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
-    }
-  }
+  "dependent_plugins": {}
 }

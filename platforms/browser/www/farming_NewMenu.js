@@ -2144,12 +2144,6 @@ farming.start = function () {
     f.appendChild(w);
     var z = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(133, a.height - a.controlsLayer_h / 2 - 5).setFill("images/" + a.crops[hh].harvest).setSize(a.tile_size * 1.2, a.tile_size * 1.2);
     f.appendChild(z);
-    //var testBtn = (new lime.GlossyButton).setColor("#663300").setText("").setPosition(115, a.height - 20).setSize(20, 20).setOpacity(.8);
-    //f.appendChild(testBtn);
-    //goog.events.listen(testBtn, ["mousedown", "touchstart"], function () {
-    //    console.log("yep");
-    //    Enhance.isInterstitialReady(callback);
-    //});
 
     ///market control
     var market = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(205, a.height - a.controlsLayer_h - 4).setSize(103, 65).setFill("images/" + a.barnyard[3].image); f.appendChild(market)
@@ -2466,11 +2460,8 @@ farming.start = function () {
             tutModal.setFill(imgArray5[tutStep]);
         }
 
-        if (tutStep == 8) {
-            //tutModal.setHidden(true);
-            removeAdsBack.setHidden(false);            
-        }
-        if (tutStep > 8) {
+  
+        if (tutStep > 7) {
             tutSeen = 1;
             tutModal.setHidden(true);
             removeAdsBack.setHidden(true);
@@ -3614,9 +3605,9 @@ farming.start = function () {
 
     var pastureBlock = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#ffffff").setOpacity(0.75);
     pastureLayer.appendChild(pastureBlock);
-    goog.events.listen(pastureBlock, ["mousedown", "touchstart"], function () {
-        break;
-    });
+    //goog.events.listen(pastureBlock, ["mousedown", "touchstart"], function () {
+    //    break;
+    //});
     pastureBlock.setHidden(true);
 
 
@@ -5944,9 +5935,9 @@ farming.start = function () {
     ///livestockpens block
     var lsBlock = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#ffffff").setOpacity(0.75);
     liveStockLayer.appendChild(lsBlock);
-    goog.events.listen(lsBlock, ["mousedown", "touchstart"], function () {
-        break;
-    });
+    //goog.events.listen(lsBlock, ["mousedown", "touchstart"], function () {
+    //    break;
+    //});
     lsBlock.setHidden(true);
 
 
@@ -6711,9 +6702,9 @@ farming.start = function () {
     ///vinyard block
     var vinyardBlock = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#ffffff").setOpacity(0.75);
     vinyardLayer.appendChild(vinyardBlock);
-    goog.events.listen(vinyardBlock, ["mousedown", "touchstart"], function () {
-        break;
-    });
+    //goog.events.listen(vinyardBlock, ["mousedown", "touchstart"], function () {
+    //    break;
+    //});
     vinyardBlock.setHidden(true);
 
     ///Out of Cash modal- vinyard
@@ -8022,8 +8013,7 @@ farming.start = function () {
     
                 document.getElementById("starCashOuterLabel").innerHTML = starCash;
 
-            
-             
+
    
                
     //////end of farming.start

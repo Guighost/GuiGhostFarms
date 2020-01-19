@@ -44,14 +44,3 @@ var app = {
 };
 
 app.initialize();
-
-var callback = function(result) {
-    if(!result) {
-        app.writeLog('Interstitial ad is not ready');
-        return;
-    }
-
-    Enhance.showInterstitialAd();
-};
-
-Enhance.isInterstitialReady(callback);

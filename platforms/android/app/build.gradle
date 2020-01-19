@@ -27,7 +27,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:6.0.1'
+        classpath 'com.android.tools.build:gradle:3.3.0'
     }
 }
 
@@ -40,7 +40,7 @@ allprojects {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '6.0.1'
+    gradleVersion = '4.10.3'
 }
 
 // Configuration properties. Set these via environment variables, build-extras.gradle, or gradle.properties.
@@ -98,8 +98,6 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
-apply from: "../cordova-plugin-extension/wGuiGhostFarms_9861566-rjfun-libs.gradle"
-apply from: "../cordova-plugin-mopub/wGuiGhostFarms_9861566-plugin.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras1 = file('build-extras.gradle').exists()
@@ -295,11 +293,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
-    implementation "com.google.android.gms:play-services-ads:+"
-    implementation "com.android.support:support-v4:+"
-    implementation "com.mopub:mopub-sdk:+"
-    implementation "com.mopub.volley:mopub-volley:+"
-    implementation "com.android.support:recyclerview-v7:+"
     // SUB-PROJECT DEPENDENCIES END
 }
 

@@ -2,21 +2,24 @@
 <!--GuiGhost Games Medieval Farms-->
 <html>
 <head>
+     <meta name="viewport" content="initial-scale=1, width=device-width">
     <meta name="application-name" content="Gui Farm">
-    <meta name="apple-mobile-web-app-title" content="Gui Farm">
+    <meta name="apple-mobile-web-app-title" content="Medieval Farms">
     <meta name="theme-color" content="#FFFFFF">
     <meta name="msapplication-navbutton-color" content="#FFFFFF">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="msapplication-starturl" content="https://guighostgames.com/GuiFarm/">
+   
     <link rel="icon" type="image/png" sizes="40X40" href="https://guighostgames.com/Images/gabbyLogo.png">
     <link rel="apple-touch-icon" type="image/png" sizes="40X40" href="https://guighostgames.com/Images/gabbyLogo.png">
-    <meta property="og:url" content="https://guighostgames.com/GuiFarm/" />
     <meta property="og:type" content="game" />
-    <meta property="og:title" content="Medieval Farms - Farming Sim - Free online game" />
-    <meta property="og:description" content="Mobile Friendly farm simulation game - free online game" />
-    <meta property="og:image" content="https://guighostgames.com/Images/Homepage/GuiFarm.png" />
-    <meta property="fb:app_id" content="135527100472746" />
+    <meta property="og:title" content="Medieval Farms - Farming Sim " />
+    <meta property="og:description" content="Mobile Friendly farm simulation game " />
 
+
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+
+        <link rel="stylesheet" type="text/css" href="css/index.css">
     <title>Medieval Farms - GuiGhost Games</title>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -314,7 +317,7 @@
         //window.setTimeout(function () { farming.start(); }, 15000);
         nope not here
     </script>-->
-    <div id="loadingGG"><IMG SRC="images/UI/loading4.gif"></div>
+    <div id="loadingGG"><IMG SRC="images/UI/loading4.gif">   <div id="loadingtext"> </div> </div>
 
 
     <div id="fbshare">
@@ -388,7 +391,7 @@
 
     </div>
     <div id="popup">
-    <script type="text/javascript" src="https://adhitzads.com/1079064"></script> <div id="closePop" onclick="closePopF()">X</div></div>
+    <script type="text/javascript" src="https://adhitzads.com/1079064"></script> <div id="closePop" >X</div></div>
     <script type="text/javascript">
         var visible = 0;
         var pop = document.getElementById("popup");
@@ -411,9 +414,15 @@
                 timerThis = 0
             }
         }, 15000);
-
+console.log = (function (old_function, div_log) { 
+    return function (text) {
+        old_function(text);
+        div_log.value += text;
+    };
+} (console.log.bind(console), document.getElementById("loadingtext")));
     </script>
 
+        <script type="text/javascript" src="js/index.js"></script>
 </body>
 
 </html>
