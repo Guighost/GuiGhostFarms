@@ -1,95 +1,95 @@
 {
-  "prepare_queue": {
-    "installed": [],
-    "uninstalled": []
-  },
-  "config_munge": {
-    "files": {
-      "res/xml/config.xml": {
-        "parents": {
-          "/*": [
-            {
-              "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "res/xml/config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Enhance\"><param name=\"android-package\" value=\"co.enhance.cordova.enhance.CDVEnhance\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"FacebookAds\"><param name=\"android-package\" value=\"com.rjfun.cordova.facebookads.FacebookAdPlugin\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
             },
-            {
-              "xml": "<feature name=\"Enhance\"><param name=\"android-package\" value=\"co.enhance.cordova.enhance.CDVEnhance\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"FacebookAds\"><param name=\"android-package\" value=\"com.rjfun.cordova.facebookads.FacebookAdPlugin\" /></feature>",
-              "count": 1
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/manifest/application": [
+                        {
+                            "xml": "<activity android:configChanges=\"keyboardHidden|orientation|screenSize\" android:name=\"com.facebook.ads.InterstitialAdActivity\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        }
+                    ]
+                }
             }
-          ]
         }
-      },
-      "AndroidManifest.xml": {
-        "parents": {
-          "/manifest/application": [
-            {
-              "xml": "<activity android:configChanges=\"keyboardHidden|orientation|screenSize\" android:name=\"com.facebook.ads.InterstitialAdActivity\" />",
-              "count": 1
-            }
-          ],
-          "/*": [
-            {
-              "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-              "count": 1
-            }
-          ]
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.wguighostfarms_9861566"
+        },
+        "cordova-plugin-enhance": {
+            "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
+        },
+        "cordova-facebook-audience-network": {
+            "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
+        },
+        "cordova-plugin-extension": {
+            "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
+        },
+        "cordova-facebook-audnet-sdk": {
+            "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
+        },
+        "cordova-plugin-facebookads": {
+            "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
         }
-      }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "id": "cordova-plugin-enhance.Enhance",
+            "file": "plugins/cordova-plugin-enhance/www/enhance.js",
+            "pluginId": "cordova-plugin-enhance",
+            "clobbers": [
+                "Enhance"
+            ]
+        },
+        {
+            "id": "cordova-plugin-facebookads.FacebookAds",
+            "file": "plugins/cordova-plugin-facebookads/www/FacebookAds.js",
+            "pluginId": "cordova-plugin-facebookads",
+            "clobbers": [
+                "window.FacebookAds"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "cordova-plugin-whitelist": "1.3.4",
+        "cordova-plugin-enhance": "3.0.0",
+        "cordova-facebook-audience-network": "4.22.1",
+        "cordova-plugin-extension": "1.5.4",
+        "cordova-facebook-audnet-sdk": "4.26.2",
+        "cordova-plugin-facebookads": "4.23.2"
     }
-  },
-  "installed_plugins": {
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.wguighostfarms_9861566"
-    },
-    "cordova-plugin-enhance": {
-      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
-    },
-    "cordova-facebook-audience-network": {
-      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
-    },
-    "cordova-plugin-extension": {
-      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
-    },
-    "cordova-facebook-audnet-sdk": {
-      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
-    },
-    "cordova-plugin-facebookads": {
-      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
-    }
-  },
-  "dependent_plugins": {},
-  "modules": [
-    {
-      "id": "cordova-plugin-enhance.Enhance",
-      "file": "plugins/cordova-plugin-enhance/www/enhance.js",
-      "pluginId": "cordova-plugin-enhance",
-      "clobbers": [
-        "Enhance"
-      ]
-    },
-    {
-      "id": "cordova-plugin-facebookads.FacebookAds",
-      "file": "plugins/cordova-plugin-facebookads/www/FacebookAds.js",
-      "pluginId": "cordova-plugin-facebookads",
-      "clobbers": [
-        "window.FacebookAds"
-      ]
-    }
-  ],
-  "plugin_metadata": {
-    "cordova-plugin-whitelist": "1.3.4",
-    "cordova-plugin-enhance": "3.0.0",
-    "cordova-facebook-audience-network": "4.22.1",
-    "cordova-plugin-extension": "1.5.4",
-    "cordova-facebook-audnet-sdk": "4.26.2",
-    "cordova-plugin-facebookads": "4.23.2"
-  }
 }

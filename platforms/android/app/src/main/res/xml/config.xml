@@ -4,6 +4,12 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="Enhance">
+        <param name="android-package" value="co.enhance.cordova.enhance.CDVEnhance" />
+    </feature>
+    <feature name="FacebookAds">
+        <param name="android-package" value="com.rjfun.cordova.facebookads.FacebookAdPlugin" />
+    </feature>
     <name>Medieval Farms</name>
     <description>
        Retro Farming Sim
@@ -23,11 +29,4 @@
     <preference name="loglevel" value="DEBUG" />
     <preference name="android-targetSdkVersion" value="28" />
     <preference name="orientation" value="portrait" />
-    <icon src="images/UI/homeButton512.png" />
-    <feature name="Enhance">
-        <param name="android-package" value="co.enhance.cordova.enhance.CDVEnhance" />
-    </feature>
-    <feature name="FacebookAds">
-        <param name="android-package" value="com.rjfun.cordova.facebookads.FacebookAdPlugin" />
-    </feature>
 </widget>

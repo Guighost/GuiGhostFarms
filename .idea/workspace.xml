@@ -7,8 +7,144 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d488ef3a-1be9-46bf-99ad-9bdeb4a7b83f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/androidDexCompiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/AudienceNetwork.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/FBAudienceNetwork" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBAdChoicesView.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBAdDefines.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBAdSettings.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBAdSize.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBAdView.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBAudienceNetwork.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBInstreamAdView.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBInterstitialAd.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBMediaView.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBNativeAd.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBNativeAdCollectionViewAdProvider.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBNativeAdCollectionViewCellProvider.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBNativeAdScrollView.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBNativeAdTableViewAdProvider.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBNativeAdTableViewCellProvider.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBNativeAdView.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBNativeAdsManager.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBRewardedVideoAd.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Modules/module.modulemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/plugin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/FBAudienceNetwork" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBAdChoicesView.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBAdDefines.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBAdSettings.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBAdSize.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBAdView.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBAudienceNetwork.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBInstreamAdRendererView.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBInstreamAdView.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBInterstitialAd.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBMediaView.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBMediaViewVideoRenderer.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBNativeAd.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBNativeAdCollectionViewAdProvider.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBNativeAdCollectionViewCellProvider.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBNativeAdScrollView.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBNativeAdTableViewAdProvider.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBNativeAdTableViewCellProvider.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBNativeAdView.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBNativeAdsManager.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBRewardedVideoAd.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Modules/FBAudienceNetwork.modulemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/PkgInfo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/fb-adsdk.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/plugin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/src/ios/FBKVOController.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/src/ios/FBKVOController.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/src/ios/KVOController.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/src/ios/NSObject+FBKVOController.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/src/ios/NSObject+FBKVOController.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/cocos2dx/TODO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/plugin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/src/android/CordovaPluginExt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/src/android/PluginAdapterDelegate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/src/android/cordova-generic-ad.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/src/android/rjfun-libs.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/src/ios/CDVPluginExt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/src/ios/CDVPluginExt.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/src/ios/GenericAdPlugin.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/src/ios/PluginAdapterDelegate.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/src/ios/libCordovaGenericAd.a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/unity/PluginAdapterUnity.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/unity/PluginAdapterUnity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/unity/PluginAdapterUnity.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/docs/android_banner.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/docs/android_interstitial.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/docs/android_landscape.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/docs/android_nativead.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/docs/iphone_banner.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/docs/iphone_interstitial.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/docs/iphone_landscape.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/docs/iphone_nativead.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/plugin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/src/android/FacebookAdPlugin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/src/android/android-support.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/src/ios/FacebookAdPlugin.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/src/ios/FacebookAdPlugin.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/src/ios/UITapGestureRecognizer+Spec.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/src/ios/UITapGestureRecognizer+Spec.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/test/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/test/jquery-1.9.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/www/FacebookAds.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/gdpr.txt" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/gdpr.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/readme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/android/CDVEnhance.java" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/android/CDVEnhance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/CDVEnhance.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/CDVEnhance.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/CDVEnhance.m" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/CDVEnhance.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/Enhance.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/Enhance.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/EnhanceInAppPurchases.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/EnhanceInAppPurchases.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/EnhanceSettings.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/EnhanceSettings.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/FglEnhance.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/FglEnhance.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/FglEnhanceInAppPurchases.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/FglEnhanceInAppPurchases.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/FglEnhancePlus.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/FglEnhancePlus.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/www/enhance.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/www/enhance.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/android.json" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/android.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/farming_NewMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/farming_NewMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-hdpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-hdpi-v26/ic_launcher_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-hdpi-v26/ic_launcher_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-ldpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-ldpi-v26/ic_launcher_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-ldpi-v26/ic_launcher_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-ldpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-mdpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-mdpi-v26/ic_launcher_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-mdpi-v26/ic_launcher_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/fetch.json" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/fetch.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,24 +153,26 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config.xml">
+        <entry file="file://$PROJECT_DIR$/gradle.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="14" column="39" lean-forward="true" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/js/index.js">
+        <entry file="file://$PROJECT_DIR$/platforms/android/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+            <state relative-caret-position="-347">
+              <caret line="14" column="58" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -49,6 +187,12 @@
       <find>layout</find>
     </findStrings>
   </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="C:\Sites\certs\myKey.keystore" />
+    <option name="KEY_ALIAS" value="GhostCert2" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
+    <option name="BUILD_TARGET_KEY" value="apk" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -56,7 +200,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/node_modules/cordova-android/framework/build.xml" />
-        <option value="$PROJECT_DIR$/platforms/android/build.gradle" />
         <option value="$PROJECT_DIR$/platforms/android/app/src/main/java/com/wguighostfarms_9861566/MainActivity.java" />
         <option value="$PROJECT_DIR$/platforms/android/app/src/main/java/com/wGuiGhostFarms_9861566/MainActivity.java" />
         <option value="$PROJECT_DIR$/platforms/browser/config.xml" />
@@ -64,13 +207,11 @@
         <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/package.json" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/GuiFarm0.5.iml" />
+        <option value="$PROJECT_DIR$/platforms/android/project.properties" />
+        <option value="$PROJECT_DIR$/platforms/android/build.gradle" />
+        <option value="$PROJECT_DIR$/platforms/android/app/build.gradle" />
+        <option value="$PROJECT_DIR$/platforms/android/gradle.properties" />
+        <option value="$PROJECT_DIR$/gradle.properties" />
       </list>
     </option>
   </component>
@@ -86,8 +227,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -97,98 +239,26 @@
             </path>
             <path>
               <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
-              <item name="platforms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
-              <item name="platforms" type="462c0819:PsiDirectoryNode" />
-              <item name="android" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
-              <item name="platforms" type="462c0819:PsiDirectoryNode" />
-              <item name="android" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
-              <item name="platforms" type="462c0819:PsiDirectoryNode" />
-              <item name="android" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
-              <item name="platforms" type="462c0819:PsiDirectoryNode" />
-              <item name="android" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
-              <item name="platforms" type="462c0819:PsiDirectoryNode" />
-              <item name="android" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
-              <item name="platforms" type="462c0819:PsiDirectoryNode" />
-              <item name="android" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="www" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
-              <item name="platforms" type="462c0819:PsiDirectoryNode" />
-              <item name="android" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GuiFarm0.5" type="462c0819:PsiDirectoryNode" />
-              <item name="www" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GuiFarm0.5" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="AndroidRunProguardForReleaseBuild" value="false" />
+    <property name="ExportedApkPath" value="C:\Sites\phonegap\GuiFarm0.5\com.wGuiGhostFarms_9861566.apk" />
+    <property name="ExportedModule" value="com.wGuiGhostFarms_9861566" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../certs/myKey.keystore" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -213,15 +283,22 @@
       <option name="presentableId" value="Default" />
       <updated>1579138690545</updated>
     </task>
+    <task id="LOCAL-00001" summary="gradle">
+      <created>1579386449087</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1579386449087</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.4951246" visible="true" weight="0.23507462" />
-      <window_info id="Structure" order="2" sideWeight="0.5048754" side_tool="true" visible="true" weight="0.23507462" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.4878837" visible="true" weight="0.23507462" />
+      <window_info id="Structure" order="2" sideWeight="0.5121163" side_tool="true" visible="true" weight="0.23507462" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
       <window_info id="Resources Explorer" order="5" sideWeight="0.4994233" weight="0.32966226" />
@@ -236,28 +313,25 @@
       <window_info anchor="bottom" id="Logcat" order="5" />
       <window_info anchor="bottom" id="Find" order="6" />
       <window_info anchor="bottom" id="Android Profiler" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" order="8" visible="true" weight="0.32936078" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Theme Preview" order="1" />
       <window_info anchor="right" id="Palette&#9;" order="2" />
       <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" />
+      <window_info anchor="right" id="Assistant" order="4" visible="true" weight="0.32995737" />
     </layout>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="gradle" />
+    <option name="LAST_COMMIT_MESSAGE" value="gradle" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/platforms/android/gradle.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/cordova-android/framework/build.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2224">
           <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/android/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/android/wrapper.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/cordova-android/framework/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
@@ -275,9 +349,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/android/project.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/android.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -286,16 +357,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/cordova-android/bin/android_sdk_version">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/android/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3406">
-          <caret line="113" column="24" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#858#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/cordova-common/src/superspawn.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -307,16 +368,6 @@
     <entry file="file://$PROJECT_DIR$/node_modules/cross-spawn/lib/enoent.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/android/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="50" column="36" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#799#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3723" />
@@ -325,13 +376,7 @@
     <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/browser/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/browser/config.xml" />
     <entry file="file://$PROJECT_DIR$/platforms/android/CordovaLib/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -365,15 +410,81 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
+        <state relative-caret-position="544">
           <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/android/wrapper.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/android/CordovaLib/cordova.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2695">
+          <folding>
+            <element signature="e#0#858#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/com.wGuiGhostFarms_9861566.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/android/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/android/project.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="7" selection-start-column="34" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/android/cordova/lib/build.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1173" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/android/cordova/lib/builders/builders.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-113" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/android/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-347">
+          <caret line="14" column="58" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/android/gradle.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/android/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+          <folding>
+            <element signature="e#0#858#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="39" lean-forward="true" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradle.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
@@ -416,6 +527,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
+          <last-edited>Android API 29 Platform</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -432,7 +544,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

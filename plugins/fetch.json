@@ -10,7 +10,7 @@
   "cordova-plugin-enhance": {
     "source": {
       "type": "registry",
-      "id": "enhance-cordova-connector@^3.0.1"
+      "id": "https://github.com/enhance-co/cordova-connector.git"
     },
     "is_top_level": true,
     "variables": {}
