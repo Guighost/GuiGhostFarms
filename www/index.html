@@ -265,21 +265,16 @@
     <script type="text/javascript" src="cordova.js"></script>
 
     <script type="text/javascript">
-           var ad_units = {
-
-               android: {
-               
-                   interstitial: "2681362911899152_2732179796817463"
-
+           var callback = function (result) {
+               if (!result) {
+                   app.writeLog('Interstitial ad is not ready');
+                   return;
                }
+               console.log("made it inside")
+               Enhance.showInterstitialAd();
            };
-
-           // select the right Ad Id according to platform
-           var adid = (/(android)/i.test(navigator.userAgent)) ? ad_units.android : ad_units.ios;
-
-           // set your hashed device id if testing on device (optional)
-      
-           if (FacebookAds) FacebookAds.prepareInterstitial({ adId: adid.interstitial, autoShow: true });
+       
+       
 
     </script>
 </head>
@@ -330,7 +325,7 @@
    
   
 
-    <footer> <button id="footBtn" onclick="FacebookAds.showInterstitial();"> Click Here</button> </footer>
+    <footer> <button id="footBtn" onclick="Enhance.isInterstitialReady(callback);"> Click Here</button> </footer>
 
 
 </body>

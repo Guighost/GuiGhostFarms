@@ -7,144 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d488ef3a-1be9-46bf-99ad-9bdeb4a7b83f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/androidDexCompiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/AudienceNetwork.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/FBAudienceNetwork" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBAdChoicesView.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBAdDefines.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBAdSettings.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBAdSize.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBAdView.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBAudienceNetwork.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBInstreamAdView.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBInterstitialAd.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBMediaView.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBNativeAd.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBNativeAdCollectionViewAdProvider.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBNativeAdCollectionViewCellProvider.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBNativeAdScrollView.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBNativeAdTableViewAdProvider.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBNativeAdTableViewCellProvider.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBNativeAdView.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBNativeAdsManager.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Headers/FBRewardedVideoAd.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Info.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/FBAudienceNetwork.framework/Modules/module.modulemap" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audience-network/plugin.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/FBAudienceNetwork" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBAdChoicesView.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBAdDefines.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBAdSettings.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBAdSize.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBAdView.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBAudienceNetwork.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBInstreamAdRendererView.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBInstreamAdView.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBInterstitialAd.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBMediaView.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBMediaViewVideoRenderer.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBNativeAd.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBNativeAdCollectionViewAdProvider.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBNativeAdCollectionViewCellProvider.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBNativeAdScrollView.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBNativeAdTableViewAdProvider.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBNativeAdTableViewCellProvider.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBNativeAdView.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBNativeAdsManager.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Headers/FBRewardedVideoAd.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Info.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/Modules/FBAudienceNetwork.modulemap" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/FBAudienceNetwork.framework/PkgInfo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/fb-adsdk.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/plugin.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/src/ios/FBKVOController.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/src/ios/FBKVOController.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/src/ios/KVOController.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/src/ios/NSObject+FBKVOController.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-facebook-audnet-sdk/src/ios/NSObject+FBKVOController.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/.npmignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/cocos2dx/TODO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/plugin.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/src/android/CordovaPluginExt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/src/android/PluginAdapterDelegate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/src/android/cordova-generic-ad.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/src/android/rjfun-libs.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/src/ios/CDVPluginExt.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/src/ios/CDVPluginExt.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/src/ios/GenericAdPlugin.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/src/ios/PluginAdapterDelegate.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/src/ios/libCordovaGenericAd.a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/unity/PluginAdapterUnity.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/unity/PluginAdapterUnity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-extension/unity/PluginAdapterUnity.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/.npmignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/docs/android_banner.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/docs/android_interstitial.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/docs/android_landscape.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/docs/android_nativead.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/docs/iphone_banner.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/docs/iphone_interstitial.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/docs/iphone_landscape.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/docs/iphone_nativead.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/plugin.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/src/android/FacebookAdPlugin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/src/android/android-support.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/src/ios/FacebookAdPlugin.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/src/ios/FacebookAdPlugin.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/src/ios/UITapGestureRecognizer+Spec.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/src/ios/UITapGestureRecognizer+Spec.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/test/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/test/jquery-1.9.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cordova-plugin-facebookads/www/FacebookAds.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/gdpr.txt" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/gdpr.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/plugin.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/readme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/android/CDVEnhance.java" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/android/CDVEnhance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/CDVEnhance.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/CDVEnhance.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/CDVEnhance.m" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/CDVEnhance.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/Enhance.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/Enhance.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/EnhanceInAppPurchases.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/EnhanceInAppPurchases.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/EnhanceSettings.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/EnhanceSettings.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/FglEnhance.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/FglEnhance.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/FglEnhanceInAppPurchases.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/FglEnhanceInAppPurchases.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/FglEnhancePlus.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/src/ios/FglEnhancePlus.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/www/enhance.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/enhance-cordova-connector/www/enhance.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/android.json" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/android.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/farming_NewMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/farming_NewMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-hdpi-v26/ic_launcher.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-hdpi-v26/ic_launcher_background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-hdpi-v26/ic_launcher_foreground.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-ldpi-v26/ic_launcher.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-ldpi-v26/ic_launcher_background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-ldpi-v26/ic_launcher_foreground.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-ldpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-mdpi-v26/ic_launcher.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-mdpi-v26/ic_launcher_background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-mdpi-v26/ic_launcher_foreground.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/project.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/fetch.json" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/fetch.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -160,6 +23,15 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gradle.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
@@ -295,6 +167,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.4878837" visible="true" weight="0.23507462" />
@@ -474,17 +347,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gradle.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
         </state>
       </provider>
     </entry>
