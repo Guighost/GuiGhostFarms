@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta name="application-name" content="Gui Farm">
-    <meta name="apple-mobile-web-app-title" content="Medieval Farms">
+    <meta name="apple-mobile-web-app-title" content="Gui Farm">
     <meta name="theme-color" content="#FFFFFF">
     <meta name="msapplication-navbutton-color" content="#FFFFFF">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,20 +17,19 @@
     <meta property="og:image" content="https://guighostgames.com/Images/Homepage/GuiFarm.png" />
     <meta property="fb:app_id" content="135527100472746" />
 
-
-
-    <title>Medieval Farms - Farming Sim by GuiGhost Games</title>
-  
+    <title>Medieval Farms - GuiGhost Games</title>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97706544-2"></script>
     <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'UA-97706544-2');
+        gtag('config', 'UA-97706544-2');
     </script>
+
+
 
     <style>
         .lime-scene {
@@ -42,10 +41,9 @@
             background-image: url(images/UI/battleback11.png);
             background-size: cover;
             background-repeat: no-repeat;
-           
         }
-    
- 
+
+
         #loadingGG {
             position: absolute;
             top: 40%;
@@ -55,61 +53,88 @@
             transform: translateX(-150px);
             z-index: 15000;
         }
-        
-                #fbshare {
-                background: linear-gradient(black, #8a2be2);
-                /*background-color: #8a2be2;*/
-                height: 350px;
-                width: 300px;
-                border: 4px solid #9e5a2a;
-                border-radius: 20px;
-                position: absolute;
-                left: 50%;
-                top: 170px;
-                transform: translate(-154px,0px);
-                display: none;
-                font-family: 'Comic Sans MS';
-                font-size: 14px;
-                z-index: 2000;
-            }
 
-            #closeFB {
-                background-image: url( "images/UI/XButton.png");
-                background-size: contain;
-                height: 70px;
-                width: 70px;
-                border: 2px groove grey;
-                border-radius: 10px;
-                position: absolute;
-                left: 50%;
-                top: 95%;
-                transform: translate(-35px,-2px);
-                font-family: 'Comic Sans MS';
-                font-size: large;
-                text-align: center;
-            }
-
-            #fbshareTitle {
-                background-color: azure;
-                height: 30px;
-                width: 99%;
-                border: 2px inset grey;
-                border-radius: 10px;
-                font-family: 'Comic Sans MS';
-                font-size: large;
-                text-align: center;
-            }
-
-            #logoImg3 {
-                transform: translate(5px,5px);
-                height: 90px;
-                width: 240px;
-            }
-        #outerStarCashImg {
-        width:150px;
-        margin-left: 50%;
-        transform:translate(-75px,0px);
+        #popup {
+            position: absolute;
+            bottom: 1%;
+            left: 50%;
+            min-width: 300px;
+            height: 250px;
+            background-color: black;
+            transform: translateX(-150px);
+            z-index: 15000;
+            display: none;
+            color: azure;
         }
+
+        #closePop {
+            position: absolute;
+            text-align: center;
+            border-radius: 9px;
+            min-width: 30px;
+            height: 25px;
+            background-color: black;
+            font-size: large;
+            top: 0px;
+            transform: translate(-5px,-15px);
+        }
+
+        #fbshare {
+            background: linear-gradient(black, #8a2be2);
+            /*background-color: #8a2be2;*/
+            height: 350px;
+            width: 300px;
+            border: 4px solid #9e5a2a;
+            border-radius: 20px;
+            position: absolute;
+            left: 50%;
+            top: 170px;
+            transform: translate(-154px,0px);
+            display: none;
+            font-family: 'Comic Sans MS';
+            font-size: 14px;
+            z-index: 2000;
+        }
+
+        #closeFB {
+            background-image: url( "images/UI/XButton.png");
+            background-size: contain;
+            height: 70px;
+            width: 70px;
+            border: 2px groove grey;
+            border-radius: 10px;
+            position: absolute;
+            left: 50%;
+            top: 95%;
+            transform: translate(-35px,-2px);
+            font-family: 'Comic Sans MS';
+            font-size: large;
+            text-align: center;
+        }
+
+        #fbshareTitle {
+            background-color: azure;
+            height: 30px;
+            width: 99%;
+            border: 2px inset grey;
+            border-radius: 10px;
+            font-family: 'Comic Sans MS';
+            font-size: large;
+            text-align: center;
+        }
+
+        #logoImg3 {
+            transform: translate(5px,5px);
+            height: 90px;
+            width: 240px;
+        }
+
+        #outerStarCashImg {
+            width: 150px;
+            margin-left: 50%;
+            transform: translate(-75px,0px);
+        }
+
         #starCashOuterLabel {
             position: absolute;
             font-size: 20px;
@@ -120,6 +145,7 @@
             z-index: 100;
             transform: translate(0px,-10px);
         }
+
         #currentStarCashBack, #currentStarCashBack2 {
             width: 280px;
             height: 50px;
@@ -128,34 +154,38 @@
             color: yellow;
             text-align: left;
             margin-left: 10px;
-            margin-top:5px;
+            margin-top: 5px;
             transform: translate(0px,35px);
             border: 1px groove azure;
             border-radius: 5px;
             background-color: saddlebrown;
         }
-        #lowerStarCashImg , #lowerStarCashImg2{
+
+        #lowerStarCashImg, #lowerStarCashImg2 {
             width: 50px;
             transform: translate(5px,0px);
         }
-        #lowerArrow , #lowerArrow2{
+
+        #lowerArrow, #lowerArrow2 {
             width: 35px;
             height: 35px;
             transform: translate(10px, -5px);
         }
-        
+
         #lowerStarCashCoin {
             width: 50px;
             height: 50px;
             margin-left: 5%;
             transform: translate(0px, 0px);
         }
+
         #buyWithStarCash, #buyWithStarCashTools {
             width: 80px;
             height: 35px;
             margin-left: 50%;
             transform: translate(40px, -47px);
         }
+
         #row2label {
             transform: translate(75px, -50px);
         }
@@ -179,126 +209,110 @@
             text-align: center;
             width: 95%;
         }
-            /*#shareLink{
+        /*#shareLink{
                 width: 90%;
             }*/
-            #postInviteToWall {
-                position: absolute;
-                left: 2%;
-                top: 78%;
-            }
+        #postInviteToWall {
+            position: absolute;
+            left: 2%;
+            top: 78%;
+        }
 
-            #inviteFB {
-                background-image: url('images/UI/inviteFB2.png');
-                background-size: contain;
-                width: 130px;
-                height: 40px;
-            }
+        #inviteFB {
+            background-image: url('images/UI/inviteFB2.png');
+            background-size: contain;
+            width: 130px;
+            height: 40px;
+        }
 
-            #inviteText {
-                position: absolute;
-                left: 138px;
-                /*top: 100px;*/
-                width: 160px;
-                height: 60px;
-                transform: translate(0px,-40px);
-            }
+        #inviteText {
+            position: absolute;
+            left: 138px;
+            /*top: 100px;*/
+            width: 160px;
+            height: 60px;
+            transform: translate(0px,-40px);
+        }
 
-            #inviteImg2 {
-                position: absolute;
-                left: 135px;
-                transform: translate(0px,-70px);
-                background-image: url('images/UI/bonusStarCash.png');
-                background-size: contain;
-                width: 150px;
-                height: 31px;
-            }
+        #inviteImg2 {
+            position: absolute;
+            left: 135px;
+            transform: translate(0px,-70px);
+            background-image: url('images/UI/bonusStarCash.png');
+            background-size: contain;
+            width: 150px;
+            height: 31px;
+        }
 
-            #socialPlugins1 {
-                position: absolute;
-                left: 4%;
-                top: 55%;
-                transform: scale(1.1);
-                background-color: azure;
-                padding: 5px;
-                border: 2px inset grey;
-                border-radius: 10px;
-                width: 260px;
-                height: 110px;
-            }
+        #socialPlugins1 {
+            position: absolute;
+            left: 4%;
+            top: 55%;
+            transform: scale(1.1);
+            background-color: azure;
+            padding: 5px;
+            border: 2px inset grey;
+            border-radius: 10px;
+            width: 260px;
+            height: 110px;
+        }
 
-            #likeFB {
-                background-image: url('images/UI/likeFB.png');
-                background-size: cover;
-                width: 95px;
-                height: 40px;
-            }
+        #likeFB {
+            background-image: url('images/UI/likeFB.png');
+            background-size: cover;
+            width: 95px;
+            height: 40px;
+        }
 
         #sucessbuyTxt {
-        width: 180px;
-        color:springgreen;
-        font-family: 'Comic Sans MS';
-        margin-left: 50%;
-        font-size:28px;
-        font-weight:500;
-        transform: translate(-70px,-145px);
-        display:none;
+            width: 180px;
+            color: springgreen;
+            font-family: 'Comic Sans MS';
+            margin-left: 50%;
+            font-size: 28px;
+            font-weight: 500;
+            transform: translate(-70px,-145px);
+            display: none;
         }
-     
-      
+
+        .alignleft {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            z-index: 500;
+        }
+
+        .alignright {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            z-index: 500;
+            width: 120px;
+            height: 600px;
+        }
+
+        @media (max-width: 800px) {
+            .alignleft, .alignright {
+                display: none;
+            }
+        }
     </style>
     <script type="text/javascript" src="farming_NewMenu.js"></script>
     <script type="text/javascript">
-           function closeFBShare() {
-               //e.preventDefault();
-               document.getElementById("fbshare").style.display = 'none'; 
-           }
-      
+        function closeFBShare() {
+            //e.preventDefault();
+            document.getElementById("fbshare").style.display = 'none';
+        }
 
-    </script>
-    <script type="text/javascript" src="cordova.js"></script>
-
-    <script type="text/javascript">
-
-           var ad_units = {
-               ios: {
-                   banner: "0474fe6553214c5fb8a5cb8560a11a96",
-                   interstitial: "cd866ee29bb8449fa171574c5aaa4241"
-               },
-               android: {
-                   banner: "0474fe6553214c5fb8a5cb8560a11a96",
-                   interstitial: "cd866ee29bb8449fa171574c5aaa4241"
-               }
-           };
-
-           // select the right Ad Id according to platform
-           var adid = (/(android)/i.test(navigator.userAgent)) ? ad_units.android : ad_units.ios;
-
-
-           // or, show a default banner at bottom
-           if (MoPub) MoPub.createBanner({
-               adId: adid.banner,
-               position: MoPub.AD_POSITION.BOTTOM_CENTER,
-               autoShow: true
-           });
-
-           // preppare and load ad resource in background, e.g. at begining of game level
-           if (MoPub) MoPub.prepareInterstitial({ adId: adid.interstitial, autoShow: false });
-
-           setTimeout(function () { if (MoPub) MoPub.showInterstitial(); }, 30000);
-           // show the interstitial later, e.g. at end of game level
-       
 
     </script>
 </head>
 
 
-
-
-
 <body onload="farming.start()">
     <!--<script>
         //window.setTimeout(function () { farming.start(); }, 15000);
+        nope not here
     </script>-->
     <div id="loadingGG"><IMG SRC="images/UI/loading4.gif"></div>
 
@@ -324,23 +338,82 @@
 
 
 
-
             </div>
-
 
             <p id="sucessbuyTxt"> + $500</p>
         </div>
         <div id="fbshareFooter"> <a id="closeFB"></a></div>
+
+    </div>
+    <div class="alignleft">
+
+        <!--<script type="text/javascript">
+            amzn_assoc_ad_type = "banner";
+            amzn_assoc_marketplace = "amazon";
+            amzn_assoc_region = "US";
+            amzn_assoc_placement = "assoc_banner_placement_default";
+            amzn_assoc_campaigns = "game_downloads";
+            amzn_assoc_banner_type = "category";
+            amzn_assoc_p = "29";
+            amzn_assoc_isresponsive = "false";
+            amzn_assoc_banner_id = "0SFVTV2829Q7FVY15A82";
+            amzn_assoc_width = "120";
+            amzn_assoc_height = "600";
+            amzn_assoc_tracking_id = "guighost-20";
+            amzn_assoc_linkid = "c6e225d93ab8a27041950fcdb4cb6588";
+        </script>
+        <script src="//z-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1"></script>-->
+
+
+
+
+        <script type="text/javascript" src="https://adhitzads.com/983661"></script>
     </div>
 
-    <!--<!--<div id="leftAdBar">            </div>
-    <div id="rightAdBar">    </div>-->
-   
-  
+    <div class="alignright">
+        <!--<script type="text/javascript">
+            amzn_assoc_ad_type = "banner";
+            amzn_assoc_marketplace = "amazon";
+            amzn_assoc_region = "US";
+            amzn_assoc_placement = "assoc_banner_placement_default";
+            amzn_assoc_banner_type = "ez";
+            amzn_assoc_p = "11";
+            amzn_assoc_width = "120";
+            amzn_assoc_height = "600";
+            amzn_assoc_tracking_id = "guighost-20";
+            amzn_assoc_linkid = "b8ebcb234ccb4e02bda2d84898a2361b";
+        </script>
+        <script src="//z-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1"></script>-->
+        <script type="text/javascript" src="https://adhitzads.com/983661"></script>
 
+    </div>
+    <div id="popup">
+    <script type="text/javascript" src="https://adhitzads.com/1079064"></script> <div id="closePop" onclick="closePopF()">X</div></div>
+    <script type="text/javascript">
+        var visible = 0;
+        var pop = document.getElementById("popup");
 
+        function closePopF() {
+            pop.style.display = "none";
+            visible = 0;
+        }
+        var timerThis = 0;
+        setInterval(function () {
+            timerThis++;
+            console.log(timerThis)
+            if (visible == 1) {
+                pop.style.display = "none";
+                visible = 0;
+            }
+            if (visible == 0 && timerThis > 16) {
+                pop.style.display = "block";
+                visible = 1;
+                timerThis = 0
+            }
+        }, 15000);
+
+    </script>
 
 </body>
-
 
 </html>
