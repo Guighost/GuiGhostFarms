@@ -1,14 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
   module.exports = [
     {
-      "id": "cordova-plugin-enhance.Enhance",
-      "file": "plugins/cordova-plugin-enhance/www/enhance.js",
-      "pluginId": "cordova-plugin-enhance",
-      "clobbers": [
-        "Enhance"
-      ]
-    },
-    {
       "id": "cordova-plugin-facebookads.FacebookAds",
       "file": "plugins/cordova-plugin-facebookads/www/FacebookAds.js",
       "pluginId": "cordova-plugin-facebookads",
@@ -27,7 +19,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
   ];
   module.exports.metadata = {
     "cordova-plugin-whitelist": "1.3.4",
-    "cordova-plugin-enhance": "3.0.0",
     "cordova-facebook-audience-network": "4.22.1",
     "cordova-plugin-extension": "1.5.4",
     "cordova-facebook-audnet-sdk": "4.26.2",
