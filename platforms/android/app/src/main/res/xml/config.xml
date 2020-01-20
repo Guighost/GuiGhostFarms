@@ -16,5 +16,6 @@
 		<preference name="ANDROID_SUPPORT_RECYCLERVIEW_VERSION" default="27+" />
     <feature name="FBANFree">
         <param name="android-package" value="fban.plugin.FBANFree" />
+
     </feature>
 </widget>
