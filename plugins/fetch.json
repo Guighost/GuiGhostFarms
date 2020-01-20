@@ -18,5 +18,24 @@
     },
     "is_top_level": false,
     "variables": {}
+  },
+  "cordova-appodeal-prime": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-appodeal-prime"
+    },
+    "is_top_level": true,
+    "variables": {
+      "ANDROID_APP_KEY": "AIzaSyBZWGdzQ14epJ4Bd8Xx6csmeX_umDbj8dk",
+      "ANDROID_SUPPORT_RECYCLERVIEW_VERSION": "27+"
+    }
+  },
+  "cordova-custom-config": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-custom-config"
+    },
+    "is_top_level": false,
+    "variables": {}
   }
 }

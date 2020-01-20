@@ -105,6 +105,7 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
+apply from: "../cordova-appodeal-prime/wGuiGhostFarms_9861566-dependency_fix.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras1 = file('build-extras.gradle').exists()
@@ -302,6 +303,16 @@ dependencies {
     implementation(project(path: ":CordovaLib"))
     implementation "com.android.support:recyclerview-v7:20+"
     implementation "com.facebook.android:audience-network-sdk:5.+"
+    implementation "com.google.android.gms:play-services-ads:16.+"
+    implementation "com.google.android.gms:play-services-location:16.+"
+    implementation "com.google.android.exoplayer:exoplayer-core:2.8.4"
+    implementation "com.google.android.exoplayer:exoplayer-hls:2.8.4"
+    implementation "com.android.support:multidex:1.0.3"
+    implementation "com.android.support:support-v4:27+"
+    implementation "com.android.support:recyclerview-v7:27+"
+    implementation "com.appodeal.ads:maxdex:2.5.7"
+    implementation "com.appodeal.optional:flurry-ads:11.6.0"
+    implementation "com.appodeal.optional:flurry-analytics:11.6.0"
     // SUB-PROJECT DEPENDENCIES END
 }
 

@@ -14,7 +14,10 @@
     <access origin="*" />
     <allow-intent href="market:*" />
     <icon src="icon.png" />
-  <preference name="ANDROID_SUPPORT_RECYCLERVIEW_VERSION" value="27" />
+    <preference name="ANDROID_SUPPORT_RECYCLERVIEW_VERSION" value="27" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="android-targetSdkVersion" value="28" />
+    <feature name="AppodealPrime">
+        <param name="android-package" value="com.appodealprime.AppodealPrime" />
+    </feature>
 </widget>

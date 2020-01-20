@@ -10,10 +10,18 @@
     "cordova-plugin-fbanfree": {
       "ANDROID_SUPPORT_RECYCLERVIEW_VERSION": "20+",
       "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
+    },
+    "cordova-appodeal-prime": {
+      "ANDROID_APP_KEY": "AIzaSyBZWGdzQ14epJ4Bd8Xx6csmeX_umDbj8dk",
+      "ANDROID_SUPPORT_RECYCLERVIEW_VERSION": "27+",
+      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
     }
   },
   "dependent_plugins": {
     "cordova-plugin-cocoapod-support": {
+      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
+    },
+    "cordova-custom-config": {
       "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
     }
   }
