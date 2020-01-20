@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.wGuiGhostFarms_9861566" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Medieval Farms Retro Farming Sim</name>
+    <description>
+     Retro Farming Sim with unique gameplay
+    </description>
+    <author email="info@guighost.com" href="http://guighostgames.com">
+		GuiGhost Games
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="market:*" />
+    <icon src="icon.png" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="android-minSdkVersion" value="17" />
+</widget>
