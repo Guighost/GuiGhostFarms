@@ -19,4 +19,5 @@
 	   <plugin name="cordova-plugin-fbanfree">
 	       <param name="ANDROID_SUPPORT_V4_VERSION" value="27.+" />
 		</plugin>
+    <plugin name="cordova-appodeal-prime"/>
 </widget>
