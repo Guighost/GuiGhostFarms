@@ -14,5 +14,6 @@
         <allow-intent href="market:*" />
 		<icon src="icon.png" />
         <preference name="android-targetSdkVersion" value="28" />
+        <preference name="ANDROID_SUPPORT_RECYCLERVIEW_VERSION" />
     </platform>
 </widget>
