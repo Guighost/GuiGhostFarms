@@ -10,11 +10,20 @@
  
     <content src="index.html" />
     <access origin="*" />
+    <feature name="http://api.phonegap.com/1.0/device" />
+    <preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
+    <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
+    <preference name="fullscreen"                 value="true" />           <!-- all: hides the status bar at the top of the screen -->
+    <preference name="DisallowOverscroll" value="true"/>
 	<platform name="android">
         <allow-intent href="market:*" />
 		<icon src="icon.png" />
         <preference name="android-targetSdkVersion" value="28" />
         <preference name="ANDROID_SUPPORT_RECYCLERVIEW_VERSION" default="27+" />
+        <preference name="KeepRunning" value="true"/>
+        <preference name="InAppBrowserStorageEnabled" value="true"/>
+        <preference name="AndroidLaunchMode" value="singleTop"/>
+        <preference name="DefaultVolumeStream" value="call" />
     </platform>
 
 </widget>
