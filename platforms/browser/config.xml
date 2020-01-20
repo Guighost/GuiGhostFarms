@@ -9,5 +9,4 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-		<preference name="ANDROID_SUPPORT_RECYCLERVIEW_VERSION" default="27+" />
 </widget>

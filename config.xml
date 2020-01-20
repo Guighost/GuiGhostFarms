@@ -7,7 +7,7 @@
     <author email="info@guighost.com" href="http://guighostgames.com">
 		GuiGhost Games
     </author>
-    <plugin name="cordova-plugin-fbanfree"/>
+ 
     <content src="index.html" />
     <access origin="*" />
 	<platform name="android">
@@ -16,4 +16,5 @@
         <preference name="android-targetSdkVersion" value="28" />
         <preference name="ANDROID_SUPPORT_RECYCLERVIEW_VERSION" default="27+" />
     </platform>
+	   <plugin name="cordova-plugin-fbanfree"/>
 </widget>

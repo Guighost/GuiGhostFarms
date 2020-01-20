@@ -280,5 +280,40 @@
 	
 	
         <script type="text/javascript" src="cordova.js"></script>
+				<script src="FBANFree.js"></script>
+		<script type="text/javascript">
+onDeviceReady: function() {
+    this.receivedEvent('deviceready');
+    ...
+    appodealprime.ready();
+}
+ 
+ 
+// show banner
+appodealprime.showBanner()
+then(res => {
+    console.log('Banner shown');
+})
+.catch(err => {
+    console.log('Error showing banner');
+});
+
+ 
+// show Interstitial (No need to load the interstitial because 
+// the Appodeal will do all the loading in ready() function).
+appodealprime.showInterstitial('165721')
+.then(res => {
+   console.log('interstitial show success:');
+})
+.catch(err => {
+   console.log('error showing interstitial:');
+});
+
+document.addEventListener('appodeal.interstitial.close', () => {
+  console.log('interstitial close listener');
+  // your code here
+});
+
+		</script>
     </body>
 </html>

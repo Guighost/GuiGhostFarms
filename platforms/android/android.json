@@ -1,54 +1,54 @@
 {
-  "prepare_queue": {
-    "installed": [],
-    "uninstalled": []
-  },
-  "config_munge": {
-    "files": {
-      "res/xml/config.xml": {
-        "parents": {
-          "/*": [
-            {
-              "xml": "<feature name=\"FBANFree\"><param name=\"android-package\" value=\"fban.plugin.FBANFree\" /></feature>",
-              "count": 1
-            }
-          ]
-        }
-      },
-      "AndroidManifest.xml": {
-        "parents": {
-          "/manifest/application": [
-            {
-              "xml": "<meta-data android:name=\"com.facebook.android.ads.fban\" android:value=\"fban\" />",
-              "count": 1
-            }
-          ]
-        }
-      }
-    }
-  },
-  "installed_plugins": {
-    "cordova-plugin-cocoapod-support": {
-      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
     },
-    "cordova-plugin-fbanfree": {
-      "ANDROID_SUPPORT_RECYCLERVIEW_VERSION": "20+",
-      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
+    "config_munge": {
+        "files": {
+            "res/xml/config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"FBANFree\"><param name=\"android-package\" value=\"fban.plugin.FBANFree\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/manifest/application": [
+                        {
+                            "xml": "<meta-data android:name=\"com.facebook.android.ads.fban\" android:value=\"fban\" />",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "cordova-plugin-cocoapod-support": {
+            "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
+        },
+        "cordova-plugin-fbanfree": {
+            "ANDROID_SUPPORT_RECYCLERVIEW_VERSION": "20+",
+            "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "id": "cordova-plugin-fbanfree.FBANFree",
+            "file": "plugins/cordova-plugin-fbanfree/www/FBANFree.js",
+            "pluginId": "cordova-plugin-fbanfree",
+            "clobbers": [
+                "fbanfree"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "cordova-plugin-cocoapod-support": "1.6.2",
+        "cordova-plugin-fbanfree": "0.0.8"
     }
-  },
-  "dependent_plugins": {},
-  "modules": [
-    {
-      "id": "cordova-plugin-fbanfree.FBANFree",
-      "file": "plugins/cordova-plugin-fbanfree/www/FBANFree.js",
-      "pluginId": "cordova-plugin-fbanfree",
-      "clobbers": [
-        "fbanfree"
-      ]
-    }
-  ],
-  "plugin_metadata": {
-    "cordova-plugin-cocoapod-support": "1.6.2",
-    "cordova-plugin-fbanfree": "0.0.8"
-  }
 }
