@@ -3,7 +3,10 @@
     <feature name="FBANFree">
         <param name="android-package" value="fban.plugin.FBANFree" />
     </feature>
-    <name>Medieval Farms Retro Farming Sim</name>
+    <feature name="AppodealPrime">
+        <param name="android-package" value="com.appodealprime.AppodealPrime" />
+    </feature>
+    <name>Medieval Farms</name>
     <description>
      Retro Farming Sim with unique gameplay
     </description>
@@ -14,10 +17,15 @@
     <access origin="*" />
     <allow-intent href="market:*" />
     <icon src="icon.png" />
-    <preference name="ANDROID_SUPPORT_RECYCLERVIEW_VERSION" value="27" />
+    <preference default="27+" name="ANDROID_SUPPORT_RECYCLERVIEW_VERSION" />
     <preference name="loglevel" value="DEBUG" />
+    <preference name="orientation" value="portrait" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="true" />
+    <preference name="DisallowOverscroll" value="true" />
     <preference name="android-targetSdkVersion" value="28" />
-    <feature name="AppodealPrime">
-        <param name="android-package" value="com.appodealprime.AppodealPrime" />
-    </feature>
+    <preference name="KeepRunning" value="true" />
+    <preference name="InAppBrowserStorageEnabled" value="true" />
+    <preference name="AndroidLaunchMode" value="singleTop" />
+    <preference name="DefaultVolumeStream" value="call" />
 </widget>
