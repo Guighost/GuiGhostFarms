@@ -16,5 +16,7 @@
         <preference name="android-targetSdkVersion" value="28" />
         <preference name="ANDROID_SUPPORT_RECYCLERVIEW_VERSION" default="27+" />
     </platform>
-	   <plugin name="cordova-plugin-fbanfree"/>
+	   <plugin name="cordova-plugin-fbanfree">
+	       <param name="ANDROID_SUPPORT_V4_VERSION" value="27.+" />
+		</plugin>
 </widget>
