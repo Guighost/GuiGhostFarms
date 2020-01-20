@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.wGuiGhostFarms_9861566;
+package com.wMedievalFarms_GuiGhostGames;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
