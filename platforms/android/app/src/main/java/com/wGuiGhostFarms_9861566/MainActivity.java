@@ -34,7 +34,7 @@ public class MainActivity extends CordovaActivity
         if (extras != null && extras.getBoolean("cdvStartInBackground", false)) {
             moveTaskToBack(true);
         }
-
+        Appodeal.initialize(this, "4688ddc1d8b8919d8beea307402fbf503bb00b50816d0d1e", Appodeal.INTERSTITIAL | Appodeal.BANNER  , true);
         // Set by <content src="index.html" /> in config.xml
         loadUrl(launchUrl);
     }
