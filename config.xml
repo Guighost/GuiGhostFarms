@@ -21,5 +21,6 @@
 		</plugin>
     <plugin name="cordova-appodeal-prime">
     <param name="ANDROOID_APP_KEY" value='AIzaSyBZWGdzQ14epJ4Bd8Xx6csmeX_umDbj8dk'/>
+        <param name="IOS_APP_KEY" value='AIzaSyBZWGdzQ14epJ4Bd8Xx6csmeX_umDbj8dk'/>
     </plugin>
 </widget>
