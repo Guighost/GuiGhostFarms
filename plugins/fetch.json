@@ -1,0 +1,22 @@
+{
+  "cordova-plugin-fbanfree": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-fbanfree"
+    },
+    "is_top_level": true,
+    "variables": {
+      "ANDROID_SUPPORT_RECYCLERVIEW_VERSION": "20+",
+      "ANDROID_APP_KEY": "4688ddc1d8b8919d8beea307402fbf503bb00b50816d0d1e",
+      "IOS_APP_KEY": "4688ddc1d8b8919d8beea307402fbf503bb00b50816d0d1e"
+    }
+  },
+  "cordova-plugin-cocoapod-support": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-cocoapod-support"
+    },
+    "is_top_level": false,
+    "variables": {}
+  }
+}
