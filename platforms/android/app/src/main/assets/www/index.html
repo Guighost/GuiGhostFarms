@@ -457,7 +457,7 @@
 
 
 
-        <a id="gPlayIcon" href='https://play.google.com/store/apps/dev?id=8098884313818524240' target="_blank"><img id="gPlayImg" alt='Get it on Google Play' src='images/ads/google-play-badge_altered.png' /></a>
+        <a id="gPlayIcon" href='https://play.google.com/store/apps/dev?id=8098884313818524240' target="_blank"><img id="gPlayImg" alt='Get it on Google Play' src='images/ads/google-play-badge_altered.png' onclick="webViewOpen()" /></a>
 
 
         <div id="interCount">15</div>
@@ -524,12 +524,12 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     window.open = cordova.InAppBrowser.open;
 }
-function webViewOpen(
+function webViewOpen(){
 var ref = cordova.InAppBrowser.open('https://play.google.com/store/apps/dev?id=8098884313818524240', '_blank', 'location=yes');
 var myCallback = function(event) { alert(event.url); }
 ref.addEventListener('loadstart', myCallback);
 ref.removeEventListener('loadstart', myCallback);
-)
+}
 </script>
 
     </body>
