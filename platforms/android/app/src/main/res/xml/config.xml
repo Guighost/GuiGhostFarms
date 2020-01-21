@@ -6,6 +6,9 @@
     <feature name="AppodealPrime">
         <param name="android-package" value="com.appodealprime.AppodealPrime" />
     </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
     <name>Medieval Farms</name>
     <description>
      Retro Farming Sim with unique gameplay

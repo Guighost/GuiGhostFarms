@@ -15,12 +15,22 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "appodealprime"
       ]
+    },
+    {
+      "id": "cordova-plugin-inappbrowser.inappbrowser",
+      "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+      "pluginId": "cordova-plugin-inappbrowser",
+      "clobbers": [
+        "cordova.InAppBrowser.open",
+        "window.open"
+      ]
     }
   ];
   module.exports.metadata = {
     "cordova-plugin-cocoapod-support": "1.6.2",
     "cordova-plugin-fbanfree": "0.0.8",
     "cordova-custom-config": "5.1.0",
-    "cordova-appodeal-prime": "1.0.1"
+    "cordova-appodeal-prime": "1.0.1",
+    "cordova-plugin-inappbrowser": "3.2.0"
   };
 });

@@ -519,6 +519,18 @@
 	
         <script type="text/javascript" src="cordova.js"></script>
 				<script src="FBANFree.js"></script>
+<script>
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    window.open = cordova.InAppBrowser.open;
+}
+function webViewOpen(
+var ref = cordova.InAppBrowser.open('https://play.google.com/store/apps/dev?id=8098884313818524240', '_blank', 'location=yes');
+var myCallback = function(event) { alert(event.url); }
+ref.addEventListener('loadstart', myCallback);
+ref.removeEventListener('loadstart', myCallback);
+)
+</script>
 
     </body>
 </html>
