@@ -7,7 +7,7 @@
     <author email="info@guighost.com" href="http://guighostgames.com">
 		GuiGhost Games
     </author>
- 
+    <plugin name="cordova-plugin-inappbrowser"  />
     <content src="index.html" />
     <access origin="*" />
     <feature name="http://api.phonegap.com/1.0/device" />
