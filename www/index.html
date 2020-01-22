@@ -363,9 +363,10 @@
             }
         }
     </style>
-    <script type="text/javascript" src="farming_NewMenu.js"></script>
+
 	<script src="cordova.js"></script>
 <script src="inappbrowser.js"></script>
+        <script type="text/javascript" src="farming_NewMenu.js"></script>
 </head>
 
 
@@ -466,7 +467,7 @@
 
 
 
-        <a id="gPlayIcon" href='https://play.google.com/store/apps/dev?id=8098884313818524240' target="_blank"><img id="gPlayImg" alt='Get it on Google Play' src='images/ads/google-play-badge_altered.png' onclick="webViewOpen()" /></a>
+        <a id="gPlayIcon" href='https://play.google.com/store/apps/dev?id=8098884313818524240' target="_blank"><img id="gPlayImg" alt='Get it on Google Play' src='images/ads/google-play-badge_altered.png'  /></a>
 
 <div id="testerr"> HERE </div>
         <div id="interCount">15</div>
@@ -533,27 +534,29 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     window.open = cordova.InAppBrowser.open;
 	ready = 1;
-}
-function webViewOpen(){
-if(ready ==1){
-var ref = cordova.InAppBrowser.open('https://play.google.com/store/apps/dev?id=8098884313818524240', '_blank', 'location=yes');
-var myCallback = function(event) { console.log("webview callback") }
-ref.addEventListener('loadstart', myCallback);
-<!-- ref.removeEventListener('loadstart', myCallback); -->
-}
-}
+    document.getElementById("gPlayImg").addEventListener("click", function () {
+
+
+        var ref = cordova.InAppBrowser.open('https://play.google.com/store/apps/dev?id=8098884313818524240', '_blank', 'location=yes');
+        var myCallback = function (event) { console.log("webview callback") }
+        ref.addEventListener('loadstart', myCallback);
+
+
+    });
+
 var appId = "com.wStarMatchSlide_guighostgames";
-document.getElementById("testerr").addEventListener("click", function(){
-if(ready == 1) {
-cordova.plugins.market.open(appId, {
-  success: function() {
-    console.log(" market open success channel")
-  },
-  error: function() {
-   console.log(" market open ERROR")
-  }
-})
-}
+    document.getElementById("testerr").addEventListener("click", function () {
+
+        cordova.plugins.market.open(appId, {
+            success: function () {
+                console.log(" market open success channel")
+            },
+            error: function () {
+                console.log(" market open ERROR")
+            }
+        })
+    }
+};
 </script>
 
     </body>
