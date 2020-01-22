@@ -37,7 +37,7 @@ var app = {
         app.receivedEvent('deviceready');
 		
 		 window.open = cordova.InAppBrowser.open;
-	
+
     document.getElementById("gPlayImg").addEventListener("click", function () {
 
 
