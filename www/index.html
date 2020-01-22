@@ -1,11 +1,14 @@
 ﻿<!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="msapplication-tap-highlight" content="no" />
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-		    <meta property="og:type" content="game" />
-    <meta property="og:title" content="Medieval Farms - Farming Sim - Free online game" />
-    <meta property="og:description" content="Mobile Friendly farm simulation game - free online game" />
+		<meta property="og:type" content="game" />
+		<meta property="og:title" content="Medieval Farms - Farming Sim - Free online game" />
+		<meta property="og:description" content="Mobile Friendly farm simulation game - free online game" />
+	    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" />
        <title>Medieval Farms - Farming Sim by GuiGhost Games</title>
     <style>
         .lime-scene {
@@ -97,9 +100,10 @@
         }
 		#testerr {
 		position:absolute;
-		bottom:50px;
+		top: 350px;
 		left: 10px;
 		width: 30px;
+		height: 40px;
 		background-color: red;
 		color: azure;
 		}
@@ -447,30 +451,10 @@
         <div id="adWrap">
         <script type="text/javascript" src="https://adhitzads.com/1079064"></script></div>
 
-
-        <!-- BEGIN EZmob TAG-->
-        <!--<ins id="abp92987_320_480" style="display:inline-block;width:320px;height:480px;text-decoration:none;"></ins>
-        <script type="text/javascript">
-            (function () {
-
-                var e = document.getElementById("abp92987_320_480");
-                console.log("runningad code");
-                if (!e || e.innerHTML !== "") return; var __jscp = function () { for (var b = 0, a = window; a != a.parent;)++b, a = a.parent; if (a = window.parent == window ? document.URL : document.referrer) { var c = a.indexOf("://"); 0 <= c && (a = a.substring(c + 3)); c = a.indexOf("/"); 0 <= c && (a = a.substring(0, c)) } var b = { pu: a, "if": b, rn: new Number(Math.floor(99999999 * Math.random()) + 1) }, a = [], d; for (d in b) a.push(d + "=" + encodeURIComponent(b[d])); return encodeURIComponent(a.join("&")) }; var s = document.createElement("script");
-                s.src = "//cpm.ezmob.com/tag?zone_id=92987&size=320x480&ad_type=async&eid=abp92987_320_480&j=" + __jscp();
-                s.type = "text/javascript";
-                s.async = "async";
-                e.appendChild(s);
-            })();
-
-        </script>-->
-        <!-- END EZmob TAG -->
-
-
-
         <a id="gPlayIcon" href='https://play.google.com/store/apps/dev?id=8098884313818524240' target="_blank"><img id="gPlayImg" alt='Get it on Google Play' src='images/ads/google-play-badge_altered.png'  /></a>
 
-<div id="testerr"> HERE </div>
-        <div id="interCount">15</div>
+       <div id="interCount">15</div>
+		<div id="testerr"> HERE </div>
     </div>
 
     <script type="text/javascript">

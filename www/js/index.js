@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
- requires('cordova')
+
 var app = {
     // Application Constructor
     initialize: function() {
