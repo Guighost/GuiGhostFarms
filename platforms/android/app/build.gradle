@@ -280,6 +280,7 @@ android {
         buildTypes {
             release {
                 signingConfig signingConfigs.release
+                manifestPlaceholders = [usesCleartextTraffic:"true"]
             }
         }
         addSigningProps(cdvReleaseSigningPropertiesFile, signingConfigs.release)

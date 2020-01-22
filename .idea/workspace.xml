@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48c02c00-ed23-43fc-8ae0-da0074e7eaf2" name="Default Changelist" comment="from studio more plugin config">
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/network_security_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/network_security_config.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/" />
@@ -52,13 +51,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/res/xml/network_security_config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="34">
+              <caret line="2" column="58" lean-forward="true" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="58" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="510">
@@ -76,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/platforms/android/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2278">
-              <caret line="31" column="59" selection-start-line="31" selection-start-column="59" selection-end-line="31" selection-end-column="59" />
+            <state relative-caret-position="222">
+              <caret line="282" column="68" selection-start-line="282" selection-start-column="68" selection-end-line="282" selection-end-column="68" />
               <folding>
                 <element signature="e#0#858#0" expanded="true" />
               </folding>
@@ -112,6 +111,8 @@
       <find>compileop</find>
       <find>cleartextTrafficPermitted</find>
       <find>usesCleartextTraffic</find>
+      <find>android:targetSandboxVersion</find>
+      <find>connectionSpecs</find>
     </findStrings>
     <replaceStrings>
       <replace>com.wMedievalFarms_GuiGhostGames</replace>
@@ -131,7 +132,6 @@
         <option value="$PROJECT_DIR$/node_modules/cordova-android/test/app/build.gradle" />
         <option value="$PROJECT_DIR$/node_modules/cordova-android/spec/fixtures/android_studio_project/app/build.gradle" />
         <option value="$PROJECT_DIR$/platforms/android/build.gradle" />
-        <option value="$PROJECT_DIR$/platforms/android/app/build.gradle" />
         <option value="$PROJECT_DIR$/platforms/browser/www/config.xml" />
         <option value="$PROJECT_DIR$/platforms/browser/config.xml" />
         <option value="$PROJECT_DIR$/platforms/android/app/src/main/java/com/wGuiGhostFarms_9861566/MainActivity.java" />
@@ -141,8 +141,9 @@
         <option value="$PROJECT_DIR$/www/js/index.js" />
         <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/network_security_config.xml" />
         <option value="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml" />
+        <option value="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/network_security_config.xml" />
+        <option value="$PROJECT_DIR$/platforms/android/app/build.gradle" />
       </list>
     </option>
   </component>
@@ -200,48 +201,6 @@
               <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="GuiFarm0.5" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Sites\phonegap\GuiFarm0.5" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="platforms" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="assets" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="GuiFarm0.5" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Sites\phonegap\GuiFarm0.5" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="platforms" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="assets" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="www" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="GuiFarm0.5" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Sites\phonegap\GuiFarm0.5" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="platforms" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="res" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="GuiFarm0.5" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Sites\phonegap\GuiFarm0.5" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="platforms" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="res" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="xml" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="GuiFarm0.5" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -353,8 +312,8 @@
       <window_info anchor="bottom" id="Version Control" order="0" sideWeight="0.49946696" weight="0.32936078" />
       <window_info anchor="bottom" id="TODO" order="1" />
       <window_info anchor="bottom" id="Find" order="2" sideWeight="0.49946696" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.49840087" weight="0.32936078" />
-      <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.50053304" side_tool="true" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.4978678" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.5021322" side_tool="true" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Build" order="5" sideWeight="0.4989339" weight="0.32936078" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Gradle" order="1" />
@@ -443,16 +402,6 @@
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/android/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2278">
-          <caret line="31" column="59" selection-start-line="31" selection-start-column="59" selection-end-line="31" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#858#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/assets/www/cordova-js-src/plugin/android/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1371" />
@@ -472,6 +421,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -481,15 +437,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/res/xml/network_security_config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="34">
+          <caret line="2" column="58" lean-forward="true" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml">
+    <entry file="file://$PROJECT_DIR$/platforms/android/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="222">
+          <caret line="282" column="68" selection-start-line="282" selection-start-column="68" selection-end-line="282" selection-end-column="68" />
+          <folding>
+            <element signature="e#0#858#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
