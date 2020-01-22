@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+ requires('cordova')
 var app = {
     // Application Constructor
     initialize: function() {
@@ -36,7 +37,7 @@ var app = {
         app.receivedEvent('deviceready');
 		
 		 window.open = cordova.InAppBrowser.open;
-	ready = 1;
+	
     document.getElementById("gPlayImg").addEventListener("click", function () {
 
 
