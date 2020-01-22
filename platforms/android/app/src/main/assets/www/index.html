@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -95,6 +95,14 @@
             top: 0px;
             transform: translate(-5px,-15px);
         }
+		#testerr {
+		position:absolute;
+		bottom:5px;
+		left 10px;
+		width 30px;
+		background-color: red;
+		color: azure;
+		}
 
         #fbshare {
             background: linear-gradient(black, #8a2be2);
@@ -356,8 +364,8 @@
         }
     </style>
     <script type="text/javascript" src="farming_NewMenu.js"></script>
-	
-
+	<script src="cordova.js"></script>
+<script src="inappbrowser.js"></script>
 </head>
 
 
@@ -460,7 +468,7 @@
 
         <a id="gPlayIcon" href='https://play.google.com/store/apps/dev?id=8098884313818524240' target="_blank"><img id="gPlayImg" alt='Get it on Google Play' src='images/ads/google-play-badge_altered.png' onclick="webViewOpen()" /></a>
 
-
+<div id="testerr"> HERE </div>
         <div id="interCount">15</div>
     </div>
 
@@ -494,7 +502,7 @@
                 countStart = 10;
             }
 
-            if (visible2 == 0 && visible == 0 && timerThis2 > 150) {
+            if (visible2 == 0 && visible == 0 && timerThis2 > 10) {
 
                 countStart = 15
                 visible2 = 1;
@@ -518,18 +526,33 @@
 
     </script>
 	
-        <script type="text/javascript" src="cordova.js"></script>
-				<script src="FBANFree.js"></script>
+
 <script>
+var ready = 0
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     window.open = cordova.InAppBrowser.open;
+	ready = 1;
 }
 function webViewOpen(){
+if(ready ==1){
 var ref = cordova.InAppBrowser.open('https://play.google.com/store/apps/dev?id=8098884313818524240', '_blank', 'location=yes');
-var myCallback = function(event) { alert(event.url); }
+var myCallback = function(event) { console.log("webview callback") }
 ref.addEventListener('loadstart', myCallback);
-ref.removeEventListener('loadstart', myCallback);
+<!-- ref.removeEventListener('loadstart', myCallback); -->
+}
+}
+var appId = "com.wStarMatchSlide_guighostgames";
+document.getElementById("testerr").addEventListener("click", function(){
+if(ready == 1) {
+cordova.plugins.market.open(appId, {
+  success: function() {
+    console.log(" market open success channel")
+  },
+  error: function() {
+   console.log(" market open ERROR")
+  }
+})
 }
 </script>
 

@@ -9,6 +9,9 @@
     <feature name="InAppBrowser">
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
     </feature>
+    <feature name="Market">
+        <param name="android-package" value="com.xmartlabs.cordova.market.Market" />
+    </feature>
     <name>Medieval Farms</name>
     <description>
      Retro Farming Sim with unique gameplay
@@ -16,6 +19,8 @@
     <author email="info@guighost.com" href="http://guighostgames.com">
 		GuiGhost Games
     </author>
+    <gap:plugin name="org.apache.cordova.geolocation" />
+    <gap:plugin name="org.apache.cordova.device-orientation" />
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="market:*" />
