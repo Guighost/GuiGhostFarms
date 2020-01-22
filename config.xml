@@ -11,7 +11,7 @@
     <plugin name="fitatu-cordova-plugin-market" />
 
 
-
+    <allow-navigation href="*" />
 
     <content src="index.html" />
     <access origin="*" />
