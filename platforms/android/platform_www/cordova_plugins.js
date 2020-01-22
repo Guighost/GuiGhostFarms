@@ -1,11 +1,11 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
   module.exports = [
     {
-      "id": "com.xmartlabs.cordova.market.Market",
-      "file": "plugins/com.xmartlabs.cordova.market/www/market.js",
-      "pluginId": "com.xmartlabs.cordova.market",
+      "id": "cordova-plugin-fbanfree.FBANFree",
+      "file": "plugins/cordova-plugin-fbanfree/www/FBANFree.js",
+      "pluginId": "cordova-plugin-fbanfree",
       "clobbers": [
-        "cordova.plugins.market"
+        "fbanfree"
       ]
     },
     {
@@ -17,14 +17,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-fbanfree.FBANFree",
-      "file": "plugins/cordova-plugin-fbanfree/www/FBANFree.js",
-      "pluginId": "cordova-plugin-fbanfree",
-      "clobbers": [
-        "fbanfree"
-      ]
-    },
-    {
       "id": "cordova-plugin-inappbrowser.inappbrowser",
       "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
       "pluginId": "cordova-plugin-inappbrowser",
@@ -32,14 +24,22 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
         "cordova.InAppBrowser.open",
         "window.open"
       ]
+    },
+    {
+      "id": "cordova-plugin-market.Market",
+      "file": "plugins/cordova-plugin-market/www/market.js",
+      "pluginId": "cordova-plugin-market",
+      "clobbers": [
+        "cordova.plugins.market"
+      ]
     }
   ];
   module.exports.metadata = {
-    "com.xmartlabs.cordova.market": "1.2.0",
     "cordova-plugin-cocoapod-support": "1.6.2",
+    "cordova-plugin-fbanfree": "0.0.8",
     "cordova-custom-config": "5.1.0",
     "cordova-appodeal-prime": "1.0.1",
-    "cordova-plugin-fbanfree": "0.0.8",
-    "cordova-plugin-inappbrowser": "3.2.0"
+    "cordova-plugin-inappbrowser": "3.2.0",
+    "cordova-plugin-market": "1.2.0"
   };
 });

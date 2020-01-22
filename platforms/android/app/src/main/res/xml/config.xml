@@ -1,5 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.wMedievalFarms_GuiGhostGames" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <feature name="FBANFree">
+        <param name="android-package" value="fban.plugin.FBANFree" />
+    </feature>
+    <feature name="AppodealPrime">
+        <param name="android-package" value="com.appodealprime.AppodealPrime" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="Market">
+        <param name="android-package" value="com.xmartlabs.cordova.market.Market" />
+    </feature>
     <name>Medieval Farms</name>
     <description>
      Retro Farming Sim with unique gameplay
@@ -7,18 +19,18 @@
     <author email="info@guighost.com" href="http://guighostgames.com">
 		GuiGhost Games
     </author>
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
-    <content src="index.html" />
     <access origin="*" />
+    <allow-navigation href="*" />
+    <allow-intent href="http://*/*"/>
+    <allow-intent href="https://*/*"/>
+    <allow-intent href="tel:*"/>
+    <allow-intent href="sms:*"/>
+    <allow-intent href="mailto:*"/>
+    <allow-intent href="geo:*"/>
+    <content src="index.html" />
     <allow-intent href="market:*" />
     <icon src="icon.png" />
     <preference default="27+" name="ANDROID_SUPPORT_RECYCLERVIEW_VERSION" />
-    <allow-navigation href="*" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
@@ -29,17 +41,4 @@
     <preference name="InAppBrowserStorageEnabled" value="true" />
     <preference name="AndroidLaunchMode" value="singleTop" />
     <preference name="DefaultVolumeStream" value="call" />
-    <preference name="useCleartextTraffic" value="true" />
-    <feature name="Market">
-        <param name="android-package" value="com.xmartlabs.cordova.market.Market" />
-    </feature>
-    <feature name="AppodealPrime">
-        <param name="android-package" value="com.appodealprime.AppodealPrime" />
-    </feature>
-    <feature name="FBANFree">
-        <param name="android-package" value="fban.plugin.FBANFree" />
-    </feature>
-    <feature name="InAppBrowser">
-        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
-    </feature>
 </widget>

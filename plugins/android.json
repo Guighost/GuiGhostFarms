@@ -7,7 +7,8 @@
     "files": {}
   },
   "installed_plugins": {
-    "com.xmartlabs.cordova.market": {
+    "cordova-plugin-fbanfree": {
+      "ANDROID_SUPPORT_RECYCLERVIEW_VERSION": "20+",
       "PACKAGE_NAME": "com.wMedievalFarms_GuiGhostGames"
     },
     "cordova-appodeal-prime": {
@@ -15,14 +16,13 @@
       "ANDROID_SUPPORT_RECYCLERVIEW_VERSION": "27+",
       "PACKAGE_NAME": "com.wMedievalFarms_GuiGhostGames"
     },
-    "cordova-custom-config": {
-      "PACKAGE_NAME": "com.wMedievalFarms_GuiGhostGames"
-    },
-    "cordova-plugin-fbanfree": {
-      "ANDROID_SUPPORT_RECYCLERVIEW_VERSION": "20+",
-      "PACKAGE_NAME": "com.wMedievalFarms_GuiGhostGames"
-    },
     "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.wMedievalFarms_GuiGhostGames"
+    },
+    "cordova-plugin-market": {
+      "PACKAGE_NAME": "com.wMedievalFarms_GuiGhostGames"
+    },
+    "cordova-custom-config": {
       "PACKAGE_NAME": "com.wMedievalFarms_GuiGhostGames"
     }
   },

@@ -29,6 +29,7 @@ buildscript {
         // in the individual module build.gradle files
 
         classpath 'com.android.tools.build:gradle:3.3.0'
+
     }
 }
 
@@ -36,12 +37,15 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://artifactory.appodeal.com/appodeal"
+        }
     }
 
     //This replaces project.properties w.r.t. build settings
     project.ext {
       defaultBuildToolsVersion="28.0.3" //String
-      defaultMinSdkVersion=19 //Integer - Minimum requirement is Android 4.4
+      defaultMinSdkVersion=28//Integer - Minimum requirement is Android 4.4
       defaultTargetSdkVersion=28 //Integer - We ALWAYS target the latest by default
       defaultCompileSdkVersion=28 //Integer - We ALWAYS compile with the latest by default
     }
