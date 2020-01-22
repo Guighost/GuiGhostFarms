@@ -1,1 +1,12 @@
-{"devDependencies":{},"cordova":{"plugins":{"cordova-plugin-inappbrowser":{},"fitatu-cordova-plugin-market":{}}}}
+{
+  "devDependencies": {},
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-inappbrowser": {},
+      "fitatu-cordova-plugin-market": {}
+    }
+  },
+  "dependencies": {
+    "cordova-android": "^8.1.0"
+  }
+}
