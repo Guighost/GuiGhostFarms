@@ -21,13 +21,13 @@
     },
     "cordova-plugin-market": {
       "PACKAGE_NAME": "com.wMedievalFarms_GuiGhostGames"
+    },
+    "cordova-custom-config": {
+      "PACKAGE_NAME": "com.wMedievalFarms_GuiGhostGames"
     }
   },
   "dependent_plugins": {
     "cordova-plugin-cocoapod-support": {
-      "PACKAGE_NAME": "com.wMedievalFarms_GuiGhostGames"
-    },
-    "cordova-custom-config": {
       "PACKAGE_NAME": "com.wMedievalFarms_GuiGhostGames"
     }
   }
