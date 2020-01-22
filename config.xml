@@ -9,8 +9,8 @@
     </author>
     <plugin name="cordova-plugin-inappbrowser"  />
     <plugin name="fitatu-cordova-plugin-market" />
-    <gap:plugin name="org.apache.cordova.geolocation"/>
-    <gap:plugin name="org.apache.cordova.device-orientation"/>
+
+
     <plugin name="nl.x-services.plugins.socialsharing" spec="4.3.8" source="pgb" />
 
     <content src="index.html" />
