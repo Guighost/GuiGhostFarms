@@ -19,9 +19,15 @@
     <author email="info@guighost.com" href="http://guighostgames.com">
 		GuiGhost Games
     </author>
-    <allow-navigation href="*" />
-    <content src="index.html" />
     <access origin="*" />
+    <allow-navigation href="*" />
+    <allow-intent href="http://*/*"/>
+    <allow-intent href="https://*/*"/>
+    <allow-intent href="tel:*"/>
+    <allow-intent href="sms:*"/>
+    <allow-intent href="mailto:*"/>
+    <allow-intent href="geo:*"/>
+    <content src="index.html" />
     <allow-intent href="market:*" />
     <icon src="icon.png" />
     <preference default="27+" name="ANDROID_SUPPORT_RECYCLERVIEW_VERSION" />
