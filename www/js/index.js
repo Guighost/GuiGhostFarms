@@ -33,33 +33,7 @@ var app = {
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-		
-		 window.open = cordova.InAppBrowser.open;
 
-    document.getElementById("gPlayImg").addEventListener("click", function () {
-
-
-        var ref = cordova.InAppBrowser.open('https://play.google.com/store/apps/dev?id=8098884313818524240', '_blank', 'location=yes');
-        var myCallback = function (event) { console.log("webview callback") }
-        ref.addEventListener('loadstart', myCallback);
-
-
-    });
-
-	var appId = "com.wStarMatchSlide_guighostgames";
-    document.getElementById("testerr").addEventListener("click", function () {
-
-        cordova.plugins.market.open(appId, {
-            success: function () {
-                console.log(" market open success channel")
-            },
-            error: function () {
-                console.log(" market open ERROR")
-            }
-        })
-    }
 		
 		
 		
@@ -77,5 +51,33 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+
+           onDeviceReady: function() {
+                app.receivedEvent('deviceready');
+
+        		 window.open = cordova.InAppBrowser.open;
+
+            document.getElementById("gPlayImg").addEventListener("click", function () {
+
+
+                var ref = cordova.InAppBrowser.open('https://play.google.com/store/apps/dev?id=8098884313818524240', '_blank', 'location=yes');
+                var myCallback = function (event) { console.log("webview callback") }
+                ref.addEventListener('loadstart', myCallback);
+
+
+            });
+
+        	var appId = "com.wStarMatchSlide_guighostgames";
+            document.getElementById("testerr").addEventListener("click", function () {
+
+                cordova.plugins.market.open(appId, {
+                    success: function () {
+                        console.log(" market open success channel")
+                    },
+                    error: function () {
+                        console.log(" market open ERROR")
+                    }
+                })
+            }
     }
 };
