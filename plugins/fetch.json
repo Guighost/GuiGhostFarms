@@ -53,5 +53,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "com.xmartlabs.cordova.market": {
+    "source": {
+      "type": "registry",
+      "id": "fitatu-cordova-plugin-market"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

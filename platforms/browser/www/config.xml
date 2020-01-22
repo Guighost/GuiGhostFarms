@@ -7,8 +7,7 @@
     <author email="info@guighost.com" href="http://guighostgames.com">
 		GuiGhost Games
     </author>
-    <gap:plugin name="org.apache.cordova.geolocation" />
-    <gap:plugin name="org.apache.cordova.device-orientation" />
+    <allow-navigation href="*" />
     <content src="index.html" />
     <access origin="*" />
     <preference name="orientation" value="portrait" />
