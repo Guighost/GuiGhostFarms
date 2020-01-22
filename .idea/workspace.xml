@@ -1,616 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="48c02c00-ed23-43fc-8ae0-da0074e7eaf2" name="Default Changelist" comment="from studio more plugin config">
-      <change beforePath="$PROJECT_DIR$/platforms/android/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/cordova.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/project.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/AuthenticationToken.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/BuildHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/CallbackContext.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/CallbackMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/Config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/ConfigXmlParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/CordovaActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/CordovaArgs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/CordovaBridge.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/CordovaClientCertRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/CordovaDialogsHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/CordovaHttpAuthHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/CordovaInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/CordovaInterfaceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/CordovaPlugin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/CordovaPreferences.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/CordovaResourceApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/CordovaWebView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/CordovaWebViewEngine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/CordovaWebViewImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/CoreAndroid.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/ExposedJsApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/ICordovaClientCertRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/ICordovaCookieManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/ICordovaHttpAuthHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/LOG.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/NativeToJsMessageQueue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/PermissionHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/PluginEntry.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/PluginManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/PluginResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/ResumeCallback.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/Whitelist.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemCookieManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemExposedJsApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemWebChromeClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemWebView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemWebViewClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemWebViewEngine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/android.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/Assets/blacksmith.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/appodealprime.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/audio/blacksmith2.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/audio/chickens.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/audio/cow1.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/audio/credits.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/audio/farming2.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/audio/nice.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/audio/ofarm.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/audio/pig3.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/audio/snort.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/audio/waterfallSound.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/cordova-js-src/android/nativeapiprovider.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/cordova-js-src/android/promptbasednativeapi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/cordova-js-src/exec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/cordova-js-src/platform.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/cordova-js-src/plugin/android/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/cordova.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/cordova_plugins.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/farming_NewMenu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/google-play-badge.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/google-play-badge250.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/google-play-badge350.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/guiFarm.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/CoverImg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/FeatureGraphic2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/MenuTop.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/OrchardBack3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/OrchardBack4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/fertilize_trees.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/girlF1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/girlF2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/girlF3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/girlL1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/girlR1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/girlUp1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/girlUp2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/girlUp3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/growing22_trees.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/growing2_pears.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/growing2_trees.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/growing3_trees.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/growing4_trees.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/prune_trees.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/ready_Apples.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/ready_treesApple3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/ready_treesPear.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/treeBlockO.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/waterMoving1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/waterMoving2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/waterfall1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/waterfall2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/waterfall3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/waterfall4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/wither_treesApple.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Orchard/wither_treesPear.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/FeedBinsLeft.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/FeedBinsRight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/bridgeVert.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/bucket.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/cowLeft1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/cowLeft2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/cowLeft3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/cowLeft4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/cowRight1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/cowRight2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/cow_eatF1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/cow_eatF2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/cow_eatF3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/cow_eatR1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/cow_eatR2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/cow_eatR4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/cow_walkF1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/dairyBarn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/dirt.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/hayCartFull.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/hayPile.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/pTree1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/pTree2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/poop.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/rocks.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/treeBlockP.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Pasture/water.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/CoverImg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/CoverImg2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/GuiFarmLarge.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/Hourglass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/MenuTop.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/MenuTop2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/NavButtons.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/XButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/achieveBack.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/achieveNotif.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/achieveTile.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/barn1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/barn2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/barn3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/barn4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/barn5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/battleback10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/battleback11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/battleback12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/blackButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/blankBack.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/blankBack2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/blankBack3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/blankBack4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/blocker.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/bonusStarCash.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/brownBtn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/bucket.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/buyStarCash.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/changeSeeds2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/check.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/checkButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/cloudsSolid.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/coin4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/coin500.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/compass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/compass2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/compass22.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/compass3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/cropMenuBack.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/downBtn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/farmersMarket.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/fbButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/forSale.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/forSaleDairy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/forSaleOrchard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/forSaleStockPens.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/forSaleVineyard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/gabbyLogo320.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/gearButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/greenButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/greenButtonDark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/greenButtonLg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/greenButtonLg2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/greenButtonVert.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/greenBuy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/greyButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/greyButtonLg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/greySound.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/greySoundOff.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/homeButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/homeButton100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/homeButton128.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/homeButton512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/houseButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/inviteFB2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/loading4.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/lockBtn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/lsBtn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/lsBtn100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/marketBtn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/nextButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/orchardBtn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/outOfCash.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/pastureBtn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/pastureBtn100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/playOnline.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/plus10StarCash.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/plus50StarCash.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/plus5StarCash.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/purpleButtonLg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/rightBtn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/saleBack.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/saleBack2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/sellBtn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/shortage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/speechBubble.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/starButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/starCash.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/starCashBack.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/swipe-right.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/toolsIcon2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/topMenuPlain.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/touchHere.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/trophyBtn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/tut1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/tut2-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/tut2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/tut3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/tut4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/tut5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/tut6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/tut7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/tut8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/upBtn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/vinyardBtn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/warning.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/woodBtn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/UI/woodBtnLarge.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Waterfall.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/Wood Block.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/ads/fallbackLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/ads/google-play-badge_altered.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/anvil1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/anvil2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/apple.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/artiCrate.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/artiGrow1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/artiGrow2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/artichoke.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/artichoke1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/artichoke2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/artichokeWithered.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/axe.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/bare_land.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/bare_land_ll.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/bare_land_lr.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/bare_land_tl.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/bare_land_tr.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/barn1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/barn2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/barn3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/barn4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/barn5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/blacksmith.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/blacksmith1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/blacksmith10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/blacksmith11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/blacksmith12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/blacksmith13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/blacksmith14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/blacksmith2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/blacksmith3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/blacksmith4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/blacksmith5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/blacksmith6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/blacksmith7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/blacksmith8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/blacksmith9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/blankScrollBack.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/carrotGrow1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/carrotGrow2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/carrots.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/carrots1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/carrots2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/carrotsWithered.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/cherry.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/clouds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/corn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/corn1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/corn2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/cornCrate.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/cornGrow1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/cornGrow2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/cornWithered.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/countBack.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/cow_eat.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/eggplant.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/eggplant1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/eggplant2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/eggplantCrate.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/eggplantGrow1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/eggplantGrow2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/eggplantWithered.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/forge1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/gateFence.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/grain.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/grass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/greenTrophy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/growing.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/hay.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/hayCartFull.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/hayGrow1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/hayGrow2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/hayWithered.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/horizFence.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/horizFenceShort.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/horizRoad.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/house1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/house2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/house3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/FarmHomeInteriorBlue.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/FarmHomeInteriorGreen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/FarmHomeInteriorOrange.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/FarmHomeInteriorPink.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/bedSingle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/bedsideTable.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/bedsideTableWood.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/bookcase.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/bows.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/chest.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/clock1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/couchAway.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/couchForward.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/couchRight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/curtains.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/desk.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/dishCabinet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/doubleBed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/drawersTall.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/dressingTable.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/fancyChairAway.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/fancyChairFacing.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/fancyChairLeft.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/fancyChairRight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/fancyChairSet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/fancyChairSet2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/fancyTable.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/fire1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/fire2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/fire3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/fireplace.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/largeLamp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/oie_322657xeKEKkOQ.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/painting.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/pottedPlantRed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/sink.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/stool.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/stoveFire1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/stoveFire2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/stoveFire3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/trunk.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/wardrobe.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/widePainting.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/woodChairAway.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/woodChairFacing.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/woodChairLeft.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/woodChairRight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/woodChairSet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/woodChairSet2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/houseUpgrades/woodTable.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/inventoryStrip.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/leftTrees.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/lettuce2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_down1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_down2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_down3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_eatLeft1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_eatLeft2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_eatLeft3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_eatLeft4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_eatRight1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_eatRight2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_up1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_up2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_up3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_walkLeft1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_walkLeft2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_walkLeft3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_walkRight1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_walkRight2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_walkRight3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/chicken_walkRight4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/egg3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/eggs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/hams.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/livestockPensBack3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/livestockPensBackUpCoop.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/pig_Left3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/pig_down1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/pig_down2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/pig_down3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/pig_right1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/pig_right2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/pig_right3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/pig_up1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/pig_up2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/pig_up3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/pig_walkLeft1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/pig_walkLeft2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/livestockPens/stars4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/marketCoin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/marketNew.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/milk.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/pear.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/pepperGrow1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/pepperGrow2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/peppers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/peppers1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/peppers2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/peppersWithered.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/plowed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/removeAds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/rightTrees.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/sacks.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/scaffold.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/shelter1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/shelter2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/stars4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/tomato.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/tomato1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/tomato2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/tomatoGrow1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/tomatoGrow2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/tomatoWithered.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/toolHammer.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/toolTable.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/toolUp1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/toolUp2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/toolUp3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/tools100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/tools250.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/tools50.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/tools500.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/toolsIcon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vertFence.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vertRoad.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/grapes.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/grapes2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/grapes_Bare.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/grapes_ClearBrush.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/grapes_Fertilize.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/grapes_Grow1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/grapes_Grow2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/grapes_ready.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/grapes_ready0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/grapes_withered.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/house4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/house4Upgrade.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/house4Upgrade2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/house4small.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/jelly.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/jellyBonus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/jellyBonus2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/treeBlock1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/treeBlock2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/vinFarmer1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/vinFarmer10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/vinFarmer17.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/vinFarmer18.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/vinFarmer19.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/vinFarmer2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/vinFarmer3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/vinFarmer4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/vinFarmer5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/vinFarmer6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/vinFarmer7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/vinFarmer8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/vinFarmer9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/vinyard/vinyardBack5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/well2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/images/wood.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/inappbrowser.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/land.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/plugins/cordova-appodeal-prime/www/appodealprime.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/plugins/cordova-plugin-fbanfree/www/FBANFree.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/plugins/cordova-plugin-inappbrowser/www/inappbrowser.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/plugins/cordova-plugin-market/www/market.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/readme.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/com/appodealprime/Action.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/com/appodealprime/Actions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/com/appodealprime/AppodealPrime.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/com/appodealprime/Events.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/com/appodealprime/ads/APNativeAd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/com/appodealprime/ads/AdBase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/com/appodealprime/ads/BannerAd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/com/appodealprime/ads/InterstitialAd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/com/appodealprime/ads/RewardVideo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/com/wGuiGhostFarms_9861566/MainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/com/xmartlabs/cordova/market/Market.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/fban/plugin/Action.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/fban/plugin/Actions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/fban/plugin/Events.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/fban/plugin/FBANFree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/fban/plugin/ads/AdBase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/fban/plugin/ads/BannerAd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/fban/plugin/ads/FBInterstitialAd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/fban/plugin/ads/FBNativeAd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/fban/plugin/ads/FBRewardVideo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/org/apache/cordova/inappbrowser/InAppBrowser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/org/apache/cordova/inappbrowser/InAppBrowserDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/java/org/apache/cordova/inappbrowser/InAppChromeClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-hdpi/ic_action_next_item.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-hdpi/ic_action_previous_item.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-hdpi/ic_action_remove.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-land-hdpi/screen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-land-ldpi/screen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-land-mdpi/screen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-land-xhdpi/screen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-land-xxhdpi/screen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-land-xxxhdpi/screen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-mdpi/ic_action_next_item.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-mdpi/ic_action_previous_item.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-mdpi/ic_action_remove.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-port-hdpi/screen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-port-ldpi/screen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-port-mdpi/screen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-port-xhdpi/screen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-port-xxhdpi/screen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-port-xxxhdpi/screen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-xhdpi/ic_action_next_item.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-xhdpi/ic_action_previous_item.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-xhdpi/ic_action_remove.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-xxhdpi/ic_action_next_item.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-xxhdpi/ic_action_previous_item.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/drawable-xxhdpi/ic_action_remove.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/network_security_config.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova-appodeal-prime/wGuiGhostFarms_9861566-dependency_fix.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/Api.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/android_sdk_version" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/android_sdk_version.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/build" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/build.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/check_reqs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/check_reqs.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/clean" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/clean.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/defaults.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/Adb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/AndroidManifest.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/AndroidProject.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/PackageType.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/android_sdk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/build.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/builders/ProjectBuilder.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/builders/builders.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/check_reqs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/config/GradlePropertiesParser.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/device.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/emulator.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/getASPath.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/install-device" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/install-device.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/install-emulator" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/install-emulator.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/list-devices" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/list-devices.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/list-emulator-images" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/list-emulator-images.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/list-started-emulators" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/list-started-emulators.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/log.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/plugin-build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/pluginHandlers.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/prepare.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/retry.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/run.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/start-emulator" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/lib/start-emulator.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/log.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/loggingHelper.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/run" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/run.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/version" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/cordova/version.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/platform_www/cordova-js-src/android/nativeapiprovider.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/platform_www/cordova-js-src/android/promptbasednativeapi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/platform_www/cordova-js-src/exec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/platform_www/cordova-js-src/platform.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/platform_www/cordova-js-src/plugin/android/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/platform_www/cordova.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/platform_www/cordova_plugins.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/platform_www/plugins/cordova-appodeal-prime/www/appodealprime.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/platform_www/plugins/cordova-plugin-fbanfree/www/FBANFree.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/platform_www/plugins/cordova-plugin-inappbrowser/www/inappbrowser.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/platform_www/plugins/cordova-plugin-market/www/market.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/project.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/wrapper.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/android.json" beforeDir="false" />
-    </list>
+    <list default="true" id="48c02c00-ed23-43fc-8ae0-da0074e7eaf2" name="Default Changelist" comment="from studio more plugin config" />
     <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -639,8 +30,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="13" column="12" selection-start-line="12" selection-end-line="19" selection-end-column="32" />
+            <state relative-caret-position="-313">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/res/xml/network_security_config.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="50" lean-forward="true" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -743,6 +152,72 @@
             <path>
               <item name="GuiFarm0.5" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="C:\Sites\phonegap\GuiFarm0.5" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="platforms" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="GuiFarm0.5" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Sites\phonegap\GuiFarm0.5" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="platforms" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="GuiFarm0.5" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Sites\phonegap\GuiFarm0.5" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="platforms" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="GuiFarm0.5" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Sites\phonegap\GuiFarm0.5" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="platforms" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="GuiFarm0.5" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Sites\phonegap\GuiFarm0.5" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="platforms" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="res" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="GuiFarm0.5" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Sites\phonegap\GuiFarm0.5" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="platforms" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="res" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="xml" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="GuiFarm0.5" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Sites\phonegap\GuiFarm0.5" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="platforms" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="cordova" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="GuiFarm0.5" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Sites\phonegap\GuiFarm0.5" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="platforms" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="cordova" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="lib" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="GuiFarm0.5" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Sites\phonegap\GuiFarm0.5" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="plugins" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
@@ -829,6 +304,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.3336887" />
@@ -944,20 +420,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/res/xml/network_security_config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="58" lean-forward="true" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
@@ -970,15 +432,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/res/xml/network_security_config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="50" lean-forward="true" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="13" column="12" selection-start-line="12" selection-end-line="19" selection-end-column="32" />
+        <state relative-caret-position="-313">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
