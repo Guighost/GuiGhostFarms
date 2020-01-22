@@ -37,8 +37,59 @@ var app = {
                 e.preventDefault();
                 window.open(''.concat(this.href), '_blank');
             }
+
+
         }
     }
+            //starcash menu close
+            function closeFBShare() {
+                //e.preventDefault();
+                document.getElementById("fbshare").style.display = 'none';
+            }
+
+            ///ad stuff
+
+            var visible = 0;
+            var visible2 = 0;
+
+            var inter1 = document.getElementById("inter1");
+            var interCount = document.getElementById("interCount");
+
+
+
+            var timerThis2 = 0;
+
+            var countStart = 10;
+            setInterval(function () {
+                timerThis2++;
+
+                if (visible2 == 1 && countStart < 1) {
+                    inter1.style.display = "none";
+                    visible2 = 0;
+                    countStart = 10;
+                }
+
+                if (visible2 == 0 && visible == 0 && timerThis2 > 10) {
+
+                    countStart = 15
+                    visible2 = 1;
+                    timerThis2 = 0;
+
+
+                    inter1.style.display = "block";
+                    interCount.innerHTML = countStart;
+                }
+                if (visible2 == 1) {
+                    countStart = countStart - 1;
+                    interCount.innerHTML = countStart;
+                    if (countStart < 1) {
+                        inter1.style.display = "none";
+                        timerThis2 = 0;
+
+                    }
+                }
+
+            }, 1000);
 };
 
 app.initialize();
