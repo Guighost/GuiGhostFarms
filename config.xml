@@ -47,6 +47,7 @@
         <preference name="InAppBrowserStorageEnabled" value="true"/>
         <preference name="AndroidLaunchMode" value="singleTop"/>
         <preference name="DefaultVolumeStream" value="call" />
+        <preference name="useCleartextTraffic" value="true" />
         <allow-navigation href="*" />
     </platform>
 
