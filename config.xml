@@ -47,7 +47,7 @@
         <preference name="AndroidLaunchMode" value="singleTop"/>
         <preference name="DefaultVolumeStream" value="call" />
         <preference name="useCleartextTraffic" value="true" />
-        <preference name="useCleartextTraffic" value="true" />
+
         <allow-navigation href="*" />
     </platform>
 
