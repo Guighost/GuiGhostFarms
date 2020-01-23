@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48c02c00-ed23-43fc-8ae0-da0074e7eaf2" name="Default Changelist" comment="from studio more plugin config">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/network_security_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/network_security_config.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -30,11 +30,68 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="78">
+              <caret line="13" column="12" lean-forward="true" selection-start-line="12" selection-end-line="19" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="278" selection-start-line="8" selection-start-column="278" selection-end-line="8" selection-end-column="278" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/res/xml/network_security_config.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="58" lean-forward="true" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugins/cordova-plugin-fbanfree/plugin.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="45" column="49" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="80" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/platforms/android/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="282" column="68" selection-start-line="282" selection-start-column="68" selection-end-line="282" selection-end-column="68" />
+              <folding>
+                <element signature="e#0#858#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="408">
+              <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -81,12 +138,12 @@
         <option value="$PROJECT_DIR$/platforms/android/android.json" />
         <option value="$PROJECT_DIR$/plugins/android.json" />
         <option value="$PROJECT_DIR$/www/index.html" />
+        <option value="$PROJECT_DIR$/www/js/index.js" />
         <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml" />
         <option value="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/network_security_config.xml" />
         <option value="$PROJECT_DIR$/platforms/android/app/build.gradle" />
-        <option value="$PROJECT_DIR$/www/js/index.js" />
       </list>
     </option>
   </component>
@@ -144,6 +201,13 @@
               <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="GuiFarm0.5" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Sites\phonegap\GuiFarm0.5" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="platforms" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="cordova" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="GuiFarm0.5" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -237,7 +301,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.16684435" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.3336887" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -343,6 +407,13 @@
         <state relative-caret-position="-1371" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="78">
@@ -378,13 +449,6 @@
           <folding>
             <element signature="e#0#858#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
