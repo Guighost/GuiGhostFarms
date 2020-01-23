@@ -31,6 +31,7 @@
     <plugin name="cordova-plugin-network-information" source="npm" spec="~1.3.3" />
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.5" />
     <plugin name="fitatu-cordova-plugin-market" />
+    <plugin name="cordova-plugin-enable-cleartext-traffic" />
     <access origin="*" />
     <feature name="http://api.phonegap.com/1.0/device" />
     <preference name="orientation"     value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->

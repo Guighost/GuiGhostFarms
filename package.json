@@ -1,1 +1,12 @@
-{"devDependencies":{},"cordova":{"plugins":{"cordova-plugin-inappbrowser":{},"fitatu-cordova-plugin-market":{}}}}
+{
+  "devDependencies": {},
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-inappbrowser": {},
+      "fitatu-cordova-plugin-market": {}
+    }
+  },
+  "dependencies": {
+    "cordova-plugin-enable-cleartext-traffic": "git+https://github.com/RahulCV/cordova-plugin-enable-cleartext-traffic.git"
+  }
+}
