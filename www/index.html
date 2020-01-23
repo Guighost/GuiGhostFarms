@@ -4,11 +4,11 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <meta http-equiv="Content-Security-Policy" content="    default-src *;     style-src * 'unsafe-inline';     script-src * 'unsafe-inline';     media-src *; img-src * data:; " />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; content="script-src 'unsafe-inline'; style-src 'unsafe-inline'"">
 
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-        <title>Check App</title>
+        <title>Chec App</title>
     </head>
     <body class="">
         <header>
@@ -27,11 +27,11 @@
             <div id="main" class="row">
                 <div class="col-md-12 " id="buttons">
 
-                    <a  class="external-link" href="http://www.checanada.ca" ><img style="display: block; margin-left: auto; margin-right: auto;" src="placeholder.png"></a>
+                    <a  href="http://www.checanada.ca" class="external-link"><img style="display: block; margin-left: auto; margin-right: auto;" src="placeholder.png"></a>
 
-                    <a class="external-link" href="http://www.checonline.ca" class="external-link"><img style="display: block; margin-left: auto; margin-right: auto;" src="placeholder.png"></a>
+                    <a href="http://www.checonline.ca" class="external-link"><img style="display: block; margin-left: auto; margin-right: auto;" src="placeholder.png"></a>
 
-                    <a class="external-link" href="https://play.google.com/store/apps/details?id=com.wGuiGhostFarms_9861566" class="external-link"><img style="display: block; margin-left: auto; margin-right: auto;" src="placeholder.png">STORE</a>
+                    <a id="openBrowser" href="https://play.google.com/store/apps/details?id=com.wGuiGhostFarms_9861566" class="external-link"><img style="display: block; margin-left: auto; margin-right: auto;" src="placeholder.png">STORE</a>    
                 </div>
             </div>
         </div>
@@ -40,16 +40,16 @@
             <div class="container" id="footer-wrapper">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-6" id="blueprint">
-                        <a class="external-link" href="https:\\guighostgames.com" target='_blank' class="external-link" >
+                        <a href="https:\\guighostgames.com" target='_blank' class="external-link" >
                             <img src="placeholder.png" id="blueprint-logo" />GUI</a>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6" id="home-button">
-                        <a class="external-link" href="https://www.checanada.ca" target='_system' class="external-link" >
+                        <a href="https://www.checanada.ca" target='_system' class="external-link" >
                             <img src="placeholder.png" id="home-button" />Mod</a>
                     </div>
                 </div>
             </div>
         </footer>
-        <script type="text/javascript" src="cordova.js"></script>
+
     </body>
 </html>

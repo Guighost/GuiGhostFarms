@@ -61,13 +61,5 @@
     },
     "is_top_level": true,
     "variables": {}
-  },
-  "cordova-plugin-enable-cleartext-traffic": {
-    "source": {
-      "type": "registry",
-      "id": "git+https://github.com/RahulCV/cordova-plugin-enable-cleartext-traffic.git"
-    },
-    "is_top_level": true,
-    "variables": {}
   }
 }
