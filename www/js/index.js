@@ -28,6 +28,7 @@ var app = {
 
     // Find everything with class className and open it
     // with the InAppBrowser
+    var className = 'external-link'
     amendLinks: function(className) {
         var n = 0,
             links = document.getElementsByClassName(className);
