@@ -1082,9 +1082,13 @@ var farming = {
         dt = 2000;
 
 		var adWatched = 0;
-			var adWatched2 = localStorage.getItem('adWatched')
-			if (adWatched2 == 1 && c.state == farming.GROWING) {c.ripeTime = 0;}
+		var adWatched2 = 0;
 			
+		lime.scheduleManager.scheduleWithDelay(function () {
+			adWatched2 = localStorage.getItem('adWatched')
+					if (adWatched2 == 1 && c.state == farming.GROWING) {c.ripeTime = 0;}
+		}, this, 1000)
+		
         lime.scheduleManager.scheduleWithDelay(function () {
 	
         
