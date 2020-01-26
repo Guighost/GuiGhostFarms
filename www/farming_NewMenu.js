@@ -855,7 +855,8 @@ var houseUpgrades = {
 if (typeof localStorage["GuiGhostFarms_houseUpgrades"] === "undefined") { localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades)); };
 houseUpgrades = JSON.parse(localStorage.getItem('GuiGhostFarms_houseUpgrades'));
 
-
+if (typeof localStorage["adWatched"] === "undefined") { localStorage.setItem('adWatched', 0) };
+var adWatched = JSON.parse(localStorage.getItem('adWatched'));
 
 
 
@@ -871,8 +872,7 @@ var landStateMaster = new Array();
 if (typeof localStorage["landStates"] === "undefined") { localStorage.setItem('landStates', JSON.stringify(landStateMaster)); };
 landStateMaster = JSON.parse(localStorage.getItem('landStates'));
 
-if (typeof localStorage["adWatched"] === "undefined") { localStorage.setItem('adWatched', 0) };
-var adWatched = JSON.parse(localStorage.getItem('adWatched'));
+
 
 //document.getElementById("buyWithStarCash").addEventListener("click", buyStarCash(), false);
 
@@ -985,6 +985,11 @@ var farming = {
             }
 
         }
+			var adWatched2 = localStorage.getItem('adWatched')
+			if (adWatched2 == 1) {
+				 this.ripeTime = 0;
+				 			 
+			}
         function growIt(d) {
             //if (tutSeen == 0) { break; }
             if (scene == 1 && b.currentCrop > 5) { b.currentCrop = homeCrop; };
@@ -1104,12 +1109,7 @@ var farming = {
                         : this.deathTime -= 1000
                       
                 )
-			adWatched = localStorage.getItem('adWatched')
-			if (adWatched == 1) {
-				 this.state = farming.READY;
-				 localStorage.setItem('adWatched', 0);
-				 this.setFill("images/" + a.crops[this.crop].image)
-			}
+			
             if (a.crops[this.crop] == 8 && this.deathTime < 0) { this.setFill("images/Orchard/prune_trees.png") }
             if (a.crops[this.crop] == 9 && this.deathTime < 0) { this.setFill("images/Orchard/prune_trees.png") }
             if (a.crops[this.crop] == 12 && this.deathTime < 0) { this.setFill("images/vinyard/grapes_ClearBrush.png") }
