@@ -871,7 +871,7 @@ var landStateMaster = new Array();
 if (typeof localStorage["landStates"] === "undefined") { localStorage.setItem('landStates', JSON.stringify(landStateMaster)); };
 landStateMaster = JSON.parse(localStorage.getItem('landStates'));
 
-if (typeof localStorage["adWatched"] === "undefined") { localStorage.setItem('adWatched', 0 };
+if (typeof localStorage["adWatched"] === "undefined") { localStorage.setItem('adWatched', 0) };
 var adWatched = JSON.parse(localStorage.getItem('adWatched'));
 
 //document.getElementById("buyWithStarCash").addEventListener("click", buyStarCash(), false);
@@ -2226,12 +2226,14 @@ farming.start = function () {
     var changeSeeds = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(134, 272).setSize(40, 40).setFill("images/UI/changeSeeds2.png");
     e.appendChild(changeSeeds);
 	
-	    var speedAd = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(134, 222).setSize(40, 40).setFill("images/UI/adBoostBtn.png");
+	    var speedAd =(new lime.GlossyButton).setColor("#663300").setText("").setPosition(134, 222).setSize(40, 40).setOpacity(.8);
+		speedAd = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(134, 222).setSize(40, 40).setFill("images/UI/adBoostBtn.png");
     e.appendChild(speedAd);
-    goog.events.listen(speedAd, ["mousedown", "touchstart"], function () {
-     showItOrNo2 = localStorage.setItem('MedFarm_LoadAd', 1);
+		goog.events.listen(speedAd, ["mousedown", "touchstart"], function () {
+			console.log("clicked it");
+		localStorage.setItem('MedFarm_LoadAd', 1);
        
-    });
+		});
 	
 	
 	
