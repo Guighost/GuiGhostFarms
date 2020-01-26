@@ -2232,14 +2232,16 @@ farming.start = function () {
 	    var speedAd =(new lime.GlossyButton).setColor("#663300").setText("").setPosition(134, 222).setSize(40, 40).setOpacity(.8);
 		speedAd = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(134, 222).setSize(40, 40).setFill("images/UI/adBoostBtn.png");
     e.appendChild(speedAd);
-		goog.events.listen(speedAd, ["mousedown", "touchstart"], function () {
+	
+	goog.events.listen(speedAd, ["mousedown", "touchstart"], function () {
 			console.log("clicked it");
-		localStorage.setItem('MedFarm_LoadAd', 1);
-       
-		});
+			  boostCrops.setHidden(false);
+			  homeBlock.setHidden(false);
+		       
+	});
 	
-	
-	
+
+		
     //var shelter = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(35, 48).setSize(18, 65).setFill("images/" + a.barnyard[6].image); e.appendChild(shelter)
     //var shelter3 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(4, 48).setSize(18, 65).setFill("images/" + a.barnyard[6].image); e.appendChild(shelter3)
     //var shelter2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(22, 48).setSize(37, 72).setFill("images/" + a.barnyard[7].image); e.appendChild(shelter2)
@@ -2446,6 +2448,27 @@ farming.start = function () {
         return;
     }, true, this);
     if (tutSeen == 1) { homeBlock.setHidden(true); }
+		var boostCrops = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(50, 150).setSize(200, 200).setFill("images/UI/cropBoostBack.png");
+	   e.appendChild(boostCrops);
+	   boostCrops.setHidden(true);
+	var speedAdConfirm =(new lime.GlossyButton).setColor("#00FF00").setText("Confirm").setPosition(155, 165).setSize(60, 30).setOpacity(.8);
+	boostCrops.appendChild(speedAdConfirm);
+	var speedAdCancel =(new lime.GlossyButton).setColor("#8B0000").setText("Cancel").setPosition(45, 165).setSize(60, 30).setOpacity(.8);
+	boostCrops.appendChild(speedAdCancel);
+	
+
+		goog.events.listen(speedAdConfirm, ["mousedown", "touchstart"], function () {
+			console.log("clicked confirm");
+			localStorage.setItem('MedFarm_LoadAd', 1);
+			boostCrops.setHidden(true);
+			homeBlock.setHidden(true);
+       	});
+		goog.events.listen(speedAdCancel, ["mousedown", "touchstart"], function () {
+			console.log("clicked cancel");
+			boostCrops.setHidden(true);
+			homeBlock.setHidden(true);
+       	});
+	
 
     var tutModal = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(48, 130).setSize(210, 220).setFill("images/UI/tut1.png");
     e.appendChild(tutModal);
