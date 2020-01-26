@@ -985,11 +985,7 @@ var farming = {
             }
 
         }
-			var adWatched2 = localStorage.getItem('adWatched')
-			if (adWatched2 == 1) {
-				 this.ripeTime = 0;
-				 			 
-			}
+	
         function growIt(d) {
             //if (tutSeen == 0) { break; }
             if (scene == 1 && b.currentCrop > 5) { b.currentCrop = homeCrop; };
@@ -1086,6 +1082,9 @@ var farming = {
         dt = 2000;
 
 		var adWatched = 0;
+			var adWatched2 = localStorage.getItem('adWatched')
+			if (adWatched2 == 1 && c.state == farming.GROWING) {c.ripeTime = 0;}
+			
         lime.scheduleManager.scheduleWithDelay(function () {
 	
         
