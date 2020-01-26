@@ -512,5 +512,31 @@
     </script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+		<script type=text/javascript> 
+ var callback = function(result) {
+    if(!result) {
+        app.writeLog('Interstitial ad is not ready');
+        return;
+    }
+
+    Enhance.showInterstitialAd();
+};
+
+// set interval to check for interstatial
+
+var showItOrNo = 1
+var onceOnlyAd = 0;
+var tid = setInterval(interPop, 60000);
+function interPop() {
+
+if(showItOrNo == 1 ){
+	Enhance.isInterstitialReady(callback);
+showItOrNo = 0;
+ }
+else {showItOrNo = 1;}
+}
+
+
+ </script>
     </body>
 </html>

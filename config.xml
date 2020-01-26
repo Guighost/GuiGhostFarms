@@ -31,6 +31,7 @@
     <plugin name="cordova-plugin-network-information" source="npm" spec="~1.3.3" />
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.5" />
     <plugin name="fitatu-cordova-plugin-market" />
+	<plugin name="enhance-cordova-connector"/>
     <access origin="*" />
     <feature name="http://api.phonegap.com/1.0/device" />
     <preference name="orientation"     value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
@@ -46,7 +47,6 @@
         <preference name="InAppBrowserStorageEnabled" value="true"/>
         <preference name="AndroidLaunchMode" value="singleTop"/>
         <preference name="DefaultVolumeStream" value="call" />
-        <preference name="useCleartextTraffic" value="true" />
         <preference name="useCleartextTraffic" value="true" />
         <allow-navigation href="*" />
     </platform>
