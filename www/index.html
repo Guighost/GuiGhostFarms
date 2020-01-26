@@ -543,6 +543,7 @@ showItOrNo2 = localStorage.getItem('MedFarm_LoadAd');
 if(showItOrNo2 == 1 ){
 	Enhance.isInterstitialReady(callback);
 	 localStorage.setItem('MedFarm_LoadAd', 0);
+	 localStorage.setItem('adWatched', 1);
 showItOrNo2 = 0;
  }
 else {return;}

@@ -871,7 +871,8 @@ var landStateMaster = new Array();
 if (typeof localStorage["landStates"] === "undefined") { localStorage.setItem('landStates', JSON.stringify(landStateMaster)); };
 landStateMaster = JSON.parse(localStorage.getItem('landStates'));
 
-
+if (typeof localStorage["adWatched"] === "undefined") { localStorage.setItem('adWatched', 0 };
+var adWatched = JSON.parse(localStorage.getItem('adWatched'));
 
 //document.getElementById("buyWithStarCash").addEventListener("click", buyStarCash(), false);
 
@@ -1078,11 +1079,10 @@ var farming = {
         if (scene == 32 && c.state == farming.EMPTY) { c.setFill("images/Orchard/prune_trees.png") }
         if (scene == 5 && c.state == farming.EMPTY) { c.setFill("images/vinyard/grapes_ClearBrush.png") }
         dt = 2000;
+
 		var adWatched = 0;
         lime.scheduleManager.scheduleWithDelay(function () {
-         if (adWatched === 1) {
-			 this.state = farming.READY;
-		 }
+	
         
             this.state == farming.GROWING ?
                    
@@ -1104,6 +1104,12 @@ var farming = {
                         : this.deathTime -= 1000
                       
                 )
+			adWatched = localStorage.getItem('adWatched')
+			if (adWatched == 1) {
+				 this.state = farming.READY;
+				 localStorage.setItem('adWatched', 0);
+				 this.setFill("images/" + a.crops[this.crop].image)
+			}
             if (a.crops[this.crop] == 8 && this.deathTime < 0) { this.setFill("images/Orchard/prune_trees.png") }
             if (a.crops[this.crop] == 9 && this.deathTime < 0) { this.setFill("images/Orchard/prune_trees.png") }
             if (a.crops[this.crop] == 12 && this.deathTime < 0) { this.setFill("images/vinyard/grapes_ClearBrush.png") }
