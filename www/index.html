@@ -524,9 +524,10 @@
 
 // set interval to check for interstatial
 
-var showItOrNo = 1
+var showItOrNo = 1;
+var showItOrNo2 = 0;
 var onceOnlyAd = 0;
-var tid = setInterval(interPop, 120000);
+var tid = setInterval(interPop, 240000);
 function interPop() {
 
 if(showItOrNo == 1 ){
@@ -536,6 +537,16 @@ showItOrNo = 0;
 else {showItOrNo = 1;}
 }
 
+var tid2 = setInterval(interPop2, 500);
+function interPop2() {
+showItOrNo2 = localStorage.getItem('MedFarm_LoadAd');
+if(showItOrNo2 == 1 ){
+	Enhance.isInterstitialReady(callback);
+	 localStorage.setItem('MedFarm_LoadAd', 0);
+showItOrNo2 = 0;
+ }
+else {return;}
+}
 
  </script>
     </body>

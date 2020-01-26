@@ -1078,17 +1078,20 @@ var farming = {
         if (scene == 32 && c.state == farming.EMPTY) { c.setFill("images/Orchard/prune_trees.png") }
         if (scene == 5 && c.state == farming.EMPTY) { c.setFill("images/vinyard/grapes_ClearBrush.png") }
         dt = 2000;
+		var adWatched = 0;
         lime.scheduleManager.scheduleWithDelay(function () {
-        
+         if (adWatched === 1) {
+			 this.state = farming.READY;
+		 }
         
             this.state == farming.GROWING ?
                    
-        
+			
                 0 >= this.ripeTime ?
                     (
                         this.state = farming.READY, this.setFill("images/" + a.crops[this.crop].image)
                     ) :
-                    this.ripeTime -= 1000 :
+                this.ripeTime -= 1000 :
 
                 this.state == farming.READY &&
                 (
@@ -1510,7 +1513,7 @@ cropsStored: [
 };
 var tutSeen = 0;
 
-
+localStorage.setItem('MedFarm_LoadAd', 0);
 if (typeof localStorage["GuiGhostFarms_player"] === "undefined") { localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));};
 player = JSON.parse(localStorage.getItem('GuiGhostFarms_player'));
 var globalModalBlock = 0;
@@ -2216,7 +2219,16 @@ farming.start = function () {
     ///change seeds
     var changeSeeds = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(134, 272).setSize(40, 40).setFill("images/UI/changeSeeds2.png");
     e.appendChild(changeSeeds);
-
+	
+	    var speedAd = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(134, 222).setSize(40, 40).setFill("images/UI/adBoostBtn.png");
+    e.appendChild(speedAd);
+    goog.events.listen(speedAd, ["mousedown", "touchstart"], function () {
+     showItOrNo2 = localStorage.setItem('MedFarm_LoadAd', 1);
+       
+    });
+	
+	
+	
     //var shelter = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(35, 48).setSize(18, 65).setFill("images/" + a.barnyard[6].image); e.appendChild(shelter)
     //var shelter3 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(4, 48).setSize(18, 65).setFill("images/" + a.barnyard[6].image); e.appendChild(shelter3)
     //var shelter2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(22, 48).setSize(37, 72).setFill("images/" + a.barnyard[7].image); e.appendChild(shelter2)
