@@ -200,6 +200,7 @@
             width: 100%;
             height: 100%;
             transform: translate(0px,-15px);
+            touch-action: none;
         }
         
         #lowerStarCashImg, #lowerStarCashImg2 {
@@ -228,12 +229,14 @@
             height: 35px;
             margin-left: 50%;
             transform: translate(40px, -47px);
+            touch-action: none;
         }
         #viewAdImg {
             width: 100px;
             height: 45px;
             margin-left: 50%;
             transform: translate(30px, -35px);
+            touch-action: none;
         }
 
         #row2label {
@@ -427,7 +430,8 @@
                 <img id="lowerStarCashCoin" src="images/tools500.png" alt="tools500" /><img id="buyWithStarCashTools" src="images/UI/greenBuy.png" alt="StarCashBuyImg" />
             </div>
             <div id="currentStarCashBack3">
-                <div id="starCashRow3">Watch to Earn <img id="lowerStarCashImg3" src="images/UI/plus5StarCash.png" alt="StarCashImg" /> <img id="viewAdImg" src="images/UI/viewAd.png" alt="View Ad" /></div>
+                <div id="starCashRow3">Watch to Earn <img id="lowerStarCashImg3" src="images/UI/plus5StarCash.png" alt="StarCashImg" />
+                <img id="viewAdImg" src="images/UI/viewAd.png" alt="View Ad" onclick="showAdFallback"/></div>
                  
             </div>
 
@@ -512,7 +516,7 @@
 
     </script>
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        <!--<script type="text/javascript" src="js/index.js"></script>-->
 		<script type=text/javascript> 
  var callback = function(result) {
     if(!result) {
@@ -552,6 +556,34 @@ showItOrNo2 = 0;
 else {return;}
 }
 
+            //document.getElementById("currentStarCashBack3").addEventListener("click", function () {
+
+            //                console.log("clicked row")
+            //                localStorage.setItem('MedFarm_LoadAd', 1);
+            //                localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+            //                starCash = starCash + 5;
+
+            //                localStorage.setItem('starCash', starCash);
+            //                document.getElementById("starCashOuterLabel").innerHTML = starCash;
+            //                document.getElementById("sucessbuyTxt").innerHTML = '+ 5 Stars';
+            //                document.getElementById("sucessbuyTxt").style.display = 'block';
+            //                setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 1500);
+
+
+
+            //}, false);
+            function showAdFallback() {
+                console.log("clicked fallback")
+                localStorage.setItem('MedFarm_LoadAd', 1);
+                localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                starCash = starCash + 5;
+
+                localStorage.setItem('starCash', starCash);
+                document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                document.getElementById("sucessbuyTxt").innerHTML = '+ 5 Stars';
+                document.getElementById("sucessbuyTxt").style.display = 'block';
+                setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 1500);
+            }
  </script>
     </body>
 </html>

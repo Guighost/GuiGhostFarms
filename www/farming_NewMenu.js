@@ -1598,7 +1598,7 @@ farming.start = function () {
         b = { money: 500, currentCrop: 0 };
 
     a.crops = [
-        { name: "Tomatoes  ", cost: 4, revenue: 8, time_to_ripe: 35, time_to_death: 35, image: "tomato.png", harvest: "tomato2.png", grow1: "tomatoGrow1.png", grow2: "tomatoGrow2.png", stored: 0, withered: "tomatoWithered.png" },
+        { name: "Tomatoes  ", cost: 4, revenue: 8, time_to_ripe: 32, time_to_death: 35, image: "tomato.png", harvest: "tomato2.png", grow1: "tomatoGrow1.png", grow2: "tomatoGrow2.png", stored: 0, withered: "tomatoWithered.png" },
         { name: "Carrots    ", cost: 6, revenue: 12, time_to_ripe: 40, time_to_death: 35, image: "carrots.png", harvest: "carrots2.png", grow1: "carrotGrow1.png", grow2: "carrotGrow2.png", stored: 0, withered: "carrotsWithered.png" },
         { name: "Artichoke  ", cost: 8, revenue: 16, time_to_ripe: 45, time_to_death: 40, image: "artichoke.png", harvest: "artichoke2.png", grow1: "artiGrow1.png", grow2: "artiGrow2.png", stored: 0, withered: "artichokeWithered.png" },
         { name: "Eggplant ", cost: 11, revenue: 22, time_to_ripe: 50, time_to_death: 40, image: "eggplant.png", harvest: "eggplant2.png", grow1: "eggplantGrow1.png", grow2: "eggplantGrow2.png", stored: 0, withered: "eggplantWithered.png" },
@@ -2168,7 +2168,7 @@ farming.start = function () {
     ///market control
     var market = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(205, a.height - a.controlsLayer_h - 4).setSize(103, 65).setFill("images/" + a.barnyard[3].image);
     var tickHighlight = 0;
-    setInterval(function () {
+    var refreshIntervalId = setInterval(function () {
 
         var showHighlight2 = localStorage.getItem('showHighLight')
         //console.log("showHighlight = " + showHighlight2)
@@ -2189,6 +2189,9 @@ farming.start = function () {
         if (globalModalBlock == 0) {
             a.sceneBefore = 1;
             c.replaceScene(marketScene, lime.transitions.SlideInDown);
+            localStorage.setItem('showHighLight', 0);
+            clearInterval(refreshIntervalId);
+            market.setFill("images/marketCoin.png");
             count0.setText(player.cropsStored[0].stored);
             count1.setText(player.cropsStored[1].stored);
             count2.setText(player.cropsStored[2].stored);
@@ -4952,9 +4955,9 @@ farming.start = function () {
         }
     }, false);
 
-    document.getElementById("viewAdImg").addEventListener("click", function () {
-        if (starCash >= 10) {
-            console.log("clicked")
+    document.getElementById("viewAdImg").addEventListener("touchstart", function () {
+        
+            console.log("clicked viewAd")
             localStorage.setItem('MedFarm_LoadAd', 1);
             localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
             starCash = starCash + 5;
@@ -4963,10 +4966,10 @@ farming.start = function () {
             document.getElementById("starCashOuterLabel").innerHTML = starCash;
             document.getElementById("sucessbuyTxt").innerHTML = '+ 5 Stars';
             document.getElementById("sucessbuyTxt").style.display = 'block';
-            setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 1000);
+            setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 1500);
 
 
-        }
+        
     }, false);
 
 
@@ -7800,7 +7803,7 @@ farming.start = function () {
     houseLowerMenu.appendChild(backBtnHouse);
     goog.events.listen(backBtnHouse, ["mousedown", "touchstart"], function () {
         
-        c.replaceScene(d, lime.transitions.SlideInUp); sceneBefore = 1;
+        c.replaceScene(d, lime.transitions.SlideInDown); sceneBefore = 1;
 
 
     });

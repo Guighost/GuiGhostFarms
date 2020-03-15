@@ -1,21 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
   module.exports = [
-    {
-      "id": "cordova-plugin-fbanfree.FBANFree",
-      "file": "plugins/cordova-plugin-fbanfree/www/FBANFree.js",
-      "pluginId": "cordova-plugin-fbanfree",
-      "clobbers": [
-        "fbanfree"
-      ]
-    },
-    {
-      "id": "cordova-appodeal-prime.AppodealPrime",
-      "file": "plugins/cordova-appodeal-prime/www/appodealprime.js",
-      "pluginId": "cordova-appodeal-prime",
-      "clobbers": [
-        "appodealprime"
-      ]
-    },
+
     {
       "id": "cordova-plugin-inappbrowser.inappbrowser",
       "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
