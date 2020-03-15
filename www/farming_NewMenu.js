@@ -974,7 +974,7 @@ var farming = {
 
                 c.setFill("images/" + a.crops[this.crop].grow1)
             }
-            if (this.state == farming.GROWING && (this.ripeTime < 800 * a.crops[this.crop].time_to_ripe)) {
+            if (this.state == farming.GROWING && (this.ripeTime < 500 * a.crops[this.crop].time_to_ripe)) {
 
                 c.setFill("images/" + a.crops[this.crop].grow2)
             }
@@ -1077,11 +1077,7 @@ var farming = {
            
            
         }
-        if (pickedEver == 1) {
-                            showHighLight = pickedEver;
-                            localStorage.setItem('showHighLight', 1)
-
-        }
+     
        
         
         if (scene == 3 && c.state == farming.EMPTY) { c.setFill("images/Orchard/prune_trees.png") }
@@ -1120,7 +1116,12 @@ var farming = {
                         : this.deathTime -= 1000
                       
                 )
-			
+            if (pickedEver == 1) {
+                showHighLight = 1;
+                showHighLight2 = 1;
+                localStorage.setItem('showHighLight', 1)
+
+            }
             if (a.crops[this.crop] == 8 && this.deathTime < 0) { this.setFill("images/Orchard/prune_trees.png") }
             if (a.crops[this.crop] == 9 && this.deathTime < 0) { this.setFill("images/Orchard/prune_trees.png") }
             if (a.crops[this.crop] == 12 && this.deathTime < 0) { this.setFill("images/vinyard/grapes_ClearBrush.png") }
@@ -1598,9 +1599,9 @@ farming.start = function () {
         b = { money: 500, currentCrop: 0 };
 
     a.crops = [
-        { name: "Tomatoes  ", cost: 4, revenue: 8, time_to_ripe: 32, time_to_death: 35, image: "tomato.png", harvest: "tomato2.png", grow1: "tomatoGrow1.png", grow2: "tomatoGrow2.png", stored: 0, withered: "tomatoWithered.png" },
-        { name: "Carrots    ", cost: 6, revenue: 12, time_to_ripe: 40, time_to_death: 35, image: "carrots.png", harvest: "carrots2.png", grow1: "carrotGrow1.png", grow2: "carrotGrow2.png", stored: 0, withered: "carrotsWithered.png" },
-        { name: "Artichoke  ", cost: 8, revenue: 16, time_to_ripe: 45, time_to_death: 40, image: "artichoke.png", harvest: "artichoke2.png", grow1: "artiGrow1.png", grow2: "artiGrow2.png", stored: 0, withered: "artichokeWithered.png" },
+        { name: "Tomatoes  ", cost: 4, revenue: 8, time_to_ripe: 28, time_to_death: 35, image: "tomato.png", harvest: "tomato2.png", grow1: "tomatoGrow1.png", grow2: "tomatoGrow2.png", stored: 0, withered: "tomatoWithered.png" },
+        { name: "Carrots    ", cost: 6, revenue: 12, time_to_ripe: 35, time_to_death: 35, image: "carrots.png", harvest: "carrots2.png", grow1: "carrotGrow1.png", grow2: "carrotGrow2.png", stored: 0, withered: "carrotsWithered.png" },
+        { name: "Artichoke  ", cost: 8, revenue: 16, time_to_ripe: 42, time_to_death: 40, image: "artichoke.png", harvest: "artichoke2.png", grow1: "artiGrow1.png", grow2: "artiGrow2.png", stored: 0, withered: "artichokeWithered.png" },
         { name: "Eggplant ", cost: 11, revenue: 22, time_to_ripe: 50, time_to_death: 40, image: "eggplant.png", harvest: "eggplant2.png", grow1: "eggplantGrow1.png", grow2: "eggplantGrow2.png", stored: 0, withered: "eggplantWithered.png" },
         { name: "Peppers  ", cost: 13, revenue: 24, time_to_ripe: 55, time_to_death: 50, image: "peppers.png", harvest: "peppers2.png", grow1: "pepperGrow1.png", grow2: "pepperGrow2.png", stored: 0, withered: "peppersWithered.png" },
         { name: "Corn  ", cost: 15, revenue: 28, time_to_ripe: 60, time_to_death: 50, image: "corn.png", harvest: "corn2.png", grow1: "cornGrow1.png", grow2: "cornGrow2.png", stored: 0, withered: "cornWithered.png" },
@@ -5391,7 +5392,7 @@ farming.start = function () {
         if (!isNaN(checkIT)) { player.money = player.money + cropSaleCurrentPrice; }
     
         moneyEver = moneyEver + cropSaleCurrentPrice;
-        localStorage.setItem('showHighLight', 0);
+        //localStorage.setItem('showHighLight', 0);
         localStorage["GuiGhostFarms_moneyEver"] = moneyEver;
         purchaseSound.play();
         howManyBack.setHidden(true);
