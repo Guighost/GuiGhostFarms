@@ -822,31 +822,31 @@ imgArray12[6] = new Image(); imgArray12[6].src = 'images/houseUpgrades/stoveFire
 var houseUpgrades = {
     upgrades: [
         { name: "expansion", cost: 0, owned: 0 },
-        { name: "Single Bed", cost: 100, owned: 0},
-        { name: "Chest", cost: 50, owned: 0 },
+        { name: "Single Bed", cost: 200, owned: 0},
+        { name: "Chest", cost: 250, owned: 0 },
         { name: "Sink", cost: 300, owned: 0 },
-        { name: "Table", cost: 150, owned: 0 },
-        { name: "Wood Chairs", cost: 100, owned: 0 },
+        { name: "Table", cost: 250, owned: 0 },
+        { name: "Wood Chairs", cost: 150, owned: 0 },
         { name: "Dressing Table", cost: 500, owned: 0 },
-        { name: "Bedside Table", cost: 150, owned: 0 },
+        { name: "Bedside Table", cost: 250, owned: 0 },
         { name: "Potted Plant", cost: 150, owned: 0 },
-        { name: "Couch", cost: 350, owned: 0 },
-        { name: "Curtains", cost: 75, owned: 0 },
-        { name: "Double Bed", cost: 450, owned: 0 },
-        { name: "Stool", cost: 100, owned: 0 },
-        { name: "Wardrobe", cost: 450, owned: 0 },
-        { name: "Fancy Couch", cost: 600, owned: 0 },
-        { name: "Bookshelves", cost: 800, owned: 0 },
-        { name: "Fancy Table", cost: 400, owned: 0 },
-        { name: "Fancy Chairs", cost: 350, owned: 0 },   
-        { name: "Desk", cost: 500, owned: 0 },  
-        { name: "Painting", cost: 500, owned: 0 },
-        { name: "Dish Cabinet", cost: 500, owned: 0 },
-        { name: "Trunk", cost: 500, owned: 0 },
-        { name: "Paint Walls Green", cost: 1000, owned: 0 },
-        { name: "Paint Walls Blue", cost: 1000, owned: 0 },
-        { name: "Paint Walls Pink", cost: 1000, owned: 0 },
-        { name: "Paint Walls Tan", cost: 1000, owned: 1 },
+        { name: "Couch", cost: 500, owned: 0 },
+        { name: "Curtains", cost: 125, owned: 0 },
+        { name: "Double Bed", cost: 600, owned: 0 },
+        { name: "Stool", cost: 150, owned: 0 },
+        { name: "Wardrobe", cost: 750, owned: 0 },
+        { name: "Fancy Couch", cost: 750, owned: 0 },
+        { name: "Bookshelves", cost: 1000, owned: 0 },
+        { name: "Fancy Table", cost: 800, owned: 0 },
+        { name: "Fancy Chairs", cost: 850, owned: 0 },   
+        { name: "Desk", cost: 750, owned: 0 },  
+        { name: "Painting", cost: 1000, owned: 0 },
+        { name: "Dish Cabinet", cost: 800, owned: 0 },
+        { name: "Trunk", cost: 700, owned: 0 },
+        { name: "Paint Walls Green", cost: 1500, owned: 0 },
+        { name: "Paint Walls Blue", cost: 1500, owned: 0 },
+        { name: "Paint Walls Pink", cost: 1500, owned: 0 },
+        { name: "Paint Walls Tan", cost: 1500, owned: 1 },
      
 
     ]
@@ -858,6 +858,8 @@ houseUpgrades = JSON.parse(localStorage.getItem('GuiGhostFarms_houseUpgrades'));
 if (typeof localStorage["adWatched"] === "undefined") { localStorage.setItem('adWatched', 0) };
 var adWatched = JSON.parse(localStorage.getItem('adWatched'));
 
+if (typeof localStorage["showHighLight"] === "undefined") { localStorage.setItem('showHighLight', 0) };
+var showHighLight = localStorage.getItem('showHighLight');
 
 
 
@@ -876,7 +878,7 @@ landStateMaster = JSON.parse(localStorage.getItem('landStates'));
 
 //document.getElementById("buyWithStarCash").addEventListener("click", buyStarCash(), false);
 
-
+var showHighlight2 = localStorage.getItem('showHighLight');
 //var ss = new lime.SpriteSheet('images/', lime.ASSETS.blacksmith.json, lime.parse)
 var farming = {
     EMPTY: 0, PLOWED: 1, GROWING: 2, READY: 3, WITHER: 4,
@@ -972,7 +974,7 @@ var farming = {
 
                 c.setFill("images/" + a.crops[this.crop].grow1)
             }
-            if (this.state == farming.GROWING && (this.ripeTime < 1000 * a.crops[this.crop].time_to_ripe)) {
+            if (this.state == farming.GROWING && (this.ripeTime < 800 * a.crops[this.crop].time_to_ripe)) {
 
                 c.setFill("images/" + a.crops[this.crop].grow2)
             }
@@ -1000,7 +1002,7 @@ var farming = {
             c.state == farming.WITHER ?    ///crops are withered and need to be cleared
 
                 (
-             
+
                     scene == 3 && (c.setFill("images/Orchard/wither_treesApple.png")),
                     scene == 32 && (c.setFill("images/Orchard/wither_treesPear.png")),
                     scene == 5 && (c.setFill("images/vinyard/grapes_withered.png")),
@@ -1015,67 +1017,73 @@ var farming = {
                     c.state = farming.EMPTY
                 )
 
-            : c.state == farming.EMPTY ?
-                (c.setFill("images/plowed.png"),
-                    c.state = farming.PLOWED,
-                    //player.money = player.money - a.costPlowing,
-                    scene == 3 && (c.setFill("images/Orchard/fertilize_trees.png")),
-                    scene == 32 && (c.setFill("images/Orchard/fertilize_trees.png")),
-                    scene == 5 && (c.setFill("images/vinyard/grapes_Fertilize.png"))
-                    //a.updateMoney()
+                : c.state == farming.EMPTY ?
+                    (c.setFill("images/plowed.png"),
+                        c.state = farming.PLOWED,
+                        //player.money = player.money - a.costPlowing,
+                        scene == 3 && (c.setFill("images/Orchard/fertilize_trees.png")),
+                        scene == 32 && (c.setFill("images/Orchard/fertilize_trees.png")),
+                        scene == 5 && (c.setFill("images/vinyard/grapes_Fertilize.png"))
+                        //a.updateMoney()
 
-                )
-
-                : c.state == farming.PLOWED && player.money >= a.crops[b.currentCrop].cost ?
-
-                    (
-
-                        c.setFill("images/" + toPlant),
-                        c.state = farming.GROWING,
-                        c.crop = b.currentCrop,
-                        c.ripeTime = 2000 * a.crops[b.currentCrop].time_to_ripe,
-                        c.deathTime = 2000 * a.crops[b.currentCrop].time_to_death,
-                        player.money = player.money - (a.crops[b.currentCrop].cost),
-                        
-                        
-                        a.updateMoney(),
-                        a.displayCost(posX, posY, a.crops[b.currentCrop].cost)
                     )
-                    : c.state == farming.PLOWED && player.money < a.crops[b.currentCrop].cost ?    ///player doesnt have enough to plant that crop
+
+                    : c.state == farming.PLOWED && player.money >= a.crops[b.currentCrop].cost ?
 
                         (
-                            a.displayCost(posX, posY, a.crops[b.currentCrop].cost + " Required")
-                        )
-                        
-                        : c.state == farming.READY && (c.setFill("images/bare_land.png"),
-                            block == 'tlt' && (c.setFill("images/bare_land_tl.png")),
-                            block == 'trt' && (c.setFill("images/bare_land_tr.png")),
-                            block == 'brt' && (c.setFill("images/bare_land_lr.png")),
-                            block == 'blt' && (c.setFill("images/bare_land_ll.png")),
-                            scene == 3 && (c.setFill("images/Orchard/prune_trees.png")),
-                            scene == 32 && (c.setFill("images/Orchard/prune_trees.png")),
-                            scene == 5 && (c.setFill("images/vinyard/grapes_ClearBrush.png")),
-                            c.state = farming.EMPTY,
-                            //player.money += a.crops[c.crop].revenue,
-                            //a.crops[c.crop].stored += 1,
-                            player.cropsStored[c.crop].stored += 1,
-                            pickedEver = pickedEver + 1,
 
-                           
+                            c.setFill("images/" + toPlant),
+                            c.state = farming.GROWING,
+                            c.crop = b.currentCrop,
+                            c.ripeTime = 2000 * a.crops[b.currentCrop].time_to_ripe,
+                            c.deathTime = 2000 * a.crops[b.currentCrop].time_to_death,
+                            player.money = player.money - (a.crops[b.currentCrop].cost),
+
+
+                            a.updateMoney(),
+                            a.displayCost(posX, posY, a.crops[b.currentCrop].cost)
+                        )
+                        : c.state == farming.PLOWED && player.money < a.crops[b.currentCrop].cost ?    ///player doesnt have enough to plant that crop
+
+                            (
+                                a.displayCost(posX, posY, a.crops[b.currentCrop].cost + " Required")
+                            )
+
+                            : c.state == farming.READY && (c.setFill("images/bare_land.png"),
+                                block == 'tlt' && (c.setFill("images/bare_land_tl.png")),
+                                block == 'trt' && (c.setFill("images/bare_land_tr.png")),
+                                block == 'brt' && (c.setFill("images/bare_land_lr.png")),
+                                block == 'blt' && (c.setFill("images/bare_land_ll.png")),
+                                scene == 3 && (c.setFill("images/Orchard/prune_trees.png")),
+                                scene == 32 && (c.setFill("images/Orchard/prune_trees.png")),
+                                scene == 5 && (c.setFill("images/vinyard/grapes_ClearBrush.png")),
+                                c.state = farming.EMPTY,
+                                //player.money += a.crops[c.crop].revenue,
+                                //a.crops[c.crop].stored += 1,
+                                player.cropsStored[c.crop].stored += 1,
+                                pickedEver = pickedEver + 1,
+                                                         
                             a.updateMoney(),
 
                             a.updateHarvest(posX, posY, c.crop),
                             a.updateStored(),
-                            a.haySize()
+                                a.haySize()
+                        
 
                         )
-           
+                  
                  
 
            
            
         }
-   
+        if (pickedEver == 1) {
+                            showHighLight = pickedEver;
+                            localStorage.setItem('showHighLight', 1)
+
+        }
+       
+        
         if (scene == 3 && c.state == farming.EMPTY) { c.setFill("images/Orchard/prune_trees.png") }
         if (scene == 32 && c.state == farming.EMPTY) { c.setFill("images/Orchard/prune_trees.png") }
         if (scene == 5 && c.state == farming.EMPTY) { c.setFill("images/vinyard/grapes_ClearBrush.png") }
@@ -1590,20 +1598,20 @@ farming.start = function () {
         b = { money: 500, currentCrop: 0 };
 
     a.crops = [
-        { name: "Tomatoes  ", cost: 4, revenue: 10, time_to_ripe: 20, time_to_death: 60, image: "tomato.png", harvest: "tomato2.png", grow1: "tomatoGrow1.png", grow2: "tomatoGrow2.png", stored: 0, withered: "tomatoWithered.png" },
-        { name: "Carrots    ", cost: 6, revenue: 14, time_to_ripe: 25, time_to_death: 60, image: "carrots.png", harvest: "carrots2.png", grow1: "carrotGrow1.png", grow2: "carrotGrow2.png", stored: 0, withered: "carrotsWithered.png" },
-        { name: "Artichoke  ", cost: 8, revenue: 18, time_to_ripe: 30, time_to_death: 70, image: "artichoke.png", harvest: "artichoke2.png", grow1: "artiGrow1.png", grow2: "artiGrow2.png", stored: 0, withered: "artichokeWithered.png" },
-        { name: "Eggplant ", cost: 11, revenue: 25, time_to_ripe: 40, time_to_death: 80, image: "eggplant.png", harvest: "eggplant2.png", grow1: "eggplantGrow1.png", grow2: "eggplantGrow2.png", stored: 0, withered: "eggplantWithered.png" },
-        { name: "Peppers  ", cost: 13, revenue: 32, time_to_ripe: 50, time_to_death: 90, image: "peppers.png", harvest: "peppers2.png", grow1: "pepperGrow1.png", grow2: "pepperGrow2.png", stored: 0, withered: "peppersWithered.png" },
-        { name: "Corn  ", cost: 15, revenue: 35, time_to_ripe: 75, time_to_death: 100, image: "corn.png", harvest: "corn2.png", grow1: "cornGrow1.png", grow2: "cornGrow2.png", stored: 0, withered: "cornWithered.png" },
-        { name: "Hay  ", cost: 5, revenue: 10, time_to_ripe: 25, time_to_death: 280, image: "hay.png", harvest: "hayCartFull.png", grow1: "hayGrow1.png", grow2: "hayGrow2.png", stored: 0, withered: "hayWithered.png" },
-        { name: "Milk  ", cost: 12, revenue: 30, time_to_ripe: 60, time_to_death: 22280, image: "milk.png", harvest: "milk.png", grow1: "milk.png", grow2: "milk.png", stored: 0, withered: "tomatoWithered.png" },
-        { name: "Apple", cost: 10, revenue: 25, time_to_ripe: 50, time_to_death: 140, image: "Orchard/ready_Apples.png", harvest: "apple.png", grow1: "Orchard/growing2_trees.png", grow2: "Orchard/growing3_trees.png", stored: 0, withered: "Orchard/wither_treesApple.png" },
-        { name: "Pear", cost: 15, revenue: 35, time_to_ripe: 60, time_to_death: 140, image: "Orchard/ready_treesPear.png", harvest: "pear.png", grow1: "Orchard/growing22_trees.png", grow2: "Orchard/growing4_trees.png", stored: 0, withered: "Orchard/wither_treesPear.png" },
-        { name: "Pork", cost: 20, revenue: 40, time_to_ripe: 60, time_to_death: 140, image: "livestockPens/hams.png", harvest: "livestockPens/hams.png", grow1: "livestockPens/hams.png", grow2: "livestockPens/hams.png", stored: 0, withered: "tomatoWithered.png" },
-        { name: "Eggs", cost: 5, revenue: 10, time_to_ripe: 60, time_to_death: 140, image: "livestockPens/eggs.png", harvest: "livestockPens/eggs.png", grow1: "livestockPens/eggs.png", grow2: "livestockPens/eggs.png", stored: 0, withered: "tomatoWithered.png" },
-        { name: "Grapes", cost: 10, revenue: 20, time_to_ripe: 50, time_to_death: 140, image: "vinyard/grapes_ready.png", harvest: "vinyard/grapes2.png", grow1: "vinyard/grapes_Grow1.png", grow2: "vinyard/grapes_Grow2.png", stored: 0, withered: "vinyard/grapes_withered.png" },
-        { name: "Jelly", cost: 30, revenue: 40, time_to_ripe: 60, time_to_death: 140, image: "vinyard/jelly.png", harvest: "vinyard/jelly.png", grow1: "vinyard/jelly.png", grow2: "vinyard/jelly.png", stored: 0 },
+        { name: "Tomatoes  ", cost: 4, revenue: 8, time_to_ripe: 35, time_to_death: 35, image: "tomato.png", harvest: "tomato2.png", grow1: "tomatoGrow1.png", grow2: "tomatoGrow2.png", stored: 0, withered: "tomatoWithered.png" },
+        { name: "Carrots    ", cost: 6, revenue: 12, time_to_ripe: 40, time_to_death: 35, image: "carrots.png", harvest: "carrots2.png", grow1: "carrotGrow1.png", grow2: "carrotGrow2.png", stored: 0, withered: "carrotsWithered.png" },
+        { name: "Artichoke  ", cost: 8, revenue: 16, time_to_ripe: 45, time_to_death: 40, image: "artichoke.png", harvest: "artichoke2.png", grow1: "artiGrow1.png", grow2: "artiGrow2.png", stored: 0, withered: "artichokeWithered.png" },
+        { name: "Eggplant ", cost: 11, revenue: 22, time_to_ripe: 50, time_to_death: 40, image: "eggplant.png", harvest: "eggplant2.png", grow1: "eggplantGrow1.png", grow2: "eggplantGrow2.png", stored: 0, withered: "eggplantWithered.png" },
+        { name: "Peppers  ", cost: 13, revenue: 24, time_to_ripe: 55, time_to_death: 50, image: "peppers.png", harvest: "peppers2.png", grow1: "pepperGrow1.png", grow2: "pepperGrow2.png", stored: 0, withered: "peppersWithered.png" },
+        { name: "Corn  ", cost: 15, revenue: 28, time_to_ripe: 60, time_to_death: 50, image: "corn.png", harvest: "corn2.png", grow1: "cornGrow1.png", grow2: "cornGrow2.png", stored: 0, withered: "cornWithered.png" },
+        { name: "Hay  ", cost: 5, revenue: 10, time_to_ripe: 35, time_to_death: 280, image: "hay.png", harvest: "hayCartFull.png", grow1: "hayGrow1.png", grow2: "hayGrow2.png", stored: 0, withered: "hayWithered.png" },
+        { name: "Milk  ", cost: 12, revenue: 22, time_to_ripe: 65, time_to_death: 22280, image: "milk.png", harvest: "milk.png", grow1: "milk.png", grow2: "milk.png", stored: 0, withered: "tomatoWithered.png" },
+        { name: "Apple", cost: 10, revenue: 25, time_to_ripe: 80, time_to_death: 60, image: "Orchard/ready_Apples.png", harvest: "apple.png", grow1: "Orchard/growing2_trees.png", grow2: "Orchard/growing3_trees.png", stored: 0, withered: "Orchard/wither_treesApple.png" },
+        { name: "Pear", cost: 15, revenue: 30, time_to_ripe: 90, time_to_death: 60, image: "Orchard/ready_treesPear.png", harvest: "pear.png", grow1: "Orchard/growing22_trees.png", grow2: "Orchard/growing4_trees.png", stored: 0, withered: "Orchard/wither_treesPear.png" },
+        { name: "Pork", cost: 20, revenue: 35, time_to_ripe: 70, time_to_death: 140, image: "livestockPens/hams.png", harvest: "livestockPens/hams.png", grow1: "livestockPens/hams.png", grow2: "livestockPens/hams.png", stored: 0, withered: "tomatoWithered.png" },
+        { name: "Eggs", cost: 5, revenue: 10, time_to_ripe: 70, time_to_death: 140, image: "livestockPens/eggs.png", harvest: "livestockPens/eggs.png", grow1: "livestockPens/eggs.png", grow2: "livestockPens/eggs.png", stored: 0, withered: "tomatoWithered.png" },
+        { name: "Grapes", cost: 15, revenue: 25, time_to_ripe: 60, time_to_death: 60, image: "vinyard/grapes_ready.png", harvest: "vinyard/grapes2.png", grow1: "vinyard/grapes_Grow1.png", grow2: "vinyard/grapes_Grow2.png", stored: 0, withered: "vinyard/grapes_withered.png" },
+        { name: "Jelly", cost: 30, revenue: 35, time_to_ripe: 75, time_to_death: 140, image: "vinyard/jelly.png", harvest: "vinyard/jelly.png", grow1: "vinyard/jelly.png", grow2: "vinyard/jelly.png", stored: 0 },
 
     ];
 
@@ -1611,7 +1619,7 @@ farming.start = function () {
         { name: "yard", image: "grass.png" },
         { name: "road", image: "vertRoad.png" },
         { name: "sacks", image: "sacks.png" },
-        { name: "market", image: "marketCoin.png" },
+        { name: "market", image: "marketCoin.png" }, 
         { name: "vertFence", image: "vertFence.png" },
         { name: "horizFence", image: "horizFence.png" },
         { name: "shelter1", image: "shelter1.png" },
@@ -1626,7 +1634,8 @@ farming.start = function () {
         { name: "horizRoad", image: "horizRoad.png" },
         { name: "toolTable", image: "toolTable.png" },
         { name: "forge", image: "forge1.png" },
-        { name: "gateFence", image: "gateFence.png" }
+        { name: "gateFence", image: "gateFence.png" },
+        { name: "marketArrow", image: "marketCoinArrow.png" },
 
     ];
     a.barnlevelImg = [
@@ -2157,7 +2166,25 @@ farming.start = function () {
     f.appendChild(z);
 
     ///market control
-    var market = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(205, a.height - a.controlsLayer_h - 4).setSize(103, 65).setFill("images/" + a.barnyard[3].image); f.appendChild(market)
+    var market = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(205, a.height - a.controlsLayer_h - 4).setSize(103, 65).setFill("images/" + a.barnyard[3].image);
+    var tickHighlight = 0;
+    setInterval(function () {
+
+        var showHighlight2 = localStorage.getItem('showHighLight')
+        console.log("showHighlight = " + showHighlight2)
+       
+        if (showHighlight2 == 1) {
+            tickHighlight++;
+            console.log("tickHighlight = " + tickHighlight);
+            if (tickHighlight == 1) { market.setFill("images/marketCoinArrow.png");   }
+            if (tickHighlight == 2) {   market.setFill("images/marketCoin.png"); tickHighlight = 0; }
+           
+        }
+        else { market.setFill("images/marketCoin.png");}
+   
+    }, 500)
+   
+    f.appendChild(market)
     goog.events.listen(market, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
             a.sceneBefore = 1;
@@ -2236,7 +2263,9 @@ farming.start = function () {
 	goog.events.listen(speedAd, ["mousedown", "touchstart"], function () {
 			console.log("clicked it");
 			  boostCrops.setHidden(false);
-			  homeBlock.setHidden(false);
+              homeBlock.setHidden(false);
+              starCashCountBoost.setText(starCash);
+
 		       
 	});
 	
@@ -2448,21 +2477,43 @@ farming.start = function () {
         return;
     }, true, this);
     if (tutSeen == 1) { homeBlock.setHidden(true); }
-		var boostCrops = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(50, 150).setSize(200, 200).setFill("images/UI/cropBoostBack.png");
+
+    ///crop boost modal
+    var boostCrops = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(50, 170).setSize(200, 200).setFill("images/UI/cropBoostBack.png");
 	   e.appendChild(boostCrops);
-	   boostCrops.setHidden(true);
-	var speedAdConfirm =(new lime.GlossyButton).setColor("#00FF00").setText("Confirm").setPosition(155, 165).setSize(60, 30).setOpacity(.8);
-	boostCrops.appendChild(speedAdConfirm);
-	var speedAdCancel =(new lime.GlossyButton).setColor("#8B0000").setText("Cancel").setPosition(45, 165).setSize(60, 30).setOpacity(.8);
-	boostCrops.appendChild(speedAdCancel);
-	
+       boostCrops.setHidden(true);
+       var starCashCountBoost = (new lime.Label).setText(starCash).setPosition(105, 22).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#000F00").setFontWeight(600).setFontSize(20).setFontFamily("ComicSans MS");
+     boostCrops.appendChild(starCashCountBoost);
+	var speedAdConfirm =(new lime.GlossyButton).setColor("#00FF00").setText("View Ad").setPosition(60, 160).setSize(80, 32);
+    boostCrops.appendChild(speedAdConfirm);
+
+    var speedAdConfirmSC = (new lime.GlossyButton).setColor("#00FF00").setText("-       ").setPosition(155, 160).setSize(65, 32);
+    boostCrops.appendChild(speedAdConfirmSC);
+    var starCashBoost = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-5, -17).setSize(35, 35).setFill("images/UI/plus5StarCash.png");
+    speedAdConfirmSC.appendChild(starCashBoost);
+	var speedAdCancel =(new lime.GlossyButton).setColor("#8B0000").setText("").setPosition(105, 205).setSize(40, 40);
+    boostCrops.appendChild(speedAdCancel);
+    var cancelBoostImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-20, -20).setSize(40, 40).setFill("images/UI/XButton.png");
+    speedAdCancel.appendChild(cancelBoostImg);
 
 		goog.events.listen(speedAdConfirm, ["mousedown", "touchstart"], function () {
-			console.log("clicked confirm");
+			//console.log("clicked confirm");
 			localStorage.setItem('MedFarm_LoadAd', 1);
 			boostCrops.setHidden(true);
 			homeBlock.setHidden(true);
-       	});
+        });
+        goog.events.listen(speedAdConfirmSC, ["mousedown", "touchstart"], function () {
+            //console.log("clicked confirm SC");
+            if (starCash >= 5){
+                adWatched2 = 1;
+                localStorage.setItem('adWatched', 1)
+                starCash = starCash - 5;
+                boostCrops.setHidden(true);
+                homeBlock.setHidden(true);
+            }
+            
+           
+        });
 		goog.events.listen(speedAdCancel, ["mousedown", "touchstart"], function () {
 			console.log("clicked cancel");
 			boostCrops.setHidden(true);
@@ -2653,7 +2704,7 @@ farming.start = function () {
     ///For Sale confirm modal
     var confirmSale = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(45, 140).setSize(210, 220).setFill("images/UI/saleBack.png");
     e.appendChild(confirmSale);
-    var confirmText = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000000").setPosition(45, 145).setSize(135, 60).setFontSize(20).setText("Dairy Farm 2500");
+    var confirmText = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000000").setPosition(45, 148).setSize(135, 60).setFontSize(20).setText("Dairy Farm 2500");
     confirmSale.appendChild(confirmText);
     var confirmCoin = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(50, 160).setSize(30, 30).setFill(imgArray11[0]);
     confirmSale.appendChild(confirmCoin);
@@ -2763,8 +2814,8 @@ farming.start = function () {
             globalModalBlock = 1;
             a.updateMoney();
             homeBlock.setHidden(false); confirmSale.setHidden(false);
-            if (parseInt(player.money) >= 2500) { confirmTextSub.setHidden(true); confirmBtn.setHidden(false); } else { confirmBtn.setHidden(true); };
-            confirmText.setText("Fruit Orchard 2500");
+            if (parseInt(player.money) >= 5000) { confirmTextSub.setHidden(true); confirmBtn.setHidden(false); } else { confirmBtn.setHidden(true); };
+            confirmText.setText("Fruit Orchard 5000");
         }
     });
 
@@ -3729,8 +3780,8 @@ farming.start = function () {
             globalModalBlock = 1;
             fsClicked = 3;
             pastureBlock.setHidden(false); confirmSaleV.setHidden(false);
-            if (player.money >= 7500) { confirmTextSubV.setHidden(true); confirmBtnV.setHidden(false); } else { confirmBtnV.setHidden(true); };
-            confirmTextV.setText("Vineyard         7500");
+            if (player.money >= 10000) { confirmTextSubV.setHidden(true); confirmBtnV.setHidden(false); } else { confirmBtnV.setHidden(true); };
+            confirmTextV.setText("Vineyard         10,000");
         }
 
     });
@@ -4901,6 +4952,22 @@ farming.start = function () {
         }
     }, false);
 
+    document.getElementById("viewAdImg").addEventListener("click", function () {
+        if (starCash >= 10) {
+            localStorage.setItem('MedFarm_LoadAd', 1);
+            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+            starCash = starCash + 5;
+      
+            localStorage.setItem('starCash', starCash);
+            document.getElementById("starCashOuterLabel").innerHTML = starCash;
+            document.getElementById("sucessbuyTxt").innerHTML = '+ 5 Stars';
+            document.getElementById("sucessbuyTxt").style.display = 'block';
+            setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 1000);
+
+
+        }
+    }, false);
+
 
 
     document.getElementById("closeFB").addEventListener("touchstart", function () {
@@ -5266,7 +5333,7 @@ farming.start = function () {
         }
         else if (player.cropsStored[crop].stored > 0 && visibleCheck) {
             cropSaleCrop = parseInt(crop);
-
+            
 
             cropSaleTotal = player.cropsStored[crop].stored;
             cropSaleCurrent = player.cropsStored[crop].stored;
@@ -5320,6 +5387,7 @@ farming.start = function () {
         if (!isNaN(checkIT)) { player.money = player.money + cropSaleCurrentPrice; }
     
         moneyEver = moneyEver + cropSaleCurrentPrice;
+        localStorage.setItem('showHighLight', 0);
         localStorage["GuiGhostFarms_moneyEver"] = moneyEver;
         purchaseSound.play();
         howManyBack.setHidden(true);
@@ -7135,7 +7203,7 @@ farming.start = function () {
                 upCloudXHo = upCloudXHo - 5;
                 upCloudYHo = upCloudYHo - 5
                 if (upCloudXHo < -140) { upCloudXHo = -130; upCloudYHo = -100; upCloudWHo = 200; }
-
+           
 
             }, this, 250, 360)
                                
@@ -7786,7 +7854,7 @@ farming.start = function () {
 
 
     //house upgrade confirms//
-    var confirmSaleHouse = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 2 - 67, 130).setSize(130, 130).setFill('images/UI/blankBack4.png');
+    var confirmSaleHouse = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 2 - 67, 195).setSize(130, 130).setFill('images/UI/blankBack4.png');
     houseLayer.appendChild(confirmSaleHouse);
 
     confirmSaleHouse.setHidden(true);
@@ -8039,16 +8107,17 @@ farming.start = function () {
                         globalModalBlock = 0;
                         homeBlock.setHidden(true); 
                     }
-                    else if (starCashIsUp == 'block') { globalModalBlock = 1; }
+                    else if (starCashIsUp == 'block') { globalModalBlock = 1; };
 
+        
 
                 }, this, 500)
           
            
     
                 document.getElementById("starCashOuterLabel").innerHTML = starCash;
-
-
+    
+ 
    
                
     //////end of farming.start
