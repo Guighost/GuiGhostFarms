@@ -2171,7 +2171,7 @@ farming.start = function () {
     setInterval(function () {
 
         var showHighlight2 = localStorage.getItem('showHighLight')
-        console.log("showHighlight = " + showHighlight2)
+        //console.log("showHighlight = " + showHighlight2)
        
         if (showHighlight2 == 1) {
             tickHighlight++;
@@ -4954,6 +4954,7 @@ farming.start = function () {
 
     document.getElementById("viewAdImg").addEventListener("click", function () {
         if (starCash >= 10) {
+            console.log("clicked")
             localStorage.setItem('MedFarm_LoadAd', 1);
             localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
             starCash = starCash + 5;
