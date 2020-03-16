@@ -536,7 +536,8 @@ var tid = setInterval(interPop, 240000);
 function interPop() {
 
 if(showItOrNo == 1 ){
-	Enhance.isInterstitialReady(callback);
+    try { Enhance.isInterstitialReady(callback); }
+    catch (err) { console.log("Caught error " + err) }
 showItOrNo = 0;
  }
 else {showItOrNo = 1;}
