@@ -764,6 +764,8 @@ imgArray5[4] = new Image(); imgArray5[4].src = 'images/UI/tut5.png'
 imgArray5[5] = new Image(); imgArray5[5].src = 'images/UI/tut6.png'
 imgArray5[6] = new Image(); imgArray5[6].src = 'images/UI/tut7.png'
 imgArray5[7] = new Image(); imgArray5[7].src = 'images/UI/tut8.png'
+imgArray5[8] = new Image(); imgArray5[7].src = 'images/UI/tut9.png'
+imgArray5[9] = new Image(); imgArray5[7].src = 'images/UI/tut10.png'
 
 //barn upgrades
 var imgArray6 = new Array();
@@ -2282,7 +2284,7 @@ farming.start = function () {
     var forge = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(4, 52).setSize(84, 99).setFill("images/" + a.barnyard[17].image); e.appendChild(forge);
     var anvil1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(65, 89).setSize(22, 22).setFill("images/" + a.barnyard[12].image); e.appendChild(anvil1);
     var toolTable = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 111).setSize(19, 22).setFill("images/" + a.barnyard[16].image); e.appendChild(toolTable);
-    var barn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(87, 4).setSize(132, 155).setFill("images/" + a.barnlevelImg[(player.barnLevel - 1)].image); e.appendChild(barn);
+    var barn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(87.5, 4).setSize(132, 155).setFill("images/" + a.barnlevelImg[(player.barnLevel - 1)].image); e.appendChild(barn);
     var houseImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(238, 20).setSize(60, 98).setFill("images/house1.png"); e.appendChild(houseImg);
     var houseEnterBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(251, 115).setSize(30, 30).setFill("images/UI/houseButton.png"); e.appendChild(houseEnterBtn);
     var blacksmith = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(50, 75).setSize(26, 26).setFill("images/blacksmith2.png"); e.appendChild(blacksmith);
@@ -2379,7 +2381,7 @@ farming.start = function () {
             }
         }
     var treeUnlockBtn = (new lime.GlossyButton).setColor("#4CFF33").setText("").setPosition(68, 353).setSize(120, 125).setOpacity(.8);
-    var treeUnlockBtn2 = (new lime.GlossyButton).setColor("#4CFF33").setText("").setPosition(240, 353).setSize(120, 130).setOpacity(.8);
+    var treeUnlockBtn2 = (new lime.GlossyButton).setColor("#4CFF33").setText("").setPosition(241, 353).setSize(120, 125).setOpacity(.8);
 
     //var barnUnlock2 = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#E8FC08").setPosition(65, 105).setSize(180, 80).setFontWeight(600).setText(" 100 ");
     var barnUnlock3 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(136, 69).setSize(38, 35).setFill("images/tools100.png");
@@ -2406,7 +2408,7 @@ farming.start = function () {
 
     var toolMoverLabel = (new lime.Label).setText("60").setPosition(155, 127).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("ComicSans MS").setFill("images/countBack.png");
     var toolMover = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-22, -50).setSize(50, 50).setFill("images/toolHammer.png");
-    var barnUnlock = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#E8FC08").setPosition(117, 145).setSize(70, 16).setFontSize(16).setFontWeight(600).setText("Lvl " + player.barnLevel + "/5").setFill("images/UI/greenButtonLg.png");
+    var barnUnlock = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#E8FC08").setPosition(117, 145).setSize(70, 16).setFontSize(16).setFontWeight(600).setText("Lvl " + player.barnLevel + "/5").setFill("images/UI/greenButtonLg3.png");
     e.appendChild(barnUnlock);
     e.appendChild(toolMoverLabel);
     toolMoverLabel.appendChild(toolMover);
@@ -2556,12 +2558,12 @@ farming.start = function () {
         swipeRightHint2.setHidden(true);
         swipeRightHint.setHidden(true);
 
-        if (tutStep <= 7) {
+        if (tutStep <= 10) {
             tutModal.setFill(imgArray5[tutStep]);
         }
 
   
-        if (tutStep > 7) {
+        if (tutStep > 10) {
             tutSeen = 1;
             tutModal.setHidden(true);
             removeAdsBack.setHidden(true);
