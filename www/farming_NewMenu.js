@@ -3140,7 +3140,7 @@ farming.start = function () {
                             })
 
 
-                    }(g, f),
+                    }(backSeed, f),
                     ///added by GG for handler of labels
                     function (y, e) {
                         goog.events.listen(y, ["mousedown", "touchstart"],
