@@ -1601,7 +1601,7 @@ var warningSeen = 0;
 
 farming.start = function () {
 
-    var a = { width: 310, height: 540, tile_size: 30, num_tiles_x: 4, num_tiles_y: 4, landLayer_w: 320, landLayer_h: 388, controlsLayer_w: 320, controlsLayer_h: 70, costPlowing: 0, shop_margin_x: 50, shop_margin_y: 35 },
+    var a = { width: 310, height: 540, tile_size: 30, num_tiles_x: 4, num_tiles_y: 4, landLayer_w: 320, landLayer_h: 388, controlsLayer_w: 320, controlsLayer_h: 70, costPlowing: 0, shop_margin_x: 50, shop_margin_y: 38 },
         b = { money: 500, currentCrop: 0 };
 
     a.crops = [
@@ -2762,7 +2762,7 @@ farming.start = function () {
     }
 
     ///remove ads modal
-    var removeAdsBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(15, 105).setSize(275, 250).setFill("images/UI/blankBack3.png");
+    var removeAdsBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(15, 105).setSize(275, 250).setFill("images/UI/blankBack4.png");
     e.appendChild(removeAdsBack);
     var removeAdsText = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(20, 15).setSize(230, 60).setFontSize(18).setText("Swipe in from the left opens the Game Menu");
     removeAdsBack.appendChild(removeAdsText);
@@ -2777,7 +2777,7 @@ farming.start = function () {
 
 
     ///Crop Unlock Modal
-    var unlockedCropBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 150).setSize(250, 250).setFill("images/UI/blankBack2.png");
+    var unlockedCropBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 150).setSize(250, 250).setFill("images/UI/blankBack4.png");
     e.appendChild(unlockedCropBack);
     var unlockedCropText = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(10, 105).setSize(230, 60).setFontSize(18).setText("NEW SEEDS TO PLANT!");
     unlockedCropBack.appendChild(unlockedCropText);
@@ -3092,13 +3092,13 @@ farming.start = function () {
         f = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#0D0D0D");
     e.appendChild(f);
     l.appendChild(e);
-    f = (new lime.GlossyButton).setColor("#1ce636").setText("Back").setPosition(a.width / 2, a.height - 25).setSize(80, 40);
+    f = (new lime.GlossyButton).setColor("#1ce636").setText("Back").setPosition(a.width / 2, a.height - 20).setSize(80, 35);
     e.appendChild(f);
-    seedSceneBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, 40).setFill("#8b008b");
+    seedSceneBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, 40).setFill("images/UI/greenButtonLg.png");
     e.appendChild(seedSceneBack);
-    seedSceneLabel = (new lime.Label).setText("Change Seeds to Plant ").setFontFamily("ComicSans MS").setFontColor("#E8FC08").setFontSize(20).setPosition(155, 12);
+    seedSceneLabel = (new lime.Label).setText("Change Seeds to Plant ").setFontFamily("ComicSans MS").setFontColor("#E8FC08").setFontSize(20).setPosition(155, 14);
     e.appendChild(seedSceneLabel);
-    seedSceneLabel2 = (new lime.Label).setText("Select image to plant that crop ").setFontFamily("ComicSans MS").setFontColor("#FFFFFF").setFontSize(12).setPosition(155, 31);
+    seedSceneLabel2 = (new lime.Label).setText("Select image to plant that crop ").setFontFamily("ComicSans MS").setFontColor("#E8FC08").setFontSize(12).setPosition(155, 28);
     e.appendChild(seedSceneLabel2);
     seedSceneSeeds1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 1).setSize(40, 40).setFill("images/grain.png");
     e.appendChild(seedSceneSeeds1);
@@ -3111,16 +3111,18 @@ farming.start = function () {
         if (globalModalBlock == 0) {
             c.replaceScene(l, lime.transitions.SlideInDown)
             for (f = 0; f < (player.barnLevel + 1); f++)
+                backSeed = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.shop_margin_x - 45, (a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + (f * 9) - (f * 1) + 15).setFill("images/UI/woodBtn.png").setSize(a.width - 10, 60),
+                    e.appendChild(backSeed),
                 g = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.shop_margin_x - 25, (a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + (f * 9) - (f * 1) + 17).setFill("images/" + a.crops[f].harvest).setSize(35, 35),
                     e.appendChild(g),
-
-                    i = (new lime.Label).setText(a.crops[f].name + " (" + a.crops[f].time_to_ripe + " days) ").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontSize(22).setPosition(a.shop_margin_x + 130, (1.4 * a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + (f * 7) - (f * 1) + 17),
+                  
+                    i = (new lime.Label).setText(a.crops[f].name + " (" + a.crops[f].time_to_ripe + " days) ").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontSize(20).setPosition(a.shop_margin_x + 130, (1.4 * a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + (f * 7) - (f * 1) + 20 + (f * 1)),
                     e.appendChild(i),
-                    i2 = (new lime.Label).setText("   -" + a.crops[f].cost + " ").setFontFamily("Comic Sans MS").setFontColor("#FFFFFF").setFill("#C14825").setFontSize(18).setPosition(a.shop_margin_x + 79, (2.1 * a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + ((f * 9) - f) + 17),
+                    i2 = (new lime.Label).setText("   -" + a.crops[f].cost + " ").setFontFamily("Comic Sans MS").setFontColor("#FFFFFF").setFontSize(18).setPosition(a.shop_margin_x + 79, (2.1 * a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + ((f * 9) - f) + 24),
                     e.appendChild(i2),
-                    i3 = (new lime.Sprite).setSize(30, 30).setFill(imgArray11[0]).setPosition(a.shop_margin_x + 58, (2.1 * a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + ((f * 9) - f) + 15),
+                    i3 = (new lime.Sprite).setSize(30, 30).setFill(imgArray11[0]).setPosition(a.shop_margin_x + 58, (2.1 * a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + ((f * 9) - f) + 15) ,
                     e.appendChild(i3),
-                    i4 = (new lime.Label).setText("   +" + a.crops[f].revenue + " ").setFontFamily("Comic Sans MS").setFontColor("#FFFFFF").setFill("#25C12A").setFontSize(18).setPosition(a.shop_margin_x + 190, (2.1 * a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + ((f * 9) - f) + 17),
+                    i4 = (new lime.Label).setText("   +" + a.crops[f].revenue + " ").setFontFamily("Comic Sans MS").setFontColor("#FFFFFF").setFontSize(18).setPosition(a.shop_margin_x + 190, (2.1 * a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + ((f * 9) - f) + 24),
                     e.appendChild(i4),
                     i5 = (new lime.Sprite).setSize(30, 30).setFill(imgArray11[0]).setPosition(a.shop_margin_x + 170, (2.1 * a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + ((f * 9) - f) + 15),
                     e.appendChild(i5),
@@ -5223,7 +5225,7 @@ farming.start = function () {
     var cropSaleCurrentPrice = 0;
     var howManyBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("images/UI/blocker.png");
     marketLayer.appendChild(howManyBack);
-    var howMany = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 150).setSize(250, 250).setFill("images/UI/blankBack2.png");
+    var howMany = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 150).setSize(250, 250).setFill("images/UI/blankBack4.png");
     howManyBack.appendChild(howMany);
     var howManyLabel1 = (new lime.Label).setText("$ Sell Crop $").setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(26).setPosition(125, 90);
     howMany.appendChild(howManyLabel1);
@@ -7018,99 +7020,99 @@ farming.start = function () {
     backBtnAchieve = (new lime.GlossyButton).setColor("#1ce636").setText("Back").setPosition(a.width / 2, a.height - 20).setSize(80, 40);
     achieveLayer.appendChild(backBtnAchieve);
 
-    var achieve1 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(9, 80).setFill("images/UI/achieveTile.png").setSize(142, 40); achieveLayer.appendChild(achieve1);
+    var achieve1 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(9, 80).setFill("images/UI/woodBtn.png").setSize(142, 40); achieveLayer.appendChild(achieve1);
     var achieve1Label = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(75, 85).setText("Harvester I").setSize(152, 40); achieveLayer.appendChild(achieve1Label);
     var achieve1Label2 = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setFontSize(11).setPosition(80, 108).setText("Harvest 500 crops").setSize(152, 40); achieveLayer.appendChild(achieve1Label2);
     var achieve1Star = (new lime.Sprite).setAnchorPoint(0.0).setPosition(120, 80).setFill("images/UI/plus5StarCash.png").setSize(30, 29.5); achieveLayer.appendChild(achieve1Star);
     var achieve1Check = (new lime.Sprite).setAnchorPoint(0.0).setPosition(10, 85).setFill("images/UI/check.png").setSize(16, 16); achieveLayer.appendChild(achieve1Check);
 
-    var achieve2 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(9, 125).setFill("images/UI/achieveTile.png").setSize(142, 40); achieveLayer.appendChild(achieve2);
+    var achieve2 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(9, 125).setFill("images/UI/woodBtn.png").setSize(142, 40); achieveLayer.appendChild(achieve2);
     var achieve2Label = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(75, 130).setText("Harvester II").setSize(152, 40); achieveLayer.appendChild(achieve2Label);
     var achieve2Label2 = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(80, 153).setFontSize(11).setText("Harvest 5000 crops").setSize(152, 40); achieveLayer.appendChild(achieve2Label2);
     var achieve2Star = (new lime.Sprite).setAnchorPoint(0.0).setPosition(120, 125).setFill("images/UI/plus10StarCash.png").setSize(30, 29.5); achieveLayer.appendChild(achieve2Star);
     var achieve2Check = (new lime.Sprite).setAnchorPoint(0.0).setPosition(10, 130).setFill("images/UI/check.png").setSize(16, 16); achieveLayer.appendChild(achieve2Check);
 
-    var achieve3 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(9, 170).setFill("images/UI/achieveTile.png").setSize(142, 40); achieveLayer.appendChild(achieve3);
+    var achieve3 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(9, 170).setFill("images/UI/woodBtn.png").setSize(142, 40); achieveLayer.appendChild(achieve3);
     var achieve3Label = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(75, 175).setText("Expansion").setSize(152, 40); achieveLayer.appendChild(achieve3Label);
     var achieve3Label2 = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(80, 198).setFontSize(11).setText("Purchase another Acre").setSize(152, 40); achieveLayer.appendChild(achieve3Label2);
     var achieve3Star = (new lime.Sprite).setAnchorPoint(0.0).setPosition(120, 170).setFill("images/UI/plus5StarCash.png").setSize(30, 29.5); achieveLayer.appendChild(achieve3Star);
     var achieve3Check = (new lime.Sprite).setAnchorPoint(0.0).setPosition(10, 175).setFill("images/UI/check.png").setSize(16, 16); achieveLayer.appendChild(achieve3Check);
 
-    var achieve4 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(9, 215).setFill("images/UI/achieveTile.png").setSize(142, 40); achieveLayer.appendChild(achieve4);
+    var achieve4 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(9, 215).setFill("images/UI/woodBtn.png").setSize(142, 40); achieveLayer.appendChild(achieve4);
     var achieve4Label = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(75, 220).setText("Carpenter").setSize(152, 40); achieveLayer.appendChild(achieve4Label);
     var achieve4Label2 = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(80, 243).setFontSize(11).setText("Upgrade Barn to Max").setSize(152, 40); achieveLayer.appendChild(achieve4Label2);
     var achieve4Star = (new lime.Sprite).setAnchorPoint(0.0).setPosition(120, 215).setFill("images/UI/plus10StarCash.png").setSize(30, 29.5); achieveLayer.appendChild(achieve4Star);
     var achieve4Check = (new lime.Sprite).setAnchorPoint(0.0).setPosition(10, 220).setFill("images/UI/check.png").setSize(16, 16); achieveLayer.appendChild(achieve4Check);
 
 
-    var achieve5 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(157, 80).setFill("images/UI/achieveTile.png").setSize(142, 40); achieveLayer.appendChild(achieve5);
+    var achieve5 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(157, 80).setFill("images/UI/woodBtn.png").setSize(142, 40); achieveLayer.appendChild(achieve5);
     var achieve5Label = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(220, 85).setText("Blacksmith I").setSize(152, 40); achieveLayer.appendChild(achieve5Label);
     var achieve5Label2 = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(226, 108).setFontSize(11).setText("Collect 500 Tools").setSize(152, 40); achieveLayer.appendChild(achieve5Label2);
     var achieve5Star = (new lime.Sprite).setAnchorPoint(0.0).setPosition(266, 80).setFill("images/UI/plus5StarCash.png").setSize(30, 29.5); achieveLayer.appendChild(achieve5Star);
     var achieve5Check = (new lime.Sprite).setAnchorPoint(0.0).setPosition(158, 85).setFill("images/UI/check.png").setSize(16, 16); achieveLayer.appendChild(achieve5Check);
 
-    var achieve6 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(157, 125).setFill("images/UI/achieveTile.png").setSize(142, 40); achieveLayer.appendChild(achieve6);
+    var achieve6 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(157, 125).setFill("images/UI/woodBtn.png").setSize(142, 40); achieveLayer.appendChild(achieve6);
     var achieve6Label = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(220, 130).setText("Blacksmith II").setSize(152, 40); achieveLayer.appendChild(achieve6Label);
     var achieve6Label2 = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(226, 153).setFontSize(11).setText("Collect 5000 Tools").setSize(152, 40); achieveLayer.appendChild(achieve6Label2);
     var achieve6Star = (new lime.Sprite).setAnchorPoint(0.0).setPosition(266, 125).setFill("images/UI/plus10StarCash.png").setSize(30, 29.5); achieveLayer.appendChild(achieve6Star);
     var achieve6Check = (new lime.Sprite).setAnchorPoint(0.0).setPosition(158, 130).setFill("images/UI/check.png").setSize(16, 16); achieveLayer.appendChild(achieve6Check);
 
-    var achieve7 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(157, 170).setFill("images/UI/achieveTile.png").setSize(142, 40); achieveLayer.appendChild(achieve7);
+    var achieve7 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(157, 170).setFill("images/UI/woodBtn.png").setSize(142, 40); achieveLayer.appendChild(achieve7);
     var achieve7Label = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(220, 175).setText("Patience").setSize(152, 40); achieveLayer.appendChild(achieve7Label);
     var achieve7Label2 = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(226, 198).setFontSize(11).setText("Play for 1 Farm Year").setSize(152, 40); achieveLayer.appendChild(achieve7Label2);
     var achieve7Star = (new lime.Sprite).setAnchorPoint(0.0).setPosition(266, 170).setFill("images/UI/plus5StarCash.png").setSize(30, 29.5); achieveLayer.appendChild(achieve7Star);
     var achieve7Check = (new lime.Sprite).setAnchorPoint(0.0).setPosition(158, 175).setFill("images/UI/check.png").setSize(16, 16); achieveLayer.appendChild(achieve7Check);
 
-    var achieve8 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(157, 215).setFill("images/UI/achieveTile.png").setSize(142, 40); achieveLayer.appendChild(achieve8);
+    var achieve8 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(157, 215).setFill("images/UI/woodBtn.png").setSize(142, 40); achieveLayer.appendChild(achieve8);
     var achieve8Label = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(220, 220).setText("Acreage").setSize(152, 40); achieveLayer.appendChild(achieve8Label);
     var achieve8Label2 = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(226, 243).setFontSize(11).setText("Own all 5 Acres").setSize(152, 40); achieveLayer.appendChild(achieve8Label2);
     var achieve8Star = (new lime.Sprite).setAnchorPoint(0.0).setPosition(266, 215).setFill("images/UI/plus10StarCash.png").setSize(30, 29.5); achieveLayer.appendChild(achieve8Star);
     var achieve8Check = (new lime.Sprite).setAnchorPoint(0.0).setPosition(158, 220).setFill("images/UI/check.png").setSize(16, 16); achieveLayer.appendChild(achieve8Check);
 
-    var achieve9 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(9, 260).setFill("images/UI/achieveTile.png").setSize(142, 40); achieveLayer.appendChild(achieve9);
+    var achieve9 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(9, 260).setFill("images/UI/woodBtn.png").setSize(142, 40); achieveLayer.appendChild(achieve9);
     var achieve9Label = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(75, 265).setText("Jelly Making").setSize(152, 40); achieveLayer.appendChild(achieve9Label);
     var achieve9Label2 = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(80, 288).setFontSize(11).setText("Unlock Jelly Making").setSize(152, 40); achieveLayer.appendChild(achieve9Label2);
     var achieve9Star = (new lime.Sprite).setAnchorPoint(0.0).setPosition(120, 260).setFill("images/UI/plus10StarCash.png").setSize(30, 29.5); achieveLayer.appendChild(achieve9Star);
     var achieve9Check = (new lime.Sprite).setAnchorPoint(0.0).setPosition(10, 265).setFill("images/UI/check.png").setSize(16, 16); achieveLayer.appendChild(achieve9Check);
 
-    var achieve10 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(9, 305).setFill("images/UI/achieveTile.png").setSize(142, 40); achieveLayer.appendChild(achieve10);
+    var achieve10 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(9, 305).setFill("images/UI/woodBtn.png").setSize(142, 40); achieveLayer.appendChild(achieve10);
     var achieve10Label = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(75, 310).setText("Lumberjack").setSize(152, 40); achieveLayer.appendChild(achieve10Label);
     var achieve10Label2 = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(75, 332).setFontSize(11).setText("Clear all Forests").setSize(152, 40); achieveLayer.appendChild(achieve10Label2);
     var achieve10Star = (new lime.Sprite).setAnchorPoint(0.0).setPosition(120, 305).setFill("images/UI/plus10StarCash.png").setSize(30, 29.5); achieveLayer.appendChild(achieve10Star);
     var achieve10Check = (new lime.Sprite).setAnchorPoint(0.0).setPosition(10, 310).setFill("images/UI/check.png").setSize(16, 16); achieveLayer.appendChild(achieve10Check);
 
-    var achieve11 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(9, 350).setFill("images/UI/achieveTile.png").setSize(142, 40); achieveLayer.appendChild(achieve11);
+    var achieve11 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(9, 350).setFill("images/UI/woodBtn.png").setSize(142, 40); achieveLayer.appendChild(achieve11);
     var achieve11Label = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(67, 355).setText("Breakfast Time").setSize(152, 40); achieveLayer.appendChild(achieve11Label);
     var achieve11Label2 = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(80, 378).setFontSize(11).setText("Obtain 100 Ham and Eggs").setSize(152, 40); achieveLayer.appendChild(achieve11Label2);
     var achieve11Star = (new lime.Sprite).setAnchorPoint(0.0).setPosition(120, 350).setFill("images/UI/plus5StarCash.png").setSize(30, 29.5); achieveLayer.appendChild(achieve11Star);
     var achieve11Check = (new lime.Sprite).setAnchorPoint(0.0).setPosition(10, 355).setFill("images/UI/check.png").setSize(16, 16); achieveLayer.appendChild(achieve11Check);
 
-    var achieve12 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(9, 395).setFill("images/UI/achieveTile.png").setSize(142, 40); achieveLayer.appendChild(achieve12);
+    var achieve12 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(9, 395).setFill("images/UI/woodBtn.png").setSize(142, 40); achieveLayer.appendChild(achieve12);
     var achieve12Label = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFill("#663300").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(72, 400).setText("Balanced Diet").setSize(152, 40); achieveLayer.appendChild(achieve12Label);
     var achieve12Label2 = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(75, 423).setFontSize(11).setText("Own 10 of each Crop").setSize(152, 40); achieveLayer.appendChild(achieve12Label2);
     var achieve12Star = (new lime.Sprite).setAnchorPoint(0.0).setPosition(120, 395).setFill("images/UI/plus10StarCash.png").setSize(30, 29.5); achieveLayer.appendChild(achieve12Star);
     var achieve12Check = (new lime.Sprite).setAnchorPoint(0.0).setPosition(10, 400).setFill("images/UI/check.png").setSize(16, 16); achieveLayer.appendChild(achieve12Check);
 
 
-    var achieve13 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(157, 260).setFill("images/UI/achieveTile.png").setSize(142, 40); achieveLayer.appendChild(achieve13);
+    var achieve13 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(157, 260).setFill("images/UI/woodBtn.png").setSize(142, 40); achieveLayer.appendChild(achieve13);
     var achieve13Label = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(224, 265).setText("Milk Master").setSize(152, 40); achieveLayer.appendChild(achieve13Label);
     var achieve13Label2 = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(226, 287).setFontSize(11).setText("Upgrade Dairy to Max").setSize(152, 40); achieveLayer.appendChild(achieve13Label2);
     var achieve13Star = (new lime.Sprite).setAnchorPoint(0.0).setPosition(266, 260).setFill("images/UI/plus5StarCash.png").setSize(30, 29.5); achieveLayer.appendChild(achieve13Star);
     var achieve13Check = (new lime.Sprite).setAnchorPoint(0.0).setPosition(158, 265).setFill("images/UI/check.png").setSize(16, 16); achieveLayer.appendChild(achieve13Check);
 
-    var achieve14 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(157, 305).setFill("images/UI/achieveTile.png").setSize(142, 40); achieveLayer.appendChild(achieve14);
+    var achieve14 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(157, 305).setFill("images/UI/woodBtn.png").setSize(142, 40); achieveLayer.appendChild(achieve14);
     var achieve14Label = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(220, 310).setText("Merchant").setSize(152, 40); achieveLayer.appendChild(achieve14Label);
     var achieve14Label2 = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(226, 332).setFontSize(11).setText("Earn $5000 at Market").setSize(152, 40); achieveLayer.appendChild(achieve14Label2);
     var achieve14Star = (new lime.Sprite).setAnchorPoint(0.0).setPosition(266, 305).setFill("images/UI/plus5StarCash.png").setSize(30, 29.5); achieveLayer.appendChild(achieve14Star);
     var achieve14Check = (new lime.Sprite).setAnchorPoint(0.0).setPosition(158, 310).setFill("images/UI/check.png").setSize(16, 16); achieveLayer.appendChild(achieve14Check);
 
-    var achieve15 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(157, 350).setFill("images/UI/achieveTile.png").setSize(142, 40); achieveLayer.appendChild(achieve15);
+    var achieve15 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(157, 350).setFill("images/UI/woodBtn.png").setSize(142, 40); achieveLayer.appendChild(achieve15);
     var achieve15Label = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(220, 355).setText("Cross-Over").setSize(152, 40); achieveLayer.appendChild(achieve15Label);
     var achieve15Label2 = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(226, 378).setFontSize(11).setText("Buy $ with StarCash").setSize(152, 40); achieveLayer.appendChild(achieve15Label2);
     var achieve15Star = (new lime.Sprite).setAnchorPoint(0.0).setPosition(266, 350).setFill("images/UI/plus10StarCash.png").setSize(30, 29.5); achieveLayer.appendChild(achieve15Star);
     var achieve15Check = (new lime.Sprite).setAnchorPoint(0.0).setPosition(158, 355).setFill("images/UI/check.png").setSize(16, 16); achieveLayer.appendChild(achieve15Check);
 
-    var achieve16 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(157, 395).setFill("images/UI/achieveTile.png").setSize(142, 40); achieveLayer.appendChild(achieve16);
+    var achieve16 = (new lime.Sprite).setAnchorPoint(0.0).setPosition(157, 395).setFill("images/UI/woodBtn.png").setSize(142, 40); achieveLayer.appendChild(achieve16);
     var achieve16Label = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(219, 400).setText("Back for More").setSize(152, 40); achieveLayer.appendChild(achieve16Label);
     var achieve16Label2 = (new lime.Label).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(226, 423).setFontSize(11).setText("Play for 10 Farm Years").setSize(152, 40); achieveLayer.appendChild(achieve16Label2);
     var achieve16Star = (new lime.Sprite).setAnchorPoint(0.0).setPosition(266, 395).setFill("images/UI/plus50StarCash.png").setSize(30, 29.5); achieveLayer.appendChild(achieve16Star);

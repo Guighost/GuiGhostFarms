@@ -5,9 +5,9 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; content="script-src 'unsafe-inline'; style-src 'unsafe-inline'"">
+        <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; content="script-src 'unsafe-inline'; style-src 'unsafe-inline'">
 
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+   
   <title>Medieval Farms - Farming Sim by GuiGhost Games</title>
     <style>
         .lime-scene {
@@ -108,20 +108,22 @@
 		}
 
         #fbshare {
-            background: linear-gradient(black, #8a2be2);
+            background-image: url( "images/UI/blankBack5.png");
             /*background-color: #8a2be2;*/
-            height: 350px;
-            width: 300px;
-            border: 4px solid #9e5a2a;
-            border-radius: 20px;
+            height: 370px;
+            width: 315px;
             position: absolute;
             left: 50%;
-            top: 125px;
-            transform: translate(-154px,0px);
+            top: 135px;
+            transform: translate(-160px,0px);
             display: none;
             font-family: 'Comic Sans MS';
             font-size: 14px;
             z-index: 2000;
+            background-size: contain;
+            background-repeat: no-repeat;
+
+
         }
 
         #closeFB {
@@ -160,7 +162,7 @@
         #outerStarCashImg {
             width: 150px;
             margin-left: 50%;
-            transform: translate(-75px,0px);
+            transform: translate(-75px,10px);
         }
 
         #starCashOuterLabel {
@@ -171,26 +173,27 @@
             text-align: center;
             left: 50%;
             z-index: 100;
-            transform: translate(0px,-10px);
+            transform: translate(0px,3px);
         }
 
         #currentStarCashBack, #currentStarCashBack2, #currentStarCashBack3 {
-            width: 280px;
+            width: 273px;
             height: 50px;
             font-family: 'Comic Sans MS';
             font-size: 16px;
             color: yellow;
            
-            margin-left: 10px;
-            margin-top: 10px;
+            margin-left: 18px;
+            margin-top: 16px;
             transform: translate(0px,-10px);
-            border: 1px groove azure;
+            border: 2px groove brown;
             border-radius: 5px;
-            background-color: saddlebrown;
+            background-color:darkgreen
+
      
         }
         #currentStarCashBack3 {
-            width: 275px;
+            width: 267px;
             height: 50px;
             text-align: left;
             padding-left: 5px;
@@ -271,55 +274,12 @@
             top: 78%;
         }
 
-        #inviteFB {
-            background-image: url('images/UI/inviteFB2.png');
-            background-size: contain;
-            width: 130px;
-            height: 40px;
-        }
 
-        #inviteText {
-            position: absolute;
-            left: 138px;
-            /*top: 100px;*/
-            width: 160px;
-            height: 60px;
-            transform: translate(0px,-40px);
-        }
-
-        #inviteImg2 {
-            position: absolute;
-            left: 135px;
-            transform: translate(0px,-70px);
-            background-image: url('images/UI/bonusStarCash.png');
-            background-size: contain;
-            width: 150px;
-            height: 31px;
-        }
-
-        #socialPlugins1 {
-            position: absolute;
-            left: 4%;
-            top: 55%;
-            transform: scale(1.1);
-            background-color: azure;
-            padding: 5px;
-            border: 2px inset grey;
-            border-radius: 10px;
-            width: 260px;
-            height: 110px;
-        }
-
-        #likeFB {
-            background-image: url('images/UI/likeFB.png');
-            background-size: cover;
-            width: 95px;
-            height: 40px;
-        }
+     
 
         #sucessbuyTxt {
             width: 180px;
-            color: springgreen;
+            color:darkgreen;
             font-family: 'Comic Sans MS';
             margin-left: 50%;
             font-size: 28px;
