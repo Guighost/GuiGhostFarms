@@ -2263,11 +2263,11 @@ farming.start = function () {
     e.appendChild(forSaleO)
 
     ///change seeds
-    var changeSeeds = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(134, 272).setSize(40, 40).setFill("images/UI/changeSeeds2.png");
+    var changeSeeds = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(134, 255).setSize(40, 40).setFill("images/UI/changeSeeds2.png");
     e.appendChild(changeSeeds);
 	
-	    var speedAd =(new lime.GlossyButton).setColor("#663300").setText("").setPosition(134, 222).setSize(40, 40).setOpacity(.8);
-		speedAd = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(134, 222).setSize(40, 40).setFill("images/UI/adBoostBtn.png");
+	    var speedAd =(new lime.GlossyButton).setColor("#663300").setText("").setPosition(134, 200).setSize(40, 40).setOpacity(.8);
+		speedAd = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(134, 200).setSize(40, 40).setFill("images/UI/adBoostBtn.png");
     e.appendChild(speedAd);
 	
 	goog.events.listen(speedAd, ["mousedown", "touchstart"], function () {
@@ -2460,7 +2460,7 @@ farming.start = function () {
 
 
     //Cloud Layer Home map
-    var clouds = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-400, -190).setSize(a.controlsLayer_w, a.height + 250).setFill("images/clouds.png").setOpacity(0.5);
+    var clouds = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-400, -190).setSize(a.controlsLayer_w, a.height + 250).setFill("images/clouds.png").setOpacity(0.3);
     e.appendChild(clouds);
     //cloud anim
     var cloudAnim = -400
@@ -2481,7 +2481,7 @@ farming.start = function () {
 
     var tutStep = 1;
     /// tutorial Modal
-    var homeBlock = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#ffffff").setOpacity(0.75);
+    var homeBlock = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#000F00").setOpacity(0.75);
     e.appendChild(homeBlock);
     goog.events.listen(homeBlock, ["mousedown", "touchstart"], function () {
         return;
@@ -3711,7 +3711,7 @@ farming.start = function () {
 
     ///pasture blocking modal
 
-    var pastureBlock = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#ffffff").setOpacity(0.75);
+    var pastureBlock = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#000F00").setOpacity(0.75);
     pastureLayer.appendChild(pastureBlock);
     //goog.events.listen(pastureBlock, ["mousedown", "touchstart"], function () {
     //    break;
@@ -4565,7 +4565,7 @@ farming.start = function () {
     var forSaleLS = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(268, 424).setSize(40, 40).setFill("images/UI/lsBtn.png");
     orchardLayer.appendChild(forSaleLS);
     ///orchard blocker
-    var orchardBlock = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#ffffff").setOpacity(0.75);
+    var orchardBlock = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#000F00").setOpacity(0.75);
     orchardLayer.appendChild(orchardBlock);
     //goog.events.listen(orchardBlock, ["mousedown", "touchstart"], function () {
     //    break;
@@ -5228,25 +5228,25 @@ farming.start = function () {
     marketLayer.appendChild(howManyBack);
     var howMany = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 150).setSize(250, 250).setFill("images/UI/blankBack4.png");
     howManyBack.appendChild(howMany);
-    var howManyLabel1 = (new lime.Label).setText("$ Sell Crop $").setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(26).setPosition(125, 90);
+    var howManyLabel1 = (new lime.Label).setText("$ Sell Crop $").setFontColor("#00004d").setFontFamily("Comic Sans MS").setFontSize(26).setPosition(125, 60);
     howMany.appendChild(howManyLabel1);
-    var howManyLabel2 = (new lime.Label).setText(cropSaleCurrent + "/" + cropSaleTotal).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(22).setPosition(55, 170);
+    var howManyLabel2 = (new lime.Label).setText(cropSaleCurrent + "/" + cropSaleTotal).setFontColor("#00004d").setFontFamily("Comic Sans MS").setFontSize(22).setPosition(55, 140);
     howMany.appendChild(howManyLabel2);
-    var howManyLabel3 = (new lime.Label).setText(" $0 ").setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(22).setPosition(190, 170);
+    var howManyLabel3 = (new lime.Label).setText(" $0 ").setFontColor("#00004d").setFontFamily("Comic Sans MS").setFontSize(22).setPosition(190, 140);
     howMany.appendChild(howManyLabel3);
-    var howManyLabel4 = (new lime.Label).setText("Sell For").setFontColor("#ffffff").setFontFamily("Comic Sans MS").setFontSize(18).setPosition(190, 140);
+    var howManyLabel4 = (new lime.Label).setText("Sell For").setFontColor("#004d00").setFontFamily("Comic Sans MS").setFontSize(18).setPosition(181, 110);
     howMany.appendChild(howManyLabel4);
-    var howManyLabel5 = (new lime.Label).setText("Stock").setFontColor("#ffffff").setFontFamily("Comic Sans MS").setFontSize(18).setPosition(55, 140);
+    var howManyLabel5 = (new lime.Label).setText("Stock").setFontColor("#004d00").setFontFamily("Comic Sans MS").setFontSize(18).setPosition(53, 110);
     howMany.appendChild(howManyLabel5);
-    var howManyImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(105, 120).setFill("images/" + a.crops[index].harvest).setSize(40, 40);      //carrots
+    var howManyImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(100, 80).setFill("images/" + a.crops[index].harvest).setSize(40, 40);      //carrots
     howMany.appendChild(howManyImg);
-    var howManySellBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(65, 195).setFill("images/UI/sellBtn.png").setSize(120, 40);      //carrots
+    var howManySellBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(65, 165).setFill("images/UI/sellBtn.png").setSize(120, 40);      //carrots
     howMany.appendChild(howManySellBtn);
-    var howManyDownBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(20, 195).setFill("images/UI/downBtn.png").setSize(40, 40);      //carrots
+    var howManyDownBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(20, 165).setFill("images/UI/downBtn.png").setSize(40, 40);      //carrots
     howMany.appendChild(howManyDownBtn);
-    var howManyUpBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(188, 195).setFill("images/UI/upBtn.png").setSize(40, 40);      //carrots
+    var howManyUpBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(188, 165).setFill("images/UI/upBtn.png").setSize(40, 40);      //carrots
     howMany.appendChild(howManyUpBtn);
-    var howManyCloseBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(95, 240).setFill("images/UI/XButton.png").setSize(60, 60);      //carrots
+    var howManyCloseBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(95, 210).setFill("images/UI/XButton.png").setSize(60, 60);      //carrots
     howMany.appendChild(howManyCloseBtn);
     howManyBack.setHidden(true);
 
@@ -6054,7 +6054,7 @@ farming.start = function () {
 
 
     ///livestockpens block
-    var lsBlock = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#ffffff").setOpacity(0.75);
+    var lsBlock = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#000F00").setOpacity(0.75);
     liveStockLayer.appendChild(lsBlock);
     //goog.events.listen(lsBlock, ["mousedown", "touchstart"], function () {
     //    break;
@@ -6821,7 +6821,7 @@ farming.start = function () {
 
     var compassV = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(130, 449).setSize(35, 35).setFill("images/UI/compass22.png"); vinyardLayer.appendChild(compassV);
     ///vinyard block
-    var vinyardBlock = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#ffffff").setOpacity(0.75);
+    var vinyardBlock = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#000F00").setOpacity(0.75);
     vinyardLayer.appendChild(vinyardBlock);
     //goog.events.listen(vinyardBlock, ["mousedown", "touchstart"], function () {
     //    break;
