@@ -129,14 +129,14 @@
         #closeFB {
             background-image: url( "images/UI/XButton.png");
             background-size: contain;
-            height: 70px;
-            width: 70px;
-            border: 2px groove grey;
+            height: 50px;
+            width: 50px;
+            /*border: 2px groove grey;*/
             border-radius: 10px;
             position: absolute;
             left: 50%;
             top: 95%;
-            transform: translate(-35px,-2px);
+            transform: translate(-25px,-2px);
             font-family: 'Comic Sans MS';
             font-size: large;
             text-align: center;
@@ -162,18 +162,18 @@
         #outerStarCashImg {
             width: 150px;
             margin-left: 50%;
-            transform: translate(-75px,10px);
+            transform: translate(-75px,25px);
         }
 
         #starCashOuterLabel {
             position: absolute;
-            font-size: 20px;
+            font-size: 22px;
             font-family: 'Comic Sans MS';
             color: purple;
             text-align: center;
             left: 50%;
             z-index: 100;
-            transform: translate(0px,3px);
+            transform: translate(0px,15px);
         }
 
         #currentStarCashBack, #currentStarCashBack2, #currentStarCashBack3 {
@@ -184,8 +184,8 @@
             color: yellow;
            
             margin-left: 18px;
-            margin-top: 16px;
-            transform: translate(0px,-10px);
+            margin-top: 20px;
+            /*transform: translate(0px,-10px);*/
             border: 2px groove brown;
             border-radius: 5px;
             background-color:darkgreen
@@ -284,7 +284,7 @@
             margin-left: 50%;
             font-size: 28px;
             font-weight: 500;
-            transform: translate(-70px,0px);
+            transform: translate(-70px,-15px);
             display: none;
         }
 
@@ -510,7 +510,7 @@ showItOrNo2 = localStorage.getItem('MedFarm_LoadAd');
         try { Enhance.isInterstitialReady(callback); }
         catch(err){console.log("Caught error " + err)}
             clearInterval(tid);
-            tid = setInterval(interPop, 240000);
+            tid = setInterval(interPop, 480000);
 	 localStorage.setItem('MedFarm_LoadAd', 0);
 	 localStorage.setItem('adWatched', 1);
 showItOrNo2 = 0;
