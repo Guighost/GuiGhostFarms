@@ -8129,9 +8129,9 @@ farming.start = function () {
                         globalModalBlock = 0;
                         homeBlock.setHidden(true); 
                     }
-                    else if (starCashIsUp == 'block') { globalModalBlock = 1; };
+                    else if (starCashIsUp == 'block') { globalModalBlock = 1; homeBlock.setHidden(false); };
 
-        
+                    document.getElementById("starCashOuterLabel").innerHTML = starCash;
 
                 }, this, 500)
           
