@@ -2484,7 +2484,8 @@ farming.start = function () {
     var homeBlock = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#000F00").setOpacity(0.75);
     e.appendChild(homeBlock);
     goog.events.listen(homeBlock, ["mousedown", "touchstart"], function () {
-        return;
+        if (tutSeen == 1) { homeBlock.setHidden(true); }
+        else { homeBlock.setHidden(false); }
     }, true, this);
     if (tutSeen == 1) { homeBlock.setHidden(true); }
 
@@ -2561,7 +2562,7 @@ farming.start = function () {
     a.tutModalBehav = function (t) {
         swipeRightHint2.setHidden(true);
         swipeRightHint.setHidden(true);
-
+        homeBlock.setHidden(false);
         if (tutStep <= 12) {
             tutModal.setFill(imgArray5[tutStep]);
         }
@@ -3098,7 +3099,7 @@ farming.start = function () {
     e.appendChild(f);
     seedSceneBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, 40).setFill("images/UI/greenButtonLg.png");
     e.appendChild(seedSceneBack);
-    seedSceneLabel = (new lime.Label).setText("Change Seeds to Plant ").setFontFamily("ComicSans MS").setFontColor("#E8FC08").setFontSize(24).setPosition(155, 20);
+    seedSceneLabel = (new lime.Label).setText("Change Seeds to Plant ").setFontFamily("ComicSans MS").setFontColor("#E8FC08").setFontSize(24).setPosition(155, 21);
     e.appendChild(seedSceneLabel);
     //seedSceneLabel2 = (new lime.Label).setText("Select image to plant that crop ").setFontFamily("ComicSans MS").setFontColor("#E8FC08").setFontSize(12).setPosition(155, 28);
     //e.appendChild(seedSceneLabel2);
