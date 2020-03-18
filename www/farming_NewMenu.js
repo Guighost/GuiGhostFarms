@@ -3099,7 +3099,7 @@ farming.start = function () {
     e.appendChild(f);
     seedSceneBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, 40).setFill("images/UI/greenButtonLg.png");
     e.appendChild(seedSceneBack);
-    seedSceneLabel = (new lime.Label).setText("Change Seeds to Plant ").setFontFamily("ComicSans MS").setFontColor("#E8FC08").setFontSize(24).setPosition(155, 21);
+    seedSceneLabel = (new lime.Label).setText("Change Seeds to Plant ").setFontFamily("ComicSans MS").setFontColor("#E8FC08").setFontSize(22).setPosition(155, 23);
     e.appendChild(seedSceneLabel);
     //seedSceneLabel2 = (new lime.Label).setText("Select image to plant that crop ").setFontFamily("ComicSans MS").setFontColor("#E8FC08").setFontSize(12).setPosition(155, 28);
     //e.appendChild(seedSceneLabel2);
