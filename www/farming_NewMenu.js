@@ -2258,9 +2258,9 @@ farming.start = function () {
     e.appendChild(horizRoad)
     ///For sale
     var forSaleP = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(3, 420).setSize(40, 40).setFill("images/UI/pastureBtn100.png")
-    e.appendChild(forSaleP)
+    e.appendChild(forSaleP);
     var forSaleO = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(268, 420).setSize(40, 40).setFill("images/UI/orchardBtn.png")
-    e.appendChild(forSaleO)
+    e.appendChild(forSaleO);
 
     ///change seeds
     var changeSeeds = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(134, 255).setSize(40, 40).setFill("images/UI/changeSeeds2.png");
@@ -2715,11 +2715,11 @@ farming.start = function () {
     ///For Sale confirm modal
     var confirmSale = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(45, 140).setSize(210, 220).setFill("images/UI/saleBack.png");
     e.appendChild(confirmSale);
-    var confirmText = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000000").setPosition(45, 148).setSize(135, 60).setFontSize(20).setText("Dairy Farm 2500");
+    var confirmText = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000000").setPosition(45, 128).setSize(135, 60).setFontSize(20).setText("Dairy Farm 2500");
     confirmSale.appendChild(confirmText);
-    var confirmCoin = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(50, 160).setSize(30, 30).setFill(imgArray11[0]);
+    var confirmCoin = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(50, 143).setSize(30, 30).setFill(imgArray11[0]);
     confirmSale.appendChild(confirmCoin);
-    var confirmTextSub = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#FF0000").setPosition(55, 195).setSize(110, 60).setFontSize(10).setText("Earn more $ to buy");
+    var confirmTextSub = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#FF0000").setPosition(55, 178).setSize(110, 60).setFontSize(12).setText("Earn more $ to buy");
     confirmSale.appendChild(confirmTextSub);
     var confirmBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(100, 212).setSize(75, 35).setFill("images/UI/greenBuy.png");
     confirmSale.appendChild(confirmBtn);
@@ -2732,7 +2732,7 @@ farming.start = function () {
    
     var achieveText = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(13, 45).setSize(190, 60).setFontSize(16).setText("Blacksmith I");
     achieveNotif.appendChild(achieveText);
-    var achieveTextSub = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(30, 123).setSize(150, 60).setFontSize(12).setText("Achieve Text");
+    var achieveTextSub = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(30, 123).setSize(150, 60).setFontSize(14).setText("Achieve Text");
     achieveNotif.appendChild(achieveTextSub);
     var achieveSC = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ");
     achieveNotif.appendChild(achieveSC);
@@ -3063,6 +3063,10 @@ farming.start = function () {
                     barnUnlock3.setHidden(true);
                 };
                 barnUnlock.setText("Lvl " + player.barnLevel + "/5");
+                setTimeout(function () {
+                    unlockedCropBack.setHidden(true);
+                    checkAchieves2();
+                }, 2000);
 
                 if (player.barnLevel == 2 || player.barnLevel == 3) { barnUnlock3.setFill("images/tools250.png"); }
                 else if (player.barnLevel == 4) { barnUnlock3.setFill("images/tools500.png"); }
@@ -3071,10 +3075,7 @@ farming.start = function () {
 
 
 
-            setTimeout(function () {
-                unlockedCropBack.setHidden(true);
-                checkAchieves2();
-            }, 5000);
+           
 
 
 
@@ -3097,10 +3098,10 @@ farming.start = function () {
     e.appendChild(f);
     seedSceneBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, 40).setFill("images/UI/greenButtonLg.png");
     e.appendChild(seedSceneBack);
-    seedSceneLabel = (new lime.Label).setText("Change Seeds to Plant ").setFontFamily("ComicSans MS").setFontColor("#E8FC08").setFontSize(20).setPosition(155, 14);
+    seedSceneLabel = (new lime.Label).setText("Change Seeds to Plant ").setFontFamily("ComicSans MS").setFontColor("#E8FC08").setFontSize(24).setPosition(155, 20);
     e.appendChild(seedSceneLabel);
-    seedSceneLabel2 = (new lime.Label).setText("Select image to plant that crop ").setFontFamily("ComicSans MS").setFontColor("#E8FC08").setFontSize(12).setPosition(155, 28);
-    e.appendChild(seedSceneLabel2);
+    //seedSceneLabel2 = (new lime.Label).setText("Select image to plant that crop ").setFontFamily("ComicSans MS").setFontColor("#E8FC08").setFontSize(12).setPosition(155, 28);
+    //e.appendChild(seedSceneLabel2);
     seedSceneSeeds1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 1).setSize(40, 40).setFill("images/grain.png");
     e.appendChild(seedSceneSeeds1);
     seedSceneSeeds2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(265, 1).setSize(40, 40).setFill("images/grain.png");
@@ -3823,11 +3824,12 @@ farming.start = function () {
 
     ////achievement Modal
     var achieveNotifP = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(45, 130).setSize(210, 220).setFill("images/UI/achieveNotif.png");
-    var achieveTextSubP = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(30, 35).setSize(150, 60).setFontSize(12).setText("Achieve Text");
-    achieveNotifP.appendChild(achieveTextSubP);
-    var achieveTextP = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(13, 155).setSize(190, 60).setFontSize(16).setText("Blacksmith I");
+
+    var achieveTextP = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(13, 45).setSize(190, 60).setFontSize(16).setText("Blacksmith I");
     achieveNotifP.appendChild(achieveTextP);
-    var achieveSCP = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(21, 186).setSize(190, 60).setFontSize(18).setText(" + ");
+    var achieveTextSubP = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(30, 123).setSize(150, 60).setFontSize(14).setText("Achieve Text");
+    achieveNotifP.appendChild(achieveTextSubP);
+    var achieveSCP = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ");
     achieveNotifP.appendChild(achieveSCP);
     var confirmBtnAP = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill("images/UI/checkButton.png");
     achieveNotifP.appendChild(confirmBtnAP);
@@ -4636,11 +4638,12 @@ farming.start = function () {
 
     ////achievement Modal from Orchard
     var achieveNotifO = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(45, 130).setSize(210, 220).setFill("images/UI/achieveNotif.png");
-    var achieveTextSubO = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#000033").setFontFamily("Comic Sans MS").setPosition(30, 35).setSize(150, 60).setFontSize(12).setText("Achieve Text");
-    achieveNotifO.appendChild(achieveTextSubO);
-    var achieveTextO = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#000033").setFontFamily("Comic Sans MS").setPosition(13, 160).setSize(190, 60).setFontSize(16).setText("Blacksmith I");
+   
+    var achieveTextO = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#000033").setFontFamily("Comic Sans MS").setPosition(13, 45).setSize(190, 60).setFontSize(16).setText("Blacksmith I");
     achieveNotifO.appendChild(achieveTextO);
-    var achieveSCO = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#000033").setFontFamily("Comic Sans MS").setPosition(21, 186).setSize(190, 60).setFontSize(18).setText(" + ");
+    var achieveTextSubO = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#000033").setFontFamily("Comic Sans MS").setPosition(30, 123).setSize(150, 60).setFontSize(12).setText("Achieve Text");
+    achieveNotifO.appendChild(achieveTextSubO);
+    var achieveSCO = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#000033").setFontFamily("Comic Sans MS").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ");
     achieveNotifO.appendChild(achieveSCO);
     var confirmBtnAO = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill("images/UI/checkButton.png");
     achieveNotifO.appendChild(confirmBtnAO);
@@ -6065,11 +6068,12 @@ farming.start = function () {
 
     ////achievement Modal
     var achieveNotifLS = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(45, 130).setSize(210, 220).setFill("images/UI/achieveNotif.png");
-    var achieveTextSubLS = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#000033").setPosition(30, 35).setSize(150, 35).setFontSize(12).setText("Achieve Text").setFontFamily("Comic Sans MS");
-    achieveNotifLS.appendChild(achieveTextSubLS);
-    var achieveTextLS = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#000033").setPosition(13, 160).setSize(190, 60).setFontSize(16).setText("Blacksmith I").setFontFamily("Comic Sans MS");
+    var achieveTextLS = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#000033").setPosition(13, 45).setSize(190, 60).setFontSize(16).setText("Blacksmith I").setFontFamily("Comic Sans MS");
     achieveNotifLS.appendChild(achieveTextLS);
-    var achieveSCLS = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#000033").setPosition(21, 186).setSize(190, 60).setFontSize(18).setText(" + ").setFontFamily("Comic Sans MS");
+    var achieveTextSubLS = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#000033").setPosition(30, 123).setSize(150, 35).setFontSize(12).setText("Achieve Text").setFontFamily("Comic Sans MS");
+    achieveNotifLS.appendChild(achieveTextSubLS);
+
+    var achieveSCLS = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#000033").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ").setFontFamily("Comic Sans MS");
     achieveNotifLS.appendChild(achieveSCLS);
     var confirmBtnALS = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill("images/UI/checkButton.png");
     achieveNotifLS.appendChild(confirmBtnALS);
@@ -6885,11 +6889,11 @@ farming.start = function () {
 
     ////achievement Modal
     var achieveNotifV = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(45, 130).setSize(210, 220).setFill("images/UI/achieveNotif.png");
-    var achieveTextSubV = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(30, 35).setSize(150, 60).setFontSize(12).setText("Achieve Text");
-    achieveNotifV.appendChild(achieveTextSubV);
-    var achieveTextV = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(13, 160).setSize(190, 60).setFontSize(16).setText("Blacksmith I");
+    var achieveTextV = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(13, 45).setSize(190, 60).setFontSize(16).setText("Blacksmith I");
     achieveNotifV.appendChild(achieveTextV);
-    var achieveSCV = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(21, 186).setSize(190, 60).setFontSize(18).setText(" + ");
+    var achieveTextSubV = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(30, 123).setSize(150, 60).setFontSize(12).setText("Achieve Text");
+    achieveNotifV.appendChild(achieveTextSubV);
+      var achieveSCV = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ");
     achieveNotifV.appendChild(achieveSCV);
     var confirmBtnAV = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill("images/UI/checkButton.png");
     achieveNotifV.appendChild(confirmBtnAV);
