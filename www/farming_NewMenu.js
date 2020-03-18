@@ -772,11 +772,11 @@ imgArray5[12] = new Image(); imgArray5[12].src = 'images/UI/tut13.png'
 
 //barn upgrades
 var imgArray6 = new Array();
-imgArray6[0] = new Image(); imgArray6[0].src = 'images/UI/barn1.png'
-imgArray6[1] = new Image(); imgArray6[1].src = 'images/UI/barn2.png'
-imgArray6[2] = new Image(); imgArray6[2].src = 'images/UI/barn3.png'
-imgArray6[3] = new Image(); imgArray6[3].src = 'images/UI/barn4.png'
-imgArray6[4] = new Image(); imgArray6[4].src = 'images/UI/barn5.png'
+imgArray6[0] = new Image(); imgArray6[0].src = 'images/UI/barn1-1.png'
+imgArray6[1] = new Image(); imgArray6[1].src = 'images/UI/barn2-1.png'
+imgArray6[2] = new Image(); imgArray6[2].src = 'images/UI/barn3-1.png'
+imgArray6[3] = new Image(); imgArray6[3].src = 'images/UI/barn4-1.png'
+imgArray6[4] = new Image(); imgArray6[4].src = 'images/UI/barn5-1.png'
 imgArray6[5] = new Image(); imgArray6[5].src = "images/bare_land.png"
 imgArray6[6] = new Image(); imgArray6[6].src = "images/plowed.png"
 
@@ -1640,17 +1640,17 @@ farming.start = function () {
         { name: "trees2", image: "rightTrees.png" },
         { name: "horizRoad", image: "horizRoad.png" },
         { name: "toolTable", image: "toolTable.png" },
-        { name: "forge", image: "forge1.png" },
+        { name: "forge", image: "forge2.png" },
         { name: "gateFence", image: "gateFence.png" },
         { name: "marketArrow", image: "marketCoinArrow.png" },
 
     ];
     a.barnlevelImg = [
-        { name: "Basic Shed", image: "barn1.png" },
-        { name: "Small Barn", image: "barn2.png" },
-        { name: "Large Barn", image: "barn3.png" },
-        { name: "XLarge Barn", image: "barn4.png" },
-        { name: "Double Silo Barn", image: "barn5.png" },
+        { name: "Basic Shed", image: "barn1-1.png" },
+        { name: "Small Barn", image: "barn2-1.png" },
+        { name: "Large Barn", image: "barn3-1.png" },
+        { name: "XLarge Barn", image: "barn4-1.png" },
+        { name: "Double Silo Barn", image: "barn5-1.png" },
         { name: "Pasture", image: "pasture.png" }
     ];
     a.PastureUpgrades = [
@@ -2285,16 +2285,25 @@ farming.start = function () {
     //var shelter3 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(4, 48).setSize(18, 65).setFill("images/" + a.barnyard[6].image); e.appendChild(shelter3)
     //var shelter2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(22, 48).setSize(37, 72).setFill("images/" + a.barnyard[7].image); e.appendChild(shelter2)
 
-    var forge = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(4, 52).setSize(84, 99).setFill("images/" + a.barnyard[17].image); e.appendChild(forge);
-    var anvil1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(65, 89).setSize(22, 22).setFill("images/" + a.barnyard[12].image); e.appendChild(anvil1);
-    var toolTable = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 111).setSize(19, 22).setFill("images/" + a.barnyard[16].image); e.appendChild(toolTable);
-    var barn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(87.5, 4).setSize(132, 155).setFill("images/" + a.barnlevelImg[(player.barnLevel - 1)].image); e.appendChild(barn);
-    var houseImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(238, 20).setSize(60, 98).setFill("images/house1.png"); e.appendChild(houseImg);
+    //var forge = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(4, 52).setSize(84, 99).setFill("images/" + a.barnyard[17].image); e.appendChild(forge);
+    
+    //var toolTable = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 111).setSize(19, 22).setFill("images/" + a.barnyard[16].image); e.appendChild(toolTable);
+    var barn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(85, 2).setSize(132, 155).setFill("images/" + a.barnlevelImg[(player.barnLevel - 1)].image); e.appendChild(barn);
+    var houseImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(238, 20).setSize(60, 95).setFill("images/house1.png"); e.appendChild(houseImg);
     var houseEnterBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(251, 115).setSize(30, 30).setFill("images/UI/houseButton.png"); e.appendChild(houseEnterBtn);
+
+    var forge = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(2, 32).setSize(86, 120).setFill("images/" + a.barnyard[17].image); e.appendChild(forge);
+    var anvil1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(65, 85).setSize(20, 20).setFill("images/" + a.barnyard[12].image); e.appendChild(anvil1);
+        var toolTable = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(10, 118).setSize(16, 18).setFill("images/" + a.barnyard[16].image); e.appendChild(toolTable);
+
     var blacksmith = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(50, 75).setSize(26, 26).setFill("images/blacksmith2.png"); e.appendChild(blacksmith);
     var blacksmithI = 0;
-    if (houseUpgrades.upgrades[0].owned == 1) { houseImg.setFill("images/house3.png").setSize(75, 100).setPosition(229, 22);}
-
+   
+    if (houseUpgrades.upgrades[0].owned == 1) { houseImg.setFill("images/house2.png").setSize(75, 100).setPosition(229, 22);}
+    if (player.barnLevel == 5) {
+        barn.setFill(imgArray6[4]);
+        barn.setPosition(85, 1).setSize(134, 157);
+    };
     ////blacksmith anim
     lime.scheduleManager.scheduleWithDelay(function () {
         //add upgrade anim
@@ -2306,19 +2315,19 @@ farming.start = function () {
         if (blacksmithI == 4) { blacksmith.setPosition(50, 80) };
         if (blacksmithI == 5) { blacksmith.setPosition(50, 85) };
         if (blacksmithI == 6) { blacksmith.setPosition(50, 90) };
-        if (blacksmithI == 7) { blacksmith.setPosition(40, 90) };
-        if (blacksmithI == 8) { blacksmith.setPosition(35, 95) };
-        if (blacksmithI == 9) { blacksmith.setPosition(30, 100) };
-        if (blacksmithI == 10) { blacksmith.setPosition(35, 105) };
-        if (blacksmithI == 11) { blacksmith.setPosition(40, 100) };
+        if (blacksmithI == 7) { blacksmith.setPosition(45, 90) };
+        if (blacksmithI == 8) { blacksmith.setPosition(37, 95) };
+        if (blacksmithI == 9) { blacksmith.setPosition(32, 100) };
+        if (blacksmithI == 10) { blacksmith.setPosition(37, 105) };
+        if (blacksmithI == 11) { blacksmith.setPosition(42, 100) };
         if (blacksmithI == 12) { blacksmith.setPosition(45, 95) };
         if (blacksmithI == 13) { blacksmith.setPosition(50, 90) };
         if (blacksmithI == 14) { blacksmith.setPosition(50, 85); if (sceneBefore == 1) { smithSound.play(); } };
         if (blacksmithI == 15) { blacksmith.setPosition(50, 80); blacksmith.setFill("images/blacksmith13.png"); };
-        if (blacksmithI == 16) { blacksmith.setPosition(50, 75); blacksmith.setFill("images/blacksmith1.png") };
-        if (blacksmithI == 17) { blacksmith.setPosition(50, 75); blacksmith.setFill("images/blacksmith2.png") };
-        if (blacksmithI == 18) { blacksmith.setPosition(50, 77); blacksmith.setFill("images/blacksmith1.png") };
-        if (blacksmithI == 19) { blacksmith.setPosition(50, 77); blacksmith.setFill("images/blacksmith2.png"); checkAchieves2(); };
+        if (blacksmithI == 16) { blacksmith.setPosition(50, 71); blacksmith.setFill("images/blacksmith1.png") };
+        if (blacksmithI == 17) { blacksmith.setPosition(50, 71); blacksmith.setFill("images/blacksmith2.png") };
+        if (blacksmithI == 18) { blacksmith.setPosition(50, 73); blacksmith.setFill("images/blacksmith1.png") };
+        if (blacksmithI == 19) { blacksmith.setPosition(50, 73); blacksmith.setFill("images/blacksmith2.png"); checkAchieves2(); };
 
 
     }, this, 300)
@@ -3061,7 +3070,7 @@ farming.start = function () {
                 if (player.barnLevel == 4) { barn.setFill(imgArray6[3]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Peppers"); unlockedCropImage.setFill("images/" + a.crops[4].harvest); barnUnlock3.setHidden(false); };
                 if (player.barnLevel == 5) {
                     barn.setFill(imgArray6[4]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest);
-                    barnUnlock3.setHidden(true);
+                    barnUnlock3.setHidden(true); barn.setPosition(86, 4).setSize(134, 155);
                 };
                 barnUnlock.setText("Lvl " + player.barnLevel + "/5");
                 setTimeout(function () {
@@ -7214,7 +7223,7 @@ farming.start = function () {
                     houseExpandCover.setHidden(true);
                     houseUpgrades.upgrades[0].owned = 1;
                     localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades))
-                    houseImg.setFill("images/house2.png").setSize(62, 100)
+                    houseImg.setFill("images/house2.png").setSize(72, 95).setPosition(230, 20)
                 }  
 
             }, this, 1000, 90)
