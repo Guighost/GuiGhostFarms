@@ -3006,8 +3006,9 @@ farming.start = function () {
     goog.events.listen(barnUnlock3, ["mousedown", "touchstart"], function () {                 //barnUpgrades    barn Upgrades
         
         var barnUpgradeCost = 0;
-        if (player.barnLevel == 2 || player.barnLevel == 3) { barnUpgradeCost = 250; }
-        else if (player.barnLevel == 4) { barnUpgradeCost = 500; }
+        if (player.barnLevel == 2) { barnUpgradeCost = 250; }
+        else if (player.barnLevel == 3) { barnUpgradeCost = 500; }
+        else if (player.barnLevel == 4) { barnUpgradeCost = 1500; }
         else { barnUpgradeCost = 100; }
       
         if (player.tools >= barnUpgradeCost && parseInt(player.barnLevel) < 5 && globalModalBlock == 0) {
@@ -3078,8 +3079,9 @@ farming.start = function () {
                     checkAchieves2();
                 }, 2000);
 
-                if (player.barnLevel == 2 || player.barnLevel == 3) { barnUnlock3.setFill("images/tools250.png"); }
-                else if (player.barnLevel == 4) { barnUnlock3.setFill("images/tools500.png"); }
+                if (player.barnLevel == 2) { barnUnlock3.setFill("images/tools250.png"); }
+                else if (player.barnLevel == 3) { barnUnlock3.setFill("images/tools500.png"); }
+                else if (player.barnLevel == 4) { barnUnlock3.setFill("images/tools1500.png"); }
                 else { barnUnlock3.setFill("images/tools100.png"); };
             }, 60000);
 
@@ -7173,7 +7175,7 @@ farming.start = function () {
     // room 2 block
     var houseExpandCover = (new lime.GlossyButton).setColor("#B5B6B7").setAnchorPoint(0.0).setPosition(155, 220).setSize(a.width - 15, 177).setText("Build More Room").setOpacity(0.8);
     houseLayer.appendChild(houseExpandCover); 
-    var expandToolsImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-15, 10).setSize(35, 35).setFill("images/tools500.png");
+    var expandToolsImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-25, 10).setSize(45, 60).setFill("images/tools1500.png");
     houseExpandCover.appendChild(expandToolsImg); 
     var scaffoldHo = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-125,-85).setSize(a.width - 75, 150).setFill("images/scaffold.png"); houseExpandCover.appendChild(scaffoldHo);
 
@@ -7191,9 +7193,9 @@ farming.start = function () {
     var expandOnce = 0;
     goog.events.listen(houseExpandCover, ["mousedown", "touchstart"], function () {
 
-        if (player.tools >= 500 && expandOnce == 0) {
+        if (player.tools >= 1500 && expandOnce == 0) {
             expandOnce = 1;
-            player.tools -= 500;
+            player.tools -= 1500;
             a.updateTools();
             toolCountHouse.setText(player.tools)
             toolMoverLabelHo.setHidden(false); scaffoldHo.setHidden(false); upgradeCloudHo.setHidden(false);
@@ -7239,6 +7241,13 @@ farming.start = function () {
 
             }, this, 250, 360)
                                
+        }
+        else {
+            houseExpandCover.setText("Need 1500 Tools");
+            lime.scheduleManager.scheduleWithDelay(function () {
+                houseExpandCover.setText("Build More Room");
+
+            }, this, 1500)
         }
     });
 
