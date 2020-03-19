@@ -2499,7 +2499,7 @@ farming.start = function () {
     if (tutSeen == 1) { homeBlock.setHidden(true); }
 
     ///crop boost modal
-    var boostCrops = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(50, 90).setSize(200, 200).setFill("images/UI/cropBoostBack2.png");
+    var boostCrops = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(50, 110).setSize(200, 200).setFill("images/UI/cropBoostBack2.png");
 	   e.appendChild(boostCrops);
        boostCrops.setHidden(true);
        var starCashCountBoost = (new lime.Label).setText(starCash).setPosition(105, 22).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#000F00").setFontWeight(600).setFontSize(20).setFontFamily("ComicSans MS");
