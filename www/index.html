@@ -492,48 +492,34 @@
 var showItOrNo = 1;
 var showItOrNo2 = 0;
 var onceOnlyAd = 0;
-var tid = setInterval(interPop, 240000);
+var tid = setInterval(interPop, 960000);
 function interPop() {
 
-if(showItOrNo == 1 ){
-    try { Enhance.isInterstitialReady(callback); }
-    catch (err) { console.log("Caught error " + err) }
-showItOrNo = 0;
- }
-else {showItOrNo = 1;}
-}
+        if(showItOrNo == 1 ){
+            try { Enhance.isInterstitialReady(callback); }
+            catch (err) { console.log("Caught error " + err) }
+        showItOrNo = 0;
+         }
+        else {showItOrNo = 1;}
+    }
 
 var tid2 = setInterval(interPop2, 500);
+
 function interPop2() {
-showItOrNo2 = localStorage.getItem('MedFarm_LoadAd');
+    showItOrNo2 = localStorage.getItem('MedFarm_LoadAd');
     if (showItOrNo2 == 1) {
         try { Enhance.isInterstitialReady(callback); }
         catch(err){console.log("Caught error " + err)}
             clearInterval(tid);
-            tid = setInterval(interPop, 480000);
+            tid = setInterval(interPop, 960000);
 	 localStorage.setItem('MedFarm_LoadAd', 0);
 	 localStorage.setItem('adWatched', 1);
-showItOrNo2 = 0;
+    showItOrNo2 = 0;
  }
 else {return;}
 }
 
-            //document.getElementById("currentStarCashBack3").addEventListener("click", function () {
-
-            //                console.log("clicked row")
-            //                localStorage.setItem('MedFarm_LoadAd', 1);
-            //                localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-            //                starCash = starCash + 5;
-
-            //                localStorage.setItem('starCash', starCash);
-            //                document.getElementById("starCashOuterLabel").innerHTML = starCash;
-            //                document.getElementById("sucessbuyTxt").innerHTML = '+ 5 Stars';
-            //                document.getElementById("sucessbuyTxt").style.display = 'block';
-            //                setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 1500);
-
-
-
-            //}, false);
+          
             function showAdFallback() {
                 console.log("clicked fallback")
                 localStorage.setItem('MedFarm_LoadAd', 1);

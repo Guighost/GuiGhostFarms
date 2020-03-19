@@ -3032,7 +3032,7 @@ farming.start = function () {
             var upCloudX = 90;
             var upCloudY = 10;
             lime.scheduleManager.scheduleWithDelay(function () {
-                //add upgrade anim
+                //add upgrade animim
                 secondsToUpgrade = secondsToUpgrade - 1;
 
 
