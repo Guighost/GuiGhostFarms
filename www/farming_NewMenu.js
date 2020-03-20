@@ -5245,9 +5245,9 @@ farming.start = function () {
     howManyBack.appendChild(howMany);
     var howManyLabel1 = (new lime.Label).setText("$ Sell Crop $").setFontColor("#00004d").setFontFamily("Comic Sans MS").setFontSize(26).setPosition(125, 60);
     howMany.appendChild(howManyLabel1);
-    var howManyLabel2 = (new lime.Label).setText(cropSaleCurrent + "/" + cropSaleTotal).setFontColor("#00004d").setFontFamily("Comic Sans MS").setFontSize(22).setPosition(55, 140);
+    var howManyLabel2 = (new lime.Label).setText(cropSaleCurrent + "/" + cropSaleTotal).setFontColor("#00004d").setFontFamily("Comic Sans MS").setFontSize(20).setPosition(55, 140);
     howMany.appendChild(howManyLabel2);
-    var howManyLabel3 = (new lime.Label).setText(" $0 ").setFontColor("#00004d").setFontFamily("Comic Sans MS").setFontSize(22).setPosition(190, 140);
+    var howManyLabel3 = (new lime.Label).setText(" $0 ").setFontColor("#00004d").setFontFamily("Comic Sans MS").setFontSize(20).setPosition(190, 140);
     howMany.appendChild(howManyLabel3);
     var howManyLabel4 = (new lime.Label).setText("Sell For").setFontColor("#004d00").setFontFamily("Comic Sans MS").setFontSize(18).setPosition(181, 110);
     howMany.appendChild(howManyLabel4);
