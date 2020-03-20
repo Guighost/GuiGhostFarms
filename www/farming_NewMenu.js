@@ -2509,7 +2509,7 @@ farming.start = function () {
 
     var speedAdConfirmSC = (new lime.GlossyButton).setColor("#00FF00").setText("-       ").setPosition(152, 163).setSize(60, 32);
     boostCrops.appendChild(speedAdConfirmSC);
-    var starCashBoost = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-5, -17).setSize(35, 35).setFill("images/UI/plus5StarCash.png");
+    var starCashBoost = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-5, -17).setSize(35, 35).setFill("images/UI/plus3StarCash.png");
     speedAdConfirmSC.appendChild(starCashBoost);
 	var speedAdCancel =(new lime.GlossyButton).setColor("#8B0000").setText("").setPosition(105, 208).setSize(40, 40);
     boostCrops.appendChild(speedAdCancel);
@@ -2524,10 +2524,10 @@ farming.start = function () {
         });
         goog.events.listen(speedAdConfirmSC, ["mousedown", "touchstart"], function () {
             //console.log("clicked confirm SC");
-            if (starCash >= 5){
+            if (starCash >= 3){
                 adWatched2 = 1;
                 localStorage.setItem('adWatched', 1)
-                starCash = starCash - 5;
+                starCash = starCash - 3;
                 boostCrops.setHidden(true);
                 homeBlock.setHidden(true);
             }
