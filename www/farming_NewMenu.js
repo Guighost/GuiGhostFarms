@@ -2289,7 +2289,7 @@ farming.start = function () {
     
     //var toolTable = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 111).setSize(19, 22).setFill("images/" + a.barnyard[16].image); e.appendChild(toolTable);
     var barn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(85, 2).setSize(132, 155).setFill("images/" + a.barnlevelImg[(player.barnLevel - 1)].image); e.appendChild(barn);
-    var houseImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(238, 20).setSize(60, 95).setFill("images/house1.png"); e.appendChild(houseImg);
+    var houseImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(238, 23).setSize(60, 92).setFill("images/house1.png"); e.appendChild(houseImg);
     var houseEnterBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(251, 115).setSize(30, 30).setFill("images/UI/houseButton.png"); e.appendChild(houseEnterBtn);
 
     var forge = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(2, 32).setSize(86, 120).setFill("images/" + a.barnyard[17].image); e.appendChild(forge);
@@ -7230,7 +7230,7 @@ farming.start = function () {
                     houseExpandCover.setHidden(true);
                     houseUpgrades.upgrades[0].owned = 1;
                     localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades))
-                    houseImg.setFill("images/house2.png").setSize(72, 95).setPosition(230, 20)
+                    houseImg.setFill("images/house2.png").setSize(72, 92).setPosition(230, 23)
                 }  
 
             }, this, 1000, 90)
