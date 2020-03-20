@@ -4989,13 +4989,18 @@ farming.start = function () {
             console.log("clicked viewAd")
             localStorage.setItem('MedFarm_LoadAd', 1);
             localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-            starCash = starCash + 5;
-      
-            localStorage.setItem('starCash', starCash);
-            document.getElementById("starCashOuterLabel").innerHTML = starCash;
-            document.getElementById("sucessbuyTxt").innerHTML = '+ 5 Stars';
-            document.getElementById("sucessbuyTxt").style.display = 'block';
-            setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 1500);
+         
+            document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
+           
+            setTimeout(function () {
+                document.getElementById("sucessbuyTxt").style.display = 'block';
+                starCash = starCash + 3;
+
+                localStorage.setItem('starCash', starCash);
+                document.getElementById("starCashOuterLabel").innerHTML = starCash;
+            }, 1500);
+
+            setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 33000);
 
 
         
