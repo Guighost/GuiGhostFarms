@@ -487,7 +487,7 @@
     Enhance.showInterstitialAd();
 };
 
-// set interval to check for interstatial
+// set interval to check for interstatialad
 
 var showItOrNo = 1;
 var showItOrNo2 = 0;
@@ -507,14 +507,17 @@ var tid2 = setInterval(interPop2, 500);
 
 function interPop2() {
     showItOrNo2 = localStorage.getItem('MedFarm_LoadAd');
-    if (showItOrNo2 == 1) {
+            if (showItOrNo2 == 1) {
+                localStorage.setItem('MedFarm_LoadAd', 0);
+                localStorage.setItem('adWatched', 1);
+                showItOrNo2 = 0;
         try { Enhance.isInterstitialReady(callback); }
         catch(err){console.log("Caught error " + err)}
-            clearInterval(tid);
+         
             //tid = setInterval(interPop, 1900000);
-	 localStorage.setItem('MedFarm_LoadAd', 0);
-	 localStorage.setItem('adWatched', 1);
-    showItOrNo2 = 0;
+	 //localStorage.setItem('MedFarm_LoadAd', 0);
+	 //localStorage.setItem('adWatched', 1);
+   
  }
 else {return;}
 }

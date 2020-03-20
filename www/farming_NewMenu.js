@@ -1096,7 +1096,7 @@ var farming = {
 			
 		lime.scheduleManager.scheduleWithDelay(function () {
 			adWatched2 = localStorage.getItem('adWatched')
-					if (adWatched2 == 1 && c.state == farming.GROWING) {c.ripeTime = 0; setTimeout(function(){ localStorage.setItem('adWatched', 0) }, 1000);}
+            if (adWatched2 == 1 && c.state == farming.GROWING) { c.ripeTime = 0; setTimeout(function () { localStorage.setItem('adWatched', 0); adWatched2 = 0;}, 1000);}
 		}, this, 1000)
 		
         lime.scheduleManager.scheduleWithDelay(function () {
