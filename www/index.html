@@ -173,7 +173,7 @@
             text-align: center;
             left: 50%;
             z-index: 100;
-            transform: translate(0px,15px);
+            transform: translate(-12px,15px);
         }
 
         #currentStarCashBack, #currentStarCashBack2, #currentStarCashBack3 {
@@ -400,7 +400,7 @@
         <div id="fbshareFooter"> <a id="closeFB"></a></div>
 
     </div>
-    <div class="alignleft">
+    <!--<div class="alignleft">
 
       
     </div>
@@ -409,18 +409,18 @@
 
 
 
-    </div>
+    </div>-->
 
-    <div id="inter1">
+    <!--<div id="inter1">
         <div id="adWrap" class="external-link">
-      <!--<script type="text/javascript" src="https://adhitzads.com/1079064"></script>-->
+  
 		</div>
 
         <a id="gPlayIcon" class="external-link" href='https://play.google.com/store/apps/dev?id=8098884313818524240' target='_blank'><img id="gPlayImg" alt='Get it on Google Play' src='images/ads/google-play-badge_altered.png'  /></a>
 
        <div id="interCount">15</div>
 		<div id="testerr" class="external-link" ><a class="external-link" href='https://play.google.com/store/apps/dev?id=8098884313818524240' target='_blank'>HERE </a>  </div>
-    </div>
+    </div>-->
 
     <script type="text/javascript">
 
@@ -515,7 +515,7 @@ function interPop2() {
                 console.log("clicked fallback and starCash = " + starCash)
                 localStorage.setItem('MedFarm_LoadAd', 1);
                 //localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-               
+                starCash = localStorage.getItem('starCash');
                 starCash = starCash + 3;
                 localStorage.setItem('starCash', starCash);
                
