@@ -4938,18 +4938,18 @@ farming.start = function () {
         }
     }, false);
 
-    //document.getElementById("buyWithStarCash").addEventListener("click", function () {
-    //    if (starCash >= 5) {
-    //        boughtStarCash = true;
-    //        player.money += 500; a.updateMoney(); localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-    //        starCash = starCash - 5;
-    //        localStorage.setItem('starCash', starCash);
-    //        document.getElementById("starCashOuterLabel").innerHTML = starCash;
-    //        document.getElementById("sucessbuyTxt").innerHTML = '+ 500 Coins';
-    //        document.getElementById("sucessbuyTxt").style.display = 'block';
-    //        setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 750);
-    //    }
-    //}, false);
+    document.getElementById("buyWithStarCash").addEventListener("click", function () {
+        if (starCash >= 5) {
+            boughtStarCash = true;
+            player.money += 500; a.updateMoney(); localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+            starCash = starCash - 5;
+            localStorage.setItem('starCash', starCash);
+            document.getElementById("starCashOuterLabel").innerHTML = starCash;
+            document.getElementById("sucessbuyTxt").innerHTML = '+ 500 Coins';
+            document.getElementById("sucessbuyTxt").style.display = 'block';
+            setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 750);
+        }
+    }, false);
 
     ///// buyWithStarCashTools
     document.getElementById("buyWithStarCashTools").addEventListener("touchstart", function () {
@@ -4968,47 +4968,69 @@ farming.start = function () {
         }
     }, false);
 
-    //document.getElementById("buyWithStarCashTools").addEventListener("click", function () {
-    //    if (starCash >= 10) {
+    document.getElementById("buyWithStarCashTools").addEventListener("click", function () {
+        if (starCash >= 10) {
 
-    //        player.tools += 500; localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-    //        starCash = starCash - 10;
-    //        a.updateTools();
-    //        localStorage.setItem('starCash', starCash);
-    //        document.getElementById("starCashOuterLabel").innerHTML = starCash;
-    //        document.getElementById("sucessbuyTxt").innerHTML = '+ 500 Tools';
-    //        document.getElementById("sucessbuyTxt").style.display = 'block';
-    //        setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 1000);
+            player.tools += 500; localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+            starCash = starCash - 10;
+            a.updateTools();
+            localStorage.setItem('starCash', starCash);
+            document.getElementById("starCashOuterLabel").innerHTML = starCash;
+            document.getElementById("sucessbuyTxt").innerHTML = '+ 500 Tools';
+            document.getElementById("sucessbuyTxt").style.display = 'block';
+            setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 1000);
 
 
-    //    }
-    //}, false);
+        }
+    }, false);
 
-    //document.getElementById("viewAdImg").addEventListener("touchstart", function () {
+    document.getElementById("viewAdImg").addEventListener("touchstart", function () {
         
-    //        console.log("clicked viewAd")
+            console.log("touched viewAd")
         
-    //        localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
          
-    //        document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
-    //        starCash = starCash + 3;
-    //        document.getElementById("starCashOuterLabel").innerHTML = starCash;
-    //        localStorage.setItem('MedFarm_LoadAd', 1);
-    //        setTimeout(function () {
-    //            document.getElementById("sucessbuyTxt").style.display = 'block';
-                
+            document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
+            starCash = starCash + 3;
+            document.getElementById("starCashOuterLabel").innerHTML = starCash;
+            localStorage.setItem('MedFarm_LoadAd', 1);
+            setTimeout(function () {
+                document.getElementById("sucessbuyTxt").style.display = 'block';
+                document.getElementById("starCashOuterLabel").innerHTML = starCash;
 
-    //            localStorage.setItem('starCash', starCash);
-    //            document.getElementById("starCashOuterLabel").innerHTML = starCash;
-    //        }, 1500);
+                localStorage.setItem('starCash', starCash);
+                document.getElementById("starCashOuterLabel").innerHTML = starCash;
+            }, 1500);
 
-    //        setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 23000);
+            setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 23000);
 
 
         
-    //}, false);
+    }, false);
+
+    document.getElementById("viewAdImg").addEventListener("click", function () {
+
+        console.log("clicked viewAd")
+
+        localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+
+        document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
+        starCash = starCash + 3;
+        document.getElementById("starCashOuterLabel").innerHTML = starCash;
+        localStorage.setItem('MedFarm_LoadAd', 1);
+        setTimeout(function () {
+            document.getElementById("sucessbuyTxt").style.display = 'block';
+            document.getElementById("starCashOuterLabel").innerHTML = starCash;
+
+            localStorage.setItem('starCash', starCash);
+            document.getElementById("starCashOuterLabel").innerHTML = starCash;
+        }, 1500);
+
+        setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 23000);
 
 
+
+    }, false);
 
     document.getElementById("closeFB").addEventListener("touchstart", function () {
 
