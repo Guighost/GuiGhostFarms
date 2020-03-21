@@ -861,7 +861,7 @@ if (typeof localStorage["GuiGhostFarms_houseUpgrades"] === "undefined") { localS
 houseUpgrades = JSON.parse(localStorage.getItem('GuiGhostFarms_houseUpgrades'));
 
 if (typeof localStorage["adWatched"] === "undefined") { localStorage.setItem('adWatched', 0) };
-var adWatched = localStorage.getItem('adWatched');
+var adWatched = 0;
 
 if (typeof localStorage["showHighLight"] === "undefined") { localStorage.setItem('showHighLight', 0) };
 var showHighLight = localStorage.getItem('showHighLight');
@@ -4984,27 +4984,29 @@ farming.start = function () {
     //    }
     //}, false);
 
-    document.getElementById("viewAdImg").addEventListener("touchstart", function () {
+    //document.getElementById("viewAdImg").addEventListener("touchstart", function () {
         
-            console.log("clicked viewAd")
-            localStorage.setItem('MedFarm_LoadAd', 1);
-            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+    //        console.log("clicked viewAd")
+        
+    //        localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
          
-            document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
-            starCash = starCash + 3;
-            setTimeout(function () {
-                document.getElementById("sucessbuyTxt").style.display = 'block';
+    //        document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
+    //        starCash = starCash + 3;
+    //        document.getElementById("starCashOuterLabel").innerHTML = starCash;
+    //        localStorage.setItem('MedFarm_LoadAd', 1);
+    //        setTimeout(function () {
+    //            document.getElementById("sucessbuyTxt").style.display = 'block';
                 
 
-                localStorage.setItem('starCash', starCash);
-                document.getElementById("starCashOuterLabel").innerHTML = starCash;
-            }, 1500);
+    //            localStorage.setItem('starCash', starCash);
+    //            document.getElementById("starCashOuterLabel").innerHTML = starCash;
+    //        }, 1500);
 
-            setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 23000);
+    //        setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 23000);
 
 
         
-    }, false);
+    //}, false);
 
 
 

@@ -389,7 +389,7 @@
                 <img id="lowerArrow2" src="images/UI/rightBtn.png" alt="rightBtn2" />
                 <img id="lowerStarCashCoin" src="images/tools500.png" alt="tools500" /><img id="buyWithStarCashTools" src="images/UI/greenBuy.png" alt="StarCashBuyImg" />
             </div>
-            <div id="currentStarCashBack3">
+            <div id="currentStarCashBack3" onclick="showAdFallback()">
                 <div id="starCashRow3">Watch to Earn <img id="lowerStarCashImg3" src="images/UI/plus3StarCash.png" alt="StarCashImg" />
                 <img id="viewAdImg" src="images/UI/viewAd.png" alt="View Ad" /></div>
                  
@@ -442,37 +442,7 @@
 
         var timerThis2 = 0;
 
-        //<!-- var countStart = 10; -->
-        //<!-- setInterval(function () { -->
-        //    <!-- timerThis2++; -->
-
-        //    <!-- if (visible2 == 1 && countStart < 1) { -->
-        //        <!-- inter1.style.display = "none"; -->
-        //        <!-- visible2 = 0; -->
-        //        <!-- countStart = 10; -->
-        //    <!-- } -->
-
-        //    <!-- if (visible2 == 0 && visible == 0 && timerThis2 > 10) { -->
-
-        //        <!-- countStart = 15 -->
-        //        <!-- visible2 = 1; -->
-        //        <!-- timerThis2 = 0; -->
-
-
-        //        <!-- inter1.style.display = "block"; -->
-        //        <!-- interCount.innerHTML = countStart; -->
-        //    <!-- } -->
-        //    <!-- if (visible2 == 1) { -->
-        //        <!-- countStart = countStart - 1; -->
-        //        <!-- interCount.innerHTML = countStart; -->
-        //        <!-- if (countStart < 1) { -->
-        //            <!-- inter1.style.display = "none"; -->
-        //            <!-- timerThis2 = 0; -->
-
-        //        <!-- } -->
-        //    <!-- } -->
-
-        //<!-- }, 1000); -->
+    
 
     </script>
         <script type="text/javascript" src="cordova.js"></script>
@@ -511,29 +481,49 @@ function interPop2() {
                 localStorage.setItem('MedFarm_LoadAd', 0);
                 localStorage.setItem('adWatched', 1);
                 showItOrNo2 = 0;
-        try { Enhance.isInterstitialReady(callback); }
-        catch(err){console.log("Caught error " + err)}
-         
-            //tid = setInterval(interPop, 1900000);
-	 //localStorage.setItem('MedFarm_LoadAd', 0);
-	 //localStorage.setItem('adWatched', 1);
-   
- }
-else {return;}
-}
+                try { Enhance.isInterstitialReady(callback); }
+                catch(err){console.log("Caught error " + err)}
+           
+            }
+            else {return;}
+    }
+            //document.getElementById("viewAdImg").addEventListener("touchstart", function () {
 
+            //    console.log("clicked viewAd and starCash = " + starCash)
+
+            //    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+
+            //    document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
+            //    starCash = starCash + 3;
+            //    document.getElementById("starCashOuterLabel").innerHTML = starCash;
+            //    localStorage.setItem('MedFarm_LoadAd', 1);
+            //    setTimeout(function () {
+            //        document.getElementById("sucessbuyTxt").style.display = 'block';
+
+
+            //        localStorage.setItem('starCash', starCash);
+            //        document.getElementById("starCashOuterLabel").innerHTML = starCash;
+            //    }, 1500);
+
+            //    setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 23000);
+
+
+
+            //}, false);
           
             function showAdFallback() {
-                console.log("clicked fallback")
+                console.log("clicked fallback and starCash = " + starCash)
                 localStorage.setItem('MedFarm_LoadAd', 1);
                 //localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
                
-
-                //localStorage.setItem('starCash', starCash);
-                document.getElementById("starCashOuterLabel").innerHTML = starCash;
-                document.getElementById("sucessbuyTxt").innerHTML = '+ 5 Stars';
-                document.getElementById("sucessbuyTxt").style.display = 'block';
-                setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 1500);
+                starCash = starCash + 3;
+                localStorage.setItem('starCash', starCash);
+               
+                setTimeout(function () {
+                    document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                    document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
+                    document.getElementById("sucessbuyTxt").style.display = 'block'; }, 1500);
+                setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 15000);
             }
  </script>
     </body>
