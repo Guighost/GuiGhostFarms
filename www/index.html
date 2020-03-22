@@ -683,6 +683,24 @@ var tid2 = setInterval(interPop2, 500);
                 
 
             }
+
+    //// local notification
+            var onPermissionGranted = function () {
+                // Success
+                try {
+                    Enhance.disableLocalNotification()
+                    Enhance.enableLocalNotification('Your farm needs you', 'Play it now!', 60);
+                }
+                catch (err) { console.log("caught notification error = " + err)}
+             
+            };
+
+            var onPermissionRefused = function () {
+                // Failure
+            };
+
+            Enhance.requestLocalNotificationPermission(OnPermissionGranted, OnPermissionRefused);
+
  </script>
     </body>
 </html>
