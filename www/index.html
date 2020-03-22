@@ -520,31 +520,8 @@
 
     </div>
 
-    <script type="text/javascript">
+ <script type="text/javascript" src="cordova.js"></script>
 
-        <!-- //starcash menu close -->
-        function closeFBShare() {
-            //e.preventDefault();
-            document.getElementById("fbshare").style.display = 'none';
-        }
-
-        ///ad stuff
-
-        var visible = 0;
-        var visible2 = 0;
-
-        var inter1 = document.getElementById("inter1");
-        var interCount = document.getElementById("interCount");
-
-
-
-        var timerThis2 = 0;
-
-    
-
-    </script>
-        <script type="text/javascript" src="cordova.js"></script>
-        <!--<script type="text/javascript" src="js/index.js"></script>-->
 
 <script type=text/javascript> 
 
@@ -561,31 +538,61 @@
     if (localStorage.getItem("rateMeNever") == null) {
         localStorage.setItem("rateMeNever", 0);
     }
+    if (localStorage.getItem("showRewarded") == null) {
+        localStorage.setItem("showRewarded", 0);
+    }
 var showItOrNo = 1;
 var showItOrNo2 = 0;
-var onceOnlyAd = 0;
-//var tid = setInterval(interPop, 960000);
-//function interPop() {
+    var onceOnlyAd = 0;
+    var showRewarded = 0;
+    var rewardedCompleted = 0;
 
-//        if(showItOrNo == 1 ){
-//            try { Enhance.isInterstitialReady(callback); }
-//            catch (err) { console.log("Caught error " + err) }
-//        showItOrNo = 0;
-//         }
-//        else {showItOrNo = 1;}
-//    }
+
+    var callback2 = function (result) {
+        if (!result) {
+            app.writeLog('Rewarded ad is not ready');
+            return;
+        }
+
+        // The ad is ready
+        var onRewardGranted = function (rewardValue, rewardType) {
+            if (rewardType == Enhance.RewardType.ITEM)
+                app.writeLog("Reward granted (item)"),
+                rewardedCompleted = 1;
+
+            else if (rewardType == Enhance.RewardType.COINS)
+                app.writeLog("Reward granted (coins), value: " + rewardValue),
+            rewardedCompleted = 1;
+        };
+
+        var onRewardDeclined = function () {
+            app.writeLog('Reward declined'),
+            rewardedCompleted = 0;
+        };
+
+        var onRewardUnavailable = function () {
+            app.writeLog('Reward unavailable');
+            rewardedCompleted = 0;
+        };
+
+        Enhance.showRewardedAd(onRewardGranted, onRewardDeclined, onRewardUnavailable);
+    };
+
+
+
 
 var tid2 = setInterval(interPop2, 500);
 
 
-function interPop2() {
+    function interPop2() {
+    //interstatial ads
     showItOrNo2 = localStorage.getItem('MedFarm_LoadAd');
             if (showItOrNo2 == 1) {
                 localStorage.setItem('MedFarm_LoadAd', 0);
                 localStorage.setItem('adWatched', 1);
                 showItOrNo2 = 0;
                 try { Enhance.isInterstitialReady(callback); }
-                catch(err){console.log("Caught error " + err)}
+                catch(err){console.log("Caught interstital  error " + err)}
            
             }
             moreGamesClicked = localStorage.getItem("moreGamesClicked")
@@ -593,7 +600,19 @@ function interPop2() {
                 openLink();
                 moreGamesClicked = 0;
             }
-      
+            //rewarded video
+            showRewarded = parseInt(localStorage.getItem('MedFarm_StarCashBoost'));
+            if (showRewarded == 1) {
+                console.log("interpop2 detected showRewarded = " + showRewarded)
+                localStorage.setItem('MedFarm_StarCashBoost', 0);
+                try { Enhance.isRewardedAdReady(callback2); showRewarded = 0; }
+                catch (err) { console.log("Caught rewarded error " + err) }
+            }
+            if (rewardedCompleted == 1) {
+                //todo award starcash
+                rewardedCompleted = 0;
+            }
+        
     }
        ////rate me
          var rateMeBtnYes = document.getElementById("rateMeBtnYes")
@@ -612,9 +631,13 @@ function interPop2() {
         var rateImage = document.getElementById("rateImage")
         rateImage.addEventListener("click", openRateOnPlay);
         rateImage.addEventListener("touchstart", openRateOnPlay);
-    
 
-     function closeRate1() {
+        function closeFBShare() {
+
+            document.getElementById("fbshare").style.display = 'none';
+        }
+
+        function closeRate1() {
                 document.getElementById("rateMe").style.display = 'none';
                localStorage.setItem("rateMeNever", 1)
 
@@ -652,7 +675,10 @@ function interPop2() {
             function openLink() {
                 console.log("clicked more games");
                 localStorage.setItem("moreGamesClicked", 0);
-                try { cordova.plugins.market.open('com.GuiGhostGames.StackerBoB'); }
+                try {
+                    //cordova.plugins.market.open('com.GuiGhostGames.StackerBoB');
+                    cordova.plugins.market.search('guighost')
+                }
                 catch (err) { console.log("caught = " + err) }
                 
 

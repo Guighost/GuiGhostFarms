@@ -5012,7 +5012,7 @@ farming.start = function () {
     function starCashViewAd() {
         localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
 
-        localStorage.setItem('MedFarm_LoadAd', 1);
+        //localStorage.setItem('MedFarm_LoadAd', 1);
         localStorage.setItem('MedFarm_StarCashBoost', 1);
         starCash = parseInt(localStorage["starCash"]);
         console.log("after parseInt starcash = " + starCash);
@@ -5492,10 +5492,12 @@ farming.start = function () {
     //var playGameBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 2 - 50, 510).setSize(50, 50).setFill("#663300");
     playGameBtn = (new lime.GlossyButton).setColor("#663300").setText("").setPosition(150, 250).setSize(a.width / 2 + 10, 70);
     introLayer.appendChild(playGameBtn);
-    var playButtonLabel = (new lime.Label).setText("PLAY").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setPosition(150, 255).setFontSize(36);
+    var playButtonLabel = (new lime.Label).setText("PLAY").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(150, 255).setFontSize(36);
     introLayer.appendChild(playButtonLabel);
-    var moreGameBtn = (new lime.GlossyButton).setColor("#663300").setText("More Games").setPosition(150, 340).setSize(a.width / 2 -10, 50);
+    var moreGameBtn = (new lime.GlossyButton).setColor("#663300").setText("").setPosition(150, 340).setSize(a.width / 2 -5, 50);
     introLayer.appendChild(moreGameBtn);
+    var moreGameBtnLabel = (new lime.Label).setText("MORE GAMES").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(150, 346).setFontSize(20);
+    introLayer.appendChild(moreGameBtnLabel);
     var introFill2 = (new lime.Sprite).setPosition(157, 260).setSize(300, 490).setFill("images/UI/CoverImg2.png");
     introScene.appendChild(introFill2);
     //Intro event handler
