@@ -5029,7 +5029,7 @@ farming.start = function () {
             document.getElementById("starCashOuterLabel").innerHTML = starCash;
         }, 1500);
 
-        setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 23000);
+        setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 33000);
 
     }
 

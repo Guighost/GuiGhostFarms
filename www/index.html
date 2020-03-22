@@ -670,16 +670,27 @@ var tid2 = setInterval(interPop2, 500);
                     document.getElementById("sucessbuyTxt").style.display = 'block'; }, 1500);
                 setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 15000);
             }
-
+            var whichMore = 'stack'; 
             ///more games button function
             function openLink() {
                 console.log("clicked more games");
                 localStorage.setItem("moreGamesClicked", 0);
-                try {
-                    //cordova.plugins.market.open('com.GuiGhostGames.StackerBoB');
-                    cordova.plugins.market.search('guighost')
+                if (whichMore == 'stack') {
+                    whichMore == 'star'
+                    try {
+                        cordova.plugins.market.open('com.GuiGhostGames.StackerBoB');
+                        //cordova.plugins.market.search('guighost')
+                    }
+                    catch (err) { console.log("caught = " + err) }
                 }
-                catch (err) { console.log("caught = " + err) }
+                else if (whichMore == 'star') {
+                    whichMore == 'stack'
+                    try {
+                        cordova.plugins.market.open('com.GuiGhostGames.StarMatch2048');
+                        //cordova.plugins.market.search('guighost')
+                    }
+                    catch (err) { console.log("caught = " + err) }
+                }
                 
 
             }
@@ -699,9 +710,12 @@ var tid2 = setInterval(interPop2, 500);
                 // Failure
                 console.log("caught notification error Permission refused " )
             };
-            try { Enhance.requestLocalNotificationPermission(OnPermissionGranted, OnPermissionRefused); }
-            catch (err) { console.log("caught notification INNER error = " + err) };
-            
+            function tryNotif() {
+                try { Enhance.requestLocalNotificationPermission(OnPermissionGranted, OnPermissionRefused); }
+                catch (err) { console.log("caught notification INNER error = " + err) };
+            }
+      
+            tryNotif();
 
  </script>
     </body>
