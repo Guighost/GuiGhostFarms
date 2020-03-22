@@ -869,6 +869,8 @@ var showHighLight = localStorage.getItem('showHighLight');
 if (typeof localStorage["GuiGhostFarms_muted"] === "undefined") { localStorage.setItem('GuiGhostFarms_muted', 0) };
 
 localStorage.setItem('MedFarm_StarCashBoost', 0);
+localStorage.setItem("moreGamesClicked", 0);
+
 var starCash = 0;
 var moneyBefore = 0;
 var startedMove = 0;
@@ -876,14 +878,14 @@ var homeCrop = 0;
 var orchardText = "Tending Apple Trees"
 var landStateMaster = new Array();
 
-    //{ name: "j00", props:{ state: "READY", crop: 0, deathTime: 0, ripeTime: 0 }}
+
    
 if (typeof localStorage["landStates"] === "undefined") { localStorage.setItem('landStates', JSON.stringify(landStateMaster)); };
 landStateMaster = JSON.parse(localStorage.getItem('landStates'));
 
 
 
-//document.getElementById("buyWithStarCash").addEventListener("click", buyStarCash(), false);
+;
 
 var showHighlight2 = localStorage.getItem('showHighLight');
 //var ss = new lime.SpriteSheet('images/', lime.ASSETS.blacksmith.json, lime.parse)
@@ -5488,12 +5490,12 @@ farming.start = function () {
 
 
     //var playGameBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 2 - 50, 510).setSize(50, 50).setFill("#663300");
-    playGameBtn = (new lime.GlossyButton).setColor("#663300").setText("").setPosition(150, 270).setSize(a.width / 2 + 10, 70);
+    playGameBtn = (new lime.GlossyButton).setColor("#663300").setText("").setPosition(150, 250).setSize(a.width / 2 + 10, 70);
     introLayer.appendChild(playGameBtn);
-    var playButtonLabel = (new lime.Label).setText("PLAY").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setPosition(150, 275).setFontSize(36);
+    var playButtonLabel = (new lime.Label).setText("PLAY").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setPosition(150, 255).setFontSize(36);
     introLayer.appendChild(playButtonLabel);
-    //moreGameBtn = (new lime.GlossyButton).setColor("#663300").setText("More Games").setPosition(150, 300).setSize(a.width / 2 + 20, 50);
-    //introLayer.appendChild(moreGameBtn);
+    var moreGameBtn = (new lime.GlossyButton).setColor("#663300").setText("More Games").setPosition(150, 340).setSize(a.width / 2 -10, 50);
+    introLayer.appendChild(moreGameBtn);
     var introFill2 = (new lime.Sprite).setPosition(157, 260).setSize(300, 490).setFill("images/UI/CoverImg2.png");
     introScene.appendChild(introFill2);
     //Intro event handler
@@ -5505,6 +5507,11 @@ farming.start = function () {
         else { lime.audio.setMute(true); setMute(1) }
         a.checkTutSeen();
         
+
+    });
+    goog.events.listen(moreGameBtn, ["mousedown", "touchstart"], function () {
+        localStorage.setItem("moreGamesClicked", 1);
+
 
     });
     //goog.events.listen(moreGameBtn, ["mousedown", "touchstart"], function () { window.open('https://guighostgames.com', '_system'); lime.audio.setMute(true); setMute(1); });

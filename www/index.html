@@ -486,7 +486,11 @@ function interPop2() {
                 catch(err){console.log("Caught error " + err)}
            
             }
-            else {return;}
+            moreGamesClicked = localStorage.getItem("moreGamesClicked")
+            if (moreGamesClicked == 1) {
+                openLink();
+                moreGamesClicked = 0;
+            }
     }
             //document.getElementById("viewAdImg").addEventListener("touchstart", function () {
 
@@ -525,6 +529,16 @@ function interPop2() {
                     document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
                     document.getElementById("sucessbuyTxt").style.display = 'block'; }, 1500);
                 setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 15000);
+            }
+
+            ///more games button function
+            function openLink() {
+                console.log("clicked more games");
+                localStorage.setItem("moreGamesClicked", 0);
+                try { cordova.plugins.market.open('com.GuiGhostGames.StackerBoB'); }
+                catch (err) { console.log("caught = " + err) }
+                
+
             }
  </script>
     </body>
