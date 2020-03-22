@@ -353,99 +353,6 @@
                 z-index: 15000;
             }
         }
-
-        /*/////rate me*/
-        #rateMe {
-            position: absolute;
-            min-height: 100%;
-            min-width: 100%;
-            background-color: black;
-            background-image: url("images/selfPromoteBack2.png");
-            background-position: top;
-            background-repeat: no-repeat;
-            background-size: contain;
-            z-index: 1000;
-            /*min-width: 400px;
-            max-width: 500px;
-            max-height: 400px;*/
-            align-content: center;
-            text-align: center;
-            font-family: 'Comic Sans MS';
-            font-size: 16px;
-            color: azure;
-            text-shadow: 2px 2px #101511;
-            /*display: none;*/
-            top: 0px;
-        }
-
-        #rateMeInner {
-            position: absolute;
-            background-image: linear-gradient(grey,ActiveCaption);
-            top: 30%;
-            margin-left: 50%;
-            height: 230px;
-            width: 312px;
-            border: 5px grey groove;
-            transform: translate(-161px,25px);
-            z-index: 3100;
-            /*display: none;*/
-        }
-
-        #rateMeBtnWrap {
-            position: absolute;
-            bottom: 5px;
-            width: 100%;
-            left: 0px;
-        }
-
-        .rateBtn {
-            float: left;
-            width: 26%;
-            height: 32px;
-            background-image: linear-gradient(forestGreen,#17BF39 );
-            border: 5px groove green;
-            border-radius: 5px;
-            align-content: center;
-            text-align: center;
-            margin: 2%;
-            font-family: 'Comic Sans MS';
-            font-size: 15px;
-            text-shadow: 1px 1px black;
-            color: azure;
-            padding-top: 3px;
-            /*margin-left: 5%;*/
-        }
-
-        #rateImage {
-            background-image: linear-gradient(lightcoral,yellow );
-            margin-top: 4%;
-            display: inline-block;
-            width: 300px;
-            margin-left: 50%;
-            transform: translate(-150px,-35px);
-            z-index: 2000;
-            border-radius: 10px;
-        }
-
-        #rateMeBtnNo {
-            background-image: linear-gradient(red,lightcoral );
-            margin-top: 4%;
-        }
-
-        #rateMeBtnLater {
-            background-image: linear-gradient(blue, #149EB7);
-            margin-top: 4%;
-        }
-
-        #rateMeBtnYes {
-            padding-top: 9px;
-            height: 45px;
-            margin-top: 3%;
-            font-size: 16px;
-        }
-        #rateMeText {
-            transform: translate(0px,-18px);
-        }
     
     </style>
 
@@ -494,31 +401,27 @@
         <div id="fbshareFooter"> <a id="closeFB"></a></div>
 
     </div>
+    <!--<div class="alignleft">
 
-    <div id="rateMe">
-        <div id="rateMeInner" >
-            <div id="rateMeTopWrap">
-
-                <div id="rateMeText">
-                    
-                    <p><h2>Please Rate Our App</h2> It takes only a moment and helps alot</p>
-                </div>
-
-            </div>
-            <div id="rateMeImage" > <img id="rateImage" alt='Rate on Google Play' src='images/ratingstars.png' />   </div>
-
-            <div id="rateMeBtnWrap">
-
-                <div id="rateMeBtnNo" class="rateBtn">No Thanks</div>
-
-                <div id="rateMeBtnYes" class="rateBtn"> <b>Rate Now</b>  </div>
-                <div id="rateMeBtnLater" class="rateBtn">Later</div>
-            </div>
-
-
-        </div>
-
+      
     </div>
+
+    <div class="alignright">
+
+
+
+    </div>-->
+
+    <!--<div id="inter1">
+        <div id="adWrap" class="external-link">
+  
+		</div>
+
+        <a id="gPlayIcon" class="external-link" href='https://play.google.com/store/apps/dev?id=8098884313818524240' target='_blank'><img id="gPlayImg" alt='Get it on Google Play' src='images/ads/google-play-badge_altered.png'  /></a>
+
+       <div id="interCount">15</div>
+		<div id="testerr" class="external-link" ><a class="external-link" href='https://play.google.com/store/apps/dev?id=8098884313818524240' target='_blank'>HERE </a>  </div>
+    </div>-->
 
     <script type="text/javascript">
 
@@ -545,9 +448,7 @@
     </script>
         <script type="text/javascript" src="cordova.js"></script>
         <!--<script type="text/javascript" src="js/index.js"></script>-->
-
-<script type=text/javascript> 
-
+		<script type=text/javascript> 
  var callback = function(result) {
     if(!result) {
         app.writeLog('Interstitial ad is not ready');
@@ -558,9 +459,7 @@
 };
 
 // set interval to check for interstatialad
-    if (localStorage.getItem("rateMeNever") == null) {
-        localStorage.setItem("rateMeNever", 0);
-    }
+
 var showItOrNo = 1;
 var showItOrNo2 = 0;
 var onceOnlyAd = 0;
@@ -577,7 +476,6 @@ var onceOnlyAd = 0;
 
 var tid2 = setInterval(interPop2, 500);
 
-
 function interPop2() {
     showItOrNo2 = localStorage.getItem('MedFarm_LoadAd');
             if (showItOrNo2 == 1) {
@@ -593,45 +491,30 @@ function interPop2() {
                 openLink();
                 moreGamesClicked = 0;
             }
-      
     }
-       ////rate me
-         var rateMeBtnYes = document.getElementById("rateMeBtnYes")
-         rateMeBtnYes.addEventListener("click", openRateOnPlay);
-         rateMeBtnYes.addEventListener("touchstart", openRateOnPlay);
+            //document.getElementById("viewAdImg").addEventListener("touchstart", function () {
+
+            //    console.log("clicked viewAd and starCash = " + starCash)
+
+            //    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+
+            //    document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
+            //    starCash = starCash + 3;
+            //    document.getElementById("starCashOuterLabel").innerHTML = starCash;
+            //    localStorage.setItem('MedFarm_LoadAd', 1);
+            //    setTimeout(function () {
+            //        document.getElementById("sucessbuyTxt").style.display = 'block';
 
 
-       var rateMeBtnNo = document.getElementById("rateMeBtnNo")
-       rateMeBtnNo.addEventListener("click", closeRate1);
-       rateMeBtnNo.addEventListener("touchstart", closeRate1);
+            //        localStorage.setItem('starCash', starCash);
+            //        document.getElementById("starCashOuterLabel").innerHTML = starCash;
+            //    }, 1500);
 
-       var rateMeBtnLater = document.getElementById("rateMeBtnLater")
-       rateMeBtnLater.addEventListener("click", closeRate2);
-       rateMeBtnLater.addEventListener("touchstart", closeRate2);
-
-        var rateImage = document.getElementById("rateImage")
-        rateImage.addEventListener("click", openRateOnPlay);
-        rateImage.addEventListener("touchstart", openRateOnPlay);
-    
-
-     function closeRate1() {
-                document.getElementById("rateMe").style.display = 'none';
-               localStorage.setItem("rateMeNever", 1)
-
-          }
-       function closeRate2() {
-                document.getElementById("rateMe").style.display = 'none';
-               localStorage.setItem("rateMeNever", 0)
-
-          }
-
-        function openRateOnPlay() {
-                document.getElementById("rateMe").style.display = 'none';
-                try { cordova.plugins.market.open('com.wGuiGhostFarms_9861566'); }
-                catch (err) { console.log("caught = " + err) }
+            //    setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 23000);
 
 
-          }
+
+            //}, false);
           
             function showAdFallback() {
                 console.log("clicked fallback and starCash = " + starCash)

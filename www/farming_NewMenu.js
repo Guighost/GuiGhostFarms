@@ -8151,7 +8151,7 @@ farming.start = function () {
                     }
                 }
                
-      
+          
 
                 var showingStarCash = 0; 
     /////note this is the starcash buy menu but used to be facebook modal, hence the function name
@@ -8186,6 +8186,18 @@ farming.start = function () {
                     else if (starCashIsUp == 'block') { globalModalBlock = 1; homeBlock.setHidden(false); };
 
                     document.getElementById("starCashOuterLabel").innerHTML = starCash;
+
+
+                
+  
+                    ///rate modal 1 time only
+                    var rateNever = localStorage.getItem("rateMeNever");
+                    if (yearCount == 2 && rateNever == 0 && dayCount > 230 && dayCount < 232) {
+                        document.getElementById("rateMe").style.display = 'block';
+                    }
+                    else if (yearCount == 4 && rateNever == 0 && dayCount > 120 && dayCount < 122) {
+                        document.getElementById("rateMe").style.display = 'block';
+                    }
 
                 }, this, 500)
           
