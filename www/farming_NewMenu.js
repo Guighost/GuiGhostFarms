@@ -2507,29 +2507,34 @@ farming.start = function () {
     if (tutSeen == 1) { homeBlock.setHidden(true); }
 
     ///crop boost modal
-    var boostCrops = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(50, 110).setSize(200, 200).setFill("images/UI/cropBoostBack2.png");
+    var boostCrops = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(50, 150).setSize(200, 200).setFill("images/UI/cropBoostBack2.png");
 	   e.appendChild(boostCrops);
        boostCrops.setHidden(true);
        var starCashCountBoost = (new lime.Label).setText(starCash).setPosition(105, 22).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#000F00").setFontWeight(600).setFontSize(20).setFontFamily("ComicSans MS");
      boostCrops.appendChild(starCashCountBoost);
-	var speedAdConfirm =(new lime.GlossyButton).setColor("#00FF00").setText("View").setPosition(48, 163).setSize(60, 32);
+	var speedAdConfirm =(new lime.GlossyButton).setColor("#00FF00").setText("View").setPosition(73, 163).setSize(50, 32);
     boostCrops.appendChild(speedAdConfirm);
     //speedAdConfirm.setHidden(true);
-    var speedAdConfirmSC = (new lime.GlossyButton).setColor("#00FF00").setText("-       ").setPosition(152, 163).setSize(60, 32);
+    var speedAdConfirmSC = (new lime.GlossyButton).setColor("#00FF00").setText("-       ").setPosition(142, 163).setSize(50, 32);
     boostCrops.appendChild(speedAdConfirmSC);
-    var starCashBoost = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-5, -17).setSize(35, 35).setFill("images/UI/plus3StarCash.png");
+    var starCashBoost = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-10, -17).setSize(35, 35).setFill("images/UI/plus3StarCash.png");
     speedAdConfirmSC.appendChild(starCashBoost);
 	var speedAdCancel =(new lime.GlossyButton).setColor("#8B0000").setText("").setPosition(105, 208).setSize(40, 40);
     boostCrops.appendChild(speedAdCancel);
     var cancelBoostImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-20, -20).setSize(40, 40).setFill("images/UI/XButton.png");
     speedAdCancel.appendChild(cancelBoostImg);
 
+    var visibleLink = true;
 		goog.events.listen(speedAdConfirm, ["mousedown", "touchstart"], function () {
-			//console.log("clicked confirm");
+            //console.log("clicked confirm");
+            visibleLink = boostCrops.getHidden();
+            console.log("visibleLink = " + visibleLink);
+            if (visibleLink == false) { 
             localStorage.setItem('MedFarm_LoadAd', 1);
             localStorage.setItem('MedFarm_StarCashBoost', 0);
 			boostCrops.setHidden(true);
-			homeBlock.setHidden(true);
+            homeBlock.setHidden(true);
+            }
         });
         goog.events.listen(speedAdConfirmSC, ["mousedown", "touchstart"], function () {
             //console.log("clicked confirm SC");

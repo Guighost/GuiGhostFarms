@@ -525,14 +525,6 @@
 
 <script type=text/javascript> 
 
- var callback = function(result) {
-    if(!result) {
-        app.writeLog('Interstitial ad is not ready');
-        return;
-    }
-
-    Enhance.showInterstitialAd();
-};
 
 // set interval to check for interstatialad
     if (localStorage.getItem("rateMeNever") == null) {
@@ -580,13 +572,22 @@ var showItOrNo2 = 0;
 
 
 
+    var callback = function (result) {
+        if (!result) {
+            app.writeLog('Interstitial ad is not ready');
+            return;
+        }
+
+        Enhance.showInterstitialAd();
+    };
 
 var tid2 = setInterval(interPop2, 500);
 
 
     function interPop2() {
     //interstatial ads
-    showItOrNo2 = localStorage.getItem('MedFarm_LoadAd');
+        showItOrNo2 = 0;
+        showItOrNo2 = parseInt(localStorage.getItem('MedFarm_LoadAd'));
             if (showItOrNo2 == 1) {
                 localStorage.setItem('MedFarm_LoadAd', 0);
                 localStorage.setItem('adWatched', 1);
@@ -656,20 +657,20 @@ var tid2 = setInterval(interPop2, 500);
 
           }
           
-            function showAdFallback() {
-                console.log("clicked fallback and starCash = " + starCash)
-                localStorage.setItem('MedFarm_LoadAd', 1);
-                //localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-                starCash = localStorage.getItem('starCash');
-                starCash = starCash + 3;
-                localStorage.setItem('starCash', starCash);
+            //function showAdFallback() {
+            //    console.log("clicked fallback and starCash = " + starCash)
+            //    localStorage.setItem('MedFarm_LoadAd', 1);
+            //    //localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+            //    starCash = localStorage.getItem('starCash');
+            //    starCash = starCash + 3;
+            //    localStorage.setItem('starCash', starCash);
                
-                setTimeout(function () {
-                    document.getElementById("starCashOuterLabel").innerHTML = starCash;
-                    document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
-                    document.getElementById("sucessbuyTxt").style.display = 'block'; }, 1500);
-                setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 15000);
-            }
+            //    setTimeout(function () {
+            //        document.getElementById("starCashOuterLabel").innerHTML = starCash;
+            //        document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
+            //        document.getElementById("sucessbuyTxt").style.display = 'block'; }, 1500);
+            //    setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 15000);
+            //}
             var whichMore = 'stack'; 
             ///more games button function
             function openLink() {
@@ -696,26 +697,26 @@ var tid2 = setInterval(interPop2, 500);
             }
 
     //// local notification
-            var onPermissionGranted = function () {
-                // Success
-                try {
-                    Enhance.disableLocalNotification()
-                    Enhance.enableLocalNotification('Your farm needs you', 'Play it now!', 60);
-                }
-                catch (err) { console.log("caught notification INNER error = " + err)}
+            //var onPermissionGranted = function () {
+            //    // Success
+            //    try {
+            //        Enhance.disableLocalNotification()
+            //        Enhance.enableLocalNotification('Your farm needs you', 'Play it now!', 60);
+            //    }
+            //    catch (err) { console.log("caught notification INNER error = " + err)}
              
-            };
+            //};
 
-            var onPermissionRefused = function () {
-                // Failure
-                console.log("caught notification error Permission refused " )
-            };
-            function tryNotif() {
-                try { Enhance.requestLocalNotificationPermission(OnPermissionGranted, OnPermissionRefused); }
-                catch (err) { console.log("caught notification INNER error = " + err) };
-            }
+            //var onPermissionRefused = function () {
+            //    // Failure
+            //    console.log("caught notification error Permission refused " )
+            //};
+            //function tryNotif() {
+            //    try { Enhance.requestLocalNotificationPermission(OnPermissionGranted, OnPermissionRefused); }
+            //    catch (err) { console.log("caught notification INNER error = " + err) };
+            //}
       
-            tryNotif();
+            //tryNotif();
 
  </script>
     </body>
