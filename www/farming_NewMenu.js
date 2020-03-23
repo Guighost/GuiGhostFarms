@@ -1546,6 +1546,7 @@ cropsStored: [
 var tutSeen = 0;
 
 localStorage.setItem('MedFarm_LoadAd', 0);
+
 if (typeof localStorage["GuiGhostFarms_player"] === "undefined") { localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));};
 player = JSON.parse(localStorage.getItem('GuiGhostFarms_player'));
 var globalModalBlock = 0;
@@ -2501,7 +2502,9 @@ farming.start = function () {
     var homeBlock = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#000F00").setOpacity(0.75);
     e.appendChild(homeBlock);
     goog.events.listen(homeBlock, ["mousedown", "touchstart"], function () {
-        if (tutSeen == 1) { homeBlock.setHidden(true); }
+        var modalUp = false;
+        modalUp = boostCrops.getHidden();
+        if (tutSeen == 1 && modalUp == true) { homeBlock.setHidden(true); }
         else { homeBlock.setHidden(false); }
     }, true, this);
     if (tutSeen == 1) { homeBlock.setHidden(true); }
@@ -2530,10 +2533,14 @@ farming.start = function () {
             visibleLink = boostCrops.getHidden();
             console.log("visibleLink = " + visibleLink);
             if (visibleLink == false) { 
-            localStorage.setItem('MedFarm_LoadAd', 1);
-            localStorage.setItem('MedFarm_StarCashBoost', 0);
-			boostCrops.setHidden(true);
-            homeBlock.setHidden(true);
+                localStorage.setItem('MedFarm_LoadAd', 1);
+                localStorage.setItem('MedFarm_StarCashBoost', 0);
+                setTimeout(function () {
+                    boostCrops.setHidden(true);
+                    homeBlock.setHidden(true);
+                    globalModalBlock = 0;
+                }, 500);
+			  
             }
         });
         goog.events.listen(speedAdConfirmSC, ["mousedown", "touchstart"], function () {
@@ -2595,7 +2602,7 @@ farming.start = function () {
         if (tutStep > 12) {
             tutSeen = 1;
             tutModal.setHidden(true);
-            removeAdsBack.setHidden(true);
+            //removeAdsBack.setHidden(true);
             homeBlock.setHidden(true);
             localStorage.setItem('GuiGhostFarms_tutSeen', 1);
             swipeRightHint.setHidden(false);
@@ -2787,16 +2794,16 @@ farming.start = function () {
         }, this, 200)
     }
 
-    ///remove ads modal
-    var removeAdsBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(15, 105).setSize(275, 250).setFill("images/UI/blankBack4.png");
-    e.appendChild(removeAdsBack);
-    var removeAdsText = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(20, 15).setSize(230, 60).setFontSize(18).setText("Swipe in from the left opens the Game Menu");
-    removeAdsBack.appendChild(removeAdsText);
-    var removeAdsText2 = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(135, 95).setSize(130, 320).setFontSize(18).setText("Here you can SHARE, THEME, RATE, or even REMOVE ADS ");
-    removeAdsBack.appendChild(removeAdsText2);
-    var removeAdsImage = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(15, 55).setSize(120, 185).setFill("images/removeAds.png" );
-    removeAdsBack.appendChild(removeAdsImage);
-    removeAdsBack.setHidden(true);
+    /////remove ads modal
+    //var removeAdsBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(15, 105).setSize(275, 250).setFill("images/UI/blankBack4.png");
+    //e.appendChild(removeAdsBack);
+    //var removeAdsText = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(20, 15).setSize(230, 60).setFontSize(18).setText("Swipe in from the left opens the Game Menu");
+    //removeAdsBack.appendChild(removeAdsText);
+    //var removeAdsText2 = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(135, 95).setSize(130, 320).setFontSize(18).setText("Here you can SHARE, THEME, RATE, or even REMOVE ADS ");
+    //removeAdsBack.appendChild(removeAdsText2);
+    //var removeAdsImage = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(15, 55).setSize(120, 185).setFill("images/removeAds.png" );
+    //removeAdsBack.appendChild(removeAdsImage);
+    //removeAdsBack.setHidden(true);
 
 
 
@@ -2896,69 +2903,77 @@ farming.start = function () {
 
     ////Home tree unlocks
     goog.events.listen(treeUnlockBtn, ["mousedown", "touchstart"], function () {            //left field
-        if (tutSeen == 1 && globalModalBlock == 0) {
-            if (player.tools >= 50) {
 
-                player.tools = player.tools - 50;
-                a.updateTools();
-                trees1Img.setHidden(true);
-                upgradeCloudTH1.setHidden(false);
-                axeMoverLabelTH1.setHidden(false);
+        lime.scheduleManager.scheduleWithDelay(function () {
 
-                //left trees axe anim
-                lime.scheduleManager.scheduleWithDelay(function () {
-                    axerotateH1 = axerotateH1 + 10;
-                    if (axerotateH1 > 35) { axerotateH1 = -10; };
-                    axeHLeft.setRotation(axerotateH1);
+            
+            if (tutSeen == 1 && globalModalBlock == 0) {
+                if (player.tools >= 50) {
 
-                }, this, 200, 300)
+                    player.tools = player.tools - 50;
+                    a.updateTools();
+                    trees1Img.setHidden(true);
+                    upgradeCloudTH1.setHidden(false);
+                    axeMoverLabelTH1.setHidden(false);
 
-                //left tress  clearing cloud anim
-                var secondsToUpgradeTH1 = 60;
-                var upCloudWTH1 = 100;
-                var upCloudXTH1 = 0;
-                var upCloudYTH1 = 230;
+                    //left trees axe anim
+                    lime.scheduleManager.scheduleWithDelay(function () {
+                        axerotateH1 = axerotateH1 + 10;
+                        if (axerotateH1 > 35) { axerotateH1 = -10; };
+                        axeHLeft.setRotation(axerotateH1);
 
-                lime.scheduleManager.scheduleWithDelay(function () {
+                    }, this, 200, 300)
 
-                    upgradeCloudTH1.setPosition(upCloudXTH1, upCloudYTH1).setSize(upCloudWTH1, 200)
-                    upCloudWTH1 = upCloudWTH1 + 10;
-                    upCloudXTH1 = upCloudXTH1 - 5;
-                    upCloudYTH1 = upCloudYTH1 - 5
-                    if (upCloudXTH1 < -15) { upCloudXTH1 = 0; upCloudYTH1 = 230; upCloudWTH1 = 100; }
+                    //left tress  clearing cloud anim
+                    var secondsToUpgradeTH1 = 60;
+                    var upCloudWTH1 = 100;
+                    var upCloudXTH1 = 0;
+                    var upCloudYTH1 = 230;
 
+                    lime.scheduleManager.scheduleWithDelay(function () {
 
-                }, this, 250, 240)
-
-                //right trees coundown label updates
-                lime.scheduleManager.scheduleWithDelay(function () {
-                    //add upgrade anim
-                    secondsToUpgradeTH1 = secondsToUpgradeTH1 - 1;
-                    axeMoverLabelTH1.setText(secondsToUpgradeTH1);
-
-                    if (secondsToUpgradeTH1 <= 0) {
-                        axeMoverLabelTH1.setHidden(true); upgradeCloudTH1.setHidden(true); secondsToUpgradeTH1 = 60;
-                        player.fields = player.fields + 1;
-                        a.updateTools();
-                        trees1.setHidden(true); treeUnlock1.setHidden(true); treeUnlockBtn.setHidden(true); axeHLeft.setHidden(true);
-                        localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-                        localStorage.setItem('GuiGhostFarms_toolsEver', toolsEver);
-                        localStorage.setItem('GuiGhostFarms_pickedEver', pickedEver);
-                        localStorage.setItem('GuiGhostFarms_moneyEver', moneyEver);
+                        upgradeCloudTH1.setPosition(upCloudXTH1, upCloudYTH1).setSize(upCloudWTH1, 200)
+                        upCloudWTH1 = upCloudWTH1 + 10;
+                        upCloudXTH1 = upCloudXTH1 - 5;
+                        upCloudYTH1 = upCloudYTH1 - 5
+                        if (upCloudXTH1 < -15) { upCloudXTH1 = 0; upCloudYTH1 = 230; upCloudWTH1 = 100; }
 
 
-                    }
+                    }, this, 250, 240)
 
-                }, this, 1000, 60)
+                    //right trees coundown label updates
+                    lime.scheduleManager.scheduleWithDelay(function () {
+                        //add upgrade anim
+                        secondsToUpgradeTH1 = secondsToUpgradeTH1 - 1;
+                        axeMoverLabelTH1.setText(secondsToUpgradeTH1);
 
+                        if (secondsToUpgradeTH1 <= 0) {
+                            axeMoverLabelTH1.setHidden(true); upgradeCloudTH1.setHidden(true); secondsToUpgradeTH1 = 60;
+                            player.fields = player.fields + 1;
+                            a.updateTools();
+                            trees1.setHidden(true); treeUnlock1.setHidden(true); treeUnlockBtn.setHidden(true); axeHLeft.setHidden(true);
+                            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                            localStorage.setItem('GuiGhostFarms_toolsEver', toolsEver);
+                            localStorage.setItem('GuiGhostFarms_pickedEver', pickedEver);
+                            localStorage.setItem('GuiGhostFarms_moneyEver', moneyEver);
+
+
+                        }
+
+                    }, this, 1000, 60)
+
+                }
             }
-        }
+
+        }, this, 300, 1)
+
+       
     });
 
     goog.events.listen(treeUnlockBtn2, ["mousedown", "touchstart"], function () {         //right field
-
-        if (tutSeen == 1 && globalModalBlock == 0) {
-            if (player.tools >= 250) {
+        lime.scheduleManager.scheduleWithDelay(function () {
+            if (tutSeen == 1 && globalModalBlock == 0) {
+                 if (player.tools >= 250) {
 
                 player.tools = player.tools - 250;
                 a.updateTools();
@@ -3014,6 +3029,7 @@ farming.start = function () {
 
             }
         }
+        }, this, 300, 1)
     });
 
 
