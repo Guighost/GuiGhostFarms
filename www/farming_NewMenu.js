@@ -2119,7 +2119,7 @@ farming.start = function () {
         setTimeout(function () { toolUpCount.setHidden(true); toolUpCount.setPosition(35, 90); toolUpCount.setOpacity(.2); }, 1500);
     };
 
-    var toolUpCount = (new lime.Label).setText("+" + (2 + player.barnLevel)).setFontWeight(600).setFontColor("#E8FC08").setPosition(35, 90).setOpacity(.6).setSize(30, 30);
+    var toolUpCount = (new lime.Label).setText("+" + ((2) + parseInt(player.barnLevel))).setFontWeight(600).setFontColor("#E8FC08").setPosition(35, 90).setOpacity(.6).setSize(30, 30);
     f.appendChild(toolUpCount);
     var toolUpImage = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-12, -7).setSize(30, 30).setFill("images/UI/toolsIcon2.png").setOpacity(.9);
     toolUpCount.appendChild(toolUpImage);
@@ -2533,7 +2533,7 @@ farming.start = function () {
      boostCrops.appendChild(starCashCountBoost);
 	var speedAdConfirm =(new lime.GlossyButton).setColor("#00FF00").setText("View").setPosition(73, 163).setSize(50, 32);
     boostCrops.appendChild(speedAdConfirm);
-    //speedAdConfirm.setHidden(true);
+    speedAdConfirm.setHidden(true);
     var speedAdConfirmSC = (new lime.GlossyButton).setColor("#00FF00").setText("-       ").setPosition(142, 163).setSize(50, 32);
     boostCrops.appendChild(speedAdConfirmSC);
     var starCashBoost = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-10, -17).setSize(35, 35).setFill("images/UI/plus3StarCash.png");
