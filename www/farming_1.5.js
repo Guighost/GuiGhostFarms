@@ -5087,15 +5087,41 @@ farming.start = function () {
     ///Market Scene/////////////////////////////////////////Market Scene///Market Scene/////////////////////////////////////////Market Scene///Market Scene/////////////////////////////////////////Market Scene
 
     var marketScene = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
-        marketLayer = (new lime.Layer).setAnchorPoint(0, 0),
-        marketFill1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("images/UI/greenButtonVert.png");
+
+        townLayer = (new lime.Layer).setAnchorPoint(0, 0),
+        townFill1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("images/marketTown/marketTownBack.png");
+    marketScene.appendChild(townFill1);
+    marketScene.appendChild(townLayer);
+    var marketTrigger = (new lime.GlossyButton).setColor("#008000").setText("").setPosition(215, 290).setSize(35, 30);
+    townLayer.appendChild(marketTrigger);
+    var coinButtonTown = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-17, -17).setSize(33, 33).setFill("images/marketTown/coinButton.png");
+    marketTrigger.appendChild(coinButtonTown);
+
+    goog.events.listen(marketTrigger, ["mousedown", "touchstart"], function () {
+         townLayer.setHidden(true);
+        townFill1.setHidden(true);
+        marketLayer.setHidden(false);
+        marketFill1.setHidden(false);
+        backBtnTown.setHidden(true);
+    });
+    var backBtnTown = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 2 - 28, 495).setSize(40, 40).setFill("images/UI/homeButton.png");
+    townLayer.appendChild(backBtnTown);
+
+
+    marketLayer = (new lime.Layer).setAnchorPoint(0, 0),
+    marketFill1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("images/UI/greenButtonVert.png");
     marketScene.appendChild(marketFill1);
     marketScene.appendChild(marketLayer);
+    marketLayer.setHidden(true);
+    marketFill1.setHidden(true);
+
+
+
     var menuBackMarket = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 12).setSize(300, a.height - 48).setFill("images/UI/farmersMarket.png");
     marketLayer.appendChild(menuBackMarket);
-    var backBtnMarket = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 2 - 25, 485).setSize(50, 50).setFill("images/UI/XButton.png");
+    var backBtnMarket = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 2 + 85, 475).setSize(50, 50).setFill("images/UI/XButton.png");
     marketLayer.appendChild(backBtnMarket);
-
+  
     var menuCashCoin = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.controlsLayer_w - 109, 65).setSize(25, 25).setFill(imgArray11[0]);
     marketLayer.appendChild(menuCashCoin);
     var marketCash = (new lime.Label).setText(player.money).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setPosition(a.controlsLayer_w - 62, 80).setFontSize(18);
@@ -5363,7 +5389,7 @@ farming.start = function () {
 
 
     //Market event listeners
-    goog.events.listen(backBtnMarket, ["mousedown", "touchstart"], function () {
+    goog.events.listen(backBtnTown, ["mousedown", "touchstart"], function () {
         checkAchieves2();
         if (parseInt(a.sceneBefore) == 1) {
             c.replaceScene(d, lime.transitions.SlideInUp);
@@ -5386,7 +5412,25 @@ farming.start = function () {
         if (a.sceneBefore == 7) {
             c.replaceScene(houseScene, lime.transitions.SlideInUp);
         }
+        townLayer.setHidden(false);
+        townFill1.setHidden(false);
+        marketLayer.setHidden(true);
+        marketFill1.setHidden(true);
+        backBtnTown.setHidden(false);
     });
+
+
+    goog.events.listen(backBtnMarket, ["mousedown", "touchstart"], function () {
+        checkAchieves2();
+        marketFill1.setHidden(true);
+        marketLayer.setHidden(true);
+        marketFill1.setHidden(true);
+        townLayer.setHidden(false);
+        townFill1.setHidden(false);
+        backBtnTown.setHidden(false);
+        
+    });
+
     var payVis = false;
 
     goog.events.listen(rowBack, ["mousedown", "touchstart"], function () { a.updateCropsandCash(0); });
