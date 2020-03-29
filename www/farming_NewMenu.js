@@ -2533,7 +2533,9 @@ farming.start = function () {
      boostCrops.appendChild(starCashCountBoost);
 	var speedAdConfirm =(new lime.GlossyButton).setColor("#00FF00").setText("View").setPosition(73, 163).setSize(50, 32);
     boostCrops.appendChild(speedAdConfirm);
-    //speedAdConfirm.setHidden(true);
+    //hide for AdFree
+    speedAdConfirm.setHidden(true);
+    //end ad free hide
     var speedAdConfirmSC = (new lime.GlossyButton).setColor("#00FF00").setText("-       ").setPosition(142, 163).setSize(50, 32);
     boostCrops.appendChild(speedAdConfirmSC);
     var starCashBoost = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-10, -17).setSize(35, 35).setFill("images/UI/plus3StarCash.png");
