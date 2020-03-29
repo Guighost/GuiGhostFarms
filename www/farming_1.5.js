@@ -835,6 +835,62 @@ imgArray12[4] = new Image(); imgArray12[4].src = 'images/houseUpgrades/stoveFire
 imgArray12[5] = new Image(); imgArray12[5].src = 'images/houseUpgrades/stoveFire2.png'
 imgArray12[6] = new Image(); imgArray12[6].src = 'images/houseUpgrades/stoveFire3.png'
 
+
+var imgArrayTown = new Array();
+imgArrayTown[0] = new Image(); imgArrayTown[0].src = 'images/marketTown/marketTownBack3.png'                       ///market back
+imgArrayTown[1] = new Image(); imgArrayTown[1].src = 'images/marketTown/Monk_f1.png'                               //monk f1
+imgArrayTown[2] = new Image(); imgArrayTown[2].src = 'images/marketTown/Monk_f2.png'    
+imgArrayTown[3] = new Image(); imgArrayTown[3].src = 'images/marketTown/Monk_f3.png'    
+imgArrayTown[4] = new Image(); imgArrayTown[4].src = 'images/marketTown/Monk_r1.png'    
+imgArrayTown[5] = new Image(); imgArrayTown[5].src = 'images/marketTown/Monk_r2.png'    
+imgArrayTown[6] = new Image(); imgArrayTown[6].src = 'images/marketTown/Monk_r3.png'    
+imgArrayTown[7] = new Image(); imgArrayTown[7].src = 'images/marketTown/Monk_l1.png'
+imgArrayTown[8] = new Image(); imgArrayTown[8].src = 'images/marketTown/Monk_l2.png'
+imgArrayTown[9] = new Image(); imgArrayTown[9].src = 'images/marketTown/Monk_l3.png'    
+imgArrayTown[10] = new Image(); imgArrayTown[10].src = 'images/marketTown/Monk_a1.png'
+imgArrayTown[11] = new Image(); imgArrayTown[11].src = 'images/marketTown/Monk_a2.png'
+imgArrayTown[12] = new Image(); imgArrayTown[12].src = 'images/marketTown/Monk_a3.png'    
+imgArrayTown[13] = new Image(); imgArrayTown[13].src = 'images/marketTown/Monk_p1.png'
+imgArrayTown[14] = new Image(); imgArrayTown[14].src = 'images/marketTown/Monk_p2.png'  
+
+
+var imgArrayTown2 = new Array();
+imgArrayTown2[0] = new Image(); imgArrayTown2[0].src = 'images/marketTown/sara_f1.png'
+imgArrayTown2[1] = new Image(); imgArrayTown2[1].src = 'images/marketTown/sara_r1.png'  
+imgArrayTown2[2] = new Image(); imgArrayTown2[2].src = 'images/marketTown/sara_r2.png'  
+imgArrayTown2[3] = new Image(); imgArrayTown2[3].src = 'images/marketTown/sara_r3.png'  
+imgArrayTown2[4] = new Image(); imgArrayTown2[4].src = 'images/marketTown/sara_s1.png'  
+imgArrayTown2[5] = new Image(); imgArrayTown2[5].src = 'images/marketTown/sara_l1.png'  
+imgArrayTown2[6] = new Image(); imgArrayTown2[6].src = 'images/marketTown/sara_l2.png'  
+imgArrayTown2[7] = new Image(); imgArrayTown2[7].src = 'images/marketTown/sara_l3.png'  
+imgArrayTown2[8] = new Image(); imgArrayTown2[8].src = 'images/marketTown/sara_a1.png'  
+imgArrayTown2[9] = new Image(); imgArrayTown2[9].src = 'images/marketTown/sara_a2.png'  
+imgArrayTown2[10] = new Image(); imgArrayTown2[10].src = 'images/marketTown/sara_a3.png'  
+imgArrayTown2[11] = new Image(); imgArrayTown2[11].src = 'images/marketTown/sara_p1.png'  
+imgArrayTown2[12] = new Image(); imgArrayTown2[12].src = 'images/marketTown/sara_s1.png'
+
+
+
+
+var imgArrayMayor = new Array();
+imgArrayMayor[0] = new Image(); imgArrayMayor[0].src = 'images/marketTown/mayor_f1.png'
+imgArrayMayor[1] = new Image(); imgArrayMayor[1].src = 'images/marketTown/mayor_f2.png'
+imgArrayMayor[2] = new Image(); imgArrayMayor[2].src = 'images/marketTown/mayor_f3.png'
+imgArrayMayor[3] = new Image(); imgArrayMayor[3].src = 'images/marketTown/mayor_f4.png'
+imgArrayMayor[4] = new Image(); imgArrayMayor[4].src = 'images/marketTown/mayor_r1.png'
+imgArrayMayor[5] = new Image(); imgArrayMayor[5].src = 'images/marketTown/mayor_r2.png'
+imgArrayMayor[6] = new Image(); imgArrayMayor[6].src = 'images/marketTown/mayor_r3.png'
+imgArrayMayor[7] = new Image(); imgArrayMayor[7].src = 'images/marketTown/mayor_r4.png'
+imgArrayMayor[8] = new Image(); imgArrayMayor[8].src = 'images/marketTown/mayor_l1.png'
+imgArrayMayor[9] = new Image(); imgArrayMayor[9].src = 'images/marketTown/mayor_l2.png'
+imgArrayMayor[10] = new Image(); imgArrayMayor[10].src = 'images/marketTown/mayor_l3.png'
+imgArrayMayor[11] = new Image(); imgArrayMayor[11].src = 'images/marketTown/mayor_l4.png'
+imgArrayMayor[12] = new Image(); imgArrayMayor[12].src = 'images/marketTown/mayor_a1.png'
+imgArrayMayor[13] = new Image(); imgArrayMayor[13].src = 'images/marketTown/mayor_a2.png'
+imgArrayMayor[14] = new Image(); imgArrayMayor[14].src = 'images/marketTown/mayor_a3.png'
+imgArrayMayor[15] = new Image(); imgArrayMayor[15].src = 'images/marketTown/mayor_s1.png'
+imgArrayMayor[16] = new Image(); imgArrayMayor[16].src = 'images/marketTown/mayor_s2.png'
+
 var houseUpgrades = {
     upgrades: [
         { name: "expansion", cost: 0, owned: 0 },
@@ -2534,7 +2590,7 @@ farming.start = function () {
 	var speedAdConfirm =(new lime.GlossyButton).setColor("#00FF00").setText("View").setPosition(73, 163).setSize(50, 32);
     boostCrops.appendChild(speedAdConfirm);
     //hide for AdFree
-    speedAdConfirm.setHidden(true);
+    //speedAdConfirm.setHidden(true);
     //end ad free hide
     var speedAdConfirmSC = (new lime.GlossyButton).setColor("#00FF00").setText("-       ").setPosition(142, 163).setSize(50, 32);
     boostCrops.appendChild(speedAdConfirmSC);
@@ -5091,13 +5147,92 @@ farming.start = function () {
     var marketScene = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
 
         townLayer = (new lime.Layer).setAnchorPoint(0, 0),
-        townFill1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("images/marketTown/marketTownBack.png");
+        townFill1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill(imgArrayTown[0]);
     marketScene.appendChild(townFill1);
     marketScene.appendChild(townLayer);
-    var marketTrigger = (new lime.GlossyButton).setColor("#008000").setText("").setPosition(215, 290).setSize(35, 30);
+    ///Monk
+    var monk = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(46, 155).setSize(35, 35).setFill(imgArrayTown[1].src);
+    townFill1.appendChild(monk);
+    var sara = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(55, a.height - 70).setSize(35, 35).setFill(imgArrayTown2[0].src);
+    townFill1.appendChild(sara);
+    var mayor = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(200, 165).setSize(35, 35).setFill(imgArrayMayor[0].src);
+    townFill1.appendChild(mayor);
+
+
+    var monkAnimCount = 1;
+    monkAnimCount = parseInt(monkAnimCount);
+    ////monk anim
+    lime.scheduleManager.scheduleWithDelay(function () {
+        //add upgrade anim
+
+       
+        if (monkAnimCount >= 50 ) { monkAnimCount = 1; monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]);  };
+        //if (monkAnimCount < 14) { monk.setFill(imgArrayTown[parseInt(monkAnimCount)].src); };
+
+        if (monkAnimCount == 2) { monk.setPosition(46, 161); monk.setFill(imgArrayTown[2]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); };
+        if (monkAnimCount == 3) { monk.setPosition(46, 165); monk.setFill(imgArrayTown[3]); sara.setPosition(60, a.height - 70); sara.setFill(imgArrayTown2[2]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]);};
+        if (monkAnimCount == 4) { monk.setPosition(51, 165); monk.setFill(imgArrayTown[4]); sara.setPosition(65, a.height - 70); sara.setFill(imgArrayTown2[3]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[16]);};
+        if (monkAnimCount == 5) { monk.setPosition(56, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(70, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[16]);};
+        if (monkAnimCount == 6) { monk.setPosition(61, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(75, a.height - 70); sara.setFill(imgArrayTown2[2]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]);};
+        if (monkAnimCount == 7) { monk.setPosition(67, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(80, a.height - 70); sara.setFill(imgArrayTown2[3]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]);};
+        if (monkAnimCount == 8) { monk.setPosition(73, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(85, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]);};
+        if (monkAnimCount == 9) { monk.setPosition(79, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(90, a.height - 70); sara.setFill(imgArrayTown2[2]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[16]);};
+        if (monkAnimCount == 10) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[3]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[8]); }; 
+        if (monkAnimCount == 11) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[1]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(195, 165); mayor.setFill(imgArrayMayor[9]);}; 
+        if (monkAnimCount == 12) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[1]); sara.setPosition(90, a.height - 70); sara.setFill(imgArrayTown2[4]); mayor.setPosition(190, 165); mayor.setFill(imgArrayMayor[10]); };
+        if (monkAnimCount == 13) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(185, 165); mayor.setFill(imgArrayMayor[11]); };
+        if (monkAnimCount == 14) { monk.setPosition(79, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(180, 165); mayor.setFill(imgArrayMayor[10]); };
+        if (monkAnimCount == 15) { monk.setPosition(73, 165); monk.setFill(imgArrayTown[9]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(175, 165); mayor.setFill(imgArrayMayor[9]); };
+        if (monkAnimCount == 16) { monk.setPosition(67, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[8]); };
+        if (monkAnimCount == 17) { monk.setPosition(61, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[0]); };
+        if (monkAnimCount == 18) { monk.setPosition(56, 165); monk.setFill(imgArrayTown[9]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[10]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[1]); };
+        if (monkAnimCount == 19) { monk.setPosition(51, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[10]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[3]); };
+        if (monkAnimCount == 20) { monk.setPosition(46, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[10]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[4]); };
+        if (monkAnimCount == 21) { monk.setPosition(46, 161); monk.setFill(imgArrayTown[11]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[3]); };
+        if (monkAnimCount == 22) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[12]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(175, 165); mayor.setFill(imgArrayMayor[5]); };
+        if (monkAnimCount == 23) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[4]); sara.setPosition(90, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(180, 165); mayor.setFill(imgArrayMayor[6]); };
+        if (monkAnimCount == 24) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[4]); sara.setPosition(85, a.height - 70); sara.setFill(imgArrayTown2[6]); mayor.setPosition(185, 165); mayor.setFill(imgArrayMayor[7]); };
+        if (monkAnimCount == 25) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[2]); sara.setPosition(80, a.height - 70); sara.setFill(imgArrayTown2[7]); mayor.setPosition(190, 165); mayor.setFill(imgArrayMayor[6]); };
+        if (monkAnimCount == 26) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[2]); sara.setPosition(75, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(195, 165); mayor.setFill(imgArrayMayor[7]); };
+        if (monkAnimCount == 27) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[7]); sara.setPosition(70, a.height - 70); sara.setFill(imgArrayTown2[6]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[6]); };
+        if (monkAnimCount == 28) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[7]); sara.setPosition(65, a.height - 70); sara.setFill(imgArrayTown2[7]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[3]); };
+        if (monkAnimCount == 29) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]); sara.setPosition(60, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); };
+        if (monkAnimCount == 30) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[6]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
+        if (monkAnimCount == 31) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 70); sara.setFill(imgArrayTown2[7]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
+        if (monkAnimCount == 32) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 70); sara.setFill(imgArrayTown2[8]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
+        if (monkAnimCount == 33) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 75); sara.setFill(imgArrayTown2[9]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
+        if (monkAnimCount == 34) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(45, a.height - 80); sara.setFill(imgArrayTown2[10]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
+        if (monkAnimCount == 35) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(45, a.height - 85); sara.setFill(imgArrayTown2[9]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
+        if (monkAnimCount == 36) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 80); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
+        if (monkAnimCount == 37) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 80); sara.setFill(imgArrayTown2[4]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
+        if (monkAnimCount == 38) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 80); sara.setFill(imgArrayTown2[4]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
+        if (monkAnimCount == 39) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 80); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
+        if (monkAnimCount == 40) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 75); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
+        if (monkAnimCount == 41) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
+        if (monkAnimCount == 42) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
+        if (monkAnimCount == 43) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
+        if (monkAnimCount == 46) {  mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[8]); };
+
+        if (monkAnimCount == 48) {  mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
+
+        if (monkAnimCount == 49) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[1]); };
+        monkAnimCount = monkAnimCount + 1;
+    }, this, 250)
+
+
+
+
+
+
+
+
+
+    var marketTrigger = (new lime.GlossyButton).setColor("#008000").setText("").setPosition(217, 295).setSize(32, 30);
     townLayer.appendChild(marketTrigger);
-    var coinButtonTown = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-17, -17).setSize(33, 33).setFill("images/marketTown/coinButton.png");
+    var coinButtonTown = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-16, -17).setSize(33, 33).setFill("images/marketTown/coinButton.png");
     marketTrigger.appendChild(coinButtonTown);
+
+
 
     goog.events.listen(marketTrigger, ["mousedown", "touchstart"], function () {
          townLayer.setHidden(true);
