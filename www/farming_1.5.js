@@ -852,7 +852,8 @@ imgArrayTown[11] = new Image(); imgArrayTown[11].src = 'images/marketTown/Monk_a
 imgArrayTown[12] = new Image(); imgArrayTown[12].src = 'images/marketTown/Monk_a3.png'    
 imgArrayTown[13] = new Image(); imgArrayTown[13].src = 'images/marketTown/Monk_p1.png'
 imgArrayTown[14] = new Image(); imgArrayTown[14].src = 'images/marketTown/Monk_p2.png'  
-
+imgArrayTown[15] = new Image(); imgArrayTown[15].src = 'images/marketTown/quest1.png'  
+imgArrayTown[16] = new Image(); imgArrayTown[16].src = 'images/marketTown/quest2.png'  
 
 var imgArrayTown2 = new Array();
 imgArrayTown2[0] = new Image(); imgArrayTown2[0].src = 'images/marketTown/sara_f1.png'
@@ -890,6 +891,42 @@ imgArrayMayor[13] = new Image(); imgArrayMayor[13].src = 'images/marketTown/mayo
 imgArrayMayor[14] = new Image(); imgArrayMayor[14].src = 'images/marketTown/mayor_a3.png'
 imgArrayMayor[15] = new Image(); imgArrayMayor[15].src = 'images/marketTown/mayor_s1.png'
 imgArrayMayor[16] = new Image(); imgArrayMayor[16].src = 'images/marketTown/mayor_s2.png'
+
+
+var imgArrayFelicia = new Array();
+imgArrayFelicia[0] = new Image(); imgArrayFelicia[0].src = 'images/marketTown/Felicia_f1.png'
+imgArrayFelicia[1] = new Image(); imgArrayFelicia[1].src = 'images/marketTown/Felicia_f2.png'
+imgArrayFelicia[2] = new Image(); imgArrayFelicia[2].src = 'images/marketTown/Felicia_f3.png'
+imgArrayFelicia[3] = new Image(); imgArrayFelicia[3].src = 'images/marketTown/Felicia_f4.png'
+imgArrayFelicia[4] = new Image(); imgArrayFelicia[4].src = 'images/marketTown/Felicia_r1.png'
+imgArrayFelicia[5] = new Image(); imgArrayFelicia[5].src = 'images/marketTown/Felicia_r2.png'
+imgArrayFelicia[6] = new Image(); imgArrayFelicia[6].src = 'images/marketTown/Felicia_r3.png'
+imgArrayFelicia[7] = new Image(); imgArrayFelicia[7].src = 'images/marketTown/Felicia_r4.png'
+imgArrayFelicia[8] = new Image(); imgArrayFelicia[8].src = 'images/marketTown/Felicia_l1.png'
+imgArrayFelicia[9] = new Image(); imgArrayFelicia[9].src = 'images/marketTown/Felicia_l2.png'
+imgArrayFelicia[10] = new Image(); imgArrayFelicia[10].src = 'images/marketTown/Felicia_l3.png'
+imgArrayFelicia[11] = new Image(); imgArrayFelicia[11].src = 'images/marketTown/Felicia_l4.png'
+imgArrayFelicia[12] = new Image(); imgArrayFelicia[12].src = 'images/marketTown/Felicia_a1.png'
+imgArrayFelicia[13] = new Image(); imgArrayFelicia[13].src = 'images/marketTown/Felicia_a2.png'
+imgArrayFelicia[14] = new Image(); imgArrayFelicia[14].src = 'images/marketTown/Felicia_a3.png'
+
+var imgArrayDenise = new Array();
+imgArrayDenise[0] = new Image(); imgArrayDenise[0].src = 'images/houseUpgrades/denise/Denise_f1.png'
+imgArrayDenise[1] = new Image(); imgArrayDenise[1].src = 'images/houseUpgrades/denise/Denise_f2.png'
+imgArrayDenise[2] = new Image(); imgArrayDenise[2].src = 'images/houseUpgrades/denise/Denise_f3.png'
+imgArrayDenise[3] = new Image(); imgArrayDenise[3].src = 'images/houseUpgrades/denise/Denise_f4.png'
+imgArrayDenise[4] = new Image(); imgArrayDenise[4].src = 'images/houseUpgrades/denise/Denise_r1.png'
+imgArrayDenise[5] = new Image(); imgArrayDenise[5].src = 'images/houseUpgrades/denise/Denise_r2.png'
+imgArrayDenise[6] = new Image(); imgArrayDenise[6].src = 'images/houseUpgrades/denise/Denise_r3.png'
+imgArrayDenise[7] = new Image(); imgArrayDenise[7].src = 'images/houseUpgrades/denise/Denise_r4.png'
+imgArrayDenise[8] = new Image(); imgArrayDenise[8].src = 'images/houseUpgrades/denise/Denise_l1.png'
+imgArrayDenise[9] = new Image(); imgArrayDenise[9].src = 'images/houseUpgrades/denise/Denise_l2.png'
+imgArrayDenise[10] = new Image(); imgArrayDenise[10].src = 'images/houseUpgrades/denise/Denise_l3.png'
+imgArrayDenise[11] = new Image(); imgArrayDenise[11].src = 'images/houseUpgrades/denise/Denise_l4.png'
+imgArrayDenise[12] = new Image(); imgArrayDenise[12].src = 'images/houseUpgrades/denise/Denise_a1.png'
+imgArrayDenise[13] = new Image(); imgArrayDenise[13].src = 'images/houseUpgrades/denise/Denise_a2.png'
+imgArrayDenise[14] = new Image(); imgArrayDenise[14].src = 'images/houseUpgrades/denise/Denise_a3.png'
+imgArrayDenise[15] = new Image(); imgArrayDenise[15].src = 'images/houseUpgrades/denise/Denise_s1.png'
 
 var houseUpgrades = {
     upgrades: [
@@ -5106,28 +5143,76 @@ farming.start = function () {
                 
     }, false);
 
+    //function starCashViewAd() {
+    //    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+
+    //    //localStorage.setItem('MedFarm_LoadAd', 1);
+    //    localStorage.setItem('MedFarm_StarCashBoost', 1);
+    //    starCash = parseInt(localStorage["starCash"]);
+    //    console.log("after parseInt starcash = " + starCash);
+    //    starCash = starCash + 3;
+    //    console.log("after add starcash = " + starCash);
+    //    localStorage.setItem('starCash', starCash);
+        
+    //    setTimeout(function () {
+    //        document.getElementById("sucessbuyTxt").style.display = 'block';
+    //        starCash = localStorage.getItem('starCash');
+    //        document.getElementById("starCashOuterLabel").innerHTML = starCash;
+    //        document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
+
+    //        document.getElementById("starCashOuterLabel").innerHTML = starCash;
+    //    }, 1500);
+
+    //    setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 33000);
+
+    //}
     function starCashViewAd() {
         localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-
-        //localStorage.setItem('MedFarm_LoadAd', 1);
         localStorage.setItem('MedFarm_StarCashBoost', 1);
-        starCash = parseInt(localStorage["starCash"]);
-        console.log("after parseInt starcash = " + starCash);
-        starCash = starCash + 3;
-        console.log("after add starcash = " + starCash);
-        localStorage.setItem('starCash', starCash);
-        
+        var adImg = document.getElementById("viewAdImg");
+        document.getElementById("waitText").innerHTML = 'Wait required before you boost again';
+        //hide boost for 2 min
+        adImg.style.display = 'none';
         setTimeout(function () {
-            document.getElementById("sucessbuyTxt").style.display = 'block';
-            starCash = localStorage.getItem('starCash');
-            document.getElementById("starCashOuterLabel").innerHTML = starCash;
-            document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
+            adImg.style.display = 'block';
+            document.getElementById("waitText").innerHTML = '';
+        }, 120000)
 
-            document.getElementById("starCashOuterLabel").innerHTML = starCash;
-        }, 1500);
 
-        setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 33000);
+        var adRewardCompleted = localStorage.getItem('MedFarm_Rewarded');
 
+        var counterReward = 0;
+        var looper = setInterval(function () {
+            counterReward++;
+            console.log("Counter is: " + counterReward);
+            adRewardCompleted = localStorage.getItem('MedFarm_Rewarded');
+            if (adRewardCompleted == 1) {
+                console.log("adRewardCompleted1 = " + adRewardCompleted);
+                starCash = parseInt(localStorage["starCash"]);
+                console.log("after parseInt starcash = " + starCash);
+                starCash = starCash + 3;
+                console.log("after add starcash = " + starCash);
+                localStorage.setItem('starCash', starCash);
+                document.getElementById("sucessbuyTxt").style.display = 'block';
+                starCash = localStorage.getItem('starCash');
+                document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
+                localStorage.setItem('MedFarm_Rewarded', 0);
+
+                setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 3000);
+            }
+            else {
+                console.log("adRewardCompleted2 = " + adRewardCompleted + " counterreward = " + counterReward);
+
+
+                if (counterReward >= 150) {
+                    clearInterval(looper);
+                    console.log("counterReward reached end-resetting");
+                    counterReward = 0;
+                    localStorage.setItem('MedFarm_Rewarded', 0);
+                }
+            }
+        }, 1000);
     }
 
     document.getElementById("closeFB").addEventListener("touchstart", function () {
@@ -5146,17 +5231,55 @@ farming.start = function () {
 
     var marketScene = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
 
+        ////////////
+ //////////Town Layer////////////
+        ////////////
+
         townLayer = (new lime.Layer).setAnchorPoint(0, 0),
         townFill1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill(imgArrayTown[0]);
     marketScene.appendChild(townFill1);
     marketScene.appendChild(townLayer);
+
+    ////////////People////////////
+
     ///Monk
     var monk = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(46, 155).setSize(35, 35).setFill(imgArrayTown[1].src);
     townFill1.appendChild(monk);
+    var monkQuestBtn = (new lime.GlossyButton).setColor("#A0A0A0").setText("").setPosition(25, -8).setSize(25, 23).setOpacity(0.2);
+    monk.appendChild(monkQuestBtn);
+    var monkQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, -19).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
+    monk.appendChild(monkQuest);
+
+
+    ///sara
     var sara = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(55, a.height - 70).setSize(35, 35).setFill(imgArrayTown2[0].src);
     townFill1.appendChild(sara);
+    var saraQuestBtn = (new lime.GlossyButton).setColor("#A0A0A0").setText("").setPosition(25, -8).setSize(25, 23).setOpacity(0.2);
+    sara.appendChild(saraQuestBtn);
+    var saraQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, -19).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
+    sara.appendChild(saraQuest);
+
+    //
+    //mayor//
     var mayor = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(200, 165).setSize(35, 35).setFill(imgArrayMayor[0].src);
     townFill1.appendChild(mayor);
+    var mayorQuestBtn = (new lime.GlossyButton).setColor("#008000").setText("").setPosition(25, -4).setSize(25, 23).setOpacity(0.2);
+    mayor.appendChild(mayorQuestBtn);
+    var mayorQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, -15).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
+    mayor.appendChild(mayorQuest);
+
+    //felicia
+    var felicia = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(230, 242).setSize(35, 35).setFill(imgArrayFelicia[0].src);
+    townFill1.appendChild(felicia);
+    var feliciaQuestBtn = (new lime.GlossyButton).setColor("#A0A0A0").setText("").setPosition(25, -8).setSize(25, 23).setOpacity(0.2);
+    felicia.appendChild(feliciaQuestBtn);
+    var feliciaQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, -19).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
+    felicia.appendChild(feliciaQuest);
+
+
+    //trader
+
+    
 
 
     var monkAnimCount = 1;
@@ -5169,53 +5292,53 @@ farming.start = function () {
         if (monkAnimCount >= 50 ) { monkAnimCount = 1; monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]);  };
         //if (monkAnimCount < 14) { monk.setFill(imgArrayTown[parseInt(monkAnimCount)].src); };
 
-        if (monkAnimCount == 2) { monk.setPosition(46, 161); monk.setFill(imgArrayTown[2]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); };
-        if (monkAnimCount == 3) { monk.setPosition(46, 165); monk.setFill(imgArrayTown[3]); sara.setPosition(60, a.height - 70); sara.setFill(imgArrayTown2[2]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]);};
-        if (monkAnimCount == 4) { monk.setPosition(51, 165); monk.setFill(imgArrayTown[4]); sara.setPosition(65, a.height - 70); sara.setFill(imgArrayTown2[3]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[16]);};
-        if (monkAnimCount == 5) { monk.setPosition(56, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(70, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[16]);};
-        if (monkAnimCount == 6) { monk.setPosition(61, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(75, a.height - 70); sara.setFill(imgArrayTown2[2]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]);};
-        if (monkAnimCount == 7) { monk.setPosition(67, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(80, a.height - 70); sara.setFill(imgArrayTown2[3]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]);};
-        if (monkAnimCount == 8) { monk.setPosition(73, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(85, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]);};
-        if (monkAnimCount == 9) { monk.setPosition(79, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(90, a.height - 70); sara.setFill(imgArrayTown2[2]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[16]);};
-        if (monkAnimCount == 10) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[3]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[8]); }; 
-        if (monkAnimCount == 11) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[1]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(195, 165); mayor.setFill(imgArrayMayor[9]);}; 
-        if (monkAnimCount == 12) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[1]); sara.setPosition(90, a.height - 70); sara.setFill(imgArrayTown2[4]); mayor.setPosition(190, 165); mayor.setFill(imgArrayMayor[10]); };
-        if (monkAnimCount == 13) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(185, 165); mayor.setFill(imgArrayMayor[11]); };
-        if (monkAnimCount == 14) { monk.setPosition(79, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(180, 165); mayor.setFill(imgArrayMayor[10]); };
-        if (monkAnimCount == 15) { monk.setPosition(73, 165); monk.setFill(imgArrayTown[9]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(175, 165); mayor.setFill(imgArrayMayor[9]); };
-        if (monkAnimCount == 16) { monk.setPosition(67, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[8]); };
-        if (monkAnimCount == 17) { monk.setPosition(61, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[0]); };
-        if (monkAnimCount == 18) { monk.setPosition(56, 165); monk.setFill(imgArrayTown[9]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[10]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[1]); };
-        if (monkAnimCount == 19) { monk.setPosition(51, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[10]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[3]); };
-        if (monkAnimCount == 20) { monk.setPosition(46, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[10]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[4]); };
-        if (monkAnimCount == 21) { monk.setPosition(46, 161); monk.setFill(imgArrayTown[11]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[3]); };
-        if (monkAnimCount == 22) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[12]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(175, 165); mayor.setFill(imgArrayMayor[5]); };
-        if (monkAnimCount == 23) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[4]); sara.setPosition(90, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(180, 165); mayor.setFill(imgArrayMayor[6]); };
-        if (monkAnimCount == 24) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[4]); sara.setPosition(85, a.height - 70); sara.setFill(imgArrayTown2[6]); mayor.setPosition(185, 165); mayor.setFill(imgArrayMayor[7]); };
-        if (monkAnimCount == 25) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[2]); sara.setPosition(80, a.height - 70); sara.setFill(imgArrayTown2[7]); mayor.setPosition(190, 165); mayor.setFill(imgArrayMayor[6]); };
-        if (monkAnimCount == 26) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[2]); sara.setPosition(75, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(195, 165); mayor.setFill(imgArrayMayor[7]); };
-        if (monkAnimCount == 27) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[7]); sara.setPosition(70, a.height - 70); sara.setFill(imgArrayTown2[6]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[6]); };
-        if (monkAnimCount == 28) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[7]); sara.setPosition(65, a.height - 70); sara.setFill(imgArrayTown2[7]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[3]); };
-        if (monkAnimCount == 29) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]); sara.setPosition(60, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); };
-        if (monkAnimCount == 30) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[6]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
-        if (monkAnimCount == 31) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 70); sara.setFill(imgArrayTown2[7]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
-        if (monkAnimCount == 32) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 70); sara.setFill(imgArrayTown2[8]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
-        if (monkAnimCount == 33) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 75); sara.setFill(imgArrayTown2[9]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
-        if (monkAnimCount == 34) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(45, a.height - 80); sara.setFill(imgArrayTown2[10]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
-        if (monkAnimCount == 35) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(45, a.height - 85); sara.setFill(imgArrayTown2[9]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
-        if (monkAnimCount == 36) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 80); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
-        if (monkAnimCount == 37) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 80); sara.setFill(imgArrayTown2[4]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
-        if (monkAnimCount == 38) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 80); sara.setFill(imgArrayTown2[4]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
-        if (monkAnimCount == 39) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 80); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
-        if (monkAnimCount == 40) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 75); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
-        if (monkAnimCount == 41) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
-        if (monkAnimCount == 42) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
-        if (monkAnimCount == 43) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
-        if (monkAnimCount == 46) {  mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[8]); };
+        if (monkAnimCount == 2) { monk.setPosition(46, 161); monk.setFill(imgArrayTown[2]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[8].src);};
+        if (monkAnimCount == 3) { monk.setPosition(46, 165); monk.setFill(imgArrayTown[3]); sara.setPosition(60, a.height - 70); sara.setFill(imgArrayTown2[2]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(225, 242).setFill(imgArrayFelicia[8].src);};
+        if (monkAnimCount == 4) { monk.setPosition(51, 165); monk.setFill(imgArrayTown[4]); sara.setPosition(65, a.height - 70); sara.setFill(imgArrayTown2[3]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[16]); felicia.setPosition(220, 242).setFill(imgArrayFelicia[9].src);};
+        if (monkAnimCount == 5) { monk.setPosition(56, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(70, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[16]); felicia.setPosition(215, 242).setFill(imgArrayFelicia[10].src);};
+        if (monkAnimCount == 6) { monk.setPosition(61, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(75, a.height - 70); sara.setFill(imgArrayTown2[2]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(210, 242).setFill(imgArrayFelicia[11].src);};
+        if (monkAnimCount == 7) { monk.setPosition(67, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(80, a.height - 70); sara.setFill(imgArrayTown2[3]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(205, 242).setFill(imgArrayFelicia[8].src); };    //////////
+        if (monkAnimCount == 8) { monk.setPosition(73, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(85, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(200, 242).setFill(imgArrayFelicia[9].src); };
+        if (monkAnimCount == 9) { monk.setPosition(79, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(90, a.height - 70); sara.setFill(imgArrayTown2[2]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[16]); felicia.setPosition(195, 242).setFill(imgArrayFelicia[10].src); };
+        if (monkAnimCount == 10) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[3]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[8]); felicia.setPosition(190, 242).setFill(imgArrayFelicia[11].src); };
+        if (monkAnimCount == 11) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[1]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(195, 165); mayor.setFill(imgArrayMayor[9]); felicia.setPosition(185, 242).setFill(imgArrayFelicia[8].src); };
+        if (monkAnimCount == 12) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[1]); sara.setPosition(90, a.height - 70); sara.setFill(imgArrayTown2[4]); mayor.setPosition(190, 165); mayor.setFill(imgArrayMayor[10]); felicia.setPosition(180, 242).setFill(imgArrayFelicia[9].src); };
+        if (monkAnimCount == 13) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(185, 165); mayor.setFill(imgArrayMayor[11]); felicia.setPosition(175, 242).setFill(imgArrayFelicia[10].src); };
+        if (monkAnimCount == 14) { monk.setPosition(79, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(180, 165); mayor.setFill(imgArrayMayor[10]); felicia.setPosition(170, 242).setFill(imgArrayFelicia[11].src); };
+        if (monkAnimCount == 15) { monk.setPosition(73, 165); monk.setFill(imgArrayTown[9]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(175, 165); mayor.setFill(imgArrayMayor[9]); felicia.setPosition(165, 242).setFill(imgArrayFelicia[8].src); };
+        if (monkAnimCount == 16) { monk.setPosition(67, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[8]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[9].src); };
+        if (monkAnimCount == 17) { monk.setPosition(61, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[13].src); };
+        if (monkAnimCount == 18) { monk.setPosition(56, 165); monk.setFill(imgArrayTown[9]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[10]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[1]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[12].src); };
+        if (monkAnimCount == 19) { monk.setPosition(51, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[10]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[3]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[13].src); };
+        if (monkAnimCount == 20) { monk.setPosition(46, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[10]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[4]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[12].src); };
+        if (monkAnimCount == 21) { monk.setPosition(46, 161); monk.setFill(imgArrayTown[11]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[3]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[13].src); };
+        if (monkAnimCount == 22) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[12]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(175, 165); mayor.setFill(imgArrayMayor[5]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[4].src); };
+        if (monkAnimCount == 23) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[4]); sara.setPosition(90, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(180, 165); mayor.setFill(imgArrayMayor[6]); felicia.setPosition(165, 242).setFill(imgArrayFelicia[4].src); };
+        if (monkAnimCount == 24) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[4]); sara.setPosition(85, a.height - 70); sara.setFill(imgArrayTown2[6]); mayor.setPosition(185, 165); mayor.setFill(imgArrayMayor[7]); felicia.setPosition(170, 242).setFill(imgArrayFelicia[5].src); };
+        if (monkAnimCount == 25) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[2]); sara.setPosition(80, a.height - 70); sara.setFill(imgArrayTown2[7]); mayor.setPosition(190, 165); mayor.setFill(imgArrayMayor[6]); felicia.setPosition(175, 242).setFill(imgArrayFelicia[6].src); };
+        if (monkAnimCount == 26) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[2]); sara.setPosition(75, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(195, 165); mayor.setFill(imgArrayMayor[7]); felicia.setPosition(180, 242).setFill(imgArrayFelicia[7].src); };
+        if (monkAnimCount == 27) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[7]); sara.setPosition(70, a.height - 70); sara.setFill(imgArrayTown2[6]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[6]); felicia.setPosition(185, 242).setFill(imgArrayFelicia[4].src); };
+        if (monkAnimCount == 28) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[7]); sara.setPosition(65, a.height - 70); sara.setFill(imgArrayTown2[7]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[3]); felicia.setPosition(190, 242).setFill(imgArrayFelicia[5].src); };
+        if (monkAnimCount == 29) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]); sara.setPosition(60, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(195, 242).setFill(imgArrayFelicia[6].src); };
+        if (monkAnimCount == 30) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[6]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(200, 242).setFill(imgArrayFelicia[7].src); };
+        if (monkAnimCount == 31) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 70); sara.setFill(imgArrayTown2[7]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(205, 242).setFill(imgArrayFelicia[4].src); };
+        if (monkAnimCount == 32) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 70); sara.setFill(imgArrayTown2[8]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(210, 242).setFill(imgArrayFelicia[5].src); };
+        if (monkAnimCount == 33) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 75); sara.setFill(imgArrayTown2[9]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(215, 242).setFill(imgArrayFelicia[6].src); };
+        if (monkAnimCount == 34) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(45, a.height - 80); sara.setFill(imgArrayTown2[10]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(220, 242).setFill(imgArrayFelicia[7].src); };
+        if (monkAnimCount == 35) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(45, a.height - 85); sara.setFill(imgArrayTown2[9]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(225, 242).setFill(imgArrayFelicia[4].src); };
+        if (monkAnimCount == 36) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 80); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[5].src); };
+        if (monkAnimCount == 37) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 80); sara.setFill(imgArrayTown2[4]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[12].src); };
+        if (monkAnimCount == 38) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 80); sara.setFill(imgArrayTown2[4]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[13].src); };
+        if (monkAnimCount == 39) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 80); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(235, 242).setFill(imgArrayFelicia[4].src); };
+        if (monkAnimCount == 40) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 75); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(240, 242).setFill(imgArrayFelicia[5].src); };
+        if (monkAnimCount == 41) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[6].src); };
+        if (monkAnimCount == 42) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[12].src); };
+        if (monkAnimCount == 43) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[13].src); };
+        if (monkAnimCount == 46) { mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[8]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[8].src); };
 
-        if (monkAnimCount == 48) {  mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); };
+        if (monkAnimCount == 48) { mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(240, 242).setFill(imgArrayFelicia[9].src); };
 
-        if (monkAnimCount == 49) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[1]); };
+        if (monkAnimCount == 49) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[1]); felicia.setPosition(210, 242).setFill(imgArrayFelicia[11].src); felicia.setPosition(235, 242).setFill(imgArrayFelicia[10].src); };
         monkAnimCount = monkAnimCount + 1;
     }, this, 250)
 
@@ -5244,7 +5367,9 @@ farming.start = function () {
     var backBtnTown = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 2 - 28, 495).setSize(40, 40).setFill("images/UI/homeButton.png");
     townLayer.appendChild(backBtnTown);
 
-
+    ////////////
+///////////////market layer////////////
+    ////////////
     marketLayer = (new lime.Layer).setAnchorPoint(0, 0),
     marketFill1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("images/UI/greenButtonVert.png");
     marketScene.appendChild(marketFill1);
@@ -7433,15 +7558,82 @@ farming.start = function () {
     var stoveFire = (new lime.Sprite).setAnchorPoint(0.0).setPosition(160, 372).setFill(imgArray12[4]).setSize(22, 15);
     houseLayer.appendChild(stoveFire);
 
+    //denise
+    var denise = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(190, 350).setSize(55, 55).setFill(imgArrayDenise[0].src);
+    houseLayer.appendChild(denise);
+    var deniseQuestBtn = (new lime.GlossyButton).setColor("#A0A0A0").setText("").setPosition(35, -3).setSize(25, 23).setOpacity(0.2);
+    denise.appendChild(deniseQuestBtn);
+    var deniseQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(23, -15).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
+    denise.appendChild(deniseQuest);
 
+    var deniseCount = 0;
     fireState = 1
     lime.scheduleManager.scheduleWithDelay(function () {
-    
+        deniseCount++;
         firesInFireplace.setFill(imgArray12[fireState]);
         stoveFire.setFill(imgArray12[(fireState + 3)])
         fireState++;
         if (fireState > 3) { fireState = 1;} 
-       
+        if (deniseCount == 1) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); }
+        if (deniseCount == 2) { denise.setPosition(190, 360).setFill(imgArrayDenise[8].src); }
+        if (deniseCount == 3) { denise.setPosition(185, 360).setFill(imgArrayDenise[8].src); }
+        if (deniseCount == 4) { denise.setPosition(180, 360).setFill(imgArrayDenise[9].src); }
+        if (deniseCount == 5) { denise.setPosition(175, 360).setFill(imgArrayDenise[10].src); }
+        if (deniseCount == 6) { denise.setPosition(170, 360).setFill(imgArrayDenise[11].src); }
+        if (deniseCount == 7) { denise.setPosition(165, 360).setFill(imgArrayDenise[10].src); }
+        if (deniseCount == 8) { denise.setPosition(160, 360).setFill(imgArrayDenise[9].src); }
+        if (deniseCount == 9) { denise.setPosition(155, 360).setFill(imgArrayDenise[8].src); }
+        if (deniseCount == 10) { denise.setPosition(150, 360).setFill(imgArrayDenise[9].src); }
+        if (deniseCount == 11) { denise.setPosition(145, 360).setFill(imgArrayDenise[10].src); }
+        if (deniseCount == 12) { denise.setPosition(140, 360).setFill(imgArrayDenise[11].src); }
+        if (deniseCount == 12) { denise.setPosition(135, 355).setFill(imgArrayDenise[8].src); }
+        if (deniseCount == 12) { denise.setPosition(130, 355).setFill(imgArrayDenise[9].src); }
+        if (deniseCount == 12) { denise.setPosition(125, 350).setFill(imgArrayDenise[10].src); }
+        if (deniseCount == 13) { denise.setPosition(120, 350).setFill(imgArrayDenise[11].src); }
+        if (deniseCount == 14) { denise.setPosition(115, 350).setFill(imgArrayDenise[10].src); }
+        if (deniseCount == 15) { denise.setPosition(110, 350).setFill(imgArrayDenise[9].src); }
+        if (deniseCount == 16) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); }
+        if (deniseCount == 17) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); }
+        if (deniseCount == 18) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); }
+        if (deniseCount == 19) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); }
+        if (deniseCount == 20) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); }
+        if (deniseCount == 21) { denise.setPosition(110, 350).setFill(imgArrayDenise[14].src); }
+        if (deniseCount == 22) { denise.setPosition(110, 350).setFill(imgArrayDenise[8].src); }
+        if (deniseCount == 23) { denise.setPosition(110, 350).setFill(imgArrayDenise[1].src); }
+        if (deniseCount == 24) { denise.setPosition(110, 355).setFill(imgArrayDenise[0].src); }
+        if (deniseCount == 25) { denise.setPosition(110, 360).setFill(imgArrayDenise[1].src); }
+        if (deniseCount == 26) { denise.setPosition(110, 365).setFill(imgArrayDenise[2].src); }
+        if (deniseCount == 27) { denise.setPosition(110, 370).setFill(imgArrayDenise[3].src); }
+        if (deniseCount == 28) { denise.setPosition(110, 375).setFill(imgArrayDenise[0].src); }
+        if (deniseCount == 29) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); }
+        if (deniseCount == 30) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); }
+        if (deniseCount == 31) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); }
+        if (deniseCount == 32) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); }
+        if (deniseCount == 33) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); }
+        if (deniseCount == 34) { denise.setPosition(110, 375).setFill(imgArrayDenise[4].src); }
+        if (deniseCount == 35) { denise.setPosition(115, 370).setFill(imgArrayDenise[5].src); }
+        if (deniseCount == 36) { denise.setPosition(120, 365).setFill(imgArrayDenise[6].src); }
+        if (deniseCount == 37) { denise.setPosition(125, 360).setFill(imgArrayDenise[7].src); }
+        if (deniseCount == 38) { denise.setPosition(130, 360).setFill(imgArrayDenise[4].src); }
+        if (deniseCount == 39) { denise.setPosition(135, 360).setFill(imgArrayDenise[5].src); }
+        if (deniseCount == 40) { denise.setPosition(140, 360).setFill(imgArrayDenise[4].src); }
+        if (deniseCount == 41) { denise.setPosition(145, 360).setFill(imgArrayDenise[5].src); }
+        if (deniseCount == 42) { denise.setPosition(150, 360).setFill(imgArrayDenise[4].src); }
+        if (deniseCount == 43) { denise.setPosition(155, 360).setFill(imgArrayDenise[5].src); }
+        if (deniseCount == 44) { denise.setPosition(160, 360).setFill(imgArrayDenise[4].src); }
+        if (deniseCount == 45) { denise.setPosition(175, 360).setFill(imgArrayDenise[5].src); }
+        if (deniseCount == 46) { denise.setPosition(180, 360).setFill(imgArrayDenise[4].src); }
+        if (deniseCount == 47) { denise.setPosition(185, 360).setFill(imgArrayDenise[5].src); }
+        if (deniseCount == 48) { denise.setPosition(190, 360).setFill(imgArrayDenise[6].src); }
+        if (deniseCount == 49) { denise.setPosition(190, 360).setFill(imgArrayDenise[0].src); }
+        if (deniseCount == 59) { denise.setPosition(190, 360).setFill(imgArrayDenise[4].src); }
+        if (deniseCount == 69) { denise.setPosition(190, 360).setFill(imgArrayDenise[0].src); }
+        if (deniseCount == 79) { denise.setPosition(190, 360).setFill(imgArrayDenise[15].src); }
+        if (deniseCount == 83) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); }
+        if (deniseCount == 89) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); }
+        if (deniseCount == 95) { denise.setPosition(190, 360).setFill(imgArrayDenise[15].src); }
+        if (deniseCount == 99) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); }
+        if (deniseCount >= 100) { deniseCount = 0 }
     }, this, 200)
 
 
