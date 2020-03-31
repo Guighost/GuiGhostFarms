@@ -5355,6 +5355,20 @@ farming.start = function () {
     var coinButtonTown = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-16, -17).setSize(33, 33).setFill("images/marketTown/coinButton.png");
     marketTrigger.appendChild(coinButtonTown);
 
+    var backBtnTown = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 2 - 28, 495).setSize(40, 40).setFill("images/UI/homeButton.png");
+    townLayer.appendChild(backBtnTown);
+
+
+
+    var questPanel = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(15, 50).setSize(a.width - 30, a.height / 2).setFill("images/UI/blankBack4.png");
+    townLayer.appendChild(questPanel);
+    questPanel.setHidden(true);
+    var questHeader = (new lime.Label).setAnchorPoint(0, 0).setPosition(70, 25).setText("The Mayor").setFontFamily("Comic Sans MS").setFontSize(24);
+    questPanel.appendChild(questHeader);
+    var questText1 = (new lime.Label).setAnchorPoint(0, 0).setPosition(20, 165).setText("I heard that some old things have been found on that farm of yours. If you come across any JEWELS, let me know").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+    questPanel.appendChild(questText1);
+    var questPanelAvatar = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(75, 32).setSize(128, 128).setFill(imgArrayMayor[0].src);
+    questPanel.appendChild(questPanelAvatar);
 
 
     goog.events.listen(marketTrigger, ["mousedown", "touchstart"], function () {
@@ -5364,8 +5378,20 @@ farming.start = function () {
         marketFill1.setHidden(false);
         backBtnTown.setHidden(true);
     });
-    var backBtnTown = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 2 - 28, 495).setSize(40, 40).setFill("images/UI/homeButton.png");
-    townLayer.appendChild(backBtnTown);
+    goog.events.listen(mayorQuestBtn, ["mousedown", "touchstart"], function () {
+        questPanel.setHidden(false);
+        questPanelAvatar.setHidden(false);
+        goog.events.listen(questPanel, ["mousedown", "touchstart"], function () {
+            questPanel.setHidden(true);
+
+        });
+
+    });
+
+
+    var handleTownQuest = function (num) {
+       
+    }
 
     ////////////
 ///////////////market layer////////////
