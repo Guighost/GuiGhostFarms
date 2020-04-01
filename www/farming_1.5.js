@@ -836,6 +836,8 @@ imgArray12[5] = new Image(); imgArray12[5].src = 'images/houseUpgrades/stoveFire
 imgArray12[6] = new Image(); imgArray12[6].src = 'images/houseUpgrades/stoveFire3.png'
 
 
+
+///town and monk
 var imgArrayTown = new Array();
 imgArrayTown[0] = new Image(); imgArrayTown[0].src = 'images/marketTown/marketTownBack3.png'                       ///market back
 imgArrayTown[1] = new Image(); imgArrayTown[1].src = 'images/marketTown/Monk_f1.png'                               //monk f1
@@ -855,6 +857,7 @@ imgArrayTown[14] = new Image(); imgArrayTown[14].src = 'images/marketTown/Monk_p
 imgArrayTown[15] = new Image(); imgArrayTown[15].src = 'images/marketTown/quest1.png'  
 imgArrayTown[16] = new Image(); imgArrayTown[16].src = 'images/marketTown/quest2.png'  
 
+///Sara
 var imgArrayTown2 = new Array();
 imgArrayTown2[0] = new Image(); imgArrayTown2[0].src = 'images/marketTown/sara_f1.png'
 imgArrayTown2[1] = new Image(); imgArrayTown2[1].src = 'images/marketTown/sara_r1.png'  
@@ -872,7 +875,7 @@ imgArrayTown2[12] = new Image(); imgArrayTown2[12].src = 'images/marketTown/sara
 
 
 
-
+///mayor
 var imgArrayMayor = new Array();
 imgArrayMayor[0] = new Image(); imgArrayMayor[0].src = 'images/marketTown/mayor_f1.png'
 imgArrayMayor[1] = new Image(); imgArrayMayor[1].src = 'images/marketTown/mayor_f2.png'
@@ -892,7 +895,7 @@ imgArrayMayor[14] = new Image(); imgArrayMayor[14].src = 'images/marketTown/mayo
 imgArrayMayor[15] = new Image(); imgArrayMayor[15].src = 'images/marketTown/mayor_s1.png'
 imgArrayMayor[16] = new Image(); imgArrayMayor[16].src = 'images/marketTown/mayor_s2.png'
 
-
+///felicia
 var imgArrayFelicia = new Array();
 imgArrayFelicia[0] = new Image(); imgArrayFelicia[0].src = 'images/marketTown/Felicia_f1.png'
 imgArrayFelicia[1] = new Image(); imgArrayFelicia[1].src = 'images/marketTown/Felicia_f2.png'
@@ -910,6 +913,7 @@ imgArrayFelicia[12] = new Image(); imgArrayFelicia[12].src = 'images/marketTown/
 imgArrayFelicia[13] = new Image(); imgArrayFelicia[13].src = 'images/marketTown/Felicia_a2.png'
 imgArrayFelicia[14] = new Image(); imgArrayFelicia[14].src = 'images/marketTown/Felicia_a3.png'
 
+///denise
 var imgArrayDenise = new Array();
 imgArrayDenise[0] = new Image(); imgArrayDenise[0].src = 'images/houseUpgrades/denise/denise_f1.png'
 imgArrayDenise[1] = new Image(); imgArrayDenise[1].src = 'images/houseUpgrades/denise/denise_f2.png'
@@ -961,6 +965,102 @@ var houseUpgrades = {
     ]
   
 }
+///// quest definitions:
+var rewardTypes = {
+    TypeReward: [
+        { index: 0, type: "Coins" },
+        { index: 1, type: "Item" },
+        { index: 2, type: "Stars" },
+        { index: 3, type: "Tools" },
+        { index: 4, type: "Effect" },
+        { index: 5, type: "Reputation" }
+    ]
+}
+
+//questHeader.setText("Mayor Bouregard");
+//questText1.setText("I heard that some old things have been found on that farm of yours. If you come across any JEWELS, let me know")
+//questParams.mayor[0].completed
+var questParams = {
+    mayor: [ //Town Hall
+        { highestCompleted: 0, available: true},
+        { name: "Jewels", text: "I heard that some old things have been found on that farm of yours. If you come across any JEWELS, let me know", completed: 0, rewardType: 0, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: "Ill give you  " },
+        { name: "Rings", text: "", completed: 0, rewardType: 0, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Pottery", text: "", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
+        
+    ],
+    monk: [   ///church
+        { highestCompleted: 0, available: true },
+        { name: "Bounty", text: "I can provide blessings when you bring me any ARTIFACTS you may DIG UP", completed: 0, rewardType: 4, rewardAmount: 10, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Artifact", text: "", completed: 0, rewardType: 4, rewardAmount: 15, rewardItem: 0, requiredItem: "none", successText: " " },
+
+    ],
+    felicia: [   ///market
+        { highestCompleted: 0, available: true },
+        { name: "Food", text: "I wish this market had some CORN", completed: 0, rewardType: 5, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Lost Dog", text: "", completed: 0, rewardType: 5, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Necklace", text: "", completed: 0, rewardType: 5, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: " " },
+
+    ],
+    sara: [ ///Inn
+        { highestCompleted: 0, available: true },
+        { name: "Juice", text: "My  customers are asking for GRAPE JUICE. If you can find a way to make it, I will buy it", completed: 0, rewardType: 0, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Cider", text: "This cooler weather has people wanting APPLE CIDER. Can you make some?", completed: 0, rewardType: 0, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: " " },
+
+    ],
+    denise: [    ///house
+        { highestCompleted: 0, available: true },
+        { name: "Furniture", text: "We need some furniture", completed: 0, rewardType: 4, rewardAmount: 1, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Salt", text: " ", completed: 0, rewardType: 4, rewardAmount: 150, rewardItem: 0, requiredItem: "Salt", successText: " " },
+
+    ],
+    blacksmith: [ ///forge
+        { highestCompleted: 0, available: true },
+        { name: "Wood", text: "I need more WOOD", completed: 0, rewardType: 4, rewardAmount: 1, rewardItem: 0, requiredItem: "Wood", successText: " " },
+        { name: "Coal", text: "", completed: 0, rewardType: 4, rewardAmount: 2, rewardItem: 0, requiredItem: "Coal", successText: " " },
+        { name: "Iron", text: "", completed: 0, rewardType: 4, rewardAmount: 2, rewardItem: 0, requiredItem: "Iron", successText: " " },
+
+    ],
+    helga: [ //orchard
+        { highestCompleted: 0, available: true },
+        { name: "Cider Press", text: "If we bought a CIDER PRESS, we could make APPLE CIDER", completed: 0, rewardType: 5, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Bottles", text: "", completed: 0, rewardType: 5, rewardAmount: 150, rewardItem: 0, requiredItem: "Bottles", successText: " " },
+
+    ],
+    forwin: [ //vineyard
+        { highestCompleted: 0, available: true },
+        { name: "Jars", text: "I need some  JARS. Can you buy some in town?", completed: 0, rewardType: 5, rewardAmount: 100, rewardItem: 0, requiredItem: "Jars" },
+        { name: "Juicer", text: "", completed: 0, rewardType: 5, rewardAmount: 100, rewardItem: 0, requiredItem: "Juicer" },
+        { name: "Bottles", text: "I need some BOTTLES. Can you buy some in town?", completed: 0, rewardType: 5, rewardAmount: 150, rewardItem: 0, requiredItem: "Bottles" },
+
+    ],
+}
+
+/////////Collectibles
+var collectItems = {
+    digUpSells: [
+        { name: "Common Necklace", value: 25, owned: 0, onlyOnce: 0 },
+        { name: "Jeweled Necklace", value: 75, owned: 0, onlyOnce: 0 },
+        { name: "Brass Ring", value: 25, owned: 0, onlyOnce: 0 },
+        { name: "Silver Ring", value: 45, owned: 0, onlyOnce: 0 },
+        { name: "Gold Ring", value: 45, owned: 0, onlyOnce: 0 },
+        { name: "Ancient Sword", value: 250, owned: 0, onlyOnce: 0 },
+        { name: "Ancient Shield", value: 250, owned: 0, onlyOnce: 0 },
+    ],
+    digUpCollect: [
+        { name:"Family Crest", value: 25, owned: 0, onlyOnce: 1 },
+        { name: "Forefathers Shield", value: 3500, owned: 0, onlyOnce: 1 },
+        { name: "Exquisite Vase", value: 5000, owned: 0, onlyOnce: 1 },
+    ],
+    storeItems: [
+        { name: "Coal", value: 25, owned: 0, onlyOnce: 0 },
+        { name: "Cider Press", value: 3500, owned: 0, onlyOnce: 1 },
+        { name: "Juicer", value: 5000, owned: 0, onlyOnce: 1 },
+    ]
+   
+
+}
+
+
 if (typeof localStorage["GuiGhostFarms_houseUpgrades"] === "undefined") { localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades)); };
 houseUpgrades = JSON.parse(localStorage.getItem('GuiGhostFarms_houseUpgrades'));
 
@@ -5363,13 +5463,16 @@ farming.start = function () {
     var questPanel = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(15, 50).setSize(a.width - 30, a.height / 2).setFill("images/UI/blankBack4.png");
     townLayer.appendChild(questPanel);
     questPanel.setHidden(true);
-    var questHeader = (new lime.Label).setAnchorPoint(0, 0).setPosition(70, 25).setText("The Mayor").setFontFamily("Comic Sans MS").setFontSize(24);
+    var questHeader = (new lime.Label).setAnchorPoint(0, 0).setPosition(70, 25).setText("").setFontFamily("Comic Sans MS").setFontSize(24);
     questPanel.appendChild(questHeader);
-    var questText1 = (new lime.Label).setAnchorPoint(0, 0).setPosition(20, 165).setText("I heard that some old things have been found on that farm of yours. If you come across any JEWELS, let me know").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+    var questText1 = (new lime.Label).setAnchorPoint(0, 0).setPosition(20, 165).setText("").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
     questPanel.appendChild(questText1);
     var questPanelAvatar = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(75, 32).setSize(128, 128).setFill(imgArrayMayor[0].src);
     questPanel.appendChild(questPanelAvatar);
+    goog.events.listen(questPanel, ["mousedown", "touchstart"], function () {
+        questPanel.setHidden(true);
 
+    });
 
     goog.events.listen(marketTrigger, ["mousedown", "touchstart"], function () {
          townLayer.setHidden(true);
@@ -5378,19 +5481,83 @@ farming.start = function () {
         marketFill1.setHidden(false);
         backBtnTown.setHidden(true);
     });
-    goog.events.listen(mayorQuestBtn, ["mousedown", "touchstart"], function () {
-        questPanel.setHidden(false);
-        questPanelAvatar.setHidden(false);
-        goog.events.listen(questPanel, ["mousedown", "touchstart"], function () {
-            questPanel.setHidden(true);
+    goog.events.listen(mayorQuestBtn, ["mousedown", "touchstart"], function () { handleTownQuest("mayor"); });
+    goog.events.listen(mayor, ["mousedown", "touchstart"], function () { handleTownQuest("mayor"); });
+    goog.events.listen(monkQuestBtn, ["mousedown", "touchstart"], function () { handleTownQuest("monk"); });
+    goog.events.listen(monk, ["mousedown", "touchstart"], function () { handleTownQuest("monk"); });
+    goog.events.listen(feliciaQuestBtn, ["mousedown", "touchstart"], function () { handleTownQuest("felicia"); });
+    goog.events.listen(felicia, ["mousedown", "touchstart"], function () { handleTownQuest("felicia"); });
+    goog.events.listen(saraQuestBtn, ["mousedown", "touchstart"], function () { handleTownQuest("sara"); });
+    goog.events.listen(sara, ["mousedown", "touchstart"], function () { handleTownQuest("sara"); });
 
-        });
+    var questLevel = 0
+    
+    var handleTownQuest = function (who) {
+     
+        if (who == "mayor") {
+            questHeader.setText("Mayor Bouregard");
+            questPanelAvatar.setFill(imgArrayMayor[0].src)
+            if (questParams.mayor[0].available == true) {
+                questLevel = questParams.mayor[0].highestCompleted;
+                //increase questlevel to current target
+                var currentQuest = parseInt(questLevel) + 1;
 
-    });
+                questText1.setText(questParams.mayor[currentQuest].text)
+                questPanel.setHidden(false);
+            }
+            else {
+                questText1.setText("Thanks, but I do not need anything right now. Try me later.");
+                questPanel.setHidden(false);
+            }
+        }
+        else if (who == "monk") {
+            questHeader.setText("Friar Patrick");
+            questPanelAvatar.setFill(imgArrayTown[1].src)
+            if (questParams.monk[0].available == true) {
+                questLevel = questParams.monk[0].highestCompleted;
+                //increase questlevel to current target
+                var currentQuest = parseInt(questLevel) + 1;
 
+                questText1.setText(questParams.monk[currentQuest].text)
+                questPanel.setHidden(false);
+            }
+            else {
+                questText1.setText("Thanks, but I do not need anything right now. Try me later.");
+                questPanel.setHidden(false);
+            }
+        }
+        else if (who == "felicia") {
+            questHeader.setText("Lady Felicia");
+            questPanelAvatar.setFill(imgArrayFelicia[1].src)
+            if (questParams.felicia[0].available == true) {
+                questLevel = questParams.felicia[0].highestCompleted;
+                //increase questlevel to current target
+                var currentQuest = parseInt(questLevel) + 1;
 
-    var handleTownQuest = function (num) {
-       
+                questText1.setText(questParams.felicia[currentQuest].text)
+                questPanel.setHidden(false);
+            }
+            else {
+                questText1.setText("Thanks, but I do not need anything right now. Try me later.");
+                questPanel.setHidden(false);
+            }
+        }
+        else if (who == "sara") {
+            questHeader.setText("InnKeeper Sara");
+            questPanelAvatar.setFill(imgArrayTown2[0].src)
+            if (questParams.sara[0].available == true) {
+                questLevel = questParams.sara[0].highestCompleted;
+                //increase questlevel to current target
+                var currentQuest = parseInt(questLevel) + 1;
+
+                questText1.setText(questParams.sara[currentQuest].text)
+                questPanel.setHidden(false);
+            }
+            else {
+                questText1.setText("Thanks, but I do not need anything right now. Try me later.");
+                questPanel.setHidden(false);
+            }
+        }
     }
 
     ////////////
