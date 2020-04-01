@@ -872,6 +872,7 @@ imgArrayTown2[9] = new Image(); imgArrayTown2[9].src = 'images/marketTown/sara_a
 imgArrayTown2[10] = new Image(); imgArrayTown2[10].src = 'images/marketTown/sara_a3.png'  
 imgArrayTown2[11] = new Image(); imgArrayTown2[11].src = 'images/marketTown/sara_p1.png'  
 imgArrayTown2[12] = new Image(); imgArrayTown2[12].src = 'images/marketTown/sara_s1.png'
+imgArrayTown2[13] = new Image(); imgArrayTown2[13].src = 'images/marketTown/sara_s2.png'
 
 
 
@@ -912,6 +913,7 @@ imgArrayFelicia[11] = new Image(); imgArrayFelicia[11].src = 'images/marketTown/
 imgArrayFelicia[12] = new Image(); imgArrayFelicia[12].src = 'images/marketTown/Felicia_a1.png'
 imgArrayFelicia[13] = new Image(); imgArrayFelicia[13].src = 'images/marketTown/Felicia_a2.png'
 imgArrayFelicia[14] = new Image(); imgArrayFelicia[14].src = 'images/marketTown/Felicia_a3.png'
+imgArrayFelicia[15] = new Image(); imgArrayFelicia[15].src = 'images/marketTown/Felicia_s1.png'
 
 ///denise
 var imgArrayDenise = new Array();
@@ -983,7 +985,7 @@ var rewardTypes = {
 var questParams = {
     mayor: [ //Town Hall
         { highestCompleted: 0, available: true},
-        { name: "Jewels", text: "I heard that some old things have been found on that farm of yours. If you come across any JEWELS, let me know", completed: 0, rewardType: 0, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: "Ill give you  " },
+        { name: "Jewels", text: "I heard that some old things have been found on that farm of yours. If you DIG UP any JEWELRY, let me know", completed: 0, rewardType: 0, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: "Ill give you  " },
         { name: "Rings", text: "", completed: 0, rewardType: 0, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Pottery", text: "", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
         
@@ -996,20 +998,20 @@ var questParams = {
     ],
     felicia: [   ///market
         { highestCompleted: 0, available: true },
-        { name: "Food", text: "I wish this market had some CORN", completed: 0, rewardType: 5, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Food", text: "I wish this market had some EGGPLANT", completed: 0, rewardType: 5, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Lost Dog", text: "", completed: 0, rewardType: 5, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Necklace", text: "", completed: 0, rewardType: 5, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: " " },
 
     ],
     sara: [ ///Inn
         { highestCompleted: 0, available: true },
-        { name: "Juice", text: "My  customers are asking for GRAPE JUICE. If you can find a way to make it, I will buy it", completed: 0, rewardType: 0, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Juice", text: "My patrons want GRAPE JUICE. If you can find a way to make it, I will buy it", completed: 0, rewardType: 0, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Cider", text: "This cooler weather has people wanting APPLE CIDER. Can you make some?", completed: 0, rewardType: 0, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: " " },
 
     ],
     denise: [    ///house
         { highestCompleted: 0, available: true },
-        { name: "Furniture", text: "We need some furniture", completed: 0, rewardType: 4, rewardAmount: 1, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Furniture", text: "We need some FURNITURE", completed: 0, rewardType: 4, rewardAmount: 1, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Salt", text: " ", completed: 0, rewardType: 4, rewardAmount: 150, rewardItem: 0, requiredItem: "Salt", successText: " " },
 
     ],
@@ -5469,10 +5471,7 @@ farming.start = function () {
     questPanel.appendChild(questText1);
     var questPanelAvatar = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(75, 32).setSize(128, 128).setFill(imgArrayMayor[0].src);
     questPanel.appendChild(questPanelAvatar);
-    goog.events.listen(questPanel, ["mousedown", "touchstart"], function () {
-        questPanel.setHidden(true);
-
-    });
+ 
 
     goog.events.listen(marketTrigger, ["mousedown", "touchstart"], function () {
          townLayer.setHidden(true);
@@ -5497,6 +5496,12 @@ farming.start = function () {
         if (who == "mayor") {
             questHeader.setText("Mayor Bouregard");
             questPanelAvatar.setFill(imgArrayMayor[0].src)
+            swapIt = 0;
+            var looperMayor = setInterval(function () {
+                swapIt++
+                if (swapIt == 8) { questPanelAvatar.setFill(imgArrayMayor[1].src); }
+                if (swapIt == 11) { questPanelAvatar.setFill(imgArrayMayor[0].src); swapIt = 0; }
+            }, 200);
             if (questParams.mayor[0].available == true) {
                 questLevel = questParams.mayor[0].highestCompleted;
                 //increase questlevel to current target
@@ -5509,10 +5514,20 @@ farming.start = function () {
                 questText1.setText("Thanks, but I do not need anything right now. Try me later.");
                 questPanel.setHidden(false);
             }
+            goog.events.listen(questPanel, ["mousedown", "touchstart"], function () {
+                questPanel.setHidden(true);
+                clearInterval(looperMayor);
+            });
         }
         else if (who == "monk") {
             questHeader.setText("Friar Patrick");
             questPanelAvatar.setFill(imgArrayTown[1].src)
+            swapIt = 0;
+            var looperMonk = setInterval(function () {
+                swapIt++
+                if (swapIt == 8) { questPanelAvatar.setFill(imgArrayTown[13].src); }
+                if (swapIt == 14) { questPanelAvatar.setFill(imgArrayTown[1].src); swapIt = 0; }
+            }, 200);
             if (questParams.monk[0].available == true) {
                 questLevel = questParams.monk[0].highestCompleted;
                 //increase questlevel to current target
@@ -5525,10 +5540,20 @@ farming.start = function () {
                 questText1.setText("Thanks, but I do not need anything right now. Try me later.");
                 questPanel.setHidden(false);
             }
+            goog.events.listen(questPanel, ["mousedown", "touchstart"], function () {
+                questPanel.setHidden(true);
+                clearInterval(looperMonk);
+            });
         }
         else if (who == "felicia") {
             questHeader.setText("Lady Felicia");
-            questPanelAvatar.setFill(imgArrayFelicia[1].src)
+            swapIt = 0;
+            questPanelAvatar.setFill(imgArrayFelicia[0].src);
+            var looperFelicia = setInterval(function () {
+                swapIt++
+                if (swapIt == 8) { questPanelAvatar.setFill(imgArrayFelicia[15].src); } 
+                if (swapIt == 11) { questPanelAvatar.setFill(imgArrayFelicia[0].src); swapIt = 0;} 
+            }, 200);
             if (questParams.felicia[0].available == true) {
                 questLevel = questParams.felicia[0].highestCompleted;
                 //increase questlevel to current target
@@ -5541,10 +5566,20 @@ farming.start = function () {
                 questText1.setText("Thanks, but I do not need anything right now. Try me later.");
                 questPanel.setHidden(false);
             }
+            goog.events.listen(questPanel, ["mousedown", "touchstart"], function () {
+                questPanel.setHidden(true);
+                clearInterval(looperFelicia);
+            });
         }
         else if (who == "sara") {
             questHeader.setText("InnKeeper Sara");
             questPanelAvatar.setFill(imgArrayTown2[0].src)
+            swapIt = 0;
+            var looperSara = setInterval(function () {
+                swapIt++
+                if (swapIt == 8) { questPanelAvatar.setFill(imgArrayTown2[13].src); }
+                if (swapIt == 11) { questPanelAvatar.setFill(imgArrayTown2[0].src); swapIt = 0; }
+            }, 200);
             if (questParams.sara[0].available == true) {
                 questLevel = questParams.sara[0].highestCompleted;
                 //increase questlevel to current target
@@ -5557,6 +5592,10 @@ farming.start = function () {
                 questText1.setText("Thanks, but I do not need anything right now. Try me later.");
                 questPanel.setHidden(false);
             }
+            goog.events.listen(questPanel, ["mousedown", "touchstart"], function () {
+                questPanel.setHidden(true);
+                clearInterval(looperSara);
+            });
         }
     }
 
