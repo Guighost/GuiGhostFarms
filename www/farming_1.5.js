@@ -934,6 +934,81 @@ imgArrayDenise[13] = new Image(); imgArrayDenise[13].src = 'images/houseUpgrades
 imgArrayDenise[14] = new Image(); imgArrayDenise[14].src = 'images/houseUpgrades/denise/denise_a3.png'
 imgArrayDenise[15] = new Image(); imgArrayDenise[15].src = 'images/houseUpgrades/denise/denise_s1.png'
 
+
+
+var imgArrayItems = new Array();
+imgArrayItems[0] = new Image(); imgArrayItems[0].src = 'images/items/shield1.png'
+imgArrayItems[1] = new Image(); imgArrayItems[1].src = 'images/items/shield2.png'
+imgArrayItems[2] = new Image(); imgArrayItems[2].src = 'images/items/shield3.png'
+imgArrayItems[3] = new Image(); imgArrayItems[3].src = 'images/items/book1.png'
+imgArrayItems[4] = new Image(); imgArrayItems[4].src = 'images/items/locket.png'
+imgArrayItems[5] = new Image(); imgArrayItems[5].src = 'images/items/mail1.png'
+imgArrayItems[6] = new Image(); imgArrayItems[6].src = 'images/items/mail2.png'
+imgArrayItems[7] = new Image(); imgArrayItems[7].src = 'images/items/key.png'
+imgArrayItems[8] = new Image(); imgArrayItems[8].src = 'images/items/necklaceEmerald.png'
+imgArrayItems[9] = new Image(); imgArrayItems[9].src = 'images/items/necklacepurple.png'
+imgArrayItems[10] = new Image(); imgArrayItems[10].src = 'images/items/necklaceRuby.png'
+imgArrayItems[11] = new Image(); imgArrayItems[11].src = 'images/items/necklaceSaphire.png'
+imgArrayItems[12] = new Image(); imgArrayItems[12].src = 'images/items/ringAmethyst.png'
+imgArrayItems[13] = new Image(); imgArrayItems[13].src = 'images/items/ringEmerald.png'
+imgArrayItems[14] = new Image(); imgArrayItems[14].src = 'images/items/ringRuby.png'
+imgArrayItems[15] = new Image(); imgArrayItems[15].src = 'images/items/ruby.png'
+imgArrayItems[16] = new Image(); imgArrayItems[16].src = 'images/items/saphire.png'
+imgArrayItems[17] = new Image(); imgArrayItems[17].src = 'images/items/scroll1.png'
+imgArrayItems[18] = new Image(); imgArrayItems[18].src = 'images/items/shovel1.png'
+imgArrayItems[19] = new Image(); imgArrayItems[19].src = 'images/items/sword1.png'
+imgArrayItems[20] = new Image(); imgArrayItems[20].src = 'images/items/sword2.png'
+imgArrayItems[21] = new Image(); imgArrayItems[21].src = 'images/items/sword3.png'
+imgArrayItems[22] = new Image(); imgArrayItems[22].src = 'images/items/pick1.png'
+imgArrayItems[23] = new Image(); imgArrayItems[23].src = 'images/items/crest.png'
+imgArrayItems[24] = new Image(); imgArrayItems[24].src = 'images/items/coal.png'
+
+
+/////////Collectibles
+var collectItems = {
+    digUpSells: [
+        { name: "Old Buckler", value: 250, owned: 0, onlyOnce: 0, src: imgArrayItems[0].src },
+        { name: "Ancient Shield", value: 250, owned: 0, onlyOnce: 0, src: imgArrayItems[1].src },
+        { name: "Ancient Tome", value: 250, owned: 0, onlyOnce: 0, src: imgArrayItems[3].src },
+        { name: "Locket", value: 45, owned: 0, onlyOnce: 0, src: imgArrayItems[4].src },
+        { name: "Old Armor", value: 45, owned: 0, onlyOnce: 0, src: imgArrayItems[5].src },
+        { name: "Ancient Key", value: 45, owned: 0, onlyOnce: 0, src: imgArrayItems[7].src },
+        { name: "Emerald Necklace", value: 25, owned: 0, onlyOnce: 0, src: imgArrayItems[8].src },
+        { name: "Amethyst Necklace", value: 45, owned: 0, onlyOnce: 0, src: imgArrayItems[9].src },
+        { name: "Ruby Necklace", value: 75, owned: 0, onlyOnce: 0, src: imgArrayItems[10].src },
+        { name: "Saffire Necklace", value: 25, owned: 0, onlyOnce: 0, src: imgArrayItems[11].src },
+        { name: "Amethyst Ring", value: 45, owned: 0, onlyOnce: 0, src: imgArrayItems[12].src },
+        { name: "Amethyst Ring", value: 45, owned: 0, onlyOnce: 0, src: imgArrayItems[12].src },
+        { name: "Emerald Ring", value: 45, owned: 0, onlyOnce: 0, src: imgArrayItems[13].src },
+        { name: "Ruby Ring", value: 45, owned: 0, onlyOnce: 0, src: imgArrayItems[14].src },
+        { name: "Ruby", value: 45, owned: 0, onlyOnce: 0, src: imgArrayItems[15].src },
+        { name: "Sapphire", value: 45, owned: 0, onlyOnce: 0, src: imgArrayItems[16].src },
+        { name: "Crumbling Scroll", value: 45, owned: 0, onlyOnce: 0, src: imgArrayItems[17].src },
+        { name: "Common Sword", value: 250, owned: 0, onlyOnce: 0, src: imgArrayItems[19].src },
+        { name: "Ancient Sword", value: 250, owned: 0, onlyOnce: 0, src: imgArrayItems[20].src },
+     
+
+
+    ],
+    digUpCollect: [
+        { name: "Family Crest", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[23].src },
+        { name: "Forefathers Shield", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[2].src },
+        { name: "Forefathers Sword", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[21].src },
+        { name: "Forefathers Mail", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[6].src },
+      
+    ],
+    storeItems: [
+        { name: "Shovel", value: 25, owned: 0, onlyOnce: 0, src: imgArrayItems[18].src },
+        { name: "Pick", value: 25, owned: 0, onlyOnce: 0, src: imgArrayItems[22].src },
+        { name: "Coal", value: 25, owned: 0, onlyOnce: 0, src: imgArrayItems[24].src },
+        //{ name: "Cider Press", value: 3500, owned: 0, onlyOnce: 1, src: imgArrayItems[14].src },
+        //{ name: "Juicer", value: 5000, owned: 0, onlyOnce: 1, src: imgArrayItems[15].src },
+    ]
+
+
+}
+
+///house upgrades
 var houseUpgrades = {
     upgrades: [
         { name: "expansion", cost: 0, owned: 0 },
@@ -967,6 +1042,7 @@ var houseUpgrades = {
     ]
   
 }
+
 ///// quest definitions:
 var rewardTypes = {
     TypeReward: [
@@ -1037,30 +1113,7 @@ var questParams = {
     ],
 }
 
-/////////Collectibles
-var collectItems = {
-    digUpSells: [
-        { name: "Common Necklace", value: 25, owned: 0, onlyOnce: 0 },
-        { name: "Jeweled Necklace", value: 75, owned: 0, onlyOnce: 0 },
-        { name: "Brass Ring", value: 25, owned: 0, onlyOnce: 0 },
-        { name: "Silver Ring", value: 45, owned: 0, onlyOnce: 0 },
-        { name: "Gold Ring", value: 45, owned: 0, onlyOnce: 0 },
-        { name: "Ancient Sword", value: 250, owned: 0, onlyOnce: 0 },
-        { name: "Ancient Shield", value: 250, owned: 0, onlyOnce: 0 },
-    ],
-    digUpCollect: [
-        { name:"Family Crest", value: 25, owned: 0, onlyOnce: 1 },
-        { name: "Forefathers Shield", value: 3500, owned: 0, onlyOnce: 1 },
-        { name: "Exquisite Vase", value: 5000, owned: 0, onlyOnce: 1 },
-    ],
-    storeItems: [
-        { name: "Coal", value: 25, owned: 0, onlyOnce: 0 },
-        { name: "Cider Press", value: 3500, owned: 0, onlyOnce: 1 },
-        { name: "Juicer", value: 5000, owned: 0, onlyOnce: 1 },
-    ]
-   
 
-}
 
 
 if (typeof localStorage["GuiGhostFarms_houseUpgrades"] === "undefined") { localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades)); };
@@ -1238,7 +1291,10 @@ var farming = {
                         //player.money = player.money - a.costPlowing,
                         scene == 3 && (c.setFill("images/Orchard/fertilize_trees.png")),
                         scene == 32 && (c.setFill("images/Orchard/fertilize_trees.png")),
-                        scene == 5 && (c.setFill("images/vinyard/grapes_Fertilize.png"))
+                        scene == 5 && (c.setFill("images/vinyard/grapes_Fertilize.png")),
+                        runRandomChance()
+                     
+                        
                         //a.updateMoney()
 
                     )
@@ -1292,8 +1348,30 @@ var farming = {
            
            
         }
-     
-       
+        var itemReceived = ''
+        var runRandomChance = function () {
+            randomChance = Math.round(Math.random() * 10);
+            if (randomChance == 9) {
+                var countDigUpSells = Object.keys(collectItems.digUpSells).length;
+                randomItemNumber = Math.round(Math.random() * (countDigUpSells - 1));
+                itemReceived = collectItems.digUpSells[randomItemNumber].name;
+                collectItems.digUpSells[randomItemNumber].owned = collectItems.digUpSells[randomItemNumber].owned + 1;
+                console.log("random number was " + randomItemNumber + " and randomItemNumber was " + randomItemNumber + " and  item  name = " + itemReceived);
+                a.displayCollectible(posX, posY, itemReceived, false)
+            }
+            else if (randomChance == 10) {
+                var countDigUpCollect = Object.keys(collectItems.digUpCollect).length;
+                randomItemNumber = Math.round(Math.random() * (countDigUpCollect - 1));
+                itemReceived = collectItems.digUpCollect[randomItemNumber].name;
+                collectItems.digUpCollect[randomItemNumber].owned = collectItems.digUpCollect[randomItemNumber].owned + 1;
+                console.log("random chance number was " + randomChance + " and randomItemNumber was " + randomItemNumber + " and  item  name = " + itemReceived);
+                a.displayCollectible(posX, posY, itemReceived, true)
+            }
+            else {
+                console.log("random chance number was " + randomChance);
+                return;
+            }
+        }
         
         if (scene == 3 && c.state == farming.EMPTY) { c.setFill("images/Orchard/prune_trees.png") }
         if (scene == 32 && c.state == farming.EMPTY) { c.setFill("images/Orchard/prune_trees.png") }
@@ -2320,6 +2398,13 @@ farming.start = function () {
     toolUpCount.appendChild(toolUpImage);
     toolUpCount.setHidden(true);
 
+    ////// collectible
+    var collectibleBtn = (new lime.GlossyButton).setColor("#100F13").setText("").setPosition(a.controlsLayer_w / 4 - (15), a.height / 2).setSize(22, 22).setOpacity(0.9);
+    var collectibleImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-12.5, -13).setFill("images/items/shield1.png").setSize(25, 25);
+
+    f.appendChild(collectibleBtn); 
+    collectibleBtn.appendChild(collectibleImg);
+    collectibleBtn.setHidden(true);
 
 
 
@@ -2382,7 +2467,48 @@ farming.start = function () {
         costDisplayO.setText("-$" + costPassed);
         setTimeout(function () { costDisplayO.setHidden(true) }, 750);
     }
+    var collectibleOnScreen = false;
+    a.displayCollectible = function (x, y, itemRecieved, collectible) {
+        var tempImgSource = '';
+        if (collectibleOnScreen == false) {
+            if (collectible == false) {
+                // look for the entry with a matching name and get image source
+                for (var i = 0; i < collectItems.digUpSells.length; i++) {
+                    if (collectItems.digUpSells[i].name == itemRecieved) {
+                        tempImgSource = collectItems.digUpSells[i].src;
+                    }
+                }
 
+                collectibleImg.setFill(tempImgSource);
+            }
+            else if (collectible == true) {
+
+                for (var k = 0; k < collectItems.digUpCollect.length; k++) {
+                    // look for the entry with a matching name
+                    if (collectItems.digUpCollect[k].name == itemRecieved) {
+                        tempImgSource = collectItems.digUpCollect[k].src;
+                    }
+                }
+
+                collectibleImg.setFill(tempImgSource);
+            }
+
+            collectibleBtn.setHidden(false);
+            collectibleBtn.setPosition((x + 20), y);
+            collectibleOnScreen = true;
+            setTimeout(function () { collectibleBtn.setPosition((x + 20), y - 10); }, 200);
+            setTimeout(function () { collectibleBtn.setPosition((x + 20), y); }, 400);
+            setTimeout(function () { collectibleBtn.setPosition((x + 20), y - 10); }, 600);
+            setTimeout(function () { collectibleBtn.setPosition((x + 20), y); }, 800);
+            goog.events.listen(collectibleBtn, ["mousedown", "touchstart"], function () {
+                console.log("clicked collect item " + itemRecieved);
+                collectibleBtn.setHidden(true);
+                collectibleOnScreen = false;
+
+            });
+        }
+   
+    }
     var hh = b.currentCrop;
     var w = (new lime.Label).setText("Planting " + a.crops[0].name).setFontColor("#E8FC08").setFontSize(12).setFontFamily("Comic Sans MS").setPosition(155, a.height - a.controlsLayer_h / 2 - 12);
     f.appendChild(w);
@@ -2412,7 +2538,7 @@ farming.start = function () {
     goog.events.listen(market, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
             a.sceneBefore = 1;
-            c.replaceScene(marketScene, lime.transitions.SlideInDown);
+            c.replaceScene(marketScene, lime.transitions.SlideInUp);
             localStorage.setItem('showHighLight', 0);
             clearInterval(refreshIntervalId);
             market.setFill("images/marketCoin.png");
@@ -2919,7 +3045,7 @@ farming.start = function () {
         warningSeen = 1;
         a.updateStored();
         globalModalBlock = 0;
-        c.replaceScene(marketScene, lime.transitions.SlideInDown);
+        c.replaceScene(marketScene, lime.transitions.SlideInUp);
         count0.setText(player.cropsStored[0].stored);
         count1.setText(player.cropsStored[1].stored);
         count2.setText(player.cropsStored[2].stored);
@@ -3920,7 +4046,7 @@ farming.start = function () {
     goog.events.listen(marketP, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
             a.sceneBefore = 2;                                                                                                                               ///from pature to Market
-            c.replaceScene(marketScene, lime.transitions.SlideInDown);
+            c.replaceScene(marketScene, lime.transitions.SlideInUp);
 
             count0.setText(player.cropsStored[0].stored);
             count1.setText(player.cropsStored[1].stored);
@@ -4008,7 +4134,7 @@ farming.start = function () {
         pastureBlock.setHidden(true); homeBlock.setHidden(true); orchardBlock.setHidden(true); vinyardBlock.setHidden(true); lsBlock.setHidden(true);
         a.updateStored();
         globalModalBlock = 0;
-        c.replaceScene(marketScene, lime.transitions.SlideInDown);
+        c.replaceScene(marketScene, lime.transitions.SlideInUp);
     });
     goog.events.listen(cancelBtnCashP, ["mousedown", "touchstart"], function () {            //cancel Button
 
@@ -4938,7 +5064,7 @@ farming.start = function () {
     goog.events.listen(marketO, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
             a.sceneBefore = 3;                                                                                                                                  ///from orchard to Market
-            c.replaceScene(marketScene, lime.transitions.SlideInDown);
+            c.replaceScene(marketScene, lime.transitions.SlideInUp);
             count0.setText(player.cropsStored[0].stored);
             count1.setText(player.cropsStored[1].stored);
             count2.setText(player.cropsStored[2].stored);
@@ -4981,7 +5107,7 @@ farming.start = function () {
         outOfCashP.setHidden(true); marketBtn1P.setHidden(true); buyStarCashP.setHidden(true);
         outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
         orchardBlock.setHidden(true); homeBlock.setHidden(true); vinyardBlock.setHidden(true); pastureBlock.setHidden(true); lsBlock.setHidden(true);
-        c.replaceScene(marketScene, lime.transitions.SlideInDown);
+        c.replaceScene(marketScene, lime.transitions.SlideInUp);
         warningSeen = 1;
         globalModalBlock = 0;
     });
@@ -5480,21 +5606,21 @@ farming.start = function () {
         marketFill1.setHidden(false);
         backBtnTown.setHidden(true);
     });
-    goog.events.listen(mayorQuestBtn, ["mousedown", "touchstart"], function () { handleTownQuest("mayor"); });
-    goog.events.listen(mayor, ["mousedown", "touchstart"], function () { handleTownQuest("mayor"); });
-    goog.events.listen(monkQuestBtn, ["mousedown", "touchstart"], function () { handleTownQuest("monk"); });
-    goog.events.listen(monk, ["mousedown", "touchstart"], function () { handleTownQuest("monk"); });
-    goog.events.listen(feliciaQuestBtn, ["mousedown", "touchstart"], function () { handleTownQuest("felicia"); });
-    goog.events.listen(felicia, ["mousedown", "touchstart"], function () { handleTownQuest("felicia"); });
-    goog.events.listen(saraQuestBtn, ["mousedown", "touchstart"], function () { handleTownQuest("sara"); });
-    goog.events.listen(sara, ["mousedown", "touchstart"], function () { handleTownQuest("sara"); });
+    goog.events.listen(mayorQuestBtn, ["mousedown", "touchstart"], function () { handleTownQuest("mayor", 0); });
+    goog.events.listen(mayor, ["mousedown", "touchstart"], function () { handleTownQuest("mayor", 0); });
+    goog.events.listen(monkQuestBtn, ["mousedown", "touchstart"], function () { handleTownQuest("monk", 0); });
+    goog.events.listen(monk, ["mousedown", "touchstart"], function () { handleTownQuest("monk", 0); });
+    goog.events.listen(feliciaQuestBtn, ["mousedown", "touchstart"], function () { handleTownQuest("felicia", 0); });
+    goog.events.listen(felicia, ["mousedown", "touchstart"], function () { handleTownQuest("felicia", 0); });
+    goog.events.listen(saraQuestBtn, ["mousedown", "touchstart"], function () { handleTownQuest("sara", 0); });
+    goog.events.listen(sara, ["mousedown", "touchstart"], function () { handleTownQuest("sara", 0); });
 
     var questLevel = 0
     
-    var handleTownQuest = function (who) {
-     
-        if (who == "mayor") {
-            questHeader.setText("Mayor Bouregard");
+    var handleTownQuest = function (who, complete) {
+     if(complete == 0) {
+        if (who == "mayor" ) {
+            questHeader.setText("Mayor Boris");
             questPanelAvatar.setFill(imgArrayMayor[0].src)
             swapIt = 0;
             var looperMayor = setInterval(function () {
@@ -5518,6 +5644,7 @@ farming.start = function () {
                 questPanel.setHidden(true);
                 clearInterval(looperMayor);
             });
+        
         }
         else if (who == "monk") {
             questHeader.setText("Friar Patrick");
@@ -5544,6 +5671,7 @@ farming.start = function () {
                 questPanel.setHidden(true);
                 clearInterval(looperMonk);
             });
+           
         }
         else if (who == "felicia") {
             questHeader.setText("Lady Felicia");
@@ -5596,14 +5724,23 @@ farming.start = function () {
                 questPanel.setHidden(true);
                 clearInterval(looperSara);
             });
+         }
         }
+     if (complete == 1) {
+         if (who == "mayor") { }
+         if (who == "monk") { }
+         if (who == "felicia") { }
+         if (who == "sara") { }
+        
+
+     }
     }
 
     ////////////
 ///////////////market layer////////////
     ////////////
     marketLayer = (new lime.Layer).setAnchorPoint(0, 0),
-    marketFill1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("images/UI/greenButtonVert.png");
+        marketFill1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("images/grass.png");
     marketScene.appendChild(marketFill1);
     marketScene.appendChild(marketLayer);
     marketLayer.setHidden(true);
@@ -5611,18 +5748,18 @@ farming.start = function () {
 
 
 
-    var menuBackMarket = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 12).setSize(300, a.height - 48).setFill("images/UI/farmersMarket.png");
+    var menuBackMarket = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height ).setFill("images/UI/farmersMarket3.png");
     marketLayer.appendChild(menuBackMarket);
     var backBtnMarket = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 2 + 85, 475).setSize(50, 50).setFill("images/UI/XButton.png");
     marketLayer.appendChild(backBtnMarket);
   
-    var menuCashCoin = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.controlsLayer_w - 109, 65).setSize(25, 25).setFill(imgArray11[0]);
+    var menuCashCoin = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.controlsLayer_w - 108, 8).setSize(25, 25).setFill(imgArray11[0]);
     marketLayer.appendChild(menuCashCoin);
-    var marketCash = (new lime.Label).setText(player.money).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setPosition(a.controlsLayer_w - 62, 80).setFontSize(18);
+    var marketCash = (new lime.Label).setText(player.money).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setPosition(a.controlsLayer_w - 53, 23).setFontSize(18);
     marketLayer.appendChild(marketCash);
 
     // market Tiles
-    var marketX = 88, marketY = 135, colXoff = 72, rowYoff = 50, index = 0;
+    var marketX = 88, marketY = 140, colXoff = 72, rowYoff = 50, index = 0;
     //row 1
     var rowBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(64, 44).setFill("images/UI/woodBtn.png");
     marketLayer.appendChild(rowBack);
@@ -5886,25 +6023,25 @@ farming.start = function () {
     goog.events.listen(backBtnTown, ["mousedown", "touchstart"], function () {
         checkAchieves2();
         if (parseInt(a.sceneBefore) == 1) {
-            c.replaceScene(d, lime.transitions.SlideInUp);
+            c.replaceScene(d, lime.transitions.SlideInDown);
 
         }
         if (a.sceneBefore == 2) {
-            c.replaceScene(pastureScene, lime.transitions.SlideInUp);
+            c.replaceScene(pastureScene, lime.transitions.SlideInDown);
         }
         if (a.sceneBefore == 3) {
-            c.replaceScene(orchardScene, lime.transitions.SlideInUp);
+            c.replaceScene(orchardScene, lime.transitions.SlideInDown);
         }
         if (a.sceneBefore == 4) {
-            c.replaceScene(vinyardScene, lime.transitions.SlideInUp);
+            c.replaceScene(vinyardScene, lime.transitions.SlideInDown);
         }
         if (a.sceneBefore == 5) {
-            c.replaceScene(liveStockScene, lime.transitions.SlideInUp); chickenSound.play();
+            c.replaceScene(liveStockScene, lime.transitions.SlideInDown); chickenSound.play();
             pig1Sound.play();
 
         }
         if (a.sceneBefore == 7) {
-            c.replaceScene(houseScene, lime.transitions.SlideInUp);
+            c.replaceScene(houseScene, lime.transitions.SlideInDown);
         }
         townLayer.setHidden(false);
         townFill1.setHidden(false);
@@ -6556,7 +6693,7 @@ farming.start = function () {
     goog.events.listen(marketLS, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
             a.sceneBefore = 5;
-            c.replaceScene(marketScene, lime.transitions.SlideInDown);
+            c.replaceScene(marketScene, lime.transitions.SlideInUp);
             count0.setText(player.cropsStored[0].stored);
             count1.setText(player.cropsStored[1].stored);
             count2.setText(player.cropsStored[2].stored);
@@ -7392,7 +7529,7 @@ farming.start = function () {
     goog.events.listen(marketV, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
             a.sceneBefore = 4;
-            c.replaceScene(marketScene, lime.transitions.SlideInDown);
+            c.replaceScene(marketScene, lime.transitions.SlideInUp);
             count0.setText(player.cropsStored[0].stored);
             count1.setText(player.cropsStored[1].stored);
             count2.setText(player.cropsStored[2].stored);
@@ -7506,7 +7643,7 @@ farming.start = function () {
         outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
         pastureBlock.setHidden(true); homeBlock.setHidden(true); orchardBlock.setHidden(true); vinyardBlock.setHidden(true); lsBlock.setHidden(true);
         a.updateStored();
-        c.replaceScene(marketScene, lime.transitions.SlideInDown);
+        c.replaceScene(marketScene, lime.transitions.SlideInUp);
         globalModalBlock = 0;
     });
     goog.events.listen(cancelBtnCashV, ["mousedown", "touchstart"], function () {            //cancel Button
@@ -8557,7 +8694,7 @@ farming.start = function () {
     goog.events.listen(marketBtnHouse, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
             a.sceneBefore = 7;
-            c.replaceScene(marketScene, lime.transitions.SlideInDown);
+            c.replaceScene(marketScene, lime.transitions.SlideInUp);
             count0.setText(player.cropsStored[0].stored);
             count1.setText(player.cropsStored[1].stored);
             count2.setText(player.cropsStored[2].stored);
