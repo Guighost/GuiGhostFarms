@@ -1078,26 +1078,26 @@ var questParams = {
     mayor: [ //Town Hall
         { highestCompleted: 0, available: true},
         { name: "Necklackes", text: "I heard that some old things have been found on that farm of yours. If you DIG UP any JEWELRY, let me know", completed: 0, rewardType: 0, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: "Ill buy that jewelery  " },
-        { name: "Rings", text: "quest 2", completed: 0, rewardType: 0, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Rings", text: "Come back to me time to time. I may have things to do", completed: 0, rewardType: 0, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Gems", text: "quest 3", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
         
     ],
     monk: [   ///church
         { highestCompleted: 0, available: true },
-        { name: "Bounty", text: "I am here to study relics. I will buy any ARTIFACTS you may DIG UP", completed: 0, rewardType: 4, rewardAmount: 10, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Bounty", text: "I am here to study old relics. Bring me any ARTIFACTS you may DIG UP", completed: 0, rewardType: 4, rewardAmount: 10, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Artifact", text: "", completed: 0, rewardType: 4, rewardAmount: 15, rewardItem: 0, requiredItem: "none", successText: " " },
 
     ],
     felicia: [   ///market
         { highestCompleted: 0, available: true },
-        { name: "Food", text: "I wish this market had some EGGPLANT", completed: 0, rewardType: 5, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Foods", text: "I wish this market had some more variety", completed: 0, rewardType: 5, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Lost Dog", text: "", completed: 0, rewardType: 5, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Necklace", text: "", completed: 0, rewardType: 5, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: " " },
 
     ],
     sara: [ ///Inn
-        { highestCompleted: 0, available: true },
-        { name: "Juice", text: "My patrons want GRAPE JUICE. If you can find a way to make it, I will buy it", completed: 0, rewardType: 0, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: " " },
+        { highestCompleted: 0, available: false },
+        { name: "Food", text: "My patrons are looking for more foods and beverages", completed: 0, rewardType: 0, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Locket", text: "I lost my locket while visiting your wife", completed: 0, rewardType: 0, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: "You found my locket! " },
         { name: "Cider", text: "This cooler weather has people wanting APPLE CIDER. Can you make some?", completed: 0, rewardType: 0, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: " " },
 
@@ -1369,8 +1369,8 @@ var farming = {
         var ownedAlready = 0;
         var runRandomChance = function () {
             if (scene == 1) {
-                randomChance = Math.round(Math.random() * 10);
-                if (randomChance == 9) {
+                randomChance = Math.round(Math.random() * 30);
+                if (randomChance >= 29) {
                     var countDigUpSells = Object.keys(collectItems.digUpSells).length;
                     randomItemNumber = Math.round(Math.random() * (countDigUpSells - 1));
                     ownedAlready = collectItems.digUpSells[randomItemNumber].owned;
@@ -1384,21 +1384,21 @@ var farming = {
                         a.displayCollectible(posX, posY, itemReceived, false)
                     }
                 }
-                else if (randomChance == 10) {
-                    var countDigUpCollect = Object.keys(collectItems.digUpCollect).length;
-                    randomItemNumber = Math.round(Math.random() * (countDigUpCollect - 1));
-                    //only allow once
-                    if (collectItems.digUpCollect[randomItemNumber].onlyOnce == 1) { return; }
-                    else {
-                        ownedAlready = collectItems.digUpSells[randomItemNumber].owned;
-                        if (ownedAlready == 0) {
-                            itemReceived = collectItems.digUpCollect[randomItemNumber].name;
-                            collectItems.digUpCollect[randomItemNumber].owned = 1;
-                            console.log("random chance number was " + randomChance + " and randomItemNumber was " + randomItemNumber + " and  item  name = " + itemReceived);
-                            a.displayCollectible(posX, posY, itemReceived, true)
-                        }
-                    }
-                }
+                //else if (randomChance == 10) {
+                //    var countDigUpCollect = Object.keys(collectItems.digUpCollect).length;
+                //    randomItemNumber = Math.round(Math.random() * (countDigUpCollect - 1));
+                //    //only allow once
+                //    if (collectItems.digUpCollect[randomItemNumber].onlyOnce == 1) { return; }
+                //    else {
+                //        ownedAlready = collectItems.digUpSells[randomItemNumber].owned;
+                //        if (ownedAlready == 0) {
+                //            itemReceived = collectItems.digUpCollect[randomItemNumber].name;
+                //            collectItems.digUpCollect[randomItemNumber].owned = 1;
+                //            console.log("random chance number was " + randomChance + " and randomItemNumber was " + randomItemNumber + " and  item  name = " + itemReceived);
+                //            a.displayCollectible(posX, posY, itemReceived, true)
+                //        }
+                //    }
+                //}
                 else {
                     console.log("random chance number was " + randomChance);
                     return;
@@ -2971,6 +2971,7 @@ farming.start = function () {
             if (visibleLink == false) { 
                 localStorage.setItem('MedFarm_LoadAd', 1);
                 localStorage.setItem('MedFarm_StarCashBoost', 0);
+                lime.audio.setMute(true); setMute(1);
                 setTimeout(function () {
                     boostCrops.setHidden(true);
                     homeBlock.setHidden(true);
@@ -5558,6 +5559,7 @@ farming.start = function () {
     function starCashViewAd() {
         localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
         localStorage.setItem('MedFarm_StarCashBoost', 1);
+        lime.audio.setMute(true); setMute(1);
         var adImg = document.getElementById("viewAdImg");
         document.getElementById("waitText").innerHTML = 'Wait required before you boost again';
         //hide boost for 2 min
@@ -5840,22 +5842,22 @@ farming.start = function () {
         function checkItemsOwned() {
 
             //first clear the itemInventoryIcons and stats
-            itemInvImg1.filled = 0; itemInvImg1.heading = ''; itemInvImg1.subtext1 = ''; itemInvImg1.subtext2 = '';
-            itemInvImg2.filled = 0; itemInvImg2.heading = ''; itemInvImg2.subtext1 = ''; itemInvImg2.subtext2 = '';
-            itemInvImg3.filled = 0; itemInvImg3.heading = ''; itemInvImg3.subtext1 = ''; itemInvImg3.subtext2 = '';
-            itemInvImg4.filled = 0; itemInvImg4.heading = ''; itemInvImg4.subtext1 = ''; itemInvImg4.subtext2 = '';
-            itemInvImg5.filled = 0; itemInvImg5.heading = ''; itemInvImg5.subtext1 = ''; itemInvImg5.subtext2 = '';
-            itemInvImg6.filled = 0; itemInvImg6.heading = ''; itemInvImg6.subtext1 = ''; itemInvImg6.subtext2 = '';
-            itemInvImg7.filled = 0; itemInvImg7.heading = ''; itemInvImg7.subtext1 = ''; itemInvImg7.subtext2 = '';
-            itemInvImg8.filled = 0; itemInvImg8.heading = ''; itemInvImg8.subtext1 = ''; itemInvImg8.subtext2 = '';
-            itemInvImg9.filled = 0; itemInvImg9.heading = ''; itemInvImg9.subtext1 = ''; itemInvImg9.subtext2 = '';
-            itemInvImg10.filled = 0; itemInvImg10.heading = ''; itemInvImg10.subtext1 = ''; itemInvImg10.subtext2 = '';
-            itemInvImg11.filled = 0; itemInvImg11.heading = ''; itemInvImg11.subtext1 = ''; itemInvImg11.subtext2 = '';
-            itemInvImg12.filled = 0; itemInvImg12.heading = ''; itemInvImg12.subtext1 = ''; itemInvImg12.subtext2 = '';
-            itemInvImg13.filled = 0; itemInvImg13.heading = ''; itemInvImg13.subtext1 = ''; itemInvImg13.subtext2 = '';
-            itemInvImg14.filled = 0; itemInvImg14.heading = ''; itemInvImg14.subtext1 = ''; itemInvImg14.subtext2 = '';
-            itemInvImg15.filled = 0; itemInvImg15.heading = ''; itemInvImg15.subtext1 = ''; itemInvImg15.subtext2 = '';
-            itemInvImg16.filled = 0; itemInvImg16.heading = ''; itemInvImg16.subtext1 = ''; itemInvImg16.subtext2 = '';
+            itemInvImg1.filled = 0; itemInvImg1.heading = ''; itemInvImg1.subtext1 = ''; itemInvImg1.subtext2 = ''; itemInvImg1.setFill(imgArray[17].src);
+            itemInvImg2.filled = 0; itemInvImg2.heading = ''; itemInvImg2.subtext1 = ''; itemInvImg2.subtext2 = ''; itemInvImg2.setFill(imgArray[17].src);
+            itemInvImg3.filled = 0; itemInvImg3.heading = ''; itemInvImg3.subtext1 = ''; itemInvImg3.subtext2 = ''; itemInvImg3.setFill(imgArray[17].src);
+            itemInvImg4.filled = 0; itemInvImg4.heading = ''; itemInvImg4.subtext1 = ''; itemInvImg4.subtext2 = ''; itemInvImg4.setFill(imgArray[17].src);
+            itemInvImg5.filled = 0; itemInvImg5.heading = ''; itemInvImg5.subtext1 = ''; itemInvImg5.subtext2 = ''; itemInvImg5.setFill(imgArray[17].src);
+            itemInvImg6.filled = 0; itemInvImg6.heading = ''; itemInvImg6.subtext1 = ''; itemInvImg6.subtext2 = ''; itemInvImg6.setFill(imgArray[17].src);
+            itemInvImg7.filled = 0; itemInvImg7.heading = ''; itemInvImg7.subtext1 = ''; itemInvImg7.subtext2 = ''; itemInvImg7.setFill(imgArray[17].src);
+            itemInvImg8.filled = 0; itemInvImg8.heading = ''; itemInvImg8.subtext1 = ''; itemInvImg8.subtext2 = ''; itemInvImg8.setFill(imgArray[17].src);
+            itemInvImg9.filled = 0; itemInvImg9.heading = ''; itemInvImg9.subtext1 = ''; itemInvImg9.subtext2 = ''; itemInvImg9.setFill(imgArray[17].src);
+            itemInvImg10.filled = 0; itemInvImg10.heading = ''; itemInvImg10.subtext1 = ''; itemInvImg10.subtext2 = ''; itemInvImg10.setFill(imgArray[17].src);
+            itemInvImg11.filled = 0; itemInvImg11.heading = ''; itemInvImg11.subtext1 = ''; itemInvImg11.subtext2 = ''; itemInvImg11.setFill(imgArray[17].src);
+            itemInvImg12.filled = 0; itemInvImg12.heading = ''; itemInvImg12.subtext1 = ''; itemInvImg12.subtext2 = ''; itemInvImg12.setFill(imgArray[17].src);
+            itemInvImg13.filled = 0; itemInvImg13.heading = ''; itemInvImg13.subtext1 = ''; itemInvImg13.subtext2 = ''; itemInvImg13.setFill(imgArray[17].src);
+            itemInvImg14.filled = 0; itemInvImg14.heading = ''; itemInvImg14.subtext1 = ''; itemInvImg14.subtext2 = ''; itemInvImg14.setFill(imgArray[17].src);
+            itemInvImg15.filled = 0; itemInvImg15.heading = ''; itemInvImg15.subtext1 = ''; itemInvImg15.subtext2 = ''; itemInvImg15.setFill(imgArray[17].src);
+            itemInvImg16.filled = 0; itemInvImg16.heading = ''; itemInvImg16.subtext1 = ''; itemInvImg16.subtext2 = ''; itemInvImg16.setFill(imgArray[17].src);
 
             for (var i = 0; i < collectItems.digUpSells.length; i++) {
                 var itemOwned = collectItems.digUpSells[i].owned;
@@ -5988,6 +5990,7 @@ farming.start = function () {
     //collect layer definition
         var collectBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 81).setSize(a.width, a.height - 81).setFill("#7B68EE");
         collectLayer.appendChild(collectBack);
+        var collectInfoText = (new lime.Label).setPosition(160, 225).setText('Coming Soon').setFontSize(24).setFontFamily("Comic Sans MS").setFontColor("#000000"); collectBack.appendChild(collectInfoText);
 
         itemsBack.setHidden(true);
         collectBack.setHidden(true);
@@ -6087,6 +6090,9 @@ farming.start = function () {
     sara.appendChild(saraQuestBtn);
     var saraQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, -19).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
     sara.appendChild(saraQuest);
+    saraQuest.setHidden(true);
+    saraQuestBtn.setHidden(true);
+
 
     //
     //mayor//
@@ -6546,7 +6552,7 @@ farming.start = function () {
     goog.events.listen(sellLayerCloseBtn, ["mousedown", "touchstart"], function () {
         sellLayerFill1.setHidden(true);
         sellLayer.setHidden(true);
-     
+        CheckQuestInvItems();
     });
 
     var sellItem1 = (new lime.Sprite).setPosition(70, 260).setSize(60, 60).setFill("#008000"); sellLayerFill1.appendChild(sellItem1);
@@ -6662,11 +6668,12 @@ farming.start = function () {
         
             var whichItem = sellItem1.collectNumber;
             collectItems.digUpSells[whichItem].owned = 0;
+            localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
 
             sellItem1.empty = true;
             sellItem1.value = 0;
             sellItem1.collectNumber = -1;
-
+            sellItem1Img.setFill(imgArray[17].src)
             a.updateMoney();
             checkItemsOwned();
             CheckQuestInvItems();
@@ -6689,11 +6696,12 @@ farming.start = function () {
 
             var whichItem2 = sellItem2.collectNumber;
             collectItems.digUpSells[whichItem2].owned = 0;
+            localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
 
             sellItem2.empty = true;
             sellItem2.value = 0;
             sellItem2.collectNumber = -1;
-         
+            sellItem2Img.setFill(imgArray[17].src)
 
      
             a.updateMoney();
@@ -6717,10 +6725,12 @@ farming.start = function () {
     
             var whichItem3 = sellItem3.collectNumber;
             collectItems.digUpSells[whichItem3].owned = 0;
-            
+            localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
+
             sellItem3.empty = true;
             sellItem3.value = 0;
             sellItem3.collectNumber = -1;
+            sellItem3Img.setFill(imgArray[17].src)
 
             a.updateMoney();
             checkItemsOwned();
@@ -6742,10 +6752,12 @@ farming.start = function () {
          
             var whichItem4 = sellItem4.collectNumber;
             collectItems.digUpSells[whichItem4].owned = 0;
+            localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
 
             sellItem4.empty = true;
             sellItem4.value = 0;
             sellItem4.collectNumber = -1;
+            sellItem4Img.setFill(imgArray[17].src)
 
             a.updateMoney();
             checkItemsOwned();
@@ -6767,10 +6779,12 @@ farming.start = function () {
        
             var whichItem5 = sellItem5.collectNumber;
             collectItems.digUpSells[whichItem5].owned = 0;
+            localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
 
             sellItem5.empty = true;
             sellItem5.value = 0;
             sellItem5.collectNumber = -1;
+            sellItem5Img.setFill(imgArray[17].src)
 
             a.updateMoney();
             checkItemsOwned();
@@ -6792,11 +6806,12 @@ farming.start = function () {
 
             var whichItem6 = sellItem6.collectNumber;
             collectItems.digUpSells[whichItem6].owned = 0;
+            localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
 
             sellItem6.empty = true;
             sellItem6.value = 0;
             sellItem6.collectNumber = -1;
-       
+            sellItem6Img.setFill(imgArray[17].src)
                        
             a.updateMoney();
             checkItemsOwned();
@@ -6844,21 +6859,21 @@ farming.start = function () {
     marketLayer.appendChild(marketCash);
 
     // market Tiles
-    var marketX = 88, marketY = 140, colXoff = 72, rowYoff = 50, index = 0;
+    var marketX = 68, marketY = 140, colXoff = 72, rowYoff = 50, index = 0;
     //row 1
-    var rowBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(64, 44).setFill("images/UI/woodBtn.png");
+    var rowBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(70, 44).setFill("images/UI/woodBtn.png");
     marketLayer.appendChild(rowBack);
-    count0 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(105, marketY + 15);
+    count0 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(85, marketY + 15);
     marketLayer.appendChild(count0);
-    g0 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(117, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //tomatoes
+    g0 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(97, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //tomatoes
     marketLayer.appendChild(g0);
-    i0 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(125, marketY + 36);
+    i0 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(105, marketY + 36);
     marketLayer.appendChild(i0);
-    g0I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(99, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);     //tomatoes
+    g0I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(79, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);     //tomatoes
     marketLayer.appendChild(g0I);
 
     index = 1;
-    var rowBack2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(160, marketY).setSize(64, 44).setFill("images/UI/woodBtn.png");
+    var rowBack2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(160, marketY).setSize(70, 44).setFill("images/UI/woodBtn.png");
     marketLayer.appendChild(rowBack2);
     count1 = (new lime.Label).setText(player.cropsStored[1].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(180, marketY + 15);
     marketLayer.appendChild(count1);
@@ -6871,20 +6886,20 @@ farming.start = function () {
 
     //row2
     marketY = marketY + (rowYoff); index = 2;
-    var rowBack3 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(88, marketY).setSize(64, 44).setFill("images/UI/woodBtn.png");
+    var rowBack3 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(70, 44).setFill("images/UI/woodBtn.png");
     marketLayer.appendChild(rowBack3);
-    count2 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(105, marketY + 15);
+    count2 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(85, marketY + 15);
     marketLayer.appendChild(count2);
-    g3 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(118, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //artichokes
+    g3 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(97, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //artichokes
     marketLayer.appendChild(g3);
-    i3 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(125, marketY + 36);
+    i3 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(105, marketY + 36);
     marketLayer.appendChild(i3);
-    i3I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(99, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
+    i3I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(79, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
     marketLayer.appendChild(i3I);
 
 
     index = 3;
-    var rowBack4 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(160, marketY).setSize(64, 44).setFill("images/UI/woodBtn.png");
+    var rowBack4 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(160, marketY).setSize(70, 44).setFill("images/UI/woodBtn.png");
     marketLayer.appendChild(rowBack4);
     count3 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(180, marketY + 15);
     marketLayer.appendChild(count3);
@@ -6899,19 +6914,19 @@ farming.start = function () {
 
     //row3
     marketY = marketY + (rowYoff); index = 4;
-    var rowBack5 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(88, marketY).setSize(64, 44).setFill("images/UI/woodBtn.png");
+    var rowBack5 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(70, 44).setFill("images/UI/woodBtn.png");
     marketLayer.appendChild(rowBack5);
-    count4 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(105, marketY + 15);
+    count4 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(85, marketY + 15);
     marketLayer.appendChild(count4);
-    g5 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(118, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //peppers
+    g5 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(97, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //peppers
     marketLayer.appendChild(g5);
-    i5 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(125, marketY + 36);
+    i5 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(105, marketY + 36);
     marketLayer.appendChild(i5);
-    i5I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(99, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
+    i5I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(79, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
     marketLayer.appendChild(i5I);
 
     index = 5;
-    var rowBack6 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(160, marketY).setSize(64, 44).setFill("images/UI/woodBtn.png");
+    var rowBack6 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(160, marketY).setSize(70, 44).setFill("images/UI/woodBtn.png");
     marketLayer.appendChild(rowBack6);
     count5 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(180, marketY + 15);
     marketLayer.appendChild(count5);
@@ -6924,20 +6939,20 @@ farming.start = function () {
 
     //row4
     marketY = marketY + (rowYoff); index = 6;
-    var rowBack7 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(88, marketY).setSize(64, 44).setFill("images/UI/woodBtn.png");
+    var rowBack7 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(70, 44).setFill("images/UI/woodBtn.png");
     marketLayer.appendChild(rowBack7);
-    count6 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(105, marketY + 15);
+    count6 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(85, marketY + 15);
     marketLayer.appendChild(count6);
-    g7 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(120, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //hay
+    g7 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(100, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //hay
     marketLayer.appendChild(g7);
-    i7 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(125, marketY + 36);
+    i7 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(105, marketY + 36);
     marketLayer.appendChild(i7);
-    i7I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(99, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);      //tomatoes
+    i7I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(79, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);      //tomatoes
     marketLayer.appendChild(i7I);
 
 
     index = 7;
-    var rowBack8 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(160, marketY).setSize(64, 44).setFill("images/UI/woodBtn.png");
+    var rowBack8 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(160, marketY).setSize(70, 44).setFill("images/UI/woodBtn.png");
     marketLayer.appendChild(rowBack8);
     count7 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(180, marketY + 15);
     marketLayer.appendChild(count7);
@@ -6949,19 +6964,19 @@ farming.start = function () {
     marketLayer.appendChild(i8I);
     //row5
     marketY = marketY + (rowYoff); index = 8;
-    var rowBack9 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(88, marketY).setSize(64, 44).setFill("images/UI/woodBtn.png");
+    var rowBack9 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(70, 44).setFill("images/UI/woodBtn.png");
     marketLayer.appendChild(rowBack9);
-    count8 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(105, marketY + 15);
+    count8 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(85, marketY + 15);
     marketLayer.appendChild(count8);
-    g9 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(120, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //apples
+    g9 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(100, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //apples
     marketLayer.appendChild(g9);
-    i9 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(125, marketY + 36);
+    i9 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(105, marketY + 36);
     marketLayer.appendChild(i9);
-    i9I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(99, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);    //tomatoes
+    i9I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(79, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);    //tomatoes
     marketLayer.appendChild(i9I);
 
     index = 9;
-    var rowBack10 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(160, marketY).setSize(64, 44).setFill("images/UI/woodBtn.png");
+    var rowBack10 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(160, marketY).setSize(70, 44).setFill("images/UI/woodBtn.png");
     marketLayer.appendChild(rowBack10);
     count9 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(180, marketY + 15);
     marketLayer.appendChild(count9);
@@ -6974,20 +6989,20 @@ farming.start = function () {
     //row6-- livestock crops
     index = 10;
     marketY = marketY + (rowYoff); index = 10;
-    var rowBack11 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(88, marketY).setSize(64, 44).setFill("images/UI/woodBtn.png");
+    var rowBack11 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(70, 44).setFill("images/UI/woodBtn.png");
     marketLayer.appendChild(rowBack11);
 
-    count10 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(105, marketY + 15);
+    count10 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(85, marketY + 15);
     marketLayer.appendChild(count10);
-    g11 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(120, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //hams
+    g11 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(100, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //hams
     marketLayer.appendChild(g11);
-    i11 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(125, marketY + 36);
+    i11 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(105, marketY + 36);
     marketLayer.appendChild(i11);
-    i11I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(99, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
+    i11I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(79, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
     marketLayer.appendChild(i11I);
 
     index = 11;
-    var rowBack12 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(160, marketY).setSize(64, 44).setFill("images/UI/woodBtn.png");
+    var rowBack12 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(160, marketY).setSize(70, 44).setFill("images/UI/woodBtn.png");
     marketLayer.appendChild(rowBack12);
 
     count11 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(180, marketY + 15);
@@ -7002,21 +7017,21 @@ farming.start = function () {
 
     //row7-- vinyard crops
     marketY = marketY + (rowYoff); index = 12;
-    var rowBack13 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(88, marketY).setSize(64, 44).setFill("images/UI/woodBtn.png");
+    var rowBack13 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(70, 44).setFill("images/UI/woodBtn.png");
     marketLayer.appendChild(rowBack13);
 
-    count12 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(105, marketY + 15);
+    count12 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(85, marketY + 15);
     marketLayer.appendChild(count12);
-    g13 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(120, marketY).setFill("images/" + a.crops[index].harvest).setSize(25, 30);      //grapes
+    g13 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(100, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //grapes
     marketLayer.appendChild(g13);
-    i13 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(125, marketY + 36);
+    i13 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(105, marketY + 36);
     marketLayer.appendChild(i13);
-    i13I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(99, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
+    i13I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(79, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
     marketLayer.appendChild(i13I);
 
 
     index = 13;
-    var rowBack14 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(160, marketY).setSize(64, 44).setFill("images/UI/woodBtn.png");
+    var rowBack14 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(160, marketY).setSize(70, 44).setFill("images/UI/woodBtn.png");
     marketLayer.appendChild(rowBack14);
 
     count13 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(180, marketY + 15);
@@ -7029,16 +7044,16 @@ farming.start = function () {
     marketLayer.appendChild(i14I);
 
     //Selling Tools tile
-    var rowBack15 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(230, 240).setSize(54, 70).setFill("images/UI/woodBtn.png");
+    var rowBack15 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(240, 240).setSize(54, 70).setFill("images/UI/woodBtn.png");
     marketLayer.appendChild(rowBack15);
 
-    count14 = (new lime.Label).setText(player.tools).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(258, 255);
+    count14 = (new lime.Label).setText(player.tools).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(266, 255);
     marketLayer.appendChild(count14);
-    g15 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(240, 260).setFill("images/UI/toolsIcon2.png").setSize(30, 30);      //tools
+    g15 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(250, 260).setFill("images/UI/toolsIcon2.png").setSize(30, 30);      //tools
     marketLayer.appendChild(g15);
-    i15 = (new lime.Label).setText("+5").setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(265, 303);
+    i15 = (new lime.Label).setText("+5").setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(275, 303);
     marketLayer.appendChild(i15);
-    i15I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(235, 290).setFill(imgArray11[0]).setSize(20, 20);
+    i15I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(245, 290).setFill(imgArray11[0]).setSize(20, 20);
     marketLayer.appendChild(i15I);
 
 
@@ -9032,10 +9047,10 @@ farming.start = function () {
     //denise
     var denise = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(190, 350).setSize(55, 55).setFill(imgArrayDenise[0].src);
     houseLayer.appendChild(denise);
-    var deniseQuestBtn = (new lime.GlossyButton).setColor("#A0A0A0").setText("").setPosition(35, -3).setSize(25, 23).setOpacity(0.2);
-    denise.appendChild(deniseQuestBtn);
-    var deniseQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(23, -15).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
-    denise.appendChild(deniseQuest);
+    //var deniseQuestBtn = (new lime.GlossyButton).setColor("#A0A0A0").setText("").setPosition(35, -3).setSize(25, 23).setOpacity(0.2);
+    //denise.appendChild(deniseQuestBtn);
+    //var deniseQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(23, -15).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
+    //denise.appendChild(deniseQuest);
 
     var deniseCount = 0;
     fireState = 1
