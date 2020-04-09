@@ -5579,7 +5579,7 @@ farming.start = function () {
             adRewardCompleted = localStorage.getItem('MedFarm_Rewarded');
             if (adRewardCompleted == 1) {
                 console.log("adRewardCompleted1 = " + adRewardCompleted);
-                starCash = parseInt(localStorage["starCash"]);
+                starCash = parseInt(localStorage.getItem('starCash'));
                 console.log("after parseInt starcash = " + starCash);
                 starCash = starCash + 3;
                 console.log("after add starcash = " + starCash);
