@@ -592,7 +592,7 @@ var showItOrNo2 = 0;
     };
     ////primary loop 2 - external loads
 var tid2 = setInterval(interPop2, 500);
-
+    var starCash = 0;
    
     function interPop2() {
         ////more games check
@@ -619,31 +619,31 @@ var tid2 = setInterval(interPop2, 500);
             showRewarded = parseInt(localStorage.getItem('MedFarm_StarCashBoost'));
             if (showRewarded == 1) {
                 console.log("interpop2 detected showRewarded = " + showRewarded)
-            
-                try { Enhance.isRewardedAdReady(callback2); showRewarded = 0; }
-                catch (err) { console.log("Caught rewarded error " + err); document.getElementById("waitText").innerHTML = 'Ad failed - you can try again soon';}
-                localStorage.setItem('MedFarm_StarCashBoost', 0);
+           
+                //award starcash
+                setTimeout(function () {
+                    console.log("adRewardCompleted1 = " + rewardCompleted);
+                    rewardedCompleted = 0;
+                    starCash = parseInt(localStorage.getItem('starCash'));
+                    console.log("before starcash = " + starCash);
+                    starCash = parseInt(starCash) + 3;
+                    console.log("after add starcash = " + starCash);
+                    localStorage.setItem('starCash', starCash);
+                    document.getElementById("sucessbuyTxt").style.display = 'block';
+                    document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                    document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
+                    localStorage.setItem('MedFarm_Rewarded', 0);
+                }, 3000);
+				try { Enhance.isRewardedAdReady(callback2); }
+                catch (err) { console.log("Caught rewarded error " + err); document.getElementById("waitText").innerHTML = 'Ad failed - you can try again soon'; }
+                 showRewarded = 0;
+				localStorage.setItem('MedFarm_StarCashBoost', 0);
                 localStorage.setItem('MedFarm_LoadAd', 0);
+                setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 10000);
             }
-        
-                //todo award starcash
-            setTimeout(function () {
-                console.log("adRewardCompleted1 = " + rewardCompleted);
-                rewardedCompleted = 0;
-                starCash = localStorage.getItem('starCash');
-                console.log("before starcash = " + starCash);
-                starCash = starCash + 3;
-                console.log("after add starcash = " + starCash);
-                localStorage.setItem('starCash', starCash);
-                document.getElementById("sucessbuyTxt").style.display = 'block';
-                document.getElementById("starCashOuterLabel").innerHTML = starCash;
-                document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
-                localStorage.setItem('MedFarm_Rewarded', 0);
-            }, 3000);
-       
                
 
-                setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 10000);
+            
             
         
     }
@@ -689,20 +689,20 @@ var tid2 = setInterval(interPop2, 500);
 
           }
           
-            //function showAdFallback() {
-            //    console.log("clicked fallback and starCash = " + starCash)
-            //    localStorage.setItem('MedFarm_LoadAd', 1);
-            //    //localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-            //    starCash = localStorage.getItem('starCash');
-            //    starCash = starCash + 3;
-            //    localStorage.setItem('starCash', starCash);
+            function showAdFallback() {
+               console.log("clicked fallback and starCash = " + starCash)
+                localStorage.setItem('MedFarm_LoadAd', 1);
+                //localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                starCash = localStorage.getItem('starCash');
+              starCash = starCash + 3;
+               localStorage.setItem('starCash', starCash);
                
-            //    setTimeout(function () {
-            //        document.getElementById("starCashOuterLabel").innerHTML = starCash;
-            //        document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
-            //        document.getElementById("sucessbuyTxt").style.display = 'block'; }, 1500);
-            //    setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 15000);
-            //}
+               setTimeout(function () {
+                   document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                   document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
+                   document.getElementById("sucessbuyTxt").style.display = 'block'; }, 1500);
+               setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 15000);
+            }
             var whichMore = 'stack'; 
             ///more games button function
             function openLink() {
