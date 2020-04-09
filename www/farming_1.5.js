@@ -5533,33 +5533,12 @@ farming.start = function () {
                 
     }, false);
 
-    //function starCashViewAd() {
-    //    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
 
-    //    //localStorage.setItem('MedFarm_LoadAd', 1);
-    //    localStorage.setItem('MedFarm_StarCashBoost', 1);
-    //    starCash = parseInt(localStorage["starCash"]);
-    //    console.log("after parseInt starcash = " + starCash);
-    //    starCash = starCash + 3;
-    //    console.log("after add starcash = " + starCash);
-    //    localStorage.setItem('starCash', starCash);
-        
-    //    setTimeout(function () {
-    //        document.getElementById("sucessbuyTxt").style.display = 'block';
-    //        starCash = localStorage.getItem('starCash');
-    //        document.getElementById("starCashOuterLabel").innerHTML = starCash;
-    //        document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
-
-    //        document.getElementById("starCashOuterLabel").innerHTML = starCash;
-    //    }, 1500);
-
-    //    setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 33000);
-
-    //}
     function starCashViewAd() {
         localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+        localStorage.setItem('MedFarm_LoadAd', 1);
         localStorage.setItem('MedFarm_StarCashBoost', 1);
-        lime.audio.setMute(true); setMute(1);
+        //lime.audio.setMute(true); setMute(1);
         var adImg = document.getElementById("viewAdImg");
         document.getElementById("waitText").innerHTML = 'Wait required before you boost again';
         //hide boost for 2 min
@@ -5570,40 +5549,40 @@ farming.start = function () {
         }, 120000)
 
 
-        var adRewardCompleted = localStorage.getItem('MedFarm_Rewarded');
+        //var adRewardCompleted = localStorage.getItem('MedFarm_Rewarded');
 
-        var counterReward = 0;
-        var looper = setInterval(function () {
-            counterReward++;
-            console.log("Counter is: " + counterReward);
-            adRewardCompleted = localStorage.getItem('MedFarm_Rewarded');
-            if (adRewardCompleted == 1) {
-                console.log("adRewardCompleted1 = " + adRewardCompleted);
-                starCash = parseInt(localStorage.getItem('starCash'));
-                console.log("after parseInt starcash = " + starCash);
-                starCash = starCash + 3;
-                console.log("after add starcash = " + starCash);
-                localStorage.setItem('starCash', starCash);
-                document.getElementById("sucessbuyTxt").style.display = 'block';
-                starCash = localStorage.getItem('starCash');
-                document.getElementById("starCashOuterLabel").innerHTML = starCash;
-                document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
-                localStorage.setItem('MedFarm_Rewarded', 0);
+        //var counterReward = 0;
+        //var looper = setInterval(function () {
+        //    counterReward++;
+        //    console.log("Counter is: " + counterReward);
+        //    adRewardCompleted = localStorage.getItem('MedFarm_Rewarded');
+        //    if (adRewardCompleted == 1) {
+        //        console.log("adRewardCompleted1 = " + adRewardCompleted);
+        //        starCash = localStorage.getItem('starCash');
+        //        console.log("after parseInt starcash = " + starCash);
+        //        starCash = starCash + 3;
+        //        console.log("after add starcash = " + starCash);
+        //        localStorage.setItem('starCash', starCash);
+        //        document.getElementById("sucessbuyTxt").style.display = 'block';
+        //        starCash = localStorage.getItem('starCash');
+        //        document.getElementById("starCashOuterLabel").innerHTML = starCash;
+        //        document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
+        //        localStorage.setItem('MedFarm_Rewarded', 0);
 
-                setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 3000);
-            }
-            else {
-                console.log("adRewardCompleted2 = " + adRewardCompleted + " counterreward = " + counterReward);
+        //        setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 3000);
+        //    }
+        //    else {
+        //        console.log("adRewardCompleted2 = " + adRewardCompleted + " counterreward = " + counterReward);
 
 
-                if (counterReward >= 75) {
-                    clearInterval(looper);
-                    console.log("counterReward reached end-resetting");
-                    counterReward = 0;
-                    localStorage.setItem('MedFarm_Rewarded', 0);
-                }
-            }
-        }, 1000);
+        //        if (counterReward >= 75) {
+        //            clearInterval(looper);
+        //            console.log("counterReward reached end-resetting");
+        //            counterReward = 0;
+        //            localStorage.setItem('MedFarm_Rewarded', 0);
+        //        }
+        //    }
+        //}, 1000);
     }
 
     document.getElementById("closeFB").addEventListener("touchstart", function () {
@@ -10030,7 +10009,7 @@ farming.start = function () {
                         muteBtnP.setFill(imgArray[16]); muteBtn.setFill(imgArray[16]); muteBtnO.setFill(imgArray[16]); muteBtnV.setFill(imgArray[16]); muteBtnLS.setFill(imgArray[16]);
                         muteBtnHouse.setFill(imgArray[16]);
                         playerMuted = 1;
-                        localStorage.getItem('gui')
+                     
                     } else {
                         muteBtnP.setFill(imgArray[15]); muteBtn.setFill(imgArray[15]); muteBtnO.setFill(imgArray[15]); muteBtnV.setFill(imgArray[15]); muteBtnLS.setFill(imgArray[15]);
                         muteBtnHouse.setFill(imgArray[15]);
