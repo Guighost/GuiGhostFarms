@@ -625,9 +625,9 @@ var tid2 = setInterval(interPop2, 500);
                 localStorage.setItem('MedFarm_StarCashBoost', 0);
                 localStorage.setItem('MedFarm_LoadAd', 0);
             }
-            if (rewardedCompleted == 1) {
+        
                 //todo award starcash
-               
+            setTimeout(function () {
                 console.log("adRewardCompleted1 = " + rewardCompleted);
                 rewardedCompleted = 0;
                 starCash = localStorage.getItem('starCash');
@@ -639,10 +639,12 @@ var tid2 = setInterval(interPop2, 500);
                 document.getElementById("starCashOuterLabel").innerHTML = starCash;
                 document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
                 localStorage.setItem('MedFarm_Rewarded', 0);
+            }, 3000);
+       
                
 
-                setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 3000);
-            }
+                setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 10000);
+            
         
     }
        ////rate me
