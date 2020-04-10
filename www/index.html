@@ -621,7 +621,7 @@ var tid2 = setInterval(interPop2, 500);
                 console.log("interpop2 detected showRewarded = " + showRewarded)
            
                 //award starcash
-                setTimeout(function () {
+                
                     console.log("adRewardCompleted1 = " + rewardCompleted);
                     rewardedCompleted = 0;
                     starCash = parseInt(localStorage.getItem('starCash'));
@@ -633,7 +633,7 @@ var tid2 = setInterval(interPop2, 500);
                     document.getElementById("starCashOuterLabel").innerHTML = starCash;
                     document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
                     localStorage.setItem('MedFarm_Rewarded', 0);
-                }, 3000);
+                
 				try { Enhance.isRewardedAdReady(callback2); }
                 catch (err) { console.log("Caught rewarded error " + err); document.getElementById("waitText").innerHTML = 'Ad failed - you can try again soon'; }
                  showRewarded = 0;
