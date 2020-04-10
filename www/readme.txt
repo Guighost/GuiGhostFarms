@@ -1,4 +1,8 @@
-This game was originall based on source code from the following:
+Copywrite 2020 GuiGhost LLC
+Info@guighost.com
+Majorority of graphics are from opengameart.org under CC license
+
+This game was originally based on source code from the following:
 
 HTML5 Farming Demo created by Pablo Farias Navarro
 @ZenvaTweets
