@@ -728,6 +728,142 @@ var tid2 = setInterval(interPop2, 500);
 
             }
 
+    ///In App Payments
+            var callback_SmallSP = function () {
+                var onPurchaseSuccess = function () {
+                    Enhance.purchases.getDisplayTitle('starpack_small',  '50 Stars', function (result) {
+                        alert(result);
+                    });
+                    starCash = parseInt(localStorage.getItem('starCash'));
+                    console.log("before starcash = " + starCash);
+                    starCash = parseInt(starCash) + 50;
+                    console.log("after buy small starcash = " + starCash);
+                    localStorage.setItem('starCash', starCash);
+                };
+
+                var onPurchaseFailed = function () {
+                    // Failure
+                };
+
+                Enhance.purchases.attemptPurchase('starpack_small', onPurchaseSuccess, onPurchaseFailed);
+            };
+
+          
+
+            var callback_LargeSP = function () {
+                var onPurchaseSuccess = function () {
+                    Enhance.purchases.getDisplayTitle('starpack_large', '300 Stars', function (result) {
+                        alert(result);
+                    });
+                    starCash = parseInt(localStorage.getItem('starCash'));
+                    console.log("before starcash = " + starCash);
+                    starCash = parseInt(starCash) + 300;
+                    console.log("after buy large starcash = " + starCash);
+                    localStorage.setItem('starCash', starCash);
+                };
+
+                var onPurchaseFailed = function () {
+                    // Failure
+                 
+                };
+
+                Enhance.purchases.attemptPurchase('starpack_large', onPurchaseSuccess, onPurchaseFailed);
+            };
+
+      
+
+
+
+            var callback_starterPack = function () {
+                var onPurchaseSuccess = function () {
+                    Enhance.purchases.getDisplayTitle('starter_pack', 'Resource Starter Pack', function (result) {
+                        alert(result);
+                    });
+                    player.tools = player.tools + 250;
+                    player.cropsStored[14].stored = player.cropsStored[14].stored + 250;
+                    player.cropsStored[15].stored = player.cropsStored[15].stored + 250;
+
+                };
+
+                var onPurchaseFailed = function () {
+                    // Failure
+               
+                };
+
+                Enhance.purchases.attemptPurchase('starter_pack', onPurchaseSuccess, onPurchaseFailed);
+            };
+
+         
+
+            var callback_masterPack = function () {
+                var onPurchaseSuccess = function () {
+                    Enhance.purchases.getDisplayTitle('master_pack', 'Resource Master Pack', function (result) {
+                        alert(result);
+                    });
+                    player.tools = player.tools + 750;
+                    player.cropsStored[14].stored = player.cropsStored[14].stored + 750;
+                    player.cropsStored[15].stored = player.cropsStored[15].stored + 750;
+                    player.money = player.money + 2500;
+                    starCash = parseInt(localStorage.getItem('starCash'));
+                    starCash = parseInt(starCash) + 50;
+                    localStorage.setItem('starCash', starCash);
+
+                };
+
+                var onPurchaseFailed = function () {
+                
+                };
+
+                Enhance.purchases.attemptPurchase('master_pack', onPurchaseSuccess, onPurchaseFailed);
+            };
+
+            var buyingSmallStars = 0;
+            var buyingLargeStars = 0;
+            var buyingStarterPack = 0;
+            var buyingMasterPack = 0;
+
+            localStorage.setItem('MedFarms_buyingSmallStars', 0) 
+
+             localStorage.setItem('MedFarms_buyingLargeStars', 0) 
+
+             localStorage.setItem('MedFarms_buyingStarterPack', 0) 
+
+            localStorage.setItem('MedFarms_buyingMasterPack', 0) 
+       
+          var purchaseCheck =   setInterval(function () {
+                 console.log("tickk");
+                 buyingSmallStars = localStorage.getItem('MedFarms_buyingSmallStars');
+                 buyingLargeStars = localStorage.getItem('MedFarms_buyingLargeStars');
+                 buyingStarterPack = localStorage.getItem('MedFarms_buyingStarterPack');
+                 buyingMasterPack = localStorage.getItem('MedFarms_buyingMasterPack');
+                 if (buyingSmallStars == 1) {
+                     console.log("in IF buying small stars");
+                     try { Enhance.purchases.isSupported(callback_SmallSP); }
+                     catch (err) { console.log("failed 1 tools = " + player.tools) }
+                     localStorage.setItem('MedFarms_buyingSmallStars', 0) 
+                 }
+                 else if (buyingLargeStars == 1) {
+                     try { Enhance.purchases.isSupported(callback_LargeSP); }
+                     catch (err) { console.log("failed 2 crop = " + player.cropsStored[14].name); }
+                     localStorage.setItem('MedFarms_buyingLargeStars', 0) 
+                 }
+                 else if (buyingStarterPack == 1) {
+                     try { Enhance.purchases.isSupported(callback_starterPack); }
+                     catch (err) { console.log("failed 3 money = " + player.money); }
+                     localStorage.setItem('MedFarms_buyingStarterPack', 0) 
+                 }
+                 else if (buyingMasterPack == 1) {
+                     try { Enhance.purchases.isSupported(callback_masterPack); }
+                     catch (err) { console.log("failed 4 Iron = " + player.cropsStored[15].stored); }
+                     localStorage.setItem('MedFarms_buyingMasterPack', 0) 
+
+                 }
+
+            }, 250);
+            
+           
+
+
     //// local notification
             //var onPermissionGranted = function () {
             //    // Success
