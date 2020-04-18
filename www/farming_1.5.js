@@ -1011,7 +1011,23 @@ imgArrayJosiah[14] = new Image(); imgArrayJosiah[14].src = "images/Pasture/josia
 imgArrayJosiah[15] = new Image(); imgArrayJosiah[15].src = "images/Pasture/josiah_a4.png";
 
 
-
+var imgArrayPatricia = new Array();
+imgArrayPatricia[0] = new Image(); imgArrayPatricia[0].src = "images/marketTown/patricia_f1.png";
+imgArrayPatricia[1] = new Image(); imgArrayPatricia[1].src = "images/marketTown/patricia_f2.png";
+imgArrayPatricia[2] = new Image(); imgArrayPatricia[2].src = "images/marketTown/patricia_f3.png";
+imgArrayPatricia[3] = new Image(); imgArrayPatricia[3].src = "images/marketTown/patricia_f4.png";
+imgArrayPatricia[4] = new Image(); imgArrayPatricia[4].src = "images/marketTown/patricia_l1.png";
+imgArrayPatricia[5] = new Image(); imgArrayPatricia[5].src = "images/marketTown/patricia_l2.png";
+imgArrayPatricia[6] = new Image(); imgArrayPatricia[6].src = "images/marketTown/patricia_l3.png";
+imgArrayPatricia[7] = new Image(); imgArrayPatricia[7].src = "images/marketTown/patricia_l4.png";
+imgArrayPatricia[8] = new Image(); imgArrayPatricia[8].src = "images/marketTown/patricia_r1.png";
+imgArrayPatricia[9] = new Image(); imgArrayPatricia[9].src = "images/marketTown/patricia_r2.png";
+imgArrayPatricia[10] = new Image(); imgArrayPatricia[10].src = "images/marketTown/patricia_r3.png";
+imgArrayPatricia[11] = new Image(); imgArrayPatricia[11].src = "images/marketTown/patricia_r4.png";
+imgArrayPatricia[12] = new Image(); imgArrayPatricia[12].src = "images/marketTown/patricia_a1.png";
+imgArrayPatricia[13] = new Image(); imgArrayPatricia[13].src = "images/marketTown/patricia_a2.png";
+imgArrayPatricia[14] = new Image(); imgArrayPatricia[14].src = "images/marketTown/patricia_a3.png";
+imgArrayPatricia[15] = new Image(); imgArrayPatricia[15].src = "images/marketTown/patricia_a4.png";
 
 
 
@@ -10794,87 +10810,231 @@ farming.start = function () {
     //denise
     var denise = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(190, 350).setSize(55, 55).setFill(imgArrayDenise[0].src);
     houseLayer.appendChild(denise);
-    //var deniseQuestBtn = (new lime.GlossyButton).setColor("#A0A0A0").setText("").setPosition(35, -3).setSize(25, 23).setOpacity(0.2);
-    //denise.appendChild(deniseQuestBtn);
-    //var deniseQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(23, -15).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
-    //denise.appendChild(deniseQuest);
+    var deniseQuestBtn = (new lime.GlossyButton).setColor("#A0A0A0").setText("").setPosition(35, -1).setSize(25, 23).setOpacity(0.2);
+    denise.appendChild(deniseQuestBtn);
+    var deniseQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(23, -13).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
+    denise.appendChild(deniseQuest);
+
+    goog.events.listen(deniseQuestBtn, ["mousedown", "touchstart"], function () {
+        setDeniseText();
+        questPanelHouse.setHidden(false);
+
+
+    });
+    //console.log('the index answer is ' + houseUpgrades.upgrades.findIndex(x => (x.owned == 0 && x != 0 )))
+
+    function setDeniseText() {
+        var textToApplyDenise = "";
+        var indexOfLowestNotOwned = houseUpgrades.upgrades.findIndex(x => (x.owned == 0 && x != 0));
+        indexOfLowestNotOwned = indexOfLowestNotOwned.toString();
+        switch (indexOfLowestNotOwned) {
+            case "1":
+                textToApplyDenise = "We Need a BED to sleep in";
+                break;
+            case "2":
+                textToApplyDenise = "I wish I had a CHEST to put stuff.";
+                break;
+            case "3":
+                textToApplyDenise = "We need a SINK to cook and clean - please buy one";
+                break;
+            case "4":
+                textToApplyDenise = "Are we Animals? We need a TABLE to eat on.";
+                break;
+            case "5":
+                textToApplyDenise = "You are gonna buy some CHAIRS right?";
+                break;
+            case "6":
+                textToApplyDenise = "All the ladies in town have a DRESSING TABLE, but I don't";
+                break;
+            case "7":
+                textToApplyDenise = "A BEDSIDE TABLE would be very nice to have";
+                break;
+            case "8":
+                textToApplyDenise = "We need more decor. A POTTED PLANT would be nice";
+                break;
+            case "9":
+                textToApplyDenise = "A COUCH to sit on would be nice to have over there";
+                break;
+            case "10":
+                if (houseUpgrades.upgrades[0].owned == 1) { textToApplyDenise = "We need some CURTAINS for this new space"; }
+                else { textToApplyDenise = "We need more room, a little one is on the way"; }
+                break;
+            case "11":
+                if (houseUpgrades.upgrades[0].owned == 1) { textToApplyDenise = "We need a DOUBLE BED to fill this space"; }
+                else { textToApplyDenise = "We need more room, a little one is on the way"; }
+                break;
+            case "12":
+                if (houseUpgrades.upgrades[0].owned == 1) { textToApplyDenise = "I wish I had STOOL to sit on back there"; }
+                else { textToApplyDenise = "We need more room, a little one is on the way"; }
+                break;
+            case "13":
+                if (houseUpgrades.upgrades[0].owned == 1) { textToApplyDenise = "I wish I had WARDROBE to hang my dresses"; }
+                else { textToApplyDenise = "We need more room, a little one is on the way"; }
+                break;
+            case "14":
+                if (houseUpgrades.upgrades[0].owned == 1) { textToApplyDenise = "I sure do like that FANCY COUCH. Won't you buy it for me?"; }
+                else { textToApplyDenise = "We need more room, a little one is on the way"; }
+                break;
+            case "15":
+                if (houseUpgrades.upgrades[0].owned == 1) { textToApplyDenise = "Don't you think BOOKSHELVES would look good here?"; }
+                else { textToApplyDenise = "We need more room, a little one is on the way"; }
+                break;
+            case "16":
+                if (houseUpgrades.upgrades[0].owned == 1) { textToApplyDenise = "That FANCY TABLE is so elegant. I wish we could have it"; }
+                else { textToApplyDenise = "We need more room, a little one is on the way"; }
+                break;
+            case "17":
+                if (houseUpgrades.upgrades[0].owned == 1) { textToApplyDenise = "Now we need some FANCY CHAIRS to complete our set"; }
+                else { textToApplyDenise = "We need more room, a little one is on the way"; }
+                break;
+            case "18":
+                if (houseUpgrades.upgrades[0].owned == 1) { textToApplyDenise = "Don't you need a DESK to keep the farm in order?"; }
+                else { textToApplyDenise = "We need more room, a little one is on the way"; }
+                break;
+            case "19":
+                if (houseUpgrades.upgrades[0].owned == 1) { textToApplyDenise = "That PAINTING would look good over the mantle"; }
+                else { textToApplyDenise = "We need more room, a little one is on the way"; }
+                break;
+            case "20":
+                if (houseUpgrades.upgrades[0].owned == 1) { textToApplyDenise = "I need a DISH CABINET to keep our dishes"; }
+                else { textToApplyDenise = "We need more room, a little one is on the way"; }
+                break;
+            case "21":
+                if (houseUpgrades.upgrades[0].owned == 1) { textToApplyDenise = "We need a TRUNK to store Patricia's toys"; }
+                else { textToApplyDenise = "We need more room, a little one is on the way"; }
+                break;
+            case "22":
+                if (houseUpgrades.upgrades[0].owned == 1) { textToApplyDenise = "A different color of walls would be a nice"; }
+                else { textToApplyDenise = "We need more room, a little one is on the way"; }
+                break;
+            default:
+                textToApplyDenise = "I am happy and don't need anything....for the moment";
+
+        }
+        // apply the derived Text
+        questText1House.setText(textToApplyDenise)
+        
+    }
 
     var deniseCount = 0;
     fireState = 1
     lime.scheduleManager.scheduleWithDelay(function () {
+        if (houseUpgrades.upgrades[0].owned == 1) { patricia.setHidden(false); } else { patricia.setHidden(true);}
+
         deniseCount++;
         firesInFireplace.setFill(imgArray12[fireState]);
         stoveFire.setFill(imgArray12[(fireState + 3)])
         fireState++;
         if (fireState > 3) { fireState = 1;} 
-        if (deniseCount == 1) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); }
-        if (deniseCount == 2) { denise.setPosition(190, 360).setFill(imgArrayDenise[8].src); }
-        if (deniseCount == 3) { denise.setPosition(185, 360).setFill(imgArrayDenise[8].src); }
-        if (deniseCount == 4) { denise.setPosition(180, 360).setFill(imgArrayDenise[9].src); }
-        if (deniseCount == 5) { denise.setPosition(175, 360).setFill(imgArrayDenise[10].src); }
-        if (deniseCount == 6) { denise.setPosition(170, 360).setFill(imgArrayDenise[11].src); }
-        if (deniseCount == 7) { denise.setPosition(165, 360).setFill(imgArrayDenise[10].src); }
-        if (deniseCount == 8) { denise.setPosition(160, 360).setFill(imgArrayDenise[9].src); }
-        if (deniseCount == 9) { denise.setPosition(155, 360).setFill(imgArrayDenise[8].src); }
-        if (deniseCount == 10) { denise.setPosition(150, 360).setFill(imgArrayDenise[9].src); }
-        if (deniseCount == 11) { denise.setPosition(145, 360).setFill(imgArrayDenise[10].src); }
-        if (deniseCount == 12) { denise.setPosition(140, 360).setFill(imgArrayDenise[11].src); }
-        if (deniseCount == 12) { denise.setPosition(135, 355).setFill(imgArrayDenise[8].src); }
-        if (deniseCount == 12) { denise.setPosition(130, 355).setFill(imgArrayDenise[9].src); }
-        if (deniseCount == 12) { denise.setPosition(125, 350).setFill(imgArrayDenise[10].src); }
-        if (deniseCount == 13) { denise.setPosition(120, 350).setFill(imgArrayDenise[11].src); }
-        if (deniseCount == 14) { denise.setPosition(115, 350).setFill(imgArrayDenise[10].src); }
-        if (deniseCount == 15) { denise.setPosition(110, 350).setFill(imgArrayDenise[9].src); }
-        if (deniseCount == 16) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); }
-        if (deniseCount == 17) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); }
-        if (deniseCount == 18) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); }
-        if (deniseCount == 19) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); }
-        if (deniseCount == 20) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); }
-        if (deniseCount == 21) { denise.setPosition(110, 350).setFill(imgArrayDenise[14].src); }
-        if (deniseCount == 22) { denise.setPosition(110, 350).setFill(imgArrayDenise[8].src); }
-        if (deniseCount == 23) { denise.setPosition(110, 350).setFill(imgArrayDenise[1].src); }
-        if (deniseCount == 24) { denise.setPosition(110, 355).setFill(imgArrayDenise[0].src); }
-        if (deniseCount == 25) { denise.setPosition(110, 360).setFill(imgArrayDenise[1].src); }
-        if (deniseCount == 26) { denise.setPosition(110, 365).setFill(imgArrayDenise[2].src); }
-        if (deniseCount == 27) { denise.setPosition(110, 370).setFill(imgArrayDenise[3].src); }
-        if (deniseCount == 28) { denise.setPosition(110, 375).setFill(imgArrayDenise[0].src); }
-        if (deniseCount == 29) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); }
-        if (deniseCount == 30) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); }
-        if (deniseCount == 31) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); }
-        if (deniseCount == 32) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); }
-        if (deniseCount == 33) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); }
-        if (deniseCount == 34) { denise.setPosition(110, 375).setFill(imgArrayDenise[4].src); }
-        if (deniseCount == 35) { denise.setPosition(115, 370).setFill(imgArrayDenise[5].src); }
-        if (deniseCount == 36) { denise.setPosition(120, 365).setFill(imgArrayDenise[6].src); }
-        if (deniseCount == 37) { denise.setPosition(125, 360).setFill(imgArrayDenise[7].src); }
-        if (deniseCount == 38) { denise.setPosition(130, 360).setFill(imgArrayDenise[4].src); }
-        if (deniseCount == 39) { denise.setPosition(135, 360).setFill(imgArrayDenise[5].src); }
-        if (deniseCount == 40) { denise.setPosition(140, 360).setFill(imgArrayDenise[4].src); }
-        if (deniseCount == 41) { denise.setPosition(145, 360).setFill(imgArrayDenise[5].src); }
-        if (deniseCount == 42) { denise.setPosition(150, 360).setFill(imgArrayDenise[4].src); }
-        if (deniseCount == 43) { denise.setPosition(155, 360).setFill(imgArrayDenise[5].src); }
-        if (deniseCount == 44) { denise.setPosition(160, 360).setFill(imgArrayDenise[4].src); }
-        if (deniseCount == 45) { denise.setPosition(175, 360).setFill(imgArrayDenise[5].src); }
-        if (deniseCount == 46) { denise.setPosition(180, 360).setFill(imgArrayDenise[4].src); }
-        if (deniseCount == 47) { denise.setPosition(185, 360).setFill(imgArrayDenise[5].src); }
-        if (deniseCount == 48) { denise.setPosition(190, 360).setFill(imgArrayDenise[6].src); }
-        if (deniseCount == 49) { denise.setPosition(190, 360).setFill(imgArrayDenise[0].src); }
-        if (deniseCount == 59) { denise.setPosition(190, 360).setFill(imgArrayDenise[4].src); }
-        if (deniseCount == 69) { denise.setPosition(190, 360).setFill(imgArrayDenise[0].src); }
-        if (deniseCount == 79) { denise.setPosition(190, 360).setFill(imgArrayDenise[15].src); }
-        if (deniseCount == 83) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); }
-        if (deniseCount == 89) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); }
-        if (deniseCount == 95) { denise.setPosition(190, 360).setFill(imgArrayDenise[15].src); }
-        if (deniseCount == 99) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); }
-        if (deniseCount >= 100) { deniseCount = 0 }
+        if (deniseCount == 1) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src);}
+        if (deniseCount == 2) { denise.setPosition(190, 360).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 150).setFill(imgArrayPatricia[1].src);}
+        if (deniseCount == 3) { denise.setPosition(185, 360).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 155).setFill(imgArrayPatricia[2].src);}
+        if (deniseCount == 4) { denise.setPosition(180, 360).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 160).setFill(imgArrayPatricia[3].src);}
+        if (deniseCount == 5) { denise.setPosition(175, 360).setFill(imgArrayDenise[10].src); patricia.setPosition(202, 165).setFill(imgArrayPatricia[0].src);}
+        if (deniseCount == 6) { denise.setPosition(170, 360).setFill(imgArrayDenise[11].src); patricia.setPosition(202, 170).setFill(imgArrayPatricia[1].src);}
+        if (deniseCount == 7) { denise.setPosition(165, 360).setFill(imgArrayDenise[10].src); patricia.setPosition(202, 175).setFill(imgArrayPatricia[2].src);}
+        if (deniseCount == 8) { denise.setPosition(160, 360).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 180).setFill(imgArrayPatricia[3].src);}
+        if (deniseCount == 9) { denise.setPosition(155, 360).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 185).setFill(imgArrayPatricia[0].src);}
+        if (deniseCount == 10) { denise.setPosition(150, 360).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 190).setFill(imgArrayPatricia[1].src); }
+        if (deniseCount == 11) { denise.setPosition(145, 360).setFill(imgArrayDenise[10].src); patricia.setPosition(202, 195).setFill(imgArrayPatricia[2].src);}
+        if (deniseCount == 12) { denise.setPosition(140, 360).setFill(imgArrayDenise[11].src); patricia.setPosition(202, 200).setFill(imgArrayPatricia[3].src);}
+        if (deniseCount == 12) { denise.setPosition(135, 355).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 205).setFill(imgArrayPatricia[0].src);}
+        if (deniseCount == 12) { denise.setPosition(130, 355).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 205).setFill(imgArrayPatricia[4].src);}
+        if (deniseCount == 12) { denise.setPosition(125, 350).setFill(imgArrayDenise[10].src); patricia.setPosition(195, 205).setFill(imgArrayPatricia[5].src);}
+        if (deniseCount == 13) { denise.setPosition(120, 350).setFill(imgArrayDenise[11].src); patricia.setPosition(190, 205).setFill(imgArrayPatricia[6].src); }
+        if (deniseCount == 14) { denise.setPosition(115, 350).setFill(imgArrayDenise[10].src); patricia.setPosition(185, 205).setFill(imgArrayPatricia[7].src); }
+        if (deniseCount == 15) { denise.setPosition(110, 350).setFill(imgArrayDenise[9].src); patricia.setPosition(180, 205).setFill(imgArrayPatricia[4].src);}
+        if (deniseCount == 16) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(175, 205).setFill(imgArrayPatricia[5].src); }
+        if (deniseCount == 17) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(170, 205).setFill(imgArrayPatricia[6].src);}
+        if (deniseCount == 18) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(165, 205).setFill(imgArrayPatricia[7].src);}
+        if (deniseCount == 19) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(160, 205).setFill(imgArrayPatricia[6].src); }
+        if (deniseCount == 20) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(155, 205).setFill(imgArrayPatricia[5].src); }
+        if (deniseCount == 21) { denise.setPosition(110, 350).setFill(imgArrayDenise[14].src); patricia.setPosition(150, 205).setFill(imgArrayPatricia[4].src); }
+        if (deniseCount == 22) { denise.setPosition(110, 350).setFill(imgArrayDenise[8].src); patricia.setPosition(145, 205).setFill(imgArrayPatricia[5].src);}
+        if (deniseCount == 23) { denise.setPosition(110, 350).setFill(imgArrayDenise[1].src); patricia.setPosition(140, 205).setFill(imgArrayPatricia[6].src);}
+        if (deniseCount == 24) { denise.setPosition(110, 355).setFill(imgArrayDenise[0].src); patricia.setPosition(135, 205).setFill(imgArrayPatricia[7].src);}
+        if (deniseCount == 25) { denise.setPosition(110, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(130, 205).setFill(imgArrayPatricia[6].src);}
+        if (deniseCount == 26) { denise.setPosition(110, 365).setFill(imgArrayDenise[2].src); patricia.setPosition(125, 205).setFill(imgArrayPatricia[5].src);}
+        if (deniseCount == 27) { denise.setPosition(110, 370).setFill(imgArrayDenise[3].src); patricia.setPosition(120, 205).setFill(imgArrayPatricia[4].src);}
+        if (deniseCount == 28) { denise.setPosition(110, 375).setFill(imgArrayDenise[0].src); patricia.setPosition(115, 205).setFill(imgArrayPatricia[7].src); }
+        if (deniseCount == 29) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(110, 205).setFill(imgArrayPatricia[6].src);}
+        if (deniseCount == 30) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(105, 205).setFill(imgArrayPatricia[5].src);}
+        if (deniseCount == 31) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(100, 205).setFill(imgArrayPatricia[4].src);}
+        if (deniseCount == 32) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(95, 205).setFill(imgArrayPatricia[5].src);}
+        if (deniseCount == 33) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(90, 205).setFill(imgArrayPatricia[6].src);}
+        if (deniseCount == 34) { denise.setPosition(110, 375).setFill(imgArrayDenise[4].src); patricia.setPosition(85, 205).setFill(imgArrayPatricia[7].src);}
+        if (deniseCount == 35) { denise.setPosition(115, 370).setFill(imgArrayDenise[5].src); patricia.setPosition(80, 205).setFill(imgArrayPatricia[6].src);}
+        if (deniseCount == 36) { denise.setPosition(120, 365).setFill(imgArrayDenise[6].src); patricia.setPosition(75, 205).setFill(imgArrayPatricia[5].src);}
+        if (deniseCount == 37) { denise.setPosition(125, 360).setFill(imgArrayDenise[7].src); patricia.setPosition(70, 205).setFill(imgArrayPatricia[4].src);}
+        if (deniseCount == 38) { denise.setPosition(130, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 205).setFill(imgArrayPatricia[12].src); }
+        if (deniseCount == 39) { denise.setPosition(135, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 200).setFill(imgArrayPatricia[13].src);}
+        if (deniseCount == 40) { denise.setPosition(140, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 195).setFill(imgArrayPatricia[14].src);}
+        if (deniseCount == 41) { denise.setPosition(145, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 190).setFill(imgArrayPatricia[15].src); }
+        if (deniseCount == 42) { denise.setPosition(150, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 185).setFill(imgArrayPatricia[12].src);}
+        if (deniseCount == 43) { denise.setPosition(155, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 180).setFill(imgArrayPatricia[13].src);}
+        if (deniseCount == 44) { denise.setPosition(160, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 175).setFill(imgArrayPatricia[14].src); }
+        if (deniseCount == 45) { denise.setPosition(175, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 170).setFill(imgArrayPatricia[15].src);}
+        if (deniseCount == 46) { denise.setPosition(180, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 165).setFill(imgArrayPatricia[12].src);}
+        if (deniseCount == 47) { denise.setPosition(185, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 160).setFill(imgArrayPatricia[13].src); }
+        if (deniseCount == 48) { denise.setPosition(190, 360).setFill(imgArrayDenise[6].src); patricia.setPosition(70, 155).setFill(imgArrayPatricia[14].src); }
+        if (deniseCount == 49) { denise.setPosition(190, 360).setFill(imgArrayDenise[0].src); patricia.setPosition(70, 150).setFill(imgArrayPatricia[15].src); }
+        if (deniseCount == 50) {  patricia.setPosition(70, 150).setFill(imgArrayPatricia[4].src); }
+        if (deniseCount == 51) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[0].src); }
+        if (deniseCount == 52) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[8].src); }
+        if (deniseCount == 53) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[0].src); }
+        if (deniseCount == 54) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[4].src); }
+        if (deniseCount == 55) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[0].src); }
+        if (deniseCount == 58) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[12].src); }
+        if (deniseCount == 59) { denise.setPosition(190, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 145).setFill(imgArrayPatricia[12].src); }
+        if (deniseCount == 60) { patricia.setPosition(70, 145).setFill(imgArrayPatricia[8].src); }
+        if (deniseCount == 61) { patricia.setPosition(75, 145).setFill(imgArrayPatricia[9].src); }
+        if (deniseCount == 62) { patricia.setPosition(80, 145).setFill(imgArrayPatricia[10].src); }
+        if (deniseCount == 63) { patricia.setPosition(85, 145).setFill(imgArrayPatricia[11].src); }
+        if (deniseCount == 64) { patricia.setPosition(90, 145).setFill(imgArrayPatricia[8].src); }
+        if (deniseCount == 65) { patricia.setPosition(95, 145).setFill(imgArrayPatricia[9].src); }
+        if (deniseCount == 66) { patricia.setPosition(100, 145).setFill(imgArrayPatricia[10].src); }
+        if (deniseCount == 67) { patricia.setPosition(105, 145).setFill(imgArrayPatricia[11].src); }
+        if (deniseCount == 68) { patricia.setPosition(110, 145).setFill(imgArrayPatricia[8].src); }
+        if (deniseCount == 69) { denise.setPosition(190, 360).setFill(imgArrayDenise[0].src); patricia.setPosition(115, 145).setFill(imgArrayPatricia[9].src); }
+        if (deniseCount == 70) { patricia.setPosition(120, 145).setFill(imgArrayPatricia[10].src); }
+        if (deniseCount == 71) { patricia.setPosition(125, 145).setFill(imgArrayPatricia[11].src); }
+        if (deniseCount == 72) { patricia.setPosition(130, 145).setFill(imgArrayPatricia[8].src); }
+        if (deniseCount == 73) { patricia.setPosition(135, 145).setFill(imgArrayPatricia[9].src); }
+        if (deniseCount == 74) { patricia.setPosition(140, 145).setFill(imgArrayPatricia[11].src); }
+        if (deniseCount == 75) { patricia.setPosition(145, 145).setFill(imgArrayPatricia[8].src); }
+        if (deniseCount == 76) { patricia.setPosition(150, 145).setFill(imgArrayPatricia[9].src); }
+        if (deniseCount == 77) { patricia.setPosition(155, 145).setFill(imgArrayPatricia[10].src); }
+        if (deniseCount == 78) { patricia.setPosition(160, 145).setFill(imgArrayPatricia[11].src); }
+
+        if (deniseCount == 79) { denise.setPosition(190, 360).setFill(imgArrayDenise[15].src); patricia.setPosition(165, 145).setFill(imgArrayPatricia[9].src); }
+        if (deniseCount == 80) { patricia.setPosition(170, 145).setFill(imgArrayPatricia[10].src); }
+        if (deniseCount == 81) { patricia.setPosition(175, 145).setFill(imgArrayPatricia[11].src); }
+        if (deniseCount == 82) { patricia.setPosition(180, 145).setFill(imgArrayPatricia[8].src); }
+        if (deniseCount == 83) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(185, 145).setFill(imgArrayPatricia[9].src); }
+        if (deniseCount == 84) { patricia.setPosition(190, 145).setFill(imgArrayPatricia[10].src); }
+        if (deniseCount == 85) { patricia.setPosition(195, 145).setFill(imgArrayPatricia[11].src); }
+        if (deniseCount == 86) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[8].src); }
+        if (deniseCount == 89) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[4].src); }
+        if (deniseCount == 90) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
+        if (deniseCount == 91) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[8].src); }
+        if (deniseCount == 92) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
+        if (deniseCount == 93) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[4].src); }
+        if (deniseCount == 94) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
+        if (deniseCount == 95) { denise.setPosition(190, 360).setFill(imgArrayDenise[15].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[8].src); }
+        if (deniseCount == 96) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
+        if (deniseCount == 97) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[4].src); }
+        if (deniseCount == 98) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
+        if (deniseCount == 99) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src);}
+        if (deniseCount >= 100) { deniseCount = 0; }
     }, this, 200)
 
 
     // room 2 block
     var houseExpandCover = (new lime.GlossyButton).setColor("#B5B6B7").setAnchorPoint(0.0).setPosition(155, 220).setSize(a.width - 15, 177).setText("Build More Room").setOpacity(0.8);
     houseLayer.appendChild(houseExpandCover); 
-    var expandToolsImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-25, 10).setSize(45, 60).setFill("images/tools1500.png");
+    var expandToolsImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-25, 10).setSize(45, 60).setFill("images/UI/upBtn.png");
     houseExpandCover.appendChild(expandToolsImg); 
+
     var scaffoldHo = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-125,-85).setSize(a.width - 75, 150).setFill("images/scaffold.png"); houseExpandCover.appendChild(scaffoldHo);
 
     var upgradeCloudHo = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-130, -100).setSize(300, 200).setFill("images/clouds.png"); houseExpandCover.appendChild(upgradeCloudHo);
@@ -10891,15 +11051,28 @@ farming.start = function () {
     var expandOnce = 0;
     goog.events.listen(houseExpandCover, ["mousedown", "touchstart"], function () {
 
-        if (player.tools >= 1500 && expandOnce == 0) {
+        if (player.cropsStored[14].stored >= 200 && player.tools >= 1000) {
+            upPanelConfirmBtnHouse.setHidden(false); shortCostHouse.setHidden(true);
+        }
+        else {
+            upPanelConfirmBtnHouse.setHidden(true); shortCostHouse.setHidden(false);
+        }
+        upgradePanelHouse.setHidden(false);
+
+    });
+    function expandHouseGo() {
+        if (player.tools >= 1000 && expandOnce == 0 && player.cropsStored[14].stored >= 200) {
             expandOnce = 1;
-            player.tools -= 1500;
+            player.tools -= 1000;
+            player.cropsStored[14].stored = player.cropsStored[14].stored - 200;
+            a.updateStored();
             a.updateTools();
+            a.updateMoney();
             toolCountHouse.setText(player.tools)
             toolMoverLabelHo.setHidden(false); scaffoldHo.setHidden(false); upgradeCloudHo.setHidden(false);
             expandToolsImg.setHidden(true);
             houseExpandCover.setText("").setOpacity(0.5);
-            
+
             //hammer move logic
             lime.scheduleManager.scheduleWithDelay(function () {
                 currentRotateHo = currentRotateHo + 10;
@@ -10910,21 +11083,21 @@ farming.start = function () {
             }, this, 200, 450)
 
             //upgrade countdown timer
-           
+
             var upCloudWHo = 200;
             var upCloudXHo = -130;
             var upCloudYHo = -100;
             lime.scheduleManager.scheduleWithDelay(function () {
                 //add upgrade anim
-             secondsToUpgradeHo = secondsToUpgradeHo - 1;
-               
+                secondsToUpgradeHo = secondsToUpgradeHo - 1;
+
                 if (secondsToUpgradeHo <= 0) {
                     toolMoverLabelHo.setHidden(true); scaffoldHo.setHidden(true); upgradeCloudHo.setHidden(true); secondsToUpgradeHo = 90;
                     houseExpandCover.setHidden(true);
                     houseUpgrades.upgrades[0].owned = 1;
                     localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades))
                     houseImg.setFill("images/house2.png").setSize(72, 92).setPosition(230, 23)
-                }  
+                }
 
             }, this, 1000, 90)
             lime.scheduleManager.scheduleWithDelay(function () {
@@ -10935,20 +11108,19 @@ farming.start = function () {
                 upCloudXHo = upCloudXHo - 5;
                 upCloudYHo = upCloudYHo - 5
                 if (upCloudXHo < -140) { upCloudXHo = -130; upCloudYHo = -100; upCloudWHo = 200; }
-           
+
 
             }, this, 250, 360)
-                               
+
         }
         else {
-            houseExpandCover.setText("Need 1500 Tools");
+            houseExpandCover.setText("Build More Room");
             lime.scheduleManager.scheduleWithDelay(function () {
                 houseExpandCover.setText("Build More Room");
 
             }, this, 1500)
         }
-    });
-
+    }
   
 
     ////upper house menu
@@ -11380,7 +11552,8 @@ farming.start = function () {
 
      //houseOptionReward24Img.setHidden(true);
 
-
+     var patricia = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(202, 145).setSize(55, 55).setFill(imgArrayPatricia[0].src);
+     houseLayer.appendChild(patricia);
 
 
 
@@ -11610,13 +11783,13 @@ farming.start = function () {
 
 
     //house upgrade confirms//
-    var confirmSaleHouse = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 2 - 67, 195).setSize(130, 130).setFill('images/UI/blankBack4.png');
+    var confirmSaleHouse = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 2 - 63, 185).setSize(135, 135).setFill('images/UI/blankBack4.png');
     houseLayer.appendChild(confirmSaleHouse);
 
     confirmSaleHouse.setHidden(true);
-    var confirmSaleHouseNameLabel = (new lime.Label).setText("Name of item").setPosition(70, 30).setSize(130, 50).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+    var confirmSaleHouseNameLabel = (new lime.Label).setText("Name of item").setPosition(70, 35).setSize(130, 50).setFontColor("#000000").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
     confirmSaleHouse.appendChild(confirmSaleHouseNameLabel);
-    var confirmSaleHousePriceLabel = (new lime.Label).setText(" - 150").setPosition(75, 50).setSize(130, 50).setFontColor("#E8FC08").setFontWeight(600).setFontSize(18).setFontFamily("ComicSans MS");
+    var confirmSaleHousePriceLabel = (new lime.Label).setText(" - 150").setPosition(75, 53).setSize(130, 50).setFontColor("#000000").setFontWeight(600).setFontSize(18).setFontFamily("ComicSans MS");
     confirmSaleHouse.appendChild(confirmSaleHousePriceLabel);
     var confirmSaleHouseImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(50, 45).setSize(34, 55).setFill(imgArray11[1]);
     confirmSaleHouse.appendChild(confirmSaleHouseImg);
@@ -11687,14 +11860,70 @@ farming.start = function () {
         houseMoney.setText(player.money);
         a.updateMoney();
         localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player))
-       
+        setDeniseText();
     })
 
 
+    // house quest panel for denise quests
+    var questPanelHouse = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(35, 130).setSize(250, 220).setFill("images/UI/blankBack5.png");
+    houseLayer.appendChild(questPanelHouse);
+    var questHeaderHouse = (new lime.Label).setAnchorPoint(0, 0).setPosition(90, 19).setText("Denise").setFontFamily("Comic Sans MS").setFontSize(24);
+    questPanelHouse.appendChild(questHeaderHouse);
+    var questText1House = (new lime.Label).setAnchorPoint(0, 0).setPosition(20, 135).setText("We need some more furniture if you expect me to live here").setFontFamily("Comic Sans MS").setFontSize(16).setSize(200, a.height / 2 - 50);
+    questPanelHouse.appendChild(questText1House);
+    var questPanelAvatarHouse = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(75, 26).setSize(100, 100).setFill(imgArrayDenise[0].src);
+    questPanelHouse.appendChild(questPanelAvatarHouse);
+
+    var questPanelCloseBtnHouse = (new lime.GlossyButton).setColor("#663300").setText("Close").setPosition(125, 207).setSize(100, 20);
+    questPanelHouse.appendChild(questPanelCloseBtnHouse);
+    //questPanelHouse.setHidden(true);
+    goog.events.listen(questPanelCloseBtnHouse, ["mousedown", "touchstart"], function () {
+        questPanelHouse.setHidden(true);
+    }); 
 
 
 
+    //house expand modal
+    var upgradePanelHouse = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(35, 130).setSize(250, 220).setFill("images/UI/blankBack5.png");
+    houseLayer.appendChild(upgradePanelHouse);
+    var upgradeHeaderHouse = (new lime.Label).setAnchorPoint(0, 0).setPosition(23, 25).setText("Expand your house?").setFontFamily("Comic Sans MS").setFontSize(24);
+    upgradePanelHouse.appendChild(upgradeHeaderHouse);
+    var toolsImgHouseUp = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(45, 75).setSize(64, 64).setFill("images/UI/toolsIcon2.png");
+    upgradePanelHouse.appendChild(toolsImgHouseUp);
+    var toolCostHouse = (new lime.Label).setAnchorPoint(0, 0).setPosition(5, 70).setText("1000").setFontFamily("Comic Sans MS").setFontSize(18).setSize(50,50);
+    toolsImgHouseUp.appendChild(toolCostHouse);
+    var woodImgHouseUp = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(140, 75).setSize(64, 64).setFill("images/items/logs.png");
+    upgradePanelHouse.appendChild(woodImgHouseUp);
+    var woodCostHouse = (new lime.Label).setAnchorPoint(0, 0).setPosition(5, 70).setText("200").setFontFamily("Comic Sans MS").setFontSize(18).setSize(50, 50);
+    woodImgHouseUp.appendChild(woodCostHouse);
+    var upPanelConfirmBtnHouse = (new lime.GlossyButton).setColor("#00ff00").setText("Build").setPosition(125, 175).setSize(100, 20);
+    upgradePanelHouse.appendChild(upPanelConfirmBtnHouse);
+    var shortCostHouse = (new lime.Label).setAnchorPoint(0, 0).setPosition(125, 175).setText("You need more resources").setFontFamily("Comic Sans MS").setFontSize(18).setSize(50, 50);
+    upgradePanelHouse.appendChild(shortCostHouse);
+    upPanelConfirmBtnHouse.setHidden(true);
+    shortCostHouse.setHidden(false);
+    upgradePanelHouse.setHidden(true);
 
+    var upPanelCloseBtnHouse = (new lime.GlossyButton).setColor("#663300").setText("Close").setPosition(125, 207).setSize(100, 20);
+    upgradePanelHouse.appendChild(upPanelCloseBtnHouse);
+    //questPanelHouse.setHidden(true);
+    goog.events.listen(questPanelCloseBtnHouse, ["mousedown", "touchstart"], function () {
+        upgradePanelHouse.setHidden(true);
+    }); 
+
+    ///trigger house expand
+    goog.events.listen(upPanelConfirmBtnHouse, ["mousedown", "touchstart"], function () {
+        var isHidHouseUp = upPanelConfirmBtnHouse.getHidden();
+        if (isHidHouseUp == false) {
+            expandHouseGo();
+            upgradePanelHouse.setHidden(true);
+        }
+   
+    }); 
+    
+
+    if (player.cropsStored[14].stored >= 200 && player.tools >= 1000) { upPanelConfirmBtnHouse.setHidden(false); shortCostHouse.setHidden(true); }
+    else { upPanelConfirmBtnHouse.setHidden(true); shortCostHouse.setHidden(false); }
 
     function checkAchieves() {
         //console.table(a.achievements);
