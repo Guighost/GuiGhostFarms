@@ -3168,15 +3168,7 @@ farming.start = function () {
             if (visibleLink == false) { 
                 localStorage.setItem('MedFarm_LoadAd', 1);
                 localStorage.setItem('MedFarm_StarCashBoost', 0);
-                c.setPaused(1)
-                var intervalCheck = setInterval(function () {
-                    // dummy element
-                    var El = document.getElementsByTagName("canvas");
-
-                    // check for focus
-                    var isFocused = (document.activeElement === El);
-                    if (isFocused) { c.setPaused(0); clearInterval(intervalCheck); }
-                }, 1000);
+                lime.audio.setMute(true); setMute(1);
                 setTimeout(function () {
                     boostCrops.setHidden(true);
                     homeBlock.setHidden(true);
@@ -3200,7 +3192,9 @@ farming.start = function () {
         });
 		goog.events.listen(speedAdCancel, ["mousedown", "touchstart"], function () {
 			console.log("clicked cancel");
-	
+            var isMuted2 = localStorage.getItem('GuiGhostFarms_muted')
+            if (isMuted2 == 0) { themeSong.play(true); smithSound.play(); lime.audio.setMute(false); setMute(2); }
+            else if (isMuted2 == 1) { lime.audio.setMute(true); setMute(1); }
             homeBlock.setHidden(true);
               
             boostCrops.setHidden(true);

@@ -761,13 +761,10 @@ var tid2 = setInterval(interPop2, 500);
                 };
                 Enhance.purchases.isItemOwned('starpack_small', checkOwned(result))
               
-                function checkOwned(result) {
-                    if (result == false) {
-                        
-                        Enhance.purchases.attemptPurchase('starpack_small', onPurchaseSuccess, onPurchaseFailed);
-                    }
-                    else { alert('purchased failed -  item owned is ' + result)};
-                }
+                                   
+                Enhance.purchases.attemptPurchase('starpack_small', onPurchaseSuccess, onPurchaseFailed);
+                
+                
             };
 
           
