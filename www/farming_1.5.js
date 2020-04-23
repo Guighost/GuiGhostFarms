@@ -3168,7 +3168,15 @@ farming.start = function () {
             if (visibleLink == false) { 
                 localStorage.setItem('MedFarm_LoadAd', 1);
                 localStorage.setItem('MedFarm_StarCashBoost', 0);
-                //lime.audio.setMute(true); setMute(1);
+                c.setPaused(1)
+                var intervalCheck = setInterval(function () {
+                    // dummy element
+                    var El = document.getElementsByTagName("canvas");
+
+                    // check for focus
+                    var isFocused = (document.activeElement === El);
+                    if (isFocused) { c.setPaused(0); clearInterval(intervalCheck); }
+                }, 1000);
                 setTimeout(function () {
                     boostCrops.setHidden(true);
                     homeBlock.setHidden(true);

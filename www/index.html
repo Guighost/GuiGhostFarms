@@ -569,7 +569,7 @@ var showItOrNo2 = 0;
                 app.writeLog("Reward granted (coins), value: " + rewardValue),
                     rewardedCompleted = 1,
                     localStorage.setItem('MedFarm_Rewarded', 1),
-                    c.setPaused(0);
+                 
             else {
                 console.log("rewarded fallback"),
                 rewardedCompleted = 1,
@@ -587,7 +587,7 @@ var showItOrNo2 = 0;
             rewardedCompleted = 0;
             document.getElementById("waitText").innerHTML = 'Reward unavailable- please wait a while before you boost again', c.setPaused(0);
         };
-        c.setPaused(1);
+       
         Enhance.showRewardedAd(onRewardGranted, onRewardDeclined, onRewardUnavailable);
     };
 
@@ -598,18 +598,9 @@ var showItOrNo2 = 0;
             app.writeLog('Interstitial ad is not ready');
             return;
         }
-        c.setPaused(1);
+       
         Enhance.showInterstitialAd();
-
-        var intervalCheck = setInterval(function () {
-            // dummy element
-            var El = document.getElementsByTagName("canvas");
-
-            // check for focus
-            var isFocused = (document.activeElement === El);
-            if (isFocused) { c.setPaused(0); clearInterval(intervalCheck); }
-        }, 1000);
-
+        
     };
     ////primary loop 2 - external loads
 var tid2 = setInterval(interPop2, 500);
