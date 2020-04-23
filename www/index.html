@@ -25,10 +25,10 @@
 
         #loadingGG {
             position: absolute;
-            top: 40%;
+            top: 30%;
             left: 50%;
             min-width: 50%;
-            height: 100%;
+            height: 70%;
             transform: translateX(-150px);
             z-index: 15000;
         }
@@ -563,30 +563,31 @@ var showItOrNo2 = 0;
             if (rewardType == Enhance.RewardType.ITEM)
                 app.writeLog("Reward granted (item)"),
                     rewardedCompleted = 1,
-                    localStorage.setItem('MedFarm_Rewarded', 1);
+                    localStorage.setItem('MedFarm_Rewarded', 1), c.setPaused(0);
 
             else if (rewardType == Enhance.RewardType.COINS)
                 app.writeLog("Reward granted (coins), value: " + rewardValue),
                     rewardedCompleted = 1,
-                    localStorage.setItem('MedFarm_Rewarded', 1);
+                    localStorage.setItem('MedFarm_Rewarded', 1),
+                    c.setPaused(0);
             else {
                 console.log("rewarded fallback"),
                 rewardedCompleted = 1,
-                localStorage.setItem('MedFarm_Rewarded', 1); }
+                    localStorage.setItem('MedFarm_Rewarded', 1), c.setPaused(0); }
         };
 
         var onRewardDeclined = function () {
             app.writeLog('Reward declined'),
                 rewardedCompleted = 0;
-            document.getElementById("waitText").innerHTML = 'Reward declined- you must watch the ad to get the reward';
+            document.getElementById("waitText").innerHTML = 'Reward declined- you must watch the ad to get the reward', c.setPaused(0);
         };
 
         var onRewardUnavailable = function () {
             app.writeLog('Reward unavailable');
             rewardedCompleted = 0;
-            document.getElementById("waitText").innerHTML = 'Reward unavailable- please wait a while before you boost again';
+            document.getElementById("waitText").innerHTML = 'Reward unavailable- please wait a while before you boost again', c.setPaused(0);
         };
-
+        c.setPaused(1);
         Enhance.showRewardedAd(onRewardGranted, onRewardDeclined, onRewardUnavailable);
     };
 
@@ -597,8 +598,18 @@ var showItOrNo2 = 0;
             app.writeLog('Interstitial ad is not ready');
             return;
         }
-
+        c.setPaused(1);
         Enhance.showInterstitialAd();
+
+        var intervalCheck = setInterval(function () {
+            // dummy element
+            var El = document.getElementsByTagName("canvas");
+
+            // check for focus
+            var isFocused = (document.activeElement === El);
+            if (isFocused) { c.setPaused(0); clearInterval(intervalCheck); }
+        }, 1000);
+
     };
     ////primary loop 2 - external loads
 var tid2 = setInterval(interPop2, 500);
@@ -753,12 +764,19 @@ var tid2 = setInterval(interPop2, 500);
                     localStorage.setItem('starCash', starCash);
                 };
 
-                var onPurchaseFailed = function (result) {
+                var onPurchaseFailed = function () {
                     // Failure
-                    alert(result);
+                    alert('purchased failed');
                 };
-
-                Enhance.purchases.attemptPurchase('starpack_small', onPurchaseSuccess, onPurchaseFailed);
+                Enhance.purchases.isItemOwned('starpack_small', checkOwned(result))
+              
+                function checkOwned(result) {
+                    if (result == true) {
+                        
+                        Enhance.purchases.attemptPurchase('starpack_small', onPurchaseSuccess, onPurchaseFailed);
+                    }
+                    else { alert('purchased failed -  item owned is ' + result)};
+                }
             };
 
           
@@ -776,9 +794,9 @@ var tid2 = setInterval(interPop2, 500);
                     localStorage.setItem('starCash', starCash);
                 };
 
-                var onPurchaseFailed = function (result) {
+                var onPurchaseFailed = function () {
                     // Failure
-                    alert(result);
+                    alert('purchased failed');
                 };
 
                 Enhance.purchases.attemptPurchase('starpack_large', onPurchaseSuccess, onPurchaseFailed);
@@ -801,9 +819,9 @@ var tid2 = setInterval(interPop2, 500);
 
                 };
 
-                var onPurchaseFailed = function (result) {
+                var onPurchaseFailed = function () {
                     // Failure
-                    alert(result);
+                    alert('purchased failed');
                 };
 
                 Enhance.purchases.attemptPurchase('starter_pack', onPurchaseSuccess, onPurchaseFailed);
@@ -827,9 +845,9 @@ var tid2 = setInterval(interPop2, 500);
 
                 };
 
-                var onPurchaseFailed = function (result) {
+                var onPurchaseFailed = function () {
                     // Failure
-                    alert(result);
+                    alert('purchased failed');
                 };
 
                 Enhance.purchases.attemptPurchase('master_pack', onPurchaseSuccess, onPurchaseFailed);

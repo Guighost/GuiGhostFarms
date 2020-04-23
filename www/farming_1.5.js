@@ -3168,7 +3168,7 @@ farming.start = function () {
             if (visibleLink == false) { 
                 localStorage.setItem('MedFarm_LoadAd', 1);
                 localStorage.setItem('MedFarm_StarCashBoost', 0);
-                lime.audio.setMute(true); setMute(1);
+                //lime.audio.setMute(true); setMute(1);
                 setTimeout(function () {
                     boostCrops.setHidden(true);
                     homeBlock.setHidden(true);
