@@ -5,7 +5,7 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; content="script-src 'unsafe-inline'; style-src 'unsafe-inline'">
+        <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *;">
 
    
   <title>Medieval Farms - Farming Sim by GuiGhost Games</title>
@@ -753,8 +753,9 @@ var tid2 = setInterval(interPop2, 500);
                     localStorage.setItem('starCash', starCash);
                 };
 
-                var onPurchaseFailed = function () {
+                var onPurchaseFailed = function (result) {
                     // Failure
+                    alert(result);
                 };
 
                 Enhance.purchases.attemptPurchase('starpack_small', onPurchaseSuccess, onPurchaseFailed);
@@ -775,9 +776,9 @@ var tid2 = setInterval(interPop2, 500);
                     localStorage.setItem('starCash', starCash);
                 };
 
-                var onPurchaseFailed = function () {
+                var onPurchaseFailed = function (result) {
                     // Failure
-                 
+                    alert(result);
                 };
 
                 Enhance.purchases.attemptPurchase('starpack_large', onPurchaseSuccess, onPurchaseFailed);
@@ -800,9 +801,9 @@ var tid2 = setInterval(interPop2, 500);
 
                 };
 
-                var onPurchaseFailed = function () {
+                var onPurchaseFailed = function (result) {
                     // Failure
-               
+                    alert(result);
                 };
 
                 Enhance.purchases.attemptPurchase('starter_pack', onPurchaseSuccess, onPurchaseFailed);
@@ -826,8 +827,9 @@ var tid2 = setInterval(interPop2, 500);
 
                 };
 
-                var onPurchaseFailed = function () {
-                
+                var onPurchaseFailed = function (result) {
+                    // Failure
+                    alert(result);
                 };
 
                 Enhance.purchases.attemptPurchase('master_pack', onPurchaseSuccess, onPurchaseFailed);
@@ -884,27 +886,29 @@ var tid2 = setInterval(interPop2, 500);
            
 
 
-    // local notification
-            var onPermissionGranted = function () {
-                // Success
-                try {
-                    Enhance.disableLocalNotification()
-                    Enhance.enableLocalNotification('Your farm needs you', 'Play it now!', 60);
-                }
-                catch (err) { console.log("caught notification INNER error = " + err)}
-             
-            };
+          // local notification
+          var onPermissionGranted = function () {
+              // Success
+              try {
+                  Enhance.disableLocalNotification()
+                  Enhance.enableLocalNotification('Your farm needs you', 'Play it now!', 60);
+              }
+              catch (err) { console.log("caught notification INNER error = " + err); alert(err) }
 
-            var onPermissionRefused = function () {
-                // Failure
-                console.log("caught notification error Permission refused " )
-            };
-            function tryNotif() {
-                try { Enhance.requestLocalNotificationPermission(OnPermissionGranted, OnPermissionRefused); }
-                catch (err) { console.log("caught notification INNER error = " + err) };
-            }
-      
-            tryNotif();
+          };
+
+          var onPermissionRefused = function () {
+              // Failure
+              console.log("caught notification error Permission refused ")
+              alert(result)
+          };
+          function tryNotif() {
+              try { Enhance.requestLocalNotificationPermission(OnPermissionGranted, OnPermissionRefused); }
+              catch (err) { console.log("caught notification INNER error = " + err) };
+          }
+          window.addEventListener('load', function () {
+              tryNotif();          })
+     
 
  </script>
     </body>

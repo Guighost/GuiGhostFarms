@@ -7969,7 +7969,7 @@ farming.start = function () {
             marketLayer.setHidden(false);
             marketFill1.setHidden(false);
             backBtnTown.setHidden(true);
-        
+       
     });
     var coinButtonTown = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-16, -17).setSize(33, 33).setFill("images/marketTown/coinButton.png");
     marketTrigger.appendChild(coinButtonTown);
