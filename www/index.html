@@ -749,9 +749,9 @@ var tid2 = setInterval(interPop2, 500);
                         
                     });
                     starCash = parseInt(localStorage.getItem('starCash'));
-                    console.log("before starcash = " + starCash);
+                    //console.log("before starcash = " + starCash);
                     starCash = parseInt(starCash) + 50;
-                    console.log("after buy small starcash = " + starCash);
+                    //console.log("after buy small starcash = " + starCash);
                     localStorage.setItem('starCash', starCash);
                 };
 
@@ -759,8 +759,7 @@ var tid2 = setInterval(interPop2, 500);
                     // Failure
                     alert('purchased failed');
                 };
-                Enhance.purchases.isItemOwned('starpack_small', checkOwned(result))
-              
+                            
                                    
                 Enhance.purchases.attemptPurchase('starpack_small', onPurchaseSuccess, onPurchaseFailed);
                 
