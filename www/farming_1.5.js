@@ -3169,11 +3169,11 @@ farming.start = function () {
                 localStorage.setItem('MedFarm_LoadAd', 1);
                 localStorage.setItem('MedFarm_StarCashBoost', 0);
                 lime.audio.setMute(true); setMute(1);
-                setTimeout(function () {
-                    boostCrops.setHidden(true);
-                    homeBlock.setHidden(true);
-                    globalModalBlock = 0;
-                }, 500);
+                //setTimeout(function () {
+                //    boostCrops.setHidden(true);
+                //    homeBlock.setHidden(true);
+                //    globalModalBlock = 0;
+                //}, 500);
 			  
             }
         });
@@ -5360,6 +5360,13 @@ farming.start = function () {
             questPanelRocksO.setFill(imgArrayStore[6]);
             questPanelAvatarO.setFill(imgArrayStore[4]);
         }
+        else if (player.cropsStored[17] >= 1 && isciderplaceOwned == 1) {
+            questPanelO.setHidden(false);
+            questText1O.setText("Making Cider out of our spare apples and pears");
+            questPanelRocksO.setHidden(false);
+            questPanelRocksO.setFill(imgArrayStore[6]);
+            questPanelAvatarO.setFill(imgArrayStore[4]);
+        }
   
 
     });
@@ -5460,7 +5467,7 @@ farming.start = function () {
             else if (orchardTreesHid == 2 && orchardBarnLevel == 2) { ciderPlace.setHidden(false); ciderPlaceBtn.setHidden(false); }
             ///cider harvest
             if (ciderTick > 240) {
-                if (ciderEnabled == 1 && player.cropsStored[14].stored > 0 && player.cropsStored[9].stored > 0) {
+                if (ciderEnabled == 1 && player.cropsStored[17].stored > 0 && player.cropsStored[9].stored > 0) {
                     player.cropsStored[14].stored = player.cropsStored[14].stored - 1;
                     player.cropsStored[9].stored = player.cropsStored[9].stored - 1;
                     ciderWaiting = ciderWaiting + 1;
@@ -5468,7 +5475,7 @@ farming.start = function () {
                     ciderPlaceBubbleText.setText("+ " + ciderWaiting)
                 }
                 else {
-                    if (ciderEnabled == 1 && player.cropsStored[14].stored > 0 && player.cropsStored[8].stored > 0) {
+                    if (ciderEnabled == 1 && player.cropsStored[17].stored > 0 && player.cropsStored[8].stored > 0) {
                         player.cropsStored[14].stored = player.cropsStored[14].stored - 1;
                         player.cropsStored[9].stored = player.cropsStored[9].stored - 1;
                         ciderWaiting = ciderWaiting + 1;
