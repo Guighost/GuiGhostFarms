@@ -5468,7 +5468,7 @@ farming.start = function () {
             ///cider harvest
             if (ciderTick > 240) {
                 if (ciderEnabled == 1 && player.cropsStored[17].stored > 0 && player.cropsStored[9].stored > 0) {
-                    player.cropsStored[14].stored = player.cropsStored[14].stored - 1;
+                    player.cropsStored[17].stored = player.cropsStored[17].stored - 1;
                     player.cropsStored[9].stored = player.cropsStored[9].stored - 1;
                     ciderWaiting = ciderWaiting + 1;
                     ciderPlaceBubble.setHidden(false);
@@ -5476,8 +5476,8 @@ farming.start = function () {
                 }
                 else {
                     if (ciderEnabled == 1 && player.cropsStored[17].stored > 0 && player.cropsStored[8].stored > 0) {
-                        player.cropsStored[14].stored = player.cropsStored[14].stored - 1;
-                        player.cropsStored[9].stored = player.cropsStored[9].stored - 1;
+                        player.cropsStored[17].stored = player.cropsStored[17].stored - 1;
+                        player.cropsStored[8].stored = player.cropsStored[8].stored - 1;
                         ciderWaiting = ciderWaiting + 1;
                         ciderPlaceBubble.setHidden(false);
                         ciderPlaceBubbleText.setText("+ " + ciderWaiting)
