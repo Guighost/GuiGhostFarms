@@ -523,7 +523,7 @@ lime.audio.Audio.prototype.bufferLoadedHandler_ = function (buffer, path) {
 
 lime.audio.Audio.prototype.onEnded_ = function (e) {
     this.playing_ = false;
-    var ev = new goog.events.Event('ended');shareface
+    var ev = new goog.events.Event('ended');
     ev.event = e;
     this.dispatchEvent(ev);
     this.playPosition_ = 0;
@@ -704,6 +704,7 @@ imgArray[21] = new Image(); imgArray[21].src = "images/UI/XButton.png";
 imgArray[22] = new Image(); imgArray[22].src = "images/UI/needJars.png";
 imgArray[23] = new Image(); imgArray[23].src = "images/UI/needBottles.png";
 imgArray[24] = new Image(); imgArray[24].src = "images/clouds.png";
+imgArray[25] = new Image(); imgArray[25].src = "images/UI/starCashBack.png";
 
 //growing images
 var imgArray2 = new Array();
@@ -2758,6 +2759,7 @@ farming.start = function () {
         document.getElementById("foundIt").classList.remove("blazingStar");
         document.getElementById("foundIt").style.display = 'block';
         document.getElementById("foundIt").classList.add("blazingStar");
+
         document.getElementById("foundItSubTitle").innerHTML = collectItems.digUpSells[itemCarryOver].name;
         document.getElementById("foundItImage").style.backgroundImage = "url('" + collectItems.digUpSells[itemCarryOver].src + "')";
         console.log("random number was " + randomItemNumber + " and itemCarryOver was " + itemCarryOver + " and  item  src = " + collectItems.digUpSells[itemCarryOver].src);
@@ -3148,9 +3150,10 @@ farming.start = function () {
     var blacksmithQuestPanelCloseBtn = (new lime.GlossyButton).setColor("#663300").setText("Close").setPosition(140, 235).setSize(100, 20);
     blacksmithQuestPanel.appendChild(blacksmithQuestPanelCloseBtn);
     blacksmithQuestPanel.setHidden(true);
-    goog.events.listen(blacksmithQuestPanelCloseBtn, ["mousedown", "touchstart"], function () {
+    goog.events.listen(blacksmithQuestPanelCloseBtn, ["mousedown", "touchstart"], function (event) {
 
         blacksmithQuestPanel.setHidden(true);
+        event.stopPropagation()
     });
 
 
@@ -3206,9 +3209,9 @@ farming.start = function () {
         });
 		goog.events.listen(speedAdCancel, ["mousedown", "touchstart"], function () {
 			console.log("clicked cancel");
-            var isMuted2 = localStorage.getItem('GuiGhostFarms_muted')
-            if (isMuted2 == 0) { themeSong.play(true); smithSound.play(); lime.audio.setMute(false); setMute(2); }
-            else if (isMuted2 == 1) { lime.audio.setMute(true); setMute(1);  }
+            var isMuted22 = parseInt(localStorage.getItem('GuiGhostFarms_muted'));
+            if (isMuted22 == 1) { lime.audio.setMute(true); setMute(1);  }
+            else  {lime.audio.setMute(false); themeSong.play(true); smithSound.play(); setMute(2);  }
             homeBlock.setHidden(true);
               
             boostCrops.setHidden(true);
@@ -5480,11 +5483,11 @@ farming.start = function () {
             ///hide CiderPlace if trees not cleared
             var orchardTreesHid = localStorage.getItem("GuiGhostFarms_orchardTreeBlock");
             orchardBarnLevel = localStorage.getItem("MedFarm_orchardBarnLevel");
-            if (orchardTreesHid < 2) { ciderPlace.setHidden(true); ciderPlace.setHidden(true); ciderPlaceBtn.setHidden(true); console.log("orchardTreesHid = " + orchardTreesHid + "orchardBarnLevel " + orchardBarnLevel); }
-            else if (orchardTreesHid == 2 && orchardBarnLevel == 2) { ciderPlace.setHidden(false); ciderPlaceBtn.setHidden(true); console.log(" else if orchardTreesHid = " + orchardTreesHid + "orchardBarnLevel " + orchardBarnLevel);}
+            if (orchardTreesHid < 2) { ciderPlace.setHidden(true); ciderPlace.setHidden(true); ciderPlaceBtn.setHidden(true); }
+            else if (orchardTreesHid == 2 && orchardBarnLevel == 2) { ciderPlace.setHidden(false); ciderPlaceBtn.setHidden(true); }
             ///cider harvest
             if (ciderTick > 120 ) {
-                console.log("cidrTick triggered - ciderEnabled = " + ciderEnabled + "and crop 17 stored = " + player.cropsStored[17].stored + "and crop 9 stored = " + player.cropsStored[9].stored);
+                //console.log("cidrTick triggered - ciderEnabled = " + ciderEnabled + "and crop 17 stored = " + player.cropsStored[17].stored + "and crop 9 stored = " + player.cropsStored[9].stored);
                 if (ciderEnabled == 1 && player.cropsStored[17].stored > 0 && player.cropsStored[9].stored > 0) {
                     player.cropsStored[17].stored = player.cropsStored[17].stored - 1;
                     player.cropsStored[9].stored = player.cropsStored[9].stored - 1;
@@ -5493,7 +5496,7 @@ farming.start = function () {
                     ciderPlaceBubbleText.setText("+ " + ciderWaiting)
                 }
                 else if (ciderEnabled == 1 && player.cropsStored[17].stored > 0 && player.cropsStored[8].stored > 0) {
-                        console.log("cidrTick triggered - ciderEnabled = " + ciderEnabled + "and crop 17 stored = " + player.cropsStored[17].stored + "and crop 8 stored = " + player.cropsStored[8].stored);
+                        //console.log("cidrTick triggered - ciderEnabled = " + ciderEnabled + "and crop 17 stored = " + player.cropsStored[17].stored + "and crop 8 stored = " + player.cropsStored[8].stored);
                         player.cropsStored[17].stored = player.cropsStored[17].stored - 1;
                         player.cropsStored[8].stored = player.cropsStored[8].stored - 1;
                         ciderWaiting = ciderWaiting + 1;
@@ -6387,8 +6390,7 @@ farming.start = function () {
         }
 
         event.stopPropagation();
-        event.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-        });  
+  
 
 
     });
@@ -6409,8 +6411,7 @@ farming.start = function () {
 
         }
         event.stopPropagation();
-        event.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-        });  
+      
     }, false);
 
     document.getElementById("buyWithStarCash").addEventListener("click", function (event) {
@@ -6425,8 +6426,7 @@ farming.start = function () {
             setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 750);
         }
         event.stopPropagation();
-        event.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-        });  
+    
     }, false);
 
     ///// buyWithStarCashTools
@@ -6445,8 +6445,7 @@ farming.start = function () {
 
         }
         event.stopPropagation();
-        event.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-        });  
+   
     }, false);
 
     document.getElementById("buyWithStarCashTools").addEventListener("click", function (event) {
@@ -6464,8 +6463,7 @@ farming.start = function () {
 
         }
         event.stopPropagation();
-        event.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-        });  
+       
     }, false);
 
     document.getElementById("viewAdImg").addEventListener("touchstart", function (event) {
@@ -6473,8 +6471,7 @@ farming.start = function () {
             console.log("touched viewAd")
             starCashViewAd();
             event.stopPropagation();
-            event.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-            });  
+           
         
     }, false);
    
@@ -6483,8 +6480,7 @@ farming.start = function () {
         console.log("clicked viewAd")
         starCashViewAd();
         event.stopPropagation();
-        event.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-        });     
+       
     }, false);
 
         function starCashViewAd() {
@@ -6573,8 +6569,7 @@ farming.start = function () {
         homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
         globalModalBlock = 0;
         event.stopPropagation();
-        event.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-        });  
+        
     }, false);
     document.getElementById("foundItClose").addEventListener("click", function (event) {
 
@@ -6582,8 +6577,7 @@ farming.start = function () {
         homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
         globalModalBlock = 0;
       event.stopPropagation();
-        event.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-        });  
+    
     }, false);
         //////////////    //////////////    //////////////    //////////////    //////////////    //////////////     //////////////    //////////////    //////////////    //////////////    //////////////
     ///////////////Inventory scene    //////////////    //////////////    //////////////    ////////////// Inventory scene
@@ -6631,8 +6625,7 @@ farming.start = function () {
             if (swapItPlayer == 25) {  swapItPlayer = 0; }
         }, 200);
 
-
-
+   
         var backBtnInventory = (new lime.GlossyButton).setColor("#46CD2D").setText("Close").setPosition((a.width / 2), a.height - 12).setSize(100, 25);
         inventoryScene.appendChild(backBtnInventory);
         goog.events.listen(backBtnInventory, ["mousedown", "touchstart"], function () {
@@ -6701,7 +6694,7 @@ farming.start = function () {
             {
                 c.replaceScene(storeScene, lime.transitions.SlideInDown);
             }
-
+       
         });
 
 
@@ -6774,7 +6767,10 @@ farming.start = function () {
         var gLabel22 = (new lime.Label).setPosition(170, 450).setSize(26, 12).setText("?").setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel22);
         //var gLabel23 = (new lime.Label).setPosition(270, 495).setSize(26, 12).setText("?").setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel23);
 
-
+        var starCashInvImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(8, 180).setSize(90, 40).setFill(imgArray[25].src);
+        cropsLayer.appendChild(starCashInvImg);
+        var starCashInvCount = (new lime.Label).setText(starCash).setFontFamily("Comic Sans MS").setFontColor("#000000").setPosition(60, 201).setFontSize(18);
+        cropsLayer.appendChild(starCashInvCount);
 
     ///////////
     ///items layer definition
@@ -6790,12 +6786,12 @@ farming.start = function () {
 
         var shovelImg = (new lime.Sprite).setPosition(150, 30).setSize(50, 50).setFill(imgArrayItems[18].src);
         itemsBack.appendChild(shovelImg);
-        var shovelLabel = (new lime.Label).setFontSize(10).setPosition(0, 50).setSize(78, 50).setText("IRON SHOVEL").setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(10);
+        var shovelLabel = (new lime.Label).setFontSize(12).setPosition(3, 45).setSize(70, 18).setText("IRON SHOVEL").setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(10);
         shovelImg.appendChild(shovelLabel);
 
         if (collectItems.storeItems[2].owned == 1) {
             shovelImg.setFill(imgArrayStore[2].src);
-            shovelLabel.setFontSize(10).setPosition(0, 32).setSize(78, 50).setText("BLESSED SHOVEL").setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(10);
+            shovelLabel.setFontSize(10).setPosition(3, 45).setSize(70, 18).setText("BLESSED SHOVEL").setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(10);
         }
 
         var pickImg = (new lime.Sprite).setPosition(240, 33).setSize(50, 50).setFill(imgArray[20].src);
@@ -7202,7 +7198,7 @@ farming.start = function () {
                 starCash = starCash - buyGeneralItem1.stars;
                 storeStars.setText(starCash);
               
-                player.cropsStored[17].stored = player.cropsStored[17].stored + 50;
+                player.cropsStored[16].stored = player.cropsStored[16].stored + 50;
                 gLabel17.setText(player.cropsStored[17].stored)
                 townRep = townRep + 1;
                 checkTownRep();
@@ -8079,7 +8075,7 @@ farming.start = function () {
     questPanel.appendChild(sellItemsBtn);
 
    
-    goog.events.listen(sellItemsBtn, ["mousedown", "touchstart"], function (e) {
+    goog.events.listen(sellItemsBtn, ["mousedown", "touchstart"], function (event) {
         var isHid = sellItemsBtn.getHidden();
         if (isHid == false) {
             sellLayer.setHidden(false);
@@ -8091,13 +8087,12 @@ farming.start = function () {
         }
         else { return };
     
-        e.event.stopPropagation();
+       event.stopPropagation();
 
-        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-        });   
+    
 
     });
-    goog.events.listen(ciderSellBtn, ["mousedown", "touchstart"], function (e) {
+    goog.events.listen(ciderSellBtn, ["mousedown", "touchstart"], function (event) {
         var isHid2 = ciderSellBtn.getHidden();
         if (isHid2 == false) {
             townRep = townRep + 1;
@@ -8111,21 +8106,19 @@ farming.start = function () {
             checkTownRep();
 
         } else { return };
-        e.event.stopPropagation();
+        event.stopPropagation();
 
-        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-        });   
+      
     });
  
-    goog.events.listen(questPanelCloseBtn, ["mousedown", "touchstart"], function (e) {
+    goog.events.listen(questPanelCloseBtn, ["mousedown", "touchstart"], function (event) {
         questPanel.setHidden(true);
         questPanelAvatar.setPosition(80, 34)
               
         CheckQuestInvItems();
-        e.event.stopPropagation();
+        event.stopPropagation();
 
-        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-        });   
+        
     });
 
 
@@ -8228,13 +8221,14 @@ farming.start = function () {
     }
 
 
-    goog.events.listen(questPanelCloseBtn, ["mousedown", "touchstart"], function () {
+    goog.events.listen(questPanelCloseBtn, ["mousedown", "touchstart"], function (event) {
         questPanel.setHidden(true);
         questPanelAvatar.setPosition(75, 34)
         marketTrigger.setHidden(false);
         storeOpenBtn.setHidden(false);
         //CheckQuestInvItems();
         /*  clearInterval(looperFelicia);     */
+        player.cropsStored[16].stored = player.cropsStored[16].stored + 50;
     });
 
 
@@ -8436,7 +8430,7 @@ farming.start = function () {
                      questPanelItemImg.setHidden(true);
                      questText1.setText("Thanks, but I do not need anything right now. Try me later.");
                      feliciaQuestBtn.setHidden(true);
-                     feliciaQuest.setHidden(true);
+                     feliciaQuest.setHidden(true); 
                  }
                  questPanel.setHidden(false);
              }
@@ -11495,7 +11489,7 @@ farming.start = function () {
     houseLayer.appendChild(houseExpandCover);
     var houseExpandBtn = (new lime.GlossyButton).setColor("#000000").setAnchorPoint(0.0).setPosition(-0, -30).setSize(40, 50).setText("").setOpacity(0.8);
     houseExpandCover.appendChild(houseExpandBtn); 
-    var houseExpandContainer = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(80, 200).setSize(100, 20).setFill("00FF00");
+    var houseExpandContainer = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(80, 200).setSize(100, 20);
     houseLayer.appendChild(houseExpandContainer); 
     var expandBtnImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-20, -24).setSize(40, 50).setFill("images/UI/upBtn.png");
     houseExpandBtn.appendChild(expandBtnImg);
