@@ -803,10 +803,10 @@
     </div>
     <div id="foundIt" class="blazingStar">
         <div id="foundItInner">
-            <h1 id="foundItTitle"> You found a </h1>
+            <h1 id="foundItTitle"> Item Found! </h1>
             <h2 id="foundItSubTitle"> Emerald Ring </h2>
             <div id="foundItImage"></div>
-            <div id="foundItSubText"> Someone in town may be interested in buying this item</div>
+            <div id="foundItSubText"> Someone in town may be interested in this item</div>
             <div id="foundItClose">CLOSE</div>
          
         </div>
@@ -1182,30 +1182,60 @@ var tid2 = setInterval(interPop2, 500);
            
 
 
-          // local notification
-          var onPermissionGranted = function () {
-              // Success
-              try {
-                  Enhance.disableLocalNotification()
-                  Enhance.enableLocalNotification('Your farm needs you', 'Play it now!', 60);
+          //// local notification
+          //var onPermissionGranted = function () {
+          //    // Success
+          //    try {
+          //        Enhance.disableLocalNotification();
+          //        Enhance.enableLocalNotification('Your farm needs you', 'Play it now!', 60);
+          //    }
+          //    catch (err) { console.log("caught notification INNER error = " + err); alert(err) }
+
+          //};
+
+          //var onPermissionRefused = function () {
+          //    // Failure
+          //    console.log("caught notification error Permission refused ")
+          //    alert(result)
+          //};
+          //function tryNotif() {
+          //    try { Enhance.requestLocalNotificationPermission(OnPermissionGranted, OnPermissionRefused); }
+          //    catch (err) { console.log("caught notification INNER error = " + err) };
+          //}
+          //window.addEventListener('load', function () {
+          //    tryNotif();
+          //})
+
+
+    /////
+          var currentGameVersion = 1.5;
+          let requestURL = 'https://guighostgames.com/MedievalFarms/currentAppVersion.json';
+          let request = new XMLHttpRequest();
+          request.open('GET', requestURL);
+          request.responseType = 'json';
+          request.send();
+          request.onload = function () {
+              const versionDetected = JSON.stringify(request.response);
+              console.log("json = " + versionDetected);
+              console.log(player)
+              console.log("response = " + request.response.latestVersion)
+              if (currentGameVersion < request.response.latestVersion) {
+                
+                  var answer = confirm("A new version is available. Click on OK to Visit the playstore to get the new content.")
+                  if (answer) { openPlayForUpdate();}
+                      
               }
-              catch (err) { console.log("caught notification INNER error = " + err); alert(err) }
 
-          };
-
-          var onPermissionRefused = function () {
-              // Failure
-              console.log("caught notification error Permission refused ")
-              alert(result)
-          };
-          function tryNotif() {
-              try { Enhance.requestLocalNotificationPermission(OnPermissionGranted, OnPermissionRefused); }
-              catch (err) { console.log("caught notification INNER error = " + err) };
+              
           }
-          window.addEventListener('load', function () {
-              tryNotif();          })
-     
+          function openPlayForUpdate() {
+              try {
+                  cordova.plugins.market.open('com.wGuiGhostFarms_9861566');
+               }
+              catch (err) { console.log("caught = " + err) }
 
+          }
+          document.getElementById("starCashOuterLabel").innerHTML = starCash;
  </script>
     </body>
 </html>

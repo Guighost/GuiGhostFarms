@@ -1482,7 +1482,7 @@ var farming = {
         var ownedAlready = 0;
         var randomMultiplier = 10;
         var randomInPlay = 0;
-
+     
         var runRandomChance = function () {
             if (collectItems.storeItems[2].owned == 1) { randomMultiplier = 9 };    ///user has blessed shovel
             if (scene == 1 && randomInPlay == 0) {
@@ -3185,7 +3185,7 @@ farming.start = function () {
             if (visibleLink == false) { 
                 localStorage.setItem('MedFarm_LoadAd', 1);
                 localStorage.setItem('MedFarm_StarCashBoost', 0);
-                lime.audio.setMute(true); setMute(1);
+                lime.audio.setMute(true); 
                 //setTimeout(function () {
                 //    boostCrops.setHidden(true);
                 //    homeBlock.setHidden(true);
@@ -6487,9 +6487,8 @@ farming.start = function () {
             localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
             localStorage.setItem('MedFarm_StarCashBoost', 1);
             localStorage.setItem('MedFarm_LoadAd', 1);
-             //starCash = starCash + 3;
-            //console.log("after add starcash = " + starCash);
-            //localStorage.setItem('starCash', starCash);
+
+            lime.audio.setMute(true); 
 
             setTimeout(function () {
                 //document.getElementById("sucessbuyTxt").style.display = 'block';
@@ -6518,8 +6517,13 @@ farming.start = function () {
         document.getElementById("fbshare").style.display = 'none';
         homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
         globalModalBlock = 0;
-        event.stopPropagation();
         showingStarCash = 0;
+        var mutedAtStart3 = localStorage.getItem('GuiGhostFarms_muted');
+        //console.log("3 = " + mutedAtStart3)
+        if (mutedAtStart3 == 0) { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); }
+        else { lime.audio.setMute(true); setMute(1) }
+        event.stopPropagation();
+     
     }, false);
     document.getElementById("closeFB").addEventListener("click", function (event) {
    
@@ -6528,6 +6532,10 @@ farming.start = function () {
         globalModalBlock = 0;
         event.stopPropagation();
         showingStarCash = 0;
+        var mutedAtStart4 = localStorage.getItem('GuiGhostFarms_muted');
+        console.log(mutedAtStart4)
+        if (mutedAtStart4 == 0) { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); }
+        else { lime.audio.setMute(true); setMute(1) }
     }, false);
 
     document.getElementById("buyStarsFromModal").addEventListener("touchstart", function (event) {
@@ -7812,7 +7820,7 @@ farming.start = function () {
         });
 
 
-    ///Market Scene/////////////////////////////////////////Market Town Scene///Market Town Scene/////////////////////////////////////////Market Town Scene///Market Scene/////////////////////////////////////////Market Scene
+    ///Town Scene/////////////////////////////////////////Market Town Scene///Market Town Scene/////////////////////////////////////////Market Town Scene///Market Scene/////////////////////////////////////////Market Scene
 
     var marketScene = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
 
@@ -8010,14 +8018,11 @@ farming.start = function () {
     townLayer.appendChild(marketTrigger);
     goog.events.listen(marketTrigger, ["mousedown", "touchstart"], function () {
      
-            a.sceneBefore = 8;
-            townLayer.setHidden(true);
+        a.sceneBefore = 8;
+        c.replaceScene(marketSellScene, lime.transitions.SlideInDown);
             questPanel.setHidden(true);
-            townFill1.setHidden(true);
-            marketLayer.setHidden(false);
-            marketFill1.setHidden(false);
-            backBtnTown.setHidden(true);
-            storeOpenBtn.setHidden(true);
+            
+           
 
        
     });
@@ -8341,7 +8346,7 @@ farming.start = function () {
                 questPanel.setHidden(false);
             }
             else {
-                questText1.setText("Thanks, but I do not need anything right now. Try me later.");
+                questText1.setText("My patrons are asking for CIDER.");
                 questPanel.setHidden(false);
             }
 
@@ -8428,7 +8433,7 @@ farming.start = function () {
                  else {
                      questPanelAvatar.setPosition(80, 34);
                      questPanelItemImg.setHidden(true);
-                     questText1.setText("Thanks, but I do not need anything right now. Try me later.");
+                     questText1.setText("I heard the king sometimes sends special orders to feed the troops");
                      feliciaQuestBtn.setHidden(true);
                      feliciaQuest.setHidden(true); 
                  }
@@ -8796,12 +8801,12 @@ farming.start = function () {
     ////////////
 ///////////////market layer////////////
     ////////////
+    var marketSellScene = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
     marketLayer = (new lime.Layer).setAnchorPoint(0, 0),
         marketFill1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("images/grass.png").setHidden(false);
-    marketScene.appendChild(marketFill1);
-    marketScene.appendChild(marketLayer);
-    marketLayer.setHidden(true);
-    marketFill1.setHidden(true);
+    marketSellScene.appendChild(marketFill1);
+    marketSellScene.appendChild(marketLayer);
+
 
 
 
@@ -9109,13 +9114,12 @@ farming.start = function () {
 
     goog.events.listen(backBtnMarket, ["mousedown", "touchstart"], function () {
         checkAchieves2();
-        marketFill1.setHidden(true);
-        marketLayer.setHidden(true);
-        marketFill1.setHidden(true);
+        c.replaceScene(marketScene, lime.transitions.SlideInUp);
         townLayer.setHidden(false);
         townFill1.setHidden(false);
         backBtnTown.setHidden(false);
         storeOpenBtn.setHidden(false);
+        questPanel.setHidden(true);
         
     });
 
@@ -9274,12 +9278,17 @@ farming.start = function () {
     introLayer.appendChild(moreGameBtnLabel);
     var introFill2 = (new lime.Sprite).setPosition(157, 260).setSize(300, 490).setFill("images/UI/CoverImg2.png");
     introScene.appendChild(introFill2);
+
+  
+
+
+
     //Intro event handler
     lime.audio.setMute(true);
     goog.events.listen(playGameBtn, ["mousedown", "touchstart"], function () {
         c.replaceScene(d, lime.transitions.SlideInUp); sceneBefore = 1; lime.audio.setMute(false);
         var mutedAtStart = localStorage.getItem('GuiGhostFarms_muted')
-        if (mutedAtStart == 0) { themeSong.play(true); smithSound.play(); }
+        if (mutedAtStart == 0) { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); }
         else { lime.audio.setMute(true); setMute(1) }
         a.checkTutSeen();
         
@@ -9290,7 +9299,7 @@ farming.start = function () {
 
 
     });
-    //goog.events.listen(moreGameBtn, ["mousedown", "touchstart"], function () { window.open('https://guighostgames.com', '_system'); lime.audio.setMute(true); setMute(1); });
+
     c.replaceScene(introScene);
     var hideloading = document.getElementById("loadingGG");
     hideloading.style.display = 'none';
@@ -12578,11 +12587,8 @@ farming.start = function () {
 
                 }, this, 500)
           
-           
     
-                document.getElementById("starCashOuterLabel").innerHTML = starCash;
     
-        
                
     //////end of farming.start
 };
