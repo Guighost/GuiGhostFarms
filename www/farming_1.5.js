@@ -7952,7 +7952,7 @@ farming.start = function () {
     goog.events.listen(storeOpenBtn, ["mousedown", "touchstart"], function () {
         collectItems = JSON.parse(localStorage.getItem('GuiGhostFarms_playerItems'));
         if (parseInt(collectItems.storeItems[4].owned == 0)) { buyGeneralItem5.setHidden(true); buyGeneralItem6.setHidden(true);  }
-        else { I did n(true); buyGeneralItem6.setHidden(false);  }
+        else { buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false);  }
         c.replaceScene(storeScene, lime.transitions.SlideInUp);
      
     });
