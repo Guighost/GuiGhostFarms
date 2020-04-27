@@ -5337,7 +5337,7 @@ farming.start = function () {
     var ciderPlace =(new lime.Sprite).setAnchorPoint(0, 0).setPosition(148, 240).setSize(70, 70).setFill("images/Orchard/ciderPlace1.png");
     orchardLayer.appendChild(ciderPlace);
     ciderPlace.owned = 0;
-    ciderPlace.setHidden(true); console.log("hitIt here0");
+    ciderPlace.setHidden(true); 
     var ciderPlaceBtn = (new lime.GlossyButton).setColor("#663300").setText("").setPosition(35, 35).setSize(70, 70).setOpacity(0.2);
     ciderPlace.appendChild(ciderPlaceBtn);
 
@@ -5514,14 +5514,14 @@ farming.start = function () {
                 orchardRockBlock11.setHidden(false); orchardRockBlock12.setHidden(false);
                 //orchardRockBlockBtn.setHidden(false); orchardRockBlockBtnImg.setHidden(false);
                 barnUnlockOBtn.setHidden(true); barnUnlockOImg.setHidden(true);
-                ciderPlace.setHidden(true); console.log("hitIt here")
+                ciderPlace.setHidden(true); 
                 ciderPlaceBtn.setHidden(true);
             }
             else if (orchardBarnLevel == 1) {
                 orchardBarn.setFill("images/Orchard/orchardBarn1.png")
                 orchardRockBlockBtn.setHidden(true); orchardRockBlockBtnImg.setHidden(true);
                 orchardRockBlock11.setHidden(true); orchardRockBlock12.setHidden(true);
-                ciderPlace.setHidden(true); ciderPlace.setHidden(true); console.log("hitIt here2")
+                ciderPlace.setHidden(true); ciderPlace.setHidden(true); 
                 if (barnupO == 2) { barnUnlockOBtn.setPosition(58, 65); barnUnlockOImg.setPosition(38, 43); }
                 if (barnupO == 4) { barnUnlockOBtn.setPosition(58, 60); barnUnlockOImg.setPosition(38, 38); barnupO = 0; }
             }
@@ -7457,10 +7457,10 @@ farming.start = function () {
 
     //move items up if above owned
         if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item5y = 0; }
-        else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 1) { item5y = 65; buyGeneralItem6.setHidden(false);}
-        else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item5y = 65; buyGeneralItem6.setHidden(false);}
+        else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 1) { item5y = 65; }
+        else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item5y = 65; }
         else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item5y = 65; }
-        else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 1) { item5y = 130; buyGeneralItem6.setHidden(false); }
+        else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 1) { item5y = 130; }
         else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 0) { item5y = 130; }
         else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item5y = 130; }
     
@@ -7581,6 +7581,7 @@ farming.start = function () {
         else { buyGeneralItem6.setHidden(false);  }
         repositionStoreItems();
         //console.log("item6 is hidden = " + buyGeneralItem6.getHidden() + " position = " + buyGeneralItem6.getPosition().y)
+
         function repositionStoreItems() {
             if (collectItems.storeItems[4].owned == 0) { buyGeneralItem5.setHidden(true); buyGeneralItem6.setHidden(true); }
             else { buyGeneralItem6.setHidden(false); }
@@ -7590,18 +7591,19 @@ farming.start = function () {
             //move Press
             if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1) { item4y = 0; }
                 else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0) { item4y = 65; }
-                else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[2].owned == 1) { item4y = 65; }
+                else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1) { item4y = 65; }
                  else { item4y = 130; }
 
             //move Bottles and barrels
-            if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item5y = 0; buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false); buyGeneralItem6.setPosition(0, item5y);}
-            else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 1) { item5y = 65; item6y = 130; buyGeneralItem6.setHidden(false); }
-            else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item5y = 65; item6y = 130; buyGeneralItem6.setHidden(false);}
-            else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item5y = 65; item6y = 130; buyGeneralItem4.setHidden(false);buyGeneralItem6.setHidden(true); }
+            if (collectItems.storeItems[4].owned == 1) { buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false);}
+            if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item5y = 0; buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false); buyGeneralItem6.setPosition(0, item5y); console.log("item5y 1 is " + item5y) }
+            else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 1) { item5y = 65; item6y = 130; buyGeneralItem6.setHidden(false); console.log("item5y 2 is " + item5y) }
+            else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item5y = 65; item6y = 130; buyGeneralItem6.setHidden(false); console.log("item5y 3 is " + item5y) }
+            else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item5y = 65; item6y = 130; buyGeneralItem4.setHidden(false); buyGeneralItem6.setHidden(true); console.log("item5y 4 is " + item5y)  }
             else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 1) { item5y = 130; item6y = 195; buyGeneralItem6.setHidden(false);}
             else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 0) { item5y = 130; item6y = 195; buyGeneralItem4.setHidden(false); buyGeneralItem6.setHidden(true); }
             else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item5y = 130; item6y = 195; buyGeneralItem4.setHidden(false); buyGeneralItem6.setHidden(true); }
-
+            if (collectItems.storeItems[4].owned == 1) { buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false);  }
             buyGeneralItem3.setPosition(0, item3y);
             buyGeneralItem4.setPosition(0, item4y);
             buyGeneralItem5.setPosition(0, item5y);
@@ -7609,7 +7611,7 @@ farming.start = function () {
             //console.log("item6 is hidden = " + buyGeneralItem6.getHidden() + " position = " + buyGeneralItem6.getPosition().y)
         }
 
-
+        console.log("item5y is " + item5y) 
 
 
 
@@ -7951,9 +7953,22 @@ farming.start = function () {
     storeOpenBtn.appendChild(storeOpenImg);
     goog.events.listen(storeOpenBtn, ["mousedown", "touchstart"], function () {
         collectItems = JSON.parse(localStorage.getItem('GuiGhostFarms_playerItems'));
-        if (parseInt(collectItems.storeItems[4].owned == 0)) { buyGeneralItem5.setHidden(true); buyGeneralItem6.setHidden(true);  }
-        else { buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false);  }
+        //if (parseInt(collectItems.storeItems[4].owned) == 1) { buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false); buyGeneralItem6.setPosition(0,65); }
+        //else { buyGeneralItem6.setHidden(true); }
+        //if (collectItems.storeItems[4].owned == 1) { buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false); }
+        //if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item5y = 0; buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false); buyGeneralItem6.setPosition(0, item5y); }
+        //else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 1) { item5y = 65; item6y = 130; buyGeneralItem6.setHidden(false); }
+        //else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item5y = 65; item6y = 130; buyGeneralItem6.setHidden(false); }
+        //else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item5y = 65; item6y = 130; buyGeneralItem4.setHidden(false); buyGeneralItem6.setHidden(true); }
+        //else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 1) { item5y = 130; item6y = 195; buyGeneralItem6.setHidden(false); }
+        //else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 0) { item5y = 130; item6y = 195; buyGeneralItem4.setHidden(false); buyGeneralItem6.setHidden(true); }
+        //else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item5y = 130; item6y = 195; buyGeneralItem4.setHidden(false); buyGeneralItem6.setHidden(true); }
+        //if (collectItems.storeItems[4].owned == 1) { buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false); buyGeneralItem6.setPosition(0, 65); }
+        //buyGeneralItem3.setPosition(0, item3y);
+        //buyGeneralItem4.setPosition(0, item4y);
+        //buyGeneralItem5.setPosition(0, item5y);
         c.replaceScene(storeScene, lime.transitions.SlideInUp);
+        repositionStoreItems();
      
     });
 
