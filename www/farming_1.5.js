@@ -8528,7 +8528,7 @@ farming.start = function () {
              if (who == "sara") {
                  questHeader.setText("InnKeeper Sara");
                  questPanelAvatar.setFill(imgArrayTown2[0].src)
-                 questText1.setText("My patrons want CIDER.          If you can make some, I will buy it from you");
+                 questText1.setText("My patrons want CIDER. If you can make some, I will buy it from you");
                  sellAvatar.setFill(imgArrayTown[1].src);  
                  sellItemsBtn.setHidden(true);
                  checkSellItems('sara');
