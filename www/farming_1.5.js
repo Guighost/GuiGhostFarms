@@ -8868,7 +8868,7 @@ farming.start = function () {
     }
 
     var goPremiumBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(20, 50).setSize(275, 323).setFill("images/UI/goPremium.png");
-    townFill1.appendChild(goPremiumBack);
+    townLayer.appendChild(goPremiumBack);
     var goPremiumBtn = (new lime.GlossyButton).setColor("#00ff00").setText("Visit Shop").setPosition(210, 315).setSize(80, 25);
     goPremiumBack.appendChild(goPremiumBtn);
     var closePremiumBtn = (new lime.GlossyButton).setColor("#663300").setText("Close").setPosition(60, 315).setSize(80, 25);
