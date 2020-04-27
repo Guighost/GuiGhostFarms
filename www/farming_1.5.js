@@ -7597,10 +7597,10 @@ farming.start = function () {
             if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item5y = 0; buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false); buyGeneralItem6.setPosition(0, item5y);}
             else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 1) { item5y = 65; item6y = 130; buyGeneralItem6.setHidden(false); }
             else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item5y = 65; item6y = 130; buyGeneralItem6.setHidden(false);}
-            else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item5y = 65; item6y = 130; buyGeneralItem6.setHidden(true); }
+            else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item5y = 65; item6y = 130; buyGeneralItem4.setHidden(false);buyGeneralItem6.setHidden(true); }
             else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 1) { item5y = 130; item6y = 195; buyGeneralItem6.setHidden(false);}
-            else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 0) { item5y = 130; item6y = 195; buyGeneralItem6.setHidden(true); }
-            else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item5y = 130; item6y = 195; buyGeneralItem6.setHidden(true); }
+            else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 0) { item5y = 130; item6y = 195; buyGeneralItem4.setHidden(false); buyGeneralItem6.setHidden(true); }
+            else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item5y = 130; item6y = 195; buyGeneralItem4.setHidden(false); buyGeneralItem6.setHidden(true); }
 
             buyGeneralItem3.setPosition(0, item3y);
             buyGeneralItem4.setPosition(0, item4y);
@@ -7952,7 +7952,7 @@ farming.start = function () {
     goog.events.listen(storeOpenBtn, ["mousedown", "touchstart"], function () {
         collectItems = JSON.parse(localStorage.getItem('GuiGhostFarms_playerItems'));
         if (parseInt(collectItems.storeItems[4].owned == 0)) { buyGeneralItem5.setHidden(true); buyGeneralItem6.setHidden(true);  }
-        else { buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false);  }
+        else { I did n(true); buyGeneralItem6.setHidden(false);  }
         c.replaceScene(storeScene, lime.transitions.SlideInUp);
      
     });
