@@ -3238,7 +3238,7 @@ farming.start = function () {
 
     goog.events.listen(houseEnterBtn, ["mousedown", "touchstart"], function () {
         c.replaceScene(houseScene, lime.transitions.SlideInUp)
-        seen1stHouseNotif = localStorage.getItem("MedFarm_seen1stHouseNotif");
+        seen1stHouseNotif = localStorage.getItem("MedFarms_seen1stHouseNotif");
         if (seen1stHouseNotif == 1) { questPanelHouse.setHidden(true); };
         checkHouseUpgradesBought();
         sceneBefore = 1;
@@ -6375,7 +6375,7 @@ farming.start = function () {
         localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
         dayCount = 1;
         yearCount = 1;
-        toolsEver = 0; moneyEver = 0; pickedEver = 0;
+        toolsEver = 0; moneyEver = 0; pickedEver = 0; townRep = 0; ciderEnabled = 0; mayorReady = 0; friarReady = 0; feliciaReady = 0; saraReady = 0; player.money = 500; player.tools = 50;
         a.achievements[1] == false; a.achievements[2] == false; a.achievements[3] == false; a.achievements[4] == false; a.achievements[5] == false;
         a.achievements[6] == false; a.achievements[7] == false; a.achievements[8] == false; a.achievements[9] == false; a.achievements[10] == false;
         a.achievements[11] == false; a.achievements[12] == false; a.achievements[13] == false; a.achievements[14] == false; a.achievements[15] == false; a.achievements[16] == false;
@@ -6412,7 +6412,13 @@ farming.start = function () {
         localStorage.removeItem('adWatched');
         localStorage.removeItem('MedFarm_orchardBarnLevel');
         localStorage.removeItem('GuiGhostFarms_playerItems');
- 
+        localStorage.removeItem('MedFarm_StarCashBoost');
+        localStorage.removeItem('MedFarm_ciderPlaceOwned');
+        localStorage.removeItem('MedFarms_townRep');
+        localStorage.removeItem('MedFarms_seenPremiumPromo');
+        localStorage.removeItem('MedFarms_seen1stHouseNotif');
+        localStorage.removeItem('MedFarm_Rewarded');     
+                
         setTimeout(function () { location.reload(); }, 750);
 
     });
@@ -12482,7 +12488,7 @@ farming.start = function () {
     goog.events.listen(questPanelCloseBtnHouse, ["mousedown", "touchstart"], function () {
         questPanelHouse.setHidden(true);
         seen1stHouseNotif = 1
-        localStorage.setItem("MedFarm_seen1stHouseNotif", 1);
+        localStorage.setItem("MedFarms_seen1stHouseNotif", 1);
     }); 
 
     //if has seen initial notif in house hide it until denise is clicked
