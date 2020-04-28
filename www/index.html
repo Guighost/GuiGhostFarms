@@ -201,6 +201,8 @@
             margin-top: 60px;
          padding-top: 10px;  
          padding-left:2px;
+         text-align:left;
+         font-size:20px;
         }
         #starCashRow3 {
             width: 100%;
@@ -251,7 +253,7 @@
         #buyStarsFromModal {
             width: 85px;
             height: 55px;
-            transform: translate(43px, -30px);
+            transform: translate(43px, -35px);
         }
         /*#currentStarCashBack2 {
             width: 280px;
@@ -770,7 +772,7 @@
 
             <p id="sucessbuyTxt"> + $500</p>
             <div id="currentStarCashBack4">
-                Buy Stars in the Town <img id="buyStarsFromModal" src="images/UI/shopIcon.png" alt="buyStars" />
+                Buy Stars in Town <img id="buyStarsFromModal" src="images/UI/shopIcon.png" alt="buyStars" />
             </div>
         </div>
         <div id="fbshareFooter"> <a id="closeFB"></a></div>
@@ -1002,9 +1004,9 @@ var tid2 = setInterval(interPop2, 500);
                
                setTimeout(function () {
                    document.getElementById("starCashOuterLabel").innerHTML = starCash;
-                   document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
-                   document.getElementById("sucessbuyTxt").style.display = 'block'; }, 1500);
-               setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 15000);
+                   document.getElementById("waitText").innerHTML = '+ 3 Stars';
+                   document.getElementById("waitText").style.display = 'block'; }, 1500);
+               setTimeout(function () { document.getElementById("waitText").style.display = 'none'; }, 15000);
             }
             var whichMore = 'stack'; 
             ///more games button function

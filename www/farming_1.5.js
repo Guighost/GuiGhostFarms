@@ -6460,10 +6460,10 @@ farming.start = function () {
             starCash = starCash - 5;
             localStorage.setItem('starCash', starCash);
             document.getElementById("starCashOuterLabel").innerHTML = starCash;
-            document.getElementById("sucessbuyTxt").innerHTML = '+ 500 Coins';
-            document.getElementById("sucessbuyTxt").style.display = 'block';
-            setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 1000);
-
+            document.getElementById("waitText").innerHTML = '+ 500 Coins';
+            document.getElementById("waitText").style.display = 'block';
+            setTimeout(function () { document.getElementById("waitText").style.display = 'none'; }, 1000);
+            checkAchieves2();
 
         }
         event.stopPropagation();
@@ -6477,9 +6477,9 @@ farming.start = function () {
             starCash = starCash - 5;
             localStorage.setItem('starCash', starCash);
             document.getElementById("starCashOuterLabel").innerHTML = starCash;
-            document.getElementById("sucessbuyTxt").innerHTML = '+ 500 Coins';
-            document.getElementById("sucessbuyTxt").style.display = 'block';
-            setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 750);
+            document.getElementById("waitText").innerHTML = '+ 500 Coins';
+            document.getElementById("waitText").style.display = 'block';
+            setTimeout(function () { document.getElementById("waitText").style.display = 'none'; }, 750);
         }
         event.stopPropagation();
     
@@ -6494,9 +6494,9 @@ farming.start = function () {
             a.updateTools();
             localStorage.setItem('starCash', starCash);
             document.getElementById("starCashOuterLabel").innerHTML = starCash;
-            document.getElementById("sucessbuyTxt").innerHTML = '+ 500 Tools';
-            document.getElementById("sucessbuyTxt").style.display = 'block';
-            setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 1000);
+            document.getElementById("waitText").innerHTML = '+ 500 Tools';
+            document.getElementById("waitText").style.display = 'block';
+            setTimeout(function () { document.getElementById("waitText").style.display = 'none'; }, 1000);
 
 
         }
@@ -6512,9 +6512,9 @@ farming.start = function () {
             a.updateTools();
             localStorage.setItem('starCash', starCash);
             document.getElementById("starCashOuterLabel").innerHTML = starCash;
-            document.getElementById("sucessbuyTxt").innerHTML = '+ 500 Tools';
-            document.getElementById("sucessbuyTxt").style.display = 'block';
-            setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 1000);
+            document.getElementById("waitText").innerHTML = '+ 500 Tools';
+            document.getElementById("waitText").style.display = 'block';
+            setTimeout(function () { document.getElementById("waitText").style.display = 'none'; }, 1000);
 
 
         }
@@ -6555,7 +6555,7 @@ farming.start = function () {
                 document.getElementById("starCashOuterLabel").innerHTML = starCash;
             }, 1500);
 
-            setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 33000);
+            setTimeout(function () { document.getElementById("waitText").style.display = 'none'; }, 33000);
             var adImg = document.getElementById("viewAdImg");
             document.getElementById("waitText").innerHTML = 'Wait time is required before you can boost again';
             //hide boost for 2 min
@@ -12550,29 +12550,29 @@ farming.start = function () {
     ////achievement checks
     function checkAchieves2() {
         var acresOwned = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
-   
-        if (a.achievements[1] == false && pickedEver >= 500) { a.achievements[1] = true; achieve1Check.setHidden(false); starCash = starCash + 3; displayAchieve(1); };
-        if (a.achievements[2] == false && pickedEver >= 5000) { a.achievements[2] = true; achieve2Check.setHidden(false); starCash = starCash + 5; displayAchieve(2); };
-        if (a.achievements[3] == false && player.farms > 1) { a.achievements[3] = true; achieve3Check.setHidden(false); starCash = starCash + 3; displayAchieve(3); };
-        if (a.achievements[4] == false && player.barnLevel >= 5) { a.achievements[4] = true; achieve4Check.setHidden(false); starCash = starCash + 5; displayAchieve(4); };
-        if (a.achievements[5] == false && toolsEver >= 500) { a.achievements[5] = true; achieve5Check.setHidden(false); starCash = starCash + 3; displayAchieve(5); };
-        if (a.achievements[6] == false && toolsEver >= 5000) { a.achievements[6] = true; achieve6Check.setHidden(false); starCash = starCash + 5; displayAchieve(6); };
-        if (a.achievements[7] == false && yearCount >= 2) { a.achievements[7] = true; achieve7Check.setHidden(false); starCash = starCash + 5; displayAchieve(7); };
-        if (a.achievements[8] == false && acresOwned >= 4) { a.achievements[8] = true; achieve8Check.setHidden(false); starCash = starCash + 10; displayAchieve(8); };
-        if (a.achievements[9] == false && vinyardHouseLevel > 1) { a.achievements[9] = true; achieve9Check.setHidden(false); starCash = starCash + 5; displayAchieve(9); };
-        if (a.achievements[10] == false && orchardTreeBlock > 1 && vinyardBlocks > 1 && vinyardBlocks2 > 1 && player.fields >= 3) { a.achievements[10] = true; achieve10Check.setHidden(false); starCash = starCash + 10; displayAchieve(10); };
-        if (a.achievements[11] == false && player.cropsStored[10].stored >= 100 && player.cropsStored[11].stored >= 100) { a.achievements[11] = true; achieve11Check.setHidden(false); starCash = starCash + 5; displayAchieve(11); };
+        starCash = parseInt(starCash);
+        if (a.achievements[1] == false && pickedEver >= 500) { a.achievements[1] = true; achieve1Check.setHidden(false); starCash = parseInt(starCash) + 3; displayAchieve(1); };
+        if (a.achievements[2] == false && pickedEver >= 5000) { a.achievements[2] = true; achieve2Check.setHidden(false); starCash = parseInt(starCash) + 5; displayAchieve(2); };
+        if (a.achievements[3] == false && player.farms > 1) { a.achievements[3] = true; achieve3Check.setHidden(false); starCash = parseInt(starCash) + 3; displayAchieve(3); };
+        if (a.achievements[4] == false && player.barnLevel >= 5) { a.achievements[4] = true; achieve4Check.setHidden(false); starCash = parseInt(starCash) + 5; displayAchieve(4); };
+        if (a.achievements[5] == false && toolsEver >= 500) { a.achievements[5] = true; achieve5Check.setHidden(false); starCash = parseInt(starCash) + 3; displayAchieve(5); };
+        if (a.achievements[6] == false && toolsEver >= 5000) { a.achievements[6] = true; achieve6Check.setHidden(false); starCash = parseInt(starCash) + 5; displayAchieve(6); };
+        if (a.achievements[7] == false && yearCount >= 2) { a.achievements[7] = true; achieve7Check.setHidden(false); starCash = parseInt(starCash) + 5; displayAchieve(7); };
+        if (a.achievements[8] == false && acresOwned >= 4) { a.achievements[8] = true; achieve8Check.setHidden(false); starCash = parseInt(starCash) + 10; displayAchieve(8); };
+        if (a.achievements[9] == false && vinyardHouseLevel > 1) { a.achievements[9] = true; achieve9Check.setHidden(false); starCash = parseInt(starCash) + 5; displayAchieve(9); };
+        if (a.achievements[10] == false && orchardTreeBlock > 1 && vinyardBlocks > 1 && vinyardBlocks2 > 1 && player.fields >= 3) { a.achievements[10] = true; achieve10Check.setHidden(false); starCash = parseInt(starCash) + 10; displayAchieve(10); };
+        if (a.achievements[11] == false && player.cropsStored[10].stored >= 100 && player.cropsStored[11].stored >= 100) { a.achievements[11] = true; achieve11Check.setHidden(false); starCash = parseInt(starCash) + 5; displayAchieve(11); };
         if (a.achievements[12] == false && player.cropsStored[0] >= 1 && player.cropsStored[1] >= 1 && player.cropsStored[2] >= 1 && player.cropsStored[3] >= 1 && player.cropsStored[4] >= 1
             && player.cropsStored[5] >= 1 && player.cropsStored[6] >= 1 && player.cropsStored[7] >= 1 && player.cropsStored[8] >= 1 && player.cropsStored[9] >= 1 && player.cropsStored[10] >= 1
             && player.cropsStored[11] >= 1 && player.cropsStored[12] >= 1 && player.cropsStored[13] >= 1) {
-            a.achievements[12] = true; achieve12Check.setHidden(false); starCash = starCash + 5; displayAchieve(12);
+            a.achievements[12] = true; achieve12Check.setHidden(false); starCash = parseInt(starCash) + 5; displayAchieve(12);
         };
-        if (a.achievements[13] == false && player.pastureLevel >= 3) { a.achievements[13] = true; achieve13Check.setHidden(false); starCash = starCash + 5; displayAchieve(13); };
-        if (a.achievements[14] == false && moneyEver >= 5000) { a.achievements[14] = true; achieve14Check.setHidden(false); starCash = starCash + 5; displayAchieve(14); };
-        if (a.achievements[15] == false && boughtStarCash == true) { a.achievements[15] = true; achieve15Check.setHidden(false); starCash = starCash + 3; displayAchieve(15); };
-        if (a.achievements[16] == false && yearCount >= 10) { a.achievements[16] = true; achieve16Check.setHidden(false); starCash = starCash + 25; displayAchieve(16); };
-        starCashLabelA.setText(starCash);
-        localStorage.setItem('starCash', starCash);
+        if (a.achievements[13] == false && player.pastureLevel >= 3) { a.achievements[13] = true; achieve13Check.setHidden(false); starCash = parseInt(starCash) + 5; displayAchieve(13); };
+        if (a.achievements[14] == false && moneyEver >= 5000) { a.achievements[14] = true; achieve14Check.setHidden(false); starCash = parseInt(starCash) + 5; displayAchieve(14); };
+        if (a.achievements[15] == false && boughtStarCash == true) { a.achievements[15] = true; achieve15Check.setHidden(false); starCash = parseInt(starCash) + 3; displayAchieve(15); };
+        if (a.achievements[16] == false && yearCount >= 10) { a.achievements[16] = true; achieve16Check.setHidden(false); starCash = parseInt(starCash) + 25; displayAchieve(16); };
+        starCashLabelA.setText(parseInt(starCash));
+        localStorage.setItem('starCash', parseInt(starCash));
         localStorage.setItem('GuiGhostFarms_achievements', JSON.stringify(a.achievements));
     }
 
