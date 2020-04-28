@@ -1168,20 +1168,23 @@ var rewardTypes = {
 
 //questHeader.setText("Mayor Bouregard");
 //questText1.setText("I heard that some old things have been found on that farm of yours. If you come across any JEWELS, let me know")
-//questParams.mayor[0].completed
+//questParams.mayor[0].text
 var questParams = {
     mayor: [ //Town Hall
         { highestCompleted: 0, available: true },
-        { name: "Necklackes", text: "I heard that some old things have been found on that farm of yours. If you DIG UP any JEWELRY, let me know", completed: 0, rewardType: 0, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: "Ill buy that jewelery  " },
-        { name: "Rings", text: "Come back to me time to time. I may have things to do", completed: 0, rewardType: 0, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: " " },
-        { name: "Gems", text: "quest 3", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
-
+        { name: "Necklackes", text: "Many things have been found on your farm. If you DIG UP any JEWELRY, let me know", completed: 0, rewardType: 0, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: "Ill buy that jewelery  " },
+        { name: "Rings", text: "Come back to me time to time. I may have things to do.      Got any Jewels?", completed: 0, rewardType: 0, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Gems", text: "The King sends hearlds sometimes. Please them and you may gain an audience", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Felicia", text: "My wife Felicia spends all day in market, looking for new foods to cook", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Felicia2", text: "Old Man Haridison is considering selling his STABLE in the future", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
     ],
     monk: [   ///church
         { highestCompleted: 0, available: true },
         { name: "Bounty", text: "I am here to study old relics. Bring me any ARTIFACTS you may DIG UP", completed: 0, rewardType: 4, rewardAmount: 10, rewardItem: 0, requiredItem: "none", successText: " " },
-        { name: "Artifact", text: "", completed: 0, rewardType: 4, rewardAmount: 15, rewardItem: 0, requiredItem: "none", successText: " " },
-
+        { name: "Artifact", text: "The more artifacts you bring, the more I can learn about this area", completed: 0, rewardType: 4, rewardAmount: 15, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Artifact2", text: "I learned that a previous owner of your farm may have been a noble", completed: 0, rewardType: 4, rewardAmount: 15, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Artifact3", text: "Some of the artifacts you find could be HEIRLOOMS. These are special items you keep", completed: 0, rewardType: 4, rewardAmount: 15, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Artifact4", text: "I heard that there are more farm ACRES coming up for sale in the area very soon", completed: 0, rewardType: 4, rewardAmount: 15, rewardItem: 0, requiredItem: "none", successText: " " },
     ],
     felicia: [   ///market
         { highestCompleted: 0, available: true },
@@ -3811,12 +3814,15 @@ farming.start = function () {
 
                 if (secondsToUpgrade <= 0) {
                     toolMoverLabel.setHidden(true); scaffoldH.setHidden(true); upgradeCloud.setHidden(true);
-                    if (player.barnLevel == 2) { barn.setFill(imgArray6[1]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Artichoke"); unlockedCropImage.setFill("images/" + a.crops[2].harvest); barnUnlock3.setHidden(false); };
-                    if (player.barnLevel == 3) { barn.setFill(imgArray6[2]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Eggplant"); unlockedCropImage.setFill("images/" + a.crops[3].harvest); barnUnlock3.setHidden(false); };
-                    if (player.barnLevel == 4) { barn.setFill(imgArray6[3]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Peppers"); unlockedCropImage.setFill("images/" + a.crops[4].harvest); barnUnlock3.setHidden(false); };
+                    if (player.barnLevel == 2) {
+                        barn.setFill(imgArray6[1]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Artichoke"); unlockedCropImage.setFill("images/" + a.crops[2].harvest); barnUnlock3.setHidden(false);
+                        homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);
+                    };
+                    if (player.barnLevel == 3) { barn.setFill(imgArray6[2]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Eggplant"); unlockedCropImage.setFill("images/" + a.crops[3].harvest); barnUnlock3.setHidden(false); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);};
+                    if (player.barnLevel == 4) { barn.setFill(imgArray6[3]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Peppers"); unlockedCropImage.setFill("images/" + a.crops[4].harvest); barnUnlock3.setHidden(false); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);};
                     if (player.barnLevel == 5) {
                         barn.setFill(imgArray6[4]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest);
-                        barnUnlock3.setHidden(true); barn.setPosition(86, 4).setSize(134, 155);
+                        barnUnlock3.setHidden(true); barn.setPosition(86, 4).setSize(134, 155); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);
                     };
                     barnUnlock.setText("Lvl " + player.barnLevel + "/5");
                     setTimeout(function () {
@@ -5489,6 +5495,7 @@ farming.start = function () {
     orchardLayer.appendChild(waterMoving);
     var waterMoving2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(120, 350).setSize(22, 44).setFill("images/" + a.waterfallImg[4].image);
     orchardLayer.appendChild(waterMoving2);
+
     a.waterAnim = function () {
         var imgW = 0;
         var imgW2 = 0;
@@ -5537,7 +5544,7 @@ farming.start = function () {
             var orchardTreesHid = localStorage.getItem("GuiGhostFarms_orchardTreeBlock");
             orchardBarnLevel = localStorage.getItem("MedFarm_orchardBarnLevel");
             if (orchardTreesHid < 2) { ciderPlace.setHidden(true); ciderPlace.setHidden(true); ciderPlaceBtn.setHidden(true); }
-            else if (orchardTreesHid == 2 && orchardBarnLevel == 2) { ciderPlace.setHidden(false); ciderPlaceBtn.setHidden(true); }
+            else if (orchardTreesHid == 2 && orchardBarnLevel == 2) { ciderPlace.setHidden(false); ciderPlaceBtn.setHidden(true); ciderPlace.setFill("images/Orchard/ciderPlace2.png"); }
             ///cider harvest
             if (ciderTick > 240 ) {
                 //console.log("cidrTick triggered - ciderEnabled = " + ciderEnabled + "and crop 17 stored = " + player.cropsStored[17].stored + "and crop 9 stored = " + player.cropsStored[9].stored);
@@ -8220,7 +8227,7 @@ farming.start = function () {
             if (collectItems.digUpSells[i].owned == 1) {
 
                 if (collectItems.digUpSells[i].who == 'Mayor') { mayorReady = 1; }
-                if (collectItems.digUpSells[i].who == 'Friar') { friarReady = 1;}
+                if (collectItems.digUpSells[i].who == 'Friar') { friarReady = 1; console.log("monk has item " + collectItems.digUpSells[i].name)}
                 if (collectItems.digUpSells[i].who == 'Sara') { saraReady = 1; }
                 if (collectItems.digUpSells[i].who == 'Felicia' && questParams.felicia[2].completed == 0) { feliciaReady = 1; }
             }
@@ -8239,15 +8246,19 @@ farming.start = function () {
             }
             else if (mayorReady == 0) {
                 //console.log("mayorReady else= " + mayorReady)
+                var randomSpeech1 = Math.round(Math.random() * 5);
+                if (randomSpeech1 < 1) { randomSpeech1 = 1 };
+                if (randomSpeech1 > 5) { randomSpeech1 = 5 };
                 mayorQuest.setFill(imgArrayTown[15].src);
              
                 goog.events.unlisten(mayorQuestBtn, ["mousedown", "touchstart"], function (e) {  })
                 goog.events.unlisten(mayor, ["mousedown", "touchstart"], function (e) { })
-                goog.events.listen(mayorQuestBtn, ["mousedown", "touchstart"], function (e) { handleTownQuest("mayor", 0);  questText1.setText("Bring me more jewels"); questPanel.who = 'mayor';}   );
-                goog.events.listen(mayor, ["mousedown", "touchstart"], function (e) { handleTownQuest("mayor", 0); questText1.setText("Bring me more jewels"); questPanel.who = 'mayor'; } );
+                goog.events.listen(mayorQuestBtn, ["mousedown", "touchstart"], function (e) { handleTownQuest("mayor", 0); questText1.setText(questParams.mayor[randomSpeech1].text); questPanel.who = 'mayor';}   );
+                goog.events.listen(mayor, ["mousedown", "touchstart"], function (e) { handleTownQuest("mayor", 0); questText1.setText(questParams.mayor[randomSpeech1].text); questPanel.who = 'mayor'; } );
             }
         
             if (friarReady > 0) {
+               
                 //console.log("friarReady If= " + friarReady)
                 monkQuest.setFill(imgArrayTown[16].src);
                 monkQuest.setHidden(false); monkQuestBtn.setHidden(false);
@@ -8258,12 +8269,15 @@ farming.start = function () {
             }
             else {
                 //console.log("friarReady Else= " + friarReady)
+                var randomSpeech2 = Math.round(Math.random() * 5);
+                if (randomSpeech2 < 1) { randomSpeech2 = 1 };
+                if (randomSpeech2 > 5) { randomSpeech2 = 5 };
                 monkQuest.setFill(imgArrayTown[15].src);
                 
                 goog.events.unlisten(monkQuestBtn, ["mousedown", "touchstart"], function (e) {})
                 goog.events.unlisten(monk, ["mousedown", "touchstart"], function (e) {})
-                goog.events.listen(monkQuestBtn, ["mousedown", "touchstart"], function (e) { handleTownQuest("monk", 0); questPanel.who = 'monk'; questText1.setText("If you find more artifacts, let me know");});
-                goog.events.listen(monk, ["mousedown", "touchstart"], function (e) { handleTownQuest("monk", 0); questPanel.who = 'monk'; questText1.setText("If you find more artifacts, let me know");});
+                goog.events.listen(monkQuestBtn, ["mousedown", "touchstart"], function (e) { handleTownQuest("monk", 0); questPanel.who = 'monk'; questText1.setText(questParams.monk[randomSpeech2].text);});
+                goog.events.listen(monk, ["mousedown", "touchstart"], function (e) { handleTownQuest("monk", 0); questPanel.who = 'monk'; questText1.setText(questParams.monk[randomSpeech2].text);});
             }
         
       
