@@ -3086,15 +3086,15 @@ farming.start = function () {
 
 
 
-    if (homeTreesLeft == 0 || player.fields < 3) {
-        e.appendChild(treeUnlockBtn);
+    if (homeTreesLeft == 0 && player.fields < 3) {
+        e.appendChild(treeUnlockBtn); console.log("hometreesleft = " + homeTreesLeft + " and player.fields = " + player.fields);
         var trees1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(12, 295).setSize(110, 120).setFill("images/" + a.barnyard[13].image); e.appendChild(trees1)
         var treeUnlock1 = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(12, 335).setSize(110, 120).setText(""); e.appendChild(treeUnlock1)
 
         var axeHLeft = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(35, 20).setSize(40, 40).setFill("images/axe.png"); trees1.appendChild(axeHLeft);
         var trees1Img = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(48, 355).setSize(40, 35).setFill("images/tools50.png"); e.appendChild(trees1Img);
     }
-    if (homeTreesRight == 0 || player.fields < 4) {
+    if (homeTreesRight == 0 && player.fields < 4) {
         e.appendChild(treeUnlockBtn2);
         var trees2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(181, 295).setSize(120, 120).setFill("images/" + a.barnyard[14].image); e.appendChild(trees2)
         var treeUnlock2 = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(182, 335).setSize(120, 120).setText(""); e.appendChild(treeUnlock2)
@@ -5485,6 +5485,13 @@ farming.start = function () {
             questPanelRocksO.setFill(imgArrayStore[6]);
             questPanelAvatarO.setFill(imgArrayStore[4]);
         }
+        else if (collectItems.storeItems[4].owned == 0 && isciderplaceOwned == 0) {
+            questPanelO.setHidden(false);
+            questText1O.setText("This would be a good place to put a FRUIT PRESS to make CIDER");
+            questPanelRocksO.setHidden(false);
+            questPanelRocksO.setFill(imgArrayStore[6]);
+            questPanelAvatarO.setFill(imgArrayStore[4]);
+        }
   
 
     });
@@ -5585,7 +5592,10 @@ farming.start = function () {
             var orchardTreesHid = localStorage.getItem("GuiGhostFarms_orchardTreeBlock");
             orchardBarnLevel = localStorage.getItem("MedFarm_orchardBarnLevel");
             if (orchardTreesHid < 2) { ciderPlace.setHidden(true); ciderPlace.setHidden(true); ciderPlaceBtn.setHidden(true); }
-            else if (orchardTreesHid == 2 && orchardBarnLevel == 2) { ciderPlace.setHidden(false); ciderPlaceBtn.setHidden(true); ciderPlace.setFill("images/Orchard/ciderPlace2.png"); }
+            else if (orchardTreesHid == 2 && orchardBarnLevel == 2) { ciderPlace.setHidden(false); ciderPlaceBtn.setHidden(false); ciderPlace.setFill("images/Orchard/ciderPlace1.png"); }
+            ciderEnabled = localStorage.getItem("MedFarm_ciderPlaceOwned");
+            if (ciderEnabled == 1) { ciderPlace.setFill("images/Orchard/ciderPlace2.png"); ciderPlaceBtn.setHidden(true);}
+            else { ciderPlace.setFill("images/Orchard/ciderPlace1.png"); ciderPlaceBtn.setHidden(false);}
             ///cider harvest
             if (ciderTick > 240 ) {
                 //console.log("cidrTick triggered - ciderEnabled = " + ciderEnabled + "and crop 17 stored = " + player.cropsStored[17].stored + "and crop 9 stored = " + player.cropsStored[9].stored);
@@ -5807,7 +5817,7 @@ farming.start = function () {
             questPanelRocksO.setFill(imgArrayStore[6]);
             questPanelAvatarO.setFill(imgArrayStore[4]);
         }
-        ciderPlaceBtn
+        
         if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 1 && ciderPlace.owned == 0) {
             questText1O.setText("That looks like a good place to brew Cider");
             questPanelRocksO.setHidden(false);
