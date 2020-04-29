@@ -200,9 +200,9 @@
         #currentStarCashBack4 {
             margin-top: 60px;
          padding-top: 10px;  
-         padding-left:2px;
+         padding-left:3px;
          text-align:left;
-         font-size:20px;
+         font-size:18px;
         }
         #starCashRow3 {
             width: 100%;
@@ -216,8 +216,8 @@
             transform: translate(5px,0px);
         }
         #lowerStarCashImg3 {
-            width: 50px;
-            transform: translate(-5px,15px);
+            width: 45px;
+            transform: translate(0px,15px);
         } 
         #lowerArrow, #lowerArrow2, #lowerArrow3 {
             width: 35px;
@@ -240,10 +240,10 @@
             touch-action: none;
         }
         #viewAdImg {
-            width: 100px;
+            width: 88px;
             height: 45px;
             margin-left: 50%;
-            transform: translate(30px, -35px);
+            transform: translate(37px, -32px);
             touch-action: none;
         }
 
@@ -251,9 +251,9 @@
             transform: translate(75px, -50px);
         }
         #buyStarsFromModal {
-            width: 85px;
+            width: 80px;
             height: 55px;
-            transform: translate(43px, -35px);
+            transform: translate(45px, -35px);
         }
         /*#currentStarCashBack2 {
             width: 280px;
@@ -473,7 +473,7 @@
                 transform: translate(-100px,0px);
             }
             #fbshare {
-                top: 48px;
+                top: 18px;
             }
         }
 
@@ -1038,7 +1038,7 @@ var tid2 = setInterval(interPop2, 500);
                 var onPurchaseSuccess = function () {
                     Enhance.purchases.getDisplayTitle('starpack_small',  '50 Stars', function (result) {
                         localStorage.setItem('MedFarms_boughtSmallStars', 1);
-                        alert(result);
+                        alert("You have sucessfully purchased " + result);
                         
                     });
                     starCash = parseInt(localStorage.getItem('starCash'));
@@ -1065,7 +1065,7 @@ var tid2 = setInterval(interPop2, 500);
                 var onPurchaseSuccess = function () {
                     Enhance.purchases.getDisplayTitle('starpack_large', '300 Stars', function (result) {
                         localStorage.setItem('MedFarms_boughtLargeStars', 1); 
-                        alert(result);
+                        alert("You have sucessfully purchased " + result);
                     });
                     starCash = parseInt(localStorage.getItem('starCash'));
                     console.log("before starcash = " + starCash);
@@ -1091,7 +1091,7 @@ var tid2 = setInterval(interPop2, 500);
                     Enhance.purchases.getDisplayTitle('starter_pack', 'Resource Starter Pack', function (result) {
                       
                         localStorage.setItem('MedFarms_boughtStarterPack', 1);
-                        alert(result);
+                        alert("You have sucessfully purchased " +  result);
                     });
                     player.tools = player.tools + 250;
                     player.cropsStored[14].stored = player.cropsStored[14].stored + 250;
@@ -1113,7 +1113,7 @@ var tid2 = setInterval(interPop2, 500);
                 var onPurchaseSuccess = function () {
                     Enhance.purchases.getDisplayTitle('master_pack', 'Resource Master Pack', function (result) {
                         localStorage.setItem('MedFarms_boughtMasterPack', 1);
-                        alert(result);
+                        alert("You have sucessfully purchased " + result);
                     });
                     player.tools = player.tools + 750;
                     player.cropsStored[14].stored = player.cropsStored[14].stored + 750;
