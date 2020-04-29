@@ -1495,11 +1495,11 @@ var farming = {
         }
         var itemReceived = ''
         var ownedAlready = 0;
-        var randomMultiplier = 100;
+        var randomMultiplier = 90;
         var randomInPlay = 0;
      
         var runRandomChance = function () {
-            if (collectItems.storeItems[2].owned == 1) { randomMultiplier = 90 };    ///user has blessed shovel
+            if (collectItems.storeItems[2].owned == 1) { randomMultiplier = 80 };    ///user has blessed shovel
             if (scene == 1 && randomInPlay == 0) {
                 randomInPlay = 1;
                 randomChance = Math.round(Math.random() * randomMultiplier);
@@ -3086,7 +3086,7 @@ farming.start = function () {
 
 
 
-    if (homeTreesLeft == 0) {
+    if (homeTreesLeft == 0 || player.fields < 3) {
         e.appendChild(treeUnlockBtn);
         var trees1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(12, 295).setSize(110, 120).setFill("images/" + a.barnyard[13].image); e.appendChild(trees1)
         var treeUnlock1 = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(12, 335).setSize(110, 120).setText(""); e.appendChild(treeUnlock1)
@@ -3094,7 +3094,7 @@ farming.start = function () {
         var axeHLeft = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(35, 20).setSize(40, 40).setFill("images/axe.png"); trees1.appendChild(axeHLeft);
         var trees1Img = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(48, 355).setSize(40, 35).setFill("images/tools50.png"); e.appendChild(trees1Img);
     }
-    if (homeTreesRight == 0) {
+    if (homeTreesRight == 0 || player.fields < 4) {
         e.appendChild(treeUnlockBtn2);
         var trees2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(181, 295).setSize(120, 120).setFill("images/" + a.barnyard[14].image); e.appendChild(trees2)
         var treeUnlock2 = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(182, 335).setSize(120, 120).setText(""); e.appendChild(treeUnlock2)
@@ -5243,8 +5243,7 @@ farming.start = function () {
     function upgradeOrchardBarn() {
 
         player.tools = player.tools - 250;
-        updateStored();
-        checkItemsOwned();
+            
         a.updateTools();
         currentRotateO = currentRotateO - 10;
         if (currentRotateO < -50) { currentRotateO = -10; }
@@ -8197,11 +8196,11 @@ farming.start = function () {
     townLayer.appendChild(questPanel);
     questPanel.setHidden(true);
     questPanel.who = '';
-    var questHeader = (new lime.Label).setAnchorPoint(0, 0).setPosition(70, 25).setText("").setFontFamily("Comic Sans MS").setFontSize(24);
+    var questHeader = (new lime.Label).setAnchorPoint(0, 0).setPosition(60, 25).setText("").setFontFamily("Comic Sans MS").setFontSize(24);
     questPanel.appendChild(questHeader);
     var questText1 = (new lime.Label).setAnchorPoint(0, 0).setPosition(20, 150).setText("").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
     questPanel.appendChild(questText1);
-    var questPanelAvatar = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(80, 34).setSize(100, 100).setFill(imgArrayMayor[0].src);
+    var questPanelAvatar = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(80, 36).setSize(100, 100).setFill(imgArrayMayor[0].src);
     questPanel.appendChild(questPanelAvatar);
     var questPanelItemImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(165, 74).setSize(50, 50).setFill("images/items/ciderBarrel.png");
     questPanel.appendChild(questPanelItemImg);
