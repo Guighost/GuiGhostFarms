@@ -813,7 +813,7 @@
          
         </div>
     </div>
- <script type="text/javascript" src="cordova.js"></script>
+ <!--<script type="text/javascript" src="cordova.js"></script>-->
 
 
 <script type=text/javascript> 
@@ -896,7 +896,7 @@ var showItOrNo2 = 0;
         
     };
     ////primary loop 2 - external loads
-var tid2 = setInterval(interPop2, 500);
+//var tid2 = setInterval(interPop2, 500);
   
    
     function interPop2() {
@@ -1210,37 +1210,37 @@ var tid2 = setInterval(interPop2, 500);
 
 
     /////
-          var currentGameVersion = 1.5;
-          let requestURL = 'https://guighostgames.com/MedievalFarms/currentAppVersion.json';
-          let request = new XMLHttpRequest();
-          try {
-              request.open('GET', requestURL);
-              request.responseType = 'json';
-              request.send();
-              request.onload = function () {
-                  const versionDetected = JSON.stringify(request.response);
-                  console.log("versionCheck = " + versionDetected);
-                  //console.log(player)
-                  //console.log("response = " + request.response.latestVersion)
-                  if (currentGameVersion < request.response.latestVersion) {
+          //var currentGameVersion = 1.5;
+          //let requestURL = 'https://guighostgames.com/MedievalFarms/currentAppVersion.json';
+          //let request = new XMLHttpRequest();
+          //try {
+          //    request.open('GET', requestURL);
+          //    request.responseType = 'json';
+          //    request.send();
+          //    request.onload = function () {
+          //        const versionDetected = JSON.stringify(request.response);
+          //        console.log("versionCheck = " + versionDetected);
+          //        //console.log(player)
+          //        //console.log("response = " + request.response.latestVersion)
+          //        if (currentGameVersion < request.response.latestVersion) {
 
-                      var answer = confirm("A new version is available. Click on OK to Visit the playstore to get the new content.")
-                      if (answer) { openPlayForUpdate(); }
+          //            var answer = confirm("A new version is available. Click on OK to Visit the playstore to get the new content.")
+          //            if (answer) { openPlayForUpdate(); }
 
-                  }
+          //        }
 
 
-              }
-          }
-          catch (err) {console.log("failed versioncheck") }
+          //    }
+          //}
+          //catch (err) {console.log("failed versioncheck") }
          
-          function openPlayForUpdate() {
-              try {
-                  cordova.plugins.market.open('com.wGuiGhostFarms_9861566');
-               }
-              catch (err) { console.log("caught = " + err) }
+          //function openPlayForUpdate() {
+          //    try {
+          //        cordova.plugins.market.open('com.wGuiGhostFarms_9861566');
+          //     }
+          //    catch (err) { console.log("caught = " + err) }
 
-          }
+          //}
           document.getElementById("starCashOuterLabel").innerHTML = starCash;
  </script>
     </body>

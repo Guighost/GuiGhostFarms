@@ -1062,8 +1062,6 @@ imgArrayStore[5] = new Image(); imgArrayStore[5].src = "images/items/bottles.png
 imgArrayStore[6] = new Image(); imgArrayStore[6].src = "images/items/barrels.png"
 
 
-
-
 /////////Collectibles
 var collectItems = {
     digUpSells: [
@@ -1152,6 +1150,9 @@ var friarReady = 0;
 var saraReady = 0;
 var feliciaReady = 0;
 var collectibleOnScreen = false;
+
+
+var adFreeVersion = 1;
 
 ///// quest definitions:
 var rewardTypes = {
@@ -3184,7 +3185,8 @@ farming.start = function () {
 	var speedAdConfirm =(new lime.GlossyButton).setColor("#00FF00").setText("View").setPosition(73, 163).setSize(50, 32);
     boostCrops.appendChild(speedAdConfirm);
     //hide for AdFree
-    //speedAdConfirm.setHidden(true);
+    if (adFreeVersion == 1) {speedAdConfirm.setHidden(true);}
+    
     //end ad free hide
     var speedAdConfirmSC = (new lime.GlossyButton).setColor("#00FF00").setText("-       ").setPosition(142, 163).setSize(50, 32);
     boostCrops.appendChild(speedAdConfirmSC);
@@ -6710,6 +6712,13 @@ farming.start = function () {
       event.stopPropagation();
     
     }, false);
+    currentStarCashBack3
+    currentStarCashBack4
+
+    //hide For ad free
+    if (adFreeVersion == 1) { document.getElementById("currentStarCashBack3").style.display = 'none'; document.getElementById("currentStarCashBack4").style.display = 'none'; };
+    //end hide
+
         //////////////    //////////////    //////////////    //////////////    //////////////    //////////////     //////////////    //////////////    //////////////    //////////////    //////////////
     ///////////////Inventory scene    //////////////    //////////////    //////////////    ////////////// Inventory scene
         //////////////    //////////////    //////////////    //////////////    //////////////    //////////////    //////////////    //////////////    //////////////    //////////////    //////////////    //////////////    //////////////
@@ -6740,6 +6749,10 @@ farming.start = function () {
         statsLayer.appendChild(topCoinInventory);
         var inventoryCash = (new lime.Label).setText(player.money).setFontColor("#E8FC08").setPosition(243, 24).setFontSize(18).setFontFamily("Comic Sans MS");
         statsLayer.appendChild(inventoryCash);
+
+       
+
+
 
         var playerImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(2, 74).setSize(100, 100).setFill(imgArrayPlayer[0]);
         inventoryScene.appendChild(playerImg);
@@ -7938,6 +7951,9 @@ farming.start = function () {
 
         var storePremiumBtn = (new lime.GlossyButton).setColor("#E8FC08").setText("Premium").setPosition(210, 135).setSize(80, 18).setOpacity(0.5);
         storeScene.appendChild(storePremiumBtn);
+    // hide for ad free
+        if (adFreeVersion) { storePremiumBtn.setHidden(true); storeGeneralBtn.setHidden(true); };
+    //hide for add free
 
         goog.events.listen(storeGeneralBtn, ["mousedown", "touchstart"], function () {
             storeGeneralBtn.setOpacity(1.0);
@@ -8206,11 +8222,11 @@ farming.start = function () {
     townLayer.appendChild(questPanel);
     questPanel.setHidden(true);
     questPanel.who = '';
-    var questHeader = (new lime.Label).setAnchorPoint(0, 0).setPosition(60, 25).setText("").setFontFamily("Comic Sans MS").setFontSize(24);
+    var questHeader = (new lime.Label).setAnchorPoint(0, 0).setPosition(60, 25).setText("").setFontFamily("Comic Sans MS").setFontSize(22);
     questPanel.appendChild(questHeader);
     var questText1 = (new lime.Label).setAnchorPoint(0, 0).setPosition(20, 150).setText("").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
     questPanel.appendChild(questText1);
-    var questPanelAvatar = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(80, 36).setSize(100, 100).setFill(imgArrayMayor[0].src);
+    var questPanelAvatar = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(80, 38).setSize(100, 100).setFill(imgArrayMayor[0].src);
     questPanel.appendChild(questPanelAvatar);
     var questPanelItemImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(165, 74).setSize(50, 50).setFill("images/items/ciderBarrel.png");
     questPanel.appendChild(questPanelItemImg);
@@ -8273,7 +8289,7 @@ farming.start = function () {
  
     goog.events.listen(questPanelCloseBtn, ["mousedown", "touchstart"], function (event) {
         questPanel.setHidden(true);
-        questPanelAvatar.setPosition(80, 34)
+        questPanelAvatar.setPosition(80, 38)
         if (questPanel.who == 'sara') { saraQuest.setHidden(true); saraQuestBtn.setHidden(true);} 
         CheckQuestInvItems();
         event.stopPropagation();
@@ -8392,7 +8408,7 @@ farming.start = function () {
 
     goog.events.listen(questPanelCloseBtn, ["mousedown", "touchstart"], function (event) {
         questPanel.setHidden(true);
-        questPanelAvatar.setPosition(75, 34)
+        questPanelAvatar.setPosition(75, 38)
         marketTrigger.setHidden(false);
         storeOpenBtn.setHidden(false);
         //CheckQuestInvItems();
@@ -8523,7 +8539,7 @@ farming.start = function () {
                ///cider////
             if (collectItems.storeItems[4].owned == 1 && player.cropsStored[18].stored > 0) {
                 questText1.setText("My Patrons Love CIDER. Sell me all you make!");
-                questPanelAvatar.setPosition(65, 35);
+                questPanelAvatar.setPosition(65, 38);
                 questPanelItemImg.setHidden(false);
                 itemCountText.setText(player.cropsStored[18].stored);
                 itemCountText.setHidden(false);
@@ -8531,7 +8547,7 @@ farming.start = function () {
                 ciderSellBtn.setText("Sell for " + (a.crops[18].revenue * player.cropsStored[18].stored))
                 ciderSellBtn.setHidden(false);
             }
-            else { questPanelItemImg.setHidden(true); itemCountText.setHidden(true); questPanelAvatar.setPosition(80, 35);}
+            else { questPanelItemImg.setHidden(true); itemCountText.setHidden(true); questPanelAvatar.setPosition(80, 38);}
             ///end cider///
 
        
@@ -8569,7 +8585,7 @@ farming.start = function () {
                  sellItemsBtn.setHidden(true);  
                  if (collectItems.digUpSells[3].owned == 1 && questParams.felicia[0].highestCompleted < 2) {
                     
-                     questPanelAvatar.setFill(imgArrayFelicia[0].src).setPosition(40, 34);
+                     questPanelAvatar.setFill(imgArrayFelicia[0].src).setPosition(40, 38);
 
                      questPanelItemImg.setHidden(false).setFill(collectItems.digUpSells[3].src);
                      questText1.setText("You found my LOCKET!");
@@ -8585,7 +8601,7 @@ farming.start = function () {
                          checkTownRep();
                          giveBtn.setHidden(true);
                          questPanel.removeChild(giveBtn);
-                         questPanelAvatar.setPosition(80, 34);
+                         questPanelAvatar.setPosition(80, 38);
                          questPanelItemImg.setHidden(true);
                          questText1.setText("Thanks, but I do not need anything right now. Try me later.");
                          CheckQuestInvItems();
@@ -8601,7 +8617,7 @@ farming.start = function () {
                      //checkSellItems('felicia');
                  }
                  else {
-                     questPanelAvatar.setPosition(80, 34);
+                     questPanelAvatar.setPosition(80, 38);
                      questPanelItemImg.setHidden(true);
                      questText1.setText("I heard the king sometimes sends special orders to feed the troops");
                      feliciaQuestBtn.setHidden(true);
@@ -9480,6 +9496,8 @@ farming.start = function () {
     introLayer.appendChild(moreGameBtn);
     var moreGameBtnLabel = (new lime.Label).setText("MORE GAMES").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(150, 346).setFontSize(20);
     introLayer.appendChild(moreGameBtnLabel);
+
+    if (adFreeVersion == 1) { moreGameBtn.setHidden(true); moreGameBtnLabel.setHidden(true);}
     var introFill2 = (new lime.Sprite).setPosition(157, 260).setSize(300, 490).setFill("images/UI/CoverImg2.png");
     introScene.appendChild(introFill2);
 
