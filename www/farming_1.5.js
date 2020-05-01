@@ -6663,7 +6663,7 @@ farming.start = function () {
         function starCashViewAd() {
             localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
             localStorage.setItem('MedFarm_StarCashBoost', 1);
-            localStorage.setItem('MedFarm_LoadAd', 1);
+            //localStorage.setItem('MedFarm_LoadAd', 1);
 
             lime.audio.setMute(true); 
 
