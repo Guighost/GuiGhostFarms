@@ -3854,6 +3854,9 @@ farming.start = function () {
            
             player.tools = player.tools - barnUpgradeCostTools;
             a.updateTools();
+            
+            player.cropsStored[14].stored = player.cropsStored[14].stored - barnUpgradeCostWood;
+            a.updateStored();
             //show upgrade anim and timer
             upgradeCloud.setHidden(false);
             scaffoldH.setHidden(false);
@@ -6526,7 +6529,8 @@ farming.start = function () {
         localStorage.removeItem('MedFarm_Rewarded');     
         localStorage.removeItem('MedFarms_homeTreesLeft');   
         localStorage.removeItem('MedFarms_homeTreesRight');   
-       
+        localStorage.removeItem('MedFarms_selectedHomeCrop');   
+        
         setTimeout(function () { location.reload(); }, 750);
 
     });
