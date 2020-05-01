@@ -3214,7 +3214,7 @@ farming.start = function () {
 		goog.events.listen(speedAdConfirm, ["mousedown", "touchstart"], function () {
             //console.log("clicked confirm");
             visibleLink = boostCrops.getHidden();
-            //console.log("visibleLink = " + visibleLink);
+            console.log("visibleLink = " + visibleLink);
             if (visibleLink == false) { 
                 localStorage.setItem('MedFarm_LoadAd', 1);
                 localStorage.setItem('MedFarm_StarCashBoost', 0);
@@ -3228,26 +3228,33 @@ farming.start = function () {
             }
         });
         goog.events.listen(speedAdConfirmSC, ["mousedown", "touchstart"], function () {
-            //console.log("clicked confirm SC");
-            if (starCash >= 3){
-                adWatched2 = 1;
-                localStorage.setItem('adWatched', 1)
-                localStorage.setItem('MedFarm_StarCashBoost', 0);
-                starCash = starCash - 3;
-                boostCrops.setHidden(true);
-                homeBlock.setHidden(true);
+            visibleLink = boostCrops.getHidden();
+            console.log("visibleLink = " + visibleLink);
+            if (visibleLink == false) {
+                //console.log("clicked confirm SC");
+                if (starCash >= 3) {
+                    adWatched2 = 1;
+                    localStorage.setItem('adWatched', 1)
+                    localStorage.setItem('MedFarm_StarCashBoost', 0);
+                    starCash = starCash - 3;
+                    boostCrops.setHidden(true);
+                    homeBlock.setHidden(true);
+                }
             }
-            
            
         });
-		goog.events.listen(speedAdCancel, ["mousedown", "touchstart"], function () {
-			console.log("clicked cancel");
-            var isMuted22 = parseInt(localStorage.getItem('GuiGhostFarms_muted'));
-            if (isMuted22 == 1) { lime.audio.setMute(true); setMute(1);  }
-            else  {lime.audio.setMute(false); themeSong.play(true); smithSound.play(); setMute(2);  }
-            homeBlock.setHidden(true);
-              
-            boostCrops.setHidden(true);
+        goog.events.listen(speedAdCancel, ["mousedown", "touchstart"], function () {
+            visibleLink = boostCrops.getHidden();
+            console.log("visibleLink = " + visibleLink);
+            if (visibleLink == false) {
+                console.log("clicked cancel");
+                var isMuted22 = parseInt(localStorage.getItem('GuiGhostFarms_muted'));
+                if (isMuted22 == 1) { lime.audio.setMute(true); setMute(1); }
+                else { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); setMute(2); }
+                homeBlock.setHidden(true);
+
+                boostCrops.setHidden(true);
+            }
        	});
 	
 
@@ -3827,12 +3834,22 @@ farming.start = function () {
     
         }
 
-        goog.events.listen(upgradeHomeBarnBackBtn, ["mousedown", "touchstart"], function () {
-            unlockedCropBack.setHidden(true); upgradeHomeBarnBtn.setHidden(true);  upgradeHomeBarnBackBtn.setHidden(true);  homeBarnCostToolsImg.setHidden(true);
+
+    });
+    var unlockedCropBackHid = true;
+    goog.events.listen(upgradeHomeBarnBackBtn, ["mousedown", "touchstart"], function () {
+        var upgradeHomeBarnBackBtnHid = upgradeHomeBarnBackBtn.getHidden();
+        if (upgradeHomeBarnBackBtnHid == false) {
+            unlockedCropBack.setHidden(true); upgradeHomeBarnBtn.setHidden(true); upgradeHomeBarnBackBtn.setHidden(true); homeBarnCostToolsImg.setHidden(true);
             homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);
-            unlockedCropText.setText("NEW SEEDS TO PLANT!")
-        });
-        goog.events.listen(upgradeHomeBarnBtn, ["mousedown", "touchstart"], function () {  
+            unlockedCropText.setText("NEW SEEDS TO PLANT!");
+        }
+
+    });
+    goog.events.listen(upgradeHomeBarnBtn, ["mousedown", "touchstart"], function () {
+        var upgradeHomeBarnBtnHid = upgradeHomeBarnBtn.getHidden();
+        console.log(upgradeHomeBarnBtnHid + " hidden upgradeHomeBarnBtn")
+        if (upgradeHomeBarnBtnHid == false) {
             unlockedCropBack.setHidden(true);
             upgradeHomeBarnBtn.setHidden(true);
             upgradeHomeBarnBackBtn.setHidden(true);
@@ -3841,12 +3858,14 @@ farming.start = function () {
             homeWoodCostLabel.setHidden(true);
             unlockedCropText.setText("NEW SEEDS TO PLANT!")
             homeBarnShortLabel.setHidden(true);
-            upgradeHomeBarn(barnUpgradeCostTools, barnUpgradeCostWood)
-        });
+            ///fire home barn upgrade
+            upgradeHomeBarn(barnUpgradeCostTools, barnUpgradeCostWood);
+         }
     });
 
-
     function upgradeHomeBarn(costCoin, costWood) {          //barnUpgrades    barn Upgrades
+
+        console.log("fired barn upgrade");
         toolMoverLabel.setText(secondsToUpgrade);
 
         if (player.tools >= barnUpgradeCostTools && parseInt(player.barnLevel) < 5 && globalModalBlock == 0 && player.cropsStored[14].stored >= barnUpgradeCostWood) {
