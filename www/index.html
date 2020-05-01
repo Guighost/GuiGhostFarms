@@ -940,7 +940,7 @@ var tid2 = setInterval(interPop2, 500);
                     localStorage.setItem('MedFarm_Rewarded', 0);
                 
 				try { Enhance.isRewardedAdReady(callback2); }
-                catch (err) { console.log("Caught rewarded error " + err); document.getElementById("waitText").innerHTML = 'Ad failed - you can try again soon.'; }
+                catch (err) { console.log("Caught rewarded error " + err); document.getElementById("waitText").innerHTML = 'Ad failed - try again soon.'; }
                  showRewarded = 0;
 				localStorage.setItem('MedFarm_StarCashBoost', 0);
                 localStorage.setItem('MedFarm_LoadAd', 0);
