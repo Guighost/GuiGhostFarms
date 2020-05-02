@@ -2017,6 +2017,12 @@ if (typeof localStorage["GuiGhostFarms_player"] === "undefined") { localStorage.
 player = JSON.parse(localStorage.getItem('GuiGhostFarms_player'));
 if (typeof localStorage["GuiGhostFarms_playerItems"] === "undefined") { localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems)); };
 collectItems = JSON.parse(localStorage.getItem('GuiGhostFarms_playerItems'));
+var checkWoodType = Number.isInteger(player.cropsStored[14].stored);
+console.log("wood is integer " + checkWoodType); 
+try { player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored); console.log("wood is " + player.cropsStored[14].stored); }
+catch (err) { console.log("wood error"); player.cropsStored[14] = 500; }
+//hotfix to deal with upgrade people getting negative values
+if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 1000; console.log("less than 0 - fixing") }
 
 
 var globalModalBlock = 0;
@@ -2030,6 +2036,7 @@ if (typeof player.cropsStored[14] === "undefined") {
     }
     else { player.cropsStored.push({ name: "Wood", stored: 200 }); }
 };
+
 if (typeof player.cropsStored[14] === "undefined") { player.cropsStored.push({ name: "Wood", stored: 200 }); };
 if (typeof player.cropsStored[15] === "undefined") {    player.cropsStored.push({ name: "Iron", stored: 200 });};
 if (typeof player.cropsStored[16] === "undefined") {    player.cropsStored.push({ name: "Jars", stored: 0 });};
@@ -3719,7 +3726,7 @@ farming.start = function () {
                             localStorage.setItem('MedFarms_homeTreesLeft', 1);
                             a.updateTools();
                             trees1.setHidden(true); treeUnlock1.setHidden(true); treeUnlockBtn.setHidden(true); axeHLeft.setHidden(true);
-                            player.cropsStored[14].stored = player.cropsStored[14].stored  + 250;
+                            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored)   + 250;
                             localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
                             localStorage.setItem('GuiGhostFarms_toolsEver', toolsEver);
                             localStorage.setItem('GuiGhostFarms_pickedEver', pickedEver);
@@ -3788,7 +3795,7 @@ farming.start = function () {
                             localStorage.setItem('MedFarms_homeTreesRight', 1);
                             a.updateTools();
                             trees2.setHidden(true); treeUnlock2.setHidden(true); treeUnlockBtn2.setHidden(true); axeHRight.setHidden(true);
-                            player.cropsStored[14].stored = player.cropsStored[14].stored + 250;
+                            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored)  + 250;
                             localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
                             localStorage.setItem('GuiGhostFarms_toolsEver', toolsEver);
                             localStorage.setItem('GuiGhostFarms_pickedEver', pickedEver);
@@ -3828,7 +3835,7 @@ farming.start = function () {
         unlockedCropBack.appendChild(homeWoodCostLabel);
         homeBarnShortLabel.setPosition(125, 200).setSize(175, 25).setText("You need more Resources").setFontSize(16).setFontFamily("Comic Sans MS").setFontColor("#000000");
         unlockedCropBack.appendChild(homeBarnShortLabel);
-        if (barnUpgradeCostTools > player.tools || barnUpgradeCostWood > player.cropsStored[14].stored) {
+        if (barnUpgradeCostTools > player.tools || barnUpgradeCostWood > parseInt(player.cropsStored[14].stored) ) {
             upgradeHomeBarnBtn.setHidden(true);
             homeBarnShortLabel.setHidden(false)
     
@@ -3868,13 +3875,13 @@ farming.start = function () {
         console.log("fired barn upgrade");
         toolMoverLabel.setText(secondsToUpgrade);
 
-        if (player.tools >= barnUpgradeCostTools && parseInt(player.barnLevel) < 5 && globalModalBlock == 0 && player.cropsStored[14].stored >= barnUpgradeCostWood) {
+        if (player.tools >= barnUpgradeCostTools && parseInt(player.barnLevel) < 5 && globalModalBlock == 0 && parseInt(player.cropsStored[14].stored)  >= barnUpgradeCostWood) {
             barnUnlock3.setHidden(true);
            
             player.tools = player.tools - barnUpgradeCostTools;
             a.updateTools();
             
-            player.cropsStored[14].stored = player.cropsStored[14].stored - barnUpgradeCostWood;
+            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored)  - barnUpgradeCostWood;
             a.updateStored();
             //show upgrade anim and timer
             upgradeCloud.setHidden(false);
@@ -4993,7 +5000,7 @@ farming.start = function () {
                     axeMoverLabelTP.setHidden(true); upgradeCloudTP.setHidden(true); secondsToUpgradeTP = 60;
                     player.treesP = 1;
                     a.updateTools();
-                    player.cropsStored[14].stored += 500;
+                    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored)  + 500;
                     treeBlockP.setHidden(true);
                     axePRight.setHidden(true);
                     localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
@@ -5083,7 +5090,7 @@ farming.start = function () {
         upgradeBarnConfirmP.appendChild(closePastureBarnBtn);
         var closePbarnUpgradeXBtn = (new lime.Sprite).setPosition(0, 0).setSize(40, 40).setFill(imgArray[21].src);
         closePastureBarnBtn.appendChild(closePbarnUpgradeXBtn);
-        if (player.cropsStored[14].stored < barnUpgradeCostWoodP) { upgradePastureBarnBtn.setHidden(true); upgradeBarnShortText.setHidden(false); }
+        if (parseInt(player.cropsStored[14].stored)  < barnUpgradeCostWoodP) { upgradePastureBarnBtn.setHidden(true); upgradeBarnShortText.setHidden(false); }
         if (player.tools < barnUpgradeCostToolsP) { upgradePastureBarnBtn.setHidden(true); upgradeBarnShortText.setHidden(false); }
 
         goog.events.listen(closePastureBarnBtn, ["mousedown", "touchstart"], function () { upgradeBarnConfirmP.setHidden(true)  });   //close pasture upgrade
@@ -5096,7 +5103,7 @@ farming.start = function () {
 
         //barnUpgrades
     function pastureBarnUpgrade1(toolCostP,woodCostP){
-        if (player.tools >= toolCostP && parseInt(player.pastureLevel) <= 3 && globalModalBlock == 0 && player.cropsStored[14].stored >= woodCostP) {
+        if (player.tools >= toolCostP && parseInt(player.pastureLevel) <= 3 && globalModalBlock == 0 && parseInt(player.cropsStored[14].stored)  >= woodCostP) {
            
             barnUnlock3P.setHidden(true)
             player.tools = player.tools - toolCostP;
@@ -5296,7 +5303,7 @@ farming.start = function () {
         //var barnPanelUpgradeBtnO = (new lime.GlossyButton).setColor("#00ff00").setText("Upgrade").setPosition(125, 175).setSize(100, 20);
         //barnUpgradeNotifO.appendChild(barnPanelUpgradeBtnO);
         //barnPanelUpgradeBtnO.setHidden(true);
-        if (player.cropsStored[14].stored >= 200 && player.tools >= 250) {
+        if (parseInt(player.cropsStored[14].stored)  >= 200 && player.tools >= 250) {
             barnPanelUpgradeBtnO.setHidden(false);
             barnUpgradeText1O.setText("Increases Apple and Pear yield by 50%");
         }
@@ -5358,7 +5365,7 @@ farming.start = function () {
                 orchardBarnLevel = 2;
                 localStorage.setItem("MedFarm_orchardBarnLevel", 2);
                 barnLevelO.setText("Lvl 2/2");
-                player.cropsStored[14].stored = player.cropsStored[14].stored - 200;
+                player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - 200;
              
                 if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 0) {
                     questText1O.setText("If we had a FRUIT PRESS and some BARRELS, we could make CIDER");
@@ -5780,7 +5787,7 @@ farming.start = function () {
                             orchardTreeBlock = 2;
 
                             orchardTreeBlockO.setHidden(true);
-                            player.cropsStored[14].stored += 500;
+                            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 500;
                             //treeUnlockBtnO.setHidden(true);
                           
                             unlockedCropBackO.setHidden(false);
@@ -7833,7 +7840,7 @@ farming.start = function () {
                     localStorage.setItem('MedFarms_buyingSmallStars', 1);
                     buySmallStars.setOpacity(0.2);
                     buySmallStarsBtn.setHidden(true);
-                    buySmallStars.owned = 1;
+               
                     storeStars.setText(starCash);
                 }
             });
@@ -7871,7 +7878,7 @@ farming.start = function () {
                     localStorage.setItem('MedFarms_buyingLargeStars', 1);
                     buyLargeStars.setOpacity(0.2);
                     buyLargeStarsBtn.setHidden(true);
-                    buyLargeStars.owned = 1;
+                   
                     storeStars.setText(starCash);
                 }
             });
@@ -7908,7 +7915,7 @@ farming.start = function () {
                     localStorage.setItem('MedFarms_buyingStarterPack', 1);
                     buyStarterPack.setOpacity(0.2);
                     buyStarterPackBtn.setHidden(true);
-                    buyStarterPack.owned = 1;
+                    
                     storeStars.setText(starCash);
                 }
             });
@@ -7948,7 +7955,7 @@ farming.start = function () {
                     localStorage.setItem('MedFarms_buyingMasterPack', 1);
                     buyMasterPack.setOpacity(0.2);
                     buyMasterPackBtn1.setHidden(true);
-                    buyMasterPack.owned = 1;
+                  
                     storeStars.setText(starCash);
                 }
             });
@@ -10590,7 +10597,7 @@ farming.start = function () {
                     axeVLower.setHidden(true);
                     a.updateTools();
                     treesImgV.setHidden(true);
-                    player.cropsStored[14].stored += 500;
+                    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored)  + 500;
                     a.vinyardBlocksControl(1);
                     vinyardBlocks = 2;
                     isblocked1 = 2;
@@ -10678,7 +10685,7 @@ farming.start = function () {
                     treeUnlockBtnV2.setHidden(true);
                     localStorage["GuiGhostFarms_vinyardBlocks2"] = isblocked2;
                     treesImgV2.setHidden(true);
-                    player.cropsStored[14].stored += 500;
+                    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 500;
                 }
 
             }, this, 1000, 60)
@@ -10794,7 +10801,7 @@ farming.start = function () {
     goog.events.listen(HouseVUnlock3, ["mousedown", "touchstart"], function () {
         upgradeBarnConfirmV.setHidden(false);
 
-        if (player.cropsStored[14].stored < barnUpgradeCostWoodV || vinyardHouseLevel == 2 ) { upgradeVinyardBarnBtn.setHidden(true); upgradeBarnVShortText.setHidden(false); }
+        if ( parseInt(player.cropsStored[14].stored) < barnUpgradeCostWoodV || vinyardHouseLevel == 2 ) { upgradeVinyardBarnBtn.setHidden(true); upgradeBarnVShortText.setHidden(false); }
         if (player.tools < barnUpgradeCostToolsV) { upgradeVinyardBarnBtn.setHidden(true); upgradeBarnVShortText.setHidden(false); }
         var treeblockUP = treesImgV.getHidden();
         var treeblockUP2 = treesImgV2.getHidden();
@@ -10832,7 +10839,7 @@ farming.start = function () {
                 if (player.tools >= costTools) {
                     HouseVUnlock3.setHidden(true);
                     player.tools = player.tools - costTools;
-                    player.cropsStored[14].stored = player.cropsStored[14].stored - costWood;
+                    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored)  - parseInt(costWood);
 
                     upgradeCloudV.setHidden(false);
                     scaffoldV.setHidden(false);
@@ -11820,7 +11827,7 @@ farming.start = function () {
     var expandOnce = 0;
     goog.events.listen(houseExpandBtn, ["mousedown", "touchstart"], function () {
 
-        if (player.cropsStored[14].stored >= 200 && player.tools >= 1000) {
+        if (parseInt(player.cropsStored[14].stored)  >= 200 && player.tools >= 1000) {
             upPanelConfirmBtnHouse.setHidden(false); shortCostHouse.setHidden(true);
         }
         else {
@@ -11830,10 +11837,10 @@ farming.start = function () {
 
     });
     function expandHouseGo() {
-        if (player.tools >= 1000 && expandOnce == 0 && player.cropsStored[14].stored >= 200) {
+        if (player.tools >= 1000 && expandOnce == 0 && parseInt(player.cropsStored[14].stored)  >= 200) {
             expandOnce = 1;
             player.tools -= 1000;
-            player.cropsStored[14].stored = player.cropsStored[14].stored - 200;
+            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored)  - 200;
             a.updateStored();
             a.updateTools();
             a.updateMoney();
@@ -12692,7 +12699,7 @@ farming.start = function () {
     }); 
     
 
-    if (player.cropsStored[14].stored >= 200 && player.tools >= 1000) { upPanelConfirmBtnHouse.setHidden(false); shortCostHouse.setHidden(true); }
+    if (parseInt(player.cropsStored[14].stored)  >= 200 && player.tools >= 1000) { upPanelConfirmBtnHouse.setHidden(false); shortCostHouse.setHidden(true); }
     else { upPanelConfirmBtnHouse.setHidden(true); shortCostHouse.setHidden(false); }
 
     function checkAchieves() {

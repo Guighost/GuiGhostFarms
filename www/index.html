@@ -732,7 +732,7 @@
 
 
 
-        <script type="text/javascript" src="farming_1.5.js"></script>
+        <script type="text/javascript" src="farmingMin_1.5.js"></script>
 </head>
 
 
@@ -820,7 +820,7 @@
  
   
 
-// set interval to check for interstatialad
+
     if (localStorage.getItem("rateMeNever") == null) {
         localStorage.setItem("rateMeNever", 0);
     }
@@ -979,12 +979,12 @@ var tid2 = setInterval(interPop2, 500);
                 document.getElementById("rateMe").style.display = 'none';
                localStorage.setItem("rateMeNever", 1)
 
-          }
+        }
        function closeRate2() {
                 document.getElementById("rateMe").style.display = 'none';
                localStorage.setItem("rateMeNever", 0)
 
-          }
+       }
 
         function openRateOnPlay() {
                 document.getElementById("rateMe").style.display = 'none';
@@ -992,7 +992,7 @@ var tid2 = setInterval(interPop2, 500);
                 catch (err) { console.log("caught = " + err) }
 
 
-          }
+        }
           
             function showAdFallback() {
                console.log("clicked fallback and starCash = " + starCash)
@@ -1038,7 +1038,7 @@ var tid2 = setInterval(interPop2, 500);
                 var onPurchaseSuccess = function () {
                     Enhance.purchases.getDisplayTitle('starpack_small',  '50 Stars', function (result) {
                         localStorage.setItem('MedFarms_boughtSmallStars', 1);
-                        alert("You have sucessfully purchased " + result);
+                        alert(result);
                         
                     });
                     starCash = parseInt(localStorage.getItem('starCash'));
@@ -1046,6 +1046,7 @@ var tid2 = setInterval(interPop2, 500);
                     starCash = parseInt(starCash) + 50;
                     //console.log("after buy small starcash = " + starCash);
                     localStorage.setItem('starCash', starCash);
+                    buySmallStars.owned = 1;
                 };
 
                 var onPurchaseFailed = function () {
@@ -1065,13 +1066,14 @@ var tid2 = setInterval(interPop2, 500);
                 var onPurchaseSuccess = function () {
                     Enhance.purchases.getDisplayTitle('starpack_large', '300 Stars', function (result) {
                         localStorage.setItem('MedFarms_boughtLargeStars', 1); 
-                        alert("You have sucessfully purchased " + result);
+                        alert(result);
                     });
                     starCash = parseInt(localStorage.getItem('starCash'));
                     console.log("before starcash = " + starCash);
                     starCash = parseInt(starCash) + 300;
                     console.log("after buy large starcash = " + starCash);
                     localStorage.setItem('starCash', starCash);
+                    buyLargeStars.owned = 1;
                 };
 
                 var onPurchaseFailed = function () {
@@ -1091,12 +1093,14 @@ var tid2 = setInterval(interPop2, 500);
                     Enhance.purchases.getDisplayTitle('starter_pack', 'Resource Starter Pack', function (result) {
                       
                         localStorage.setItem('MedFarms_boughtStarterPack', 1);
-                        alert("You have sucessfully purchased " +  result);
+                        alert(result);
                     });
-                    player.tools = player.tools + 250;
-                    player.cropsStored[14].stored = player.cropsStored[14].stored + 250;
-                    player.cropsStored[15].stored = player.cropsStored[15].stored + 250;
-
+                    player.tools = parseInt(player.tools) + 250;
+                
+                    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 250;
+                    if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 250 }
+                    player.cropsStored[15].stored = parseInt(player.cropsStored[15].stored) + 250;
+                    buyStarterPack.owned = 1;
                 };
 
                 var onPurchaseFailed = function () {
@@ -1115,13 +1119,14 @@ var tid2 = setInterval(interPop2, 500);
                         localStorage.setItem('MedFarms_boughtMasterPack', 1);
                         alert("You have sucessfully purchased " + result);
                     });
-                    player.tools = player.tools + 750;
-                    player.cropsStored[14].stored = player.cropsStored[14].stored + 750;
-                    player.cropsStored[15].stored = player.cropsStored[15].stored + 750;
-                    player.money = player.money + 2500;
+                    player.tools = parseInt(player.tools) + 750;
+                    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 750;
+                    player.cropsStored[15].stored = parseInt(player.cropsStored[15].stored) + 750;
+                    player.money = parseInt(player.money) + 2500;
                     starCash = parseInt(localStorage.getItem('starCash'));
                     starCash = parseInt(starCash) + 50;
                     localStorage.setItem('starCash', starCash);
+                    buyMasterPack.owned = 1;
 
                 };
 
@@ -1161,7 +1166,7 @@ var tid2 = setInterval(interPop2, 500);
                  }
                  else if (buyingLargeStars == 1) {
                      try { Enhance.purchases.isSupported(callback_LargeSP); }
-                     catch (err) { console.log("failed karge stars "); }
+                     catch (err) { console.log("failed large stars "); }
                      localStorage.setItem('MedFarms_buyingLargeStars', 0); 
                     
                  }
@@ -1179,68 +1184,9 @@ var tid2 = setInterval(interPop2, 500);
 
                  }
 
-            }, 250);
+          }, 250);
             
-           
 
-
-          //// local notification
-          //var onPermissionGranted = function () {
-          //    // Success
-          //    try {
-          //        Enhance.disableLocalNotification();
-          //        Enhance.enableLocalNotification('Your farm needs you', 'Play it now!', 60);
-          //    }
-          //    catch (err) { console.log("caught notification INNER error = " + err); alert(err) }
-
-          //};
-
-          //var onPermissionRefused = function () {
-          //    // Failure
-          //    console.log("caught notification error Permission refused ")
-          //    alert(result)
-          //};
-          //function tryNotif() {
-          //    try { Enhance.requestLocalNotificationPermission(OnPermissionGranted, OnPermissionRefused); }
-          //    catch (err) { console.log("caught notification INNER error = " + err) };
-          //}
-          //window.addEventListener('load', function () {
-          //    tryNotif();
-          //})
-
-
-    /////
-          //var currentGameVersion = 1.5;
-          //let requestURL = 'https://guighostgames.com/MedievalFarms/currentAppVersion.json';
-          //let request = new XMLHttpRequest();
-          //try {
-          //    request.open('GET', requestURL);
-          //    request.responseType = 'json';
-          //    request.send();
-          //    request.onload = function () {
-          //        const versionDetected = JSON.stringify(request.response);
-          //        console.log("versionCheck = " + versionDetected);
-          //        //console.log(player)
-          //        //console.log("response = " + request.response.latestVersion)
-          //        if (currentGameVersion < request.response.latestVersion) {
-
-          //            var answer = confirm("A new version is available. Click on OK to Visit the playstore to get the new content.")
-          //            if (answer) { openPlayForUpdate(); }
-
-          //        }
-
-
-          //    }
-          //}
-          //catch (err) {console.log("failed versioncheck") }
-         
-          //function openPlayForUpdate() {
-          //    try {
-          //        cordova.plugins.market.open('com.wGuiGhostFarms_9861566');
-          //     }
-          //    catch (err) { console.log("caught = " + err) }
-
-          //}
           document.getElementById("starCashOuterLabel").innerHTML = starCash;
  </script>
     </body>
