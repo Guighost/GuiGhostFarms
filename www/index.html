@@ -1048,7 +1048,7 @@ var tid2 = setInterval(interPop2, 500);
                     localStorage.setItem('starCash', starCash);
                     buySmallStars.owned = 1;
                     try { Enhance.purchases.consume('starpack_small', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                    catch (err) { cosole.log(err); }
+                    catch (err) { console.log(err); }
                 };
 
                 var onPurchaseFailed = function () {
@@ -1067,7 +1067,7 @@ var tid2 = setInterval(interPop2, 500);
                 Enhance.purchases.isItemOwned('starpack_small', function (result) {
                     if (result == true) {
                         try { Enhance.purchases.consume('starpack_small', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                        catch (err) { cosole.log(err); }
+                        catch (err) { console.log(err); }
                     }
                 }
                 )                
@@ -1091,7 +1091,7 @@ var tid2 = setInterval(interPop2, 500);
                     localStorage.setItem('starCash', starCash);
                     buyLargeStars.owned = 1;
                     try { Enhance.purchases.consume('starpack_large', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                    catch (err) { cosole.log(err); }
+                    catch (err) { console.log(err); }
                 };
 
                 var onPurchaseFailed = function () {
@@ -1109,7 +1109,7 @@ var tid2 = setInterval(interPop2, 500);
                 Enhance.purchases.isItemOwned('starpack_large', function (result) {
                     if (result == true) {
                         try { Enhance.purchases.consume('starpack_large', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                        catch (err) { cosole.log(err); }
+                        catch (err) { console.log(err); }
                     }
                 }
                 )
@@ -1136,7 +1136,7 @@ var tid2 = setInterval(interPop2, 500);
                     localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
                     buyStarterPack.owned = 1;
                     try { Enhance.purchases.consume('starter_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                    catch (err) { cosole.log(err); }
+                    catch (err) { console.log(err); }
                 };
 
                 var onPurchaseFailed = function () {
@@ -1155,7 +1155,7 @@ var tid2 = setInterval(interPop2, 500);
                 Enhance.purchases.isItemOwned('starter_pack', function (result) {
                     if (result == true) {
                         try { Enhance.purchases.consume('starter_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                        catch (err) { cosole.log(err); }}
+                        catch (err) { console.log(err); }}
                     }
                 )
                 Enhance.purchases.attemptPurchase('starter_pack', onPurchaseSuccess, onPurchaseFailed);
@@ -1183,7 +1183,7 @@ var tid2 = setInterval(interPop2, 500);
                     buyMasterPack.owned = 1;
 
                     try { Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                    catch (err) { cosole.log(err); }
+                    catch (err) { console.log(err); }
 
                 };
 
@@ -1202,7 +1202,7 @@ var tid2 = setInterval(interPop2, 500);
                 Enhance.purchases.isItemOwned('master_pack', function (result) {
                     if (result == true) {
                         try { Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                        catch (err) { cosole.log(err); }
+                        catch (err) { console.log(err); }
                     }
                 }
                 )
