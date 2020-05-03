@@ -1997,8 +1997,8 @@ cropsStored: [
         { index: 11, name: "Eggs", stored: 0 },
         { index: 12, name: "Grapes", stored: 0 },
         { index: 13, name: "Jelly", stored: 0 },
-        { index: 14, name: "Wood", stored: 0 },
-        { index: 15, name: "Iron", stored: 0 },
+        { index: 14, name: "Wood", stored: 100 },
+        { index: 15, name: "Iron", stored: 200 },
         { index: 16, name: "Jars", stored: 0 },
         { index: 17, name: "Barrels", stored: 0 },
         { index: 18, name: "Cider", stored: 0 },
@@ -2018,11 +2018,14 @@ player = JSON.parse(localStorage.getItem('GuiGhostFarms_player'));
 if (typeof localStorage["GuiGhostFarms_playerItems"] === "undefined") { localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems)); };
 collectItems = JSON.parse(localStorage.getItem('GuiGhostFarms_playerItems'));
 var checkWoodType = Number.isInteger(player.cropsStored[14].stored);
-console.log("wood is integer " + checkWoodType); 
+console.log("wood is integer " + checkWoodType);
+if (checkWoodType == false) { player.cropsStored[14].stored = 0; };
+
 try { player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored); console.log("wood is " + player.cropsStored[14].stored); }
-catch (err) { console.log("wood error"); player.cropsStored[14] = 500; }
+catch (err) { console.log("wood error"); player.cropsStored[14].stored = 1000; }
 //hotfix to deal with upgrade people getting negative values
 if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 1000; console.log("less than 0 - fixing") }
+localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
 
 
 var globalModalBlock = 0;
@@ -3726,7 +3729,8 @@ farming.start = function () {
                             localStorage.setItem('MedFarms_homeTreesLeft', 1);
                             a.updateTools();
                             trees1.setHidden(true); treeUnlock1.setHidden(true); treeUnlockBtn.setHidden(true); axeHLeft.setHidden(true);
-                            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored)   + 250;
+                            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 250;
+                            if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 250;}
                             localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
                             localStorage.setItem('GuiGhostFarms_toolsEver', toolsEver);
                             localStorage.setItem('GuiGhostFarms_pickedEver', pickedEver);
@@ -3795,7 +3799,9 @@ farming.start = function () {
                             localStorage.setItem('MedFarms_homeTreesRight', 1);
                             a.updateTools();
                             trees2.setHidden(true); treeUnlock2.setHidden(true); treeUnlockBtn2.setHidden(true); axeHRight.setHidden(true);
-                            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored)  + 250;
+                            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 250;
+
+                            if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 250; }
                             localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
                             localStorage.setItem('GuiGhostFarms_toolsEver', toolsEver);
                             localStorage.setItem('GuiGhostFarms_pickedEver', pickedEver);
@@ -3855,7 +3861,12 @@ farming.start = function () {
     });
     goog.events.listen(upgradeHomeBarnBtn, ["mousedown", "touchstart"], function () {
         var upgradeHomeBarnBtnHid = upgradeHomeBarnBtn.getHidden();
-        console.log(upgradeHomeBarnBtnHid + " hidden upgradeHomeBarnBtn")
+        console.log(upgradeHomeBarnBtnHid + " hidden upgradeHomeBarnBtn");
+        if (player.barnLevel == 1) { barnUpgradeCostTools = 100; barnUpgradeCostWood = 50; secondsToUpgrade = 60; nextBarn = imgArray6[1].src }
+        if (player.barnLevel == 2) { barnUpgradeCostTools = 250; barnUpgradeCostWood = 100; secondsToUpgrade = 120; nextBarn = imgArray6[2].src }
+        else if (player.barnLevel == 3) { barnUpgradeCostTools = 500; barnUpgradeCostWood = 150; secondsToUpgrade = 180; nextBarn = imgArray6[3].src }
+        else if (player.barnLevel == 4) { barnUpgradeCostTools = 1500; barnUpgradeCostWood = 250; secondsToUpgrade = 300; nextBarn = imgArray6[4].src }
+        else { barnUpgradeCostTools = 100; }
         if (upgradeHomeBarnBtnHid == false) {
             unlockedCropBack.setHidden(true);
             upgradeHomeBarnBtn.setHidden(true);
@@ -3881,7 +3892,9 @@ farming.start = function () {
             player.tools = player.tools - barnUpgradeCostTools;
             a.updateTools();
             
-            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored)  - barnUpgradeCostWood;
+            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - parseInt(barnUpgradeCostWood);
+            if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
+            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
             a.updateStored();
             //show upgrade anim and timer
             upgradeCloud.setHidden(false);
@@ -5000,7 +5013,9 @@ farming.start = function () {
                     axeMoverLabelTP.setHidden(true); upgradeCloudTP.setHidden(true); secondsToUpgradeTP = 60;
                     player.treesP = 1;
                     a.updateTools();
-                    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored)  + 500;
+                    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 500;
+                    if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 500; }
+                    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
                     treeBlockP.setHidden(true);
                     axePRight.setHidden(true);
                     localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
@@ -5108,6 +5123,8 @@ farming.start = function () {
             barnUnlock3P.setHidden(true)
             player.tools = player.tools - toolCostP;
             player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - parseInt(woodCostP);
+            if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
+            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
             a.updateTools();
             a.updateStored();
             upgradeCloudP.setHidden(false);
@@ -5261,135 +5278,125 @@ farming.start = function () {
     upgradeCloudO.setHidden(true);
 
 
-    var barnUpgradeNotifO = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(35, 130).setSize(250, 220).setFill("images/UI/blankBack5.png");
-    orchardLayer.appendChild(barnUpgradeNotifO);
-    var barnUpgradeHeaderO = (new lime.Label).setAnchorPoint(0, 0).setPosition(23, 25).setText("Upgrade Orchard Barn?").setFontFamily("Comic Sans MS").setFontSize(18);
-    barnUpgradeNotifO.appendChild(barnUpgradeHeaderO);
-    var barnUpgradeText1O = (new lime.Label).setAnchorPoint(0, 0).setPosition(25, 122).setText("Increases Apple and Pear harvests by 100%").setFontFamily("Comic Sans MS").setFontSize(16).setSize(195, a.height / 2 - 50);
-    barnUpgradeNotifO.appendChild(barnUpgradeText1O);
-    var barnPanelTools = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(52, 50).setSize(40, 40).setFill("images/toolsIcon.png");
-    barnUpgradeNotifO.appendChild(barnPanelTools);
-    var barnUpgradeTextToolsO = (new lime.Label).setAnchorPoint(0, 0).setPosition(50, 95).setText("250").setFontFamily("Comic Sans MS").setFontSize(16).setSize(40, 40);
-    barnUpgradeNotifO.appendChild(barnUpgradeTextToolsO);
-    var barnPanelWood = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(142, 50).setSize(40, 40).setFill("images/" + a.crops[14].image);
-    barnUpgradeNotifO.appendChild(barnPanelWood);
-    var barnUpgradeTextWoodO = (new lime.Label).setAnchorPoint(0, 0).setPosition(145, 95).setText("200").setFontFamily("Comic Sans MS").setFontSize(16).setSize(40, 40);
-    barnUpgradeNotifO.appendChild(barnUpgradeTextWoodO);
-    var barnPanelCloseBtnO = (new lime.GlossyButton).setColor("#663300").setText("Close").setPosition(125, 208).setSize(100, 20);
-    barnUpgradeNotifO.appendChild(barnPanelCloseBtnO);
-    var barnPanelUpgradeBtnO = (new lime.GlossyButton).setColor("#00ff00").setText("Upgrade").setPosition(125, 175).setSize(100, 20);
-    barnUpgradeNotifO.appendChild(barnPanelUpgradeBtnO);
-    barnPanelUpgradeBtnO.setHidden(true);
-    barnUpgradeNotifO.setHidden(true);
-    //orchard barn upgrade
-    goog.events.listen(barnUnlockOBtn, ["mousedown", "touchstart"], function () {
-        barnUpgradeNotifO.setHidden(false);
-        //var barnUpgradeNotifO = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(35, 130).setSize(250, 220).setFill("images/UI/blankBack5.png");
-        //orchardLayer.appendChild(barnUpgradeNotifO);
-        //var barnUpgradeHeaderO = (new lime.Label).setAnchorPoint(0, 0).setPosition(23, 25).setText("Upgrade Orchard Barn?").setFontFamily("Comic Sans MS").setFontSize(18);
-        //barnUpgradeNotifO.appendChild(barnUpgradeHeaderO);
-        //var barnUpgradeText1O = (new lime.Label).setAnchorPoint(0, 0).setPosition(25, 122).setText("Increases Apple and Pear harvests by 100%").setFontFamily("Comic Sans MS").setFontSize(16).setSize(195, a.height / 2 - 50);
-        //barnUpgradeNotifO.appendChild(barnUpgradeText1O);
-        //var barnPanelTools = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(52, 50).setSize(40, 40).setFill("images/toolsIcon.png");
-        //barnUpgradeNotifO.appendChild(barnPanelTools);
-        //var barnUpgradeTextToolsO = (new lime.Label).setAnchorPoint(0, 0).setPosition(50, 95).setText("250").setFontFamily("Comic Sans MS").setFontSize(16).setSize(40,40);
-        //barnUpgradeNotifO.appendChild(barnUpgradeTextToolsO);
-        //var barnPanelWood = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(142, 50).setSize(40, 40).setFill("images/" + a.crops[14].image);
-        //barnUpgradeNotifO.appendChild(barnPanelWood);
-        //var barnUpgradeTextWoodO = (new lime.Label).setAnchorPoint(0, 0).setPosition(145, 95).setText("200").setFontFamily("Comic Sans MS").setFontSize(16).setSize(40,40);
-        //barnUpgradeNotifO.appendChild(barnUpgradeTextWoodO);
-        //var barnPanelCloseBtnO = (new lime.GlossyButton).setColor("#663300").setText("Close").setPosition(125, 208).setSize(100, 20);
-        //barnUpgradeNotifO.appendChild(barnPanelCloseBtnO);
-        //var barnPanelUpgradeBtnO = (new lime.GlossyButton).setColor("#00ff00").setText("Upgrade").setPosition(125, 175).setSize(100, 20);
-        //barnUpgradeNotifO.appendChild(barnPanelUpgradeBtnO);
-        //barnPanelUpgradeBtnO.setHidden(true);
-        if (parseInt(player.cropsStored[14].stored)  >= 200 && player.tools >= 250) {
-            barnPanelUpgradeBtnO.setHidden(false);
-            barnUpgradeText1O.setText("Increases Apple and Pear yield by 50%");
-        }
-        else { barnUpgradeText1O.setText("Need more resources to upgrade"); barnPanelUpgradeBtnO.setHidden(true);}
+    //var barnUpgradeNotifO = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(35, 130).setSize(250, 220).setFill("images/UI/blankBack5.png");
+    //orchardLayer.appendChild(barnUpgradeNotifO);
+    //var barnUpgradeHeaderO = (new lime.Label).setAnchorPoint(0, 0).setPosition(23, 25).setText("Upgrade Orchard Barn?").setFontFamily("Comic Sans MS").setFontSize(18);
+    //barnUpgradeNotifO.appendChild(barnUpgradeHeaderO);
+    //var barnUpgradeText1O = (new lime.Label).setAnchorPoint(0, 0).setPosition(25, 122).setText("Increases Apple and Pear harvests by 100%").setFontFamily("Comic Sans MS").setFontSize(16).setSize(195, a.height / 2 - 50);
+    //barnUpgradeNotifO.appendChild(barnUpgradeText1O);
+    //var barnPanelTools = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(52, 50).setSize(40, 40).setFill("images/toolsIcon.png");
+    //barnUpgradeNotifO.appendChild(barnPanelTools);
+    //var barnUpgradeTextToolsO = (new lime.Label).setAnchorPoint(0, 0).setPosition(50, 95).setText("250").setFontFamily("Comic Sans MS").setFontSize(16).setSize(40, 40);
+    //barnUpgradeNotifO.appendChild(barnUpgradeTextToolsO);
+    //var barnPanelWood = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(142, 50).setSize(40, 40).setFill("images/" + a.crops[14].image);
+    //barnUpgradeNotifO.appendChild(barnPanelWood);
+    //var barnUpgradeTextWoodO = (new lime.Label).setAnchorPoint(0, 0).setPosition(145, 95).setText("200").setFontFamily("Comic Sans MS").setFontSize(16).setSize(40, 40);
+    //barnUpgradeNotifO.appendChild(barnUpgradeTextWoodO);
+    //var barnPanelCloseBtnO = (new lime.GlossyButton).setColor("#663300").setText("Close").setPosition(125, 208).setSize(100, 20);
+    //barnUpgradeNotifO.appendChild(barnPanelCloseBtnO);
+    //var barnPanelUpgradeBtnO = (new lime.GlossyButton).setColor("#00ff00").setText("Upgrade").setPosition(125, 175).setSize(100, 20);
+    //barnUpgradeNotifO.appendChild(barnPanelUpgradeBtnO);
+    //barnPanelUpgradeBtnO.setHidden(true);
+    //barnUpgradeNotifO.setHidden(true);
+    ////orchard barn upgrade
+    //goog.events.listen(barnUnlockOBtn, ["mousedown", "touchstart"], function () {
+    //    barnUpgradeNotifO.setHidden(false);
+
+    //    if (parseInt(player.cropsStored[14].stored)  >= 200 && player.tools >= 250) {
+    //        barnPanelUpgradeBtnO.setHidden(false);
+    //        barnUpgradeText1O.setText("Increases Apple and Pear yield by 50%");
+    //    }
+    //    else { barnUpgradeText1O.setText("Need more resources to upgrade"); barnPanelUpgradeBtnO.setHidden(true);}
 
 
-        goog.events.listen(questPanelCloseBtnO, ["mousedown", "touchstart"], function () {
-            barnUpgradeNotifO.setHidden(true);
-        });   
-        goog.events.listen(barnPanelUpgradeBtnO, ["mousedown", "touchstart"], function () {
-            upgradeOrchardBarn();
-            barnUpgradeNotifO.setHidden(true);
-        });   
+    //    goog.events.listen(questPanelCloseBtnO, ["mousedown", "touchstart"], function () {
+    //        barnUpgradeNotifO.setHidden(true);
+    //    });   
+    
         
-    });
+    //});
+    //goog.events.listen(barnPanelUpgradeBtnO, ["mousedown", "touchstart"], function () {
+    //    var barnupPHid = barnUpgradeNotifO.getHidden();
+    //    if (barnupPHid == false) {
+    //        upgradeOrchardBarn();
+    //        barnUpgradeNotifO.setHidden(true);
+    //    }
+    
+    //});  
+
+    /////upgrade orchard barn
+    //function upgradeOrchardBarn() {
+
+    //    player.tools = player.tools - 250;
+    //    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - 200;
+    //    if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0 };
+    //    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+    //    a.updateTools();
+    //    currentRotateO = currentRotateO - 10;
+    //    if (currentRotateO < -50) { currentRotateO = -10; }
+    //    toolMoverO.setRotation(currentRotateO);
+    //    barnUnlockOBtn.setHidden(true);
+    //    barnUnlockOImg.setHidden(true);
+    //    toolMoverLabelO.setHidden(false);
+    //    scaffoldO.setHidden(false);
+    //    upgradeCloudO.setHidden(false);
+    //    var upCloudWOB = 150;
+    //    var upCloudXOB = 0;
+    //    var upCloudYOB = 90;
+    //    var quarterSecCountO = 0;
+    //    var secondsIntervalOrchard = secondsToUpgradeBarnO * 4;
+    //    lime.scheduleManager.scheduleWithDelay(function () {
+    //        secondsIntervalOrchard = secondsIntervalOrchard - 1;
+    //        quarterSecCountO = quarterSecCountO + 1;
+    //        if (quarterSecCountO == 4) {
+    //            secondsToUpgradeBarnO = secondsToUpgradeBarnO - 1;
+    //            toolMoverLabelO.setText(secondsToUpgradeBarnO);
+    //            quarterSecCountO = 0;
+    //        }
+    //        upgradeCloudO.setPosition(upCloudXOB, upCloudYOB).setSize(upCloudWOB, 200)
+    //        upCloudWOB = upCloudWOB + 10;
+    //        upCloudXOB = upCloudXOB - 5;
+    //        upCloudYOB = upCloudYOB - 5;
+    //        if (upCloudXOB < -20) { upCloudXOB = 0; upCloudYOB = 90; upCloudWOB = 90; }
+    //        currentRotateO = currentRotateO + 10;
+    //        if (currentRotateO > 35) { currentRotateO = -10; };
+    //        toolMoverO.setRotation(currentRotateO);
 
 
-    ///upgrade orchard barn
-    function upgradeOrchardBarn() {
-
-        player.tools = player.tools - 250;
-            
-        a.updateTools();
-        currentRotateO = currentRotateO - 10;
-        if (currentRotateO < -50) { currentRotateO = -10; }
-        toolMoverO.setRotation(currentRotateO);
-        barnUnlockOBtn.setHidden(true);
-        barnUnlockOImg.setHidden(true);
-        toolMoverLabelO.setHidden(false);
-        scaffoldO.setHidden(false);
-        upgradeCloudO.setHidden(false);
-        var upCloudWOB = 150;
-        var upCloudXOB = 0;
-        var upCloudYOB = 90;
-        var quarterSecCountO = 0;
-        var secondsIntervalOrchard = secondsToUpgradeBarnO * 4;
-        lime.scheduleManager.scheduleWithDelay(function () {
-            secondsIntervalOrchard = secondsIntervalOrchard - 1;
-            quarterSecCountO = quarterSecCountO + 1;
-            if (quarterSecCountO == 4) {
-                secondsToUpgradeBarnO = secondsToUpgradeBarnO - 1;
-                toolMoverLabelO.setText(secondsToUpgradeBarnO);
-                quarterSecCountO = 0;
-            }
-            upgradeCloudO.setPosition(upCloudXOB, upCloudYOB).setSize(upCloudWOB, 200)
-            upCloudWOB = upCloudWOB + 10;
-            upCloudXOB = upCloudXOB - 5;
-            upCloudYOB = upCloudYOB - 5;
-            if (upCloudXOB < -20) { upCloudXOB = 0; upCloudYOB = 90; upCloudWOB = 90; }
-            currentRotateO = currentRotateO + 10;
-            if (currentRotateO > 35) { currentRotateO = -10; };
-            toolMoverO.setRotation(currentRotateO);
-
-
-            if (secondsIntervalOrchard <= 0) {
-                toolMoverLabelO.setHidden(true);
-                scaffoldO.setHidden(true);
-                upgradeCloudO.setHidden(true);
-                orchardBarnLevel = 2;
-                localStorage.setItem("MedFarm_orchardBarnLevel", 2);
-                barnLevelO.setText("Lvl 2/2");
-                player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - 200;
+    //        if (secondsIntervalOrchard <= 0) {
+    //            toolMoverLabelO.setHidden(true);
+    //            scaffoldO.setHidden(true);
+    //            upgradeCloudO.setHidden(true);
+    //            orchardBarnLevel = 2;
+    //            localStorage.setItem("MedFarm_orchardBarnLevel", 2);
+    //            barnLevelO.setText("Lvl 2/2");
+    //            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - 200;
+    //            if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
+    //            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
              
-                if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 0) {
-                    questText1O.setText("If we had a FRUIT PRESS and some BARRELS, we could make CIDER");
-                    questPanelRocksO.setHidden(false);
-                    questPanelRocksO.setFill(imgArrayStore[4]);
-                    questPanelAvatarO.setFill(imgArrayStore[6]);
-                }
-                if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 1 && player.cropsStored[17].stored < 1) {
-                    questText1O.setText("We need more BARRELS to keep making CIDER");
-                    questPanelRocksO.setHidden(false);
-                    questPanelRocksO.setFill(imgArrayStore[6]);
-                    questPanelAvatarO.setFill("images/Orchard/girlF2.png");
-                }
-                if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 1 && player.cropsStored[17].stored > 1) {
-                    questText1O.setText("I don't need anything at the moment");
-                    questPanelRocksO.setHidden(true);
-                    questPanelAvatarO.setFill("images/Orchard/girlF2.png");
-                }
+    //            if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 0) {
+    //                questText1O.setText("If we had a FRUIT PRESS and some BARRELS, we could make CIDER");
+    //                questPanelRocksO.setHidden(false);
+    //                questPanelRocksO.setFill(imgArrayStore[4]);
+    //                questPanelAvatarO.setFill(imgArrayStore[6]);
+    //            }
+    //            if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 1 && player.cropsStored[17].stored < 1) {
+    //                questText1O.setText("We need more BARRELS to keep making CIDER");
+    //                questPanelRocksO.setHidden(false);
+    //                questPanelRocksO.setFill(imgArrayStore[6]);
+    //                questPanelAvatarO.setFill("images/Orchard/girlF2.png");
+    //            }
+    //            if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 1 && player.cropsStored[17].stored > 1) {
+    //                questText1O.setText("I don't need anything at the moment");
+    //                questPanelRocksO.setHidden(true);
+    //                questPanelAvatarO.setFill("images/Orchard/girlF2.png");
+    //            }
 
-            }
+    //        }
 
 
-        }, this, 250, 241);
-    }
+    //    }, this, 250, 241);
+    //}
 
 
 
@@ -5788,6 +5795,8 @@ farming.start = function () {
 
                             orchardTreeBlockO.setHidden(true);
                             player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 500;
+                            if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 500; }
+                            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
                             //treeUnlockBtnO.setHidden(true);
                           
                             unlockedCropBackO.setHidden(false);
@@ -6170,6 +6179,135 @@ farming.start = function () {
 
 
 
+    var barnUpgradeNotifO = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(35, 130).setSize(250, 220).setFill("images/UI/blankBack5.png");
+    orchardLayer.appendChild(barnUpgradeNotifO);
+    var barnUpgradeHeaderO = (new lime.Label).setAnchorPoint(0, 0).setPosition(23, 25).setText("Upgrade Orchard Barn?").setFontFamily("Comic Sans MS").setFontSize(18);
+    barnUpgradeNotifO.appendChild(barnUpgradeHeaderO);
+    var barnUpgradeText1O = (new lime.Label).setAnchorPoint(0, 0).setPosition(25, 122).setText("Increases Apple and Pear harvests by 100%").setFontFamily("Comic Sans MS").setFontSize(16).setSize(195, a.height / 2 - 50);
+    barnUpgradeNotifO.appendChild(barnUpgradeText1O);
+    var barnPanelTools = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(52, 50).setSize(40, 40).setFill("images/toolsIcon.png");
+    barnUpgradeNotifO.appendChild(barnPanelTools);
+    var barnUpgradeTextToolsO = (new lime.Label).setAnchorPoint(0, 0).setPosition(50, 95).setText("250").setFontFamily("Comic Sans MS").setFontSize(16).setSize(40, 40);
+    barnUpgradeNotifO.appendChild(barnUpgradeTextToolsO);
+    var barnPanelWood = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(142, 50).setSize(40, 40).setFill("images/" + a.crops[14].image);
+    barnUpgradeNotifO.appendChild(barnPanelWood);
+    var barnUpgradeTextWoodO = (new lime.Label).setAnchorPoint(0, 0).setPosition(145, 95).setText("200").setFontFamily("Comic Sans MS").setFontSize(16).setSize(40, 40);
+    barnUpgradeNotifO.appendChild(barnUpgradeTextWoodO);
+    var barnPanelCloseBtnO = (new lime.GlossyButton).setColor("#663300").setText("Close").setPosition(125, 208).setSize(100, 20);
+    barnUpgradeNotifO.appendChild(barnPanelCloseBtnO);
+    var barnPanelUpgradeBtnO = (new lime.GlossyButton).setColor("#00ff00").setText("Upgrade").setPosition(125, 175).setSize(100, 20);
+    barnUpgradeNotifO.appendChild(barnPanelUpgradeBtnO);
+    barnPanelUpgradeBtnO.setHidden(true);
+    barnUpgradeNotifO.setHidden(true);
+    //orchard barn upgrade
+    goog.events.listen(barnUnlockOBtn, ["mousedown", "touchstart"], function (e) {
+        barnUpgradeNotifO.setHidden(false);
+
+        if (parseInt(player.cropsStored[14].stored) >= 200 && player.tools >= 250) {
+            barnPanelUpgradeBtnO.setHidden(false);
+            barnUpgradeText1O.setText("Increases Apple and Pear yield by 50%");
+        }
+        else { barnUpgradeText1O.setText("Need more resources to upgrade"); barnPanelUpgradeBtnO.setHidden(true); }
+
+
+        goog.events.listen(questPanelCloseBtnO, ["mousedown", "touchstart"], function (e) {
+            barnUpgradeNotifO.setHidden(true);
+            e.event.stopPropagation();
+            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+            });  
+        });
+
+        e.event.stopPropagation();
+        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+        });  
+
+    });
+    goog.events.listen(barnPanelUpgradeBtnO, ["mousedown", "touchstart"], function (e) {
+
+        var barnupPHid = barnUpgradeNotifO.getHidden();
+        if (barnupPHid == false) {
+            upgradeOrchardBarn();
+            barnUpgradeNotifO.setHidden(true);
+        }
+        e.event.stopPropagation();
+        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+        });  
+    });
+
+    ///upgrade orchard barn
+    function upgradeOrchardBarn() {
+
+        player.tools = player.tools - 250;
+        player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - 200;
+        if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0 };
+        localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+        a.updateTools();
+        currentRotateO = currentRotateO - 10;
+        if (currentRotateO < -50) { currentRotateO = -10; }
+        toolMoverO.setRotation(currentRotateO);
+        barnUnlockOBtn.setHidden(true);
+        barnUnlockOImg.setHidden(true);
+        toolMoverLabelO.setHidden(false);
+        scaffoldO.setHidden(false);
+        upgradeCloudO.setHidden(false);
+        var upCloudWOB = 150;
+        var upCloudXOB = 0;
+        var upCloudYOB = 90;
+        var quarterSecCountO = 0;
+        var secondsIntervalOrchard = secondsToUpgradeBarnO * 4;
+        lime.scheduleManager.scheduleWithDelay(function () {
+            secondsIntervalOrchard = secondsIntervalOrchard - 1;
+            quarterSecCountO = quarterSecCountO + 1;
+            if (quarterSecCountO == 4) {
+                secondsToUpgradeBarnO = secondsToUpgradeBarnO - 1;
+                toolMoverLabelO.setText(secondsToUpgradeBarnO);
+                quarterSecCountO = 0;
+            }
+            upgradeCloudO.setPosition(upCloudXOB, upCloudYOB).setSize(upCloudWOB, 200)
+            upCloudWOB = upCloudWOB + 10;
+            upCloudXOB = upCloudXOB - 5;
+            upCloudYOB = upCloudYOB - 5;
+            if (upCloudXOB < -20) { upCloudXOB = 0; upCloudYOB = 90; upCloudWOB = 90; }
+            currentRotateO = currentRotateO + 10;
+            if (currentRotateO > 35) { currentRotateO = -10; };
+            toolMoverO.setRotation(currentRotateO);
+
+
+            if (secondsIntervalOrchard <= 0) {
+                toolMoverLabelO.setHidden(true);
+                scaffoldO.setHidden(true);
+                upgradeCloudO.setHidden(true);
+                orchardBarnLevel = 2;
+                localStorage.setItem("MedFarm_orchardBarnLevel", 2);
+                barnLevelO.setText("Lvl 2/2");
+                player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - 200;
+                if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
+                localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+
+                if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 0) {
+                    questText1O.setText("If we had a FRUIT PRESS and some BARRELS, we could make CIDER");
+                    questPanelRocksO.setHidden(false);
+                    questPanelRocksO.setFill(imgArrayStore[4]);
+                    questPanelAvatarO.setFill(imgArrayStore[6]);
+                }
+                if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 1 && player.cropsStored[17].stored < 1) {
+                    questText1O.setText("We need more BARRELS to keep making CIDER");
+                    questPanelRocksO.setHidden(false);
+                    questPanelRocksO.setFill(imgArrayStore[6]);
+                    questPanelAvatarO.setFill("images/Orchard/girlF2.png");
+                }
+                if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 1 && player.cropsStored[17].stored > 1) {
+                    questText1O.setText("I don't need anything at the moment");
+                    questPanelRocksO.setHidden(true);
+                    questPanelAvatarO.setFill("images/Orchard/girlF2.png");
+                }
+
+            }
+
+
+        }, this, 250, 241);
+    
+    }
 
 
     //var actionsO = (new lime.GlossyButton).setColor("#663300").setText("Actions").setPosition(35, 485).setSize(70, 25);
@@ -10597,7 +10735,9 @@ farming.start = function () {
                     axeVLower.setHidden(true);
                     a.updateTools();
                     treesImgV.setHidden(true);
-                    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored)  + 500;
+                    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 500;
+                    if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 500; }
+                    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
                     a.vinyardBlocksControl(1);
                     vinyardBlocks = 2;
                     isblocked1 = 2;
@@ -10686,6 +10826,8 @@ farming.start = function () {
                     localStorage["GuiGhostFarms_vinyardBlocks2"] = isblocked2;
                     treesImgV2.setHidden(true);
                     player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 500;
+                    if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 500; }
+                    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
                 }
 
             }, this, 1000, 60)
@@ -10839,7 +10981,9 @@ farming.start = function () {
                 if (player.tools >= costTools) {
                     HouseVUnlock3.setHidden(true);
                     player.tools = player.tools - costTools;
-                    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored)  - parseInt(costWood);
+                    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - parseInt(costWood);
+                    if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
+                    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
 
                     upgradeCloudV.setHidden(false);
                     scaffoldV.setHidden(false);
@@ -11840,7 +11984,9 @@ farming.start = function () {
         if (player.tools >= 1000 && expandOnce == 0 && parseInt(player.cropsStored[14].stored)  >= 200) {
             expandOnce = 1;
             player.tools -= 1000;
-            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored)  - 200;
+            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - 200;
+            if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
+            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
             a.updateStored();
             a.updateTools();
             a.updateMoney();
