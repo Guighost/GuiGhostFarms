@@ -2728,7 +2728,7 @@ farming.start = function () {
     };
     a.displayCost = function (x, y, costPassed) {
         costDisplay.setHidden(false), costDisplay.setPosition((x + 35), y);
-        costDisplay.setText("-$" + costPassed);
+        costDisplay.setText("-" + costPassed);
         setTimeout(function () { costDisplay.setHidden(true) }, 750);
 
         //vinyard
@@ -3152,16 +3152,16 @@ farming.start = function () {
     var cloudDarkness = 0.1;
     var cloudOpacityDirection = 0;
     var vNumber = -190;
-    lime.scheduleManager.scheduleWithDelay(function () {
-        cloudAnim = cloudAnim + 1.25;
-        vNumber = vNumber + 0.25;
-        if (cloudDarkness < 0.7 && cloudOpacityDirection == 0) { cloudDarkness = cloudDarkness + 0.01; }
-        if (cloudDarkness > 0.6) { cloudDarkness = cloudDarkness - 0.1; cloudOpacityDirection = 1; }
-        if (cloudDarkness < 0.1) { cloudDarkness = cloudDarkness + 0.1; cloudOpacityDirection = 0; }
-        clouds.setPosition(cloudAnim, vNumber); clouds.setOpacity(cloudDarkness);
-        if (cloudAnim >= 700) { cloudAnim = -300; vNumber = -190; }
+    //lime.scheduleManager.scheduleWithDelay(function () {
+    //    cloudAnim = cloudAnim + 1.25;
+    //    vNumber = vNumber + 0.25;
+    //    if (cloudDarkness < 0.7 && cloudOpacityDirection == 0) { cloudDarkness = cloudDarkness + 0.01; }
+    //    if (cloudDarkness > 0.6) { cloudDarkness = cloudDarkness - 0.1; cloudOpacityDirection = 1; }
+    //    if (cloudDarkness < 0.1) { cloudDarkness = cloudDarkness + 0.1; cloudOpacityDirection = 0; }
+    //    clouds.setPosition(cloudAnim, vNumber); clouds.setOpacity(cloudDarkness);
+    //    if (cloudAnim >= 700) { cloudAnim = -300; vNumber = -190; }
 
-    }, this, 100)
+    //}, this, 200)
 
 
     var tutStep = 1;
@@ -3984,7 +3984,7 @@ farming.start = function () {
     };
     //c.replaceScene(d);
     u.setHidden(false);
-    var costDisplay = (new lime.Label).setPosition(156, 180).setSize(25, 25).setText("-$50").setFontSize(14).setFontFamily("Comic Sans MS").setFontColor("#e1f00e").setFontWeight(600);
+    var costDisplay = (new lime.Label).setPosition(156, 180).setSize(40, 25).setText("-$50").setFontSize(14).setFontFamily("Comic Sans MS").setFontColor("#e1f00e").setFontWeight(600);
     e.appendChild(costDisplay);
     var costCoin = (new lime.Sprite).setPosition(30, -8).setSize(30, 30).setFill(imgArray11[0]); costDisplay.appendChild(costCoin);
     costDisplay.setHidden(true);
@@ -4467,11 +4467,11 @@ farming.start = function () {
     pastureLayer.appendChild(cloudsP);
     //cloud anim
     var cloudAnimP = 0
-    lime.scheduleManager.scheduleWithDelay(function () {
-        cloudAnimP = cloudAnimP + 3;
-        cloudsP.setPosition(cloudAnimP, -100);
-        if (cloudAnimP > a.width + 200) { cloudAnimP = -300 }
-    }, this, 200)
+    //lime.scheduleManager.scheduleWithDelay(function () {
+    //    cloudAnimP = cloudAnimP + 3;
+    //    cloudsP.setPosition(cloudAnimP, -100);
+    //    if (cloudAnimP > a.width + 200) { cloudAnimP = -300 }
+    //}, this, 200)
     //end clouds pasture
     //cow sound + milk + Jelly harvest timer
     lime.scheduleManager.scheduleWithDelay(function () {
@@ -8006,8 +8006,7 @@ farming.start = function () {
         var largeStarsBuyLabel = (new lime.Label).setPosition(0, 4).setFontFamily("Comic Sans MS").setFontSize(12).setText("Buy now $4.99").setFontColor("#f0ffff").setSize(50, 30);
         buyLargeStarsBtn.appendChild(largeStarsBuyLabel);
 
-        if (buyLargeStars.owned == 1) { buyLargeStars.setOpacity(0.2); buyLargeStarsBtn.setHidden(true); }
-        else {
+      
             goog.events.listen(buyLargeStarsBtn, ["mousedown", "touchstart"], function () {
                 var isHidPreLayer2 = storeBuyPremiumLayer.getHidden();
                var isHidStarL = buyLargeStarsBtn.getHidden();
@@ -8020,7 +8019,7 @@ farming.start = function () {
                     storeStars.setText(starCash);
                 }
             });
-        }
+        
 
               // starter pack
         var buyStarterPack = (new lime.Sprite).setSize(220, 96).setPosition(0, 12).setFill(imgArray[18].src);
@@ -8339,7 +8338,7 @@ farming.start = function () {
     ////monk anim
     lime.scheduleManager.scheduleWithDelay(function () {
         //add upgrade anim
-
+        storeStars.setText(starCash);
        
         if (monkAnimCount >= 50 ) { monkAnimCount = 1; monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]);  };
         //if (monkAnimCount < 14) { monk.setFill(imgArrayTown[parseInt(monkAnimCount)].src); };
@@ -10369,11 +10368,11 @@ farming.start = function () {
     liveStockLayer.appendChild(cloudsLS);
     //cloud anim
     var cloudAnimLS = 0
-    lime.scheduleManager.scheduleWithDelay(function () {
-        cloudAnimLS = cloudAnimLS + 2;
-        cloudsLS.setPosition(cloudAnimLS, -105);
-        if (cloudAnimLS > a.width + 200) { cloudAnimLS = -400 }
-    }, this, 200)
+    //lime.scheduleManager.scheduleWithDelay(function () {
+    //    cloudAnimLS = cloudAnimLS + 2;
+    //    cloudsLS.setPosition(cloudAnimLS, -105);
+    //    if (cloudAnimLS > a.width + 200) { cloudAnimLS = -400 }
+    //}, this, 200)
     //end clouds livestock
 
     var compassLS = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(130, 449).setSize(35, 35).setFill("images/UI/compass22.png"); liveStockLayer.appendChild(compassLS)
@@ -11324,11 +11323,11 @@ farming.start = function () {
     vinyardLayer.appendChild(cloudsV);
     //cloud anim
     var cloudAnimV = 0
-    lime.scheduleManager.scheduleWithDelay(function () {
-        cloudAnimV = cloudAnimV + 2;
-        cloudsV.setPosition(cloudAnimV, -105);
-        if (cloudAnimV > a.width + 200) { cloudAnimV = -400 }
-    }, this, 200)
+    //lime.scheduleManager.scheduleWithDelay(function () {
+    //    cloudAnimV = cloudAnimV + 2;
+    //    cloudsV.setPosition(cloudAnimV, -105);
+    //    if (cloudAnimV > a.width + 200) { cloudAnimV = -400 }
+    //}, this, 200)
     //end clouds vinyard
 
 
@@ -13040,8 +13039,24 @@ farming.start = function () {
                 }, this, 500)
           
     
-    
+
+                document.getElementById("starCashOuterLabel").innerHTML = starCash;
+
+
+                ////// exit intent
+                //document.addEventListener("deviceready", onDeviceReady, false);
+                //// Cordova is loaded and it is now safe to call Cordova methods
+                ////
+                //function onDeviceReady() {
+                //    // Register the event listener
+                //    document.addEventListener("backbutton", onBackKeyDown, false);
+                //}
+
+                //// Handle the back button
+                ////
+                //function onBackKeyDown() {
+                //    alert("back pressed");
+                //}
                
     //////end of farming.start
 };
- 

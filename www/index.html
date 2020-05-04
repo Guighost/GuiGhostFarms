@@ -732,11 +732,11 @@
 
 
 
-        <script type="text/javascript" src="farmingMin_1.5.js"></script>
+        <script type="text/javascript" src="farming_1.5.js"></script>
 </head>
 
 
-<body onload="farming.start()">
+<body onload="farming.start()" >
     <!--<script>
         //window.setTimeout(function () { farming.start(); }, 15000);
         nope not here
@@ -770,7 +770,8 @@
                  <p id="waitText"></p>
             </div>
 
-            <p id="sucessbuyTxt"> + $500</p>
+            <p id="sucessbuyTxt"> + $500</p> 
+
             <div id="currentStarCashBack4">
                 Buy Stars in Town <img id="buyStarsFromModal" src="images/UI/shopIcon.png" alt="buyStars" />
             </div>
@@ -813,6 +814,11 @@
          
         </div>
     </div>
+
+
+
+
+
  <script type="text/javascript" src="cordova.js"></script>
 
 
@@ -1039,13 +1045,14 @@ var tid2 = setInterval(interPop2, 500);
                     Enhance.purchases.getDisplayTitle('starpack_small',  '50 Stars', function (result) {
                         localStorage.setItem('MedFarms_boughtSmallStars', 1);
                         alert(result);
-                        
+                      
                     });
                     starCash = parseInt(localStorage.getItem('starCash'));
                     //console.log("before starcash = " + starCash);
                     starCash = parseInt(starCash) + 50;
                     //console.log("after buy small starcash = " + starCash);
                     localStorage.setItem('starCash', starCash);
+                 
                     buySmallStars.owned = 1;
                     try { Enhance.purchases.consume('starpack_small', onConsumeSuccessCallback, onConsumeFailedCallback); }
                     catch (err) { console.log(err); }
@@ -1053,7 +1060,15 @@ var tid2 = setInterval(interPop2, 500);
 
                 var onPurchaseFailed = function () {
                     // Failure
-                    alert('purchased failed');
+                    //check it owned and try to consume
+                    Enhance.purchases.isItemOwned('starpack_small', function (result) {
+                        if (result == true) {
+                            try { Enhance.purchases.consume('starpack_small', onConsumeSuccessCallback, onConsumeFailedCallback); }
+                            catch (err) { console.log(err); }
+                        }
+                    }
+                    )      
+                    alert('Purchased failed');
                 };
                 var onConsumeSuccessCallback = function () {
                     //consumed
@@ -1063,20 +1078,13 @@ var tid2 = setInterval(interPop2, 500);
                     // consume failee Failure
                     console.log('consume failed');
                 };
-                //check it owned and try to consume
-                Enhance.purchases.isItemOwned('starpack_small', function (result) {
-                    if (result == true) {
-                        try { Enhance.purchases.consume('starpack_small', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                        catch (err) { console.log(err); }
-                    }
-                }
-                )                
+                      
                 Enhance.purchases.attemptPurchase('starpack_small', onPurchaseSuccess, onPurchaseFailed);
                 
                 
             };
 
-          
+  
 
             var callback_LargeSP = function () {
                 var onPurchaseSuccess = function () {
@@ -1087,6 +1095,7 @@ var tid2 = setInterval(interPop2, 500);
                     starCash = parseInt(localStorage.getItem('starCash'));
                     console.log("before starcash = " + starCash);
                     starCash = parseInt(starCash) + 300;
+            
                     console.log("after buy large starcash = " + starCash);
                     localStorage.setItem('starCash', starCash);
                     buyLargeStars.owned = 1;
@@ -1096,6 +1105,13 @@ var tid2 = setInterval(interPop2, 500);
 
                 var onPurchaseFailed = function () {
                     // Failure
+                    Enhance.purchases.isItemOwned('starpack_large', function (result) {
+                        if (result == true) {
+                            try { Enhance.purchases.consume('starpack_large', onConsumeSuccessCallback, onConsumeFailedCallback); }
+                            catch (err) { console.log(err); }
+                        }
+                    }
+                    )
                     alert('purchased failed');
                 };
                 var onConsumeSuccessCallback = function () {
@@ -1106,13 +1122,7 @@ var tid2 = setInterval(interPop2, 500);
                     // consume failee Failure
                     console.log('consume failed');
                 };
-                Enhance.purchases.isItemOwned('starpack_large', function (result) {
-                    if (result == true) {
-                        try { Enhance.purchases.consume('starpack_large', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                        catch (err) { console.log(err); }
-                    }
-                }
-                )
+         
                 Enhance.purchases.attemptPurchase('starpack_large', onPurchaseSuccess, onPurchaseFailed);
             };
 
@@ -1140,8 +1150,16 @@ var tid2 = setInterval(interPop2, 500);
                 };
 
                 var onPurchaseFailed = function () {
-                    // Failure
-                    alert('purchased failed');
+                    // Failure  
+                    //check it owned and try to consume
+                    Enhance.purchases.isItemOwned('starter_pack', function (result) {
+                        if (result == true) {
+                            try { Enhance.purchases.consume('starter_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
+                            catch (err) { console.log(err); }
+                        }
+                    }
+                    )
+                    alert('Purchased failed');
                 };
                 var onConsumeSuccessCallback = function () {
                     //consumed
@@ -1151,13 +1169,7 @@ var tid2 = setInterval(interPop2, 500);
                     // consume failee Failure
                     console.log('consume failed');
                 };
-                //check it owned and try to consume
-                Enhance.purchases.isItemOwned('starter_pack', function (result) {
-                    if (result == true) {
-                        try { Enhance.purchases.consume('starter_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                        catch (err) { console.log(err); }}
-                    }
-                )
+             
                 Enhance.purchases.attemptPurchase('starter_pack', onPurchaseSuccess, onPurchaseFailed);
             };
 
@@ -1179,6 +1191,7 @@ var tid2 = setInterval(interPop2, 500);
                     localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
                     starCash = parseInt(localStorage.getItem('starCash'));
                     starCash = parseInt(starCash) + 50;
+                
                     localStorage.setItem('starCash', starCash);
                     buyMasterPack.owned = 1;
 
@@ -1189,7 +1202,14 @@ var tid2 = setInterval(interPop2, 500);
 
                 var onPurchaseFailed = function () {
                     // Failure
-                    alert('purchased failed');
+                    Enhance.purchases.isItemOwned('master_pack', function (result) {
+                        if (result == true) {
+                            try { Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
+                            catch (err) { console.log(err); }
+                        }
+                    }
+                    )
+                    alert('Purchased failed- try again soon');
                 };
                 var onConsumeSuccessCallback = function () {
                     //consumed
@@ -1199,13 +1219,7 @@ var tid2 = setInterval(interPop2, 500);
                     // consume failee Failure
                     console.log('consume failed');
                 };
-                Enhance.purchases.isItemOwned('master_pack', function (result) {
-                    if (result == true) {
-                        try { Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                        catch (err) { console.log(err); }
-                    }
-                }
-                )
+            
 
                 Enhance.purchases.attemptPurchase('master_pack', onPurchaseSuccess, onPurchaseFailed);
             };
@@ -1259,7 +1273,12 @@ var tid2 = setInterval(interPop2, 500);
           }, 250);
             
 
-          document.getElementById("starCashOuterLabel").innerHTML = starCash;
+
+
+        
+
+
  </script>
+
     </body>
 </html>
