@@ -675,7 +675,12 @@ lime.audio.Audio.prototype.getVolume = function () {
 
 ////Image arrays//////
 
-
+var imgArrayGround = new Array();
+imgArrayGround[0] = new Image(); imgArrayGround[0].src = 'images/bare_land.png'
+imgArrayGround[1] = new Image(); imgArrayGround[1].src = "images/bare_land_tr.png"
+imgArrayGround[2] = new Image(); imgArrayGround[2].src = "images/bare_land_tl.png"
+imgArrayGround[3] = new Image(); imgArrayGround[3].src = "images/bare_land_lr.png"
+imgArrayGround[4] = new Image(); imgArrayGround[4].src = "images/bare_land_ll.png"
 //goog.require('lime.parser.JSON');
 //blacksmith images
 var imgArray = new Array();
@@ -1150,6 +1155,8 @@ var friarReady = 0;
 var saraReady = 0;
 var feliciaReady = 0;
 var collectibleOnScreen = false;
+var townSceneActive = 0;
+var sceneActive = 'home';
 
 
 var adFreeVersion = 0;
@@ -1262,6 +1269,10 @@ var starCash = 0;
 var moneyBefore = 0;
 var startedMove = 0;
 var homeCrop = 0;
+homeCrop = localStorage.getItem('MedFarms_selectedHomeCrop');
+
+if (homeCrop > 5 || isNaN(homeCrop) || homeCrop < 0) { homeCrop = 0; };
+
 var orchardText = "Tending Apple Trees"
 var landStateMaster = new Array();
 var homeTreesLeft = 0;
@@ -1303,10 +1314,10 @@ var farming = {
         this.setSize(a.tile_size, a.tile_size);
         this.setFill(imgArray6[5]);
       
-        if (block == 'tlt') { this.setFill("images/bare_land_tl.png"); }
-        if (block == 'trt') { this.setFill("images/bare_land_tr.png"); }
-        if (block == 'brt') { this.setFill("images/bare_land_lr.png"); }
-        if (block == 'blt') { this.setFill("images/bare_land_ll.png"); }
+        if (block == 'tlt') { this.setFill(imgArrayGround[2]); }
+        if (block == 'trt') { this.setFill(imgArrayGround[1]); }
+        if (block == 'brt') { this.setFill(imgArrayGround[3] ); }
+        if (block == 'blt') { this.setFill(imgArrayGround[4]); }
         if (scene == 3) { this.setFill("images/Orchard/prune_trees.png"); };
         if (scene == 32) { this.setFill("images/Orchard/prune_trees.png"); };
         if (scene == 5) { this.setFill("images/vinyard/grapes_ClearBrush.png"); };
@@ -1405,7 +1416,7 @@ var farming = {
 	
         function growIt(d) {
             //if (tutSeen == 0) { break; }
-            if (scene == 1 && b.currentCrop > 5 || b.currentCrop == 'undefined') { b.currentCrop = localStorage.getItem('MedFarms_selectedHomeCrop'); };
+            if (scene == 1 && b.currentCrop > 5 || b.currentCrop == 'undefined') { b.currentCrop = b.currentCrop = homeCrop; };
             if (scene == 32) { b.currentCrop = 9; };
             if (scene == 3) { b.currentCrop = 8; };
             var toPlant = a.crops[b.currentCrop].grow1;
@@ -1421,11 +1432,11 @@ var farming = {
                     scene == 3 && (c.setFill("images/Orchard/wither_treesApple.png")),
                     scene == 32 && (c.setFill("images/Orchard/wither_treesPear.png")),
                     scene == 5 && (c.setFill("images/vinyard/grapes_withered.png")),
-                    c.setFill("images/bare_land.png"),
-                    block == 'tlt' && (c.setFill("images/bare_land_tl.png")),
-                    block == 'trt' && (c.setFill("images/bare_land_tr.png")),
-                    block == 'brt' && (c.setFill("images/bare_land_lr.png")),
-                    block == 'blt' && (c.setFill("images/bare_land_ll.png")),
+                    c.setFill(imgArrayGround[0]),
+                    block == 'tlt' && (c.setFill(imgArrayGround[2])),
+                    block == 'trt' && (c.setFill(imgArrayGround[1])),
+                    block == 'brt' && (c.setFill(imgArrayGround[3] )),
+                    block == 'blt' && (c.setFill(imgArrayGround[4])),
                     scene == 3 && (c.setFill("images/Orchard/prune_trees.png")),
                     scene == 32 && (c.setFill("images/Orchard/prune_trees.png")),
                     scene == 5 && (c.setFill("images/vinyard/grapes_ClearBrush.png")),
@@ -1467,11 +1478,11 @@ var farming = {
                                 a.displayCost(posX, posY, a.crops[b.currentCrop].cost + " Required")
                             )
 
-                            : c.state == farming.READY && (c.setFill("images/bare_land.png"),
-                                block == 'tlt' && (c.setFill("images/bare_land_tl.png")),
-                                block == 'trt' && (c.setFill("images/bare_land_tr.png")),
-                                block == 'brt' && (c.setFill("images/bare_land_lr.png")),
-                                block == 'blt' && (c.setFill("images/bare_land_ll.png")),
+                            : c.state == farming.READY && (c.setFill(imgArrayGround[0]),
+                                block == 'tlt' && (c.setFill(imgArrayGround[2])),
+                                block == 'trt' && (c.setFill(imgArrayGround[1])),
+                                block == 'brt' && (c.setFill(imgArrayGround[3] )),
+                                block == 'blt' && (c.setFill(imgArrayGround[4])),
                                 scene == 3 && (c.setFill("images/Orchard/prune_trees.png")),
                                 scene == 32 && (c.setFill("images/Orchard/prune_trees.png")),
                                 scene == 5 && (c.setFill("images/vinyard/grapes_ClearBrush.png")),
@@ -2018,13 +2029,13 @@ player = JSON.parse(localStorage.getItem('GuiGhostFarms_player'));
 if (typeof localStorage["GuiGhostFarms_playerItems"] === "undefined") { localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems)); };
 collectItems = JSON.parse(localStorage.getItem('GuiGhostFarms_playerItems'));
 var checkWoodType = Number.isInteger(player.cropsStored[14].stored);
-console.log("wood is integer " + checkWoodType);
+//console.log("wood is integer " + checkWoodType);
 if (checkWoodType == false) { player.cropsStored[14].stored = 0; };
 
-try { player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored); console.log("wood is " + player.cropsStored[14].stored); }
-catch (err) { console.log("wood error"); player.cropsStored[14].stored = 1000; }
+try { player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored);  }
+catch (err) {  player.cropsStored[14].stored = 1000; }
 //hotfix to deal with upgrade people getting negative values
-if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 1000; console.log("less than 0 - fixing") }
+if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 1000;  }
 localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
 
 
@@ -2126,22 +2137,22 @@ farming.start = function () {
 
     var a = { width: 310, height: 540, tile_size: 30, num_tiles_x: 4, num_tiles_y: 4, landLayer_w: 320, landLayer_h: 388, controlsLayer_w: 320, controlsLayer_h: 70, costPlowing: 0, shop_margin_x: 50, shop_margin_y: 38 },
         b = { money: 500, currentCrop: 0 };
-    b.currentCrop = localStorage.getItem("MedFarms_selectedHomeCrop");
+    b.currentCrop = homeCrop;
     if (b.currentCrop > 5 || b.currentCrop == 'null') { b.currentCrop = 0; }
     a.crops = [
-        { name: "Tomatoes  ", cost: 4, revenue: 8, time_to_ripe: 30, time_to_death: 90, image: "tomato.png", harvest: "tomato2.png", grow1: "tomatoGrow1.png", grow2: "tomatoGrow2.png", stored: 0, withered: "tomatoWithered.png" },
-        { name: "Carrots    ", cost: 6, revenue: 12, time_to_ripe: 35, time_to_death: 90, image: "carrots.png", harvest: "carrots2.png", grow1: "carrotGrow1.png", grow2: "carrotGrow2.png", stored: 0, withered: "carrotsWithered.png" },
-        { name: "Artichoke  ", cost: 8, revenue: 16, time_to_ripe: 42, time_to_death: 90, image: "artichoke.png", harvest: "artichoke2.png", grow1: "artiGrow1.png", grow2: "artiGrow2.png", stored: 0, withered: "artichokeWithered.png" },
-        { name: "Eggplant ", cost: 11, revenue: 22, time_to_ripe: 50, time_to_death: 90, image: "eggplant.png", harvest: "eggplant2.png", grow1: "eggplantGrow1.png", grow2: "eggplantGrow2.png", stored: 0, withered: "eggplantWithered.png" },
-        { name: "Peppers  ", cost: 13, revenue: 24, time_to_ripe: 55, time_to_death: 90, image: "peppers.png", harvest: "peppers2.png", grow1: "pepperGrow1.png", grow2: "pepperGrow2.png", stored: 0, withered: "peppersWithered.png" },
-        { name: "Corn  ", cost: 15, revenue: 28, time_to_ripe: 60, time_to_death: 90, image: "corn.png", harvest: "corn2.png", grow1: "cornGrow1.png", grow2: "cornGrow2.png", stored: 0, withered: "cornWithered.png" },
+        { name: "Tomatoes  ", cost: 4, revenue: 8, time_to_ripe: 30, time_to_death: 120, image: "tomato.png", harvest: "tomato2.png", grow1: "tomatoGrow1.png", grow2: "tomatoGrow2.png", stored: 0, withered: "tomatoWithered.png" },
+        { name: "Carrots    ", cost: 6, revenue: 12, time_to_ripe: 35, time_to_death: 130, image: "carrots.png", harvest: "carrots2.png", grow1: "carrotGrow1.png", grow2: "carrotGrow2.png", stored: 0, withered: "carrotsWithered.png" },
+        { name: "Artichoke  ", cost: 8, revenue: 16, time_to_ripe: 42, time_to_death: 140, image: "artichoke.png", harvest: "artichoke2.png", grow1: "artiGrow1.png", grow2: "artiGrow2.png", stored: 0, withered: "artichokeWithered.png" },
+        { name: "Eggplant ", cost: 11, revenue: 22, time_to_ripe: 50, time_to_death: 150, image: "eggplant.png", harvest: "eggplant2.png", grow1: "eggplantGrow1.png", grow2: "eggplantGrow2.png", stored: 0, withered: "eggplantWithered.png" },
+        { name: "Peppers  ", cost: 13, revenue: 24, time_to_ripe: 55, time_to_death: 160, image: "peppers.png", harvest: "peppers2.png", grow1: "pepperGrow1.png", grow2: "pepperGrow2.png", stored: 0, withered: "peppersWithered.png" },
+        { name: "Corn  ", cost: 15, revenue: 28, time_to_ripe: 60, time_to_death: 180, image: "corn.png", harvest: "corn2.png", grow1: "cornGrow1.png", grow2: "cornGrow2.png", stored: 0, withered: "cornWithered.png" },
         { name: "Hay  ", cost: 5, revenue: 10, time_to_ripe: 35, time_to_death: 280, image: "hay.png", harvest: "hayCartFull.png", grow1: "hayGrow1.png", grow2: "hayGrow2.png", stored: 0, withered: "hayWithered.png" },
         { name: "Milk  ", cost: 12, revenue: 22, time_to_ripe: 65, time_to_death: 22280, image: "Pasture/bucket.png", harvest: "Pasture/bucket.png", grow1: "Pasture/bucket.png", grow2: "Pasture/bucket.png", stored: 0, withered: "Pasture/bucket.png" },
-        { name: "Apple", cost: 10, revenue: 25, time_to_ripe: 80, time_to_death: 110, image: "Orchard/ready_Apples.png", harvest: "apple.png", grow1: "Orchard/growing2_trees.png", grow2: "Orchard/growing3_trees.png", stored: 0, withered: "Orchard/wither_treesApple.png" },
-        { name: "Pear", cost: 15, revenue: 30, time_to_ripe: 90, time_to_death: 110, image: "Orchard/ready_treesPear.png", harvest: "pear.png", grow1: "Orchard/growing22_trees.png", grow2: "Orchard/growing4_trees.png", stored: 0, withered: "Orchard/wither_treesPear.png" },
+        { name: "Apple", cost: 10, revenue: 25, time_to_ripe: 80, time_to_death: 180, image: "Orchard/ready_Apples.png", harvest: "apple.png", grow1: "Orchard/growing2_trees.png", grow2: "Orchard/growing3_trees.png", stored: 0, withered: "Orchard/wither_treesApple.png" },
+        { name: "Pear", cost: 15, revenue: 30, time_to_ripe: 90, time_to_death: 180, image: "Orchard/ready_treesPear.png", harvest: "pear.png", grow1: "Orchard/growing22_trees.png", grow2: "Orchard/growing4_trees.png", stored: 0, withered: "Orchard/wither_treesPear.png" },
         { name: "Pork", cost: 20, revenue: 35, time_to_ripe: 70, time_to_death: 14000, image: "livestockPens/hams.png", harvest: "livestockPens/hams.png", grow1: "livestockPens/hams.png", grow2: "livestockPens/hams.png", stored: 0, withered: "tomatoWithered.png" },
         { name: "Eggs", cost: 5, revenue: 10, time_to_ripe: 70, time_to_death: 14000, image: "livestockPens/eggs.png", harvest: "livestockPens/eggs.png", grow1: "livestockPens/eggs.png", grow2: "livestockPens/eggs.png", stored: 0, withered: "tomatoWithered.png" },
-        { name: "Grapes", cost: 15, revenue: 25, time_to_ripe: 60, time_to_death: 100, image: "vinyard/grapes_ready.png", harvest: "vinyard/grapes2.png", grow1: "vinyard/grapes_Grow1.png", grow2: "vinyard/grapes_Grow2.png", stored: 0, withered: "vinyard/grapes_withered.png" },
+        { name: "Grapes", cost: 15, revenue: 25, time_to_ripe: 60, time_to_death: 180, image: "vinyard/grapes_ready.png", harvest: "vinyard/grapes2.png", grow1: "vinyard/grapes_Grow1.png", grow2: "vinyard/grapes_Grow2.png", stored: 0, withered: "vinyard/grapes_withered.png" },
         { name: "Jelly", cost: 30, revenue: 35, time_to_ripe: 75, time_to_death: 14000, image: "vinyard/jelly.png", harvest: "vinyard/jelly.png", grow1: "vinyard/jelly.png", grow2: "vinyard/jelly.png", stored: 0 },
         { name: "Wood", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/logs.png", harvest: "items/logs.png", grow1: "items/logs.png", grow2: "items/logs.png", stored: 0 },
         { name: "Iron", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/ironBar.png", harvest: "items/ironBar.png", grow1: "items/ironBar.png", grow2: "items/ironBar.png", stored: 0 },
@@ -2340,6 +2351,7 @@ farming.start = function () {
         checkItemsOwned();
         starCashInvCount.setText(starCash);
         c.replaceScene(inventoryScene, lime.transitions.SlideInUp);
+        sceneActive = 'Inventory';
         count0.setText(player.cropsStored[0].stored);
         count1.setText(player.cropsStored[1].stored);
         count2.setText(player.cropsStored[2].stored);
@@ -2456,12 +2468,16 @@ farming.start = function () {
             a.sceneBefore = 2;
             closeAcresNav();
             homeCrop = b.currentCrop;
-            localStorage.setItem('MedFarms_selectedHomeCrop', b.currentCrop);
+            if (homeCrop > 5 || isNaN(homeCrop) || homeCrop < 0) { homeCrop = 0; };
+            localStorage.setItem('MedFarms_selectedHomeCrop', homeCrop);
             cowSound.play(); checkShortage();
             oldCrop = b.currentCrop; b.currentCrop = 6;
             globalModalBlock = 0;
             homeBlock.setHidden(true);
             c.replaceScene(pastureScene, lime.transitions.SlideInLeft);
+            sceneActive = 'Pasture';
+          
+            
         }
     });
     goog.events.listen(orchardNavH, ["mousedown", "touchstart"], function () {
@@ -2470,9 +2486,11 @@ farming.start = function () {
             waterfallSound.play();
             closeAcresNav();
             homeCrop = b.currentCrop;
-            localStorage.setItem('MedFarms_selectedHomeCrop', b.currentCrop);
+            if (homeCrop > 5 || isNaN(homeCrop) || homeCrop < 0) { homeCrop = 0; };
+            localStorage.setItem('MedFarms_selectedHomeCrop', homeCrop);
             oldCrop = b.currentCrop; b.currentCrop = 8;
             c.replaceScene(orchardScene, lime.transitions.SlideInRight);
+            sceneActive = 'Orchard';
             globalModalBlock = 0;
             homeBlock.setHidden(true);
 
@@ -2483,6 +2501,7 @@ farming.start = function () {
             closeAcresNav();
             a.sceneBefore = 4;
             c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
+            sceneActive = 'Vineyard';
             homeCrop = b.currentCrop;
             localStorage.setItem('MedFarms_selectedHomeCrop', b.currentCrop);
             oldCrop = b.currentCrop; b.currentCrop = 12;
@@ -2495,10 +2514,12 @@ farming.start = function () {
     goog.events.listen(lsNavH, ["mousedown", "touchstart"], function () {
         if (acres[4].owned == 1 && compassVisible) {
             homeCrop = b.currentCrop;
-            localStorage.setItem('MedFarms_selectedHomeCrop', b.currentCrop);
+            if (homeCrop > 5 || isNaN(homeCrop) || homeCrop < 0) { homeCrop = 0; };
+            localStorage.setItem('MedFarms_selectedHomeCrop', homeCrop);
             closeAcresNav();
             a.sceneBefore = 5;                                                                                                                              ///from pature to Market
             c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
+            sceneActive = 'LS';
             waterfallSound.stop();
             chickenSound.play();
             pig1Sound.play();
@@ -2806,7 +2827,7 @@ farming.start = function () {
 
 
     });
-    var hh = localStorage.getItem('MedFarms_selectedHomeCrop')
+    var hh = b.currentCrop;
 
     //console.log("crop " + b.currentCrop);
     var w = (new lime.Label).setText("Plant " + a.crops[hh].name).setFontColor("#E8FC08").setFontSize(12).setFontFamily("Comic Sans MS").setPosition(155, a.height - a.controlsLayer_h / 2 - 12);
@@ -2841,8 +2862,9 @@ farming.start = function () {
     //inventoryHome.appendChild(inventoryHomeImg)
     goog.events.listen(market, ["mousedown", "touchstart"], function () {
         a.sceneBefore = 1;
-        
+        townSceneActive = 1;
         c.replaceScene(marketScene, lime.transitions.SlideInUp);
+        sceneActive = 'Market';
         CheckQuestInvItems();
 
 
@@ -2927,7 +2949,7 @@ farming.start = function () {
     e.appendChild(speedAd);
 	
 	goog.events.listen(speedAd, ["mousedown", "touchstart"], function () {
-			console.log("clicked it");
+			//console.log("clicked it");
 			  boostCrops.setHidden(false);
               homeBlock.setHidden(false);
               starCashCountBoost.setText(starCash);
@@ -2973,35 +2995,36 @@ farming.start = function () {
     var flipBlacksmithNotif = 0;
     lime.scheduleManager.scheduleWithDelay(function () {
         //add upgrade anim
+        if (sceneActive == 'Home'){
+            if (player.cropsStored[15].stored >= 1) {
+                blacksmithI = blacksmithI + 1;
+                if (blacksmithI >= 20) { blacksmithI = 1 };
+                if (blacksmithI < 15) { blacksmith.setFill("images/blacksmith" + blacksmithI + ".png"); };
 
-        if (player.cropsStored[15].stored >= 1) {
-            blacksmithI = blacksmithI + 1;
-            if (blacksmithI >= 20) { blacksmithI = 1 };
-            if (blacksmithI < 15) { blacksmith.setFill("images/blacksmith" + blacksmithI + ".png"); };
-
-            if (blacksmithI == 4) { blacksmith.setPosition(50, 80) };
-            if (blacksmithI == 5) { blacksmith.setPosition(50, 85) };
-            if (blacksmithI == 6) { blacksmith.setPosition(50, 90) };
-            if (blacksmithI == 7) { blacksmith.setPosition(45, 90) };
-            if (blacksmithI == 8) { blacksmith.setPosition(37, 95) };
-            if (blacksmithI == 9) { blacksmith.setPosition(32, 100) };
-            if (blacksmithI == 10) { blacksmith.setPosition(37, 105) };
-            if (blacksmithI == 11) { blacksmith.setPosition(42, 100) };
-            if (blacksmithI == 12) { blacksmith.setPosition(45, 95) };
-            if (blacksmithI == 13) { blacksmith.setPosition(50, 90) };
-            if (blacksmithI == 14) { blacksmith.setPosition(50, 85); if (sceneBefore == 1) { smithSound.play(); } };
-            if (blacksmithI == 15) { blacksmith.setPosition(50, 80); blacksmith.setFill("images/blacksmith13.png"); };
-            if (blacksmithI == 16) { blacksmith.setPosition(50, 71); blacksmith.setFill("images/blacksmith1.png") };
-            if (blacksmithI == 17) { blacksmith.setPosition(50, 71); blacksmith.setFill("images/blacksmith2.png") };
-            if (blacksmithI == 18) { blacksmith.setPosition(50, 73); blacksmith.setFill("images/blacksmith1.png") };
-            if (blacksmithI == 19) { blacksmith.setPosition(50, 73); blacksmith.setFill("images/blacksmith2.png"); checkAchieves2(); };
-        }
-        else {
-            ///set anim needing iron
-            flipBlacksmithNotif++
-            if (flipBlacksmithNotif < 5) { blacksmithBubble.setHidden(false);  }
-            else if (flipBlacksmithNotif == 5) { blacksmithBubble.setHidden(true); flipBlacksmithNotif = 0 }
+                if (blacksmithI == 4) { blacksmith.setPosition(50, 80) };
+                if (blacksmithI == 5) { blacksmith.setPosition(50, 85) };
+                if (blacksmithI == 6) { blacksmith.setPosition(50, 90) };
+                if (blacksmithI == 7) { blacksmith.setPosition(45, 90) };
+                if (blacksmithI == 8) { blacksmith.setPosition(37, 95) };
+                if (blacksmithI == 9) { blacksmith.setPosition(32, 100) };
+                if (blacksmithI == 10) { blacksmith.setPosition(37, 105) };
+                if (blacksmithI == 11) { blacksmith.setPosition(42, 100) };
+                if (blacksmithI == 12) { blacksmith.setPosition(45, 95) };
+                if (blacksmithI == 13) { blacksmith.setPosition(50, 90) };
+                if (blacksmithI == 14) { blacksmith.setPosition(50, 85); if (sceneBefore == 1) { smithSound.play(); } };
+                if (blacksmithI == 15) { blacksmith.setPosition(50, 80); blacksmith.setFill("images/blacksmith13.png"); };
+                if (blacksmithI == 16) { blacksmith.setPosition(50, 71); blacksmith.setFill("images/blacksmith1.png") };
+                if (blacksmithI == 17) { blacksmith.setPosition(50, 71); blacksmith.setFill("images/blacksmith2.png") };
+                if (blacksmithI == 18) { blacksmith.setPosition(50, 73); blacksmith.setFill("images/blacksmith1.png") };
+                if (blacksmithI == 19) { blacksmith.setPosition(50, 73); blacksmith.setFill("images/blacksmith2.png"); checkAchieves2(); };
+            }
+            else {
+                ///set anim needing iron
+                flipBlacksmithNotif++
+                if (flipBlacksmithNotif < 5) { blacksmithBubble.setHidden(false);  }
+                else if (flipBlacksmithNotif == 5) { blacksmithBubble.setHidden(true); flipBlacksmithNotif = 0 }
       
+            }
         }
     }, this, 300)
 
@@ -3073,11 +3096,13 @@ farming.start = function () {
     var barnUnlock3 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(136, 69).setSize(38, 35).setFill("images/UI/upBtn.png");
     lime.scheduleManager.scheduleWithDelay(function () {
         //add upgrade anim
-        var currentPos = barnUnlock3.getPosition();
-        currentPos.x -= 2;
- 
-        if (currentPos.x < 134) { currentPos.x = 136 };
-        barnUnlock3.setPosition(currentPos);
+        if (sceneActive == 'Home') {
+            var currentPos = barnUnlock3.getPosition();
+            currentPos.x -= 2;
+
+            if (currentPos.x < 134) { currentPos.x = 136 };
+            barnUnlock3.setPosition(currentPos);
+        }
     }, this, 500)
     if (parseInt(player.barnLevel) >= 5) { barnUnlock3.setHidden(true); };
 
@@ -3111,7 +3136,8 @@ farming.start = function () {
 
 
     if (homeTreesLeft == 0 && player.fields < 3) {
-        e.appendChild(treeUnlockBtn); console.log("hometreesleft = " + homeTreesLeft + " and player.fields = " + player.fields);
+        e.appendChild(treeUnlockBtn);
+        //console.log("hometreesleft = " + homeTreesLeft + " and player.fields = " + player.fields);
         var trees1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(12, 295).setSize(110, 120).setFill("images/" + a.barnyard[13].image); e.appendChild(trees1)
         var treeUnlock1 = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(12, 335).setSize(110, 120).setText(""); e.appendChild(treeUnlock1)
 
@@ -3224,7 +3250,7 @@ farming.start = function () {
 		goog.events.listen(speedAdConfirm, ["mousedown", "touchstart"], function () {
             //console.log("clicked confirm");
             visibleLink = boostCrops.getHidden();
-            console.log("visibleLink = " + visibleLink);
+            //console.log("visibleLink = " + visibleLink);
             if (visibleLink == false) { 
                 localStorage.setItem('MedFarm_LoadAd', 1);
                 localStorage.setItem('MedFarm_StarCashBoost', 0);
@@ -3239,7 +3265,7 @@ farming.start = function () {
         });
         goog.events.listen(speedAdConfirmSC, ["mousedown", "touchstart"], function () {
             visibleLink = boostCrops.getHidden();
-            console.log("visibleLink = " + visibleLink);
+            //console.log("visibleLink = " + visibleLink);
             if (visibleLink == false) {
                 //console.log("clicked confirm SC");
                 if (starCash >= 3) {
@@ -3255,9 +3281,9 @@ farming.start = function () {
         });
         goog.events.listen(speedAdCancel, ["mousedown", "touchstart"], function () {
             visibleLink = boostCrops.getHidden();
-            console.log("visibleLink = " + visibleLink);
+            //console.log("visibleLink = " + visibleLink);
             if (visibleLink == false) {
-                console.log("clicked cancel");
+                //console.log("clicked cancel");
                 var isMuted22 = parseInt(localStorage.getItem('GuiGhostFarms_muted'));
                 if (isMuted22 == 1) { lime.audio.setMute(true); setMute(1); }
                 else { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); setMute(2); }
@@ -3280,6 +3306,7 @@ farming.start = function () {
 
     goog.events.listen(houseEnterBtn, ["mousedown", "touchstart"], function () {
         c.replaceScene(houseScene, lime.transitions.SlideInUp)
+        sceneActive = 'House';
         seen1stHouseNotif = localStorage.getItem("MedFarms_seen1stHouseNotif");
         if (seen1stHouseNotif == 1) { questPanelHouse.setHidden(true); };
         checkHouseUpgradesBought();
@@ -3411,7 +3438,9 @@ farming.start = function () {
         warningSeen = 1;
         a.updateStored();
         globalModalBlock = 0;
+        townSceneActive = 1;
         c.replaceScene(marketScene, lime.transitions.SlideInUp);
+        sceneActive = 'Market';
         CheckQuestInvItems();
         count0.setText(player.cropsStored[0].stored);
         count1.setText(player.cropsStored[1].stored);
@@ -3516,7 +3545,7 @@ farming.start = function () {
        
             if (!swipeHiddenNow) { countSwipe += 1; }
             if (countSwipe > 20) { swipeRightHint.setHidden(true); }
-        }, this, 200)
+        }, this, 200 , 22)
     }
 
     /////remove ads modal
@@ -3617,6 +3646,7 @@ farming.start = function () {
 
 
     c.replaceScene(d);
+    sceneActive = 'Home';
 
     //for sale click  handlers
     goog.events.listen(forSaleP, ["mousedown", "touchstart"], function () {
@@ -3861,7 +3891,7 @@ farming.start = function () {
     });
     goog.events.listen(upgradeHomeBarnBtn, ["mousedown", "touchstart"], function () {
         var upgradeHomeBarnBtnHid = upgradeHomeBarnBtn.getHidden();
-        console.log(upgradeHomeBarnBtnHid + " hidden upgradeHomeBarnBtn");
+        //console.log(upgradeHomeBarnBtnHid + " hidden upgradeHomeBarnBtn");
         if (player.barnLevel == 1) { barnUpgradeCostTools = 100; barnUpgradeCostWood = 50; secondsToUpgrade = 60; nextBarn = imgArray6[1].src }
         if (player.barnLevel == 2) { barnUpgradeCostTools = 250; barnUpgradeCostWood = 100; secondsToUpgrade = 120; nextBarn = imgArray6[2].src }
         else if (player.barnLevel == 3) { barnUpgradeCostTools = 500; barnUpgradeCostWood = 150; secondsToUpgrade = 180; nextBarn = imgArray6[3].src }
@@ -3883,7 +3913,7 @@ farming.start = function () {
 
     function upgradeHomeBarn(costCoin, costWood) {          //barnUpgrades    barn Upgrades
 
-        console.log("fired barn upgrade");
+        //console.log("fired barn upgrade");
         toolMoverLabel.setText(secondsToUpgrade);
 
         if (player.tools >= barnUpgradeCostTools && parseInt(player.barnLevel) < 5 && globalModalBlock == 0 && parseInt(player.cropsStored[14].stored)  >= barnUpgradeCostWood) {
@@ -4033,11 +4063,13 @@ farming.start = function () {
                         goog.events.listen(y, ["mousedown", "touchstart"],
                             function () {
                                 b.currentCrop = e; c.replaceScene(d, lime.transitions.moveInRight);
+                                sceneActive = 'Home';
                                 //var z = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(130, a.height - a.controlsLayer_h / 2 - 12).setFill("images/" + a.crops[e].harvest).setSize(a.tile_size * 1.2, a.tile_size * 1.2);
                                 z.setFill("images/" + a.crops[e].harvest);
                                 w.setText("Plant " + a.crops[e].name);
-                                homeCrop = e;
-                                localStorage.setItem('MedFarms_selectedHomeCrop', e);
+                                homeCrop = parseInt(b.currentCrop);
+                                if (homeCrop > 5 || isNaN(homeCrop) || homeCrop < 0) { homeCrop = 0; };
+                                localStorage.setItem('MedFarms_selectedHomeCrop', homeCrop);
                                 d.appendChild(z);
 
                             })
@@ -4049,11 +4081,13 @@ farming.start = function () {
                         goog.events.listen(y, ["mousedown", "touchstart"],
                             function () {
                                 b.currentCrop = e; c.replaceScene(d, lime.transitions.moveInRight);
+                                sceneActive = 'Home';
                                 //var z = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(130, a.height - a.controlsLayer_h / 2 - 12).setFill("images/" + a.crops[e].harvest).setSize(a.tile_size * 1.2, a.tile_size * 1.2);
                                 z.setFill("images/" + a.crops[e].harvest);
                                 w.setText("Plant " + a.crops[e].name);
-                                homeCrop = e;
-                                localStorage.setItem('MedFarms_selectedHomeCrop', e);
+                                homeCrop = parseInt(b.currentCrop);
+                                if (homeCrop > 5 || isNaN(homeCrop) || homeCrop < 0) { homeCrop = 0; };
+                                localStorage.setItem('MedFarms_selectedHomeCrop', homeCrop);
                                 d.appendChild(z);
 
                             })
@@ -4070,7 +4104,7 @@ farming.start = function () {
 
 
     ////from seeds menu back to home farm
-    goog.events.listen(f, ["mousedown", "touchstart"], function () { c.replaceScene(d, lime.transitions.SlideInUp) });
+    goog.events.listen(f, ["mousedown", "touchstart"], function () { c.replaceScene(d, lime.transitions.SlideInUp); sceneActive = 'Home'; });
 
     ////////pasture scene ////////pasture scene////////////////////////////////////////                         ////////pasture scene ////////pasture scene////////////////////////////////////////
     ////////pasture scene ////////pasture scene////////////////////////////////////////                         ////////pasture scene ////////pasture scene////////////////////////////////////////
@@ -4098,6 +4132,7 @@ farming.start = function () {
         if (globalModalBlock == 0) {
             a.sceneBefore = 4;
             c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
+            sceneActive = 'Vineyard';
             b.currentCrop = 12;
             checkShortage();
             //a.sceneBefore = 5;
@@ -4151,6 +4186,7 @@ farming.start = function () {
     goog.events.listen(menuP, ["mousedown", "touchstart"], function () {
         a.sceneBefore = 2;                                                                                                                              
         c.replaceScene(menuScene, lime.transitions.SlideInUp);
+        sceneActive = 'Menu';
 
     });
 
@@ -4316,122 +4352,122 @@ farming.start = function () {
     var josiahStep = 0;
     //cow animation timers
     lime.scheduleManager.scheduleWithDelay(function () {
-        josiahStep ++
-        cowI = cowI + 1;
-        if (cowI >= 16) { cowI = 1 };
-        if (player.treesP == 1) {     ///only show right cows if trees are cleared
-            cowEatR.setHidden(false); cowForward1R.setHidden(false); cowLeft1R.setHidden(false);
-        }
-        if (cowI == 2) {
-            cowEatL.setFill("images/Pasture/" + a.pasture[11].image);
-            cowLeft1.setFill("images/Pasture/" + a.pasture[14].image);
-            cowLeft1.setPosition(21, 193);
-            cowForward1.setFill("images/Pasture/cow_eatF1.png");
-            if (player.treesP == 1) {
-                cowEatR.setFill("images/Pasture/" + a.pasture[10].image);
-                cowLeft1R.setFill("images/Pasture/" + a.pasture[17].image);
-                cowLeft1R.setPosition(214, 193);
-                cowForward1R.setFill("images/Pasture/cow_eatF1.png");
-                poop4.setHidden(false); poop5.setHidden(false); poop6.setHidden(false);
+        if (sceneActive == 'Pasture'){
+            josiahStep++
+            cowI = cowI + 1;
+            if (cowI >= 16) { cowI = 1 };
+            if (player.treesP == 1) {     ///only show right cows if trees are cleared
+                cowEatR.setHidden(false); cowForward1R.setHidden(false); cowLeft1R.setHidden(false);
             }
-        };
-        if (cowI == 4) {
-            cowEatL.setFill("images/Pasture/" + a.pasture[10].image);
-            cowLeft1.setFill("images/Pasture/" + a.pasture[15].image); cowLeft1.setPosition(14, 193);
-            cowForward1.setFill("images/Pasture/cow_eatF2.png"); cowForward1R.setFill("images/Pasture/cow_eatF2.png");
-            if (player.treesP == 1) { cowEatR.setFill("images/Pasture/" + a.pasture[11].image); cowLeft1R.setFill("images/Pasture/" + a.pasture[18].image); cowLeft1R.setPosition(221, 193); }
-        };
-        if (cowI == 6) {
-            cowEatL.setFill("images/Pasture/" + a.pasture[11].image); cowLeft1.setFill("images/Pasture/" + a.pasture[16].image); cowLeft1.setPosition(7, 193);
-            if (player.treesP == 1) { cowEatR.setFill("images/Pasture/" + a.pasture[6].image); cowLeft1R.setFill("images/Pasture/" + a.pasture[17].image); cowLeft1R.setPosition(228, 193); }
-        };
-        if (cowI == 8) {
-            cowEatL.setFill("images/Pasture/" + a.pasture[6].image); cowLeft1.setFill("images/Pasture/" + a.pasture[17].image); cowLeft1.setPosition(7, 193); cowForward1.setFill("images/Pasture/cow_eatF2.png"); cowForward1R.setFill("images/Pasture/cow_eatF3.png");
-            if (player.treesP == 1) { cowEatR.setFill("images/Pasture/" + a.pasture[11].image); cowLeft1R.setFill("images/Pasture/" + a.pasture[16].image); cowLeft1R.setPosition(228, 193); }
-        };
-        if (cowI == 10) {
-            cowEatL.setFill("images/Pasture/" + a.pasture[11].image); cowLeft1.setFill("images/Pasture/" + a.pasture[18].image); cowLeft1.setPosition(14, 193); cowForward1.setFill("images/Pasture/cow_eatF1.png"); cowForward1R.setFill("images/Pasture/cow_eatF1.png");
-            if (player.treesP == 1) { cowEatR.setFill("images/Pasture/" + a.pasture[6].image); cowLeft1R.setFill("images/Pasture/" + a.pasture[15].image); cowLeft1R.setPosition(221, 193); }
-        };
-        if (cowI == 12) {
-            cowEatL.setFill("images/Pasture/" + a.pasture[10].image); cowLeft1.setFill("images/Pasture/" + a.pasture[17].image); cowLeft1.setPosition(21, 193); cowForward1.setFill("images/Pasture/cow_eatF2.png"); cowForward1R.setFill("images/Pasture/cow_eatF2.png");
-            if (player.treesP == 1) { cowEatR.setFill("images/Pasture/" + a.pasture[11].image); cowLeft1R.setFill("images/Pasture/" + a.pasture[16].image); cowLeft1R.setPosition(214, 193); }
-        };
-        if (cowI == 14) {
-            cowEatL.setFill("images/Pasture/" + a.pasture[11].image); cowLeft1.setFill("images/Pasture/" + a.pasture[18].image); cowLeft1.setPosition(28, 193);
-            if (player.treesP == 1) { cowEatR.setFill("images/Pasture/" + a.pasture[10].image); cowLeft1R.setFill("images/Pasture/" + a.pasture[17].image); cowLeft1R.setPosition(207, 193); cowForward1R.setFill("images/Pasture/cow_eatF1.png"); }
-        };
+            if (cowI == 2) {
+                cowEatL.setFill("images/Pasture/" + a.pasture[11].image);
+                cowLeft1.setFill("images/Pasture/" + a.pasture[14].image);
+                cowLeft1.setPosition(21, 193);
+                cowForward1.setFill("images/Pasture/cow_eatF1.png");
+                if (player.treesP == 1) {
+                    cowEatR.setFill("images/Pasture/" + a.pasture[10].image);
+                    cowLeft1R.setFill("images/Pasture/" + a.pasture[17].image);
+                    cowLeft1R.setPosition(214, 193);
+                    cowForward1R.setFill("images/Pasture/cow_eatF1.png");
+                    poop4.setHidden(false); poop5.setHidden(false); poop6.setHidden(false);
+                }
+            };
+            if (cowI == 4) {
+                cowEatL.setFill("images/Pasture/" + a.pasture[10].image);
+                cowLeft1.setFill("images/Pasture/" + a.pasture[15].image); cowLeft1.setPosition(14, 193);
+                cowForward1.setFill("images/Pasture/cow_eatF2.png"); cowForward1R.setFill("images/Pasture/cow_eatF2.png");
+                if (player.treesP == 1) { cowEatR.setFill("images/Pasture/" + a.pasture[11].image); cowLeft1R.setFill("images/Pasture/" + a.pasture[18].image); cowLeft1R.setPosition(221, 193); }
+            };
+            if (cowI == 6) {
+                cowEatL.setFill("images/Pasture/" + a.pasture[11].image); cowLeft1.setFill("images/Pasture/" + a.pasture[16].image); cowLeft1.setPosition(7, 193);
+                if (player.treesP == 1) { cowEatR.setFill("images/Pasture/" + a.pasture[6].image); cowLeft1R.setFill("images/Pasture/" + a.pasture[17].image); cowLeft1R.setPosition(228, 193); }
+            };
+            if (cowI == 8) {
+                cowEatL.setFill("images/Pasture/" + a.pasture[6].image); cowLeft1.setFill("images/Pasture/" + a.pasture[17].image); cowLeft1.setPosition(7, 193); cowForward1.setFill("images/Pasture/cow_eatF2.png"); cowForward1R.setFill("images/Pasture/cow_eatF3.png");
+                if (player.treesP == 1) { cowEatR.setFill("images/Pasture/" + a.pasture[11].image); cowLeft1R.setFill("images/Pasture/" + a.pasture[16].image); cowLeft1R.setPosition(228, 193); }
+            };
+            if (cowI == 10) {
+                cowEatL.setFill("images/Pasture/" + a.pasture[11].image); cowLeft1.setFill("images/Pasture/" + a.pasture[18].image); cowLeft1.setPosition(14, 193); cowForward1.setFill("images/Pasture/cow_eatF1.png"); cowForward1R.setFill("images/Pasture/cow_eatF1.png");
+                if (player.treesP == 1) { cowEatR.setFill("images/Pasture/" + a.pasture[6].image); cowLeft1R.setFill("images/Pasture/" + a.pasture[15].image); cowLeft1R.setPosition(221, 193); }
+            };
+            if (cowI == 12) {
+                cowEatL.setFill("images/Pasture/" + a.pasture[10].image); cowLeft1.setFill("images/Pasture/" + a.pasture[17].image); cowLeft1.setPosition(21, 193); cowForward1.setFill("images/Pasture/cow_eatF2.png"); cowForward1R.setFill("images/Pasture/cow_eatF2.png");
+                if (player.treesP == 1) { cowEatR.setFill("images/Pasture/" + a.pasture[11].image); cowLeft1R.setFill("images/Pasture/" + a.pasture[16].image); cowLeft1R.setPosition(214, 193); }
+            };
+            if (cowI == 14) {
+                cowEatL.setFill("images/Pasture/" + a.pasture[11].image); cowLeft1.setFill("images/Pasture/" + a.pasture[18].image); cowLeft1.setPosition(28, 193);
+                if (player.treesP == 1) { cowEatR.setFill("images/Pasture/" + a.pasture[10].image); cowLeft1R.setFill("images/Pasture/" + a.pasture[17].image); cowLeft1R.setPosition(207, 193); cowForward1R.setFill("images/Pasture/cow_eatF1.png"); }
+            };
 
-        if (josiahStep == 1) { dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[1].src);}
-        if (josiahStep == 2) { dairyFarmer.setPosition(140, 95).setFill(imgArrayJosiah[2].src);}
-        if (josiahStep == 3) { dairyFarmer.setPosition(140, 100).setFill(imgArrayJosiah[3].src);}
-        if (josiahStep == 4) { dairyFarmer.setPosition(140, 105).setFill(imgArrayJosiah[0].src);}
-        if (josiahStep == 5) { dairyFarmer.setPosition(140, 110).setFill(imgArrayJosiah[1].src); }
-        if (josiahStep == 6) { dairyFarmer.setPosition(140, 115).setFill(imgArrayJosiah[2].src);}
-        if (josiahStep == 7) { dairyFarmer.setPosition(140, 120).setFill(imgArrayJosiah[3].src); }
-        if (josiahStep == 8) { dairyFarmer.setPosition(140, 123).setFill(imgArrayJosiah[0].src);}
-        if (josiahStep == 9) { dairyFarmer.setPosition(140, 123).setFill(imgArrayJosiah[4].src); }
-        if (josiahStep == 10) { dairyFarmer.setPosition(135, 123).setFill(imgArrayJosiah[5].src);}
-        if (josiahStep == 11) { dairyFarmer.setPosition(130, 123).setFill(imgArrayJosiah[6].src); }
-        if (josiahStep == 12) { dairyFarmer.setPosition(125, 123).setFill(imgArrayJosiah[7].src); }
-        if (josiahStep == 13) { dairyFarmer.setPosition(120, 123).setFill(imgArrayJosiah[4].src); }
-        if (josiahStep == 14) { dairyFarmer.setPosition(115, 123).setFill(imgArrayJosiah[5].src);}
-        if (josiahStep == 15) { dairyFarmer.setPosition(110, 123).setFill(imgArrayJosiah[6].src);}
-        if (josiahStep == 16) { dairyFarmer.setPosition(105, 123).setFill(imgArrayJosiah[7].src);}
-        if (josiahStep == 17) { dairyFarmer.setPosition(100, 123).setFill(imgArrayJosiah[4].src); }
-        if (josiahStep == 18) { dairyFarmer.setPosition(100, 123).setFill(imgArrayJosiah[12].src); }
-        if (josiahStep == 19) { dairyFarmer.setPosition(100, 120).setFill(imgArrayJosiah[15].src); }
-        if (josiahStep == 20) { dairyFarmer.setPosition(100, 115).setFill(imgArrayJosiah[14].src); }
-        if (josiahStep == 21) { dairyFarmer.setPosition(100, 110).setFill(imgArrayJosiah[13].src); }
-        if (josiahStep == 22) { dairyFarmer.setPosition(100, 105).setFill(imgArrayJosiah[15].src); }
-        if (josiahStep == 23) { dairyFarmer.setPosition(100, 105).setFill(imgArrayJosiah[8].src); }
-        if (josiahStep == 24) { dairyFarmer.setPosition(105, 100).setFill(imgArrayJosiah[9].src); }
-        if (josiahStep == 25) { dairyFarmer.setPosition(110, 105).setFill(imgArrayJosiah[10].src); }
-        if (josiahStep == 26) { dairyFarmer.setPosition(115, 105).setFill(imgArrayJosiah[11].src); }
-        if (josiahStep == 27) { dairyFarmer.setPosition(120, 105).setFill(imgArrayJosiah[8].src); }
-        if (josiahStep == 28) { dairyFarmer.setPosition(125, 100).setFill(imgArrayJosiah[9].src); }
-        if (josiahStep == 29) { dairyFarmer.setPosition(130, 100).setFill(imgArrayJosiah[10].src); }
-        if (josiahStep == 30) { dairyFarmer.setPosition(135, 95).setFill(imgArrayJosiah[11].src); }
-        if (josiahStep == 31) { dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[13].src); }
-        if (josiahStep == 32) { dairyFarmer.setPosition(140, 85).setFill(imgArrayJosiah[15].src); }
-        if (josiahStep == 33) { dairyFarmer.setPosition(140, 85).setFill(imgArrayJosiah[8].src); }
-        if (josiahStep == 34) { dairyFarmer.setPosition(140, 85).setFill(imgArrayJosiah[0].src); }
-        if (josiahStep == 35) { dairyFarmer.setPosition(140, 85).setFill(imgArrayJosiah[0].src); }
-        if (josiahStep == 36) { dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[1].src); }
-        if (josiahStep == 37) { dairyFarmer.setPosition(140, 95).setFill(imgArrayJosiah[2].src); }
-        if (josiahStep == 38) { dairyFarmer.setPosition(145, 95).setFill(imgArrayJosiah[8].src); }
-        if (josiahStep == 39) { dairyFarmer.setPosition(150, 95).setFill(imgArrayJosiah[9].src); }
-        if (josiahStep == 40) { dairyFarmer.setPosition(155, 95).setFill(imgArrayJosiah[10].src); }
-        if (josiahStep == 41) { dairyFarmer.setPosition(160, 100).setFill(imgArrayJosiah[11].src); }
-        if (josiahStep == 42) { dairyFarmer.setPosition(165, 105).setFill(imgArrayJosiah[8].src); }
-        if (josiahStep == 43) { dairyFarmer.setPosition(170, 110).setFill(imgArrayJosiah[9].src); }
-        if (josiahStep == 44) { dairyFarmer.setPosition(170, 110).setFill(imgArrayJosiah[12].src); }
-        if (josiahStep == 45) { dairyFarmer.setPosition(170, 110).setFill(imgArrayJosiah[12].src); }
-        if (josiahStep == 56) { dairyFarmer.setPosition(170, 110).setFill(imgArrayJosiah[4].src); }
-        if (josiahStep == 57) { dairyFarmer.setPosition(165, 105).setFill(imgArrayJosiah[5].src); }
-        if (josiahStep == 58) { dairyFarmer.setPosition(160, 105).setFill(imgArrayJosiah[6].src); }
-        if (josiahStep == 59) { dairyFarmer.setPosition(155, 100).setFill(imgArrayJosiah[7].src); }
-        if (josiahStep == 60) { dairyFarmer.setPosition(150, 100).setFill(imgArrayJosiah[5].src); }
-        if (josiahStep == 61) { dairyFarmer.setPosition(145, 95).setFill(imgArrayJosiah[6].src); }
-        if (josiahStep == 62) { dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[7].src); }
-        if (josiahStep == 63) { dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[1].src); }
+            if (josiahStep == 1) { dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[1].src); }
+            if (josiahStep == 2) { dairyFarmer.setPosition(140, 95).setFill(imgArrayJosiah[2].src); }
+            if (josiahStep == 3) { dairyFarmer.setPosition(140, 100).setFill(imgArrayJosiah[3].src); }
+            if (josiahStep == 4) { dairyFarmer.setPosition(140, 105).setFill(imgArrayJosiah[0].src); }
+            if (josiahStep == 5) { dairyFarmer.setPosition(140, 110).setFill(imgArrayJosiah[1].src); }
+            if (josiahStep == 6) { dairyFarmer.setPosition(140, 115).setFill(imgArrayJosiah[2].src); }
+            if (josiahStep == 7) { dairyFarmer.setPosition(140, 120).setFill(imgArrayJosiah[3].src); }
+            if (josiahStep == 8) { dairyFarmer.setPosition(140, 123).setFill(imgArrayJosiah[0].src); }
+            if (josiahStep == 9) { dairyFarmer.setPosition(140, 123).setFill(imgArrayJosiah[4].src); }
+            if (josiahStep == 10) { dairyFarmer.setPosition(135, 123).setFill(imgArrayJosiah[5].src); }
+            if (josiahStep == 11) { dairyFarmer.setPosition(130, 123).setFill(imgArrayJosiah[6].src); }
+            if (josiahStep == 12) { dairyFarmer.setPosition(125, 123).setFill(imgArrayJosiah[7].src); }
+            if (josiahStep == 13) { dairyFarmer.setPosition(120, 123).setFill(imgArrayJosiah[4].src); }
+            if (josiahStep == 14) { dairyFarmer.setPosition(115, 123).setFill(imgArrayJosiah[5].src); }
+            if (josiahStep == 15) { dairyFarmer.setPosition(110, 123).setFill(imgArrayJosiah[6].src); }
+            if (josiahStep == 16) { dairyFarmer.setPosition(105, 123).setFill(imgArrayJosiah[7].src); }
+            if (josiahStep == 17) { dairyFarmer.setPosition(100, 123).setFill(imgArrayJosiah[4].src); }
+            if (josiahStep == 18) { dairyFarmer.setPosition(100, 123).setFill(imgArrayJosiah[12].src); }
+            if (josiahStep == 19) { dairyFarmer.setPosition(100, 120).setFill(imgArrayJosiah[15].src); }
+            if (josiahStep == 20) { dairyFarmer.setPosition(100, 115).setFill(imgArrayJosiah[14].src); }
+            if (josiahStep == 21) { dairyFarmer.setPosition(100, 110).setFill(imgArrayJosiah[13].src); }
+            if (josiahStep == 22) { dairyFarmer.setPosition(100, 105).setFill(imgArrayJosiah[15].src); }
+            if (josiahStep == 23) { dairyFarmer.setPosition(100, 105).setFill(imgArrayJosiah[8].src); }
+            if (josiahStep == 24) { dairyFarmer.setPosition(105, 100).setFill(imgArrayJosiah[9].src); }
+            if (josiahStep == 25) { dairyFarmer.setPosition(110, 105).setFill(imgArrayJosiah[10].src); }
+            if (josiahStep == 26) { dairyFarmer.setPosition(115, 105).setFill(imgArrayJosiah[11].src); }
+            if (josiahStep == 27) { dairyFarmer.setPosition(120, 105).setFill(imgArrayJosiah[8].src); }
+            if (josiahStep == 28) { dairyFarmer.setPosition(125, 100).setFill(imgArrayJosiah[9].src); }
+            if (josiahStep == 29) { dairyFarmer.setPosition(130, 100).setFill(imgArrayJosiah[10].src); }
+            if (josiahStep == 30) { dairyFarmer.setPosition(135, 95).setFill(imgArrayJosiah[11].src); }
+            if (josiahStep == 31) { dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[13].src); }
+            if (josiahStep == 32) { dairyFarmer.setPosition(140, 85).setFill(imgArrayJosiah[15].src); }
+            if (josiahStep == 33) { dairyFarmer.setPosition(140, 85).setFill(imgArrayJosiah[8].src); }
+            if (josiahStep == 34) { dairyFarmer.setPosition(140, 85).setFill(imgArrayJosiah[0].src); }
+            if (josiahStep == 35) { dairyFarmer.setPosition(140, 85).setFill(imgArrayJosiah[0].src); }
+            if (josiahStep == 36) { dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[1].src); }
+            if (josiahStep == 37) { dairyFarmer.setPosition(140, 95).setFill(imgArrayJosiah[2].src); }
+            if (josiahStep == 38) { dairyFarmer.setPosition(145, 95).setFill(imgArrayJosiah[8].src); }
+            if (josiahStep == 39) { dairyFarmer.setPosition(150, 95).setFill(imgArrayJosiah[9].src); }
+            if (josiahStep == 40) { dairyFarmer.setPosition(155, 95).setFill(imgArrayJosiah[10].src); }
+            if (josiahStep == 41) { dairyFarmer.setPosition(160, 100).setFill(imgArrayJosiah[11].src); }
+            if (josiahStep == 42) { dairyFarmer.setPosition(165, 105).setFill(imgArrayJosiah[8].src); }
+            if (josiahStep == 43) { dairyFarmer.setPosition(170, 110).setFill(imgArrayJosiah[9].src); }
+            if (josiahStep == 44) { dairyFarmer.setPosition(170, 110).setFill(imgArrayJosiah[12].src); }
+            if (josiahStep == 45) { dairyFarmer.setPosition(170, 110).setFill(imgArrayJosiah[12].src); }
+            if (josiahStep == 56) { dairyFarmer.setPosition(170, 110).setFill(imgArrayJosiah[4].src); }
+            if (josiahStep == 57) { dairyFarmer.setPosition(165, 105).setFill(imgArrayJosiah[5].src); }
+            if (josiahStep == 58) { dairyFarmer.setPosition(160, 105).setFill(imgArrayJosiah[6].src); }
+            if (josiahStep == 59) { dairyFarmer.setPosition(155, 100).setFill(imgArrayJosiah[7].src); }
+            if (josiahStep == 60) { dairyFarmer.setPosition(150, 100).setFill(imgArrayJosiah[5].src); }
+            if (josiahStep == 61) { dairyFarmer.setPosition(145, 95).setFill(imgArrayJosiah[6].src); }
+            if (josiahStep == 62) { dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[7].src); }
+            if (josiahStep == 63) { dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[1].src); }
 
-        if (josiahStep > 75) { josiahStep = 0 }
-
-
-
-
-
+            if (josiahStep > 75) { josiahStep = 0 }
+            
+        }
     }, this, 250);
 
     var barnUnlock3P = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(137, 67).setSize(34, 32).setFill("images/UI/upBtn.png");
     lime.scheduleManager.scheduleWithDelay(function () {
         //add upgrade anim
-        var currentPos = barnUnlock3P.getPosition();
-        currentPos.x -= 5;
+        if (sceneActive == 'Pasture') {
+            var currentPos = barnUnlock3P.getPosition();
+            currentPos.x -= 5;
 
-        if (currentPos.x < 132) { currentPos.x = 137 };
-        barnUnlock3P.setPosition(currentPos);
+            if (currentPos.x < 132) { currentPos.x = 137 };
+            barnUnlock3P.setPosition(currentPos);
+        }
     }, this, 500)
     pastureLayer.appendChild(barnUnlock3P)
     if (player.pastureLevel >= 3) { barnUnlock3P.setHidden(true); pasUpLabel2.setHidden(true); }
@@ -4614,8 +4650,11 @@ farming.start = function () {
     ////event handling
     goog.events.listen(marketP, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
-            a.sceneBefore = 2;                                                                                                                               ///from pature to Market
+            a.sceneBefore = 2;
+            townSceneActive = 1;
+            ///from pature to Market
             c.replaceScene(marketScene, lime.transitions.SlideInUp);
+            sceneActive = 'Market';
             CheckQuestInvItems();
             outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
             homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
@@ -4670,6 +4709,7 @@ farming.start = function () {
         checkItemsOwned();
         starCashInvCount.setText(starCash);
         c.replaceScene(inventoryScene, lime.transitions.SlideInDown);
+        sceneActive = 'Invntory';
         outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
         homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
         outOfCashP.setHidden(true); marketBtn1P.setHidden(true); buyStarCashP.setHidden(true);
@@ -4750,7 +4790,9 @@ farming.start = function () {
         pastureBlock.setHidden(true); homeBlock.setHidden(true); orchardBlock.setHidden(true); vinyardBlock.setHidden(true); lsBlock.setHidden(true);
         a.updateStored();
         globalModalBlock = 0;
+        townSceneActive = 1;
         c.replaceScene(marketScene, lime.transitions.SlideInUp);
+        sceneActive = 'Market';
         CheckQuestInvItems();
     });
     goog.events.listen(cancelBtnCashP, ["mousedown", "touchstart"], function () {            //cancel Button
@@ -4897,12 +4939,13 @@ farming.start = function () {
     goog.events.listen(closeNavP, ["mousedown", "touchstart"], function () { closeAcresNav(); globalModalBlock = 0; });
     goog.events.listen(homeNavP, ["mousedown", "touchstart"], function () {
         if (compassVisible) {
-            b.currentCrop = localStorage.getItem('MedFarms_selectedHomeCrop');
-            if (b.currentCrop > 5 || b.currentCrop == 'undefined') { b.currentCrop = 0; }
+            b.currentCrop = parseInt(homeCrop);
+            if (b.currentCrop > 5 || isNan(b.currentCrop) ) { b.currentCrop = 0; }
             closeAcresNav();
             a.sceneBefore = 1;
 
             c.replaceScene(d, lime.transitions.SlideInRight);
+            sceneActive = 'Home';
             globalModalBlock = 0;
         }
     });
@@ -4921,6 +4964,7 @@ farming.start = function () {
             waterfallSound.play();
             closeAcresNav();
             c.replaceScene(orchardScene, lime.transitions.SlideInRight);
+            sceneActive = 'Orchard';
             globalModalBlock = 0;
         }
     });
@@ -4929,6 +4973,7 @@ farming.start = function () {
             closeAcresNav();
             a.sceneBefore = 4;
             c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
+            sceneActive = 'Vineyard';
             waterfallSound.stop();
             oldCrop = b.currentCrop; b.currentCrop = 12;
             checkShortage();
@@ -4941,6 +4986,7 @@ farming.start = function () {
             closeAcresNav();
             a.sceneBefore = 5;                                                                                                                              ///from pature to Market
             c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
+            sceneActive = 'LS';
             waterfallSound.stop();
             chickenSound.play();
             pig1Sound.play();
@@ -4957,18 +5003,34 @@ farming.start = function () {
     ///from home to pasture
     goog.events.listen(roadLeft, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
-            c.replaceScene(pastureScene, lime.transitions.SlideInLeft); homeCrop = b.currentCrop; localStorage.setItem("MedFarms_selectedHomeCrop", b.currentCrop); oldCrop = b.currentCrop; b.currentCrop = 6; sceneBefore = 2; cowSound.play(); checkShortage();
+            c.replaceScene(pastureScene, lime.transitions.SlideInLeft);
+            sceneActive = 'Pasture';
+          
+            homeCrop = parseInt(b.currentCrop);
+            if (homeCrop > 5 || isNaN(homeCrop) || homeCrop < 0) { homeCrop = 0; };
+            localStorage.setItem("MedFarms_selectedHomeCrop", parseInt(homeCrop));
+            oldCrop = b.currentCrop;
+            b.currentCrop = 6;
+            sceneBefore = 2; cowSound.play();
+            checkShortage();
         }
     });    
-    ///from home to pasture
+       ////from pasture to home
     goog.events.listen(roadRight2, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
             c.replaceScene(d, lime.transitions.SlideInRight);
-            b.currentCrop = localStorage.getItem("MedFarms_selectedHomeCrop");
-            if (b.currentCrop > 5) { b.currentCrop = 0 }
+            sceneActive = 'Home';
+            b.currentCrop = parseInt(homeCrop);
+            if (b.currentCrop > 5 || isNaN(b.currentCrop) || b.currentCrop < 0) {
+                    b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
+                    if (b.currentCrop > 5 || isNaN(b.currentCrop) || b.currentCrop < 0) {
+                        b.currentCrop = 0;
+                    }
+                
+            };
             sceneBefore = 1;
         }
-    });                                                ////from pasture to home
+    });                                            
 
     // pasture Tree Block
     goog.events.listen(treesImgP, ["mousedown", "touchstart"], function () {
@@ -5839,6 +5901,7 @@ farming.start = function () {
         checkItemsOwned();
         starCashInvCount.setText(starCash);
         c.replaceScene(inventoryScene, lime.transitions.SlideInUp);
+        sceneActive = 'Inventory';
         outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
         homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
         outOfCashP.setHidden(true); marketBtn1P.setHidden(true); buyStarCashP.setHidden(true);
@@ -5989,7 +6052,8 @@ farming.start = function () {
         if (girlMove == 53) { orchardGirl.setPosition(44, 230); orchardGirl.setFill("images/Orchard/girlR1.png"); }
     };
     lime.scheduleManager.scheduleWithDelay(function () {
-        a.moveGirl();
+        if (sceneActive == 'Orchard') { a.moveGirl();}
+        
     }, this, 300)
 
     ///here
@@ -6039,14 +6103,21 @@ farming.start = function () {
     goog.events.listen(closeNavO, ["mousedown", "touchstart"], function () { closeAcresNav(); });
     goog.events.listen(homeNavO, ["mousedown", "touchstart"], function () {
         if (compassVisible) {
-            b.currentCrop = localStorage.getItem('MedFarms_selectedHomeCrop');
-            if (b.currentCrop > 5 || b.currentCrop == 'undefined') { b.currentCrop = 0; }
+            b.currentCrop = parseInt(homeCrop);
+            if (b.currentCrop > 5 || isNaN(b.currentCrop) || b.currentCrop < 0) {
+                b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
+                if (b.currentCrop > 5 || isNaN(b.currentCrop) || b.currentCrop < 0) {
+                    b.currentCrop = 0;
+                }
+
+            };
             closeAcresNav();
 
             a.sceneBefore = 1;
             waterfallSound.stop();
 
             c.replaceScene(d, lime.transitions.SlideInLeft);
+            sceneActive = 'Home';
         }
     });
     goog.events.listen(pastureNavO, ["mousedown", "touchstart"], function () {
@@ -6057,6 +6128,7 @@ farming.start = function () {
             cowSound.play(); checkShortage();
             oldCrop = b.currentCrop; b.currentCrop = 6;
             c.replaceScene(pastureScene, lime.transitions.SlideInLeft);
+            sceneActive = 'Pasture';
         }
     });
     goog.events.listen(orchardNavO, ["mousedown", "touchstart"], function () {
@@ -6069,6 +6141,7 @@ farming.start = function () {
             closeAcresNav();
             a.sceneBefore = 4;
             c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
+            sceneActive = 'Vineyard';
             waterfallSound.stop();
             oldCrop = b.currentCrop; b.currentCrop = 12;
             checkShortage();
@@ -6081,6 +6154,7 @@ farming.start = function () {
             a.sceneBefore = 5;
             oldCrop = b.currentCrop; b.currentCrop = 12;
             c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
+            sceneActive = 'LS';
             waterfallSound.stop();
             chickenSound.play();
             pig1Sound.play();
@@ -6152,6 +6226,7 @@ farming.start = function () {
         if (globalModalBlock == 0) {
             a.sceneBefore = 3;                                                                                                                              ///from pature to Market
             c.replaceScene(menuScene, lime.transitions.SlideInUp);
+            sceneActive = 'Menu';
         }
 
     });
@@ -6387,6 +6462,7 @@ farming.start = function () {
         if (globalModalBlock == 0) {
             a.sceneBefore = 5;                                                                                                                              ///from pature to Market
             c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
+            sceneActive = 'LS';
             waterfallSound.stop();
             chickenSound.play();
             pig1Sound.play();
@@ -6399,8 +6475,10 @@ farming.start = function () {
 
     goog.events.listen(marketO, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
-            a.sceneBefore = 3;                                                                                                                                  ///from orchard to Market
+            a.sceneBefore = 3;
+            townSceneActive = 1;///from orchard to Market
             c.replaceScene(marketScene, lime.transitions.SlideInUp);
+            sceneActive = 'Market';
             CheckQuestInvItems();
             outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
             homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
@@ -6449,7 +6527,9 @@ farming.start = function () {
         outOfCashP.setHidden(true); marketBtn1P.setHidden(true); buyStarCashP.setHidden(true);
         outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
         orchardBlock.setHidden(true); homeBlock.setHidden(true); vinyardBlock.setHidden(true); pastureBlock.setHidden(true); lsBlock.setHidden(true);
+        townSceneActive = 1;
         c.replaceScene(marketScene, lime.transitions.SlideInUp);
+        sceneActive = 'Market';
         CheckQuestInvItems();
         count0.setText(player.cropsStored[0].stored);
         count1.setText(player.cropsStored[1].stored);
@@ -6585,18 +6665,42 @@ farming.start = function () {
 
     //event handling
     goog.events.listen(menu, ["mousedown", "touchstart"], function () {
-        if (globalModalBlock == 0) { c.replaceScene(menuScene, lime.transitions.SlideInUp); a.sceneBefore = 1; }
+        if (globalModalBlock == 0) { c.replaceScene(menuScene, lime.transitions.SlideInUp); sceneActive = 'Menu'; a.sceneBefore = 1; }
     });  ////menu btn
 
+    //to  orchard from home
     goog.events.listen(roadRight, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
-            c.replaceScene(orchardScene, lime.transitions.SlideInRight); sceneBefore = 3; waterfallSound.play(true); homeCrop = b.currentCrop; localStorage.setItem('MedFarms_selectedHomeCrop', b.currentCrop); oldCrop = b.currentCrop; b.currentCrop = 8;
+            c.replaceScene(orchardScene, lime.transitions.SlideInRight); sceneBefore = 3; waterfallSound.play(true);
+            sceneActive = 'Orchard';
+            homeCrop = b.currentCrop;
+            homeCrop =  parseInt(homeCrop);
+            if (homeCrop > 5 || isNaN(homeCrop) || homeCrop < 0) {
+                homeCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
+                if (homeCrop || isNaN(homeCrop) || homeCrop < 0) {
+                    homeCrop = 0;
+                };
+
+            };
+            localStorage.setItem('MedFarms_selectedHomeCrop', parseInt(homeCrop));
+            oldCrop = b.currentCrop;
+            b.currentCrop = 8;
         }
     });
+
+    ///to home from orchard
     goog.events.listen(roadLeftO, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
-            c.replaceScene(d, lime.transitions.SlideInLeft); sceneBefore = 1; waterfallSound.stop(); b.currentCrop = localStorage.getItem('MedFarms_selectedHomeCrop');
-            if (b.currentCrop > 5 || b.currentCrop == 'undefined') { b.currentCrop = 0 }; 
+            c.replaceScene(d, lime.transitions.SlideInLeft); sceneBefore = 1; waterfallSound.stop();
+            sceneActive = 'Home';
+            b.currentCrop = parseInt(homeCrop);
+            if (b.currentCrop > 5 || isNaN(b.currentCrop) || b.currentCrop < 0) {
+                b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
+                if (b.currentCrop > 5 || isNaN(b.currentCrop) || b.currentCrop < 0) {
+                    b.currentCrop = 0;
+                }
+
+            };
         }
     });
 
@@ -6716,19 +6820,22 @@ farming.start = function () {
     goog.events.listen(backBtnMenu, ["mousedown", "touchstart"], function (event) {
         if (parseInt(a.sceneBefore) == 1) {
             c.replaceScene(d, lime.transitions.SlideInDown);
+            sceneActive = 'Home';
 
         }
         if (a.sceneBefore == 2) {
-            c.replaceScene(pastureScene, lime.transitions.SlideInDown);
+             c.replaceScene(pastureScene, lime.transitions.SlideInDown);  sceneActive = 'Pasture';
         }
         if (a.sceneBefore == 3) {
-            c.replaceScene(orchardScene, lime.transitions.SlideInDown);
+                  c.replaceScene(orchardScene, lime.transitions.SlideInDown); sceneActive = 'Orchard';
         }
         if (a.sceneBefore == 4) {
             c.replaceScene(vinyardScene, lime.transitions.SlideInDown); checkShortage();
+            sceneActive = 'Vineyard';
         }
         if (a.sceneBefore == 5) {
             c.replaceScene(liveStockScene, lime.transitions.SlideInDown); chickenSound.play();
+            sceneActive = 'LS';
             pig1Sound.play();
             setTimeout(function () { pig2Sound.play(); }, 1000);
             setTimeout(function () { pig3Sound.play(); }, 2000);
@@ -6903,6 +7010,7 @@ farming.start = function () {
         homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
         globalModalBlock = 0; showingStarCash = 0;
         c.replaceScene(storeScene, lime.transitions.SlideInDown);
+        sceneActive = 'Store';
         storePremiumBtn.setOpacity(1.0);
         storeGeneralBtn.setOpacity(0.5);
         storeBuyGeneralLayer.setHidden(true);
@@ -6999,27 +7107,36 @@ farming.start = function () {
             itemInfoDetails2.setPosition(110, 90).setText('to see the details')
             if (parseInt(a.sceneBefore) == 1) {
                 c.replaceScene(d, lime.transitions.SlideInDown);
+                sceneActive = 'Home';
 
             }
             if (a.sceneBefore == 2) {
-                c.replaceScene(pastureScene, lime.transitions.SlideInDown);
+                 c.replaceScene(pastureScene, lime.transitions.SlideInDown);  
+                sceneActive = 'Pasture';
             }
             if (a.sceneBefore == 3) {
                 c.replaceScene(orchardScene, lime.transitions.SlideInDown);
+                sceneActive = 'Orchard';
             }
             if (a.sceneBefore == 4) {
                 c.replaceScene(vinyardScene, lime.transitions.SlideInDown);
+                sceneActive = 'Vineyard';
             }
             if (a.sceneBefore == 5) {
                 c.replaceScene(liveStockScene, lime.transitions.SlideInDown); chickenSound.play();
                 pig1Sound.play();
+                sceneActive = 'LS';
 
             }
             if (a.sceneBefore == 7) {
                 c.replaceScene(houseScene, lime.transitions.SlideInDown);
+                sceneActive = 'House';
             }
             if (a.sceneBefore == 8) {
+                townSceneActive = 1;
+                sceneActive = 'Town';
                 c.replaceScene(marketScene, lime.transitions.SlideInDown);
+                sceneActive = 'Market';
                 CheckQuestInvItems()
                 count0.setText(player.cropsStored[0].stored);
                 count1.setText(player.cropsStored[1].stored);
@@ -7057,6 +7174,7 @@ farming.start = function () {
             if (a.sceneBefore == 9)
             {
                 c.replaceScene(storeScene, lime.transitions.SlideInDown);
+                sceneActive = 'Store';
             }
        
         });
@@ -7901,10 +8019,10 @@ farming.start = function () {
 
             //move Bottles and barrels
             if (collectItems.storeItems[4].owned == 1) { buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false);}
-            if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item5y = 0; buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false); buyGeneralItem6.setPosition(0, item5y); console.log("item5y 1 is " + item5y) }
-            else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 1) { item5y = 65; item6y = 130; buyGeneralItem6.setHidden(false); console.log("item5y 2 is " + item5y) }
-            else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item5y = 65; item6y = 130; buyGeneralItem6.setHidden(false); console.log("item5y 3 is " + item5y) }
-            else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item5y = 65; item6y = 130; buyGeneralItem4.setHidden(false); buyGeneralItem6.setHidden(true); console.log("item5y 4 is " + item5y)  }
+            if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item5y = 0; buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false); buyGeneralItem6.setPosition(0, item5y); }
+            else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 1) { item5y = 65; item6y = 130; buyGeneralItem6.setHidden(false);  }
+            else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item5y = 65; item6y = 130; buyGeneralItem6.setHidden(false); }
+            else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item5y = 65; item6y = 130; buyGeneralItem4.setHidden(false); buyGeneralItem6.setHidden(true);   }
             else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 1) { item5y = 130; item6y = 195; buyGeneralItem6.setHidden(false);}
             else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 0) { item5y = 130; item6y = 195; buyGeneralItem4.setHidden(false); buyGeneralItem6.setHidden(true); }
             else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item5y = 130; item6y = 195; buyGeneralItem4.setHidden(false); buyGeneralItem6.setHidden(true); }
@@ -7916,7 +8034,7 @@ farming.start = function () {
             //console.log("item6 is hidden = " + buyGeneralItem6.getHidden() + " position = " + buyGeneralItem6.getPosition().y)
         }
 
-        console.log("item5y is " + item5y) 
+       
 
 
 
@@ -8106,7 +8224,9 @@ farming.start = function () {
         storeScene.appendChild(storeCloseBtn);
 
         goog.events.listen(storeCloseBtn, ["mousedown", "touchstart"], function () {
+            townSceneActive = 1;
             c.replaceScene(marketScene, lime.transitions.SlideInDown);
+            sceneActive = 'Market';
         });
 
 
@@ -8133,7 +8253,9 @@ farming.start = function () {
 
             starCashInvCount.setText(starCash);
             checkItemsOwned();
+            townSceneActive = 0;
             c.replaceScene(inventoryScene, lime.transitions.SlideInUp);
+            sceneActive = 'Inventory';
             starCashInvCount.setText(starCash);
             a.sceneBefore = 9;
             gLabel0.setText(player.cropsStored[0].stored);
@@ -8193,7 +8315,7 @@ farming.start = function () {
 
 
     ///Town Scene/////////////////////////////////////////Market Town Scene///Market Town Scene/////////////////////////////////////////Market Town Scene///Market Scene/////////////////////////////////////////Market Scene
-
+ 
     var marketScene = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
 
         ////////////
@@ -8204,6 +8326,7 @@ farming.start = function () {
         townFill1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill(imgArrayTown[0]);
     marketScene.appendChild(townFill1);
     marketScene.appendChild(townLayer);
+  
 
     var topShadowMarket = (new lime.Sprite).setPosition(0, 0).setSize(a.width + a.width, 60).setFill("#000000").setOpacity(0.4);
     townFill1.appendChild(topShadowMarket);
@@ -8233,7 +8356,9 @@ farming.start = function () {
         starCashInvCount.setText(starCash);
         questPanel.setHidden(true);
         checkItemsOwned();
+        townSceneActive = 0;
         c.replaceScene(inventoryScene, lime.transitions.SlideInUp);
+        sceneActive = 'Inventory';
         a.sceneBefore = 8;
         gLabel0.setText(player.cropsStored[0].stored);
         gLabel1.setText(player.cropsStored[1].stored);
@@ -8280,6 +8405,7 @@ farming.start = function () {
         //buyGeneralItem4.setPosition(0, item4y);
         //buyGeneralItem5.setPosition(0, item5y);
         c.replaceScene(storeScene, lime.transitions.SlideInUp);
+        sceneActive = 'Store';
         repositionStoreItems();
      
     });
@@ -8339,58 +8465,59 @@ farming.start = function () {
     lime.scheduleManager.scheduleWithDelay(function () {
         //add upgrade anim
         storeStars.setText(starCash);
-       
-        if (monkAnimCount >= 50 ) { monkAnimCount = 1; monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]);  };
-        //if (monkAnimCount < 14) { monk.setFill(imgArrayTown[parseInt(monkAnimCount)].src); };
+        if (townSceneActive == 1){
+            if (monkAnimCount >= 50) { monkAnimCount = 1; monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]); };
+            //if (monkAnimCount < 14) { monk.setFill(imgArrayTown[parseInt(monkAnimCount)].src); };
 
-        if (monkAnimCount == 2) { monk.setPosition(46, 161); monk.setFill(imgArrayTown[2]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[8].src); traderInStore.setFill(imgArrayTrader[1].src);};
-        if (monkAnimCount == 3) { monk.setPosition(46, 165); monk.setFill(imgArrayTown[3]); sara.setPosition(60, a.height - 70); sara.setFill(imgArrayTown2[2]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(225, 242).setFill(imgArrayFelicia[8].src);};
-        if (monkAnimCount == 4) { monk.setPosition(51, 165); monk.setFill(imgArrayTown[4]); sara.setPosition(65, a.height - 70); sara.setFill(imgArrayTown2[3]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[16]); felicia.setPosition(220, 242).setFill(imgArrayFelicia[9].src);};
-        if (monkAnimCount == 5) { monk.setPosition(56, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(70, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[16]); felicia.setPosition(215, 242).setFill(imgArrayFelicia[10].src);};
-        if (monkAnimCount == 6) { monk.setPosition(61, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(75, a.height - 70); sara.setFill(imgArrayTown2[2]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(210, 242).setFill(imgArrayFelicia[11].src);};
-        if (monkAnimCount == 7) { monk.setPosition(67, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(80, a.height - 70); sara.setFill(imgArrayTown2[3]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(205, 242).setFill(imgArrayFelicia[8].src); };    //////////
-        if (monkAnimCount == 8) { monk.setPosition(73, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(85, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(200, 242).setFill(imgArrayFelicia[9].src); };
-        if (monkAnimCount == 9) { monk.setPosition(79, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(90, a.height - 70); sara.setFill(imgArrayTown2[2]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[16]); felicia.setPosition(195, 242).setFill(imgArrayFelicia[10].src); traderInStore.setFill(imgArrayTrader[2].src);};
-        if (monkAnimCount == 10) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[3]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[8]); felicia.setPosition(190, 242).setFill(imgArrayFelicia[11].src); };
-        if (monkAnimCount == 11) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[1]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(195, 165); mayor.setFill(imgArrayMayor[9]); felicia.setPosition(185, 242).setFill(imgArrayFelicia[8].src); };
-        if (monkAnimCount == 12) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[1]); sara.setPosition(90, a.height - 70); sara.setFill(imgArrayTown2[4]); mayor.setPosition(190, 165); mayor.setFill(imgArrayMayor[10]); felicia.setPosition(180, 242).setFill(imgArrayFelicia[9].src); };
-        if (monkAnimCount == 13) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(185, 165); mayor.setFill(imgArrayMayor[11]); felicia.setPosition(175, 242).setFill(imgArrayFelicia[10].src); };
-        if (monkAnimCount == 14) { monk.setPosition(79, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(180, 165); mayor.setFill(imgArrayMayor[10]); felicia.setPosition(170, 242).setFill(imgArrayFelicia[11].src); };
-        if (monkAnimCount == 15) { monk.setPosition(73, 165); monk.setFill(imgArrayTown[9]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(175, 165); mayor.setFill(imgArrayMayor[9]); felicia.setPosition(165, 242).setFill(imgArrayFelicia[8].src); };
-        if (monkAnimCount == 16) { monk.setPosition(67, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[8]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[9].src); };
-        if (monkAnimCount == 17) { monk.setPosition(61, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[13].src); };
-        if (monkAnimCount == 18) { monk.setPosition(56, 165); monk.setFill(imgArrayTown[9]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[10]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[1]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[12].src); traderInStore.setFill(imgArrayTrader[0].src);};
-        if (monkAnimCount == 19) { monk.setPosition(51, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[10]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[3]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[13].src); };
-        if (monkAnimCount == 20) { monk.setPosition(46, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[10]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[4]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[12].src); };
-        if (monkAnimCount == 21) { monk.setPosition(46, 161); monk.setFill(imgArrayTown[11]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[3]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[13].src); };
-        if (monkAnimCount == 22) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[12]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(175, 165); mayor.setFill(imgArrayMayor[5]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[4].src); };
-        if (monkAnimCount == 23) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[4]); sara.setPosition(90, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(180, 165); mayor.setFill(imgArrayMayor[6]); felicia.setPosition(165, 242).setFill(imgArrayFelicia[4].src); };
-        if (monkAnimCount == 24) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[4]); sara.setPosition(85, a.height - 70); sara.setFill(imgArrayTown2[6]); mayor.setPosition(185, 165); mayor.setFill(imgArrayMayor[7]); felicia.setPosition(170, 242).setFill(imgArrayFelicia[5].src); };
-        if (monkAnimCount == 25) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[2]); sara.setPosition(80, a.height - 70); sara.setFill(imgArrayTown2[7]); mayor.setPosition(190, 165); mayor.setFill(imgArrayMayor[6]); felicia.setPosition(175, 242).setFill(imgArrayFelicia[6].src); };
-        if (monkAnimCount == 26) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[2]); sara.setPosition(75, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(195, 165); mayor.setFill(imgArrayMayor[7]); felicia.setPosition(180, 242).setFill(imgArrayFelicia[7].src); traderInStore.setFill(imgArrayTrader[1].src);};
-        if (monkAnimCount == 27) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[7]); sara.setPosition(70, a.height - 70); sara.setFill(imgArrayTown2[6]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[6]); felicia.setPosition(185, 242).setFill(imgArrayFelicia[4].src); };
-        if (monkAnimCount == 28) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[7]); sara.setPosition(65, a.height - 70); sara.setFill(imgArrayTown2[7]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[3]); felicia.setPosition(190, 242).setFill(imgArrayFelicia[5].src); };
-        if (monkAnimCount == 29) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]); sara.setPosition(60, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(195, 242).setFill(imgArrayFelicia[6].src); };
-        if (monkAnimCount == 30) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[6]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(200, 242).setFill(imgArrayFelicia[7].src); };
-        if (monkAnimCount == 31) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 70); sara.setFill(imgArrayTown2[7]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(205, 242).setFill(imgArrayFelicia[4].src); };
-        if (monkAnimCount == 32) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 70); sara.setFill(imgArrayTown2[8]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(210, 242).setFill(imgArrayFelicia[5].src); traderInStore.setFill(imgArrayTrader[2].src);};
-        if (monkAnimCount == 33) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 75); sara.setFill(imgArrayTown2[9]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(215, 242).setFill(imgArrayFelicia[6].src); };
-        if (monkAnimCount == 34) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(45, a.height - 80); sara.setFill(imgArrayTown2[10]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(220, 242).setFill(imgArrayFelicia[7].src); };
-        if (monkAnimCount == 35) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(45, a.height - 85); sara.setFill(imgArrayTown2[9]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(225, 242).setFill(imgArrayFelicia[4].src); };
-        if (monkAnimCount == 36) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 80); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[5].src); };
-        if (monkAnimCount == 37) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 80); sara.setFill(imgArrayTown2[4]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[12].src); };
-        if (monkAnimCount == 38) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 80); sara.setFill(imgArrayTown2[4]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[13].src); traderInStore.setFill(imgArrayTrader[0].src);};
-        if (monkAnimCount == 39) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 80); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(235, 242).setFill(imgArrayFelicia[4].src); };
-        if (monkAnimCount == 40) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 75); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(240, 242).setFill(imgArrayFelicia[5].src); };
-        if (monkAnimCount == 41) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[6].src); };
-        if (monkAnimCount == 42) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[12].src); };
-        if (monkAnimCount == 43) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[13].src); traderInStore.setFill(imgArrayTrader[1].src);};
-        if (monkAnimCount == 46) { mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[8]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[8].src); };
+            if (monkAnimCount == 2) { monk.setPosition(46, 161); monk.setFill(imgArrayTown[2]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[8].src); traderInStore.setFill(imgArrayTrader[1].src); };
+            if (monkAnimCount == 3) { monk.setPosition(46, 165); monk.setFill(imgArrayTown[3]); sara.setPosition(60, a.height - 70); sara.setFill(imgArrayTown2[2]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(225, 242).setFill(imgArrayFelicia[8].src); };
+            if (monkAnimCount == 4) { monk.setPosition(51, 165); monk.setFill(imgArrayTown[4]); sara.setPosition(65, a.height - 70); sara.setFill(imgArrayTown2[3]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[16]); felicia.setPosition(220, 242).setFill(imgArrayFelicia[9].src); };
+            if (monkAnimCount == 5) { monk.setPosition(56, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(70, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[16]); felicia.setPosition(215, 242).setFill(imgArrayFelicia[10].src); };
+            if (monkAnimCount == 6) { monk.setPosition(61, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(75, a.height - 70); sara.setFill(imgArrayTown2[2]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(210, 242).setFill(imgArrayFelicia[11].src); };
+            if (monkAnimCount == 7) { monk.setPosition(67, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(80, a.height - 70); sara.setFill(imgArrayTown2[3]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(205, 242).setFill(imgArrayFelicia[8].src); };    //////////
+            if (monkAnimCount == 8) { monk.setPosition(73, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(85, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(200, 242).setFill(imgArrayFelicia[9].src); };
+            if (monkAnimCount == 9) { monk.setPosition(79, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(90, a.height - 70); sara.setFill(imgArrayTown2[2]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[16]); felicia.setPosition(195, 242).setFill(imgArrayFelicia[10].src); traderInStore.setFill(imgArrayTrader[2].src); };
+            if (monkAnimCount == 10) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[3]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[8]); felicia.setPosition(190, 242).setFill(imgArrayFelicia[11].src); };
+            if (monkAnimCount == 11) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[1]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(195, 165); mayor.setFill(imgArrayMayor[9]); felicia.setPosition(185, 242).setFill(imgArrayFelicia[8].src); };
+            if (monkAnimCount == 12) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[1]); sara.setPosition(90, a.height - 70); sara.setFill(imgArrayTown2[4]); mayor.setPosition(190, 165); mayor.setFill(imgArrayMayor[10]); felicia.setPosition(180, 242).setFill(imgArrayFelicia[9].src); };
+            if (monkAnimCount == 13) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(185, 165); mayor.setFill(imgArrayMayor[11]); felicia.setPosition(175, 242).setFill(imgArrayFelicia[10].src); };
+            if (monkAnimCount == 14) { monk.setPosition(79, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(180, 165); mayor.setFill(imgArrayMayor[10]); felicia.setPosition(170, 242).setFill(imgArrayFelicia[11].src); };
+            if (monkAnimCount == 15) { monk.setPosition(73, 165); monk.setFill(imgArrayTown[9]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(175, 165); mayor.setFill(imgArrayMayor[9]); felicia.setPosition(165, 242).setFill(imgArrayFelicia[8].src); };
+            if (monkAnimCount == 16) { monk.setPosition(67, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[8]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[9].src); };
+            if (monkAnimCount == 17) { monk.setPosition(61, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[13].src); };
+            if (monkAnimCount == 18) { monk.setPosition(56, 165); monk.setFill(imgArrayTown[9]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[10]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[1]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[12].src); traderInStore.setFill(imgArrayTrader[0].src); };
+            if (monkAnimCount == 19) { monk.setPosition(51, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[10]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[3]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[13].src); };
+            if (monkAnimCount == 20) { monk.setPosition(46, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[10]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[4]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[12].src); };
+            if (monkAnimCount == 21) { monk.setPosition(46, 161); monk.setFill(imgArrayTown[11]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[3]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[13].src); };
+            if (monkAnimCount == 22) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[12]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(175, 165); mayor.setFill(imgArrayMayor[5]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[4].src); };
+            if (monkAnimCount == 23) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[4]); sara.setPosition(90, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(180, 165); mayor.setFill(imgArrayMayor[6]); felicia.setPosition(165, 242).setFill(imgArrayFelicia[4].src); };
+            if (monkAnimCount == 24) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[4]); sara.setPosition(85, a.height - 70); sara.setFill(imgArrayTown2[6]); mayor.setPosition(185, 165); mayor.setFill(imgArrayMayor[7]); felicia.setPosition(170, 242).setFill(imgArrayFelicia[5].src); };
+            if (monkAnimCount == 25) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[2]); sara.setPosition(80, a.height - 70); sara.setFill(imgArrayTown2[7]); mayor.setPosition(190, 165); mayor.setFill(imgArrayMayor[6]); felicia.setPosition(175, 242).setFill(imgArrayFelicia[6].src); };
+            if (monkAnimCount == 26) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[2]); sara.setPosition(75, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(195, 165); mayor.setFill(imgArrayMayor[7]); felicia.setPosition(180, 242).setFill(imgArrayFelicia[7].src); traderInStore.setFill(imgArrayTrader[1].src); };
+            if (monkAnimCount == 27) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[7]); sara.setPosition(70, a.height - 70); sara.setFill(imgArrayTown2[6]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[6]); felicia.setPosition(185, 242).setFill(imgArrayFelicia[4].src); };
+            if (monkAnimCount == 28) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[7]); sara.setPosition(65, a.height - 70); sara.setFill(imgArrayTown2[7]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[3]); felicia.setPosition(190, 242).setFill(imgArrayFelicia[5].src); };
+            if (monkAnimCount == 29) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]); sara.setPosition(60, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(195, 242).setFill(imgArrayFelicia[6].src); };
+            if (monkAnimCount == 30) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[6]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(200, 242).setFill(imgArrayFelicia[7].src); };
+            if (monkAnimCount == 31) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 70); sara.setFill(imgArrayTown2[7]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(205, 242).setFill(imgArrayFelicia[4].src); };
+            if (monkAnimCount == 32) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 70); sara.setFill(imgArrayTown2[8]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(210, 242).setFill(imgArrayFelicia[5].src); traderInStore.setFill(imgArrayTrader[2].src); };
+            if (monkAnimCount == 33) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 75); sara.setFill(imgArrayTown2[9]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(215, 242).setFill(imgArrayFelicia[6].src); };
+            if (monkAnimCount == 34) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(45, a.height - 80); sara.setFill(imgArrayTown2[10]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(220, 242).setFill(imgArrayFelicia[7].src); };
+            if (monkAnimCount == 35) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(45, a.height - 85); sara.setFill(imgArrayTown2[9]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(225, 242).setFill(imgArrayFelicia[4].src); };
+            if (monkAnimCount == 36) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 80); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[5].src); };
+            if (monkAnimCount == 37) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 80); sara.setFill(imgArrayTown2[4]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[12].src); };
+            if (monkAnimCount == 38) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 80); sara.setFill(imgArrayTown2[4]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[13].src); traderInStore.setFill(imgArrayTrader[0].src); };
+            if (monkAnimCount == 39) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 80); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(235, 242).setFill(imgArrayFelicia[4].src); };
+            if (monkAnimCount == 40) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 75); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(240, 242).setFill(imgArrayFelicia[5].src); };
+            if (monkAnimCount == 41) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[6].src); };
+            if (monkAnimCount == 42) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[12].src); };
+            if (monkAnimCount == 43) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[13].src); traderInStore.setFill(imgArrayTrader[1].src); };
+            if (monkAnimCount == 46) { mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[8]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[8].src); };
 
-        if (monkAnimCount == 48) { mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(240, 242).setFill(imgArrayFelicia[9].src); };
+            if (monkAnimCount == 48) { mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(240, 242).setFill(imgArrayFelicia[9].src); };
 
-        if (monkAnimCount == 49) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[1]); felicia.setPosition(210, 242).setFill(imgArrayFelicia[11].src); felicia.setPosition(235, 242).setFill(imgArrayFelicia[10].src); traderInStore.setFill(imgArrayTrader[2].src);};
-        monkAnimCount = monkAnimCount + 1;
+            if (monkAnimCount == 49) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[1]); felicia.setPosition(210, 242).setFill(imgArrayFelicia[11].src); felicia.setPosition(235, 242).setFill(imgArrayFelicia[10].src); traderInStore.setFill(imgArrayTrader[2].src); };
+            monkAnimCount = monkAnimCount + 1;
+        }
     }, this, 250)
 
 
@@ -8408,7 +8535,10 @@ farming.start = function () {
         a.sceneBefore = 8;
         marketLayer.setHidden(false);
         marketFill1.setHidden(false);
+       
+        townSceneActive = 0;
         c.replaceScene(marketSellScene, lime.transitions.SlideInDown);
+        sceneActive = 'MarketSell';
             questPanel.setHidden(true);
             
            
@@ -9215,6 +9345,7 @@ farming.start = function () {
         goog.events.listen(goPremiumBtn, ["mousedown", "touchstart"], function (event) {
             goPremiumBack.setHidden(true);
             c.replaceScene(storeScene, lime.transitions.SlideInDown);
+            sceneActive = 'Store';
             storePremiumBtn.setOpacity(1.0);
             storeGeneralBtn.setOpacity(0.5);
             storeBuyGeneralLayer.setHidden(true);
@@ -9521,28 +9652,30 @@ farming.start = function () {
     //Market event listeners
     goog.events.listen(backBtnTown, ["mousedown", "touchstart"], function () {
         checkAchieves2();
+        townSceneActive = 0;
         if (parseInt(a.sceneBefore) == 1) {
             c.replaceScene(d, lime.transitions.SlideInDown);
+            sceneActive = 'Home';
 
         }
         else if (a.sceneBefore == 2) {
-            c.replaceScene(pastureScene, lime.transitions.SlideInDown);
+             c.replaceScene(pastureScene, lime.transitions.SlideInDown);  sceneActive = 'Pasture';
         }
         else if (a.sceneBefore == 3) {
-            c.replaceScene(orchardScene, lime.transitions.SlideInDown);
+            c.replaceScene(orchardScene, lime.transitions.SlideInDown); sceneActive = 'Orchard';
         }
         else if (a.sceneBefore == 4) {
-            c.replaceScene(vinyardScene, lime.transitions.SlideInDown);
+            c.replaceScene(vinyardScene, lime.transitions.SlideInDown); sceneActive = 'Vineyard';
         }
         else if (a.sceneBefore == 5) {
-            c.replaceScene(liveStockScene, lime.transitions.SlideInDown); chickenSound.play();
+            c.replaceScene(liveStockScene, lime.transitions.SlideInDown); chickenSound.play(); sceneActive = 'LS';
             pig1Sound.play();
 
         }
         else if (a.sceneBefore == 7) {
-            c.replaceScene(houseScene, lime.transitions.SlideInDown);
+            c.replaceScene(houseScene, lime.transitions.SlideInDown); sceneActive = 'House';
         }
-        else { c.replaceScene(d, lime.transitions.SlideInDown);}
+        else { c.replaceScene(d, lime.transitions.SlideInDown); sceneActive = 'Home';}
         townLayer.setHidden(false);
         townFill1.setHidden(false);
         marketLayer.setHidden(true);
@@ -9553,7 +9686,9 @@ farming.start = function () {
 
     goog.events.listen(backBtnMarket, ["mousedown", "touchstart"], function () {
         checkAchieves2();
+        townSceneActive = 1;
         c.replaceScene(marketScene, lime.transitions.SlideInUp);
+        sceneActive = 'Market';
         townLayer.setHidden(false);
         townFill1.setHidden(false);
         backBtnTown.setHidden(false);
@@ -9728,6 +9863,7 @@ farming.start = function () {
     lime.audio.setMute(true);
     goog.events.listen(playGameBtn, ["mousedown", "touchstart"], function () {
         c.replaceScene(d, lime.transitions.SlideInUp); sceneBefore = 1; lime.audio.setMute(false);
+        sceneActive = 'Home';
         var mutedAtStart = localStorage.getItem('GuiGhostFarms_muted')
         if (mutedAtStart == 0) { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); }
         else { lime.audio.setMute(true); setMute(1) }
@@ -9801,11 +9937,13 @@ farming.start = function () {
 
     lime.scheduleManager.scheduleWithDelay(function () {
         //add upgrade anim
-        var currentPosV = chickenCoopUp.getPosition();
-        currentPosV.y += 5;
+        if (sceneActive == 'LS'){
+                var currentPosV = chickenCoopUp.getPosition();
+                currentPosV.y += 5;
        
-        if (currentPosV.y > 215) { currentPosV.y = 210 };
-        chickenCoopUp.setPosition(currentPosV);
+                if (currentPosV.y > 215) { currentPosV.y = 210 };
+                chickenCoopUp.setPosition(currentPosV);
+        }
     }, this, 500)
     goog.events.listen(chickenCoopUp, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
@@ -9916,29 +10054,27 @@ farming.start = function () {
     var eggPick = 0;
     a.sparkles = function () {
         lime.scheduleManager.scheduleWithDelay(function () {
-            //var eggPos = egg1.getPosition();
-            //var eggPosX = eggPos.x;
-            //egg1.setPostion = ((eggPosX - 1), 282);
-            sparkleH = sparkleH + 1;
-            sparkleVis = sparkleVis + 1;
+            if (sceneActive == 'LS') { 
+                sparkleH = sparkleH + 1;
+                sparkleVis = sparkleVis + 1;
 
 
-            if (sparkleVis == 2) {
+                if (sparkleVis == 2) {
+                    sparkle1.setHidden(true);
+                    if (eggHidden[egg1] == false && eggPick == 0) { egg1.setPosition(90, 279); }
+                    if (eggHidden[egg2] == false && eggPick == 0) { egg2.setPosition(123, 292); }
+                    if (eggHidden[egg3] == false && eggPick == 0) { egg3.setPosition(159, 279); }
+                } else {
+                    sparkle1.setHidden(false); sparkleVis = 1;
+                    if (eggHidden[egg1] == false && eggPick == 0) { egg1.setPosition(90, 282); }
+                    if (eggHidden[egg2] == false && eggPick == 0) { egg2.setPosition(123, 289); }
+                    if (eggHidden[egg3] == false && eggPick == 0) { egg3.setPosition(159, 282); }
+                }
+
                 sparkle1.setHidden(true);
-                if (eggHidden[egg1] == false && eggPick == 0) { egg1.setPosition(90, 279); }
-                if (eggHidden[egg2] == false && eggPick == 0) { egg2.setPosition(123, 292); }
-                if (eggHidden[egg3] == false && eggPick == 0) { egg3.setPosition(159, 279); }
-            } else {
-                sparkle1.setHidden(false); sparkleVis = 1;
-                if (eggHidden[egg1] == false && eggPick == 0) { egg1.setPosition(90, 282); }
-                if (eggHidden[egg2] == false && eggPick == 0) { egg2.setPosition(123, 289); }
-                if (eggHidden[egg3] == false && eggPick == 0) { egg3.setPosition(159, 282); }
+
+                if (sparkleH > 3) { sparkleH = 0; };
             }
-
-            sparkle1.setHidden(true);
-
-            if (sparkleH > 3) { sparkleH = 0; };
-
         }, this, 500)
 
     };
@@ -10091,128 +10227,128 @@ farming.start = function () {
     var evaTimer = 0;
     a.movechicken = function () {
         lime.scheduleManager.scheduleWithDelay(function () {
-            //add upgrade anim
-            chicken1Timer++;
-            evaTimer++;
-            if (chicken1Timer > 30) { chicken1Timer = 1; };
+            if (sceneActive == 'LS') {
+                chicken1Timer++;
+                evaTimer++;
+                if (chicken1Timer > 30) { chicken1Timer = 1; };
 
-            if (chicken1Timer == 1) { chicken1.setFill("images/livestockPens/chicken_eatLeft1.png"); chicken2.setFill("images/livestockPens/chicken_eatLeft2.png"); chicken2.setPosition(100, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); pig2.setSize(20, 33); };
-            if (chicken1Timer == 2) { chicken1.setFill("images/livestockPens/chicken_eatLeft2.png"); chicken2.setFill("images/livestockPens/chicken_eatLeft3.png"); chicken2.setPosition(100, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft3.png"); pig1.setFill("images/livestockPens/pig_right1.png"); pig2.setFill("images/livestockPens/pig_down2.png"); pig2.setPosition(160, 115); pig3.setFill("images/livestockPens/pig_down2.png") };
-            if (chicken1Timer == 3) { chicken1.setFill("images/livestockPens/chicken_eatLeft3.png"); chicken2.setFill("images/livestockPens/chicken_eatLeft2.png"); chicken2.setPosition(100, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); };
-            if (chicken1Timer == 4) { chicken1.setFill("images/livestockPens/chicken_eatLeft2.png"); chicken2.setFill("images/livestockPens/chicken_eatLeft2.png"); chicken2.setPosition(100, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft3.png"); pig1.setFill("images/livestockPens/pig_right2.png"); pig1.setPosition(160, 180); pig3.setFill("images/livestockPens/pig_down3.png") };
-            if (chicken1Timer == 5) { chicken1.setFill("images/livestockPens/chicken_eatLeft3.png"); chicken2.setFill("images/livestockPens/chicken_walkLeft1.png"); chicken2.setPosition(95, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); };
-            if (chicken1Timer == 6) { chicken1.setFill("images/livestockPens/chicken_eatLeft4.png"); chicken2.setFill("images/livestockPens/chicken_walkLeft2.png"); chicken2.setPosition(90, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft3.png"); pig1.setFill("images/livestockPens/pig_right3.png"); pig1.setPosition(150, 180); };
-            if (chicken1Timer == 7) { chicken1.setFill("images/livestockPens/chicken_eatLeft1.png"); chicken2.setFill("images/livestockPens/chicken_walkLeft3.png"); chicken2.setPosition(85, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); };
-            if (chicken1Timer == 8) { chicken1.setFill("images/livestockPens/chicken_walkLeft1.png"); chicken1.setPosition(170, 350); chicken2.setFill("images/livestockPens/chicken_walkLeft2.png"); chicken2.setPosition(80, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); pig2.setFill("images/livestockPens/pig_down3.png"); pig2.setPosition(160, 120); pig3.setFill("images/livestockPens/pig_down2.png"); };
-            if (chicken1Timer == 9) { chicken1.setFill("images/livestockPens/chicken_walkLeft2.png"); chicken1.setPosition(165, 350); chicken2.setFill("images/livestockPens/chicken_walkLeft1.png"); chicken2.setPosition(75, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft3.png"); pig1.setFill("images/livestockPens/pig_right2.png"); pig1.setPosition(140, 180); };
-            if (chicken1Timer == 10) { chicken1.setFill("images/livestockPens/chicken_walkLeft3.png"); chicken1.setPosition(160, 350); chicken2.setFill("images/livestockPens/chicken_walkLeft2.png"); chicken2.setPosition(70, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); pig2.setPosition(160, 125); pig2.setFill("images/livestockPens/pig_down2.png"); };
-            if (chicken1Timer == 11) { chicken1.setFill("images/livestockPens/chicken_walkLeft1.png"); chicken1.setPosition(155, 350); chicken2.setFill("images/livestockPens/chicken_up1.png"); chicken2.setPosition(70, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); pig1.setFill("images/livestockPens/pig_right3.png"); };
-            if (chicken1Timer == 12) { chicken1.setFill("images/livestockPens/chicken_walkLeft2.png"); chicken1.setPosition(150, 350); chicken2.setFill("images/livestockPens/chicken_up2.png"); chicken2.setPosition(70, 310); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); pig2.setPosition(160, 130); pig2.setFill("images/livestockPens/pig_down1.png"); pig3.setFill("images/livestockPens/pig_down1.png") };
-            if (chicken1Timer == 13) { chicken1.setFill("images/livestockPens/chicken_walkLeft3.png"); chicken1.setPosition(145, 350); chicken2.setFill("images/livestockPens/chicken_up3.png"); chicken2.setPosition(70, 305); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); };
-            if (chicken1Timer == 14) { chicken1.setFill("images/livestockPens/chicken_eatLeft2.png"); chicken2.setFill("images/livestockPens/chicken_walkRight1.png"); chicken2.setPosition(70, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); pig2.setFill("images/livestockPens/pig_down2.png"); pig2.setPosition(160, 135); };
-            if (chicken1Timer == 15) { chicken1.setFill("images/livestockPens/chicken_eatLeft3.png"); chicken2.setFill("images/livestockPens/chicken_walkRight2.png"); chicken2.setPosition(75, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); };
-            if (chicken1Timer == 16) { chicken1.setFill("images/livestockPens/chicken_eatLeft2.png"); chicken2.setFill("images/livestockPens/chicken_walkRight3.png"); chicken2.setPosition(80, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); };
-            if (chicken1Timer == 17) { chicken1.setFill("images/livestockPens/chicken_eatLeft3.png"); chicken2.setFill("images/livestockPens/chicken_walkRight3.png"); chicken2.setPosition(80, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); pig1.setFill("images/livestockPens/pig_right2.png"); pig2.setSize(39, 21); pig2.setPosition(150, 147); pig2.setFill("images/livestockPens/pig_right2.png"); pig3.setFill("images/livestockPens/pig_down2.png"); };
-            if (chicken1Timer == 18) { chicken1.setFill("images/livestockPens/chicken_down3.png"); chicken2.setFill("images/livestockPens/chicken_walkRight1.png"); chicken2.setPosition(85, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); pig2.setSize(20, 33); pig2.setFill("images/livestockPens/pig_up2.png"); pig2.setPosition(150, 130); pig3.setFill("images/livestockPens/pig_down3.png"); };
-            if (chicken1Timer == 19) { chicken1.setFill("images/livestockPens/chicken_walkRight1.png"); chicken1.setPosition(145, 350); chicken2.setFill("images/livestockPens/chicken_walkRight2.png"); chicken2.setPosition(90, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); pig3.setFill("images/livestockPens/pig_down2.png"); };
-            if (chicken1Timer == 20) { chicken1.setFill("images/livestockPens/chicken_walkRight2.png"); chicken1.setPosition(150, 350); chicken2.setFill("images/livestockPens/chicken_walkRight3.png"); chicken2.setPosition(95, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); pig2.setSize(20, 33); pig2.setFill("images/livestockPens/pig_up1.png"); pig2.setPosition(150, 120); pig3.setFill("images/livestockPens/pig_down3.png"); };
-            if (chicken1Timer == 21) { chicken1.setFill("images/livestockPens/chicken_walkRight3.png"); chicken1.setPosition(155, 350); chicken2.setFill("images/livestockPens/chicken_walkRight2.png"); chicken2.setPosition(100, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); };
-            if (chicken1Timer == 22) { chicken1.setFill("images/livestockPens/chicken_walkRight1.png"); chicken1.setPosition(160, 350); chicken2.setFill("images/livestockPens/chicken_eatRight1.png"); chicken2.setPosition(100, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); pig1.setFill("images/livestockPens/pig_Left3.png"); pig3.setFill("images/livestockPens/pig_down2.png"); };
-            if (chicken1Timer == 23) { chicken1.setFill("images/livestockPens/chicken_walkRight2.png"); chicken1.setPosition(165, 350); chicken2.setFill("images/livestockPens/chicken_eatRight2.png"); chicken2.setPosition(100, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); };
-            if (chicken1Timer == 24) { chicken1.setFill("images/livestockPens/chicken_walkRight3.png"); chicken1.setPosition(170, 350); chicken2.setFill("images/livestockPens/chicken_eatRight1.png"); chicken2.setPosition(100, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); pig2.setFill("images/livestockPens/pig_up2.png"); pig2.setPosition(150, 117); pig3.setFill("images/livestockPens/pig_down3.png"); };
-            if (chicken1Timer == 25) { chicken1.setFill("images/livestockPens/chicken_eatRight1.png"); chicken1.setPosition(175, 350); chicken2.setFill("images/livestockPens/chicken_down2.png"); chicken2.setPosition(100, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft3.png"); };
-            if (chicken1Timer == 26) { chicken1.setFill("images/livestockPens/chicken_eatRight2.png"); chicken1.setPosition(175, 350); chicken2.setFill("images/livestockPens/chicken_down1.png"); chicken2.setPosition(100, 305); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); pig2.setFill("images/livestockPens/pig_up3.png"); pig2.setPosition(150, 115); };
-            if (chicken1Timer == 27) { chicken1.setFill("images/livestockPens/chicken_eatRight1.png"); chicken1.setPosition(175, 350); chicken2.setFill("images/livestockPens/chicken_down2.png"); chicken2.setPosition(100, 310); chicken3.setFill("images/livestockPens/chicken_eatLeft3.png"); pig1.setFill("images/livestockPens/pig_walkLeft1.png"); pig1.setPosition(150, 180); pig2.setFill("images/livestockPens/pig_up1.png"); pig2.setPosition(150, 110); };
-            if (chicken1Timer == 28) { chicken1.setFill("images/livestockPens/chicken_eatRight2.png"); chicken1.setPosition(175, 350); chicken2.setFill("images/livestockPens/chicken_eatLeft1.png"); chicken2.setPosition(100, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); };
-            if (chicken1Timer == 29) { chicken1.setFill("images/livestockPens/chicken_down1.png"); chicken2.setFill("images/livestockPens/chicken_eatLeft2.png"); pig1.setFill("images/livestockPens/pig_walkLeft2.png"); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); pig1.setPosition(160, 180); pig2.setFill("images/livestockPens/pig_up2.png"); pig2.setPosition(150, 105); };
-            if (chicken1Timer == 30) { chicken1.setFill("images/livestockPens/chicken_down1.png"); chicken2.setFill("images/livestockPens/chicken_eatLeft3.png"); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); pig2.setSize(39, 21); pig2.setPosition(150, 105); pig2.setFill("images/livestockPens/pig_Left3.png"); };
+                if (chicken1Timer == 1) { chicken1.setFill("images/livestockPens/chicken_eatLeft1.png"); chicken2.setFill("images/livestockPens/chicken_eatLeft2.png"); chicken2.setPosition(100, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); pig2.setSize(20, 33); };
+                if (chicken1Timer == 2) { chicken1.setFill("images/livestockPens/chicken_eatLeft2.png"); chicken2.setFill("images/livestockPens/chicken_eatLeft3.png"); chicken2.setPosition(100, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft3.png"); pig1.setFill("images/livestockPens/pig_right1.png"); pig2.setFill("images/livestockPens/pig_down2.png"); pig2.setPosition(160, 115); pig3.setFill("images/livestockPens/pig_down2.png") };
+                if (chicken1Timer == 3) { chicken1.setFill("images/livestockPens/chicken_eatLeft3.png"); chicken2.setFill("images/livestockPens/chicken_eatLeft2.png"); chicken2.setPosition(100, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); };
+                if (chicken1Timer == 4) { chicken1.setFill("images/livestockPens/chicken_eatLeft2.png"); chicken2.setFill("images/livestockPens/chicken_eatLeft2.png"); chicken2.setPosition(100, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft3.png"); pig1.setFill("images/livestockPens/pig_right2.png"); pig1.setPosition(160, 180); pig3.setFill("images/livestockPens/pig_down3.png") };
+                if (chicken1Timer == 5) { chicken1.setFill("images/livestockPens/chicken_eatLeft3.png"); chicken2.setFill("images/livestockPens/chicken_walkLeft1.png"); chicken2.setPosition(95, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); };
+                if (chicken1Timer == 6) { chicken1.setFill("images/livestockPens/chicken_eatLeft4.png"); chicken2.setFill("images/livestockPens/chicken_walkLeft2.png"); chicken2.setPosition(90, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft3.png"); pig1.setFill("images/livestockPens/pig_right3.png"); pig1.setPosition(150, 180); };
+                if (chicken1Timer == 7) { chicken1.setFill("images/livestockPens/chicken_eatLeft1.png"); chicken2.setFill("images/livestockPens/chicken_walkLeft3.png"); chicken2.setPosition(85, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); };
+                if (chicken1Timer == 8) { chicken1.setFill("images/livestockPens/chicken_walkLeft1.png"); chicken1.setPosition(170, 350); chicken2.setFill("images/livestockPens/chicken_walkLeft2.png"); chicken2.setPosition(80, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); pig2.setFill("images/livestockPens/pig_down3.png"); pig2.setPosition(160, 120); pig3.setFill("images/livestockPens/pig_down2.png"); };
+                if (chicken1Timer == 9) { chicken1.setFill("images/livestockPens/chicken_walkLeft2.png"); chicken1.setPosition(165, 350); chicken2.setFill("images/livestockPens/chicken_walkLeft1.png"); chicken2.setPosition(75, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft3.png"); pig1.setFill("images/livestockPens/pig_right2.png"); pig1.setPosition(140, 180); };
+                if (chicken1Timer == 10) { chicken1.setFill("images/livestockPens/chicken_walkLeft3.png"); chicken1.setPosition(160, 350); chicken2.setFill("images/livestockPens/chicken_walkLeft2.png"); chicken2.setPosition(70, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); pig2.setPosition(160, 125); pig2.setFill("images/livestockPens/pig_down2.png"); };
+                if (chicken1Timer == 11) { chicken1.setFill("images/livestockPens/chicken_walkLeft1.png"); chicken1.setPosition(155, 350); chicken2.setFill("images/livestockPens/chicken_up1.png"); chicken2.setPosition(70, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); pig1.setFill("images/livestockPens/pig_right3.png"); };
+                if (chicken1Timer == 12) { chicken1.setFill("images/livestockPens/chicken_walkLeft2.png"); chicken1.setPosition(150, 350); chicken2.setFill("images/livestockPens/chicken_up2.png"); chicken2.setPosition(70, 310); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); pig2.setPosition(160, 130); pig2.setFill("images/livestockPens/pig_down1.png"); pig3.setFill("images/livestockPens/pig_down1.png") };
+                if (chicken1Timer == 13) { chicken1.setFill("images/livestockPens/chicken_walkLeft3.png"); chicken1.setPosition(145, 350); chicken2.setFill("images/livestockPens/chicken_up3.png"); chicken2.setPosition(70, 305); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); };
+                if (chicken1Timer == 14) { chicken1.setFill("images/livestockPens/chicken_eatLeft2.png"); chicken2.setFill("images/livestockPens/chicken_walkRight1.png"); chicken2.setPosition(70, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); pig2.setFill("images/livestockPens/pig_down2.png"); pig2.setPosition(160, 135); };
+                if (chicken1Timer == 15) { chicken1.setFill("images/livestockPens/chicken_eatLeft3.png"); chicken2.setFill("images/livestockPens/chicken_walkRight2.png"); chicken2.setPosition(75, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); };
+                if (chicken1Timer == 16) { chicken1.setFill("images/livestockPens/chicken_eatLeft2.png"); chicken2.setFill("images/livestockPens/chicken_walkRight3.png"); chicken2.setPosition(80, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); };
+                if (chicken1Timer == 17) { chicken1.setFill("images/livestockPens/chicken_eatLeft3.png"); chicken2.setFill("images/livestockPens/chicken_walkRight3.png"); chicken2.setPosition(80, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); pig1.setFill("images/livestockPens/pig_right2.png"); pig2.setSize(39, 21); pig2.setPosition(150, 147); pig2.setFill("images/livestockPens/pig_right2.png"); pig3.setFill("images/livestockPens/pig_down2.png"); };
+                if (chicken1Timer == 18) { chicken1.setFill("images/livestockPens/chicken_down3.png"); chicken2.setFill("images/livestockPens/chicken_walkRight1.png"); chicken2.setPosition(85, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); pig2.setSize(20, 33); pig2.setFill("images/livestockPens/pig_up2.png"); pig2.setPosition(150, 130); pig3.setFill("images/livestockPens/pig_down3.png"); };
+                if (chicken1Timer == 19) { chicken1.setFill("images/livestockPens/chicken_walkRight1.png"); chicken1.setPosition(145, 350); chicken2.setFill("images/livestockPens/chicken_walkRight2.png"); chicken2.setPosition(90, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); pig3.setFill("images/livestockPens/pig_down2.png"); };
+                if (chicken1Timer == 20) { chicken1.setFill("images/livestockPens/chicken_walkRight2.png"); chicken1.setPosition(150, 350); chicken2.setFill("images/livestockPens/chicken_walkRight3.png"); chicken2.setPosition(95, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); pig2.setSize(20, 33); pig2.setFill("images/livestockPens/pig_up1.png"); pig2.setPosition(150, 120); pig3.setFill("images/livestockPens/pig_down3.png"); };
+                if (chicken1Timer == 21) { chicken1.setFill("images/livestockPens/chicken_walkRight3.png"); chicken1.setPosition(155, 350); chicken2.setFill("images/livestockPens/chicken_walkRight2.png"); chicken2.setPosition(100, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); };
+                if (chicken1Timer == 22) { chicken1.setFill("images/livestockPens/chicken_walkRight1.png"); chicken1.setPosition(160, 350); chicken2.setFill("images/livestockPens/chicken_eatRight1.png"); chicken2.setPosition(100, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); pig1.setFill("images/livestockPens/pig_Left3.png"); pig3.setFill("images/livestockPens/pig_down2.png"); };
+                if (chicken1Timer == 23) { chicken1.setFill("images/livestockPens/chicken_walkRight2.png"); chicken1.setPosition(165, 350); chicken2.setFill("images/livestockPens/chicken_eatRight2.png"); chicken2.setPosition(100, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); };
+                if (chicken1Timer == 24) { chicken1.setFill("images/livestockPens/chicken_walkRight3.png"); chicken1.setPosition(170, 350); chicken2.setFill("images/livestockPens/chicken_eatRight1.png"); chicken2.setPosition(100, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); pig2.setFill("images/livestockPens/pig_up2.png"); pig2.setPosition(150, 117); pig3.setFill("images/livestockPens/pig_down3.png"); };
+                if (chicken1Timer == 25) { chicken1.setFill("images/livestockPens/chicken_eatRight1.png"); chicken1.setPosition(175, 350); chicken2.setFill("images/livestockPens/chicken_down2.png"); chicken2.setPosition(100, 300); chicken3.setFill("images/livestockPens/chicken_eatLeft3.png"); };
+                if (chicken1Timer == 26) { chicken1.setFill("images/livestockPens/chicken_eatRight2.png"); chicken1.setPosition(175, 350); chicken2.setFill("images/livestockPens/chicken_down1.png"); chicken2.setPosition(100, 305); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); pig2.setFill("images/livestockPens/pig_up3.png"); pig2.setPosition(150, 115); };
+                if (chicken1Timer == 27) { chicken1.setFill("images/livestockPens/chicken_eatRight1.png"); chicken1.setPosition(175, 350); chicken2.setFill("images/livestockPens/chicken_down2.png"); chicken2.setPosition(100, 310); chicken3.setFill("images/livestockPens/chicken_eatLeft3.png"); pig1.setFill("images/livestockPens/pig_walkLeft1.png"); pig1.setPosition(150, 180); pig2.setFill("images/livestockPens/pig_up1.png"); pig2.setPosition(150, 110); };
+                if (chicken1Timer == 28) { chicken1.setFill("images/livestockPens/chicken_eatRight2.png"); chicken1.setPosition(175, 350); chicken2.setFill("images/livestockPens/chicken_eatLeft1.png"); chicken2.setPosition(100, 315); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); };
+                if (chicken1Timer == 29) { chicken1.setFill("images/livestockPens/chicken_down1.png"); chicken2.setFill("images/livestockPens/chicken_eatLeft2.png"); pig1.setFill("images/livestockPens/pig_walkLeft2.png"); chicken3.setFill("images/livestockPens/chicken_eatLeft2.png"); pig1.setPosition(160, 180); pig2.setFill("images/livestockPens/pig_up2.png"); pig2.setPosition(150, 105); };
+                if (chicken1Timer == 30) { chicken1.setFill("images/livestockPens/chicken_down1.png"); chicken2.setFill("images/livestockPens/chicken_eatLeft3.png"); chicken3.setFill("images/livestockPens/chicken_eatLeft1.png"); pig2.setSize(39, 21); pig2.setPosition(150, 105); pig2.setFill("images/livestockPens/pig_Left3.png"); };
 
-            if (evaTimer >= 81) { evaTimer = 1; }
-            if (evaTimer == 1) { eva.setPosition(16, 145).setFill(imgArrayEva[0].src);    }
-            if (evaTimer == 2) { eva.setPosition(16, 150).setFill(imgArrayEva[1].src); }
-            if (evaTimer == 3) { eva.setPosition(16, 155).setFill(imgArrayEva[2].src);  }
-            if (evaTimer == 4) { eva.setPosition(16, 160).setFill(imgArrayEva[3].src);  }
-            if (evaTimer == 5) { eva.setPosition(16, 165).setFill(imgArrayEva[0].src); }
-            if (evaTimer == 6) { eva.setPosition(16, 170).setFill(imgArrayEva[1].src);    }
-            if (evaTimer == 7) { eva.setPosition(16, 175).setFill(imgArrayEva[2].src);  }
-            if (evaTimer == 8) { eva.setPosition(16, 180).setFill(imgArrayEva[3].src);   }
-            if (evaTimer == 9) { eva.setPosition(16, 185).setFill(imgArrayEva[0].src);     }
-            if (evaTimer == 10) { eva.setPosition(16, 190).setFill(imgArrayEva[1].src); }
-            if (evaTimer == 11) { eva.setPosition(16, 195).setFill(imgArrayEva[2].src);     }
-            if (evaTimer == 12) { eva.setPosition(16, 200).setFill(imgArrayEva[3].src);  }
-            if (evaTimer == 13) { eva.setPosition(16, 205).setFill(imgArrayEva[0].src);   }
-            if (evaTimer == 14) { eva.setPosition(16, 210).setFill(imgArrayEva[1].src);    }
-            if (evaTimer == 15) { eva.setPosition(16, 215).setFill(imgArrayEva[2].src);   }
-            if (evaTimer == 16) { eva.setPosition(16, 220).setFill(imgArrayEva[3].src);      }
-            if (evaTimer == 17) { eva.setPosition(16, 225).setFill(imgArrayEva[0].src);      }
-            if (evaTimer == 18) { eva.setPosition(16, 230).setFill(imgArrayEva[1].src);   }
-            if (evaTimer == 19) { eva.setPosition(16, 235).setFill(imgArrayEva[2].src);    }
-            if (evaTimer == 20) { eva.setPosition(16, 240).setFill(imgArrayEva[3].src);  }
-            if (evaTimer == 21) { eva.setPosition(16, 245).setFill(imgArrayEva[0].src); }
-            if (evaTimer == 22) { eva.setPosition(16, 250).setFill(imgArrayEva[1].src);  }
-            if (evaTimer == 23) { eva.setPosition(16, 255).setFill(imgArrayEva[2].src); }
-            if (evaTimer == 24) { eva.setPosition(16, 260).setFill(imgArrayEva[3].src); }
-            if (evaTimer == 25) { eva.setPosition(16, 265).setFill(imgArrayEva[0].src); }
-            if (evaTimer == 26) { eva.setPosition(16, 270).setFill(imgArrayEva[1].src); }
-            if (evaTimer == 27) { eva.setPosition(16, 275).setFill(imgArrayEva[2].src); }
-            if (evaTimer == 28) { eva.setPosition(16, 280).setFill(imgArrayEva[3].src); }
-            if (evaTimer == 29) { eva.setPosition(18, 285).setFill(imgArrayEva[0].src); }
-            if (evaTimer == 30) { eva.setPosition(20, 290).setFill(imgArrayEva[1].src); }
-            if (evaTimer == 31) { eva.setPosition(22, 295).setFill(imgArrayEva[2].src); }
-            if (evaTimer == 32) { eva.setPosition(24, 300).setFill(imgArrayEva[3].src); }
-            if (evaTimer == 33) { eva.setPosition(27, 305).setFill(imgArrayEva[0].src);}
-            if (evaTimer == 34) { eva.setPosition(27, 310).setFill(imgArrayEva[1].src); }
-            if (evaTimer == 35) { eva.setPosition(24, 315).setFill(imgArrayEva[2].src); }
-            if (evaTimer == 36) { eva.setPosition(27, 320).setFill(imgArrayEva[3].src); }
-            if (evaTimer == 37) { eva.setPosition(27, 320).setFill(imgArrayEva[8].src); }
-            if (evaTimer == 38) { eva.setPosition(27, 320).setFill(imgArrayEva[12].src);}
-            if (evaTimer == 39) { eva.setPosition(25, 315).setFill(imgArrayEva[13].src); }
-            if (evaTimer == 40) { eva.setPosition(23, 310).setFill(imgArrayEva[14].src); }
-            if (evaTimer == 41) { eva.setPosition(20, 305).setFill(imgArrayEva[15].src);}
-            if (evaTimer == 42) { eva.setPosition(18, 300).setFill(imgArrayEva[12].src); }
-            if (evaTimer == 43) { eva.setPosition(16, 295).setFill(imgArrayEva[13].src); }
-            if (evaTimer == 44) { eva.setPosition(16, 290).setFill(imgArrayEva[14].src); }
-            if (evaTimer == 45) { eva.setPosition(16, 285).setFill(imgArrayEva[15].src);}
-            if (evaTimer == 46) { eva.setPosition(16, 280).setFill(imgArrayEva[12].src); }
-            if (evaTimer == 47) { eva.setPosition(16, 275).setFill(imgArrayEva[13].src); }
-            if (evaTimer == 48) { eva.setPosition(16, 270).setFill(imgArrayEva[14].src); }
-            if (evaTimer == 49) { eva.setPosition(16, 265).setFill(imgArrayEva[15].src); }
-               
-            
-            if (evaTimer == 50) { eva.setPosition(16, 260).setFill(imgArrayEva[14].src); }
-            if (evaTimer == 51) { eva.setPosition(16, 255).setFill(imgArrayEva[15].src); }
-            if (evaTimer == 52) { eva.setPosition(16, 250).setFill(imgArrayEva[12].src); }
-            if (evaTimer == 53) { eva.setPosition(16, 245).setFill(imgArrayEva[13].src); }
-            if (evaTimer == 54) { eva.setPosition(16, 240).setFill(imgArrayEva[14].src); }
-            if (evaTimer == 55) { eva.setPosition(16, 235).setFill(imgArrayEva[15].src); }
-            if (evaTimer == 56) { eva.setPosition(16, 230).setFill(imgArrayEva[12].src); }
-            if (evaTimer == 57) { eva.setPosition(16, 225).setFill(imgArrayEva[13].src); }
-            if (evaTimer == 58) { eva.setPosition(16, 220).setFill(imgArrayEva[14].src); }
-            if (evaTimer == 59) { eva.setPosition(16, 215).setFill(imgArrayEva[15].src); }
+                if (evaTimer >= 81) { evaTimer = 1; }
+                if (evaTimer == 1) { eva.setPosition(16, 145).setFill(imgArrayEva[0].src); }
+                if (evaTimer == 2) { eva.setPosition(16, 150).setFill(imgArrayEva[1].src); }
+                if (evaTimer == 3) { eva.setPosition(16, 155).setFill(imgArrayEva[2].src); }
+                if (evaTimer == 4) { eva.setPosition(16, 160).setFill(imgArrayEva[3].src); }
+                if (evaTimer == 5) { eva.setPosition(16, 165).setFill(imgArrayEva[0].src); }
+                if (evaTimer == 6) { eva.setPosition(16, 170).setFill(imgArrayEva[1].src); }
+                if (evaTimer == 7) { eva.setPosition(16, 175).setFill(imgArrayEva[2].src); }
+                if (evaTimer == 8) { eva.setPosition(16, 180).setFill(imgArrayEva[3].src); }
+                if (evaTimer == 9) { eva.setPosition(16, 185).setFill(imgArrayEva[0].src); }
+                if (evaTimer == 10) { eva.setPosition(16, 190).setFill(imgArrayEva[1].src); }
+                if (evaTimer == 11) { eva.setPosition(16, 195).setFill(imgArrayEva[2].src); }
+                if (evaTimer == 12) { eva.setPosition(16, 200).setFill(imgArrayEva[3].src); }
+                if (evaTimer == 13) { eva.setPosition(16, 205).setFill(imgArrayEva[0].src); }
+                if (evaTimer == 14) { eva.setPosition(16, 210).setFill(imgArrayEva[1].src); }
+                if (evaTimer == 15) { eva.setPosition(16, 215).setFill(imgArrayEva[2].src); }
+                if (evaTimer == 16) { eva.setPosition(16, 220).setFill(imgArrayEva[3].src); }
+                if (evaTimer == 17) { eva.setPosition(16, 225).setFill(imgArrayEva[0].src); }
+                if (evaTimer == 18) { eva.setPosition(16, 230).setFill(imgArrayEva[1].src); }
+                if (evaTimer == 19) { eva.setPosition(16, 235).setFill(imgArrayEva[2].src); }
+                if (evaTimer == 20) { eva.setPosition(16, 240).setFill(imgArrayEva[3].src); }
+                if (evaTimer == 21) { eva.setPosition(16, 245).setFill(imgArrayEva[0].src); }
+                if (evaTimer == 22) { eva.setPosition(16, 250).setFill(imgArrayEva[1].src); }
+                if (evaTimer == 23) { eva.setPosition(16, 255).setFill(imgArrayEva[2].src); }
+                if (evaTimer == 24) { eva.setPosition(16, 260).setFill(imgArrayEva[3].src); }
+                if (evaTimer == 25) { eva.setPosition(16, 265).setFill(imgArrayEva[0].src); }
+                if (evaTimer == 26) { eva.setPosition(16, 270).setFill(imgArrayEva[1].src); }
+                if (evaTimer == 27) { eva.setPosition(16, 275).setFill(imgArrayEva[2].src); }
+                if (evaTimer == 28) { eva.setPosition(16, 280).setFill(imgArrayEva[3].src); }
+                if (evaTimer == 29) { eva.setPosition(18, 285).setFill(imgArrayEva[0].src); }
+                if (evaTimer == 30) { eva.setPosition(20, 290).setFill(imgArrayEva[1].src); }
+                if (evaTimer == 31) { eva.setPosition(22, 295).setFill(imgArrayEva[2].src); }
+                if (evaTimer == 32) { eva.setPosition(24, 300).setFill(imgArrayEva[3].src); }
+                if (evaTimer == 33) { eva.setPosition(27, 305).setFill(imgArrayEva[0].src); }
+                if (evaTimer == 34) { eva.setPosition(27, 310).setFill(imgArrayEva[1].src); }
+                if (evaTimer == 35) { eva.setPosition(24, 315).setFill(imgArrayEva[2].src); }
+                if (evaTimer == 36) { eva.setPosition(27, 320).setFill(imgArrayEva[3].src); }
+                if (evaTimer == 37) { eva.setPosition(27, 320).setFill(imgArrayEva[8].src); }
+                if (evaTimer == 38) { eva.setPosition(27, 320).setFill(imgArrayEva[12].src); }
+                if (evaTimer == 39) { eva.setPosition(25, 315).setFill(imgArrayEva[13].src); }
+                if (evaTimer == 40) { eva.setPosition(23, 310).setFill(imgArrayEva[14].src); }
+                if (evaTimer == 41) { eva.setPosition(20, 305).setFill(imgArrayEva[15].src); }
+                if (evaTimer == 42) { eva.setPosition(18, 300).setFill(imgArrayEva[12].src); }
+                if (evaTimer == 43) { eva.setPosition(16, 295).setFill(imgArrayEva[13].src); }
+                if (evaTimer == 44) { eva.setPosition(16, 290).setFill(imgArrayEva[14].src); }
+                if (evaTimer == 45) { eva.setPosition(16, 285).setFill(imgArrayEva[15].src); }
+                if (evaTimer == 46) { eva.setPosition(16, 280).setFill(imgArrayEva[12].src); }
+                if (evaTimer == 47) { eva.setPosition(16, 275).setFill(imgArrayEva[13].src); }
+                if (evaTimer == 48) { eva.setPosition(16, 270).setFill(imgArrayEva[14].src); }
+                if (evaTimer == 49) { eva.setPosition(16, 265).setFill(imgArrayEva[15].src); }
 
 
-            if (evaTimer == 60) { eva.setPosition(16, 210).setFill(imgArrayEva[14].src); }
-            if (evaTimer == 61) { eva.setPosition(16, 205).setFill(imgArrayEva[15].src); }
-            if (evaTimer == 62) { eva.setPosition(16, 200).setFill(imgArrayEva[12].src); }
-            if (evaTimer == 63) { eva.setPosition(16, 195).setFill(imgArrayEva[13].src); }
-            if (evaTimer == 64) { eva.setPosition(16, 190).setFill(imgArrayEva[14].src); }
-            if (evaTimer == 65) { eva.setPosition(16, 185).setFill(imgArrayEva[15].src); }
-            if (evaTimer == 66) { eva.setPosition(16, 180).setFill(imgArrayEva[12].src); }
-            if (evaTimer == 67) { eva.setPosition(16, 175).setFill(imgArrayEva[13].src); }
-            if (evaTimer == 68) { eva.setPosition(16, 170).setFill(imgArrayEva[14].src); }
-            if (evaTimer == 69) { eva.setPosition(16, 165).setFill(imgArrayEva[15].src); }
-            if (evaTimer == 70) { eva.setPosition(16, 160).setFill(imgArrayEva[12].src); }
-            if (evaTimer == 71) { eva.setPosition(16, 155).setFill(imgArrayEva[13].src); }
-            if (evaTimer == 72) { eva.setPosition(16, 150).setFill(imgArrayEva[14].src); }
-            if (evaTimer == 73) { eva.setPosition(16, 145).setFill(imgArrayEva[15].src); }
-            if (evaTimer == 74) { eva.setPosition(16, 145).setFill(imgArrayEva[8].src); }
-            if (evaTimer == 75) { eva.setPosition(16, 145).setFill(imgArrayEva[0].src); }
-            if (evaTimer == 76) { eva.setPosition(16, 145).setFill(imgArrayEva[4].src); }
-            if (evaTimer == 77) { eva.setPosition(16, 145).setFill(imgArrayEva[0].src); }
-            if (evaTimer == 78) { eva.setPosition(16, 145).setFill(imgArrayEva[8].src); }
-            if (evaTimer == 79) { eva.setPosition(16, 145).setFill(imgArrayEva[0].src); }
-            if (evaTimer == 80) { eva.setPosition(16, 145).setFill(imgArrayEva[4].src); evaTimer = 1; }
+                if (evaTimer == 50) { eva.setPosition(16, 260).setFill(imgArrayEva[14].src); }
+                if (evaTimer == 51) { eva.setPosition(16, 255).setFill(imgArrayEva[15].src); }
+                if (evaTimer == 52) { eva.setPosition(16, 250).setFill(imgArrayEva[12].src); }
+                if (evaTimer == 53) { eva.setPosition(16, 245).setFill(imgArrayEva[13].src); }
+                if (evaTimer == 54) { eva.setPosition(16, 240).setFill(imgArrayEva[14].src); }
+                if (evaTimer == 55) { eva.setPosition(16, 235).setFill(imgArrayEva[15].src); }
+                if (evaTimer == 56) { eva.setPosition(16, 230).setFill(imgArrayEva[12].src); }
+                if (evaTimer == 57) { eva.setPosition(16, 225).setFill(imgArrayEva[13].src); }
+                if (evaTimer == 58) { eva.setPosition(16, 220).setFill(imgArrayEva[14].src); }
+                if (evaTimer == 59) { eva.setPosition(16, 215).setFill(imgArrayEva[15].src); }
 
+
+                if (evaTimer == 60) { eva.setPosition(16, 210).setFill(imgArrayEva[14].src); }
+                if (evaTimer == 61) { eva.setPosition(16, 205).setFill(imgArrayEva[15].src); }
+                if (evaTimer == 62) { eva.setPosition(16, 200).setFill(imgArrayEva[12].src); }
+                if (evaTimer == 63) { eva.setPosition(16, 195).setFill(imgArrayEva[13].src); }
+                if (evaTimer == 64) { eva.setPosition(16, 190).setFill(imgArrayEva[14].src); }
+                if (evaTimer == 65) { eva.setPosition(16, 185).setFill(imgArrayEva[15].src); }
+                if (evaTimer == 66) { eva.setPosition(16, 180).setFill(imgArrayEva[12].src); }
+                if (evaTimer == 67) { eva.setPosition(16, 175).setFill(imgArrayEva[13].src); }
+                if (evaTimer == 68) { eva.setPosition(16, 170).setFill(imgArrayEva[14].src); }
+                if (evaTimer == 69) { eva.setPosition(16, 165).setFill(imgArrayEva[15].src); }
+                if (evaTimer == 70) { eva.setPosition(16, 160).setFill(imgArrayEva[12].src); }
+                if (evaTimer == 71) { eva.setPosition(16, 155).setFill(imgArrayEva[13].src); }
+                if (evaTimer == 72) { eva.setPosition(16, 150).setFill(imgArrayEva[14].src); }
+                if (evaTimer == 73) { eva.setPosition(16, 145).setFill(imgArrayEva[15].src); }
+                if (evaTimer == 74) { eva.setPosition(16, 145).setFill(imgArrayEva[8].src); }
+                if (evaTimer == 75) { eva.setPosition(16, 145).setFill(imgArrayEva[0].src); }
+                if (evaTimer == 76) { eva.setPosition(16, 145).setFill(imgArrayEva[4].src); }
+                if (evaTimer == 77) { eva.setPosition(16, 145).setFill(imgArrayEva[0].src); }
+                if (evaTimer == 78) { eva.setPosition(16, 145).setFill(imgArrayEva[8].src); }
+                if (evaTimer == 79) { eva.setPosition(16, 145).setFill(imgArrayEva[0].src); }
+                if (evaTimer == 80) { eva.setPosition(16, 145).setFill(imgArrayEva[4].src); evaTimer = 1; }
+            }
         }, this, 250)
 
     }
@@ -10247,36 +10383,37 @@ farming.start = function () {
     var acresOwned2 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
     lime.scheduleManager.scheduleWithDelay(function () {
         //add upgrade anim
-        porkTimer = porkTimer + 1;
-        var porkPos = porkUpCount.getPosition();
-        var porkPosY = porkPos.y - 5;
-        if (porkPosY < 70) { porkPosY = 110 };
-        if (porkTimer > 240 && player.cropsStored[8].stored >= 1 && acres[4].owned == 1) {
+        if (sceneActive == 'LS') {
+            porkTimer = porkTimer + 1;
+            var porkPos = porkUpCount.getPosition();
+            var porkPosY = porkPos.y - 5;
+            if (porkPosY < 70) { porkPosY = 110 };
+            if (porkTimer > 240 && player.cropsStored[8].stored >= 1 && acres[4].owned == 1) {
 
-            porkUpCount.setHidden(false);
-            porkUpCount.setPosition(155, porkPosY);
-            porkUpIcon.setHidden(false);
-            porkUpIcon.setPosition(95, (porkPosY - 15));
-            collectPork.setHidden(false);
-            //show the speechBubble to collect pork
-            if (porkOnce == 0) {
-                porkOnce = 1;
-                porkWaiting = porkWaiting + 2;
+                porkUpCount.setHidden(false);
+                porkUpCount.setPosition(155, porkPosY);
+                porkUpIcon.setHidden(false);
+                porkUpIcon.setPosition(95, (porkPosY - 15));
+                collectPork.setHidden(false);
+                //show the speechBubble to collect pork
+                if (porkOnce == 0) {
+                    porkOnce = 1;
+                    porkWaiting = porkWaiting + 2;
 
-                collectPorkLabel.setText("+ " + porkWaiting);
-                player.cropsStored[8].stored = player.cropsStored[8].stored - 1;
-                count8.setText(player.cropsStored[8].stored);
-                gLabel8.setText(player.cropsStored[8].stored);
-                //gLabel8LS.setText(player.cropsStored[8].stored);
-                //gLabel8Pork.setText(player.cropsStored[8].stored);
-                localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                    collectPorkLabel.setText("+ " + porkWaiting);
+                    player.cropsStored[8].stored = player.cropsStored[8].stored - 1;
+                    count8.setText(player.cropsStored[8].stored);
+                    gLabel8.setText(player.cropsStored[8].stored);
+                    //gLabel8LS.setText(player.cropsStored[8].stored);
+                    //gLabel8Pork.setText(player.cropsStored[8].stored);
+                    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+
+                }
 
             }
+            if (porkTimer > 248) { porkTimer = 0; porkUpCount.setHidden(true); porkOnce = 0; porkUpIcon.setHidden(true); }
 
         }
-        if (porkTimer > 248) { porkTimer = 0; porkUpCount.setHidden(true); porkOnce = 0; porkUpIcon.setHidden(true); }
-
-
     }, this, 250)
 
     goog.events.listen(collectPork, ["mousedown", "touchstart"], function () {
@@ -10298,7 +10435,9 @@ farming.start = function () {
     goog.events.listen(marketLS, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
             a.sceneBefore = 5;
+            townSceneActive = 1;
             c.replaceScene(marketScene, lime.transitions.SlideInUp);
+            sceneActive = 'Market';
             count0.setText(player.cropsStored[0].stored);
             count1.setText(player.cropsStored[1].stored);
             count2.setText(player.cropsStored[2].stored);
@@ -10321,6 +10460,7 @@ farming.start = function () {
         if (globalModalBlock == 0) {
             sceneBefore = 5;
             c.replaceScene(menuScene, lime.transitions.SlideInUp);
+            sceneActive = 'Menu';
         }
     });
     //MUTE From Livestock
@@ -10354,7 +10494,9 @@ farming.start = function () {
     ////back to Orchard from pens
     goog.events.listen(roadLeftLS, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
-            c.replaceScene(orchardScene, lime.transitions.SlideInLeft); sceneBefore = 3; waterfallSound.play(); chickenSound.stop(); pig1Sound.stop(); pig2Sound.stop(); pig3Sound.stop();
+            c.replaceScene(orchardScene, lime.transitions.SlideInLeft);
+            sceneActive = 'Orchard';
+            sceneBefore = 3; waterfallSound.play(); chickenSound.stop(); pig1Sound.stop(); pig2Sound.stop(); pig3Sound.stop();
         }
     });
 
@@ -10391,6 +10533,7 @@ farming.start = function () {
         checkItemsOwned();
         starCashInvCount.setText(starCash);
         c.replaceScene(inventoryScene, lime.Transition.SlideInUp);
+        sceneActive = 'Inventory';
         count0.setText(player.cropsStored[0].stored);
         count1.setText(player.cropsStored[1].stored);
         count2.setText(player.cropsStored[2].stored);
@@ -10479,13 +10622,20 @@ farming.start = function () {
     goog.events.listen(closeNavLS, ["mousedown", "touchstart"], function () { closeAcresNav(); });
     goog.events.listen(homeNavLS, ["mousedown", "touchstart"], function () {
         if (compassVisible) {
-            b.currentCrop = localStorage.getItem("MedFarms_selectedHomeCrop");
-            if (b.currentCrop > 5 || b.currentCrop == 'undefined') { b.currentCrop = 0; }
+            b.currentCrop = parseInt(homeCrop);
+            if (b.currentCrop > 5 || isNaN(b.currentCrop) || b.currentCrop < 0) {
+                b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
+                if (b.currentCrop > 5 || isNaN(b.currentCrop) || b.currentCrop < 0) {
+                    b.currentCrop = 0;
+                }
+
+            };
             closeAcresNav();
             a.sceneBefore = 1;
             waterfallSound.stop();
             globalModalBlock = 0;
             c.replaceScene(d, lime.transitions.SlideInLeft);
+            sceneActive = 'Home';
             chickenSound.stop();
             pig1Sound.stop();
             pig2Sound.stop();
@@ -10497,6 +10647,7 @@ farming.start = function () {
             a.sceneBefore = 2;
             b.currentCrop = 6;
             c.replaceScene(pastureScene, lime.transitions.SlideInLeft);
+            sceneActive = 'Pasture';
             chickenSound.stop();
             pig1Sound.stop();
             pig2Sound.stop();
@@ -10509,6 +10660,7 @@ farming.start = function () {
             closeAcresNav();
             b.currentCrop = 8;
             c.replaceScene(orchardScene, lime.transitions.SlideInLeft);
+            sceneActive = 'Orchard';
             waterfallSound.play();
             chickenSound.stop();
             pig1Sound.stop();
@@ -10521,6 +10673,7 @@ farming.start = function () {
             closeAcresNav();
             a.sceneBefore = 4;
             c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
+            sceneActive = 'Vineyard';
             waterfallSound.stop();
             oldCrop = b.currentCrop; b.currentCrop = 12;
             checkShortage();
@@ -10904,11 +11057,13 @@ farming.start = function () {
     if (vinyardHouseLevel > 1) { vinyardBarn.setFill("images/vinyard/house4Upgrade2.png"); HouseVUnlock3.setHidden(true); };
     lime.scheduleManager.scheduleWithDelay(function () {
         //add upgrade anim
-        var currentPosV = HouseVUnlock3.getPosition();
-        currentPosV.y -= 5;
+        if (sceneActive == 'Vineyard') {
+            var currentPosV = HouseVUnlock3.getPosition();
+            currentPosV.y -= 5;
 
-        if (currentPosV.y < 270) { currentPosV.y = 275 };
-        HouseVUnlock3.setPosition(currentPosV);
+            if (currentPosV.y < 270) { currentPosV.y = 275 };
+            HouseVUnlock3.setPosition(currentPosV);
+        }
     }, this, 500)
 
     var barnUpgradeCostToolsV = 250;
@@ -11085,7 +11240,7 @@ farming.start = function () {
     var controlsBackVin = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-5, a.height - a.controlsLayer_h - 5).setSize(a.controlsLayer_w, a.controlsLayer_h + 5).setFill("images/UI/blackButton.png");
     vinyardLayer.appendChild(controlsBackVin);
     //vinyard growing set
-    var hhV = localStorage.getItem("MedFarms_selectedHomeCrop");
+    var hhV = b.currentCrop;
     var wV = (new lime.Label).setText("Growing " + a.crops[12].name).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontSize(12).setPosition(a.controlsLayer_w / 2 - 20, a.height - a.controlsLayer_h / 2 - 11);
     vinyardLayer.appendChild(wV);
     var zV = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.controlsLayer_w / 2 - 28, a.height - a.controlsLayer_h / 2 - 10).setFill("images/" + a.crops[12].harvest).setSize(30, 38);
@@ -11138,104 +11293,100 @@ farming.start = function () {
     }
     var vinFarmerI = 0
     lime.scheduleManager.scheduleWithDelay(function () {
-     
+        if (sceneActive == 'Vineyard') { 
 
-        highestTerric = questParams.terric[0].highestCompleted;
-        currentJars = parseInt(player.cropsStored[17].stored);
-        currentJelly = parseInt(player.cropsStored[13].stored);
-        if (currentJars == 0 && highestTerric >= 1) {
-            vinFarmerQuest.setFill(imgArray[22].src);
-            questText1V = questParams.terric[2].text;
-            vinFarmerQuestBtn.setHidden(false);
-            vinFarmerQuest.setHidden(false);
+            highestTerric = questParams.terric[0].highestCompleted;
+            currentJars = parseInt(player.cropsStored[17].stored);
+            currentJelly = parseInt(player.cropsStored[13].stored);
+            if (currentJars == 0 && highestTerric >= 1) {
+                vinFarmerQuest.setFill(imgArray[22].src);
+                questText1V = questParams.terric[2].text;
+                vinFarmerQuestBtn.setHidden(false);
+                vinFarmerQuest.setHidden(false);
+            }
+
+            //for next release of juice
+            //if (currentJars >= 0 && highestTerric == 1 && currentJelly > 5) {
+            //    questText1V = questParams.terric[3].text;
+            //    vinFarmerQuestBtn.setHidden(false);
+            //    vinFarmerQuest.setHidden(false);
+            //}
+
+               //add upgrade anim
+            vinFarmerI = vinFarmerI + 1;
+            if (vinFarmerI > 58) { vinFarmerI = 1 };
+            if (vinFarmerI < 11) { vinFarmer.setFill("images/vinyard/vinFarmer" + vinFarmerI + ".png"); };
+
+            if (vinFarmerI == 2) { vinFarmer.setPosition(65, 350) };
+            if (vinFarmerI == 3) { vinFarmer.setPosition(70, 350) };
+            if (vinFarmerI == 4) { vinFarmer.setPosition(75, 350); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
+            if (vinFarmerI == 5) { vinFarmer.setPosition(75, 355); };
+            if (vinFarmerI == 6) { vinFarmer.setPosition(75, 360); };
+            if (vinFarmerI == 7) { vinFarmer.setPosition(75, 365); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
+            if (vinFarmerI == 8) { vinFarmer.setPosition(75, 360); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
+            if (vinFarmerI == 9) { vinFarmer.setPosition(75, 355); };
+            if (vinFarmerI == 10) { vinFarmer.setPosition(75, 350); };
+            if (vinFarmerI == 11) { vinFarmer.setPosition(80, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
+            if (vinFarmerI == 12) { vinFarmer.setPosition(85, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
+            if (vinFarmerI == 13) { vinFarmer.setPosition(90, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
+            if (vinFarmerI == 14) { vinFarmer.setPosition(95, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
+            if (vinFarmerI == 15) { vinFarmer.setPosition(100, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
+            if (vinFarmerI == 16) { vinFarmer.setPosition(105, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
+            if (vinFarmerI == 17) { vinFarmer.setPosition(110, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
+            if (vinFarmerI == 18) { vinFarmer.setPosition(115, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
+            if (vinFarmerI == 19) { vinFarmer.setPosition(120, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
+            if (vinFarmerI == 20) { vinFarmer.setPosition(125, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
+            if (vinFarmerI == 21) { vinFarmer.setPosition(130, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
+            if (vinFarmerI == 22) { vinFarmer.setPosition(135, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
+            if (vinFarmerI == 23) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
+            if (vinFarmerI == 24) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer8.png"); };
+            if (vinFarmerI == 25) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer8.png"); };
+
+            if (vinFarmerI == 26) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 27) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 28) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 29) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer9.png"); };
+
+            if (vinFarmerI == 30) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
+            if (vinFarmerI == 31) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
+            if (vinFarmerI == 32) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
+
+            if (vinFarmerI == 33) { vinFarmer.setPosition(145, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
+            if (vinFarmerI == 34) { vinFarmer.setPosition(150, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
+            if (vinFarmerI == 35) { vinFarmer.setPosition(155, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
+            if (vinFarmerI == 36) { vinFarmer.setPosition(160, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
+            if (vinFarmerI == 37) { vinFarmer.setPosition(165, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
+            if (vinFarmerI == 38) { vinFarmer.setPosition(165, 350); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
+
+            if (vinFarmerI == 39) { vinFarmer.setPosition(160, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 40) { vinFarmer.setPosition(155, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
+            if (vinFarmerI == 41) { vinFarmer.setPosition(150, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+
+            if (vinFarmerI == 42) { vinFarmer.setPosition(145, 350); vinFarmer.setFill("images/vinyard/vinFarmer19.png"); };
+            if (vinFarmerI == 43) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            
+            if (vinFarmerI == 44) { vinFarmer.setPosition(135, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 45) { vinFarmer.setPosition(130, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
+            if (vinFarmerI == 46) { vinFarmer.setPosition(125, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 47) { vinFarmer.setPosition(120, 350); vinFarmer.setFill("images/vinyard/vinFarmer19.png"); };
+            if (vinFarmerI == 48) { vinFarmer.setPosition(115, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
+            if (vinFarmerI == 49) { vinFarmer.setPosition(110, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 50) { vinFarmer.setPosition(105, 350); vinFarmer.setFill("images/vinyard/vinFarmer19.png"); };
+            if (vinFarmerI == 51) { vinFarmer.setPosition(100, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 52) { vinFarmer.setPosition(95, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
+            if (vinFarmerI == 53) { vinFarmer.setPosition(90, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 54) { vinFarmer.setPosition(85, 350); vinFarmer.setFill("images/vinyard/vinFarmer19.png"); };
+            if (vinFarmerI == 55) { vinFarmer.setPosition(80, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 56) { vinFarmer.setPosition(75, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
+            if (vinFarmerI == 57) { vinFarmer.setPosition(70, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 58) { vinFarmer.setPosition(65, 350); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
+            //if (vinFarmerI == 15) { vinFarmer.setPosition(50, 80); vinFarmer.setFill("images/blacksmith13.png"); };
+            //if (vinFarmerI == 16) { vinFarmer.setPosition(50, 75); vinFarmer.setFill("images/blacksmith1.png") };
+            //if (vinFarmerI == 17) { vinFarmer.setPosition(50, 75); vinFarmer.setFill("images/blacksmith2.png") };
+            //if (vinFarmerI == 18) { vinFarmer.setPosition(50, 77); vinFarmer.setFill("images/blacksmith1.png") };
+            //if (vinFarmerI == 19) { vinFarmer.setPosition(50, 77); vinFarmer.setFill("images/blacksmith2.png") };
+
         }
-
-        //for next release of juice
-        //if (currentJars >= 0 && highestTerric == 1 && currentJelly > 5) {
-        //    questText1V = questParams.terric[3].text;
-        //    vinFarmerQuestBtn.setHidden(false);
-        //    vinFarmerQuest.setHidden(false);
-        //}
-
-           //add upgrade anim
-        vinFarmerI = vinFarmerI + 1;
-        if (vinFarmerI > 58) { vinFarmerI = 1 };
-        if (vinFarmerI < 11) { vinFarmer.setFill("images/vinyard/vinFarmer" + vinFarmerI + ".png"); };
-
-        if (vinFarmerI == 2) { vinFarmer.setPosition(65, 350) };
-        if (vinFarmerI == 3) { vinFarmer.setPosition(70, 350) };
-        if (vinFarmerI == 4) { vinFarmer.setPosition(75, 350); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
-        if (vinFarmerI == 5) { vinFarmer.setPosition(75, 355); };
-        if (vinFarmerI == 6) { vinFarmer.setPosition(75, 360); };
-        if (vinFarmerI == 7) { vinFarmer.setPosition(75, 365); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
-        if (vinFarmerI == 8) { vinFarmer.setPosition(75, 360); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
-        if (vinFarmerI == 9) { vinFarmer.setPosition(75, 355); };
-        if (vinFarmerI == 10) { vinFarmer.setPosition(75, 350); };
-        if (vinFarmerI == 11) { vinFarmer.setPosition(80, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
-        if (vinFarmerI == 12) { vinFarmer.setPosition(85, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
-        if (vinFarmerI == 13) { vinFarmer.setPosition(90, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
-        if (vinFarmerI == 14) { vinFarmer.setPosition(95, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
-        if (vinFarmerI == 15) { vinFarmer.setPosition(100, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
-        if (vinFarmerI == 16) { vinFarmer.setPosition(105, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
-        if (vinFarmerI == 17) { vinFarmer.setPosition(110, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
-        if (vinFarmerI == 18) { vinFarmer.setPosition(115, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
-        if (vinFarmerI == 19) { vinFarmer.setPosition(120, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
-        if (vinFarmerI == 20) { vinFarmer.setPosition(125, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
-        if (vinFarmerI == 21) { vinFarmer.setPosition(130, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
-        if (vinFarmerI == 22) { vinFarmer.setPosition(135, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
-        if (vinFarmerI == 23) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
-        if (vinFarmerI == 24) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer8.png"); };
-        if (vinFarmerI == 25) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer8.png"); };
-
-        if (vinFarmerI == 26) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-        if (vinFarmerI == 27) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-        if (vinFarmerI == 28) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-        if (vinFarmerI == 29) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer9.png"); };
-
-        if (vinFarmerI == 30) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
-        if (vinFarmerI == 31) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
-        if (vinFarmerI == 32) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
-
-        if (vinFarmerI == 33) { vinFarmer.setPosition(145, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
-        if (vinFarmerI == 34) { vinFarmer.setPosition(150, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
-        if (vinFarmerI == 35) { vinFarmer.setPosition(155, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
-        if (vinFarmerI == 36) { vinFarmer.setPosition(160, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
-        if (vinFarmerI == 37) { vinFarmer.setPosition(165, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
-        if (vinFarmerI == 38) { vinFarmer.setPosition(165, 350); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
-
-        if (vinFarmerI == 39) { vinFarmer.setPosition(160, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-        if (vinFarmerI == 40) { vinFarmer.setPosition(155, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
-        if (vinFarmerI == 41) { vinFarmer.setPosition(150, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-
-        if (vinFarmerI == 42) { vinFarmer.setPosition(145, 350); vinFarmer.setFill("images/vinyard/vinFarmer19.png"); };
-        if (vinFarmerI == 43) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-
-
-
-
-
-        if (vinFarmerI == 44) { vinFarmer.setPosition(135, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-        if (vinFarmerI == 45) { vinFarmer.setPosition(130, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
-        if (vinFarmerI == 46) { vinFarmer.setPosition(125, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-        if (vinFarmerI == 47) { vinFarmer.setPosition(120, 350); vinFarmer.setFill("images/vinyard/vinFarmer19.png"); };
-        if (vinFarmerI == 48) { vinFarmer.setPosition(115, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
-        if (vinFarmerI == 49) { vinFarmer.setPosition(110, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-        if (vinFarmerI == 50) { vinFarmer.setPosition(105, 350); vinFarmer.setFill("images/vinyard/vinFarmer19.png"); };
-        if (vinFarmerI == 51) { vinFarmer.setPosition(100, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-        if (vinFarmerI == 52) { vinFarmer.setPosition(95, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
-        if (vinFarmerI == 53) { vinFarmer.setPosition(90, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-        if (vinFarmerI == 54) { vinFarmer.setPosition(85, 350); vinFarmer.setFill("images/vinyard/vinFarmer19.png"); };
-        if (vinFarmerI == 55) { vinFarmer.setPosition(80, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-        if (vinFarmerI == 56) { vinFarmer.setPosition(75, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
-        if (vinFarmerI == 57) { vinFarmer.setPosition(70, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-        if (vinFarmerI == 58) { vinFarmer.setPosition(65, 350); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
-        //if (vinFarmerI == 15) { vinFarmer.setPosition(50, 80); vinFarmer.setFill("images/blacksmith13.png"); };
-        //if (vinFarmerI == 16) { vinFarmer.setPosition(50, 75); vinFarmer.setFill("images/blacksmith1.png") };
-        //if (vinFarmerI == 17) { vinFarmer.setPosition(50, 75); vinFarmer.setFill("images/blacksmith2.png") };
-        //if (vinFarmerI == 18) { vinFarmer.setPosition(50, 77); vinFarmer.setFill("images/blacksmith1.png") };
-        //if (vinFarmerI == 19) { vinFarmer.setPosition(50, 77); vinFarmer.setFill("images/blacksmith2.png") };
-
-
     }, this, 250)
 
     var harvest4 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.controlsLayer_w / 2 - (15), a.height / 2).setFill("images/" + a.crops[12].harvest).setSize(26, 21);
@@ -11286,7 +11437,9 @@ farming.start = function () {
     goog.events.listen(marketV, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
             a.sceneBefore = 4;
+            townSceneActive = 1;
             c.replaceScene(marketScene, lime.transitions.SlideInUp);
+            sceneActive = 'Market';
             count0.setText(player.cropsStored[0].stored);
             count1.setText(player.cropsStored[1].stored);
             count2.setText(player.cropsStored[2].stored);
@@ -11307,6 +11460,7 @@ farming.start = function () {
     goog.events.listen(roadRightV, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
             c.replaceScene(pastureScene, lime.transitions.SlideInRight); sceneBefore = 2; b.currentCrop = 6;
+            sceneActive = 'Pasture';
         }
     });
 
@@ -11340,7 +11494,7 @@ farming.start = function () {
         a.sceneBefore = 4;
         checkItemsOwned();
         starCashInvCount.setText(starCash);
-        c.replaceScene(inventoryScene, lime.transitions.SlideInUp);
+        c.replaceScene(inventoryScene, lime.transitions.SlideInUp); sceneActive = 'Inventory';
         gLabel0.setText(player.cropsStored[0].stored);
         gLabel1.setText(player.cropsStored[1].stored);
         gLabel2.setText(player.cropsStored[2].stored);
@@ -11401,7 +11555,9 @@ farming.start = function () {
         outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
         pastureBlock.setHidden(true); homeBlock.setHidden(true); orchardBlock.setHidden(true); vinyardBlock.setHidden(true); lsBlock.setHidden(true);
         a.updateStored();
+        townSceneActive = 1;
         c.replaceScene(marketScene, lime.transitions.SlideInUp);
+        sceneActive = 'Market';
         count0.setText(player.cropsStored[0].stored);
         count1.setText(player.cropsStored[1].stored);
         count2.setText(player.cropsStored[2].stored);
@@ -11500,9 +11656,16 @@ farming.start = function () {
         if (compassVisible) {
             closeAcresNav();
             a.sceneBefore = 1;
-            b.currentCrop = localStorage.getItem('MedFarms_selectedHomeCrop');
-            if (b.currentCrop > 5 || b.currentCrop == 'undefined') { b.currentCrop = 0; }
+            b.currentCrop = parseInt(homeCrop);
+            if (b.currentCrop > 5 || isNaN(b.currentCrop) || b.currentCrop < 0) {
+                b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
+                if (b.currentCrop > 5 || isNaN(b.currentCrop) || b.currentCrop < 0) {
+                    b.currentCrop = 0;
+                }
+
+            };
             c.replaceScene(d, lime.transitions.SlideInRight);
+            sceneActive = 'Home';
             vinyardBlock.setHidden(true);
             globalModalBlock = 0;
         }
@@ -11514,6 +11677,7 @@ farming.start = function () {
             cowSound.play(); checkShortage();
             b.currentCrop = 6;
             c.replaceScene(pastureScene, lime.transitions.SlideInRight);
+            sceneActive = 'Pasture';
             vinyardBlock.setHidden(true);
             globalModalBlock = 0;
         }
@@ -11525,6 +11689,7 @@ farming.start = function () {
             closeAcresNav();
             oldCrop = b.currentCrop; b.currentCrop = 8;
             c.replaceScene(orchardScene, lime.transitions.SlideInRight);
+            sceneActive = 'Orchard';
             vinyardBlock.setHidden(true);
             globalModalBlock = 0;
         }
@@ -11543,6 +11708,7 @@ farming.start = function () {
             closeAcresNav();
             a.sceneBefore = 5;                                                                                                                              ///from pature to Market
             c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
+            sceneActive = 'LS';
 
             chickenSound.play();
             pig1Sound.play();
@@ -11829,113 +11995,115 @@ farming.start = function () {
     var deniseCount = 0;
     fireState = 1
     lime.scheduleManager.scheduleWithDelay(function () {
-        if (houseUpgrades.upgrades[0].owned == 1) { patricia.setHidden(false); } else { patricia.setHidden(true);}
+        if (sceneActive == 'House'){ 
+            if (houseUpgrades.upgrades[0].owned == 1) { patricia.setHidden(false); } else { patricia.setHidden(true);}
 
-        deniseCount++;
-        firesInFireplace.setFill(imgArray12[fireState]);
-        stoveFire.setFill(imgArray12[(fireState + 3)])
-        fireState++;
-        if (fireState > 3) { fireState = 1;} 
-        if (deniseCount == 1) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src);}
-        if (deniseCount == 2) { denise.setPosition(190, 360).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 150).setFill(imgArrayPatricia[1].src);}
-        if (deniseCount == 3) { denise.setPosition(185, 360).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 155).setFill(imgArrayPatricia[2].src);}
-        if (deniseCount == 4) { denise.setPosition(180, 360).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 160).setFill(imgArrayPatricia[3].src);}
-        if (deniseCount == 5) { denise.setPosition(175, 360).setFill(imgArrayDenise[10].src); patricia.setPosition(202, 165).setFill(imgArrayPatricia[0].src);}
-        if (deniseCount == 6) { denise.setPosition(170, 360).setFill(imgArrayDenise[11].src); patricia.setPosition(202, 170).setFill(imgArrayPatricia[1].src);}
-        if (deniseCount == 7) { denise.setPosition(165, 360).setFill(imgArrayDenise[10].src); patricia.setPosition(202, 175).setFill(imgArrayPatricia[2].src);}
-        if (deniseCount == 8) { denise.setPosition(160, 360).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 180).setFill(imgArrayPatricia[3].src);}
-        if (deniseCount == 9) { denise.setPosition(155, 360).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 185).setFill(imgArrayPatricia[0].src);}
-        if (deniseCount == 10) { denise.setPosition(150, 360).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 190).setFill(imgArrayPatricia[1].src); }
-        if (deniseCount == 11) { denise.setPosition(145, 360).setFill(imgArrayDenise[10].src); patricia.setPosition(202, 195).setFill(imgArrayPatricia[2].src);}
-        if (deniseCount == 12) { denise.setPosition(140, 360).setFill(imgArrayDenise[11].src); patricia.setPosition(202, 200).setFill(imgArrayPatricia[3].src);}
-        if (deniseCount == 12) { denise.setPosition(135, 355).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 205).setFill(imgArrayPatricia[0].src);}
-        if (deniseCount == 12) { denise.setPosition(130, 355).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 205).setFill(imgArrayPatricia[4].src);}
-        if (deniseCount == 12) { denise.setPosition(125, 350).setFill(imgArrayDenise[10].src); patricia.setPosition(195, 205).setFill(imgArrayPatricia[5].src);}
-        if (deniseCount == 13) { denise.setPosition(120, 350).setFill(imgArrayDenise[11].src); patricia.setPosition(190, 205).setFill(imgArrayPatricia[6].src); }
-        if (deniseCount == 14) { denise.setPosition(115, 350).setFill(imgArrayDenise[10].src); patricia.setPosition(185, 205).setFill(imgArrayPatricia[7].src); }
-        if (deniseCount == 15) { denise.setPosition(110, 350).setFill(imgArrayDenise[9].src); patricia.setPosition(180, 205).setFill(imgArrayPatricia[4].src);}
-        if (deniseCount == 16) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(175, 205).setFill(imgArrayPatricia[5].src); }
-        if (deniseCount == 17) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(170, 205).setFill(imgArrayPatricia[6].src);}
-        if (deniseCount == 18) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(165, 205).setFill(imgArrayPatricia[7].src);}
-        if (deniseCount == 19) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(160, 205).setFill(imgArrayPatricia[6].src); }
-        if (deniseCount == 20) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(155, 205).setFill(imgArrayPatricia[5].src); }
-        if (deniseCount == 21) { denise.setPosition(110, 350).setFill(imgArrayDenise[14].src); patricia.setPosition(150, 205).setFill(imgArrayPatricia[4].src); }
-        if (deniseCount == 22) { denise.setPosition(110, 350).setFill(imgArrayDenise[8].src); patricia.setPosition(145, 205).setFill(imgArrayPatricia[5].src);}
-        if (deniseCount == 23) { denise.setPosition(110, 350).setFill(imgArrayDenise[1].src); patricia.setPosition(140, 205).setFill(imgArrayPatricia[6].src);}
-        if (deniseCount == 24) { denise.setPosition(110, 355).setFill(imgArrayDenise[0].src); patricia.setPosition(135, 205).setFill(imgArrayPatricia[7].src);}
-        if (deniseCount == 25) { denise.setPosition(110, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(130, 205).setFill(imgArrayPatricia[6].src);}
-        if (deniseCount == 26) { denise.setPosition(110, 365).setFill(imgArrayDenise[2].src); patricia.setPosition(125, 205).setFill(imgArrayPatricia[5].src);}
-        if (deniseCount == 27) { denise.setPosition(110, 370).setFill(imgArrayDenise[3].src); patricia.setPosition(120, 205).setFill(imgArrayPatricia[4].src);}
-        if (deniseCount == 28) { denise.setPosition(110, 375).setFill(imgArrayDenise[0].src); patricia.setPosition(115, 205).setFill(imgArrayPatricia[7].src); }
-        if (deniseCount == 29) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(110, 205).setFill(imgArrayPatricia[6].src);}
-        if (deniseCount == 30) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(105, 205).setFill(imgArrayPatricia[5].src);}
-        if (deniseCount == 31) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(100, 205).setFill(imgArrayPatricia[4].src);}
-        if (deniseCount == 32) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(95, 205).setFill(imgArrayPatricia[5].src);}
-        if (deniseCount == 33) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(90, 205).setFill(imgArrayPatricia[6].src);}
-        if (deniseCount == 34) { denise.setPosition(110, 375).setFill(imgArrayDenise[4].src); patricia.setPosition(85, 205).setFill(imgArrayPatricia[7].src);}
-        if (deniseCount == 35) { denise.setPosition(115, 370).setFill(imgArrayDenise[5].src); patricia.setPosition(80, 205).setFill(imgArrayPatricia[6].src);}
-        if (deniseCount == 36) { denise.setPosition(120, 365).setFill(imgArrayDenise[6].src); patricia.setPosition(75, 205).setFill(imgArrayPatricia[5].src);}
-        if (deniseCount == 37) { denise.setPosition(125, 360).setFill(imgArrayDenise[7].src); patricia.setPosition(70, 205).setFill(imgArrayPatricia[4].src);}
-        if (deniseCount == 38) { denise.setPosition(130, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 205).setFill(imgArrayPatricia[12].src); }
-        if (deniseCount == 39) { denise.setPosition(135, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 200).setFill(imgArrayPatricia[13].src);}
-        if (deniseCount == 40) { denise.setPosition(140, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 195).setFill(imgArrayPatricia[14].src);}
-        if (deniseCount == 41) { denise.setPosition(145, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 190).setFill(imgArrayPatricia[15].src); }
-        if (deniseCount == 42) { denise.setPosition(150, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 185).setFill(imgArrayPatricia[12].src);}
-        if (deniseCount == 43) { denise.setPosition(155, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 180).setFill(imgArrayPatricia[13].src);}
-        if (deniseCount == 44) { denise.setPosition(160, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 175).setFill(imgArrayPatricia[14].src); }
-        if (deniseCount == 45) { denise.setPosition(175, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 170).setFill(imgArrayPatricia[15].src);}
-        if (deniseCount == 46) { denise.setPosition(180, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 165).setFill(imgArrayPatricia[12].src);}
-        if (deniseCount == 47) { denise.setPosition(185, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 160).setFill(imgArrayPatricia[13].src); }
-        if (deniseCount == 48) { denise.setPosition(190, 360).setFill(imgArrayDenise[6].src); patricia.setPosition(70, 155).setFill(imgArrayPatricia[14].src); }
-        if (deniseCount == 49) { denise.setPosition(190, 360).setFill(imgArrayDenise[0].src); patricia.setPosition(70, 150).setFill(imgArrayPatricia[15].src); }
-        if (deniseCount == 50) {  patricia.setPosition(70, 150).setFill(imgArrayPatricia[4].src); }
-        if (deniseCount == 51) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[0].src); }
-        if (deniseCount == 52) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[8].src); }
-        if (deniseCount == 53) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[0].src); }
-        if (deniseCount == 54) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[4].src); }
-        if (deniseCount == 55) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[0].src); }
-        if (deniseCount == 58) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[12].src); }
-        if (deniseCount == 59) { denise.setPosition(190, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 145).setFill(imgArrayPatricia[12].src); }
-        if (deniseCount == 60) { patricia.setPosition(70, 145).setFill(imgArrayPatricia[8].src); }
-        if (deniseCount == 61) { patricia.setPosition(75, 145).setFill(imgArrayPatricia[9].src); }
-        if (deniseCount == 62) { patricia.setPosition(80, 145).setFill(imgArrayPatricia[10].src); }
-        if (deniseCount == 63) { patricia.setPosition(85, 145).setFill(imgArrayPatricia[11].src); }
-        if (deniseCount == 64) { patricia.setPosition(90, 145).setFill(imgArrayPatricia[8].src); }
-        if (deniseCount == 65) { patricia.setPosition(95, 145).setFill(imgArrayPatricia[9].src); }
-        if (deniseCount == 66) { patricia.setPosition(100, 145).setFill(imgArrayPatricia[10].src); }
-        if (deniseCount == 67) { patricia.setPosition(105, 145).setFill(imgArrayPatricia[11].src); }
-        if (deniseCount == 68) { patricia.setPosition(110, 145).setFill(imgArrayPatricia[8].src); }
-        if (deniseCount == 69) { denise.setPosition(190, 360).setFill(imgArrayDenise[0].src); patricia.setPosition(115, 145).setFill(imgArrayPatricia[9].src); }
-        if (deniseCount == 70) { patricia.setPosition(120, 145).setFill(imgArrayPatricia[10].src); }
-        if (deniseCount == 71) { patricia.setPosition(125, 145).setFill(imgArrayPatricia[11].src); }
-        if (deniseCount == 72) { patricia.setPosition(130, 145).setFill(imgArrayPatricia[8].src); }
-        if (deniseCount == 73) { patricia.setPosition(135, 145).setFill(imgArrayPatricia[9].src); }
-        if (deniseCount == 74) { patricia.setPosition(140, 145).setFill(imgArrayPatricia[11].src); }
-        if (deniseCount == 75) { patricia.setPosition(145, 145).setFill(imgArrayPatricia[8].src); }
-        if (deniseCount == 76) { patricia.setPosition(150, 145).setFill(imgArrayPatricia[9].src); }
-        if (deniseCount == 77) { patricia.setPosition(155, 145).setFill(imgArrayPatricia[10].src); }
-        if (deniseCount == 78) { patricia.setPosition(160, 145).setFill(imgArrayPatricia[11].src); }
+            deniseCount++;
+            firesInFireplace.setFill(imgArray12[fireState]);
+            stoveFire.setFill(imgArray12[(fireState + 3)])
+            fireState++;
+            if (fireState > 3) { fireState = 1;} 
+            if (deniseCount == 1) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src);}
+            if (deniseCount == 2) { denise.setPosition(190, 360).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 150).setFill(imgArrayPatricia[1].src);}
+            if (deniseCount == 3) { denise.setPosition(185, 360).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 155).setFill(imgArrayPatricia[2].src);}
+            if (deniseCount == 4) { denise.setPosition(180, 360).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 160).setFill(imgArrayPatricia[3].src);}
+            if (deniseCount == 5) { denise.setPosition(175, 360).setFill(imgArrayDenise[10].src); patricia.setPosition(202, 165).setFill(imgArrayPatricia[0].src);}
+            if (deniseCount == 6) { denise.setPosition(170, 360).setFill(imgArrayDenise[11].src); patricia.setPosition(202, 170).setFill(imgArrayPatricia[1].src);}
+            if (deniseCount == 7) { denise.setPosition(165, 360).setFill(imgArrayDenise[10].src); patricia.setPosition(202, 175).setFill(imgArrayPatricia[2].src);}
+            if (deniseCount == 8) { denise.setPosition(160, 360).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 180).setFill(imgArrayPatricia[3].src);}
+            if (deniseCount == 9) { denise.setPosition(155, 360).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 185).setFill(imgArrayPatricia[0].src);}
+            if (deniseCount == 10) { denise.setPosition(150, 360).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 190).setFill(imgArrayPatricia[1].src); }
+            if (deniseCount == 11) { denise.setPosition(145, 360).setFill(imgArrayDenise[10].src); patricia.setPosition(202, 195).setFill(imgArrayPatricia[2].src);}
+            if (deniseCount == 12) { denise.setPosition(140, 360).setFill(imgArrayDenise[11].src); patricia.setPosition(202, 200).setFill(imgArrayPatricia[3].src);}
+            if (deniseCount == 12) { denise.setPosition(135, 355).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 205).setFill(imgArrayPatricia[0].src);}
+            if (deniseCount == 12) { denise.setPosition(130, 355).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 205).setFill(imgArrayPatricia[4].src);}
+            if (deniseCount == 12) { denise.setPosition(125, 350).setFill(imgArrayDenise[10].src); patricia.setPosition(195, 205).setFill(imgArrayPatricia[5].src);}
+            if (deniseCount == 13) { denise.setPosition(120, 350).setFill(imgArrayDenise[11].src); patricia.setPosition(190, 205).setFill(imgArrayPatricia[6].src); }
+            if (deniseCount == 14) { denise.setPosition(115, 350).setFill(imgArrayDenise[10].src); patricia.setPosition(185, 205).setFill(imgArrayPatricia[7].src); }
+            if (deniseCount == 15) { denise.setPosition(110, 350).setFill(imgArrayDenise[9].src); patricia.setPosition(180, 205).setFill(imgArrayPatricia[4].src);}
+            if (deniseCount == 16) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(175, 205).setFill(imgArrayPatricia[5].src); }
+            if (deniseCount == 17) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(170, 205).setFill(imgArrayPatricia[6].src);}
+            if (deniseCount == 18) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(165, 205).setFill(imgArrayPatricia[7].src);}
+            if (deniseCount == 19) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(160, 205).setFill(imgArrayPatricia[6].src); }
+            if (deniseCount == 20) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(155, 205).setFill(imgArrayPatricia[5].src); }
+            if (deniseCount == 21) { denise.setPosition(110, 350).setFill(imgArrayDenise[14].src); patricia.setPosition(150, 205).setFill(imgArrayPatricia[4].src); }
+            if (deniseCount == 22) { denise.setPosition(110, 350).setFill(imgArrayDenise[8].src); patricia.setPosition(145, 205).setFill(imgArrayPatricia[5].src);}
+            if (deniseCount == 23) { denise.setPosition(110, 350).setFill(imgArrayDenise[1].src); patricia.setPosition(140, 205).setFill(imgArrayPatricia[6].src);}
+            if (deniseCount == 24) { denise.setPosition(110, 355).setFill(imgArrayDenise[0].src); patricia.setPosition(135, 205).setFill(imgArrayPatricia[7].src);}
+            if (deniseCount == 25) { denise.setPosition(110, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(130, 205).setFill(imgArrayPatricia[6].src);}
+            if (deniseCount == 26) { denise.setPosition(110, 365).setFill(imgArrayDenise[2].src); patricia.setPosition(125, 205).setFill(imgArrayPatricia[5].src);}
+            if (deniseCount == 27) { denise.setPosition(110, 370).setFill(imgArrayDenise[3].src); patricia.setPosition(120, 205).setFill(imgArrayPatricia[4].src);}
+            if (deniseCount == 28) { denise.setPosition(110, 375).setFill(imgArrayDenise[0].src); patricia.setPosition(115, 205).setFill(imgArrayPatricia[7].src); }
+            if (deniseCount == 29) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(110, 205).setFill(imgArrayPatricia[6].src);}
+            if (deniseCount == 30) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(105, 205).setFill(imgArrayPatricia[5].src);}
+            if (deniseCount == 31) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(100, 205).setFill(imgArrayPatricia[4].src);}
+            if (deniseCount == 32) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(95, 205).setFill(imgArrayPatricia[5].src);}
+            if (deniseCount == 33) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(90, 205).setFill(imgArrayPatricia[6].src);}
+            if (deniseCount == 34) { denise.setPosition(110, 375).setFill(imgArrayDenise[4].src); patricia.setPosition(85, 205).setFill(imgArrayPatricia[7].src);}
+            if (deniseCount == 35) { denise.setPosition(115, 370).setFill(imgArrayDenise[5].src); patricia.setPosition(80, 205).setFill(imgArrayPatricia[6].src);}
+            if (deniseCount == 36) { denise.setPosition(120, 365).setFill(imgArrayDenise[6].src); patricia.setPosition(75, 205).setFill(imgArrayPatricia[5].src);}
+            if (deniseCount == 37) { denise.setPosition(125, 360).setFill(imgArrayDenise[7].src); patricia.setPosition(70, 205).setFill(imgArrayPatricia[4].src);}
+            if (deniseCount == 38) { denise.setPosition(130, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 205).setFill(imgArrayPatricia[12].src); }
+            if (deniseCount == 39) { denise.setPosition(135, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 200).setFill(imgArrayPatricia[13].src);}
+            if (deniseCount == 40) { denise.setPosition(140, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 195).setFill(imgArrayPatricia[14].src);}
+            if (deniseCount == 41) { denise.setPosition(145, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 190).setFill(imgArrayPatricia[15].src); }
+            if (deniseCount == 42) { denise.setPosition(150, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 185).setFill(imgArrayPatricia[12].src);}
+            if (deniseCount == 43) { denise.setPosition(155, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 180).setFill(imgArrayPatricia[13].src);}
+            if (deniseCount == 44) { denise.setPosition(160, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 175).setFill(imgArrayPatricia[14].src); }
+            if (deniseCount == 45) { denise.setPosition(175, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 170).setFill(imgArrayPatricia[15].src);}
+            if (deniseCount == 46) { denise.setPosition(180, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 165).setFill(imgArrayPatricia[12].src);}
+            if (deniseCount == 47) { denise.setPosition(185, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 160).setFill(imgArrayPatricia[13].src); }
+            if (deniseCount == 48) { denise.setPosition(190, 360).setFill(imgArrayDenise[6].src); patricia.setPosition(70, 155).setFill(imgArrayPatricia[14].src); }
+            if (deniseCount == 49) { denise.setPosition(190, 360).setFill(imgArrayDenise[0].src); patricia.setPosition(70, 150).setFill(imgArrayPatricia[15].src); }
+            if (deniseCount == 50) {  patricia.setPosition(70, 150).setFill(imgArrayPatricia[4].src); }
+            if (deniseCount == 51) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[0].src); }
+            if (deniseCount == 52) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[8].src); }
+            if (deniseCount == 53) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[0].src); }
+            if (deniseCount == 54) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[4].src); }
+            if (deniseCount == 55) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[0].src); }
+            if (deniseCount == 58) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[12].src); }
+            if (deniseCount == 59) { denise.setPosition(190, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 145).setFill(imgArrayPatricia[12].src); }
+            if (deniseCount == 60) { patricia.setPosition(70, 145).setFill(imgArrayPatricia[8].src); }
+            if (deniseCount == 61) { patricia.setPosition(75, 145).setFill(imgArrayPatricia[9].src); }
+            if (deniseCount == 62) { patricia.setPosition(80, 145).setFill(imgArrayPatricia[10].src); }
+            if (deniseCount == 63) { patricia.setPosition(85, 145).setFill(imgArrayPatricia[11].src); }
+            if (deniseCount == 64) { patricia.setPosition(90, 145).setFill(imgArrayPatricia[8].src); }
+            if (deniseCount == 65) { patricia.setPosition(95, 145).setFill(imgArrayPatricia[9].src); }
+            if (deniseCount == 66) { patricia.setPosition(100, 145).setFill(imgArrayPatricia[10].src); }
+            if (deniseCount == 67) { patricia.setPosition(105, 145).setFill(imgArrayPatricia[11].src); }
+            if (deniseCount == 68) { patricia.setPosition(110, 145).setFill(imgArrayPatricia[8].src); }
+            if (deniseCount == 69) { denise.setPosition(190, 360).setFill(imgArrayDenise[0].src); patricia.setPosition(115, 145).setFill(imgArrayPatricia[9].src); }
+            if (deniseCount == 70) { patricia.setPosition(120, 145).setFill(imgArrayPatricia[10].src); }
+            if (deniseCount == 71) { patricia.setPosition(125, 145).setFill(imgArrayPatricia[11].src); }
+            if (deniseCount == 72) { patricia.setPosition(130, 145).setFill(imgArrayPatricia[8].src); }
+            if (deniseCount == 73) { patricia.setPosition(135, 145).setFill(imgArrayPatricia[9].src); }
+            if (deniseCount == 74) { patricia.setPosition(140, 145).setFill(imgArrayPatricia[11].src); }
+            if (deniseCount == 75) { patricia.setPosition(145, 145).setFill(imgArrayPatricia[8].src); }
+            if (deniseCount == 76) { patricia.setPosition(150, 145).setFill(imgArrayPatricia[9].src); }
+            if (deniseCount == 77) { patricia.setPosition(155, 145).setFill(imgArrayPatricia[10].src); }
+            if (deniseCount == 78) { patricia.setPosition(160, 145).setFill(imgArrayPatricia[11].src); }
 
-        if (deniseCount == 79) { denise.setPosition(190, 360).setFill(imgArrayDenise[15].src); patricia.setPosition(165, 145).setFill(imgArrayPatricia[9].src); }
-        if (deniseCount == 80) { patricia.setPosition(170, 145).setFill(imgArrayPatricia[10].src); }
-        if (deniseCount == 81) { patricia.setPosition(175, 145).setFill(imgArrayPatricia[11].src); }
-        if (deniseCount == 82) { patricia.setPosition(180, 145).setFill(imgArrayPatricia[8].src); }
-        if (deniseCount == 83) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(185, 145).setFill(imgArrayPatricia[9].src); }
-        if (deniseCount == 84) { patricia.setPosition(190, 145).setFill(imgArrayPatricia[10].src); }
-        if (deniseCount == 85) { patricia.setPosition(195, 145).setFill(imgArrayPatricia[11].src); }
-        if (deniseCount == 86) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[8].src); }
-        if (deniseCount == 89) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[4].src); }
-        if (deniseCount == 90) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
-        if (deniseCount == 91) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[8].src); }
-        if (deniseCount == 92) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
-        if (deniseCount == 93) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[4].src); }
-        if (deniseCount == 94) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
-        if (deniseCount == 95) { denise.setPosition(190, 360).setFill(imgArrayDenise[15].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[8].src); }
-        if (deniseCount == 96) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
-        if (deniseCount == 97) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[4].src); }
-        if (deniseCount == 98) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
-        if (deniseCount == 99) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src);}
-        if (deniseCount >= 100) { deniseCount = 0; }
+            if (deniseCount == 79) { denise.setPosition(190, 360).setFill(imgArrayDenise[15].src); patricia.setPosition(165, 145).setFill(imgArrayPatricia[9].src); }
+            if (deniseCount == 80) { patricia.setPosition(170, 145).setFill(imgArrayPatricia[10].src); }
+            if (deniseCount == 81) { patricia.setPosition(175, 145).setFill(imgArrayPatricia[11].src); }
+            if (deniseCount == 82) { patricia.setPosition(180, 145).setFill(imgArrayPatricia[8].src); }
+            if (deniseCount == 83) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(185, 145).setFill(imgArrayPatricia[9].src); }
+            if (deniseCount == 84) { patricia.setPosition(190, 145).setFill(imgArrayPatricia[10].src); }
+            if (deniseCount == 85) { patricia.setPosition(195, 145).setFill(imgArrayPatricia[11].src); }
+            if (deniseCount == 86) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[8].src); }
+            if (deniseCount == 89) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[4].src); }
+            if (deniseCount == 90) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
+            if (deniseCount == 91) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[8].src); }
+            if (deniseCount == 92) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
+            if (deniseCount == 93) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[4].src); }
+            if (deniseCount == 94) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
+            if (deniseCount == 95) { denise.setPosition(190, 360).setFill(imgArrayDenise[15].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[8].src); }
+            if (deniseCount == 96) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
+            if (deniseCount == 97) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[4].src); }
+            if (deniseCount == 98) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
+            if (deniseCount == 99) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src);}
+            if (deniseCount >= 100) { deniseCount = 0; }
+        }
     }, this, 200)
 
     var patricia = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(202, 145).setSize(55, 55).setFill(imgArrayPatricia[0].src);
@@ -11962,86 +12130,12 @@ farming.start = function () {
     var toolMoverHo = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-22, -50).setSize(50, 50).setFill("images/toolHammer.png"); houseExpandCover.appendChild(toolMoverLabelHo);
     toolMoverLabelHo.appendChild(toolMoverHo);
     toolMoverHo.setRotation(-10);
-    var currentRotateHo = -10;
-    var secondsToUpgradeHo = 90;
+ 
     toolMoverLabelHo.setHidden(true);
     scaffoldHo.setHidden(true);
     upgradeCloudHo.setHidden(true);
-    var expandOnce = 0;
-    goog.events.listen(houseExpandBtn, ["mousedown", "touchstart"], function () {
 
-        if (parseInt(player.cropsStored[14].stored)  >= 200 && player.tools >= 1000) {
-            upPanelConfirmBtnHouse.setHidden(false); shortCostHouse.setHidden(true);
-        }
-        else {
-            upPanelConfirmBtnHouse.setHidden(true); shortCostHouse.setHidden(false);
-        }
-        upgradePanelHouse.setHidden(false);
-
-    });
-    function expandHouseGo() {
-        if (player.tools >= 1000 && expandOnce == 0 && parseInt(player.cropsStored[14].stored)  >= 200) {
-            expandOnce = 1;
-            player.tools -= 1000;
-            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - 200;
-            if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
-            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-            a.updateStored();
-            a.updateTools();
-            a.updateMoney();
-            toolCountHouse.setText(player.tools)
-            toolMoverLabelHo.setHidden(false); scaffoldHo.setHidden(false); upgradeCloudHo.setHidden(false);
-            expandToolsImg.setHidden(true);
-            houseExpandCover.setText("").setOpacity(0.5);
-
-            //hammer move logic
-            lime.scheduleManager.scheduleWithDelay(function () {
-                currentRotateHo = currentRotateHo + 10;
-                if (currentRotateHo > 35) { currentRotateHo = -10; };
-                toolMoverHo.setRotation(currentRotateHo);
-                toolMoverLabelHo.setText(secondsToUpgradeHo);
-                //e.appendChild(toolMover);
-            }, this, 200, 450)
-
-            //upgrade countdown timer
-
-            var upCloudWHo = 200;
-            var upCloudXHo = -130;
-            var upCloudYHo = -100;
-            lime.scheduleManager.scheduleWithDelay(function () {
-                //add upgrade anim
-                secondsToUpgradeHo = secondsToUpgradeHo - 1;
-
-                if (secondsToUpgradeHo <= 0) {
-                    toolMoverLabelHo.setHidden(true); scaffoldHo.setHidden(true); upgradeCloudHo.setHidden(true); secondsToUpgradeHo = 90;
-                    houseExpandCover.setHidden(true);
-                    houseUpgrades.upgrades[0].owned = 1;
-                    localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades))
-                    houseImg.setFill("images/house2.png").setSize(72, 92).setPosition(230, 23)
-                }
-
-            }, this, 1000, 90)
-            lime.scheduleManager.scheduleWithDelay(function () {
-                //add upgrade anim
-
-                upgradeCloudHo.setPosition(upCloudXHo, upCloudYHo).setSize(upCloudWHo, 200)
-                upCloudWHo = upCloudWHo + 10;
-                upCloudXHo = upCloudXHo - 5;
-                upCloudYHo = upCloudYHo - 5
-                if (upCloudXHo < -140) { upCloudXHo = -130; upCloudYHo = -100; upCloudWHo = 200; }
-
-
-            }, this, 250, 360)
-
-        }
-        //else {
-        //    houseExpandCover.setText("Build More Room");
-        //    lime.scheduleManager.scheduleWithDelay(function () {
-        //        houseExpandCover.setText("Build More Room");
-
-        //    }, this, 1500)
-        //}
-    }
+   
   
 
     ////upper house menu
@@ -12631,6 +12725,7 @@ farming.start = function () {
     goog.events.listen(backBtnHouse, ["mousedown", "touchstart"], function () {
         
         c.replaceScene(d, lime.transitions.SlideInDown); sceneBefore = 1;
+        sceneActive = 'Home';
 
 
     });
@@ -12650,7 +12745,9 @@ farming.start = function () {
     goog.events.listen(marketBtnHouse, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
             a.sceneBefore = 7;
+            townSceneActive = 1;
             c.replaceScene(marketScene, lime.transitions.SlideInUp);
+            sceneActive = 'Market';
             count0.setText(player.cropsStored[0].stored);
             count1.setText(player.cropsStored[1].stored);
             count2.setText(player.cropsStored[2].stored);
@@ -12847,6 +12944,85 @@ farming.start = function () {
     if (parseInt(player.cropsStored[14].stored)  >= 200 && player.tools >= 1000) { upPanelConfirmBtnHouse.setHidden(false); shortCostHouse.setHidden(true); }
     else { upPanelConfirmBtnHouse.setHidden(true); shortCostHouse.setHidden(false); }
 
+    var currentRotateHo = -10;
+    var secondsToUpgradeHo = 90;
+    var expandOnce = 0;
+    goog.events.listen(houseExpandBtn, ["mousedown", "touchstart"], function () {
+
+        if (parseInt(player.cropsStored[14].stored) >= 200 && player.tools >= 1000) {
+            upPanelConfirmBtnHouse.setHidden(false); shortCostHouse.setHidden(true);
+        }
+        else {
+            upPanelConfirmBtnHouse.setHidden(true); shortCostHouse.setHidden(false);
+        }
+        upgradePanelHouse.setHidden(false);
+
+    });
+
+    function expandHouseGo() {
+        if (player.tools >= 1000 && expandOnce == 0 && parseInt(player.cropsStored[14].stored) >= 200) {
+            expandOnce = 1;
+            player.tools -= 1000;
+            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - 200;
+            if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
+            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+            a.updateStored();
+            a.updateTools();
+            a.updateMoney();
+            toolCountHouse.setText(player.tools)
+            toolMoverLabelHo.setHidden(false); scaffoldHo.setHidden(false); upgradeCloudHo.setHidden(false);
+           
+            houseExpandCover.setOpacity(0.5);
+
+            //hammer move logic
+            lime.scheduleManager.scheduleWithDelay(function () {
+                currentRotateHo = currentRotateHo + 10;
+                if (currentRotateHo > 35) { currentRotateHo = -10; };
+                toolMoverHo.setRotation(currentRotateHo);
+                toolMoverLabelHo.setText(secondsToUpgradeHo);
+                //e.appendChild(toolMover);
+            }, this, 200, 450)
+
+            //upgrade countdown timer
+
+            var upCloudWHo = 200;
+            var upCloudXHo = -130;
+            var upCloudYHo = -100;
+            lime.scheduleManager.scheduleWithDelay(function () {
+                //add upgrade anim
+                secondsToUpgradeHo = secondsToUpgradeHo - 1;
+
+                if (secondsToUpgradeHo <= 0) {
+                    toolMoverLabelHo.setHidden(true); scaffoldHo.setHidden(true); upgradeCloudHo.setHidden(true); secondsToUpgradeHo = 90;
+                    houseExpandCover.setHidden(true);
+                    houseUpgrades.upgrades[0].owned = 1;
+                    localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades))
+                    houseImg.setFill("images/house2.png").setSize(72, 92).setPosition(230, 23)
+                }
+
+            }, this, 1000, 90)
+            lime.scheduleManager.scheduleWithDelay(function () {
+                //add upgrade anim
+
+                upgradeCloudHo.setPosition(upCloudXHo, upCloudYHo).setSize(upCloudWHo, 200)
+                upCloudWHo = upCloudWHo + 10;
+                upCloudXHo = upCloudXHo - 5;
+                upCloudYHo = upCloudYHo - 5
+                if (upCloudXHo < -140) { upCloudXHo = -130; upCloudYHo = -100; upCloudWHo = 200; }
+
+
+            }, this, 250, 360)
+
+        }
+        //else {
+        //    houseExpandCover.setText("Build More Room");
+        //    lime.scheduleManager.scheduleWithDelay(function () {
+        //        houseExpandCover.setText("Build More Room");
+
+        //    }, this, 1500)
+        //}
+    }
+
     function checkAchieves() {
         //console.table(a.achievements);
         if (a.achievements[1] == false) { achieve1Check.setHidden(true); }
@@ -12869,11 +13045,22 @@ farming.start = function () {
     checkAchieves();
     goog.events.listen(backBtnAchieve, ["mousedown", "touchstart"], function () {
 
-        if (sceneBefore == 1) { c.replaceScene(d, lime.transitions.SlideInUp); sceneBefore = 1; b.currentCrop = localStorage.getItem("MedFarms_selectedHomeCrop"); }
-        if (sceneBefore == 2) { c.replaceScene(pastureScene, lime.transitions.SlideInUp); sceneBefore = 2; b.currentCrop = 6; }
-        if (sceneBefore == 3) { c.replaceScene(orchardScene, lime.transitions.SlideInUp); sceneBefore = 3; b.currentCrop = 8; }
-        if (sceneBefore == 4) { c.replaceScene(vinyardScene, lime.transitions.SlideInUp); sceneBefore = 4; }
-        if (sceneBefore == 5) { c.replaceScene(liveStockScene, lime.transitions.SlideInUp); sceneBefore = 5; }
+        if (sceneBefore == 1) {
+            c.replaceScene(d, lime.transitions.SlideInUp); sceneBefore = 1;
+            sceneActive = 'Home';
+            b.currentCrop = parseInt(homeCrop);
+            if (b.currentCrop > 5 || isNaN(b.currentCrop) || b.currentCrop < 0) {
+                b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
+                if (b.currentCrop > 5 || isNaN(b.currentCrop) || b.currentCrop < 0) {
+                    b.currentCrop = 0;
+                }
+
+            };
+        }
+        if (sceneBefore == 2) { c.replaceScene(pastureScene, lime.transitions.SlideInUp); sceneBefore = 2; b.currentCrop = 6; sceneActive = 'Pasture'; }
+        if (sceneBefore == 3) { c.replaceScene(orchardScene, lime.transitions.SlideInUp); sceneBefore = 3; b.currentCrop = 8; sceneActive = 'Orchard';}
+        if (sceneBefore == 4) { c.replaceScene(vinyardScene, lime.transitions.SlideInUp); sceneBefore = 4; sceneActive = 'Vineyard';}
+        if (sceneBefore == 5) { c.replaceScene(liveStockScene, lime.transitions.SlideInUp); sceneBefore = 5; sceneActive = 'LS'; }
 
     });
 
@@ -12933,6 +13120,7 @@ farming.start = function () {
 
     function achieve(sceneBefore) {
         c.replaceScene(achieveScene, lime.transitions.SlideInDown);
+        sceneActive = 'Achieve';
     }
 
 
