@@ -675,7 +675,7 @@ lime.audio.Audio.prototype.getVolume = function () {
 
 ////Image arrays//////
 var imgArrayWaterfall = new Array();
-imgArrayWaterfall[0] = new Image(); imgArrayWaterfall[0].src = "images/Orchard/waterfall1.png";
+imgArrayWaterfall[0] = new Image(); imgArrayWaterfall[0].src = 'images/Orchard/waterfall1.png';
 imgArrayWaterfall[1] = new Image(); imgArrayWaterfall[1].src = "images/Orchard/waterfall2.png";
 imgArrayWaterfall[2] = new Image(); imgArrayWaterfall[2].src = "images/Orchard/waterfall3.png";
 imgArrayWaterfall[3] = new Image(); imgArrayWaterfall[3].src = "images/Orchard/waterfall4.png";
@@ -1287,7 +1287,7 @@ var questParams = {
         { highestCompleted: 0, available: true },
         { name: "Upgrade", text: "If we had JARS and upgaded the Barn, we could make JELLY.", completed: 0, rewardType: 6, rewardAmount: 0, rewardItem: 0, requiredItem: "Jars" },
         { name: "Jars", text: "We need some more jelly JARS. Can you buy some in town?", completed: 0, rewardType: 6, rewardAmount: 0, rewardItem: 0, requiredItem: "Jars" },
-        { name: "Juice Press", text: "If we bought a FRUIT PRESS, we could make GRAPE JUICE", completed: 0, rewardType: 6, rewardAmount: 0, rewardItem: 0, requiredItem: "Fruit Press" },
+        { name: "Juice Press", text: "I wonder what else we can make with grapes", completed: 0, rewardType: 6, rewardAmount: 0, rewardItem: 0, requiredItem: "Fruit Press" },
         { name: "Bottles", text: "We need some more BOTTLES. Can you buy some in town?", completed: 0, rewardType: 6, rewardAmount: 0, rewardItem: 0, requiredItem: "Bottles" },
 
     ],
@@ -4603,16 +4603,19 @@ farming.start = function () {
 
     ///make Jelly
     a.makeJelly = function () {
-        if (player.cropsStored[12].stored >= 2 && vinyardHouseLevel > 1) {
-
+        if (player.cropsStored[12].stored >= 2 && vinyardHouseLevel > 1 && player.cropsStored[16].stored > 0) {
+            
             collectJelly.setHidden(false);
             jellyWaiting = jellyWaiting + 1;
 
 
-            player.cropsStored[12].stored = player.cropsStored[12].stored - 2;
+            player.cropsStored[12].stored = parseInt(player.cropsStored[12].stored) - 2;
+            player.cropsStored[16].stored = parseInt(player.cropsStored[16].stored) - 1;
+
 
             count12.setText(player.cropsStored[12].stored);
             gLabel12.setText(player.cropsStored[12].stored);
+            gLabel16.setText(player.cropsStored[16].stored);
             collectJellyLabel.setText("+ " + jellyWaiting);
             localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
             localStorage.setItem('GuiGhostFarms_toolsEver', toolsEver);
@@ -5758,11 +5761,11 @@ farming.start = function () {
 
 
     //orchard waterfall animation
-    var waterfallAnim = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(155, 88).setSize(36, 75).setFill("images/" + a.waterfallImg[0].image);
+    var waterfallAnim = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(155, 88).setSize(36, 75).setFill( a.waterfallImg[0].image);
     orchardLayer.appendChild(waterfallAnim);
-    var waterMoving = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(120, 290).setSize(22, 44).setFill("images/" + a.waterfallImg[4].image);
+    var waterMoving = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(120, 290).setSize(22, 44).setFill( a.waterfallImg[4].image);
     orchardLayer.appendChild(waterMoving);
-    var waterMoving2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(120, 350).setSize(22, 44).setFill("images/" + a.waterfallImg[4].image);
+    var waterMoving2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(120, 350).setSize(22, 44).setFill( a.waterfallImg[4].image);
     orchardLayer.appendChild(waterMoving2);
     var orchardTreesHid = localStorage.getItem("GuiGhostFarms_orchardTreeBlock");
     var tickWater = 0;
@@ -6066,9 +6069,11 @@ farming.start = function () {
             questPanelAvatarO.setFill(imgArray4[1]);
         }
         if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 1 && player.cropsStored[17].stored > 1) {
-            questText1O.setText("I don't need anything at the moment");
+            questText1O.setText("Sometimes I see fish at the bottom of the waterfall");
             questPanelRocksO.setHidden(true);
             questPanelAvatarO.setFill(imgArray4[1]);
+            IsabelQuestBtn.setHidden(true);
+            IsabelQuestImg.setHidden(true);
         }
 
     });
@@ -7767,7 +7772,7 @@ farming.start = function () {
                 storeStars.setText(starCash);
               
                 player.cropsStored[16].stored = player.cropsStored[16].stored + 50;
-                gLabel17.setText(player.cropsStored[17].stored)
+                gLabel16.setText(player.cropsStored[16].stored)
                 townRep = townRep + 1;
                 checkTownRep();
                 a.updateStored();
@@ -11145,7 +11150,11 @@ farming.start = function () {
 
 
 
-    if (vinyardHouseLevel > 1) { vinyardBarn.setFill("images/vinyard/house4Upgrade2.png"); HouseVUnlock3.setHidden(true); };
+    if (vinyardHouseLevel > 1) {
+        vinyardBarn.setFill("images/vinyard/house4Upgrade2.png"); HouseVUnlock3.setHidden(true);
+        if (questParams.terric[0].highestCompleted == 0){ questParams.terric[0].highestCompleted = 1; }
+      
+    };
     lime.scheduleManager.scheduleWithDelay(function () {
         //add upgrade anim
         if (sceneActive == 'Vineyard') {
@@ -11365,120 +11374,31 @@ farming.start = function () {
         treesImgV.setHidden(true);
         treesImgV2.setHidden(true);
         highestTerric = questParams.terric[0].highestCompleted;
-         currentJars = parseInt(player.cropsStored[17].stored);
-       
+        if (vinyardHouseLevel > 1) { if (highestTerric < 1) { highestTerric = 1; questParams.terric[0].highestCompleted = 1; } }
+        currentJars = parseInt(player.cropsStored[16].stored);
+        console.log("vinfarmer " + highestTerric)
+        currentJelly = parseInt(player.cropsStored[13].stored);
         if (currentJars == 0 && highestTerric >= 1) {
             questText1V = questParams.terric[2].text;
             vinFarmerQuestBtn.setHidden(false);
             vinFarmerQuest.setHidden(false);
         }
-        //currentJelly = parseInt(player.cropsStored[13].stored);
-        //if (currentJars >= 0 && highestTerric == 1 && currentJelly > 5) {
-        //    questText1V = questParams.terric[3].text;
-        //    vinFarmerQuestBtn.setHidden(false);
-        //    vinFarmerQuest.setHidden(false);
-        //}
+      
+        else if (currentJars >= 0 && highestTerric >= 1 ) {
+            questText1V = questParams.terric[3].text;
+            vinFarmerQuestBtn.setHidden(false);
+            vinFarmerQuest.setHidden(false);
+        }
+        else {
+            questText1V = questParams.terric[3].text
+            vinFarmerQuestBtn.setHidden(false);
+            vinFarmerQuest.setHidden(false);
+        }
    
 
 
     }
-    var vinFarmerI = 0
-    lime.scheduleManager.scheduleWithDelay(function () {
-        if (sceneActive == 'Vineyard') { 
-
-            highestTerric = questParams.terric[0].highestCompleted;
-            currentJars = parseInt(player.cropsStored[17].stored);
-            currentJelly = parseInt(player.cropsStored[13].stored);
-            if (currentJars == 0 && highestTerric >= 1) {
-                vinFarmerQuest.setFill(imgArray[22].src);
-                questText1V = questParams.terric[2].text;
-                vinFarmerQuestBtn.setHidden(false);
-                vinFarmerQuest.setHidden(false);
-            }
-
-            //for next release of juice
-            //if (currentJars >= 0 && highestTerric == 1 && currentJelly > 5) {
-            //    questText1V = questParams.terric[3].text;
-            //    vinFarmerQuestBtn.setHidden(false);
-            //    vinFarmerQuest.setHidden(false);
-            //}
-
-               //add upgrade anim
-            vinFarmerI = vinFarmerI + 1;
-            if (vinFarmerI > 58) { vinFarmerI = 1 };
-            if (vinFarmerI < 11) { vinFarmer.setFill("images/vinyard/vinFarmer" + vinFarmerI + ".png"); };
-
-            if (vinFarmerI == 2) { vinFarmer.setPosition(65, 350) };
-            if (vinFarmerI == 3) { vinFarmer.setPosition(70, 350) };
-            if (vinFarmerI == 4) { vinFarmer.setPosition(75, 350); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
-            if (vinFarmerI == 5) { vinFarmer.setPosition(75, 355); };
-            if (vinFarmerI == 6) { vinFarmer.setPosition(75, 360); };
-            if (vinFarmerI == 7) { vinFarmer.setPosition(75, 365); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
-            if (vinFarmerI == 8) { vinFarmer.setPosition(75, 360); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
-            if (vinFarmerI == 9) { vinFarmer.setPosition(75, 355); };
-            if (vinFarmerI == 10) { vinFarmer.setPosition(75, 350); };
-            if (vinFarmerI == 11) { vinFarmer.setPosition(80, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
-            if (vinFarmerI == 12) { vinFarmer.setPosition(85, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
-            if (vinFarmerI == 13) { vinFarmer.setPosition(90, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
-            if (vinFarmerI == 14) { vinFarmer.setPosition(95, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
-            if (vinFarmerI == 15) { vinFarmer.setPosition(100, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
-            if (vinFarmerI == 16) { vinFarmer.setPosition(105, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
-            if (vinFarmerI == 17) { vinFarmer.setPosition(110, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
-            if (vinFarmerI == 18) { vinFarmer.setPosition(115, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
-            if (vinFarmerI == 19) { vinFarmer.setPosition(120, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
-            if (vinFarmerI == 20) { vinFarmer.setPosition(125, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
-            if (vinFarmerI == 21) { vinFarmer.setPosition(130, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
-            if (vinFarmerI == 22) { vinFarmer.setPosition(135, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
-            if (vinFarmerI == 23) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
-            if (vinFarmerI == 24) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer8.png"); };
-            if (vinFarmerI == 25) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer8.png"); };
-
-            if (vinFarmerI == 26) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-            if (vinFarmerI == 27) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-            if (vinFarmerI == 28) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-            if (vinFarmerI == 29) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer9.png"); };
-
-            if (vinFarmerI == 30) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
-            if (vinFarmerI == 31) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
-            if (vinFarmerI == 32) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
-
-            if (vinFarmerI == 33) { vinFarmer.setPosition(145, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
-            if (vinFarmerI == 34) { vinFarmer.setPosition(150, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
-            if (vinFarmerI == 35) { vinFarmer.setPosition(155, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
-            if (vinFarmerI == 36) { vinFarmer.setPosition(160, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
-            if (vinFarmerI == 37) { vinFarmer.setPosition(165, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
-            if (vinFarmerI == 38) { vinFarmer.setPosition(165, 350); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
-
-            if (vinFarmerI == 39) { vinFarmer.setPosition(160, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-            if (vinFarmerI == 40) { vinFarmer.setPosition(155, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
-            if (vinFarmerI == 41) { vinFarmer.setPosition(150, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-
-            if (vinFarmerI == 42) { vinFarmer.setPosition(145, 350); vinFarmer.setFill("images/vinyard/vinFarmer19.png"); };
-            if (vinFarmerI == 43) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-            
-            if (vinFarmerI == 44) { vinFarmer.setPosition(135, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-            if (vinFarmerI == 45) { vinFarmer.setPosition(130, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
-            if (vinFarmerI == 46) { vinFarmer.setPosition(125, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-            if (vinFarmerI == 47) { vinFarmer.setPosition(120, 350); vinFarmer.setFill("images/vinyard/vinFarmer19.png"); };
-            if (vinFarmerI == 48) { vinFarmer.setPosition(115, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
-            if (vinFarmerI == 49) { vinFarmer.setPosition(110, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-            if (vinFarmerI == 50) { vinFarmer.setPosition(105, 350); vinFarmer.setFill("images/vinyard/vinFarmer19.png"); };
-            if (vinFarmerI == 51) { vinFarmer.setPosition(100, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-            if (vinFarmerI == 52) { vinFarmer.setPosition(95, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
-            if (vinFarmerI == 53) { vinFarmer.setPosition(90, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-            if (vinFarmerI == 54) { vinFarmer.setPosition(85, 350); vinFarmer.setFill("images/vinyard/vinFarmer19.png"); };
-            if (vinFarmerI == 55) { vinFarmer.setPosition(80, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-            if (vinFarmerI == 56) { vinFarmer.setPosition(75, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
-            if (vinFarmerI == 57) { vinFarmer.setPosition(70, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
-            if (vinFarmerI == 58) { vinFarmer.setPosition(65, 350); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
-            //if (vinFarmerI == 15) { vinFarmer.setPosition(50, 80); vinFarmer.setFill("images/blacksmith13.png"); };
-            //if (vinFarmerI == 16) { vinFarmer.setPosition(50, 75); vinFarmer.setFill("images/blacksmith1.png") };
-            //if (vinFarmerI == 17) { vinFarmer.setPosition(50, 75); vinFarmer.setFill("images/blacksmith2.png") };
-            //if (vinFarmerI == 18) { vinFarmer.setPosition(50, 77); vinFarmer.setFill("images/blacksmith1.png") };
-            //if (vinFarmerI == 19) { vinFarmer.setPosition(50, 77); vinFarmer.setFill("images/blacksmith2.png") };
-
-        }
-    }, this, 250)
+   
 
     var harvest4 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.controlsLayer_w / 2 - (15), a.height / 2).setFill("images/" + a.crops[12].harvest).setSize(26, 21);
     vinyardLayer.appendChild(harvest4);
@@ -11866,9 +11786,110 @@ farming.start = function () {
         vinyardBlock.setHidden(true); pastureBlock.setHidden(true); homeBlock.setHidden(true); orchardBlock.setHidden(true);
     });
     questPanelV.setHidden(true);
-   
+    highestTerric = questParams.terric[0].highestCompleted;
+    currentJars = parseInt(player.cropsStored[16].stored);
+    currentJelly = parseInt(player.cropsStored[13].stored);
 
+    if (currentJars == 0 && highestTerric >= 1) {
+        vinFarmerQuest.setFill(imgArray[22].src);
+        questText1V.setText(questParams.terric[2].text);
+    }
+    else if (currentJars > 0 && highestTerric >= 1) {
 
+        questText1V.setText(questParams.terric[3].text);
+
+    }
+    vinFarmerQuestBtn.setHidden(false);
+    vinFarmerQuest.setHidden(false);
+
+    var vinFarmerI = 0
+    lime.scheduleManager.scheduleWithDelay(function () {
+        if (sceneActive == 'Vineyard') {
+
+       
+            //for next release of juice
+            //if (currentJars >= 0 && highestTerric == 1 && currentJelly > 5) {
+            //    questText1V = questParams.terric[3].text;
+            //    vinFarmerQuestBtn.setHidden(false);
+            //    vinFarmerQuest.setHidden(false);
+            //}
+
+            //add upgrade anim
+            vinFarmerI = vinFarmerI + 1;
+            if (vinFarmerI > 58) { vinFarmerI = 1 };
+            if (vinFarmerI < 11) { vinFarmer.setFill("images/vinyard/vinFarmer" + vinFarmerI + ".png"); };
+
+            if (vinFarmerI == 2) { vinFarmer.setPosition(65, 350) };
+            if (vinFarmerI == 3) { vinFarmer.setPosition(70, 350) };
+            if (vinFarmerI == 4) { vinFarmer.setPosition(75, 350); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
+            if (vinFarmerI == 5) { vinFarmer.setPosition(75, 355); };
+            if (vinFarmerI == 6) { vinFarmer.setPosition(75, 360); };
+            if (vinFarmerI == 7) { vinFarmer.setPosition(75, 365); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
+            if (vinFarmerI == 8) { vinFarmer.setPosition(75, 360); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
+            if (vinFarmerI == 9) { vinFarmer.setPosition(75, 355); };
+            if (vinFarmerI == 10) { vinFarmer.setPosition(75, 350); };
+            if (vinFarmerI == 11) { vinFarmer.setPosition(80, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
+            if (vinFarmerI == 12) { vinFarmer.setPosition(85, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
+            if (vinFarmerI == 13) { vinFarmer.setPosition(90, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
+            if (vinFarmerI == 14) { vinFarmer.setPosition(95, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
+            if (vinFarmerI == 15) { vinFarmer.setPosition(100, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
+            if (vinFarmerI == 16) { vinFarmer.setPosition(105, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
+            if (vinFarmerI == 17) { vinFarmer.setPosition(110, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
+            if (vinFarmerI == 18) { vinFarmer.setPosition(115, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
+            if (vinFarmerI == 19) { vinFarmer.setPosition(120, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
+            if (vinFarmerI == 20) { vinFarmer.setPosition(125, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
+            if (vinFarmerI == 21) { vinFarmer.setPosition(130, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
+            if (vinFarmerI == 22) { vinFarmer.setPosition(135, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
+            if (vinFarmerI == 23) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
+            if (vinFarmerI == 24) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer8.png"); };
+            if (vinFarmerI == 25) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer8.png"); };
+
+            if (vinFarmerI == 26) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 27) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 28) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 29) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer9.png"); };
+
+            if (vinFarmerI == 30) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
+            if (vinFarmerI == 31) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
+            if (vinFarmerI == 32) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
+
+            if (vinFarmerI == 33) { vinFarmer.setPosition(145, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
+            if (vinFarmerI == 34) { vinFarmer.setPosition(150, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
+            if (vinFarmerI == 35) { vinFarmer.setPosition(155, 350); vinFarmer.setFill("images/vinyard/vinFarmer3.png"); };
+            if (vinFarmerI == 36) { vinFarmer.setPosition(160, 350); vinFarmer.setFill("images/vinyard/vinFarmer1.png"); };
+            if (vinFarmerI == 37) { vinFarmer.setPosition(165, 350); vinFarmer.setFill("images/vinyard/vinFarmer2.png"); };
+            if (vinFarmerI == 38) { vinFarmer.setPosition(165, 350); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
+
+            if (vinFarmerI == 39) { vinFarmer.setPosition(160, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 40) { vinFarmer.setPosition(155, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
+            if (vinFarmerI == 41) { vinFarmer.setPosition(150, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+
+            if (vinFarmerI == 42) { vinFarmer.setPosition(145, 350); vinFarmer.setFill("images/vinyard/vinFarmer19.png"); };
+            if (vinFarmerI == 43) { vinFarmer.setPosition(140, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+
+            if (vinFarmerI == 44) { vinFarmer.setPosition(135, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 45) { vinFarmer.setPosition(130, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
+            if (vinFarmerI == 46) { vinFarmer.setPosition(125, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 47) { vinFarmer.setPosition(120, 350); vinFarmer.setFill("images/vinyard/vinFarmer19.png"); };
+            if (vinFarmerI == 48) { vinFarmer.setPosition(115, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
+            if (vinFarmerI == 49) { vinFarmer.setPosition(110, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 50) { vinFarmer.setPosition(105, 350); vinFarmer.setFill("images/vinyard/vinFarmer19.png"); };
+            if (vinFarmerI == 51) { vinFarmer.setPosition(100, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 52) { vinFarmer.setPosition(95, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
+            if (vinFarmerI == 53) { vinFarmer.setPosition(90, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 54) { vinFarmer.setPosition(85, 350); vinFarmer.setFill("images/vinyard/vinFarmer19.png"); };
+            if (vinFarmerI == 55) { vinFarmer.setPosition(80, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 56) { vinFarmer.setPosition(75, 350); vinFarmer.setFill("images/vinyard/vinFarmer17.png"); };
+            if (vinFarmerI == 57) { vinFarmer.setPosition(70, 350); vinFarmer.setFill("images/vinyard/vinFarmer18.png"); };
+            if (vinFarmerI == 58) { vinFarmer.setPosition(65, 350); vinFarmer.setFill("images/vinyard/vinFarmer4.png"); };
+            //if (vinFarmerI == 15) { vinFarmer.setPosition(50, 80); vinFarmer.setFill("images/blacksmith13.png"); };
+            //if (vinFarmerI == 16) { vinFarmer.setPosition(50, 75); vinFarmer.setFill("images/blacksmith1.png") };
+            //if (vinFarmerI == 17) { vinFarmer.setPosition(50, 75); vinFarmer.setFill("images/blacksmith2.png") };
+            //if (vinFarmerI == 18) { vinFarmer.setPosition(50, 77); vinFarmer.setFill("images/blacksmith1.png") };
+            //if (vinFarmerI == 19) { vinFarmer.setPosition(50, 77); vinFarmer.setFill("images/blacksmith2.png") };
+
+        }
+    }, this, 250)
 
     /////////////////////////////////////////////////////////    /////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////
