@@ -1470,10 +1470,10 @@ var farming = {
             }
 
         }
-	
+        var picked = this.crop;
         function growIt(d) {
             //if (tutSeen == 0) { break; }
-            if (scene == 1 && b.currentCrop > 5 || b.currentCrop == 'undefined') { b.currentCrop = b.currentCrop = homeCrop; };
+            if (scene == 1 && b.currentCrop > 5 || b.currentCrop == 'undefined') {b.currentCrop = homeCrop; };
             if (scene == 32) { b.currentCrop = 9; };
             if (scene == 3) { b.currentCrop = 8; };
             var toPlant = a.crops[b.currentCrop].grow1;
@@ -1536,6 +1536,8 @@ var farming = {
                             )
 
                             : c.state == farming.READY && (c.setFill(imgArrayGround[0]),
+                                this.crop = landStateMaster[arrayIndex].props.crop,
+                                c.crop = this.crop,
                                 block == 'tlt' && (c.setFill(imgArrayGround[2])),
                                 block == 'trt' && (c.setFill(imgArrayGround[1])),
                                 block == 'brt' && (c.setFill(imgArrayGround[3])),
@@ -8300,8 +8302,12 @@ farming.start = function () {
                     localStorage.setItem('MedFarms_buyingMasterPack', 1);
                     buyMasterPack.setOpacity(0.2);
                     buyMasterPackBtn1.setHidden(true);
-                  
                     storeStars.setText(starCash);
+                    storeCash.setText(player.money);
+                    setTimeout(function () {
+                        storeStars.setText(starCash);
+                        storeCash.setText(player.money); }, 3000)
+                
                 }
             });
         }
