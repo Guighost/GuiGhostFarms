@@ -1536,8 +1536,8 @@ var farming = {
                             )
 
                             : c.state == farming.READY && (c.setFill(imgArrayGround[0]),
-                                this.crop = landStateMaster[arrayIndex].props.crop,
-                                c.crop = this.crop,
+                                //this.crop = landStateMaster[arrayIndex].props.crop,
+                                //c.crop = this.crop,
                                 block == 'tlt' && (c.setFill(imgArrayGround[2])),
                                 block == 'trt' && (c.setFill(imgArrayGround[1])),
                                 block == 'brt' && (c.setFill(imgArrayGround[3])),
