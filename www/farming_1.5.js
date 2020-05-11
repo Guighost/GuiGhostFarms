@@ -5082,7 +5082,7 @@ farming.start = function () {
     goog.events.listen(homeNavP, ["mousedown", "touchstart"], function () {
         if (compassVisible) {
             b.currentCrop = parseInt(homeCrop);
-            if (b.currentCrop > 5 || isNan(b.currentCrop) ) { b.currentCrop = 0; }
+            if (b.currentCrop > 5 || isNaN(b.currentCrop) ) { b.currentCrop = 0; }
             closeAcresNav();
             a.sceneBefore = 1;
 
@@ -13636,28 +13636,30 @@ farming.start = function () {
                 //}
 
 
-                //upgrade barn from load after quit in progress
-                if (upgradesInProgress.buildings[0].timeLeft > 0) {
+            //upgrade barn from load after quit in progress
+                upgradesInProgress = JSON.parse(localStorage.getItem('MedFarm_upgradesInProgress'));
+     
+                if (parseInt(upgradesInProgress.buildings[0].timeLeft) > 0) {
                     barnUpgradeCostWood = 0; barnUpgradeCostTools = 0;
                     secondsToUpgrade = parseInt(upgradesInProgress.buildings[0].timeLeft)
                     upgradeHomeBarn(barnUpgradeCostTools, barnUpgradeCostWood);
                 }
-                if (upgradesInProgress.buildings[1].timeLeft > 0) {
+                if (parseInt(upgradesInProgress.buildings[1].timeLeft) > 0) {
                     toolCostP = 0; woodCostP = 0;
                     secondsToUpgradeP = parseInt(upgradesInProgress.buildings[1].timeLeft);
                     pastureBarnUpgrade1(toolCostP, woodCostP)
 
                 }
-                if (upgradesInProgress.buildings[2].timeLeft > 0) {
+                if (parseInt(upgradesInProgress.buildings[2].timeLeft) > 0) {
                     secondsToUpgradeBarnO = parseInt(upgradesInProgress.buildings[2].timeLeft)
                     upgradeOrchardBarn(0)
                 }
-                if (upgradesInProgress.buildings[3].timeLeft > 0) {
+                if (parseInt(upgradesInProgress.buildings[3].timeLeft) > 0) {
                     barnUpgradeCostToolsV = 0; barnUpgradeCostWoodV = 0;
                     secondsToUpgradeV = parseInt(upgradesInProgress.buildings[3].timeLeft)
                     vinyardBarnUpgrade(barnUpgradeCostToolsV, barnUpgradeCostWoodV);
                 }
-                if (upgradesInProgress.buildings[4].timeLeft > 0) {
+                if (parseInt(upgradesInProgress.buildings[4].timeLeft) > 0) {
                     secondsToUpgradeLS = parseInt(upgradesInProgress.buildings[4].timeLeft);
                     upgradeCoop(1);
                 }
