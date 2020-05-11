@@ -854,11 +854,11 @@ imgArray5[13] = new Image(); imgArray5[13].src = 'images/UI/tut14.png';
 
 //barn upgrades
 var imgArray6 = new Array();
-imgArray6[0] = new Image(); imgArray6[0].src = 'images/UI/barn1-1.png';
-imgArray6[1] = new Image(); imgArray6[1].src = 'images/UI/barn2-1.png';
-imgArray6[2] = new Image(); imgArray6[2].src = 'images/UI/barn3-1.png';
-imgArray6[3] = new Image(); imgArray6[3].src = 'images/UI/barn4-1.png';
-imgArray6[4] = new Image(); imgArray6[4].src = 'images/UI/barn5-1.png';
+imgArray6[0] = new Image(); imgArray6[0].src = 'images/UI/barn1-1.svg';
+imgArray6[1] = new Image(); imgArray6[1].src = 'images/UI/barn2-1.svg';
+imgArray6[2] = new Image(); imgArray6[2].src = 'images/UI/barn3-1.svg';
+imgArray6[3] = new Image(); imgArray6[3].src = 'images/UI/barn4-1.svg';
+imgArray6[4] = new Image(); imgArray6[4].src = 'images/UI/barn5-1.svg';
 imgArray6[5] = new Image(); imgArray6[5].src = "images/bare_land.png";
 imgArray6[6] = new Image(); imgArray6[6].src = "images/plowed.png";
 
@@ -2244,7 +2244,7 @@ farming.start = function () {
     ];
 
     a.barnyard = [
-        { name: "yard", image: "grass.png" },
+        { name: "yard", image: "grass.svg" },
         { name: "road", image: "vertRoad.png" },
         { name: "sacks", image: "sacks.png" },
         { name: "market", image: "marketCoin2.png" }, 
@@ -2257,8 +2257,8 @@ farming.start = function () {
         { name: "well", image: "well2.png" },
         { name: "anvil", image: "anvil1.png" },
         { name: "anvil2", image: "anvil2.png" },
-        { name: "trees1", image: "leftTrees.png" },
-        { name: "trees2", image: "rightTrees.png" },
+        { name: "trees1", image: "leftTrees.svg" },
+        { name: "trees2", image: "rightTrees.svg" },
         { name: "horizRoad", image: "horizRoad.png" },
         { name: "toolTable", image: "toolTable.png" },
         { name: "forge", image: "forge2.png" },
@@ -2267,11 +2267,11 @@ farming.start = function () {
 
     ];
     a.barnlevelImg = [
-        { name: "Basic Shed", image: "barn1-1.png" },
-        { name: "Small Barn", image: "barn2-1.png" },
-        { name: "Large Barn", image: "barn3-1.png" },
-        { name: "XLarge Barn", image: "barn4-1.png" },
-        { name: "Double Silo Barn", image: "barn5-1.png" },
+        { name: "Basic Shed", image: "barn1-1.svg" },
+        { name: "Small Barn", image: "barn2-1.svg" },
+        { name: "Large Barn", image: "barn3-1.svg" },
+        { name: "XLarge Barn", image: "barn4-1.svg" },
+        { name: "Double Silo Barn", image: "barn5-1.svg" },
         { name: "Pasture", image: "pasture.png" }
     ];
     a.PastureUpgrades = [
@@ -3052,7 +3052,7 @@ farming.start = function () {
     
     //var toolTable = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 111).setSize(19, 22).setFill("images/" + a.barnyard[16].image); e.appendChild(toolTable);
     var barn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(85, 2).setSize(132, 155).setFill("images/" + a.barnlevelImg[(player.barnLevel - 1)].image); e.appendChild(barn);
-    var houseImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(238, 23).setSize(60, 92).setFill("images/house1.png"); e.appendChild(houseImg);
+    var houseImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(238, 23).setSize(60, 92).setFill("images/house1.svg"); e.appendChild(houseImg);
     var houseEnterBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(251, 115).setSize(30, 30).setFill("images/UI/houseButton.png"); e.appendChild(houseEnterBtn);
 
     var forge = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(2, 32).setSize(86, 120).setFill("images/" + a.barnyard[17].image); e.appendChild(forge);
@@ -9693,7 +9693,7 @@ farming.start = function () {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     var marketSellScene = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
     marketLayer = (new lime.Layer).setAnchorPoint(0, 0),
-        marketFill1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("images/grass.png").setHidden(false);
+        marketFill1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("images/grass.svg").setHidden(false);
     marketSellScene.appendChild(marketFill1);
     marketSellScene.appendChild(marketLayer);
 
