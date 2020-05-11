@@ -4008,119 +4008,122 @@ farming.start = function () {
     });
 
 
-
+    var barnUpRunningHome = 0;
     function upgradeHomeBarn(barnUpgradeCostTools, barnUpgradeCostWood) {          //barnUpgrades    barn Upgrades
 
         //console.log("fired barn upgrade");
-        toolMoverLabel.setText(secondsToUpgrade);
+        if (barnUpRunningHome == 0){
+      
 
-        if (player.tools >= barnUpgradeCostTools && parseInt(player.barnLevel) < 5 && globalModalBlock == 0 && parseInt(player.cropsStored[14].stored)  >= barnUpgradeCostWood) {
-            barnUnlock3.setHidden(true);
-           
-            player.tools = player.tools - barnUpgradeCostTools;
-            a.updateTools();
-            
-            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - parseInt(barnUpgradeCostWood);
-            if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
-            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-            a.updateStored();
-            //show upgrade anim and timer
-            upgradeCloud.setHidden(false);
-            scaffoldH.setHidden(false);
-            toolMoverLabel.setHidden(false);
-            lime.scheduleManager.scheduleWithDelay(function () {
-                //add upgrade anim
-
-                upgradeCloud.setPosition(upCloudX, upCloudY).setSize(upCloudW, 200)
-                upCloudW = upCloudW + 10;
-                upCloudX = upCloudX - 5;
-                upCloudY = upCloudY - 5
-                if (upCloudX < 80) { upCloudX = 100; upCloudY = 10; upCloudW = 100; }
-                currentRotate = currentRotate + 10;
-                if (currentRotate > 35) { currentRotate = -10; };
-                toolMover.setRotation(currentRotate);
-
-            }, this, 250, secondsToUpgrade * 4)
-            //upgrade countdown timer
-          
-            var upCloudW = 100;
-            var upCloudX = 90;
-            var upCloudY = 10;
-            lime.scheduleManager.scheduleWithDelay(function () {
-                //add upgrade animim
-                secondsToUpgrade = secondsToUpgrade - 1;
-                upgradesInProgress.buildings[0].timeLeft = secondsToUpgrade;
-                upgradesInProgress.buildings[0].currentBarnLevel = player.barnLevel;
-                localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
-
+            if (player.tools >= barnUpgradeCostTools && parseInt(player.barnLevel) < 5 && globalModalBlock == 0 && parseInt(player.cropsStored[14].stored) >= barnUpgradeCostWood) {
                 toolMoverLabel.setText(secondsToUpgrade);
+                barnUnlock3.setHidden(true);
+                barnUpRunningHome = 1;
+                player.tools = player.tools - barnUpgradeCostTools;
+                a.updateTools();
+            
+                player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - parseInt(barnUpgradeCostWood);
+                if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
+                localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                a.updateStored();
+                //show upgrade anim and timer
+                upgradeCloud.setHidden(false);
+                scaffoldH.setHidden(false);
+                toolMoverLabel.setHidden(false);
+                lime.scheduleManager.scheduleWithDelay(function () {
+                    //add upgrade anim
 
-                if (secondsToUpgrade <= 0) {
-                    toolMoverLabel.setHidden(true); scaffoldH.setHidden(true); upgradeCloud.setHidden(true);
-                    if (player.barnLevel == 2) {
-                        barn.setFill(imgArray6[1]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Artichoke"); unlockedCropImage.setFill("images/" + a.crops[2].harvest); barnUnlock3.setHidden(false);
-                        homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);
-                    };
-                    if (player.barnLevel == 3) { barn.setFill(imgArray6[2]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Eggplant"); unlockedCropImage.setFill("images/" + a.crops[3].harvest); barnUnlock3.setHidden(false); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);};
-                    if (player.barnLevel == 4) { barn.setFill(imgArray6[3]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Peppers"); unlockedCropImage.setFill("images/" + a.crops[4].harvest); barnUnlock3.setHidden(false); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);};
+                    upgradeCloud.setPosition(upCloudX, upCloudY).setSize(upCloudW, 200)
+                    upCloudW = upCloudW + 10;
+                    upCloudX = upCloudX - 5;
+                    upCloudY = upCloudY - 5
+                    if (upCloudX < 80) { upCloudX = 100; upCloudY = 10; upCloudW = 100; }
+                    currentRotate = currentRotate + 10;
+                    if (currentRotate > 35) { currentRotate = -10; };
+                    toolMover.setRotation(currentRotate);
+
+                }, this, 250, secondsToUpgrade * 4)
+                //upgrade countdown timer
+          
+                var upCloudW = 100;
+                var upCloudX = 90;
+                var upCloudY = 10;
+                lime.scheduleManager.scheduleWithDelay(function () {
+                    //add upgrade animim
+                    secondsToUpgrade = secondsToUpgrade - 1;
+                    upgradesInProgress.buildings[0].timeLeft = secondsToUpgrade;
+                    upgradesInProgress.buildings[0].currentBarnLevel = player.barnLevel;
+                    localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
+
+                    toolMoverLabel.setText(secondsToUpgrade);
+
+                    if (secondsToUpgrade <= 0) {
+                        toolMoverLabel.setHidden(true); scaffoldH.setHidden(true); upgradeCloud.setHidden(true); upgradeHomeBarnBtn.setHidden(true);
+                        if (player.barnLevel == 2) {
+                            barn.setFill(imgArray6[1]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Artichoke"); unlockedCropImage.setFill("images/" + a.crops[2].harvest); barnUnlock3.setHidden(false);
+                            homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);
+                        };
+                        if (player.barnLevel == 3) { barn.setFill(imgArray6[2]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Eggplant"); unlockedCropImage.setFill("images/" + a.crops[3].harvest); barnUnlock3.setHidden(false); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeToolCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true); };
+                        if (player.barnLevel == 4) { barn.setFill(imgArray6[3]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Peppers"); unlockedCropImage.setFill("images/" + a.crops[4].harvest); barnUnlock3.setHidden(false); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true); homeToolCostLabel.setHidden(true);};
+                        if (player.barnLevel == 5) {
+                            barn.setFill(imgArray6[4]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest);
+                            barnUnlock3.setHidden(true); barn.setPosition(86, 4).setSize(134, 155); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true); homeToolCostLabel.setHidden(true);
+                        };
+                        barnUnlock.setText("Lvl " + player.barnLevel + "/5");
+                        setTimeout(function () {
+                            unlockedCropBack.setHidden(true);
+                            checkAchieves2();
+                        }, 2000); 
+                    }
+
+                }, this, 1000, secondsToUpgrade)
+           
+                //upgrade the barn after the 60 seconds
+                setTimeout(function () {
+                    barnUnlock3.setHidden(true);            //barnUnlockBtn.setHidden(true);
+                    player.barnLevel = player.barnLevel + 1;
+
+                    a.updateTools();
+
+                    if (player.barnLevel > 5) { player.barnLevel = 5; barnUnlock3.setHidden(true); };
+                    //save upgrade in progress complete
+                    upgradesInProgress.buildings[0].timeLeft = 0;
+                    upgradesInProgress.buildings[0].currentBarnLevel = player.barnLevel;
+                    localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
+                    //console.log("Barn timer expired")
+                    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                    localStorage.setItem('GuiGhostFarms_toolsEver', toolsEver);
+                    localStorage.setItem('GuiGhostFarms_pickedEver', pickedEver);
+                    localStorage.setItem('GuiGhostFarms_moneyEver', moneyEver);
+
+        
+                    if (player.barnLevel == 2) { barn.setFill(imgArray6[1]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Artichoke"); unlockedCropImage.setFill("images/" + a.crops[2].harvest); barnUnlock3.setHidden(false); };
+                    if (player.barnLevel == 3) { barn.setFill(imgArray6[2]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Eggplant"); unlockedCropImage.setFill("images/" + a.crops[3].harvest); barnUnlock3.setHidden(false); };
+                    if (player.barnLevel == 4) { barn.setFill(imgArray6[3]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Peppers"); unlockedCropImage.setFill("images/" + a.crops[4].harvest); barnUnlock3.setHidden(false); };
                     if (player.barnLevel == 5) {
                         barn.setFill(imgArray6[4]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest);
-                        barnUnlock3.setHidden(true); barn.setPosition(86, 4).setSize(134, 155); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);
+                        barnUnlock3.setHidden(true); barn.setPosition(86, 4).setSize(134, 155);
+
+                       
+                        goog.events.removeAll(upgradeHomeBarnBtn);
+                        goog.events.removeAll(barnUnlock3);
+                        goog.events.removeAll(upgradeHomeBarnBackBtn);
+                       
+                   
                     };
                     barnUnlock.setText("Lvl " + player.barnLevel + "/5");
                     setTimeout(function () {
                         unlockedCropBack.setHidden(true);
                         checkAchieves2();
                     }, 2000); 
-                }
+                    barnUpRunningHome = 0;
+                    //if (player.barnLevel == 2) { barnUnlock3.setFill("images/tools250.png"); }
+                    //else if (player.barnLevel == 3) { barnUnlock3.setFill("images/tools500.png"); }
+                    //else if (player.barnLevel == 4) { barnUnlock3.setFill("images/tools1500.png"); }
+                    //else { barnUnlock3.setFill("images/tools100.png"); };
+                }, (secondsToUpgrade * 1000));
 
-            }, this, 1000, secondsToUpgrade)
-           
-            //upgrade the barn after the 60 seconds
-            setTimeout(function () {
-                barnUnlock3.setHidden(true);            //barnUnlockBtn.setHidden(true);
-                player.barnLevel = player.barnLevel + 1;
-
-                a.updateTools();
-
-                if (player.barnLevel > 5) { player.barnLevel = 5; barnUnlock3.setHidden(true); };
-                //save upgrade in progress complete
-                upgradesInProgress.buildings[0].timeLeft = 0;
-                upgradesInProgress.buildings[0].currentBarnLevel = player.barnLevel;
-                localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
-                //console.log("Barn timer expired")
-                localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-                localStorage.setItem('GuiGhostFarms_toolsEver', toolsEver);
-                localStorage.setItem('GuiGhostFarms_pickedEver', pickedEver);
-                localStorage.setItem('GuiGhostFarms_moneyEver', moneyEver);
-
-        
-                if (player.barnLevel == 2) { barn.setFill(imgArray6[1]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Artichoke"); unlockedCropImage.setFill("images/" + a.crops[2].harvest); barnUnlock3.setHidden(false); };
-                if (player.barnLevel == 3) { barn.setFill(imgArray6[2]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Eggplant"); unlockedCropImage.setFill("images/" + a.crops[3].harvest); barnUnlock3.setHidden(false); };
-                if (player.barnLevel == 4) { barn.setFill(imgArray6[3]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Peppers"); unlockedCropImage.setFill("images/" + a.crops[4].harvest); barnUnlock3.setHidden(false); };
-                if (player.barnLevel == 5) {
-                    barn.setFill(imgArray6[4]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest);
-                    barnUnlock3.setHidden(true); barn.setPosition(86, 4).setSize(134, 155);
-
-                       
-                    goog.events.removeAll(upgradeHomeBarnBtn);
-                    goog.events.removeAll(barnUnlock3);
-                    goog.events.removeAll(upgradeHomeBarnBackBtn);
-
-                   
-                };
-                barnUnlock.setText("Lvl " + player.barnLevel + "/5");
-                setTimeout(function () {
-                    unlockedCropBack.setHidden(true);
-                    checkAchieves2();
-                }, 2000); 
-
-                //if (player.barnLevel == 2) { barnUnlock3.setFill("images/tools250.png"); }
-                //else if (player.barnLevel == 3) { barnUnlock3.setFill("images/tools500.png"); }
-                //else if (player.barnLevel == 4) { barnUnlock3.setFill("images/tools1500.png"); }
-                //else { barnUnlock3.setFill("images/tools100.png"); };
-            }, (secondsToUpgrade * 1000));
-
+            }
         }
 
     };
@@ -5328,103 +5331,105 @@ farming.start = function () {
 
         //barnUpgrades
     var secondsToUpgradeP = 120;
-    function pastureBarnUpgrade1(toolCostP,woodCostP){
-        if (player.tools >= toolCostP && parseInt(player.pastureLevel) <= 3 && globalModalBlock == 0 && parseInt(player.cropsStored[14].stored) >= woodCostP) {
-        
-            barnUnlock3P.setHidden(true)
-            player.tools = player.tools - toolCostP;
-            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - parseInt(woodCostP);
-            if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
-            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-            a.updateTools();
-            a.updateStored();
-            upgradeCloudP.setHidden(false);
-            scaffoldP.setHidden(false);
-            toolMoverLabelP.setHidden(false);
-            lime.scheduleManager.scheduleWithDelay(function () {
-                currentRotateP = currentRotateP + 10;
-                if (currentRotateP > 35) { currentRotateP = -10; };
-                toolMoverP.setRotation(currentRotateP);
-
-            }, this, 200, 300)
-            //upgrade countdown timer
-          
-            var upCloudWP = 70;
-            var upCloudXP = 10;
-            var upCloudYP = 5;
-            lime.scheduleManager.scheduleWithDelay(function () {
-                //add upgrade anim
-                secondsToUpgradeP = secondsToUpgradeP - 1;
-
-                toolMoverLabelP.setText(secondsToUpgradeP);
-                upgradesInProgress.buildings[1].timeLeft = secondsToUpgradeP;
-                upgradesInProgress.buildings[1].currentBarnLevel = player.pastureLevel;
-                localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
-
-                if (secondsToUpgradeP <= 0) { toolMoverLabelP.setHidden(true); scaffoldP.setHidden(true); upgradeCloudP.setHidden(true); secondsToUpgradeP = 60; }
-
-            }, this, 1000, secondsToUpgradeP)
-            if (player.pastureLevel == 1) {
-                lime.scheduleManager.scheduleWithDelay(function () {
-                    //add upgrade anim
-
-                    upgradeCloudP.setPosition(upCloudXP, upCloudYP).setSize(upCloudWP, 200)
-                    upCloudWP = upCloudWP + 10;
-                    upCloudXP = upCloudXP - 5;
-                    upCloudYP = upCloudYP - 5
-                    if (upCloudXP < -10) { upCloudXP = 10; upCloudYP = 5; upCloudWP = 60; }
-
-
-                }, this, 250, secondsToUpgradeP * 4)
-            }
-            if (player.pastureLevel == 2) {
-                //move upgrade elements to right side of dairy
-                scaffoldP.setPosition(240, 70);
-                toolMoverLabelP.setPosition(275, 80);
-                toolMoverP.setPosition(-22, -50);
-                upCloudWP = 70;
-                upCloudXP = 240;
-                upCloudYP = 5;
-                lime.scheduleManager.scheduleWithDelay(function () {
-                    //add upgrade anim
-
-                    upgradeCloudP.setPosition(upCloudXP, upCloudYP).setSize(upCloudWP, 200)
-                    upCloudWP = upCloudWP + 10;
-                    upCloudXP = upCloudXP - 5;
-                    upCloudYP = upCloudYP - 5
-                    if (upCloudXP < 220) { upCloudXP = 240; upCloudYP = 5; upCloudWP = 60; }
-
-
-                }, this, 250, secondsToUpgradeP * 4)
-            }
-            //upgrade the Dairy barn after the 60 seconds
-            setTimeout(function () {
-
-                player.pastureLevel = parseInt(player.pastureLevel) + 1;
-
-                if (player.pastureLevel > 3) { player.pastureLevel = 3 };
-
+    var barnUpInProgressPasture = 0;
+    function pastureBarnUpgrade1(toolCostP, woodCostP) {
+        if (barnUpInProgressPasture == 0){
+            if (player.tools >= toolCostP && parseInt(player.pastureLevel) <= 3 && globalModalBlock == 0 && parseInt(player.cropsStored[14].stored) >= woodCostP) {
+                barnUpInProgressPasture = 1;
+                barnUnlock3P.setHidden(true)
+                player.tools = player.tools - toolCostP;
+                player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - parseInt(woodCostP);
+                if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
                 localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-
-                if (player.pastureLevel == 2) { pasUpLabel2.setText("Lvl 2/3 "); stallLeft.setHidden(false); barnUnlock3P.setHidden(false); };
-                if (player.pastureLevel >= 3) {
-                    stallLeft.setHidden(false); stallRight.setHidden(false); pasUpLabel2.setHidden(true); barnUnlock3P.setHidden(true); checkAchieves2(); pasUpLabel2.setText("Lvl 3/3 "); 
-                    goog.events.removeAll(closePastureBarnBtn);
-                    goog.events.removeAll(upgradePastureBarnBtn);
-                    goog.events.removeAll(barnUnlock3P);
-                };
-                upgradeCloudP.setHidden(true);
-                scaffoldP.setHidden(true);
-                toolMoverLabelP.setHidden(true);
                 a.updateTools();
+                a.updateStored();
+                upgradeCloudP.setHidden(false);
+                scaffoldP.setHidden(false);
+                toolMoverLabelP.setHidden(false);
+                lime.scheduleManager.scheduleWithDelay(function () {
+                    currentRotateP = currentRotateP + 10;
+                    if (currentRotateP > 35) { currentRotateP = -10; };
+                    toolMoverP.setRotation(currentRotateP);
 
-                upgradesInProgress.buildings[1].timeLeft = 0;
-                upgradesInProgress.buildings[1].currentBarnLevel = player.pastureLevel;
-                localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
-              
-            }, secondsToUpgradeP * 1000);
+                }, this, 200, 300)
+                //upgrade countdown timer
+          
+                var upCloudWP = 70;
+                var upCloudXP = 10;
+                var upCloudYP = 5;
+                lime.scheduleManager.scheduleWithDelay(function () {
+                    //add upgrade anim
+                    secondsToUpgradeP = secondsToUpgradeP - 1;
+
+                    toolMoverLabelP.setText(secondsToUpgradeP);
+                    upgradesInProgress.buildings[1].timeLeft = secondsToUpgradeP;
+                    upgradesInProgress.buildings[1].currentBarnLevel = player.pastureLevel;
+                    localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
+
+                    if (secondsToUpgradeP <= 0) { toolMoverLabelP.setHidden(true); scaffoldP.setHidden(true); upgradeCloudP.setHidden(true); secondsToUpgradeP = 60; }
+
+                }, this, 1000, secondsToUpgradeP)
+                if (player.pastureLevel == 1) {
+                    lime.scheduleManager.scheduleWithDelay(function () {
+                        //add upgrade anim
+
+                        upgradeCloudP.setPosition(upCloudXP, upCloudYP).setSize(upCloudWP, 200)
+                        upCloudWP = upCloudWP + 10;
+                        upCloudXP = upCloudXP - 5;
+                        upCloudYP = upCloudYP - 5
+                        if (upCloudXP < -10) { upCloudXP = 10; upCloudYP = 5; upCloudWP = 60; }
+
+
+                    }, this, 250, secondsToUpgradeP * 4)
+                }
+                if (player.pastureLevel == 2) {
+                    //move upgrade elements to right side of dairy
+                    scaffoldP.setPosition(240, 70);
+                    toolMoverLabelP.setPosition(275, 80);
+                    toolMoverP.setPosition(-22, -50);
+                    upCloudWP = 70;
+                    upCloudXP = 240;
+                    upCloudYP = 5;
+                    lime.scheduleManager.scheduleWithDelay(function () {
+                        //add upgrade anim
+
+                        upgradeCloudP.setPosition(upCloudXP, upCloudYP).setSize(upCloudWP, 200)
+                        upCloudWP = upCloudWP + 10;
+                        upCloudXP = upCloudXP - 5;
+                        upCloudYP = upCloudYP - 5
+                        if (upCloudXP < 220) { upCloudXP = 240; upCloudYP = 5; upCloudWP = 60; }
+
+
+                    }, this, 250, secondsToUpgradeP * 4)
+                }
+                //upgrade the Dairy barn after the 60 seconds
+                setTimeout(function () {
+
+                    player.pastureLevel = parseInt(player.pastureLevel) + 1;
+
+                    if (player.pastureLevel > 3) { player.pastureLevel = 3 };
+
+                    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+
+                    if (player.pastureLevel == 2) { pasUpLabel2.setText("Lvl 2/3 "); stallLeft.setHidden(false); barnUnlock3P.setHidden(false); };
+                    if (player.pastureLevel >= 3) {
+                        stallLeft.setHidden(false); stallRight.setHidden(false); pasUpLabel2.setHidden(true); barnUnlock3P.setHidden(true); checkAchieves2(); pasUpLabel2.setText("Lvl 3/3 "); 
+                        goog.events.removeAll(closePastureBarnBtn);
+                        goog.events.removeAll(upgradePastureBarnBtn);
+                        goog.events.removeAll(barnUnlock3P);
+                    };
+                    upgradeCloudP.setHidden(true);
+                    scaffoldP.setHidden(true);
+                    toolMoverLabelP.setHidden(true);
+                    a.updateTools();
+
+                    upgradesInProgress.buildings[1].timeLeft = 0;
+                    upgradesInProgress.buildings[1].currentBarnLevel = player.pastureLevel;
+                    localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
+                    barnUpInProgressPasture = 0;
+                }, secondsToUpgradeP * 1000);
+            }
         }
-
     };
 
 
@@ -6486,90 +6491,91 @@ farming.start = function () {
     });
 
     ///upgrade orchard barn
+    var barnUpInProgressO = 0;
     function upgradeOrchardBarn(free) {
         if (free == 1) { player.tools = player.tools - 250; player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - 200;} 
-        
-        
-        if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0 };
-        localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-        a.updateTools();
-        currentRotateO = currentRotateO - 10;
-        if (currentRotateO < -50) { currentRotateO = -10; }
-        toolMoverO.setRotation(currentRotateO);
-        barnUnlockOBtn.setHidden(true);
-        barnUnlockOImg.setHidden(true);
-        toolMoverLabelO.setHidden(false);
-        scaffoldO.setHidden(false);
-        upgradeCloudO.setHidden(false);
-        var upCloudWOB = 150;
-        var upCloudXOB = 0;
-        var upCloudYOB = 90;
-        var quarterSecCountO = 0;
-        var secondsIntervalOrchard = secondsToUpgradeBarnO * 4;
-        lime.scheduleManager.scheduleWithDelay(function () {
-            secondsIntervalOrchard = secondsIntervalOrchard - 1;
+        if (barnUpInProgressO == 0){
+            barnUpInProgressO = 1;
+            if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0 };
+            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+            a.updateTools();
+            currentRotateO = currentRotateO - 10;
+            if (currentRotateO < -50) { currentRotateO = -10; }
+            toolMoverO.setRotation(currentRotateO);
+            barnUnlockOBtn.setHidden(true);
+            barnUnlockOImg.setHidden(true);
+            toolMoverLabelO.setHidden(false);
+            scaffoldO.setHidden(false);
+            upgradeCloudO.setHidden(false);
+            var upCloudWOB = 150;
+            var upCloudXOB = 0;
+            var upCloudYOB = 90;
+            var quarterSecCountO = 0;
+            var secondsIntervalOrchard = secondsToUpgradeBarnO * 4;
+            lime.scheduleManager.scheduleWithDelay(function () {
+                secondsIntervalOrchard = secondsIntervalOrchard - 1;
 
       
 
 
 
-            quarterSecCountO = quarterSecCountO + 1;
-            if (quarterSecCountO == 4) {
-                secondsToUpgradeBarnO = secondsToUpgradeBarnO - 1;
-                upgradesInProgress.buildings[2].timeLeft = secondsToUpgradeBarnO;
-                upgradesInProgress.buildings[2].currentBarnLevel = orchardBarnLevel;
-                localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
-                toolMoverLabelO.setText(secondsToUpgradeBarnO);
-                quarterSecCountO = 0;
-            }
-            upgradeCloudO.setPosition(upCloudXOB, upCloudYOB).setSize(upCloudWOB, 200)
-            upCloudWOB = upCloudWOB + 10;
-            upCloudXOB = upCloudXOB - 5;
-            upCloudYOB = upCloudYOB - 5;
-            if (upCloudXOB < -20) { upCloudXOB = 0; upCloudYOB = 90; upCloudWOB = 90; }
-            currentRotateO = currentRotateO + 10;
-            if (currentRotateO > 35) { currentRotateO = -10; };
-            toolMoverO.setRotation(currentRotateO);
-
-
-            if (secondsIntervalOrchard <= 0) {
-                upgradesInProgress.buildings[2].timeLeft = 0;
-                upgradesInProgress.buildings[2].currentBarnLevel = orchardBarnLevel;
-                localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
-
-                toolMoverLabelO.setHidden(true);
-                scaffoldO.setHidden(true);
-                upgradeCloudO.setHidden(true);
-                orchardBarnLevel = 2;
-                localStorage.setItem("MedFarm_orchardBarnLevel", 2);
-                barnLevelO.setText("Lvl 2/2");
-                player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - 200;
-                if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
-                localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-
-                if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 0) {
-                    questText1O.setText("If we had a FRUIT PRESS and some BARRELS, we could make CIDER");
-                    questPanelRocksO.setHidden(false);
-                    questPanelRocksO.setFill(imgArrayStore[4]);
-                    questPanelAvatarO.setFill(imgArrayStore[6]);
+                quarterSecCountO = quarterSecCountO + 1;
+                if (quarterSecCountO == 4) {
+                    secondsToUpgradeBarnO = secondsToUpgradeBarnO - 1;
+                    upgradesInProgress.buildings[2].timeLeft = secondsToUpgradeBarnO;
+                    upgradesInProgress.buildings[2].currentBarnLevel = orchardBarnLevel;
+                    localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
+                    toolMoverLabelO.setText(secondsToUpgradeBarnO);
+                    quarterSecCountO = 0;
                 }
-                if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 1 && player.cropsStored[17].stored < 1) {
-                    questText1O.setText("We need more BARRELS to keep making CIDER");
-                    questPanelRocksO.setHidden(false);
-                    questPanelRocksO.setFill(imgArrayStore[6]);
-                    questPanelAvatarO.setFill(imgArray4[1]);
+                upgradeCloudO.setPosition(upCloudXOB, upCloudYOB).setSize(upCloudWOB, 200)
+                upCloudWOB = upCloudWOB + 10;
+                upCloudXOB = upCloudXOB - 5;
+                upCloudYOB = upCloudYOB - 5;
+                if (upCloudXOB < -20) { upCloudXOB = 0; upCloudYOB = 90; upCloudWOB = 90; }
+                currentRotateO = currentRotateO + 10;
+                if (currentRotateO > 35) { currentRotateO = -10; };
+                toolMoverO.setRotation(currentRotateO);
+
+
+                if (secondsIntervalOrchard <= 0) {
+                    upgradesInProgress.buildings[2].timeLeft = 0;
+                    upgradesInProgress.buildings[2].currentBarnLevel = orchardBarnLevel;
+                    localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
+                    barnUpInProgressO = 0;
+                    toolMoverLabelO.setHidden(true);
+                    scaffoldO.setHidden(true);
+                    upgradeCloudO.setHidden(true);
+                    orchardBarnLevel = 2;
+                    localStorage.setItem("MedFarm_orchardBarnLevel", 2);
+                    barnLevelO.setText("Lvl 2/2");
+                    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - 200;
+                    if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
+                    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+
+                    if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 0) {
+                        questText1O.setText("If we had a FRUIT PRESS and some BARRELS, we could make CIDER");
+                        questPanelRocksO.setHidden(false);
+                        questPanelRocksO.setFill(imgArrayStore[4]);
+                        questPanelAvatarO.setFill(imgArrayStore[6]);
+                    }
+                    if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 1 && player.cropsStored[17].stored < 1) {
+                        questText1O.setText("We need more BARRELS to keep making CIDER");
+                        questPanelRocksO.setHidden(false);
+                        questPanelRocksO.setFill(imgArrayStore[6]);
+                        questPanelAvatarO.setFill(imgArray4[1]);
+                    }
+                    if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 1 && player.cropsStored[17].stored > 1) {
+                        questText1O.setText("I don't need anything at the moment");
+                        questPanelRocksO.setHidden(true);
+                        questPanelAvatarO.setFill(imgArray4[1]);
+                    }
+
                 }
-                if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 1 && player.cropsStored[17].stored > 1) {
-                    questText1O.setText("I don't need anything at the moment");
-                    questPanelRocksO.setHidden(true);
-                    questPanelAvatarO.setFill(imgArray4[1]);
-                }
-
-            }
 
 
-        }, this, 250, 241);
-    
+            }, this, 250, 241);
+        }
     }
 
 
@@ -10270,11 +10276,12 @@ farming.start = function () {
     });
 
     if (coopLevel > 1) { goog.events.removeAll(chickenCoopUp); }
+    var barnUpInProgressLS = 0;
     function upgradeCoop(isFree) {
-        if (globalModalBlock == 0) {
+        if (globalModalBlock == 0 && barnUpInProgressLS == 0) {
             if (player.tools > 500 || isFree == 1) {
                 if (isFree == 0) { player.tools = player.tools - 500;}
-               
+                barnUpInProgressLS = 1;
                 chickenCoopUp.setHidden(true);
                 //setup upgrade 
 
@@ -10311,6 +10318,7 @@ farming.start = function () {
                         upgradesInProgress.buildings[4].currentBarnLevel = 2;
                         localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
                         goog.events.removeAll(chickenCoopUp);
+                        barnUpInProgressLS = 0;
                     }
 
                 }, this, 1000, 60);
@@ -11467,12 +11475,14 @@ farming.start = function () {
     });
 
     var secondsToUpgradeV = 120;
+    var barnUpInProgressV = 0;
     function vinyardBarnUpgrade(costTools, costWood) {
-        
+        if (barnUpInProgressV == 0){
             if (globalModalBlock == 0) {
                 vinFarmerQuest.setHidden(true);
                 vinFarmerQuestBtn.setHidden(true);
                 if (player.tools >= costTools) {
+                    barnUpInProgressV = 1;
                     HouseVUnlock3.setHidden(true);
                     player.tools = player.tools - costTools;
                     player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - parseInt(costWood);
@@ -11482,9 +11492,9 @@ farming.start = function () {
                     upgradeCloudV.setHidden(false);
                     scaffoldV.setHidden(false);
                     toolMoverLabelV.setHidden(false);
-               
+
                     //upgrade countdown timer
-                 
+
                     var upCloudWV = 100;
                     var upCloudXV = 45;
                     var upCloudYV = 220;
@@ -11548,14 +11558,14 @@ farming.start = function () {
                         goog.events.removeAll(upgradeVinyardBarnBtn);
                         goog.events.removeAll(HouseVUnlock3);
                         goog.events.removeAll(closeVinyardBarnBtn);
-                        
+                        barnUpInProgressV = 0;
                     }, secondsToUpgradeV * 1000);
                     //    
 
                 }
             }
-
-   }
+        }
+    }
 
     if (vinyardHouseLevel > 1) {
         goog.events.removeAll(upgradeVinyardBarnBtn);
@@ -13641,18 +13651,18 @@ farming.start = function () {
      
                 if (parseInt(upgradesInProgress.buildings[0].timeLeft) > 0) {
                     barnUpgradeCostWood = 0; barnUpgradeCostTools = 0;
-                    secondsToUpgrade = parseInt(upgradesInProgress.buildings[0].timeLeft)
+                    secondsToUpgrade = parseInt(upgradesInProgress.buildings[0].timeLeft);
                     upgradeHomeBarn(barnUpgradeCostTools, barnUpgradeCostWood);
                 }
                 if (parseInt(upgradesInProgress.buildings[1].timeLeft) > 0) {
                     toolCostP = 0; woodCostP = 0;
                     secondsToUpgradeP = parseInt(upgradesInProgress.buildings[1].timeLeft);
-                    pastureBarnUpgrade1(toolCostP, woodCostP)
+                    pastureBarnUpgrade1(toolCostP, woodCostP);
 
                 }
                 if (parseInt(upgradesInProgress.buildings[2].timeLeft) > 0) {
                     secondsToUpgradeBarnO = parseInt(upgradesInProgress.buildings[2].timeLeft)
-                    upgradeOrchardBarn(0)
+                    upgradeOrchardBarn(0);
                 }
                 if (parseInt(upgradesInProgress.buildings[3].timeLeft) > 0) {
                     barnUpgradeCostToolsV = 0; barnUpgradeCostWoodV = 0;
