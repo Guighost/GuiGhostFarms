@@ -4065,6 +4065,19 @@ farming.start = function () {
                     toolMoverLabel.setText(secondsToUpgrade);
 
                     if (secondsToUpgrade <= 0) {
+                        barnUnlock3.setHidden(true);            //barnUnlockBtn.setHidden(true);
+                        player.barnLevel = player.barnLevel + 1;
+
+                        a.updateTools();
+
+                        if (player.barnLevel > 5) { player.barnLevel = 5; barnUnlock3.setHidden(true); };
+                        //save upgrade in progress complete
+                        upgradesInProgress.buildings[0].timeLeft = 0;
+                        upgradesInProgress.buildings[0].currentBarnLevel = player.barnLevel;
+                        localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
+                        //console.log("Barn timer expired")
+                        localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+
                         toolMoverLabel.setHidden(true); scaffoldH.setHidden(true); upgradeCloud.setHidden(true); upgradeHomeBarnBtn.setHidden(true);
                         if (player.barnLevel == 2) {
                             barn.setFill(imgArray6[1]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Artichoke"); unlockedCropImage.setFill("images/" + a.crops[2].harvest); barnUnlock3.setHidden(false);
@@ -4075,59 +4088,62 @@ farming.start = function () {
                         if (player.barnLevel == 5) {
                             barn.setFill(imgArray6[4].src); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest);
                             barnUnlock3.setHidden(true); barn.setPosition(86, 4).setSize(134, 155); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true); homeToolCostLabel.setHidden(true);
+                            //remove handlers no longer needed                      
+                            goog.events.removeAll(upgradeHomeBarnBtn);
+                            goog.events.removeAll(barnUnlock3);
+                            goog.events.removeAll(upgradeHomeBarnBackBtn);
                         };
                         barnUnlock.setText("Lvl " + player.barnLevel + "/5");
                         setTimeout(function () {
                             unlockedCropBack.setHidden(true);
                             checkAchieves2();
                         }, 2000); 
+                        barnUpRunningHome = 0;
                     }
 
                 }, this, 1000, secondsToUpgrade)
            
                 //upgrade the barn after the 60 seconds
-                setTimeout(function () {
-                    barnUnlock3.setHidden(true);            //barnUnlockBtn.setHidden(true);
-                    player.barnLevel = player.barnLevel + 1;
+                //setTimeout(function () {
+                //    barnUnlock3.setHidden(true);            //barnUnlockBtn.setHidden(true);
+                //    player.barnLevel = player.barnLevel + 1;
 
-                    a.updateTools();
+                //    a.updateTools();
 
-                    if (player.barnLevel > 5) { player.barnLevel = 5; barnUnlock3.setHidden(true); };
-                    //save upgrade in progress complete
-                    upgradesInProgress.buildings[0].timeLeft = 0;
-                    upgradesInProgress.buildings[0].currentBarnLevel = player.barnLevel;
-                    localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
-                    //console.log("Barn timer expired")
-                    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-                    localStorage.setItem('GuiGhostFarms_toolsEver', toolsEver);
-                    localStorage.setItem('GuiGhostFarms_pickedEver', pickedEver);
-                    localStorage.setItem('GuiGhostFarms_moneyEver', moneyEver);
+                //    if (player.barnLevel > 5) { player.barnLevel = 5; barnUnlock3.setHidden(true); };
+                //    //save upgrade in progress complete
+                //    upgradesInProgress.buildings[0].timeLeft = 0;
+                //    upgradesInProgress.buildings[0].currentBarnLevel = player.barnLevel;
+                //    localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
+                //    //console.log("Barn timer expired")
+                //    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                 
 
         
-                    if (player.barnLevel == 2) { barn.setFill(imgArray6[1]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Artichoke"); unlockedCropImage.setFill("images/" + a.crops[2].harvest); barnUnlock3.setHidden(false); };
-                    if (player.barnLevel == 3) { barn.setFill(imgArray6[2]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Eggplant"); unlockedCropImage.setFill("images/" + a.crops[3].harvest); barnUnlock3.setHidden(false); };
-                    if (player.barnLevel == 4) { barn.setFill(imgArray6[3]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Peppers"); unlockedCropImage.setFill("images/" + a.crops[4].harvest); barnUnlock3.setHidden(false); };
-                    if (player.barnLevel == 5) {
-                        barn.setFill(imgArray6[4]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest);
-                        barnUnlock3.setHidden(true); barn.setPosition(86, 4).setSize(134, 155);
-                        //remove handlers no longer needed                      
-                        goog.events.removeAll(upgradeHomeBarnBtn);
-                        goog.events.removeAll(barnUnlock3);
-                        goog.events.removeAll(upgradeHomeBarnBackBtn);
+                //    if (player.barnLevel == 2) { barn.setFill(imgArray6[1]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Artichoke"); unlockedCropImage.setFill("images/" + a.crops[2].harvest); barnUnlock3.setHidden(false); };
+                //    if (player.barnLevel == 3) { barn.setFill(imgArray6[2]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Eggplant"); unlockedCropImage.setFill("images/" + a.crops[3].harvest); barnUnlock3.setHidden(false); };
+                //    if (player.barnLevel == 4) { barn.setFill(imgArray6[3]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Peppers"); unlockedCropImage.setFill("images/" + a.crops[4].harvest); barnUnlock3.setHidden(false); };
+                //    if (player.barnLevel == 5) {
+                //        barn.setFill(imgArray6[4]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest);
+                //        barnUnlock3.setHidden(true); barn.setPosition(86, 4).setSize(134, 155);
+                //        //remove handlers no longer needed                      
+                //        goog.events.removeAll(upgradeHomeBarnBtn);
+                //        goog.events.removeAll(barnUnlock3);
+                //        goog.events.removeAll(upgradeHomeBarnBackBtn);
                        
                    
-                    };
-                    barnUnlock.setText("Lvl " + player.barnLevel + "/5");
-                    setTimeout(function () {
-                        unlockedCropBack.setHidden(true);
-                        checkAchieves2();
-                    }, 2000); 
-                    barnUpRunningHome = 0;
-                    //if (player.barnLevel == 2) { barnUnlock3.setFill("images/tools250.png"); }
-                    //else if (player.barnLevel == 3) { barnUnlock3.setFill("images/tools500.png"); }
-                    //else if (player.barnLevel == 4) { barnUnlock3.setFill("images/tools1500.png"); }
-                    //else { barnUnlock3.setFill("images/tools100.png"); };
-                }, (secondsToUpgrade * 1000));
+                //    };
+                //    barnUnlock.setText("Lvl " + player.barnLevel + "/5");
+                //    setTimeout(function () {
+                //        unlockedCropBack.setHidden(true);
+                //        checkAchieves2();
+                //    }, 2000); 
+         
+                //    //if (player.barnLevel == 2) { barnUnlock3.setFill("images/tools250.png"); }
+                //    //else if (player.barnLevel == 3) { barnUnlock3.setFill("images/tools500.png"); }
+                //    //else if (player.barnLevel == 4) { barnUnlock3.setFill("images/tools1500.png"); }
+                //    //else { barnUnlock3.setFill("images/tools100.png"); };
+                //}, (secondsToUpgrade * 1000));
 
             }
         }
