@@ -2542,7 +2542,7 @@ farming.start = function () {
     var vinyardNavH = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 35).setSize(50, 50).setFill(imgArray[46]); compassHBack.appendChild(vinyardNavH)
     var homeNavH = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(96, 100).setSize(60, 60).setFill(imgArray[50]); compassHBack.appendChild(homeNavH)
     var pastureNavH = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 170).setSize(50, 50).setFill(imgArray[47]); compassHBack.appendChild(pastureNavH)
-    var closeNavH = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(100, 222).setSize(50, 50).setFill(imgArray[31]); compassHBack.appendChild(closeNavH)
+    var closeNavH = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(100, 222).setSize(50, 50).setFill(imgArray[21]); compassHBack.appendChild(closeNavH)
     compassHBack.setHidden(true);
 
 
@@ -3333,7 +3333,7 @@ farming.start = function () {
     speedAdConfirmSC.appendChild(starCashBoost);
 	var speedAdCancel =(new lime.GlossyButton).setColor("#8B0000").setText("").setPosition(105, 208).setSize(40, 40);
     boostCrops.appendChild(speedAdCancel);
-    var cancelBoostImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-20, -20).setSize(40, 40).setFill(imgArray[31]);
+    var cancelBoostImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-20, -20).setSize(40, 40).setFill(imgArray[21]);
     speedAdCancel.appendChild(cancelBoostImg);
    
     var visibleLink = true;
@@ -3354,8 +3354,7 @@ farming.start = function () {
                 
             }
             e.event.stopPropagation();
-            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-            });  
+            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });  
         });
         goog.events.listen(speedAdConfirmSC, ["mousedown", "touchstart"], function (e) {
             visibleLink = boostCrops.getHidden();
@@ -3958,7 +3957,7 @@ farming.start = function () {
         if (player.barnLevel == 1) { barnUpgradeCostTools = 100; barnUpgradeCostWood = 50; secondsToUpgrade = 60; nextBarn = imgArray6[1].src }
         if (player.barnLevel == 2) { barnUpgradeCostTools = 250; barnUpgradeCostWood = 100; secondsToUpgrade = 120; nextBarn = imgArray6[2].src}
         else if (player.barnLevel == 3) { barnUpgradeCostTools = 500; barnUpgradeCostWood = 150; secondsToUpgrade = 180; nextBarn = imgArray6[3].src}
-        else if (player.barnLevel == 4) { barnUpgradeCostTools = 1500; barnUpgradeCostWood = 250; secondsToUpgrade = 300; nextBarn = imgArray6[4].src}
+        else if (player.barnLevel == 4) { barnUpgradeCostTools = 1250; barnUpgradeCostWood = 250; secondsToUpgrade = 300; nextBarn = imgArray6[4].src}
         else { barnUpgradeCostTools = 100; }
         unlockedCropBack.setHidden(false); unlockedCropText.setText("Upgrade Barn to Level " + (player.barnLevel + 1)); unlockedCropText2.setText(""); unlockedCropImage.setFill(nextBarn);
    
@@ -3993,14 +3992,15 @@ farming.start = function () {
 
     });
     goog.events.listen(upgradeHomeBarnBtn, ["mousedown", "touchstart"], function () {
-        var upgradeHomeBarnBtnHid = upgradeHomeBarnBtn.getHidden();
+        var upgradeHomeBarnBtnHid = unlockedCropBack.getHidden();
         //console.log(upgradeHomeBarnBtnHid + " hidden upgradeHomeBarnBtn");
-        if (player.barnLevel == 1) { barnUpgradeCostTools = 100; barnUpgradeCostWood = 50; secondsToUpgrade = 60; nextBarn = imgArray6[1].src }
-        if (player.barnLevel == 2) { barnUpgradeCostTools = 250; barnUpgradeCostWood = 100; secondsToUpgrade = 120; nextBarn = imgArray6[2].src }
-        else if (player.barnLevel == 3) { barnUpgradeCostTools = 500; barnUpgradeCostWood = 150; secondsToUpgrade = 180; nextBarn = imgArray6[3].src }
-        else if (player.barnLevel == 4) { barnUpgradeCostTools = 1500; barnUpgradeCostWood = 250; secondsToUpgrade = 300; nextBarn = imgArray6[4].src }
-        else { barnUpgradeCostTools = 100; }
+     
         if (upgradeHomeBarnBtnHid == false) {
+            if (player.barnLevel == 1) { barnUpgradeCostTools = 100; barnUpgradeCostWood = 50; secondsToUpgrade = 60; nextBarn = imgArray6[1].src }
+            if (player.barnLevel == 2) { barnUpgradeCostTools = 250; barnUpgradeCostWood = 100; secondsToUpgrade = 120; nextBarn = imgArray6[2].src }
+            else if (player.barnLevel == 3) { barnUpgradeCostTools = 500; barnUpgradeCostWood = 150; secondsToUpgrade = 180; nextBarn = imgArray6[3].src }
+            else if (player.barnLevel == 4) { barnUpgradeCostTools = 1250; barnUpgradeCostWood = 250; secondsToUpgrade = 300; nextBarn = imgArray6[4].src }
+            else { barnUpgradeCostTools = 100; }
             unlockedCropBack.setHidden(true);
             upgradeHomeBarnBtn.setHidden(true);
             upgradeHomeBarnBackBtn.setHidden(true);
@@ -4110,8 +4110,7 @@ farming.start = function () {
                     if (player.barnLevel == 5) {
                         barn.setFill(imgArray6[4]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest);
                         barnUnlock3.setHidden(true); barn.setPosition(86, 4).setSize(134, 155);
-
-                       
+                        //remove handlers no longer needed                      
                         goog.events.removeAll(upgradeHomeBarnBtn);
                         goog.events.removeAll(barnUnlock3);
                         goog.events.removeAll(upgradeHomeBarnBackBtn);
