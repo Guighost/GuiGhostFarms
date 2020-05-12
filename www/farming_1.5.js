@@ -2147,6 +2147,11 @@ var vinyardBlocks = 1;
 var vinyardBlocks2 = 1;
 var vinyardHouseLevel = 1;
 var orchardBarnLevel = 0;
+var barnUpRunningHome = 0;
+var barnUpInProgressPasture = 0;
+var barnUpInProgressO = 0;
+var barnUpInProgressLS = 0;
+var barnUpInProgressV = 0;
 
 if (typeof localStorage["MedFarm_orchardBarnLevel"] === "undefined") { localStorage["MedFarm_orchardBarnLevel"] = 0; orchardBarnLevel = 0;};
 orchardBarnLevel = localStorage.getItem("MedFarm_orchardBarnLevel");
@@ -3330,11 +3335,12 @@ farming.start = function () {
     boostCrops.appendChild(speedAdCancel);
     var cancelBoostImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-20, -20).setSize(40, 40).setFill(imgArray[31]);
     speedAdCancel.appendChild(cancelBoostImg);
-
+   
     var visibleLink = true;
 		goog.events.listen(speedAdConfirm, ["mousedown", "touchstart"], function (e) {
             //console.log("clicked confirm");
             visibleLink = boostCrops.getHidden();
+       
             //console.log("visibleLink = " + visibleLink);
             if (visibleLink == false) { 
                 localStorage.setItem('MedFarm_LoadAd', 1);
@@ -3354,6 +3360,7 @@ farming.start = function () {
         goog.events.listen(speedAdConfirmSC, ["mousedown", "touchstart"], function (e) {
             visibleLink = boostCrops.getHidden();
             //console.log("visibleLink = " + visibleLink);
+     
             if (visibleLink == false) {
                 //console.log("clicked confirm SC");
                 if (starCash >= 3) {
@@ -4008,9 +4015,9 @@ farming.start = function () {
     });
 
 
-    var barnUpRunningHome = 0;
+  
     function upgradeHomeBarn(barnUpgradeCostTools, barnUpgradeCostWood) {          //barnUpgrades    barn Upgrades
-
+     
         //console.log("fired barn upgrade");
         if (barnUpRunningHome == 0){
       
@@ -5331,7 +5338,7 @@ farming.start = function () {
 
         //barnUpgrades
     var secondsToUpgradeP = 120;
-    var barnUpInProgressPasture = 0;
+   
     function pastureBarnUpgrade1(toolCostP, woodCostP) {
         if (barnUpInProgressPasture == 0){
             if (player.tools >= toolCostP && parseInt(player.pastureLevel) <= 3 && globalModalBlock == 0 && parseInt(player.cropsStored[14].stored) >= woodCostP) {
@@ -6491,7 +6498,7 @@ farming.start = function () {
     });
 
     ///upgrade orchard barn
-    var barnUpInProgressO = 0;
+   
     function upgradeOrchardBarn(free) {
         if (free == 1) { player.tools = player.tools - 250; player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - 200;} 
         if (barnUpInProgressO == 0){
@@ -10276,7 +10283,7 @@ farming.start = function () {
     });
 
     if (coopLevel > 1) { goog.events.removeAll(chickenCoopUp); }
-    var barnUpInProgressLS = 0;
+
     function upgradeCoop(isFree) {
         if (globalModalBlock == 0 && barnUpInProgressLS == 0) {
             if (player.tools > 500 || isFree == 1) {
@@ -11475,7 +11482,7 @@ farming.start = function () {
     });
 
     var secondsToUpgradeV = 120;
-    var barnUpInProgressV = 0;
+
     function vinyardBarnUpgrade(costTools, costWood) {
         if (barnUpInProgressV == 0){
             if (globalModalBlock == 0) {
@@ -13649,7 +13656,7 @@ farming.start = function () {
             //upgrade barn from load after quit in progress
                 upgradesInProgress = JSON.parse(localStorage.getItem('MedFarm_upgradesInProgress'));
      
-                if (parseInt(upgradesInProgress.buildings[0].timeLeft) > 0) {
+                if (parseInt(upgradesInProgress.buildings[0].timeLeft) > 0 ) {
                     barnUpgradeCostWood = 0; barnUpgradeCostTools = 0;
                     secondsToUpgrade = parseInt(upgradesInProgress.buildings[0].timeLeft);
                     upgradeHomeBarn(barnUpgradeCostTools, barnUpgradeCostWood);
