@@ -854,7 +854,7 @@ imgArray5[13] = new Image(); imgArray5[13].src = 'images/UI/tut14.png';
 
 //barn upgrades
 var imgArray6 = new Array();
-imgArray6[0] = new Image(); imgArray6[0].src = 'images/UI/barn1-1.svg';
+imgArray6[0] = new Image(); imgArray6[0].src = 'images/UI/barn1-1.png';
 imgArray6[1] = new Image(); imgArray6[1].src = 'images/UI/barn2-1.svg';
 imgArray6[2] = new Image(); imgArray6[2].src = 'images/UI/barn3-1.svg';
 imgArray6[3] = new Image(); imgArray6[3].src = 'images/UI/barn4-1.svg';
@@ -2267,11 +2267,11 @@ farming.start = function () {
 
     ];
     a.barnlevelImg = [
-        { name: "Basic Shed", image: "barn1-1.svg" },
-        { name: "Small Barn", image: "barn2-1.svg" },
-        { name: "Large Barn", image: "barn3-1.svg" },
-        { name: "XLarge Barn", image: "barn4-1.svg" },
-        { name: "Double Silo Barn", image: "barn5-1.svg" },
+        { name: "Basic Shed", image: imgArray6[0].src },
+        { name: "Small Barn", image: imgArray6[1].src },
+        { name: "Large Barn", image: imgArray6[2].src },
+        { name: "XLarge Barn", image: imgArray6[3].src },
+        { name: "Double Silo Barn", image: imgArray6[4].src },
         { name: "Pasture", image: "pasture.png" }
     ];
     a.PastureUpgrades = [
@@ -3051,7 +3051,7 @@ farming.start = function () {
     //var forge = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(4, 52).setSize(84, 99).setFill("images/" + a.barnyard[17].image); e.appendChild(forge);
     
     //var toolTable = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 111).setSize(19, 22).setFill("images/" + a.barnyard[16].image); e.appendChild(toolTable);
-    var barn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(85, 2).setSize(132, 155).setFill("images/" + a.barnlevelImg[(player.barnLevel - 1)].image); e.appendChild(barn);
+    var barn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(85, 2).setSize(132, 155).setFill(imgArray6[(player.barnLevel - 1)]); e.appendChild(barn);
     var houseImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(238, 23).setSize(60, 92).setFill("images/house1.svg"); e.appendChild(houseImg);
     var houseEnterBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(251, 115).setSize(30, 30).setFill("images/UI/houseButton.png"); e.appendChild(houseEnterBtn);
 
@@ -4063,10 +4063,10 @@ farming.start = function () {
                             barn.setFill(imgArray6[1]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Artichoke"); unlockedCropImage.setFill("images/" + a.crops[2].harvest); barnUnlock3.setHidden(false);
                             homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);
                         };
-                        if (player.barnLevel == 3) { barn.setFill(imgArray6[2]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Eggplant"); unlockedCropImage.setFill("images/" + a.crops[3].harvest); barnUnlock3.setHidden(false); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeToolCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true); };
-                        if (player.barnLevel == 4) { barn.setFill(imgArray6[3]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Peppers"); unlockedCropImage.setFill("images/" + a.crops[4].harvest); barnUnlock3.setHidden(false); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true); homeToolCostLabel.setHidden(true);};
+                        if (player.barnLevel == 3) { barn.setFill(imgArray6[2].src); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Eggplant"); unlockedCropImage.setFill("images/" + a.crops[3].harvest); barnUnlock3.setHidden(false); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeToolCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true); };
+                        if (player.barnLevel == 4) { barn.setFill(imgArray6[3].src); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Peppers"); unlockedCropImage.setFill("images/" + a.crops[4].harvest); barnUnlock3.setHidden(false); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true); homeToolCostLabel.setHidden(true);};
                         if (player.barnLevel == 5) {
-                            barn.setFill(imgArray6[4]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest);
+                            barn.setFill(imgArray6[4].src); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest);
                             barnUnlock3.setHidden(true); barn.setPosition(86, 4).setSize(134, 155); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true); homeToolCostLabel.setHidden(true);
                         };
                         barnUnlock.setText("Lvl " + player.barnLevel + "/5");
