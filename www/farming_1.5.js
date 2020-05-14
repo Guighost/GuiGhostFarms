@@ -1489,9 +1489,11 @@ var farming = {
 
         }
         var picked = this.crop;
+       
         function growIt(d) {
             //if (tutSeen == 0) { break; }
-            if (scene == 1 && b.currentCrop > 5 || b.currentCrop == 'undefined') {b.currentCrop = homeCrop; };
+            homeCrop = localStorage.getItem('MedFarms_selectedHomeCrop');
+            if (scene == 1 && (b.currentCrop > 5 || b.currentCrop == 'undefined' || b.currentCrop < 0 || b.currentCrop == 'null')) { b.currentCrop = homeCrop; };
             if (scene == 32) { b.currentCrop = 9; };
             if (scene == 3) { b.currentCrop = 8; };
             var toPlant = a.crops[b.currentCrop].grow1;
@@ -1535,7 +1537,7 @@ var farming = {
                     : c.state == farming.PLOWED && player.money >= a.crops[b.currentCrop].cost ?
 
                         (
-
+                            toPlant = a.crops[b.currentCrop].grow1,
                             c.setFill("images/" + toPlant),
                             c.state = farming.GROWING,
                             c.crop = b.currentCrop,
@@ -1555,8 +1557,8 @@ var farming = {
 
                             : c.state == farming.READY && (c.setFill(imgArrayGround[0]),
                                 //this.crop = landStateMaster[arrayIndex].props.crop,
-                                c.crop =  landStateMaster[arrayIndex].props.crop,
-                                //console.log("arrayindex " + landStateMaster[arrayIndex].props.crop + "c.crop = " + c.crop),
+                                //c.crop =  landStateMaster[arrayIndex].props.crop,
+                                console.log("arrayindex " + landStateMaster[arrayIndex].props.crop + " c.crop = " + c.crop),
                                 block == 'tlt' && (c.setFill(imgArrayGround[2])),
                                 block == 'trt' && (c.setFill(imgArrayGround[1])),
                                 block == 'brt' && (c.setFill(imgArrayGround[3])),
@@ -2092,7 +2094,7 @@ cropsStored: [
         { index: 17, name: "Barrels", stored: 0 },
         { index: 18, name: "Cider", stored: 0 },
         { index: 19, name: "Grape Juice", stored: 0 },
-        { index: 20, name: "Bottles", stored: 0 },
+        { index: 20, name: "Bottles", stored: 0 }
 
     ]
    
@@ -10444,7 +10446,7 @@ farming.start = function () {
     a.sparkles();
 
 
-    a.LivestockHarvest = function () {
+    a.LivestockHarvest = function (player) {
         lime.scheduleManager.scheduleWithDelay(function () {
             lsHarvest = lsHarvest + 1;
             if (player.cropsStored[5].stored >= 1) {
@@ -10458,7 +10460,7 @@ farming.start = function () {
             }
         }, this, 15000)
     }
-    a.LivestockHarvest();
+    a.LivestockHarvest(player);
 
     ///egg clicks
     goog.events.listen(egg1, ["mousedown", "touchstart", "touchmove"], function () {
@@ -10742,11 +10744,11 @@ farming.start = function () {
     var porkWaiting = 0;
     var porkTimer = 0;
     var porkOnce = 0;
-    var porkWaiting = 0;
+   
     var acresOwned2 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
     lime.scheduleManager.scheduleWithDelay(function () {
         //add upgrade anim
-        if (sceneActive == 'LS') {
+     
             porkTimer = porkTimer + 1;
             var porkPos = porkUpCount.getPosition();
             var porkPosY = porkPos.y - 5;
@@ -10776,7 +10778,7 @@ farming.start = function () {
             }
             if (porkTimer > 248) { porkTimer = 0; porkUpCount.setHidden(true); porkOnce = 0; porkUpIcon.setHidden(true); }
 
-        }
+        
     }, this, 250)
 
     goog.events.listen(collectPork, ["mousedown", "touchstart"], function () {
@@ -13657,26 +13659,11 @@ farming.start = function () {
     
 
                 document.getElementById("starCashOuterLabel").innerHTML = starCash;
-
-
-                ////// exit intent
-                //document.addEventListener("deviceready", onDeviceReady, false);
-                //// Cordova is loaded and it is now safe to call Cordova methods
-                ////
-                //function onDeviceReady() {
-                //    // Register the event listener
-                //    document.addEventListener("backbutton", onBackKeyDown, false);
-                //}
-
-                //// Handle the back button
-                ////
-                //function onBackKeyDown() {
-                //    alert("back pressed");
-                //}
-
+    
 
             //upgrade barn from load after quit in progress
                 upgradesInProgress = JSON.parse(localStorage.getItem('MedFarm_upgradesInProgress'));
+                 
      
                 if (parseInt(upgradesInProgress.buildings[0].timeLeft) > 0 ) {
                     barnUpgradeCostWood = 0; barnUpgradeCostTools = 0;
