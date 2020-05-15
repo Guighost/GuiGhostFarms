@@ -1558,7 +1558,7 @@ var farming = {
                             : c.state == farming.READY && (c.setFill(imgArrayGround[0]),
                                 //this.crop = landStateMaster[arrayIndex].props.crop,
                                 //c.crop =  landStateMaster[arrayIndex].props.crop,
-                                console.log("arrayindex " + landStateMaster[arrayIndex].props.crop + " c.crop = " + c.crop),
+                                //console.log("arrayindex " + landStateMaster[arrayIndex].props.crop + " c.crop = " + c.crop),
                                 block == 'tlt' && (c.setFill(imgArrayGround[2])),
                                 block == 'trt' && (c.setFill(imgArrayGround[1])),
                                 block == 'brt' && (c.setFill(imgArrayGround[3])),
@@ -2100,27 +2100,49 @@ cropsStored: [
    
 };
 
-var tutSeen = 0;
-if (typeof localStorage["GuiGhostFarms_tutSeen"] === "undefined") { localStorage.setItem('GuiGhostFarms_tutSeen', 0);  };
-
-tutSeen = parseInt(localStorage["GuiGhostFarms_tutSeen"]);
-
-localStorage.setItem('MedFarm_LoadAd', 0);
 
 if (typeof localStorage["GuiGhostFarms_player"] === "undefined") { localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));};
 player = JSON.parse(localStorage.getItem('GuiGhostFarms_player'));
+
 if (typeof localStorage["GuiGhostFarms_playerItems"] === "undefined") { localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems)); };
 collectItems = JSON.parse(localStorage.getItem('GuiGhostFarms_playerItems'));
+
 var checkWoodType = Number.isInteger(player.cropsStored[14].stored);
 //console.log("wood is integer " + checkWoodType);
-if (checkWoodType == false) { player.cropsStored[14].stored = 0; };
+if (checkWoodType == false) { player.cropsStored[14].stored = 100; };
 
 try { player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored);  }
 catch (err) {  player.cropsStored[14].stored = 1000; }
 //hotfix to deal with upgrade people getting negative values
-if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 1000;  }
+if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 250; }
+
+var barrelCheck = Number.isInteger(player.cropsStored[17].stored);
+if (barrelCheck == false) { player.cropsStored[17].stored = 100; };
+
+function validCropsStored(){
+//check all crops and set to 0 if not a integer
+for (i = 0; i < 21; i++){
+    //1st - force int by default
+    player.cropsStored[i].stored = parseInt(player.cropsStored[i].stored);
+    //check if still not a num
+    var check = Number.isInteger(player.cropsStored[i].stored);
+    if (check == false) { player.cropsStored[i].stored = 20; console.log("fixing  " + player.cropsStored[i].name)};
+    //console.log("player.cropsStored " + player.cropsStored[i].name + " " + player.cropsStored[i].stored);
+    }
+}
+validCropsStored();
+
+
+
 localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
 
+
+var tutSeen = 0;
+if (typeof localStorage["GuiGhostFarms_tutSeen"] === "undefined") { localStorage.setItem('GuiGhostFarms_tutSeen', 0); };
+
+tutSeen = parseInt(localStorage["GuiGhostFarms_tutSeen"]);
+
+localStorage.setItem('MedFarm_LoadAd', 0);
 
 var globalModalBlock = 0;
 if (typeof player.cropsStored[14] === "undefined") {
@@ -2806,7 +2828,7 @@ farming.start = function () {
     f.appendChild(harvest1); harvest1.setHidden(true);
 
     a.updateHarvest = function (x, y, picked) {
-        console.log("picked = " + picked + "image = " + a.crops[picked].harvest);
+        //console.log("picked = " + picked + "image = " + a.crops[picked].harvest);
         harvest1.setPosition(x, y), harvest1.setFill("images/" + a.crops[picked].harvest), harvest1.setHidden(false);
         harvest2.setPosition(x, y), harvest2.setHidden(false);
         harvest3.setPosition(x, y), harvest3.setFill("images/" + a.crops[picked].harvest), harvest3.setHidden(false);
@@ -5955,6 +5977,7 @@ farming.start = function () {
                 if (ciderEnabled == 1 && player.cropsStored[8].stored < 1 && player.cropsStored[9].stored < 1) { ciderPlaceNeedFruit.setHidden(false); }
                 else { ciderPlaceNeedFruit.setHidden(true); }
                 if (collectItems.storeItems[4].owned == 1 && ciderEnabled == 1 && player.cropsStored[17].stored < 1) { ciderPlaceNeedBarrels.setHidden(false); }
+                else if (collectItems.storeItems[4].owned == 1 && ciderEnabled == 1 && player.cropsStored[17].stored > 1) { ciderPlaceNeedBarrels.setHidden(true);}
             }
             if (ciderTick > 240) {
                 //console.log("cidrTick triggered - ciderEnabled = " + ciderEnabled + "and crop 17 stored = " + player.cropsStored[17].stored + "and crop 9 stored = " + player.cropsStored[9].stored);
@@ -8845,6 +8868,7 @@ farming.start = function () {
 
             if (monkAnimCount == 48) { mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(240, 242).setFill(imgArrayFelicia[9].src); };
 
+
             if (monkAnimCount == 49) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[1]); felicia.setPosition(210, 242).setFill(imgArrayFelicia[11].src); felicia.setPosition(235, 242).setFill(imgArrayFelicia[10].src); traderInStore.setFill(imgArrayTrader[2].src); };
             monkAnimCount = monkAnimCount + 1;
         }
@@ -8923,6 +8947,7 @@ farming.start = function () {
     giveBtn.setHidden(true);
     var questPanelCloseBtn = (new lime.GlossyButton).setColor("#663300").setText("Close").setPosition(75, 235).setSize(100, 20).setHidden(false);;
     questPanel.appendChild(questPanelCloseBtn);
+
     //var itemToSell = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(135, 80).setSize(64, 64).setFill(imgArrayItems[8].src);
     //questPanel.appendChild(itemToSell);
     //var itemToSellText = (new lime.Label).setAnchorPoint(0, 0).setPosition(105, 60).setText("Item Title").setFontFamily("Comic Sans MS").setFontColor("#0101DF").setFontSize(16);
@@ -9121,12 +9146,12 @@ farming.start = function () {
                ////////clear any previous loop still running            
                // try { clearInterval(looperMayor); }
                // catch (err) { console.log("caught from clearLoop" + err) }
-                        questHeader.setText("Mayor Borgan");
+                questHeader.setText("Mayor Borgan").setPosition(60, 25);
                         questText1.setText(questParams.mayor[1].text);
                         swapItM1 = 0;
                         mayorQuest.setFill(imgArrayTown[15].src);
                         questPanelAvatar.setFill(imgArrayMayor[0].src);
-       
+                        questPanelCloseBtn.setPosition(75, 235);
             
                         if (questParams.mayor[0].available === true) {
                             var questLevelMayor = questParams.mayor[0].highestCompleted;
@@ -9154,8 +9179,8 @@ farming.start = function () {
                //catch (err) { console.log("caught from sellbtn " + err) }
                //try { sellItemsBtn2.setHidden(true); }
                //catch (err) { console.log("caught from sellbtn2 " + err) }
-               
-                questHeader.setText("Friar Patrick");
+                questPanelCloseBtn.setPosition(75, 235);
+                questHeader.setText("Friar Patrick").setPosition(65, 25);
                  questPanelAvatar.setFill(imgArrayTown[1].src)
                 swapIt = 0;
             
@@ -9180,8 +9205,9 @@ farming.start = function () {
            
         }
             if (who == "felicia") {
+                questPanelCloseBtn.setPosition(75, 235);
                 itemCountText.setHidden(true);
-            questHeader.setText("Lady Felicia");
+                questHeader.setText("Lady Felicia").setPosition(72, 25);
             swapIt = 0;
             questPanelAvatar.setFill(imgArrayFelicia[0].src);
            
@@ -9205,8 +9231,9 @@ farming.start = function () {
 
         }
         if (who == "sara") {
-            questHeader.setText("InnKeeper Sara");
+            questHeader.setText("InnKeeper Sara").setPosition(50, 24);
             questPanelAvatar.setFill(imgArrayTown2[0].src)
+            questPanelCloseBtn.setPosition(75, 235);
             swapIt = 0;
             //var looperSara = setInterval(function () {
             //    swapIt++
@@ -9247,8 +9274,9 @@ farming.start = function () {
          if (complete = 1) {
             sellItemsBtn.setHidden(false);
             if (who == "mayor") {
+                questPanelCloseBtn.setPosition(75, 235);
                 itemCountText.setHidden(true);
-                questHeader.setText("Mayor Borgan");
+                questHeader.setText("Mayor Borgan").setPosition(60, 25);
                 questPanelAvatar.setPosition(80, 38);
                  questPanelAvatar.setFill(imgArrayMayor[0].src);
                  questText1.setText("I will buy those jewels from you");
@@ -9260,9 +9288,10 @@ farming.start = function () {
      
              }
             if (who == "monk") {
+                questPanelCloseBtn.setPosition(75, 235);
                 itemCountText.setHidden(true);
                 questPanelAvatar.setPosition(80, 38);
-                 questHeader.setText("Friar Patrick");
+                questHeader.setText("Friar Patrick").setPosition(65, 25);;
                  questPanelAvatar.setFill(imgArrayTown[1].src);
                  questText1.setText("You found something interesting to me");
                  sellAvatar.setFill(imgArrayTown[1].src);    
@@ -9273,9 +9302,11 @@ farming.start = function () {
              
              }
             if (who == "felicia") {
+                questPanelCloseBtn.setPosition(140, 235);
                 itemCountText.setHidden(true);
-                questPanelAvatar.setPosition(80, 38);
-                 questHeader.setText("Lady Felicia");
+                questPanelAvatar.setPosition(88, 38);
+                questPanelAvatar.setFill(imgArrayFelicia[0].src);
+                questHeader.setText("Lady Felicia").setPosition(75, 25);
                  //console.log("Felicia highest complssseted = " + questParams.felicia[0].highestCompleted)
                  //////check if has locket for 1st time
                  sellItemsBtn.setHidden(true);  
@@ -9313,16 +9344,29 @@ farming.start = function () {
                      //checkSellItems('felicia');
                  }
                  else {
-                     questPanelAvatar.setPosition(80, 38);
+                     questPanelAvatar.setPosition(80, 38).setFill(imgArrayFelicia[0].src)
                      questPanelItemImg.setHidden(true);
-                     questText1.setText("I heard the king sometimes sends special orders to feed the troops");
+                     var randomSpeech = Math.round(Math.random() * 7);
+                     switch (randomSpeech) {
+                         case 0:  questText1.setText("I heard the king sometimes sends special orders to feed the troops"); break;
+                         case 1:  questText1.setText("I met your wife Denise. You did buy her some furniture.... right?"); break; 
+                         case 2:  questText1.setText("Legends tell of a Local Lord that ruled many years ago."); break;
+                         case 3: questText1.setText("The Friar told me that the local lordship has been vacant for years"); break; 
+                         case 4: questText1.setText("I grew up close to the castle and miss the spices we could get there"); break; 
+                         case 5: questText1.setText("The trader told me some old maps show caverns in the area. I wonder where"); break;
+                         case 6: questText1.setText("I heard there is a healer named Connie that lives somewhere close by"); break; 
+                         case 7: questText1.setText("There used to be a Windmill close by, but it was damaged in a storm and never repaired"); break; 
+                         default: questText1.setText("My husband buys me awesome jewels all the time"); break; 
+                     }
+                     //questText1.setText("I heard the king sometimes sends special orders to feed the troops");
                      feliciaQuestBtn.setHidden(true);
                      feliciaQuest.setHidden(true); 
                  }
                  questPanel.setHidden(false);
              }
-             if (who == "sara") {
-                 questHeader.setText("InnKeeper Sara");
+            if (who == "sara") {
+                questPanelCloseBtn.setPosition(75, 235);
+                 questHeader.setText("InnKeeper Sara").setPosition(50, 24);;
                  questPanelAvatar.setFill(imgArrayTown2[0].src)
                  questText1.setText("My patrons want CIDER. If you can make some, I will buy it from you");
                  sellAvatar.setFill(imgArrayTown[1].src);  
@@ -11471,8 +11515,9 @@ farming.start = function () {
     goog.events.listen(HouseVUnlock3, ["mousedown", "touchstart"], function () {
         upgradeBarnConfirmV.setHidden(false);
 
-        if ( parseInt(player.cropsStored[14].stored) < barnUpgradeCostWoodV || vinyardHouseLevel == 2 ) { upgradeVinyardBarnBtn.setHidden(true); upgradeBarnVShortText.setHidden(false); }
-        if (player.tools < barnUpgradeCostToolsV) { upgradeVinyardBarnBtn.setHidden(true); upgradeBarnVShortText.setHidden(false); }
+        if ((parseInt(player.cropsStored[14].stored) < barnUpgradeCostWoodV) || (player.tools < barnUpgradeCostToolsV) ) { upgradeVinyardBarnBtn.setHidden(true); upgradeBarnVShortText.setHidden(false); }
+        //if (player.tools < barnUpgradeCostToolsV) { upgradeVinyardBarnBtn.setHidden(true); upgradeBarnVShortText.setHidden(false); }
+        else { upgradeVinyardBarnBtn.setHidden(false); upgradeBarnVShortText.setHidden(true); }
         var treeblockUP = treesImgV.getHidden();
         var treeblockUP2 = treesImgV2.getHidden();
         treesImgV.setHidden(true);

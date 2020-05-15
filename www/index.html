@@ -732,7 +732,7 @@
 
 
 
-        <script type="text/javascript" src="farmingMin_1.5.1.6.js"></script>
+        <script type="text/javascript" src="farming_1.5.js"></script>
    
 </head>
 
@@ -843,7 +843,7 @@
     } if (localStorage.getItem("MedFarms_boughtLargeStars") == null) {
         localStorage.setItem("MedFarms_boughtLargeStars", 0);
     }
-
+    localStorage.setItem('adWatched', 0);
 var showItOrNo = 1;
 var showItOrNo2 = 0;
     var onceOnlyAd = 0;
@@ -902,8 +902,8 @@ var showItOrNo2 = 0;
         Enhance.showInterstitialAd();
         
     };
-    ////primary loop 2 - external loads
-var tid2 = setInterval(interPop2, 500);
+//    ////primary loop 2 - external loads
+//var tid2 = setInterval(interPop2, 500);
   
    
     function interPop2() {
@@ -918,19 +918,19 @@ var tid2 = setInterval(interPop2, 500);
         showItOrNo2 = 0;
         showItOrNo2 = parseInt(localStorage.getItem('MedFarm_LoadAd'));
          //hide for AdFree
-            if (showItOrNo2 == 1) {
+        if (showItOrNo2 == 1) {
                 localStorage.setItem('MedFarm_LoadAd', 0);
                 localStorage.setItem('adWatched', 1);
                 showItOrNo2 = 0;
                 try { Enhance.isInterstitialReady(callback); }
                 catch(err){console.log("Caught interstital  error " + err)}
            
-            }
+        }
          //hide for AdFree
             //rewarded video
             showRewarded = parseInt(localStorage.getItem('MedFarm_StarCashBoost'));
-            if (showRewarded == 1) {
-                console.log("interpop2 detected showRewarded = " + showRewarded)
+        if (showRewarded == 1) {
+            console.log("interpop2 detected showRewarded = " + showRewarded);
                 showRewarded = 0;
                 //award starcash
                 
@@ -952,11 +952,11 @@ var tid2 = setInterval(interPop2, 500);
 				localStorage.setItem('MedFarm_StarCashBoost', 0);
                 localStorage.setItem('MedFarm_LoadAd', 0);
                 setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 10000);
-            }
+        }
                
 
-            
-            
+          //check for purchases (combined timer)  
+        purchaseCheck();   
         
     }
        ////rate me
@@ -1238,14 +1238,14 @@ var tid2 = setInterval(interPop2, 500);
 
             localStorage.setItem('MedFarms_buyingMasterPack', 0) 
        
-          var purchaseCheck =   setInterval(function () {
+            function purchaseCheck () {
                  //console.log("tickk");
                  buyingSmallStars = localStorage.getItem('MedFarms_buyingSmallStars');
                  buyingLargeStars = localStorage.getItem('MedFarms_buyingLargeStars');
                  buyingStarterPack = localStorage.getItem('MedFarms_buyingStarterPack');
                  buyingMasterPack = localStorage.getItem('MedFarms_buyingMasterPack');
                  if (buyingSmallStars == 1) {
-                     console.log("in IF buying small stars");
+                     //console.log("in IF buying small stars");
                      try { Enhance.purchases.isSupported(callback_SmallSP); }
                      catch (err) { console.log("failed small stars"); };
                      localStorage.setItem('MedFarms_buyingSmallStars', 0);
@@ -1271,11 +1271,15 @@ var tid2 = setInterval(interPop2, 500);
 
                  }
 
-          }, 250);
+            };
             
 
-
-
+          window.addEventListener('load', (event) => {
+              var tid2 = setInterval(interPop2, 500);
+              console.log("page loaded ")
+      
+          });
+        
         
 
 
