@@ -738,7 +738,7 @@
 </head>
 
 
-<body onload="farming.start()" >
+<body onload="farming.start()">
     <!--<script>
         //window.setTimeout(function () { farming.start(); }, 15000);
         nope not here
@@ -762,17 +762,19 @@
             </div>
 
             <div id="currentStarCashBack2">
-                <img id="lowerStarCashImg2" src="images/UI/plus10StarCash.png" alt="StarCashImg" /> 
+                <img id="lowerStarCashImg2" src="images/UI/plus10StarCash.png" alt="StarCashImg" />
                 <img id="lowerArrow2" src="images/UI/rightBtn.png" alt="rightBtn2" />
                 <img id="lowerStarCashCoin" src="images/tools500.png" alt="tools500" /><img id="buyWithStarCashTools" src="images/UI/greenBuy.png" alt="StarCashBuyImg" />
             </div>
-            <div id="currentStarCashBack3" >
-                <div id="starCashRow3">Watch to Earn <img id="lowerStarCashImg3" src="images/UI/plus3StarCash.png" alt="StarCashImg" />
-                <img id="viewAdImg" src="images/UI/viewAd.png" alt="View Ad" /></div>
-                 <p id="waitText"></p>
+            <div id="currentStarCashBack3">
+                <div id="starCashRow3">
+                    Watch to Earn <img id="lowerStarCashImg3" src="images/UI/plus3StarCash.png" alt="StarCashImg" />
+                    <img id="viewAdImg" src="images/UI/viewAd.png" alt="View Ad" />
+                </div>
+                <p id="waitText"></p>
             </div>
 
-            <p id="sucessbuyTxt"> + $500</p> 
+            <p id="sucessbuyTxt"> + $500</p>
 
             <div id="currentStarCashBack4">
                 Buy Stars in Town <img id="buyStarsFromModal" src="images/UI/shopIcon.png" alt="buyStars" />
@@ -783,16 +785,16 @@
     </div>
 
     <div id="rateMe">
-        <div id="rateMeInner" >
+        <div id="rateMeInner">
             <div id="rateMeTopWrap">
 
                 <div id="rateMeText">
-                    
+
                     <p><h2>Please Rate Our App</h2> It takes only a moment and helps alot</p>
                 </div>
 
             </div>
-            <div id="rateMeImage" > <img id="rateImage" alt='Rate on Google Play' src='images/ratingstars.png' />   </div>
+            <div id="rateMeImage"> <img id="rateImage" alt='Rate on Google Play' src='images/ratingstars.png' />   </div>
 
             <div id="rateMeBtnWrap">
 
@@ -813,7 +815,7 @@
             <div id="foundItImage"></div>
             <div id="foundItSubText"> Someone in town may be interested in this item</div>
             <div id="foundItClose">CLOSE</div>
-         
+
         </div>
     </div>
 
@@ -821,158 +823,161 @@
 
 
 
- <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
 
 
-<script type=text/javascript> 
- 
-  
+    <script type=text/javascript>
 
 
-    if (localStorage.getItem("rateMeNever") == null) {
-        localStorage.setItem("rateMeNever", 0);
-    }
-    if (localStorage.getItem("showRewarded") == null) {
-        localStorage.setItem("showRewarded", 0);
-    }
-    if (localStorage.getItem("MedFarms_boughtMasterPack") == null) {
-        localStorage.setItem("MedFarms_boughtMasterPack", 0);
-    } if (localStorage.getItem("MedFarms_boughtSmallStars") == null) {
-        localStorage.setItem("MedFarms_boughtSmallStars", 0);
-    } if (localStorage.getItem("MedFarms_boughtStarterPack") == null) {
-        localStorage.setItem("MedFarms_boughtStarterPack", 0);
-    } if (localStorage.getItem("MedFarms_boughtLargeStars") == null) {
-        localStorage.setItem("MedFarms_boughtLargeStars", 0);
-    }
-    localStorage.setItem('adWatched', 0);
-var showItOrNo = 1;
-var showItOrNo2 = 0;
-    var onceOnlyAd = 0;
-    var showRewarded = 0;
-    var rewardedCompleted = 0;
-    var rewardValue = 3;
 
 
-    var callback2 = function (result) {
-        if (!result) {
-            app.writeLog('Rewarded ad is not ready');
-            return;
+
+        if (localStorage.getItem("rateMeNever") == null) {
+            localStorage.setItem("rateMeNever", 0);
         }
+        if (localStorage.getItem("showRewarded") == null) {
+            localStorage.setItem("showRewarded", 0);
+        }
+        if (localStorage.getItem("MedFarms_boughtMasterPack") == null) {
+            localStorage.setItem("MedFarms_boughtMasterPack", 0);
+        } if (localStorage.getItem("MedFarms_boughtSmallStars") == null) {
+            localStorage.setItem("MedFarms_boughtSmallStars", 0);
+        } if (localStorage.getItem("MedFarms_boughtStarterPack") == null) {
+            localStorage.setItem("MedFarms_boughtStarterPack", 0);
+        } if (localStorage.getItem("MedFarms_boughtLargeStars") == null) {
+            localStorage.setItem("MedFarms_boughtLargeStars", 0);
+        }
+        localStorage.setItem('adWatched', 0);
+        var showItOrNo = 1;
+        var showItOrNo2 = 0;
+        var onceOnlyAd = 0;
+        var showRewarded = 0;
+        var rewardedCompleted = 0;
+        var rewardValue = 3;
 
-        // The ad is ready
-        var onRewardGranted = function (rewardValue, COINS) {
-            if (rewardType == Enhance.RewardType.ITEM)
-                app.writeLog("Reward granted (item)"),
-                    rewardedCompleted = 1,
-                    localStorage.setItem('MedFarm_Rewarded', 1);
 
-            else if (rewardType == Enhance.RewardType.COINS)
-                app.writeLog("Reward granted (coins), value: " + rewardValue),
-                    rewardedCompleted = 1,
-                    localStorage.setItem('MedFarm_Rewarded', 1);
-                 
-            else {
-                console.log("rewarded fallback"),
-                    rewardedCompleted = 1,
-                    localStorage.setItem('MedFarm_Rewarded', 1); }
-        };
+        var callback2 = function (result) {
+            if (!result) {
+                app.writeLog('Rewarded ad is not ready');
+                return;
+            }
 
-        var onRewardDeclined = function () {
-            app.writeLog('Reward declined'),
+            // The ad is ready
+            var onRewardGranted = function (rewardValue, COINS) {
+                if (rewardType == Enhance.RewardType.ITEM)
+                    app.writeLog("Reward granted (item)"),
+                        rewardedCompleted = 1,
+                        localStorage.setItem('MedFarm_Rewarded', 1);
+
+                else if (rewardType == Enhance.RewardType.COINS)
+                    app.writeLog("Reward granted (coins), value: " + rewardValue),
+                        rewardedCompleted = 1,
+                        localStorage.setItem('MedFarm_Rewarded', 1);
+
+                else {
+                    console.log("rewarded fallback"),
+                        rewardedCompleted = 1,
+                        localStorage.setItem('MedFarm_Rewarded', 1);
+                }
+            };
+
+            var onRewardDeclined = function () {
+                app.writeLog('Reward declined'),
+                    rewardedCompleted = 0;
+                document.getElementById("waitText").innerHTML = 'Reward declined- you must watch the ad to get the reward';
+            };
+
+            var onRewardUnavailable = function () {
+                app.writeLog('Reward unavailable');
                 rewardedCompleted = 0;
-            document.getElementById("waitText").innerHTML = 'Reward declined- you must watch the ad to get the reward';
+                document.getElementById("waitText").innerHTML = 'Reward unavailable- please wait a while before you boost again', c.setPaused(0);
+            };
+
+            Enhance.showRewardedAd(onRewardGranted, onRewardDeclined, onRewardUnavailable);
         };
 
-        var onRewardUnavailable = function () {
-            app.writeLog('Reward unavailable');
-            rewardedCompleted = 0;
-            document.getElementById("waitText").innerHTML = 'Reward unavailable- please wait a while before you boost again', c.setPaused(0);
+
+
+        var callback = function (result) {
+            if (!result) {
+                app.writeLog('Interstitial ad is not ready');
+                return;
+            }
+
+            Enhance.showInterstitialAd();
+
         };
-       
-        Enhance.showRewardedAd(onRewardGranted, onRewardDeclined, onRewardUnavailable);
-    };
+        //    ////primary loop 2 - external loads
+        //var tid2 = setInterval(interPop2, 500);
 
 
+        function interPop2() {
+            ////more games check
 
-    var callback = function (result) {
-        if (!result) {
-            app.writeLog('Interstitial ad is not ready');
-            return;
-        }
-       
-        Enhance.showInterstitialAd();
-        
-    };
-//    ////primary loop 2 - external loads
-//var tid2 = setInterval(interPop2, 500);
-  
-   
-    function interPop2() {
-        ////more games check
-        moreGamesClicked = localStorage.getItem("moreGamesClicked")
-        if (moreGamesClicked == 1) {
-            openLink();
-            moreGamesClicked = 0;
-        }
+            moreGamesClicked = localStorage.getItem("moreGamesClicked");
+            if (moreGamesClicked == 1) {
+                openLink();
+                moreGamesClicked = 0;
+            }
 
-    //interstatial ads
-        showItOrNo2 = 0;
-        showItOrNo2 = parseInt(localStorage.getItem('MedFarm_LoadAd'));
-         //hide for AdFree
-        if (showItOrNo2 == 1) {
+            //interstatial ads
+            showItOrNo2 = 0;
+            showItOrNo2 = parseInt(localStorage.getItem('MedFarm_LoadAd'));
+            //hide for AdFree
+            if (showItOrNo2 == 1) {
                 localStorage.setItem('MedFarm_LoadAd', 0);
                 localStorage.setItem('adWatched', 1);
                 showItOrNo2 = 0;
                 try { Enhance.isInterstitialReady(callback); }
-                catch(err){console.log("Caught interstital  error " + err)}
-           
-        }
-         //hide for AdFree
+                catch (err) { console.log("Caught interstital  error " + err) }
+
+            }
+            //hide for AdFree
             //rewarded video
             showRewarded = parseInt(localStorage.getItem('MedFarm_StarCashBoost'));
-        if (showRewarded == 1) {
-            console.log("interpop2 detected showRewarded = " + showRewarded);
+            if (showRewarded == 1) {
+                console.log("interpop2 detected showRewarded = " + showRewarded);
                 showRewarded = 0;
                 //award starcash
-                
-                    //console.log("adRewardCompleted1 = " + rewardCompleted);
-                    rewardedCompleted = 0;
-                    starCash = parseInt(localStorage.getItem('starCash'));
-                    console.log("before starcash = " + starCash);
-                    starCash = parseInt(starCash) + 3;
-                    console.log("after add starcash = " + starCash);
-                    localStorage.setItem('starCash', starCash);
-                    //document.getElementById("sucessbuyTxt").style.display = 'block';
-                    document.getElementById("starCashOuterLabel").innerHTML = starCash;
-                    //document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
-                    localStorage.setItem('MedFarm_Rewarded', 0);
-                
-				try { Enhance.isRewardedAdReady(callback2); }
+
+                //console.log("adRewardCompleted1 = " + rewardCompleted);
+                rewardedCompleted = 0;
+                starCash = parseInt(localStorage.getItem('starCash'));
+                console.log("before starcash = " + starCash);
+                starCash = parseInt(starCash) + 3;
+                console.log("after add starcash = " + starCash);
+                localStorage.setItem('starCash', starCash);
+                //document.getElementById("sucessbuyTxt").style.display = 'block';
+                document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                //document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
+                localStorage.setItem('MedFarm_Rewarded', 0);
+
+                try { Enhance.isRewardedAdReady(callback2); }
                 catch (err) { console.log("Caught rewarded error " + err); document.getElementById("waitText").innerHTML = 'Ad failed - try again soon.'; }
-                 showRewarded = 0;
-				localStorage.setItem('MedFarm_StarCashBoost', 0);
+                showRewarded = 0;
+                localStorage.setItem('MedFarm_StarCashBoost', 0);
                 localStorage.setItem('MedFarm_LoadAd', 0);
                 setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 10000);
+            }
+
+
+            //check for purchases (combined timer)
+            purchaseCheck();
+
         }
-               
-
-          //check for purchases (combined timer)  
-        purchaseCheck();   
-        
-    }
-       ////rate me
-         var rateMeBtnYes = document.getElementById("rateMeBtnYes")
-         rateMeBtnYes.addEventListener("click", openRateOnPlay);
-         rateMeBtnYes.addEventListener("touchstart", openRateOnPlay);
+        ////rate me
+        var rateMeBtnYes = document.getElementById("rateMeBtnYes")
+        rateMeBtnYes.addEventListener("click", openRateOnPlay);
+        rateMeBtnYes.addEventListener("touchstart", openRateOnPlay);
 
 
-       var rateMeBtnNo = document.getElementById("rateMeBtnNo")
-       rateMeBtnNo.addEventListener("click", closeRate1);
-       rateMeBtnNo.addEventListener("touchstart", closeRate1);
+        var rateMeBtnNo = document.getElementById("rateMeBtnNo")
+        rateMeBtnNo.addEventListener("click", closeRate1);
+        rateMeBtnNo.addEventListener("touchstart", closeRate1);
 
-       var rateMeBtnLater = document.getElementById("rateMeBtnLater")
-       rateMeBtnLater.addEventListener("click", closeRate2);
-       rateMeBtnLater.addEventListener("touchstart", closeRate2);
+        var rateMeBtnLater = document.getElementById("rateMeBtnLater")
+        rateMeBtnLater.addEventListener("click", closeRate2);
+        rateMeBtnLater.addEventListener("touchstart", closeRate2);
 
         var rateImage = document.getElementById("rateImage")
         rateImage.addEventListener("click", openRateOnPlay);
@@ -984,307 +989,329 @@ var showItOrNo2 = 0;
         }
 
         function closeRate1() {
-                document.getElementById("rateMe").style.display = 'none';
-               localStorage.setItem("rateMeNever", 1)
+            document.getElementById("rateMe").style.display = 'none';
+            localStorage.setItem("rateMeNever", 1)
 
         }
-       function closeRate2() {
-                document.getElementById("rateMe").style.display = 'none';
-               localStorage.setItem("rateMeNever", 0)
+        function closeRate2() {
+            document.getElementById("rateMe").style.display = 'none';
+            localStorage.setItem("rateMeNever", 0)
 
-       }
+        }
 
         function openRateOnPlay() {
-                document.getElementById("rateMe").style.display = 'none';
-                try { cordova.plugins.market.open('com.wGuiGhostFarms_9861566'); }
-                catch (err) { console.log("caught = " + err) }
+            document.getElementById("rateMe").style.display = 'none';
+            try { cordova.plugins.market.open('com.wGuiGhostFarms_9861566'); }
+            catch (err) { console.log("caught = " + err) }
 
 
         }
-          
-            function showAdFallback() {
-               console.log("clicked fallback and starCash = " + starCash)
-                localStorage.setItem('MedFarm_LoadAd', 1);
-                //localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-                starCash = localStorage.getItem('starCash');
-              starCash = starCash + 3;
-               localStorage.setItem('starCash', starCash);
-               
-               setTimeout(function () {
-                   document.getElementById("starCashOuterLabel").innerHTML = starCash;
-                   document.getElementById("waitText").innerHTML = '+ 3 Stars';
-                   document.getElementById("waitText").style.display = 'block'; }, 1500);
-               setTimeout(function () { document.getElementById("waitText").style.display = 'none'; }, 15000);
-            }
-            var whichMore = 'stack'; 
-            ///more games button function
-            function openLink() {
-                console.log("clicked more games");
-                localStorage.setItem("moreGamesClicked", 0);
-                if (whichMore == 'stack') {
-                    whichMore == 'star'
-                    try {
-                        cordova.plugins.market.open('com.GuiGhostGames.StackerBoB');
-                        //cordova.plugins.market.search('guighost')
-                    }
-                    catch (err) { console.log("caught = " + err) }
-                }
-                else if (whichMore == 'star') {
-                    whichMore == 'stack'
-                    try {
-                        cordova.plugins.market.open('com.GuiGhostGames.StarMatch2048');
-                        //cordova.plugins.market.search('guighost')
-                    }
-                    catch (err) { console.log("caught = " + err) }
-                }
-                
 
+        function showAdFallback() {
+            console.log("clicked fallback and starCash = " + starCash)
+            localStorage.setItem('MedFarm_LoadAd', 1);
+            //localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+            starCash = localStorage.getItem('starCash');
+            starCash = starCash + 3;
+            localStorage.setItem('starCash', starCash);
+
+            setTimeout(function () {
+                document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                document.getElementById("waitText").innerHTML = '+ 3 Stars';
+                document.getElementById("waitText").style.display = 'block';
+            }, 1500);
+            setTimeout(function () { document.getElementById("waitText").style.display = 'none'; }, 15000);
+        }
+        var whichMore = 'stack';
+        ///more games button function
+        function openLink() {
+            console.log("clicked more games");
+            localStorage.setItem("moreGamesClicked", 0);
+            if (whichMore == 'stack') {
+                whichMore == 'star'
+                try {
+                    cordova.plugins.market.open('com.GuiGhostGames.StackerBoB');
+                    //cordova.plugins.market.search('guighost')
+                }
+                catch (err) { console.log("caught = " + err) }
+            }
+            else if (whichMore == 'star') {
+                whichMore == 'stack'
+                try {
+                    cordova.plugins.market.open('com.GuiGhostGames.StarMatch2048');
+                    //cordova.plugins.market.search('guighost')
+                }
+                catch (err) { console.log("caught = " + err) }
             }
 
-    ///In App Payments
-            var callback_SmallSP = function () {
-                var onPurchaseSuccess = function () {
-                    Enhance.purchases.getDisplayTitle('starpack_small',  '50 Stars', function (result) {
-                        localStorage.setItem('MedFarms_boughtSmallStars', 1);
-                        alert(result);
-                      
-                    });
-                    starCash = parseInt(localStorage.getItem('starCash'));
-                    //console.log("before starcash = " + starCash);
-                    starCash = parseInt(starCash) + 50;
-                    //console.log("after buy small starcash = " + starCash);
-                    localStorage.setItem('starCash', starCash);
-                 
-                    buySmallStars.owned = 1;
-                    try { Enhance.purchases.consume('starpack_small', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                    catch (err) { console.log(err); }
-                };
 
-                var onPurchaseFailed = function () {
-                    // Failure
-                    //check it owned and try to consume
-                    Enhance.purchases.isItemOwned('starpack_small', function (result) {
-                        if (result == true) {
-                            try { Enhance.purchases.consume('starpack_small', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                            catch (err) { console.log(err); }
-                        }
+        }
+
+        ///In App Payments
+        var callback_SmallSP = function () {
+            var onPurchaseSuccess = function () {
+                Enhance.purchases.getDisplayTitle('starpack_small', '50 Stars', function (result) {
+                    localStorage.setItem('MedFarms_boughtSmallStars', 1);
+                    alert(result);
+
+                });
+                starCash = parseInt(localStorage.getItem('starCash'));
+                //console.log("before starcash = " + starCash);
+                starCash = parseInt(starCash) + 50;
+                //console.log("after buy small starcash = " + starCash);
+                localStorage.setItem('starCash', starCash);
+
+                buySmallStars.owned = 1;
+                try { Enhance.purchases.consume('starpack_small', onConsumeSuccessCallback, onConsumeFailedCallback); }
+                catch (err) { console.log(err); }
+            };
+
+            var onPurchaseFailed = function () {
+                // Failure
+                //check it owned and try to consume
+                Enhance.purchases.isItemOwned('starpack_small', function (result) {
+                    if (result == true) {
+                        try { Enhance.purchases.consume('starpack_small', onConsumeSuccessCallback, onConsumeFailedCallback); }
+                        catch (err) { console.log(err); }
                     }
-                    )      
-                    alert('Purchased failed');
-                };
-                var onConsumeSuccessCallback = function () {
-                    //consumed
-                    console.log('product consumed');
-                };
-                var onConsumeFailedCallback = function () {
-                    // consume failee Failure
-                    console.log('consume failed');
-                };
-                      
-                Enhance.purchases.attemptPurchase('starpack_small', onPurchaseSuccess, onPurchaseFailed);
-                
-                
+                }
+                )
+                alert('Purchased failed');
+            };
+            var onConsumeSuccessCallback = function () {
+                //consumed
+                console.log('product consumed');
+            };
+            var onConsumeFailedCallback = function () {
+                // consume failee Failure
+                console.log('consume failed');
             };
 
-  
+            Enhance.purchases.attemptPurchase('starpack_small', onPurchaseSuccess, onPurchaseFailed);
 
-            var callback_LargeSP = function () {
-                var onPurchaseSuccess = function () {
-                    Enhance.purchases.getDisplayTitle('starpack_large', '300 Stars', function (result) {
-                        localStorage.setItem('MedFarms_boughtLargeStars', 1); 
-                        alert(result);
-                    });
-                    starCash = parseInt(localStorage.getItem('starCash'));
-                    console.log("before starcash = " + starCash);
-                    starCash = parseInt(starCash) + 300;
-            
-                    console.log("after buy large starcash = " + starCash);
-                    localStorage.setItem('starCash', starCash);
-                    buyLargeStars.owned = 1;
-                    try { Enhance.purchases.consume('starpack_large', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                    catch (err) { console.log(err); }
-                };
 
-                var onPurchaseFailed = function () {
-                    // Failure
-                    Enhance.purchases.isItemOwned('starpack_large', function (result) {
-                        if (result == true) {
-                            try { Enhance.purchases.consume('starpack_large', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                            catch (err) { console.log(err); }
-                        }
+        };
+
+
+
+        var callback_LargeSP = function () {
+            var onPurchaseSuccess = function () {
+                Enhance.purchases.getDisplayTitle('starpack_large', '300 Stars', function (result) {
+                    localStorage.setItem('MedFarms_boughtLargeStars', 1);
+                    alert(result);
+                });
+                starCash = parseInt(localStorage.getItem('starCash'));
+                console.log("before starcash = " + starCash);
+                starCash = parseInt(starCash) + 300;
+
+                console.log("after buy large starcash = " + starCash);
+                localStorage.setItem('starCash', starCash);
+                buyLargeStars.owned = 1;
+                try { Enhance.purchases.consume('starpack_large', onConsumeSuccessCallback, onConsumeFailedCallback); }
+                catch (err) { console.log(err); }
+            };
+
+            var onPurchaseFailed = function () {
+                // Failure
+                Enhance.purchases.isItemOwned('starpack_large', function (result) {
+                    if (result == true) {
+                        try { Enhance.purchases.consume('starpack_large', onConsumeSuccessCallback, onConsumeFailedCallback); }
+                        catch (err) { console.log(err); }
                     }
-                    )
-                    alert('purchased failed');
-                };
-                var onConsumeSuccessCallback = function () {
-                    //consumed
-                    console.log('product consumed');
-                };
-                var onConsumeFailedCallback = function () {
-                    // consume failee Failure
-                    console.log('consume failed');
-                };
-         
-                Enhance.purchases.attemptPurchase('starpack_large', onPurchaseSuccess, onPurchaseFailed);
+                }
+                )
+                alert('purchased failed');
+            };
+            var onConsumeSuccessCallback = function () {
+                //consumed
+                console.log('product consumed');
+            };
+            var onConsumeFailedCallback = function () {
+                // consume failee Failure
+                console.log('consume failed');
             };
 
-      
+            Enhance.purchases.attemptPurchase('starpack_large', onPurchaseSuccess, onPurchaseFailed);
+        };
 
 
 
-            var callback_starterPack = function () {
-                var onPurchaseSuccess = function () {
-                    Enhance.purchases.getDisplayTitle('starter_pack', 'Resource Starter Pack', function (result) {
-                      
-                        localStorage.setItem('MedFarms_boughtStarterPack', 1);
-                        alert(result);
-                    });
-                    player.tools = parseInt(player.tools) + 250;
-                
-                    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 250;
-                    if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 250 }
-                    player.cropsStored[15].stored = parseInt(player.cropsStored[15].stored) + 250;
-                    if (player.cropsStored[15].stored < 0) { player.cropsStored[15].stored = 250 }
-                    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-                    buyStarterPack.owned = 1;
-                    try { Enhance.purchases.consume('starter_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                    catch (err) { console.log(err); }
-                };
 
-                var onPurchaseFailed = function () {
-                    // Failure  
-                    //check it owned and try to consume
-                    Enhance.purchases.isItemOwned('starter_pack', function (result) {
-                        if (result == true) {
-                            try { Enhance.purchases.consume('starter_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                            catch (err) { console.log(err); }
-                        }
+
+        var callback_starterPack = function () {
+            var onPurchaseSuccess = function () {
+                Enhance.purchases.getDisplayTitle('starter_pack', 'Resource Starter Pack', function (result) {
+
+                    localStorage.setItem('MedFarms_boughtStarterPack', 1);
+                    alert(result);
+                });
+                player.tools = parseInt(player.tools) + 250;
+
+                player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 250;
+                if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 250 }
+                player.cropsStored[15].stored = parseInt(player.cropsStored[15].stored) + 250;
+                if (player.cropsStored[15].stored < 0) { player.cropsStored[15].stored = 250 }
+                localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                buyStarterPack.owned = 1;
+                try { Enhance.purchases.consume('starter_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
+                catch (err) { console.log(err); }
+            };
+
+            var onPurchaseFailed = function () {
+                // Failure
+                //check it owned and try to consume
+                Enhance.purchases.isItemOwned('starter_pack', function (result) {
+                    if (result == true) {
+                        try { Enhance.purchases.consume('starter_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
+                        catch (err) { console.log(err); }
                     }
-                    )
-                    alert('Purchased failed');
-                };
-                var onConsumeSuccessCallback = function () {
-                    //consumed
-                    console.log('product consumed');
-                };
-                var onConsumeFailedCallback = function () {
-                    // consume failee Failure
-                    console.log('consume failed');
-                };
-             
-                Enhance.purchases.attemptPurchase('starter_pack', onPurchaseSuccess, onPurchaseFailed);
+                }
+                )
+                alert('Purchased failed');
+            };
+            var onConsumeSuccessCallback = function () {
+                //consumed
+                console.log('product consumed');
+            };
+            var onConsumeFailedCallback = function () {
+                // consume failee Failure
+                console.log('consume failed');
             };
 
-         
+            Enhance.purchases.attemptPurchase('starter_pack', onPurchaseSuccess, onPurchaseFailed);
+        };
 
-            var callback_masterPack = function () {
-                var onPurchaseSuccess = function () {
-                    Enhance.purchases.getDisplayTitle('master_pack', 'Resource Master Pack', function (result) {
-                        localStorage.setItem('MedFarms_boughtMasterPack', 1);
-                        alert("You have sucessfully purchased " + result);
-                    });
-                    player.tools = parseInt(player.tools) + 750;
-                    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 750;
-                    if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 750; }
-                    player.cropsStored[15].stored = parseInt(player.cropsStored[15].stored) + 750;
-                    if (player.cropsStored[15].stored < 0) { player.cropsStored[15].stored = 750; }
-                                   
-                    player.money = parseInt(player.money) + 2500;
-                    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-                    starCash = parseInt(localStorage.getItem('starCash'));
-                    starCash = parseInt(starCash) + 50;
-                
-                    localStorage.setItem('starCash', starCash);
-                    buyMasterPack.owned = 1;
 
-                    try { Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                    catch (err) { console.log(err); }
 
-                };
+        var callback_masterPack = function () {
+            var onPurchaseSuccess = function () {
+                Enhance.purchases.getDisplayTitle('master_pack', 'Resource Master Pack', function (result) {
+                    localStorage.setItem('MedFarms_boughtMasterPack', 1);
+                    alert("You have sucessfully purchased " + result);
+                });
+                player.tools = parseInt(player.tools) + 750;
+                player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 750;
+                if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 750; }
+                player.cropsStored[15].stored = parseInt(player.cropsStored[15].stored) + 750;
+                if (player.cropsStored[15].stored < 0) { player.cropsStored[15].stored = 750; }
 
-                var onPurchaseFailed = function () {
-                    // Failure
-                    Enhance.purchases.isItemOwned('master_pack', function (result) {
-                        if (result == true) {
-                            try { Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                            catch (err) { console.log(err); }
-                        }
+                player.money = parseInt(player.money) + 2500;
+                localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                starCash = parseInt(localStorage.getItem('starCash'));
+                starCash = parseInt(starCash) + 50;
+
+                localStorage.setItem('starCash', starCash);
+                buyMasterPack.owned = 1;
+
+                try { Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
+                catch (err) { console.log(err); }
+
+            };
+
+            var onPurchaseFailed = function () {
+                // Failure
+                Enhance.purchases.isItemOwned('master_pack', function (result) {
+                    if (result == true) {
+                        try { Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
+                        catch (err) { console.log(err); }
                     }
-                    )
-                    alert('Purchased failed- try again soon');
-                };
-                var onConsumeSuccessCallback = function () {
-                    //consumed
-                    console.log('product consumed');
-                };
-                var onConsumeFailedCallback = function () {
-                    // consume failee Failure
-                    console.log('consume failed');
-                };
-            
-
-                Enhance.purchases.attemptPurchase('master_pack', onPurchaseSuccess, onPurchaseFailed);
+                }
+                )
+                alert('Purchased failed- try again soon');
+            };
+            var onConsumeSuccessCallback = function () {
+                //consumed
+                console.log('product consumed');
+            };
+            var onConsumeFailedCallback = function () {
+                // consume failee Failure
+                console.log('consume failed');
             };
 
-            var buyingSmallStars = 0;
-            var buyingLargeStars = 0;
-            var buyingStarterPack = 0;
-            var buyingMasterPack = 0;
 
-            localStorage.setItem('MedFarms_buyingSmallStars', 0) 
+            Enhance.purchases.attemptPurchase('master_pack', onPurchaseSuccess, onPurchaseFailed);
+        };
 
-             localStorage.setItem('MedFarms_buyingLargeStars', 0) 
+        var buyingSmallStars = 0;
+        var buyingLargeStars = 0;
+        var buyingStarterPack = 0;
+        var buyingMasterPack = 0;
 
-             localStorage.setItem('MedFarms_buyingStarterPack', 0) 
+        localStorage.setItem('MedFarms_buyingSmallStars', 0)
 
-            localStorage.setItem('MedFarms_buyingMasterPack', 0) 
-       
-            function purchaseCheck () {
-                 //console.log("tickk");
-                 buyingSmallStars = localStorage.getItem('MedFarms_buyingSmallStars');
-                 buyingLargeStars = localStorage.getItem('MedFarms_buyingLargeStars');
-                 buyingStarterPack = localStorage.getItem('MedFarms_buyingStarterPack');
-                 buyingMasterPack = localStorage.getItem('MedFarms_buyingMasterPack');
-                 if (buyingSmallStars == 1) {
-                     //console.log("in IF buying small stars");
-                     try { Enhance.purchases.isSupported(callback_SmallSP); }
-                     catch (err) { console.log("failed small stars"); };
-                     localStorage.setItem('MedFarms_buyingSmallStars', 0);
-                    
-                 }
-                 else if (buyingLargeStars == 1) {
-                     try { Enhance.purchases.isSupported(callback_LargeSP); }
-                     catch (err) { console.log("failed large stars "); }
-                     localStorage.setItem('MedFarms_buyingLargeStars', 0); 
-                    
-                 }
-                 else if (buyingStarterPack == 1) {
-                     try { Enhance.purchases.isSupported(callback_starterPack); }
-                     catch (err) { console.log("failed buystarter"); };
-                     localStorage.setItem('MedFarms_buyingStarterPack', 0);
-                  
-                 }
-                 else if (buyingMasterPack == 1) {
-                     try { Enhance.purchases.isSupported(callback_masterPack); }
-                     catch (err) { console.log("failedBuyMaster"); }
-                     localStorage.setItem('MedFarms_buyingMasterPack', 0);
-                   
+        localStorage.setItem('MedFarms_buyingLargeStars', 0)
 
-                 }
+        localStorage.setItem('MedFarms_buyingStarterPack', 0)
 
-            };
-            
+        localStorage.setItem('MedFarms_buyingMasterPack', 0)
 
-          window.addEventListener('load', (event) => {
-              var tid2 = setInterval(interPop2, 500);
-              console.log("page loaded ")
-      
-          });
-        
-        
+        function purchaseCheck() {
+            //console.log("tickk");
+            buyingSmallStars = localStorage.getItem('MedFarms_buyingSmallStars');
+            buyingLargeStars = localStorage.getItem('MedFarms_buyingLargeStars');
+            buyingStarterPack = localStorage.getItem('MedFarms_buyingStarterPack');
+            buyingMasterPack = localStorage.getItem('MedFarms_buyingMasterPack');
+            if (buyingSmallStars == 1) {
+                //console.log("in IF buying small stars");
+                try { Enhance.purchases.isSupported(callback_SmallSP); }
+                catch (err) { console.log("failed small stars"); };
+                localStorage.setItem('MedFarms_buyingSmallStars', 0);
+
+            }
+            else if (buyingLargeStars == 1) {
+                try { Enhance.purchases.isSupported(callback_LargeSP); }
+                catch (err) { console.log("failed large stars "); }
+                localStorage.setItem('MedFarms_buyingLargeStars', 0);
+
+            }
+            else if (buyingStarterPack == 1) {
+                try { Enhance.purchases.isSupported(callback_starterPack); }
+                catch (err) { console.log("failed buystarter"); };
+                localStorage.setItem('MedFarms_buyingStarterPack', 0);
+
+            }
+            else if (buyingMasterPack == 1) {
+                try { Enhance.purchases.isSupported(callback_masterPack); }
+                catch (err) { console.log("failedBuyMaster"); }
+                localStorage.setItem('MedFarms_buyingMasterPack', 0);
 
 
- </script>
+            }
 
-    </body>
+        };
+
+
+        window.addEventListener('load', (event) => {
+            var tid2 = setInterval(interPop2, 500);
+            //console.log("page loaded ");
+
+        });
+
+        /////version check
+        //var currentGameVersion = 1.5;
+        //let requestURL = 'https://guighostgames.com/MedievalFarms/currentAppVersion.json';
+        //let request = new XMLHttpRequest();
+        //try {
+        //    request.open('GET', requestURL);
+        //    request.responseType = 'json';
+        //    request.send();
+        //    request.onload = function () {   
+        //        const versionDetected = JSON.stringify(request.response);
+        //         console.log(request.response)
+        //        console.log("versionCheck = " + versionDetected);
+        //        console.log("response = " + request.response.latestVersion)
+        //        if (currentGameVersion < request.response.latestVersion) {
+        //            var answer = confirm("A new version is available. Click on OK to Visit the playstore to get the new content.")
+        //            if (answer) { openPlayForUpdate(); }
+        //        }
+        //    }
+        //}
+        //catch (err) { console.log("failed versioncheck") }
+
+
+
+    </script>
+
+</body>
+
 </html>

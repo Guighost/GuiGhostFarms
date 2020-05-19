@@ -2803,7 +2803,7 @@ farming.start = function () {
 
     };
 
-
+    var acresOwned4 = 0;
     setInterval(function () {
         a.updateDates();
 
@@ -2811,7 +2811,11 @@ farming.start = function () {
     a.updateDates = function () {
         dayCount = dayCount + 1;
         if (daysTillHerald >= 1) { daysTillHerald = parseInt(daysTillHerald - 1);}
-        if (daysTillHerald <= 0) { gideon.setHidden(false); daysTillHerald = 0; }
+        if (daysTillHerald <= 0) {
+            acresOwned4 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+            if (acresOwned4 >= 4) { gideon.setHidden(false); daysTillHerald = 0; } else { gideon.setHidden(true); daysTillHerald = 150; } 
+         
+        }
         if (dayCount > 365) {
             yearCount = yearCount + 1; dayCount = 1;
             yearLabel.setText("Year " + yearCount);
@@ -3028,8 +3032,7 @@ farming.start = function () {
         acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
         if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); } 
         CheckQuestInvItems();
-        acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
-        if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); } 
+
 
 
     });
@@ -6966,20 +6969,27 @@ farming.start = function () {
     menuScene.appendChild(menuLayer);
     var menuBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 10).setSize(300, 520).setFill(imgArray[14]);
     menuLayer.appendChild(menuBack);
-    var saveQuit = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(150, 175).setSize(a.width / 2 + 40, 50).setFill("#663300");
-    saveQuit = (new lime.GlossyButton).setColor("#4dff4d").setText("Save & Quit").setPosition(150, 175).setSize(a.width / 2 + 40, 50);
+    var saveQuit = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(150, 175).setSize(a.width / 2 + 40, 40).setFill("#663300");
+    saveQuit = (new lime.GlossyButton).setColor("#4dff4d").setText("Save & Quit").setPosition(150, 175).setSize(a.width / 2 + 40, 40);
     menuLayer.appendChild(saveQuit);
 
-    //var convertStarCash = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 4 - 20, 325).setSize(a.width / 2 + 40, 50).setFill("#663300");
-    //convertStarCash = (new lime.GlossyButton).setColor("#6600ff").setText("$500 for 5 StarCash").setPosition(150, 325).setSize(a.width / 2 + 50, 50);
-    //menuLayer.appendChild(convertStarCash);
 
-    var clearData = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 4 - 20, 250).setSize(a.width / 2 + 40, 50).setFill("#663300");
-    clearData = (new lime.GlossyButton).setColor("#ff0000").setText("Clear Data (start over)").setPosition(150, 250).setSize(a.width / 2 + 40, 50);
+
+    var clearData = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 4 - 20, 250).setSize(a.width / 2 + 40, 40).setFill("#663300");
+    clearData = (new lime.GlossyButton).setColor("#ff0000").setText("Clear Data (start over)").setPosition(150, 250).setSize(a.width / 2 + 40, 40);
     menuLayer.appendChild(clearData);
 
-    var backBtnMenu = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 4 - 20, 400).setSize(a.width / 2 + 40, 50).setFill("#663300");
-    backBtnMenu = (new lime.GlossyButton).setColor("#1ce636").setText("Back to Game").setPosition(150, 400).setSize(a.width / 2 + 40, 50);
+    var aboutBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 4 - 20, 325).setSize(a.width / 2 + 40, 40).setFill("#663300");
+    aboutBtn = (new lime.GlossyButton).setColor("#6600ff").setText("About").setPosition(150, 325).setSize(a.width / 2 + 50, 40);
+    menuLayer.appendChild(aboutBtn);
+
+    goog.events.listen(aboutBtn, ["mousedown", "touchstart"], function (e) {
+        c.replaceScene(aboutScene, lime.transitions.SlideInUp);
+    });
+
+
+    var backBtnMenu = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 4 - 20, 400).setSize(a.width / 2 + 40, 40).setFill("#663300");
+    backBtnMenu = (new lime.GlossyButton).setColor("#1ce636").setText("Back to Game").setPosition(150, 400).setSize(a.width / 2 + 40, 40);
     menuLayer.appendChild(backBtnMenu);
     //var successDiv = (new lime.Label).setText("+500 = $" + player.money).setFontColor("#E8FC08").setPosition(150, 125).setFontSize(30);
     //menuLayer.appendChild(successDiv);
@@ -7212,7 +7222,7 @@ farming.start = function () {
             document.getElementById("waitText").innerHTML = '+ 500 Tools';
             document.getElementById("waitText").style.display = 'block';
             lime.scheduleManager.callAfter(function () { document.getElementById("waitText").style.display = 'none'; }, this, 1000);
-
+            purchaseSound.play();
 
         }
        event.stopPropagation();
@@ -7231,7 +7241,7 @@ farming.start = function () {
             document.getElementById("waitText").innerHTML = '+ 500 Tools';
             document.getElementById("waitText").style.display = 'block';
             lime.scheduleManager.callAfter(function () { document.getElementById("waitText").style.display = 'none'; }, this, 1000);
-
+            purchaseSound.play();
 
         }
         event.stopPropagation();
@@ -7363,8 +7373,6 @@ farming.start = function () {
       event.stopPropagation();
     
     }, false);
-    currentStarCashBack3
-    currentStarCashBack4
 
     //hide For ad free
     if (adFreeVersion == 1) { document.getElementById("currentStarCashBack3").style.display = 'none'; document.getElementById("currentStarCashBack4").style.display = 'none'; };
@@ -8875,13 +8883,13 @@ farming.start = function () {
 
 
     //trader
-    var gideon = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(115, 264).setSize(35, 35).setFill(imgArrayGideon[0]);
+    var gideon = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(115, 264).setSize(35, 35).setFill(imgArrayGideon[0]).setHidden(true);
     townFill1.appendChild(gideon);
     var gideonQuestBtn = (new lime.GlossyButton).setColor("#A0A0A0").setText("").setPosition(25, -8).setSize(25, 23).setOpacity(0.2);
     gideon.appendChild(gideonQuestBtn);
     var gideonQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, -19).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
     gideon.appendChild(gideonQuest);
-    gideon.setHidden(true);
+  
     var acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
     if (acresOwned3 >= 4) { gideon.setHidden(false); } 
 
@@ -9021,7 +9029,7 @@ farming.start = function () {
     giveBtn.setHidden(true);
     var questPanelCloseBtn = (new lime.GlossyButton).setColor("#663300").setText("Close").setPosition(75, 235).setSize(100, 20).setHidden(false);;
     questPanel.appendChild(questPanelCloseBtn);
-
+   
     //var itemToSell = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(135, 80).setSize(64, 64).setFill(imgArrayItems[8].src);
     //questPanel.appendChild(itemToSell);
     //var itemToSellText = (new lime.Label).setAnchorPoint(0, 0).setPosition(105, 60).setText("Item Title").setFontFamily("Comic Sans MS").setFontColor("#0101DF").setFontSize(16);
@@ -9145,6 +9153,7 @@ farming.start = function () {
                 gideonPanelTokenImg.setHidden(true);
                 gideonGiveBtn.setHidden(true);
                 panelGideon.appendChild(gideonNext);
+                gideonNext.setHidden(false);
 
                 goog.events.listen(gideonNext, ["mousedown", "touchstart"], function (e) {
                     localStorage.setItem('MedFarms_heraldIntro', 1);
@@ -9509,9 +9518,10 @@ farming.start = function () {
                      questPanelAvatar.setFill(imgArrayFelicia[0].src).setPosition(40, 38);
 
                      questPanelItemImg.setHidden(false).setFill(collectItems.digUpSells[3].src);
-                     questText1.setText("You found my LOCKET!");
+                     questText1.setText("You found my LOCKET! Can I have it back?");
                      sellItemsBtn.setHidden(true);
                      giveBtn.setHidden(false);
+                     questPanelCloseBtn.setPosition(75, 235);
                      questPanel.y = questPanel.y + 30;
                      goog.events.listen(giveBtn, ["mousedown", "touchstart"], function () {
 
@@ -9521,6 +9531,7 @@ farming.start = function () {
                          townRep = townRep + 1;
                          checkTownRep();
                          giveBtn.setHidden(true);
+                         questPanelCloseBtn.setPosition(140, 235);
                          questPanel.removeChild(giveBtn);
                          questPanelAvatar.setPosition(80, 38);
                          questPanelItemImg.setHidden(true);
@@ -11030,10 +11041,10 @@ farming.start = function () {
                 //show the speechBubble to collect pork
                 if (porkOnce == 0) {
                     porkOnce = 1;
-                    porkWaiting = porkWaiting + 2;
+                    porkWaiting = parseInt(porkWaiting) + 2;
 
                     collectPorkLabel.setText("+ " + porkWaiting);
-                    player.cropsStored[8].stored = player.cropsStored[8].stored - 1;
+                    player.cropsStored[8].stored = parseInt(player.cropsStored[8].stored) - 1;
                     count8.setText(player.cropsStored[8].stored);
                     gLabel8.setText(player.cropsStored[8].stored);
                     //gLabel8LS.setText(player.cropsStored[8].stored);
@@ -11049,7 +11060,7 @@ farming.start = function () {
     }, this, 250)
 
     goog.events.listen(collectPork, ["mousedown", "touchstart"], function () {
-        player.cropsStored[10].stored = player.cropsStored[10].stored + porkWaiting;
+        player.cropsStored[10].stored = parseInt(player.cropsStored[10].stored) + parseInt(porkWaiting);
         porkWaiting = 0;
         count10.setText(player.cropsStored[10].stored);
         gLabel10.setText(player.cropsStored[10].stored);
@@ -13980,6 +13991,70 @@ farming.start = function () {
 
                 }
                 setHeraldWant(heraldOrderTop);
+
+                //////ABOUT Scene//////////////////////////////////////////////////////////////////////////////////////////////////Menu Scene/////////////////////////////////////////////////////////////////////
+                //////ABOUT Scene//////////////////////////////////////////////////////////////////////////////////////////////////Menu Scene/////////////////////////////////////////////////////////////////////
+                //////ABOUT Scene//////////////////////////////////////////////////////////////////////////////////////////////////Menu Scene/////////////////////////////////////////////////////////////////////
+                var aboutScene = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
+                    aboutLayer = (new lime.Layer).setAnchorPoint(0, 0),
+                    aboutFill1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#0D0D0D");
+                aboutScene.appendChild(aboutFill1);
+                aboutScene.appendChild(aboutLayer);
+                var aboutBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, -30).setSize(300,515).setFill(imgArray[14]);
+                aboutLayer.appendChild(aboutBack);
+
+                var aboutLabel_1 = (new lime.Label).setFontColor("#E8FC08").setFontSize(18).setPosition(150, 203).setSize(a.width - 40, 200).setText("Art Assets by"); aboutLayer.appendChild(aboutLabel_1);
+                aboutLayer.appendChild(aboutLabel_1);
+                var aboutLabel_2 = (new lime.Label).setFontColor("#E8FC08").setFontSize(10).setPosition(150, 225).setSize(a.width - 30, 200).setText("Tiles by Daneeklu  http://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements "); 
+                aboutLayer.appendChild(aboutLabel_2);
+                var aboutLabel_3 = (new lime.Label).setFontColor("#E8FC08").setFontSize(10).setPosition(150, 260).setSize(a.width - 30, 200).setText("Buildings by Cilanna  https://pixanna.nl/");
+                aboutLayer.appendChild(aboutLabel_3);
+                var aboutLabel_4 = (new lime.Label).setFontColor("#E8FC08").setFontSize(10).setPosition(150, 285).setSize(a.width - 30, 200).setText("Various CCO assets from OpenGameArt.org"); 
+                aboutLayer.appendChild(aboutLabel_4);
+                var aboutLabel_5 = (new lime.Label).setFontColor("#E8FC08").setFontSize(10).setPosition(150, 310).setSize(a.width - 30, 200).setText("Music by Estudio Cafofo http://estudiocafofo.com"); 
+                aboutLayer.appendChild(aboutLabel_5);
+                var aboutLabel_6 = (new lime.Label).setFontColor("#E8FC08").setFontSize(18).setPosition(150, 340).setSize(a.width - 30, 200).setText("Support Inquiries & Feedback");
+                aboutLayer.appendChild(aboutLabel_6);
+                var aboutLabel_7 = (new lime.Label).setFontColor("#E8FC08").setFontSize(10).setPosition(150, 360).setSize(a.width - 30, 200).setText("Email us at info@guighost.com");
+                aboutLayer.appendChild(aboutLabel_7);
+
+
+                var rewardButton = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(150, 310).setSize(a.width / 2 + 40, 30).setFill("#663300");
+                rewardButton = (new lime.GlossyButton).setColor("#6600ff").setText("Enter Reward Code").setPosition(150, 310).setSize(a.width / 2 , 30);
+                 aboutLayer.appendChild(rewardButton);
+                 var aboutLabel_8 = (new lime.Label).setFontColor("#E8FC08").setFontSize(10).setPosition(150, 430).setSize(a.width - 30, 200).setText("Reward codes are for special circumstances only");
+                 aboutLayer.appendChild(aboutLabel_8);
+                 rewardButton.setHidden(true);
+                 aboutLabel_8.setHidden(true);
+
+
+                var aboutLabelLogo = (new lime.Label).setFontColor("#E8FC08").setFontSize(18).setPosition(150, 470).setSize(a.width - 40, 200).setText("");
+                aboutLabelLogo.setText("Developed and Published by");
+                aboutLayer.appendChild(aboutLabelLogo);
+
+
+                var backBtnAbout = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 4 - 20, 400).setSize(a.width / 2 + 10, 40).setFill("#663300");
+                backBtnAbout = (new lime.GlossyButton).setColor("#1ce636").setText("Back").setPosition(155,a.height - 30).setSize(a.width / 2 + 10, 40);
+                aboutLayer.appendChild(backBtnAbout);
+
+                goog.events.listen(backBtnAbout, ["mousedown", "touchstart"], function (e) {
+                    c.replaceScene(menuScene, lime.transitions.SlideInUp);
+
+                    e.event.stopPropagation();
+                    e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+                });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
