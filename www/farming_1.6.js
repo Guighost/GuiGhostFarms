@@ -1497,16 +1497,24 @@ var farming = {
       
         if (arrayIndex == -1) {
             this.state = farming.EMPTY;
-            var landStateThis = { name: landIdent, props: { state: this.state, deathTime: 0, ripeTime: 0, crop: b.currentCrop } }
+            var landStateThis = { name: landIdent, props: { state: parseInt(this.state), deathTime: 0, ripeTime: 0, crop: parseInt(b.currentCrop) } }
             landStateMaster.push(landStateThis);
             localStorage.setItem("landStates", JSON.stringify(landStateMaster));
         }
         else {
-            this.state = landStateMaster[arrayIndex].props.state;
-            this.crop = landStateMaster[arrayIndex].props.crop;
-            this.ripeTime = landStateMaster[arrayIndex].props.ripeTime;
-            this.deathTime = landStateMaster[arrayIndex].props.deathTime;
+            this.state = parseInt(landStateMaster[arrayIndex].props.state);
+            this.state = Math.abs(this.state);
+           
+            this.crop = parseInt(landStateMaster[arrayIndex].props.crop);
+            this.crop = Math.abs(this.crop);
 
+            this.ripeTime = parseInt(landStateMaster[arrayIndex].props.ripeTime);
+            this.ripeTime = Math.abs(this.ripeTime);
+
+            this.deathTime = parseInt(landStateMaster[arrayIndex].props.deathTime);
+            this.deathTime = Math.abs(this.deathTime);
+
+            //console.log("state " + this.state)
             if (this.state == farming.GROWING) {
 
                 c.setFill("images/" + a.crops[this.crop].grow1)
@@ -1529,10 +1537,12 @@ var farming = {
         function growIt(d) {
             //if (tutSeen == 0) { break; }
             homeCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
+            homeCrop = Math.abs(homeCrop);
             //console.log(homeCrop + " homecrop")
             if (scene == 1 ) { b.currentCrop = homeCrop; };
             if (scene == 32) { b.currentCrop = 9; };
             if (scene == 3) { b.currentCrop = 8; };
+            b.currentCrop = Math.abs(b.currentCrop);
             var toPlant = a.crops[b.currentCrop].grow1;
             var toWithered = a.crops[b.currentCrop].withered;
             
@@ -1574,6 +1584,7 @@ var farming = {
                     : c.state == farming.PLOWED && player.money >= a.crops[b.currentCrop].cost ?
 
                         (
+                            b.currentCrop = Math.abs(b.currentCrop),
                             toPlant = a.crops[b.currentCrop].grow1,
                             c.setFill("images/" + toPlant),
                             c.state = farming.GROWING,
@@ -1589,6 +1600,7 @@ var farming = {
                         : c.state == farming.PLOWED && player.money < a.crops[b.currentCrop].cost ?    ///player doesnt have enough to plant that crop
 
                             (
+                                b.currentCrop = Math.abs(b.currentCrop),
                                 a.displayCost(posX, posY, a.crops[b.currentCrop].cost + " Required")
                             )
 
@@ -1727,7 +1739,7 @@ var farming = {
             if (a.crops[this.crop] == 8 && this.deathTime < 0) { this.setFill(imgArray4[8]) }
             if (a.crops[this.crop] == 9 && this.deathTime < 0) { this.setFill(imgArray4[8]) }
             if (a.crops[this.crop] == 12 && this.deathTime < 0) { this.setFill(imgArray[34]) }
-            var halfTimer = 1000 * a.crops[b.currentCrop].time_to_ripe;
+            var halfTimer = 500 * a.crops[b.currentCrop].time_to_ripe;
             this.state == farming.GROWING &&
                 (
                 halfTimer >= this.ripeTime ?
@@ -2810,7 +2822,7 @@ farming.start = function () {
     }, 3000);
     a.updateDates = function () {
         dayCount = dayCount + 1;
-        if (daysTillHerald >= 1) { daysTillHerald = parseInt(daysTillHerald - 1);}
+        if (daysTillHerald >= 1) { daysTillHerald = parseInt(daysTillHerald) - 1;}
         if (daysTillHerald <= 0) {
             acresOwned4 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
             if (acresOwned4 >= 4) { gideon.setHidden(false); daysTillHerald = 0; } else { gideon.setHidden(true); daysTillHerald = 150; } 
@@ -6405,7 +6417,7 @@ farming.start = function () {
             waterfallSound.stop();
 
             c.replaceScene(d, lime.transitions.SlideInLeft);
-            b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
+       
             sceneActive = 'Home';
         }
     });
@@ -7026,6 +7038,7 @@ farming.start = function () {
             c.replaceScene(d, lime.transitions.SlideInLeft); sceneBefore = 1; waterfallSound.stop();
             sceneActive = 'Home';
             b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
+            b.currentCrop = Math.abs(b.currentCrop);
             if (b.currentCrop > 5 || isNaN(b.currentCrop) || b.currentCrop < 0) {             
                 b.currentCrop = 0; w.setText("Plant " + a.crops[b.currentCrop].name); z.setFill("images/" + a.crops[b.currentCrop].harvest);            
             };
@@ -11270,6 +11283,7 @@ farming.start = function () {
     goog.events.listen(homeNavLS, ["mousedown", "touchstart"], function () {
         if (compassVisible) {
             b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
+            b.currentCrop = Math.abs(b.currentCrop);
             if (b.currentCrop > 5 || isNaN(b.currentCrop) || b.currentCrop < 0) {
                 b.currentCrop = 0; w.setText("Plant " + a.crops[b.currentCrop].name); z.setFill("images/" + a.crops[b.currentCrop].harvest);
             };
@@ -12246,6 +12260,7 @@ farming.start = function () {
             closeAcresNav();
             a.sceneBefore = 1;
             b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
+            b.currentCrop = Math.abs(b.currentCrop);
             if (b.currentCrop > 5 || isNaN(b.currentCrop) || b.currentCrop < 0) {
                 b.currentCrop = 0; w.setText("Plant " + a.crops[b.currentCrop].name); z.setFill("images/" + a.crops[b.currentCrop].harvest);
           
@@ -13760,14 +13775,15 @@ farming.start = function () {
     goog.events.listen(backBtnAchieve, ["mousedown", "touchstart"], function (e) {
 
         if (sceneBefore == 1) {
-            c.replaceScene(d, lime.transitions.SlideInUp); sceneBefore = 1;
-            b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
             sceneActive = 'Home';
-          
-            if (b.currentCrop > 5 || isNaN(b.currentCrop) || b.currentCrop < 0) {
+            b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
+            b.currentCrop = Math.abs(b.currentCrop);
+                  
+            if (b.currentCrop > 5 || isNaN(b.currentCrop)) {
                 b.currentCrop = 0; w.setText("Plant " + a.crops[b.currentCrop].name); z.setFill("images/" + a.crops[b.currentCrop].harvest);
         
             };
+            c.replaceScene(d, lime.transitions.SlideInUp); sceneBefore = 1;
         }
         if (sceneBefore == 2) { c.replaceScene(pastureScene, lime.transitions.SlideInUp); sceneBefore = 2; b.currentCrop = 6; sceneActive = 'Pasture'; }
         if (sceneBefore == 3) { c.replaceScene(orchardScene, lime.transitions.SlideInUp); sceneBefore = 3; b.currentCrop = 8; sceneActive = 'Orchard';}
