@@ -3870,27 +3870,29 @@ farming.start = function () {
     goog.events.listen(confirmBtn, ["mousedown", "touchstart"], function () {            //forsale confirm
        confirmSale.setHidden(true);
         homeBlock.setHidden(true);
-
-        if (fsClicked == 1) {
-            acres[1].owned = 1;
-            player.money = player.money - 2500;
-            a.updateMoney();
-            roadLeft.setHidden(false); forSaleP.setHidden(true); confirmSale.setHidden(true);
-            lime.scheduleManager.callAfter(function () {
-                globalModalBlock = 0;
-            }, this, 500);
+        var confirmIsHid = confirmBtn.getHidden();
+        if (confirmIsHid == false){
+            if (fsClicked == 1) {
+                acres[1].owned = 1;
+                player.money = player.money - 2500;
+                a.updateMoney();
+                roadLeft.setHidden(false); forSaleP.setHidden(true); confirmSale.setHidden(true);
+                lime.scheduleManager.callAfter(function () {
+                    globalModalBlock = 0;
+                }, this, 500);
+            }
+            if (fsClicked == 2) {
+                acres[2].owned = 1;
+                player.money = player.money - 5000;
+                a.updateMoney();
+                roadRight.setHidden(false); forSaleO.setHidden(true); confirmSale.setHidden(true);
+                lime.scheduleManager.callAfter(function () {
+                    globalModalBlock = 0;
+                }, this, 500);
+            }
+            localStorage.setItem('GuiGhostFarms_acres', JSON.stringify(acres));
+            fsclicked = 0;
         }
-        if (fsClicked == 2) {
-            acres[2].owned = 1;
-            player.money = player.money - 5000;
-            a.updateMoney();
-            roadRight.setHidden(false); forSaleO.setHidden(true); confirmSale.setHidden(true);
-            lime.scheduleManager.callAfter(function () {
-                globalModalBlock = 0;
-            }, this, 500);
-        }
-        localStorage.setItem('GuiGhostFarms_acres', JSON.stringify(acres));
-        fsclicked = 0;
     });
 
     goog.events.listen(cancelBtn, ["mousedown", "touchstart"], function () {
