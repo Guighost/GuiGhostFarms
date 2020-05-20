@@ -2792,7 +2792,7 @@ farming.start = function () {
 
     //update money
     a.updateMoney = function () {
-        if (player.money < 0) (player.money = moneyBefore);
+        if (player.money < 0) (player.money = Math.abs(player.money));
         b.money = player.money;
         h.setText(player.money); pastureCash.setText(player.money); marketCash.setText(player.money); storeCash.setText(player.money);
         liveStockCash.setText(player.money); orchardCash.setText(player.money); vinyardCash.setText(player.money);
@@ -7328,12 +7328,13 @@ farming.start = function () {
         document.getElementById("fbshare").style.display = 'none';
         homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
         globalModalBlock = 0;
-        event.stopPropagation();
+        
         showingStarCash = 0;
         var mutedAtStart4 = localStorage.getItem('GuiGhostFarms_muted');
         //console.log(mutedAtStart4)
         if (mutedAtStart4 == 0) { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); }
         else { lime.audio.setMute(true); setMute(1) }
+        event.stopPropagation();
     }, false);
 
     document.getElementById("buyStarsFromModal").addEventListener("touchstart", function (event) {
