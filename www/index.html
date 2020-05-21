@@ -394,9 +394,10 @@
             animation-duration: 5s;
         }
 
-
-
-        #foundIt {
+        #rewardTitle {
+            margin-top:30px;
+        }
+        #foundIt, #rewardMe {
             background-image: url("images/UI/blankBack6.png");
             /*background-color: #8a2be2;*/
             height: 370px;
@@ -404,7 +405,7 @@
             position: absolute;
             top: 135px;
             margin-left: 50%;
-            transform:translateX(-155px);
+            transform: translateX(-155px);
             display: none;
             font-family: 'Comic Sans MS';
             font-size: 14px;
@@ -520,7 +521,28 @@
             display: none;
             top: 0px;
         }
+    
+        #rewardClose {
+            width: 50px;
+            height: 50px;
+            bottom: 10px;
+            margin-left: 50%;
+            transform: translate3d(-25px, 30px,0);
+            background-image: url(images/UI/XButton.png);
+            background-size: contain;
 
+        }
+        #rewardInputCode {
+        margin: 30px;
+        height: 30px;
+
+        }
+        #rewardSubText {
+            margin-left: 5%;
+            margin-top: 3%;
+        width: 90%;
+        font-size:medium;
+        }
         #rateMeInner {
             position: absolute;
             background-image: linear-gradient(grey,ActiveCaption);
@@ -818,7 +840,17 @@
 
         </div>
     </div>
+    <div id="rewardMe">
+        <div id="rewardInner">
+            <h1 id="rewardTitle"> Enter Reward Code </h1>
+            <input id="rewardInputCode" />
+            <button id="submitRewardCode">Check Code</button>
+            <div id="rewardSubText">Reward codes are rare items. These are issued by GuiGhost Games for Loot Boy and other reward services</div>
+            <div id="rewardSubText2">fdfasf</div>
+            <div id="rewardClose"></div>
 
+        </div>
+    </div>
 
 
 
@@ -827,7 +859,6 @@
 
 
     <script type=text/javascript>
-
 
 
 
@@ -1307,6 +1338,7 @@
         //    }
         //}
         //catch (err) { console.log("failed versioncheck") }
+
 
 
 
