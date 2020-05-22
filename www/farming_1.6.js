@@ -1420,7 +1420,7 @@ if (typeof localStorage["MedFarms_buyingMasterPack"] === "undefined") { localSto
 
 var itemCarryOver = -1;
 var showHighlight2 = localStorage.getItem('showHighLight');
-//var ss = new lime.SpriteSheet('images/', lime.ASSETS.blacksmith.json, lime.parse)
+
 var farming = {
     EMPTY: 0, PLOWED: 1, GROWING: 2, READY: 3, WITHER: 4,
     Land: function (a, b, posX, posY, scene, block, landIdent) {
@@ -6992,7 +6992,7 @@ farming.start = function () {
 
 
     var clearData = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 4 - 20, 250).setSize(a.width / 2 + 40, 40).setFill("#663300");
-    clearData = (new lime.GlossyButton).setColor("#ff0000").setText("Clear Data (start over)").setPosition(150, 250).setSize(a.width / 2 + 40, 40);
+    clearData = (new lime.GlossyButton).setColor("#ff0000").setText("Clear Data (Start Over)").setPosition(150, 250).setSize(a.width / 2 + 40, 40);
     menuLayer.appendChild(clearData);
 
     var aboutBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 4 - 20, 325).setSize(a.width / 2 + 40, 40).setFill("#663300");
@@ -7067,6 +7067,9 @@ farming.start = function () {
 
     //clear data
     goog.events.listen(clearData, ["mousedown", "touchstart"], function () {
+        var r = confirm("Danger! Are you sure you want to clear data?\nThis will erase all progress and you will start over.\nClick Ok to proceed or Cancel now while you still can!");
+        if (r == true) {
+              
         player.barnLevel = 1;
         player.pastureLevel = 1;
         player.treesP = 0;
@@ -7091,7 +7094,6 @@ farming.start = function () {
         player.cropsStored[15].stored = 200;
         player.cropsStored[16].stored = 0;
         player.cropsStored[17].stored = 0;
-
         showHighLight = 0;
         showHighlight2 = 0;
         localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
@@ -7145,6 +7147,9 @@ farming.start = function () {
         localStorage.removeItem("MedFarms_selectedHomeCrop");   
         localStorage.removeItem('MedFarms_heraldOrdersFilled')
         lime.scheduleManager.callAfter(function () { location.reload(); }, this, 750);
+        } else {
+            alert("Whew! That was close!\n Your Farm is safe");
+        }
 
     });
     //star cash convert
@@ -14036,51 +14041,52 @@ farming.start = function () {
                 backBtnAbout = (new lime.GlossyButton).setColor("#1ce636").setText("Back").setPosition(155,a.height - 30).setSize(a.width / 2 + 10, 40);
                 aboutLayer.appendChild(backBtnAbout);
 
-                goog.events.listen(rewardButton, ["mousedown", "touchstart"], function (e) {
-                    document.getElementById("rewardMe").style.display = 'block'
-                    e.event.stopPropagation();
-                    e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
-                });
 
+                var codeField = document.getElementById("rewardInputCode");
+                var submitReward = document.getElementById("submitRewardCode");
+                var rewardClose1 = document.getElementById("rewardClose");
+
+                goog.events.listen(rewardButton, ["mousedown", "touchstart"], function (e) {
+                    document.getElementById("rewardMe").style.display = 'block';
+                    codeField.focus();
+         
+                    codeField.addEventListener("touchend", function (event) {
+                        codeField.focus();
+                        //prompt();
+                    }, false);
+                    submitReward.addEventListener("touchend", function (event) {
+                        var enteredCode = codeField.value;
+                        console.log("code = " + enteredCode);
+                        checkRewardCode(enteredCode);
+
+                    }, false);
+
+                    submitReward.addEventListener("click", function (event) {
+                        var enteredCode = codeField.value;
+                        console.log("code = " + enteredCode);
+                        checkRewardCode(enteredCode);
+
+                    }, false);
+
+                    rewardClose1.addEventListener("click", function (event) {
+                        document.getElementById("rewardMe").style.display = 'none'
+
+                    }, false);
+
+                    rewardClose1.addEventListener("touchend", function (event) {
+                        document.getElementById("rewardMe").style.display = 'none'
+
+                    }, false);
+                });
+  
                 goog.events.listen(backBtnAbout, ["mousedown", "touchstart"], function (e) {
                     c.replaceScene(menuScene, lime.transitions.SlideInUp);
 
-                    e.event.stopPropagation();
-                    e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+        
                 });
 
-                var codeField = document.getElementById("rewardInputCode");
-                document.getElementById("submitRewardCode").addEventListener("touchstart", function (event) {
-                    var enteredCode = codeField.value;
-                    console.log("code = " + enteredCode);
-                    checkRewardCode(enteredCode);
-                    event.stopPropagation();
 
-                }, false);
 
-                document.getElementById("submitRewardCode").addEventListener("click", function (event) {
-                    var enteredCode = codeField.value;
-                    console.log("code = " + enteredCode);
-                    checkRewardCode(enteredCode);
-                    event.stopPropagation();
-
-                }, false);
-
-       
-
-                document.getElementById("rewardClose").addEventListener("click", function (event) {
-
-                    document.getElementById("rewardMe").style.display = 'none'
-                    event.stopPropagation();
-
-                }, false);
-
-                document.getElementById("rewardClose").addEventListener("click", function (event) {
-                    document.getElementById("rewardMe").style.display = 'none'
-                    event.stopPropagation();
-
-                }, false);
-                rewardClose
 
                 var myArr = new Array();
           
