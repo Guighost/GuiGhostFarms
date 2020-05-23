@@ -3483,7 +3483,7 @@ farming.start = function () {
                 });  
             }
      
-  	});
+  	}, false);
 	
 
     goog.events.listen(houseEnterBtn, ["mousedown", "touchstart"], function () {
@@ -3787,7 +3787,8 @@ farming.start = function () {
     
     tutSeen = parseInt(localStorage["GuiGhostFarms_tutSeen"]);
     onlyOnceUpdateNotif = localStorage.getItem("MedFarms_onlyOnceUpdateNotif");
-    if (tutSeen == 1 && onlyOnceUpdateNotif == 0) { upgradeNotif.setHidden(false); onlyOnceUpdateNotif = 1; localStorage.setItem("MedFarms_onlyOnceUpdateNotif", 1) }
+    //hide upgrade notification for 1.6
+    //if (tutSeen == 1 && onlyOnceUpdateNotif == 0) { upgradeNotif.setHidden(false); onlyOnceUpdateNotif = 1; localStorage.setItem("MedFarms_onlyOnceUpdateNotif", 1) }
 
     ///Crop Unlock Modal
     var unlockedCropBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 150).setSize(250, 250).setFill("images/UI/blankBack4.png");
@@ -7433,7 +7434,7 @@ farming.start = function () {
         statsLayer.appendChild(inventoryCash);
 
        
-
+        farmerTitle.setText("Peasant Farmer");
 
 
         var playerImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(2, 74).setSize(100, 100).setFill(imgArrayPlayer[0]);
@@ -8914,7 +8915,7 @@ farming.start = function () {
     gideon.appendChild(gideonQuest);
   
     var acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
-    if (acresOwned3 >= 4) { gideon.setHidden(false); } 
+    if (acresOwned3 >= 4) { gideon.setHidden(false); farmerTitle.setText("Expert Farmer"); } 
 
 
     var monkAnimCount = 1;
@@ -11501,17 +11502,7 @@ farming.start = function () {
     isblocked2 = localStorage.getItem("GuiGhostFarms_vinyardBlocks2");
 
 
-    if (isblocked1 == 1) {
-        vinyardTreeBlock1.setHidden(false);
-        treeUnlockBtnV.setHidden(false);
-        treesImgV.setHidden(false);
-    }
-    if (isblocked1 == 2) {
-        vinyardTreeBlock1.setHidden(true);
-        treeUnlockBtnV.setHidden(true);
-        treesImgV.setHidden(true);
-        goog.events.removeAll(treesImgV);
-    }
+
     goog.events.listen(treesImgV, ["mousedown", "touchstart"], function () {
 
         if (player.tools >= 500 && globalModalBlock == 0) {
@@ -11566,7 +11557,19 @@ farming.start = function () {
 
         }
     });
-
+    isblocked1 = localStorage.getItem("GuiGhostFarms_vinyardBlocks");
+    isblocked2 = localStorage.getItem("GuiGhostFarms_vinyardBlocks2");
+    if (isblocked1 == 1) {
+        vinyardTreeBlock1.setHidden(false);
+        treeUnlockBtnV.setHidden(false);
+        treesImgV.setHidden(false);
+    }
+    if (isblocked1 == 2) {
+        vinyardTreeBlock1.setHidden(true);
+        treeUnlockBtnV.setHidden(true);
+        treesImgV.setHidden(true);
+        goog.events.removeAll(treesImgV);
+    }
     var vinyardTreeBlock2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(72, 78).setSize(235, 100).setFill("images/vinyard/treeBlock2.png");
     vinyardLayer.appendChild(vinyardTreeBlock2);
     var treeUnlockBtnV2 = (new lime.Label).setText("").setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontWeight(600).setPosition(170, 165).setSize(90, 130); vinyardLayer.appendChild(treeUnlockBtnV2);
@@ -11583,16 +11586,11 @@ farming.start = function () {
     treesImgV2.setHidden(true);
 
     if (isblocked2 == 1) {
-        vinyardTreeBlock2.setHidden(true);
+        vinyardTreeBlock2.setHidden(false);
         treeUnlockBtnV2.setHidden(false);
         treesImgV2.setHidden(false);
     }
-    if (isblocked2 == 2) {
-        vinyardTreeBlock2.setHidden(true);
-        treeUnlockBtnV2.setHidden(true);
-        treesImgV2.setHidden(true);
-        goog.events.removeAll(treesImgV2);
-    }
+    isblocked2 = localStorage.getItem("GuiGhostFarms_vinyardBlocks2");
     goog.events.listen(treesImgV2, ["mousedown", "touchstart"], function () {
 
         if (player.tools >= 500 && globalModalBlock == 0) {
@@ -11648,7 +11646,14 @@ farming.start = function () {
         }
     });
 
+    isblocked2 = localStorage.getItem("GuiGhostFarms_vinyardBlocks2");
 
+    if (isblocked2 == 2) {
+        vinyardTreeBlock2.setHidden(true);
+        treeUnlockBtnV2.setHidden(true);
+        treesImgV2.setHidden(true);
+        goog.events.removeAll(treesImgV2);
+    }
     a.vinyardBlocksControl = function (num) {
         if (num == 1) {
             vinyardTreeBlock1.setHidden(true);
@@ -13269,7 +13274,7 @@ farming.start = function () {
         if (houseUpgrades.upgrades[0].owned == 1) {
             houseExpandCover.setHidden(true);
             goog.events.removeAll(houseExpandBtn);
-            goog.events.removeAll(questPanelCloseBtnHouse);
+  
             goog.events.removeAll(upPanelConfirmBtnHouse);}
         if (houseUpgrades.upgrades[1].owned == 1) { houseOptionReward1Base.setHidden(false); houseOptions1.setOpacity(0.2); }
         if (houseUpgrades.upgrades[2].owned == 1) { houseOptionReward2Base.setHidden(false); houseOptions2.setOpacity(0.2);}
@@ -13596,11 +13601,14 @@ farming.start = function () {
     questPanelHouse.appendChild(questPanelCloseBtnHouse);
     //questPanelHouse.setHidden(true);
 
-    goog.events.listen(questPanelCloseBtnHouse, ["mousedown", "touchstart"], function () {
+    goog.events.listen(questPanelCloseBtnHouse, ["mousedown", "touchend"], function () {
+       
         questPanelHouse.setHidden(true);
         seen1stHouseNotif = 1
         localStorage.setItem("MedFarms_seen1stHouseNotif", 1);
+      
     }); 
+
 
     //if has seen initial notif in house hide it until denise is clicked
     if (seen1stHouseNotif == 1) { questPanelHouse.setHidden(true); };
@@ -13672,7 +13680,6 @@ farming.start = function () {
     function expandHouseGo() {
         if (player.tools >= 1000 && expandOnce == 0 && parseInt(player.cropsStored[14].stored) >= 200) {
             goog.events.removeAll(houseExpandBtn);
-            goog.events.removeAll(questPanelCloseBtnHouse);
             goog.events.removeAll(upPanelConfirmBtnHouse);
             expandOnce = 1;
             player.tools -= 1000;
@@ -13713,7 +13720,7 @@ farming.start = function () {
                     houseImg.setFill("images/house2.png").setSize(72, 92).setPosition(230, 23)
                 }
 
-            }, this, 1000, 90)
+            }, this, 1000, 90);
             lime.scheduleManager.scheduleWithDelay(function () {
                 //add upgrade anim
 
@@ -13728,7 +13735,7 @@ farming.start = function () {
                 toolMoverHo.setRotation(currentRotateHo);
                 toolMoverLabelHo.setText(secondsToUpgradeHo);
 
-            }, this, 250, 360)
+            }, this, 250, 360);
 
         }
         //else {
@@ -13787,6 +13794,9 @@ farming.start = function () {
     function checkAchieves2() {
         var acresOwned = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
         starCash = parseInt(starCash);
+        if (acresOwned == 2) { farmerTitle.setText("Land Owner"); }
+        if (acresOwned == 3) { farmerTitle.setText("Master Farmer"); }
+        if (acresOwned == 4) { farmerTitle.setText("Expert Farmer"); }
         if (a.achievements[1] == false && pickedEver >= 500) { a.achievements[1] = true; achieve1Check.setHidden(false); starCash = parseInt(starCash) + 3; displayAchieve(1); };
         if (a.achievements[2] == false && pickedEver >= 5000) { a.achievements[2] = true; achieve2Check.setHidden(false); starCash = parseInt(starCash) + 5; displayAchieve(2); };
         if (a.achievements[3] == false && acresOwned >= 2) { a.achievements[3] = true; achieve3Check.setHidden(false); starCash = parseInt(starCash) + 3; displayAchieve(3); };
@@ -14094,7 +14104,7 @@ farming.start = function () {
                 xmlhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
                         myArr = JSON.parse(this.responseText);
-                        console.log(myArr)
+                        //console.log(myArr)
                         
                     }
                 };
