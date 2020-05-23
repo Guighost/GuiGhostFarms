@@ -1287,7 +1287,7 @@ heraldIntroSeen = parseInt(localStorage.getItem('MedFarms_heraldIntro'));
 
 var heraldOrder1 = 0;
 var heraldOrder2 = 1;
-var daysTillHerald = 60;
+var daysTillHerald = 30;
 
 //questHeader.setText("Mayor Bouregard");
 //questText1.setText("I heard that some old things have been found on that farm of yours. If you come across any JEWELS, let me know")
@@ -1538,6 +1538,8 @@ var farming = {
         }
         //var picked = this.crop;
         //console.log(picked + " picked");
+        var arrayIndex2 = 0;
+        var currentLandState = {};
         function growIt(d) {
             //if (tutSeen == 0) { break; }
             homeCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
@@ -1599,7 +1601,11 @@ var farming = {
 
 
                             a.updateMoney(),
-                            a.displayCost(posX, posY, a.crops[b.currentCrop].cost)
+                            a.displayCost(posX, posY, a.crops[b.currentCrop].cost),
+                            arrayIndex2 = findWithAttr(landStateMaster, 'name', landIdent),
+                             currentLandState = { state: c.state, deathTime: c.deathTime, ripeTime: c.ripeTime, crop: c.crop },
+                             landStateMaster[arrayIndex2].props = currentLandState,
+                            localStorage.setItem("landStates", JSON.stringify(landStateMaster))
                         )
                         : c.state == farming.PLOWED && player.money < a.crops[b.currentCrop].cost ?    ///player doesnt have enough to plant that crop
 
@@ -1710,7 +1716,7 @@ var farming = {
             //    setTimeout(function () { localStorage.setItem('MedFarm_StarCashBoost', 0); fromSCBoost = 0; }, 5000);
             //}
         }, this, 1000)
-		
+        var halfTimer = 500 * a.crops[b.currentCrop].time_to_ripe;
         lime.scheduleManager.scheduleWithDelay(function () {
 	
         
@@ -1743,7 +1749,7 @@ var farming = {
             if (a.crops[this.crop] == 8 && this.deathTime < 0) { this.setFill(imgArray4[8]) }
             if (a.crops[this.crop] == 9 && this.deathTime < 0) { this.setFill(imgArray4[8]) }
             if (a.crops[this.crop] == 12 && this.deathTime < 0) { this.setFill(imgArray[34]) }
-            var halfTimer = 500 * a.crops[b.currentCrop].time_to_ripe;
+            halfTimer = 500 * a.crops[b.currentCrop].time_to_ripe;
             this.state == farming.GROWING &&
                 (
                 halfTimer >= this.ripeTime ?
@@ -2829,7 +2835,7 @@ farming.start = function () {
         if (daysTillHerald >= 1) { daysTillHerald = parseInt(daysTillHerald) - 1;}
         if (daysTillHerald <= 0) {
             acresOwned4 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
-            if (acresOwned4 >= 4) { gideon.setHidden(false); daysTillHerald = 0; } else { gideon.setHidden(true); daysTillHerald = 150; } 
+            if (acresOwned4 >= 4) { gideon.setHidden(false); daysTillHerald = 0; } else { gideon.setHidden(true); daysTillHerald = 30; } 
          
         }
         if (dayCount > 365) {
@@ -3046,10 +3052,8 @@ farming.start = function () {
         c.replaceScene(marketScene, lime.transitions.SlideInUp);
         sceneActive = 'Market';
         acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
-        if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); } 
+        if (acresOwned3 >= 4 && daysTillHerald <= 0) { gideon.setHidden(false); } else { gideon.setHidden(true); } 
         CheckQuestInvItems();
-
-
 
     });
 
@@ -3378,7 +3382,7 @@ farming.start = function () {
         modalUp = boostCrops.getHidden();
         if (tutSeen == 1 && modalUp == true) { homeBlock.setHidden(true); }
         else { homeBlock.setHidden(false); }
-    }, true, this);
+    }, false, this);
     if (tutSeen == 1) { homeBlock.setHidden(true); }
 
 
@@ -9229,7 +9233,7 @@ farming.start = function () {
             localStorage.setItem("MedFarms_heraldOrdersFilled", heraldOrderTop);
            
             if (heraldOrderTop > questParamsHerald.crops.length) { heraldOrderTop = 0; }
-            daysTillHerald = 150;
+            daysTillHerald = 30;
             gideon.setHidden(true);
            
         }
