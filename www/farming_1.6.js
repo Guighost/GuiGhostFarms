@@ -13601,14 +13601,20 @@ farming.start = function () {
     questPanelHouse.appendChild(questPanelCloseBtnHouse);
     //questPanelHouse.setHidden(true);
 
-    goog.events.listen(questPanelCloseBtnHouse, ["mousedown", "touchend"], function () {
+    //goog.events.listen(questPanelCloseBtnHouse, ["mousedown"], function () {
        
+    //    questPanelHouse.setHidden(true);
+    //    seen1stHouseNotif = 1
+    //    localStorage.setItem("MedFarms_seen1stHouseNotif", 1);
+      
+    //}, {passive : false}); 
+    goog.events.listen(questPanelCloseBtnHouse, ["mousedown", "touchstart"], function () {
+
         questPanelHouse.setHidden(true);
         seen1stHouseNotif = 1
         localStorage.setItem("MedFarms_seen1stHouseNotif", 1);
-      
-    }); 
 
+    }, { passive: false }); 
 
     //if has seen initial notif in house hide it until denise is clicked
     if (seen1stHouseNotif == 1) { questPanelHouse.setHidden(true); };
