@@ -2259,7 +2259,7 @@ if (typeof localStorage["GuiGhostFarms_vinyardBlocks2"] === "undefined") { local
 vinyardBlocks2 = localStorage.getItem["GuiGhostFarms_vinyardBlocks2"];
 
 if (typeof localStorage["GuiGhostFarms_vinyardHouseLevel"] === "undefined") { localStorage["GuiGhostFarms_vinyardHouseLevel"] = 1; };
-vinyardHouseLevel = parseInt(localStorage["GuiGhostFarms_vinyardHouseLevel"]);
+vinyardHouseLevel = parseInt(localStorage.getItem("GuiGhostFarms_vinyardHouseLevel"));
 if (typeof localStorage["GuiGhostFarms_orchardTreeBlock"] === "undefined") { localStorage["GuiGhostFarms_orchardTreeBlock"] = 1; };
 orchardTreeBlock = parseInt(localStorage["GuiGhostFarms_orchardTreeBlock"]);
 
@@ -11875,7 +11875,7 @@ farming.start = function () {
                         //add upgrade anim
                         secondsToUpgradeV = secondsToUpgradeV - 1;
                         upgradesInProgress.buildings[3].timeLeft = secondsToUpgradeV;
-                        upgradesInProgress.buildings[3].currentBarnLevel = vinyardHouseLevel;
+                        upgradesInProgress.buildings[3].currentBarnLevel = 1;
                         localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
 
                         toolMoverLabelV.setText(secondsToUpgradeV);
@@ -11927,7 +11927,7 @@ farming.start = function () {
                         //localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
                         //localStorage.setItem('GuiGhostFarms_toolsEver', toolsEver);
                         //localStorage.setItem('GuiGhostFarms_moneyEver', moneyEver);
-                        localStorage["GuiGhostFarms_vinyardHouseLevel"] = vinyardHouseLevel;
+                        localStorage.setItem("GuiGhostFarms_vinyardHouseLevel", 2);
                         jellyBonus.setHidden(false);
                         lime.scheduleManager.callAfter(function () { jellyBonus.setHidden(true); }, this, 2500);
                         //goog.events.removeAll(upgradeVinyardBarnBtn);
@@ -14059,9 +14059,33 @@ farming.start = function () {
                     upgradeOrchardBarn(0);
                 }
                 if (parseInt(upgradesInProgress.buildings[3].timeLeft) > 0) {
-                    barnUpgradeCostToolsV = 0; barnUpgradeCostWoodV = 0;
-                    secondsToUpgradeV = parseInt(upgradesInProgress.buildings[3].timeLeft)
-                    vinyardBarnUpgrade(barnUpgradeCostToolsV, barnUpgradeCostWoodV);
+                    vinyardHouseLevel = parseInt(localStorage.getItem("GuiGhostFarms_vinyardHouseLevel"));
+                    if (vinyardHouseLevel < 2) {
+                        barnUpgradeCostToolsV = 0; barnUpgradeCostWoodV = 0;
+                        secondsToUpgradeV = parseInt(upgradesInProgress.buildings[3].timeLeft)
+                        vinyardBarnUpgrade(barnUpgradeCostToolsV, barnUpgradeCostWoodV);
+                    }
+                    else {
+                        ///hack fix to force barn upgrade if vinyardhouse is upgrading repeatedly
+                        console.log("vineyardOverride");
+                        HouseVUnlock3.setHidden(true);
+                        vinyardBarn.setFill("images/vinyard/house4Upgrade2.png");
+                        HouseVUnlock3.setHidden(true);
+                        vinyardHouseLevel = 2;
+                        if (questParams.terric[0].highestCompleted < 1) { questParams.terric[0].highestCompleted = 1;}
+                          questParams.terric[1].completed = 1;
+                        //questText1V.setText(questParams.terric[2].text);
+                        if (player.cropsStored[16].stored <= 0) { questText1V.setText(questParams.terric[2].text); }
+                        else { questText1V.setText("Now we are making Jelly! Keeps the grapes coming"); }
+                        vinFarmerQuest.setHidden(false);
+                        vinFarmerQuestBtn.setHidden(false);
+                        //start making jelly
+                        a.makeJelly();
+                        upgradesInProgress.buildings[3].timeLeft = 0;
+                        upgradesInProgress.buildings[3].currentBarnLevel = 2;
+                        localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
+
+                    }
                 }
                 if (parseInt(upgradesInProgress.buildings[4].timeLeft) > 0) {
                     secondsToUpgradeLS = parseInt(upgradesInProgress.buildings[4].timeLeft);
