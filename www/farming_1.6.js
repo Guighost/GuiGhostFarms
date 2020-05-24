@@ -3860,8 +3860,8 @@ farming.start = function () {
     });
 
 
-    c.replaceScene(d);
-    sceneActive = 'Home';
+    //c.replaceScene(d);
+    //sceneActive = 'Home';
 
     //for sale click  handlers
     goog.events.listen(forSaleP, ["mousedown", "touchstart"], function () {
@@ -10560,8 +10560,11 @@ farming.start = function () {
     //Intro event handler
     lime.audio.setMute(true);
     goog.events.listen(playGameBtn, ["mousedown", "touchstart"], function () {
-        validCropsStored();
-        c.replaceScene(d, lime.transitions.SlideInUp); sceneBefore = 1; lime.audio.setMute(false);
+        try { validCropsStored(); }
+        catch (err) { alert(err)}
+        try { c.replaceScene(d, lime.transitions.SlideInUp);  }
+        catch (err) { alert(err) }
+        sceneBefore = 1; lime.audio.setMute(false);
         b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
         sceneActive = 'Home';
         var mutedAtStart = localStorage.getItem('GuiGhostFarms_muted')
