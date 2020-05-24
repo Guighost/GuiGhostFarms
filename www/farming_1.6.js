@@ -11914,15 +11914,17 @@ farming.start = function () {
                         vinyardHouseLevel = 2;
                         questParams.terric[0].highestCompleted = 1;
                         questParams.terric[1].completed = 1;
-                        questText1V.setText(questParams.terric[2].text);
+                        //questText1V.setText(questParams.terric[2].text);
+                        if (player.cropsStored[16].stored <= 0) { questText1V.setText(questParams.terric[2].text); }
+                        else { questText1V.setText("Now we are making Jelly! Keeps the grapes coming"); }
                         vinFarmerQuest.setHidden(false);
                         vinFarmerQuestBtn.setHidden(false);
                         //start making jelly
                         a.makeJelly();
                         upgradesInProgress.buildings[3].timeLeft = 0;
-                        upgradesInProgress.buildings[3].currentBarnLevel = vinyardHouseLevel;
+                        upgradesInProgress.buildings[3].currentBarnLevel = 2;
                         localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
-                        localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                        //localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
                         //localStorage.setItem('GuiGhostFarms_toolsEver', toolsEver);
                         //localStorage.setItem('GuiGhostFarms_moneyEver', moneyEver);
                         localStorage["GuiGhostFarms_vinyardHouseLevel"] = vinyardHouseLevel;
@@ -12001,7 +12003,7 @@ farming.start = function () {
         checkVinFarmerQuest()
     });
     var highestTerric = questParams.terric[0].highestCompleted;
-    var currentJars = parseInt(player.cropsStored[17].stored);
+    var currentJars = parseInt(player.cropsStored[16].stored);
     var currentJelly = parseInt(player.cropsStored[13].stored);
 
     function checkVinFarmerQuest() {
@@ -12014,19 +12016,19 @@ farming.start = function () {
         currentJars = parseInt(player.cropsStored[16].stored);
         //console.log("vinfarmer " + highestTerric)
         currentJelly = parseInt(player.cropsStored[13].stored);
-        if (currentJars == 0 && highestTerric >= 1) {
-            questText1V = questParams.terric[2].text;
+        if (currentJars <= 0 && highestTerric >= 1) {
+            questText1V.setText(questParams.terric[2].text);
             vinFarmerQuestBtn.setHidden(false);
             vinFarmerQuest.setHidden(false);
         }
       
         else if (currentJars >= 0 && highestTerric >= 1 ) {
-            questText1V = questParams.terric[3].text;
+            questText1V.setText(questParams.terric[3].text);
             vinFarmerQuestBtn.setHidden(false);
             vinFarmerQuest.setHidden(false);
         }
         else {
-            questText1V = questParams.terric[3].text
+            questText1V.setText(questParams.terric[3].text);
             vinFarmerQuestBtn.setHidden(false);
             vinFarmerQuest.setHidden(false);
         }
@@ -13957,6 +13959,8 @@ farming.start = function () {
 
                 function checkShortage() {
                     if (player.cropsStored[8].stored < 2 || player.cropsStored[5].stored < 2) {
+                        gLabel5Pork.setText(player.cropsStored[5].stored);
+                        gLabel8Pork.setText(player.cropsStored[8].stored);
                         porkBlocked.setHidden(false);
                     lsBlock.setHidden(false); 
                     }
@@ -14131,7 +14135,7 @@ farming.start = function () {
                 var codeField = document.getElementById("rewardInputCode");
                 var submitReward = document.getElementById("submitRewardCode");
                 var rewardClose1 = document.getElementById("rewardClose");
-
+                var enteredCode = "";
                 goog.events.listen(rewardButton, ["mousedown", "touchstart"], function (e) {
                     document.getElementById("rewardMe").style.display = 'block';
                     codeField.focus();
@@ -14141,18 +14145,18 @@ farming.start = function () {
                         //prompt();
                     }, false);
                     submitReward.addEventListener("touchend", function (event) {
-                        var enteredCode = codeField.value;
+                        enteredCode = codeField.value.toString();
                         console.log("code = " + enteredCode);
                         checkRewardCode(enteredCode);
 
-                    }, false);
+                    });
 
-                    submitReward.addEventListener("click", function (event) {
-                        var enteredCode = codeField.value;
+                    submitReward.addEventListener("click", function () {
+                        enteredCode = codeField.value.toString();
                         console.log("code = " + enteredCode);
                         checkRewardCode(enteredCode);
 
-                    }, false);
+                    });
 
                     rewardClose1.addEventListener("click", function (event) {
                         document.getElementById("rewardMe").style.display = 'none'
@@ -14188,8 +14192,8 @@ farming.start = function () {
                 xmlhttp.open("GET", "json_code_array.txt", true);
                 xmlhttp.send();
                 function checkRewardCode(code) {
-   
-                    console.log("code tried is " + code)
+          
+                    console.log("code tried is " + code);
       
                     if (myArr.indexOf(code.toString()) !== -1) {
                         if (usedCodesArray.indexOf(code.toString()) == -1) {
@@ -14205,9 +14209,9 @@ farming.start = function () {
                             localStorage.setItem("usedCodes", JSON.stringify(usedCodesArray))
                             setTimeout(function () { codeField.value = ""; codeField.style.color = 'Black'; }, 1000)
                         }
-                        else { codeField.value = "Code already used"; codeField.style.color = 'RED'; setTimeout(function () { codeField.value = ""; codeField.style.color = 'Black'; }, 1000)}
+                        else { codeField.value = "Code already used"; codeField.style.color = 'RED'; setTimeout(function () { codeField.value = " "; codeField.style.color = 'Black'; }, 1000) }
                     }
-                else (alert("invalid code"))
+                    else { codeField.value = "Code already used"; codeField.style.color = 'RED'; setTimeout(function () { codeField.value = " "; codeField.style.color = 'Black'; }, 1000)}
                 };
 
 
