@@ -956,45 +956,45 @@
 
 
 
-        var callback3 = function (result) {
-            if (!result) {
-                app.writeLog('Rewarded ad is not ready');
-                return;
-            }
+        //var callback3 = function (result) {
+        //    if (!result) {
+        //        app.writeLog('Rewarded ad is not ready');
+        //        return;
+        //    }
 
-            // The ad is ready
-            var onRewardGranted = function (rewardValue, ITEM) {
-                if (rewardType == Enhance.RewardType.ITEM)
-                    app.writeLog("Reward granted (crop boost)"),
-                        rewardedCompleted = 1,
-                        localStorage.setItem('MedFarm_Rewarded', 1);
+        //    // The ad is ready
+        //    var onRewardGranted = function (rewardValue, ITEM) {
+        //        if (rewardType == Enhance.RewardType.ITEM)
+        //            app.writeLog("Reward granted (crop boost)"),
+        //                rewardedCompleted = 1,
+        //                localStorage.setItem('MedFarm_Rewarded', 1);
 
-                else if (rewardType == Enhance.RewardType.COINS)
-                    app.writeLog("Reward granted (coins), value: " + rewardValue),
-                        rewardedCompleted = 1,
-                        localStorage.setItem('MedFarm_Rewarded', 1);
+        //        else if (rewardType == Enhance.RewardType.COINS)
+        //            app.writeLog("Reward granted (coins), value: " + rewardValue),
+        //                rewardedCompleted = 1,
+        //                localStorage.setItem('MedFarm_Rewarded', 1);
 
-                else {
-                    console.log("rewarded fallback"),
-                        rewardedCompleted = 1,
-                        localStorage.setItem('MedFarm_Rewarded', 1);
-                }
-            };
+        //        else {
+        //            console.log("rewarded fallback"),
+        //                rewardedCompleted = 1,
+        //                localStorage.setItem('MedFarm_Rewarded', 1);
+        //        }
+        //    };
 
-            var onRewardDeclined = function () {
-                app.writeLog('Reward declined'),
-                    rewardedCompleted = 0;
-                document.getElementById("waitText").innerHTML = 'Reward declined- you must watch the ad to get the reward';
-            };
+        //    var onRewardDeclined = function () {
+        //        app.writeLog('Reward declined'),
+        //            rewardedCompleted = 0;
+        //        document.getElementById("waitText").innerHTML = 'Reward declined- you must watch the ad to get the reward';
+        //    };
 
-            var onRewardUnavailable = function () {
-                app.writeLog('Reward unavailable');
-                rewardedCompleted = 0;
-                document.getElementById("waitText").innerHTML = 'Reward unavailable- please wait a while before you boost again', c.setPaused(0);
-            };
+        //    var onRewardUnavailable = function () {
+        //        app.writeLog('Reward unavailable');
+        //        rewardedCompleted = 0;
+        //        document.getElementById("waitText").innerHTML = 'Reward unavailable- please wait a while before you boost again', c.setPaused(0);
+        //    };
 
-            Enhance.showRewardedAd(onRewardGranted, onRewardDeclined, onRewardUnavailable);
-        };
+        //    Enhance.showRewardedAd(onRewardGranted, onRewardDeclined, onRewardUnavailable);
+        //};
 
 
 
@@ -1015,16 +1015,21 @@
                 localStorage.setItem('MedFarm_LoadAd', 0);
                 localStorage.setItem('adWatched', 1);
                 showItOrNo2 = 0;
-                //try { Enhance.isInterstitialReady(callback); }
-                //catch (err) { console.log("Caught interstital  error " + err) }
-
-                ///hack fix switch all ads to rewarded video
+                ///hack fix - save crops before play ads
                 localStorage.setItem("landStates", JSON.stringify(landStateMaster));
+                //give time for save before load ad
+                setTimeout(function () {
+                    try { Enhance.isInterstitialReady(callback); }
+                    catch (err) { console.log("Caught interstital  error " + err) }
+                }, 300)
+             
+
+           
                 //console.log(JSON.stringify(landStateMaster));
-                try { Enhance.isRewardedAdReady(callback3); }
-                catch (err) {
-                    console.log("Caught rewarded error " + err);
-                }
+                //try { Enhance.isRewardedAdReady(callback3); }
+                //catch (err) {
+                //    console.log("Caught rewarded error " + err);
+                //}
 
 
             }
