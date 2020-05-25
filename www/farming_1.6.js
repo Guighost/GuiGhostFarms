@@ -2332,7 +2332,7 @@ farming.start = function () {
         { name: "Iron", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/ironBar.png", harvest: "items/ironBar.png", grow1: "items/ironBar.png", grow2: "items/ironBar.png", stored: 0 },
         { name: "Jars", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/jars.png", harvest: "items/jars.png", grow1: "items/jars.png", grow2: "items/jars.png", stored: 0 },
         { name: "Barrels", cost: 200, revenue: 0, time_to_ripe: 75, time_to_death: 14000,image: "items/barrels.png", harvest: "items/barrels.png", grow1: "items/barrels.png", grow2: "items/barrels.png", stored: 0 },
-        { name: "Cider", cost: 0, revenue: 40, time_to_ripe: 75, time_to_death: 14000, image: imgArray4[21], harvest: imgArray4[21], grow1: imgArray4[21], grow2: imgArray4[21] , stored: 0 },
+        { name: "Cider", cost: 0, revenue: 40, time_to_ripe: 75, time_to_death: 14000, image: "items/ciderBarrel.png", harvest: "items/ciderBarrel.png", grow1: "items/ciderBarrel.png", grow2: "items/ciderBarrel.png", stored: 0 },
         { name: "Grape Juice", cost: 0, revenue: 40, time_to_ripe: 75, time_to_death: 14000, image: "items/planks.png", harvest: "items/planks.png", grow1: "items/planks.png", grow2: "items/planks.png", stored: 0 },
         { name: "Bottles", cost: 200, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/bottles.png", harvest: "items/bottles.png", grow1: "items/bottles.png", grow2: "items/bottles.png", stored: 0 },
         { name: "Planks", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/planks.png", harvest: "items/planks.png", grow1: "items/planks.png", grow2: "items/planks.png", stored: 0 },
