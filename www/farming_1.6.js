@@ -2464,7 +2464,7 @@ farming.start = function () {
             toolsEver = toolsEver + (2 + parseInt(player.barnLevel));
             toolUpCount.setText("+" + (2 + player.barnLevel))
             localStorage["GuiGhostFarms_toolsEver"] = toolsEver;
-            a.updateTools();
+            a.updateTools2();
         }
         else {
             ///put anim over blacksmith
@@ -2864,6 +2864,11 @@ farming.start = function () {
 
     //update tools
     a.updateTools = function () {
+        toolCount.setText(player.tools);  toolCountP.setText(player.tools); toolCountO.setText(player.tools); toolCountLS.setText(player.tools);  toolCountV.setText(player.tools); 
+        countTools.setText(player.tools); toolCountHouse.setText(player.tools); toolCountInv.setText(player.tools);
+    };
+
+    a.updateTools2 = function () {
         toolCount.setText(player.tools); toolCount.setFontColor("#4dff4d"); toolCountImg.setSize(35, 35); toolCountImgP.setSize(35, 35); toolCountImgO.setSize(35, 35);
         toolCountP.setText(player.tools); toolCountP.setFontColor("#4dff4d");
         toolCountO.setText(player.tools); toolCountO.setFontColor("#4dff4d");
@@ -5501,12 +5506,12 @@ farming.start = function () {
                 scaffoldP.setHidden(false);
                 toolMoverLabelP.setText(secondsToUpgradeP);
                 toolMoverLabelP.setHidden(false);
-                lime.scheduleManager.scheduleWithDelay(function () {
-                    currentRotateP = currentRotateP + 10;
-                    if (currentRotateP > 35) { currentRotateP = -10; };
-                    toolMoverP.setRotation(currentRotateP);
+                //lime.scheduleManager.scheduleWithDelay(function () {
+                //    currentRotateP = currentRotateP + 10;
+                //    if (currentRotateP > 35) { currentRotateP = -10; };
+                //    toolMoverP.setRotation(currentRotateP);
 
-                }, this, 200, 300)
+                //}, this, 200, 300)
                 //upgrade countdown timer
           
                 var upCloudWP = 70;
@@ -5521,7 +5526,7 @@ farming.start = function () {
                     upgradesInProgress.buildings[1].currentBarnLevel = player.pastureLevel;
                     localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
 
-                    if (secondsToUpgradeP <= 0) { toolMoverLabelP.setHidden(true); scaffoldP.setHidden(true); upgradeCloudP.setHidden(true); secondsToUpgradeP = 60; }
+                    if (secondsToUpgradeP <= 0) { toolMoverLabelP.setHidden(true); scaffoldP.setHidden(true); upgradeCloudP.setHidden(true); secondsToUpgradeP = 120; }
 
                 }, this, 1000, secondsToUpgradeP)
                 if (player.pastureLevel == 1) {
@@ -5533,7 +5538,9 @@ farming.start = function () {
                         upCloudXP = upCloudXP - 5;
                         upCloudYP = upCloudYP - 5
                         if (upCloudXP < -10) { upCloudXP = 10; upCloudYP = 5; upCloudWP = 60; }
-
+                        currentRotateP = currentRotateP + 10;
+                        if (currentRotateP > 35) { currentRotateP = -10; };
+                        toolMoverP.setRotation(currentRotateP);
 
                     }, this, 250, secondsToUpgradeP * 4)
                 }
@@ -5553,35 +5560,41 @@ farming.start = function () {
                         upCloudXP = upCloudXP - 5;
                         upCloudYP = upCloudYP - 5
                         if (upCloudXP < 220) { upCloudXP = 240; upCloudYP = 5; upCloudWP = 60; }
-
+                        currentRotateP = currentRotateP + 10;
+                        if (currentRotateP > 35) { currentRotateP = -10; };
+                        toolMoverP.setRotation(currentRotateP);
 
                     }, this, 250, secondsToUpgradeP * 4)
                 }
                 //upgrade the Dairy barn after the 60 seconds
                 lime.scheduleManager.callAfter(function () {
+                    try {
+                        player.pastureLevel = parseInt(player.pastureLevel) + 1;
 
-                    player.pastureLevel = parseInt(player.pastureLevel) + 1;
+                        if (player.pastureLevel > 3) { player.pastureLevel = 3 };
 
-                    if (player.pastureLevel > 3) { player.pastureLevel = 3 };
+                        localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
 
-                    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                        if (player.pastureLevel == 2) { pasUpLabel2.setText("Lvl 2/3 "); stallLeft.setHidden(false); barnUnlock3P.setHidden(false); };
+                        if (player.pastureLevel >= 3) {
+                            stallLeft.setHidden(false); stallRight.setHidden(false);
+                            pasUpLabel2.setHidden(true); barnUnlock3P.setHidden(true);
+                            checkAchieves2();
+                            pasUpLabel2.setText("Lvl 3/3 ");
+                            //goog.events.removeAll(closePastureBarnBtn);
+                            //goog.events.removeAll(upgradePastureBarnBtn);
+                            //goog.events.removeAll(barnUnlock3P);
+                        };
+                        upgradeCloudP.setHidden(true);
+                        scaffoldP.setHidden(true);
+                        toolMoverLabelP.setHidden(true);
 
-                    if (player.pastureLevel == 2) { pasUpLabel2.setText("Lvl 2/3 "); stallLeft.setHidden(false); barnUnlock3P.setHidden(false); };
-                    if (player.pastureLevel >= 3) {
-                        stallLeft.setHidden(false); stallRight.setHidden(false); pasUpLabel2.setHidden(true); barnUnlock3P.setHidden(true); checkAchieves2(); pasUpLabel2.setText("Lvl 3/3 "); 
-                        goog.events.removeAll(closePastureBarnBtn);
-                        goog.events.removeAll(upgradePastureBarnBtn);
-                        goog.events.removeAll(barnUnlock3P);
-                    };
-                    upgradeCloudP.setHidden(true);
-                    scaffoldP.setHidden(true);
-                    toolMoverLabelP.setHidden(true);
-                    a.updateTools();
-
-                    upgradesInProgress.buildings[1].timeLeft = 0;
-                    upgradesInProgress.buildings[1].currentBarnLevel = player.pastureLevel;
-                    localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
-                    barnUpInProgressPasture = 0;
+                        upgradesInProgress.buildings[1].timeLeft = 0;
+                        upgradesInProgress.buildings[1].currentBarnLevel = player.pastureLevel;
+                        localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
+                        barnUpInProgressPasture = 0;
+                    }
+                    catch(err){alert(err)}
                 }, this, secondsToUpgradeP * 1000);
             }
         }
@@ -13889,9 +13902,9 @@ farming.start = function () {
         if (a.achievements[9] == false && vinyardHouseLevel > 1) { a.achievements[9] = true; achieve9Check.setHidden(false); starCash = parseInt(starCash) + 5; displayAchieve(9); };
         if (a.achievements[10] == false && orchardTreeBlock > 1 && vinyardBlocks > 1 && vinyardBlocks2 > 1 && player.fields >= 3) { a.achievements[10] = true; achieve10Check.setHidden(false); starCash = parseInt(starCash) + 10; displayAchieve(10); };
         if (a.achievements[11] == false && player.cropsStored[10].stored >= 100 && player.cropsStored[11].stored >= 100) { a.achievements[11] = true; achieve11Check.setHidden(false); starCash = parseInt(starCash) + 5; displayAchieve(11); };
-        if (a.achievements[12] == false && player.cropsStored[0] >= 1 && player.cropsStored[1] >= 1 && player.cropsStored[2] >= 1 && player.cropsStored[3] >= 1 && player.cropsStored[4] >= 1
-            && player.cropsStored[5] >= 1 && player.cropsStored[6] >= 1 && player.cropsStored[7] >= 1 && player.cropsStored[8] >= 1 && player.cropsStored[9] >= 1 && player.cropsStored[10] >= 1
-            && player.cropsStored[11] >= 1 && player.cropsStored[12] >= 1 && player.cropsStored[13] >= 1) {
+        if (a.achievements[12] == false && player.cropsStored[0].stored >= 1 && player.cropsStored[1].stored >= 1 && player.cropsStored[2].stored >= 1 && player.cropsStored[3].stored >= 1 && player.cropsStored[4].stored >= 1
+            && player.cropsStored[5].stored >= 1 && player.cropsStored[6].stored >= 1 && player.cropsStored[7].stored >= 1 && player.cropsStored[8].stored >= 1 && player.cropsStored[9].stored >= 1 && player.cropsStored[10].stored >= 1
+            && player.cropsStored[11].stored >= 1 && player.cropsStored[12].stored >= 1 && player.cropsStored[13].stored >= 1) {
             a.achievements[12] = true; achieve12Check.setHidden(false); starCash = parseInt(starCash) + 5; displayAchieve(12);
         };
         if (a.achievements[13] == false && player.pastureLevel >= 3) { a.achievements[13] = true; achieve13Check.setHidden(false); starCash = parseInt(starCash) + 5; displayAchieve(13); };
