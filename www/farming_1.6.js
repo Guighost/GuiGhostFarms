@@ -5499,6 +5499,7 @@ farming.start = function () {
                 a.updateStored();
                 upgradeCloudP.setHidden(false);
                 scaffoldP.setHidden(false);
+                toolMoverLabelP.setText(secondsToUpgradeP);
                 toolMoverLabelP.setHidden(false);
                 lime.scheduleManager.scheduleWithDelay(function () {
                     currentRotateP = currentRotateP + 10;
@@ -10560,10 +10561,10 @@ farming.start = function () {
     //Intro event handler
     lime.audio.setMute(true);
     goog.events.listen(playGameBtn, ["mousedown", "touchstart"], function () {
-        try { validCropsStored(); }
-        catch (err) { alert(err)}
-        try { c.replaceScene(d, lime.transitions.SlideInUp);  }
-        catch (err) { alert(err) }
+        validCropsStored();
+     
+      c.replaceScene(d, lime.transitions.SlideInUp);  
+       
         sceneBefore = 1; lime.audio.setMute(false);
         b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
         sceneActive = 'Home';
