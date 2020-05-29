@@ -5,7 +5,7 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *;">
+        <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-inline' ; script-src 'self' 'unsafe-inline' ; style-src 'self' 'unsafe-inline'; media-src *; ">
 
    
   <title>Medieval Farms - Farming Sim by GuiGhost Games</title>
@@ -749,7 +749,7 @@
 
 
         <!--<script type="text/javascript" src="farmingMin_1.5.1.7.js"></script>-->
-        <script type="text/javascript" src="farming_1.6.1Min.js"></script>
+        <script type="text/javascript" src="farming_1.6.2Min.js"></script>
    
 </head>
 
@@ -857,21 +857,12 @@
 
 
 
-        if (localStorage.getItem("rateMeNever") == null) {
-            localStorage.setItem("rateMeNever", 0);
-        }
-        if (localStorage.getItem("showRewarded") == null) {
-            localStorage.setItem("showRewarded", 0);
-        }
-        if (localStorage.getItem("MedFarms_boughtMasterPack") == null) {
-            localStorage.setItem("MedFarms_boughtMasterPack", 0);
-        } if (localStorage.getItem("MedFarms_boughtSmallStars") == null) {
-            localStorage.setItem("MedFarms_boughtSmallStars", 0);
-        } if (localStorage.getItem("MedFarms_boughtStarterPack") == null) {
-            localStorage.setItem("MedFarms_boughtStarterPack", 0);
-        } if (localStorage.getItem("MedFarms_boughtLargeStars") == null) {
-            localStorage.setItem("MedFarms_boughtLargeStars", 0);
-        }
+        if (localStorage.getItem("rateMeNever") == null) { localStorage.setItem("rateMeNever", 0); };
+        if (localStorage.getItem("showRewarded") == null) { localStorage.setItem("showRewarded", 0); };
+        if (localStorage.getItem("MedFarms_boughtMasterPack") == null) { localStorage.setItem("MedFarms_boughtMasterPack", 0);   };
+        if (localStorage.getItem("MedFarms_boughtSmallStars") == null) {  localStorage.setItem("MedFarms_boughtSmallStars", 0);   };
+        if (localStorage.getItem("MedFarms_boughtStarterPack") == null) { localStorage.setItem("MedFarms_boughtStarterPack", 0); };
+        if (localStorage.getItem("MedFarms_boughtLargeStars") == null) { localStorage.setItem("MedFarms_boughtLargeStars", 0); };
         localStorage.setItem('adWatched', 0);
         var showItOrNo = 1;
         var showItOrNo2 = 0;
@@ -984,16 +975,15 @@
             ////more games check
 
             moreGamesClicked = localStorage.getItem("moreGamesClicked");
+            showItOrNo2 = 0;
+            showItOrNo2 = parseInt(localStorage.getItem('MedFarm_LoadAd'));
+            showRewarded = parseInt(localStorage.getItem('MedFarm_StarCashBoost'));
             if (moreGamesClicked == 1) {
                 openLink();
                 moreGamesClicked = 0;
             }
-
-            //interstatial ads
-            showItOrNo2 = 0;
-            showItOrNo2 = parseInt(localStorage.getItem('MedFarm_LoadAd'));
-            //hide for AdFree
-            if (showItOrNo2 == 1) {
+                   //interstatial ads
+            else if (showItOrNo2 == 1) {
                 localStorage.setItem('MedFarm_LoadAd', 0);
                 localStorage.setItem('adWatched', 1);
                 showItOrNo2 = 0;
@@ -1004,21 +994,12 @@
                     try { Enhance.isInterstitialReady(callback); }
                     catch (err) { console.log("Caught interstital  error " + err) }
                 }, 300)
-             
-
-           
-                //console.log(JSON.stringify(landStateMaster));
-                //try { Enhance.isRewardedAdReady(callback3); }
-                //catch (err) {
-                //    console.log("Caught rewarded error " + err);
-                //}
-
-
+      
             }
             //hide for AdFree
             //rewarded video
-            showRewarded = parseInt(localStorage.getItem('MedFarm_StarCashBoost'));
-            if (showRewarded == 1) {
+           
+            else if (showRewarded == 1) {
                 //console.log("interpop2 detected showRewarded = " + showRewarded);
                 showRewarded = 0;
                 //award starcash
@@ -1026,9 +1007,9 @@
                 //console.log("adRewardCompleted1 = " + rewardCompleted);
                 rewardedCompleted = 0;
                 starCash = parseInt(localStorage.getItem('starCash'));
-                console.log("before starcash = " + starCash);
+                //console.log("before starcash = " + starCash);
                 starCash = parseInt(starCash) + 3;
-                console.log("after add starcash = " + starCash);
+                //console.log("after add starcash = " + starCash);
                 localStorage.setItem('starCash', starCash);
                 //document.getElementById("sucessbuyTxt").style.display = 'block';
                 document.getElementById("starCashOuterLabel").innerHTML = starCash;
@@ -1042,10 +1023,12 @@
                 localStorage.setItem('MedFarm_LoadAd', 0);
                 setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 10000);
             }
-
-
-            //check for purchases (combined timer)
-            purchaseCheck();
+                 //check for purchases (combined timer)
+            else {
+               
+                purchaseCheck();
+            };
+           
 
         }
         ////rate me
@@ -1359,7 +1342,7 @@
                 localStorage.setItem('MedFarms_buyingMasterPack', 0);
 
 
-            }
+            };
 
         };
 
