@@ -95,7 +95,7 @@
             width: 315px;
             position: absolute;
             left: 50%;
-            top: 135px;
+            top: 115px;
             transform: translate(-160px,0px);
             display: none;
             font-family: 'Comic Sans MS';
@@ -142,8 +142,9 @@
 
         #outerStarCashImg {
             width: 150px;
+            height:40px;
             margin-left: 50%;
-            transform: translate(-75px,25px);
+            transform: translate(-75px,0px);
         }
 
         #starCashOuterLabel {
@@ -154,21 +155,27 @@
             text-align: center;
             left: 50%;
             z-index: 100;
-            transform: translate(-12px,15px);
+            transform: translate(-12px,-19px);
         }
 
-        #currentStarCashBack, #currentStarCashBack2, #currentStarCashBack3, #currentStarCashBack4 {
+        #currentStarCashBack, #currentStarCashBack2, #currentStarCashBack3, #currentStarCashBack4, #currentStarCashShare {
             width: 273px;
             height: 50px;
             font-family: 'Comic Sans MS';
             font-size: 16px;
             color: yellow;
             margin-left: 18px;
-            margin-top: 20px;
+            margin-top: 15px;
             /*transform: translate(0px,-10px);*/
             border: 2px groove brown;
             border-radius: 5px;
             background-color: darkgreen;
+        }
+        #currentStarCashBack {
+            margin-top: 8px;
+        }
+        #currentStarCashBack2 {
+            margin-top: 8px;
         }
         #currentStarCashBack3 {
             width: 267px;
@@ -176,29 +183,45 @@
             text-align: left;
             padding-left: 5px;
             padding-top: -20px;
+            margin-top: 8px;
             /*display: none;*/
         }
         #currentStarCashBack4 {
-            margin-top: 60px;
-         padding-top: 10px;  
-         padding-left:3px;
-         text-align:left;
-         font-size:18px;
+            width: 267px;
+            margin-top: 70px;
+            margin-left: 20px;
+            padding-top: 10px;
+            padding-left: 5px;
+            text-align: left;
+            font-size: 18px;
         }
+        #currentStarCashShare {
+            width: 267px;
+            height: 50px;
+            text-align: start;
+            padding-left: 5px;
+            padding-top: 0px;
+            transform: translate3d(-24px,-5px, 0px);
+            margin-top: 15px;
+        } 
         #starCashRow3 {
             width: 100%;
             height: 100%;
-            transform: translate(0px,-15px);
+            transform: translate3d(0px,-15px, 0px);
             touch-action: none;
         }
 
-        #lowerStarCashImg, #lowerStarCashImg2  {
+        #lowerStarCashImg, #lowerStarCashImg2, #lowerStarCashImg5 {
             width: 50px;
             transform: translate(5px,0px);
         }
         #lowerStarCashImg3 {
             width: 45px;
             transform: translate(0px,15px);
+        }
+        #lowerStarCashImg5 {
+            width: 45px;
+            transform: translate3d(113px,-53px,0px);
         } 
         #lowerArrow, #lowerArrow2, #lowerArrow3 {
             width: 35px;
@@ -213,16 +236,21 @@
             transform: translate(5px, 0px);
         }
 
-        #buyWithStarCash, #buyWithStarCashTools, #viewAdImg, #buyStarsFromModal {
-            width: 80px;
+        #buyWithStarCash, #buyWithStarCashTools, #viewAdImg, #buyStarsFromModal, #sharedBtnImg {
+            width: 88px;
             height: 35px;
             margin-left: 50%;
             transform: translate(40px, -47px);
             touch-action: none;
         }
+        #sharedBtnImg {
+            width: 88px;
+            height: 40px;
+            transform: translate3d(36px, -100px, 0px);
+        }
         #viewAdImg {
             width: 88px;
-            height: 45px;
+            height: 40px;
             margin-left: 50%;
             transform: translate(37px, -32px);
             touch-action: none;
@@ -266,20 +294,26 @@
         }
 
 
-     
+
 
         #sucessbuyTxt {
+            background-color: lawngreen;
+            border-radius:20px;
             width: 180px;
-            color:darkgreen;
+            color: darkgreen;
             font-family: 'Comic Sans MS';
             margin-left: 50%;
-            font-size: 28px;
+            margin-top: 20px;
+            text-align:center;
+            font-size: 24px;
             font-weight: 500;
-            transform: translate(-70px,-15px);
+            transform: translate(-90px,-25px);
             display: none;
         }
-
-        .alignleft {
+        #waitText {
+            margin-left: 20%;
+            color: darkgreen;
+        } .alignleft {
             position: absolute;
             top: 2px;
             left: 2px;
@@ -453,7 +487,7 @@
                 transform: translate(-100px,0px);
             }
             #fbshare {
-                top: 18px;
+                top: 10px;
             }
         }
 
@@ -772,6 +806,7 @@
                 <p id="starCashOuterLabel">50</p>
                 <img id="outerStarCashImg" src="images/UI/starCashBack.png" loading="lazy"   width="150" alt="StarCashImg" />
             </div>
+           
             <div id="currentStarCashBack">
                 <img id="lowerStarCashImg" src="images/UI/plus5StarCash.png" loading="lazy" width="50" alt="StarCashImg" /> <img id="lowerArrow" src="images/UI/rightBtn.png" alt="rightBtn" />
                 <img id="lowerStarCashCoin" src="images/UI/coin500.png" loading="lazy" width="50" alt="StarCashCoin" /><img id="buyWithStarCash" src="images/UI/greenBuy.png" alt="StarCashImg" />
@@ -787,17 +822,25 @@
                     Watch to Earn <img id="lowerStarCashImg3" src="images/UI/plus3StarCash.png" loading="lazy" width="45" alt="StarCashImg" />
                     <img id="viewAdImg" src="images/UI/viewAd.png" loading="lazy" width="88" alt="View Ad" />
                 </div>
-                <p id="waitText"></p>
+           <div>
+               <div id="currentStarCashShare">
+                    <p>Share to Earn</p> <img id="lowerStarCashImg5" src="images/UI/plus3StarCash.png" loading="lazy" width="45" alt="StarCashImg" />  
+                   <div id="shareUs"><img id="sharedBtnImg" src="images/UI/shareBtn.png" loading="lazy" width="88" alt="View Ad" /></div>
+               </div>
+             
+           </div>
+               
             </div>
 
-            <p id="sucessbuyTxt"> + $500</p>
+       
 
             <div id="currentStarCashBack4">
                 Buy Stars in Town <img id="buyStarsFromModal" src="images/UI/shopIcon.png" loading="lazy" width="80" alt="buyStars" />
             </div>
         </div>
-        <div id="fbshareFooter"> <a id="closeFB"></a></div>
-
+        <div id="fbshareFooter"> <a id="closeFB"></a> <p id="waitText"></p></div>
+        <p id="sucessbuyTxt"> + </p>
+       
     </div>
 
     <div id="rateMe">
@@ -840,8 +883,9 @@
             <input id="rewardInputCode" type="text"/>
             <button id="submitRewardCode">Check Code</button>
             <div id="rewardSubText">Reward codes are rare items. These are issued by GuiGhost Games for Loot Boy and other reward services</div>
-            <div id="rewardSubText2"><button id="shareUs">Share Us</button></div>
-            <div id="rewardSubText3"><button id="shareUs2">Share to FB</button></div>
+            <div id="rewardSubText3">
+                <button id="shareUs2">Share to FB</button>
+            </div> 
             <div id="rewardClose"></div>
 
         </form>
@@ -899,7 +943,7 @@
             };
 
             var onRewardDeclined = function () {
-                app.writeLog('Reward declined'),
+                setTimeout(function () { try { Enhance.logEvent('reward declined'); } catch (err) { console.log("logging failed") }; }, 0);
                     rewardedCompleted = 0;
                 document.getElementById("waitText").innerHTML = 'Reward declined- you must watch the ad to get the reward';
             };
@@ -980,7 +1024,7 @@
             showItOrNo2 = parseInt(localStorage.getItem('MedFarm_LoadAd'));
             showRewarded = parseInt(localStorage.getItem('MedFarm_StarCashBoost'));
             if (moreGamesClicked == 1) {
-                seeTimeout(function () { openLink(); },0);
+                setTimeout(function () { openLink(); },0);
                 moreGamesClicked = 0;
             }
                    //interstatial ads
@@ -1016,13 +1060,13 @@
                 document.getElementById("starCashOuterLabel").innerHTML = starCash;
                 //document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
                 localStorage.setItem('MedFarm_Rewarded', 0);
-
+                setTimeout(function () { try { Enhance.logEvent('earn_virtual_currency'); } catch (err) { console.log("logging failed") }; }, 0);
                 try { Enhance.isRewardedAdReady(callback2); }
                 catch (err) { console.log("Caught rewarded error " + err); document.getElementById("waitText").innerHTML = 'Ad failed - try again soon.'; }
                 showRewarded = 0;
                 localStorage.setItem('MedFarm_StarCashBoost', 0);
                 localStorage.setItem('MedFarm_LoadAd', 0);
-                setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none'; }, 10000);
+                setTimeout(function () { document.getElementById("sucessbuyTxt").style.display = 'none';  }, 10000);
             }
                  //check for purchases (combined timer)
             else {
@@ -1070,7 +1114,7 @@
             document.getElementById("rateMe").style.display = 'none';
             try { cordova.plugins.market.open('com.wGuiGhostFarms_9861566'); }
             catch (err) { console.log("caught = " + err) }
-
+            try { Enhance.logEvent('app_rate_clicked'); } catch (err) { console.log("logging failed") };
 
         }
 
@@ -1354,19 +1398,31 @@
 
             // this is the complete list of currently supported params you can pass to the plugin (all optional)
             var optionsShare = {
-                message: 'Join me playing this cool retro themed farming game', // not supported on some apps (Facebook, Instagram)
+                message: 'Join me playing Medieval Farms', // not supported on some apps (Facebook, Instagram)
                 subject: 'Medieval Farms', // fi. for email
-                files: null, // an array of filenames either locally or remotely
+                files: ['https://guighostgames.com/MedievalFarms/images/ads/promo580x400.png'], // an array of filenames either locally or remotely
                 url: 'https://play.google.com/store/apps/details?id=com.wGuiGhostFarms_9861566',
-                chooserTitle: 'Pick an app' // Android only, you can override the default share sheet title
+                chooserTitle: 'Pick an app to share with' // Android only, you can override the default share sheet title
             }
 
             var onSuccessShare = function (result) {
+                try {
+                    Enhance.logEvent('app_shared', 'result', 'true');
+
+                } catch (err) { console.log("share failed") };
+                starCash = parseInt(localStorage.getItem('starCash'));
+                starCash = parseInt(starCash) + 3;
+                localStorage.setItem('starCash', starCash);
+          
+                document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                document.getElementById("currentStarCashShare").style.display = 'none';
+                
                 console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
                 console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
             }
 
             var onErrorShare = function (msg) {
+                try { Enhance.logEvent('app_shared', 'result', 'false'); } catch (err) { console.log("share failed") };
                 console.log("Sharing failed with message: " + msg);
             }
 
@@ -1387,7 +1443,7 @@
                 else if (num == 2) {
                     try {
                         console.log("clicked share fb");
-                        window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint('Playing Medieval Farms', 'https://guighostgames.com/MedievalFarms/images/ads/promo580x400.png', 'https://play.google.com/store/apps/details?id=com.wGuiGhostFarms_9861566', 'PShare This!', function () { console.log('share ok') }, function (errormsg) { alert(errormsg) })
+                        window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint('Playing Medieval Farms', 'https://guighostgames.com/MedievalFarms/images/ads/promo580x400.png', 'https://play.google.com/store/apps/details?id=com.wGuiGhostFarms_9861566', 'Share This!', function () { console.log('share ok') }, function (errormsg) { alert(errormsg) })
                     } catch (err) { console.log(err); }}
             }
         });

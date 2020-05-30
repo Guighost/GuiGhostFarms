@@ -7310,7 +7310,7 @@ farming.start = function () {
 
 
     });
-
+    var sucessText = document.getElementById("sucessbuyTxt");
     ////// Handle the external modal for starcash clicks 
     ///// buyWithStarCash Money
     document.getElementById("buyWithStarCash").addEventListener("touchstart", function (event) {
@@ -7320,9 +7320,9 @@ farming.start = function () {
             starCash = starCash - 5;
             localStorage.setItem('starCash', starCash);
             document.getElementById("starCashOuterLabel").innerHTML = starCash;
-            document.getElementById("waitText").innerHTML = '+ 500 Coins';
-            document.getElementById("waitText").style.display = 'block';
-            lime.scheduleManager.callAfter(function () { document.getElementById("waitText").style.display = 'none'; }, this, 1000);
+            sucessText.innerHTML = '+ 500 Coins';
+            sucessText.style.display = 'block';
+            lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 1000);
             checkAchieves2();
 
         }
@@ -7337,9 +7337,9 @@ farming.start = function () {
             starCash = starCash - 5;
             localStorage.setItem('starCash', starCash);
             document.getElementById("starCashOuterLabel").innerHTML = starCash;
-            document.getElementById("waitText").innerHTML = '+ 500 Coins';
-            document.getElementById("waitText").style.display = 'block';
-            lime.scheduleManager.callAfter(function () { document.getElementById("waitText").style.display = 'none'; }, this, 750);
+            sucessText.innerHTML = '+ 500 Coins';
+            sucessText.style.display = 'block';
+            lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 750);
         }
         event.stopPropagation();
 
@@ -7354,9 +7354,9 @@ farming.start = function () {
             setTimeout(function () { a.updateTools();}, 0);
             localStorage.setItem('starCash', starCash);
             document.getElementById("starCashOuterLabel").innerHTML = starCash;
-            document.getElementById("waitText").innerHTML = '+ 500 Tools';
-            document.getElementById("waitText").style.display = 'block';
-            lime.scheduleManager.callAfter(function () { document.getElementById("waitText").style.display = 'none'; }, this, 1000);
+            sucessText.innerHTML = '+ 500 Tools';
+            sucessText.style.display = 'block';
+            lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 1000);
             purchaseSound.play();
 
         }
@@ -7373,9 +7373,9 @@ farming.start = function () {
             setTimeout(function () { a.updateTools(); }, 0);
             localStorage.setItem('starCash', starCash);
             document.getElementById("starCashOuterLabel").innerHTML = starCash;
-            document.getElementById("waitText").innerHTML = '+ 500 Tools';
-            document.getElementById("waitText").style.display = 'block';
-            lime.scheduleManager.callAfter(function () { document.getElementById("waitText").style.display = 'none'; }, this, 1000);
+            sucessText.innerHTML = '+ 500 Tools';
+            sucessText.style.display = 'block';
+            lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 1000);
             purchaseSound.play();
 
         }
@@ -7419,9 +7419,9 @@ farming.start = function () {
             document.getElementById("starCashOuterLabel").innerHTML = starCash;
         }, this, 1500);
 
-        lime.scheduleManager.callAfter(function () { document.getElementById("waitText").style.display = 'none'; }, this, 33000);
+        lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 33000);
         var adImg = document.getElementById("viewAdImg");
-        document.getElementById("waitText").innerHTML = 'Wait time is required before you can boost again';
+        sucessText.innerHTML = 'Wait time is required before you can boost again';
         //hide boost for 2 min
 
         adImg.style.display = 'none';
