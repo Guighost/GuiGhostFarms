@@ -841,6 +841,7 @@
             <button id="submitRewardCode">Check Code</button>
             <div id="rewardSubText">Reward codes are rare items. These are issued by GuiGhost Games for Loot Boy and other reward services</div>
             <div id="rewardSubText2"><button id="shareUs">Share Us</button></div>
+            <div id="rewardSubText3"><button id="shareUs2">Share to FB</button></div>
             <div id="rewardClose"></div>
 
         </form>
@@ -1370,12 +1371,25 @@
             }
 
             var shareUs = document.getElementById("shareUs");
-            shareUs.addEventListener("mouseup", SocialShareGG);
-            shareUs.addEventListener("touchend", SocialShareGG);
-            rateMeBtnYes.addEventListener("click", openRateOnPlay);
-            rateMeBtnYes.addEventListener("touchstart", openRateOnPlay);
-
-            function SocialShareGG() { try { console.log("clicked share"); window.plugins.socialsharing.shareWithOptions(optionsShare, onSuccessShare, onErrorShare); } catch (err) { console.log(err); }}
+            var shareUs2 = document.getElementById("shareUs2");
+   
+            shareUs.addEventListener("click", function (event) { SocialShareGG(1); });
+            shareUs.addEventListener("touchend", function (event) { SocialShareGG(1); });
+            shareUs2.addEventListener("click", function (event) { SocialShareGG(2); });
+            shareUs2.addEventListener("touchend", function (event) { SocialShareGG(2);  });
+            function SocialShareGG(num) {
+                if (num == 1) {
+                    try {
+                        console.log("clicked share");
+                        window.plugins.socialsharing.shareWithOptions(optionsShare, onSuccessShare, onErrorShare);
+                    } catch (err) { console.log(err); }
+                }
+                else if (num == 2) {
+                    try {
+                        console.log("clicked share fb");
+                        window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint('Playing Medieval Farms', 'https://guighostgames.com/MedievalFarms/images/ads/promo580x400.png', 'https://play.google.com/store/apps/details?id=com.wGuiGhostFarms_9861566', 'PShare This!', function () { console.log('share ok') }, function (errormsg) { alert(errormsg) })
+                    } catch (err) { console.log(err); }}
+            }
         });
 
         /////version check
