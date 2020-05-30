@@ -3626,11 +3626,11 @@ farming.start = function () {
 
             tutModal.setHidden(true);
             swipeRightHint2.setHidden(true);
-            try {
-                //goog.events.removeAll(nextBtn);
-                //goog.events.removeAll(tutModal);
-                console.log("tut listeners removed")
-            } catch (err) { console.log("error removing tut listeners") }
+            //try {
+            //    //goog.events.removeAll(nextBtn);
+            //    //goog.events.removeAll(tutModal);
+            //    console.log("tut listeners removed")
+            //} catch (err) { console.log("error removing tut listeners") }
 
         };
     }
@@ -4167,7 +4167,7 @@ farming.start = function () {
                 player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - parseInt(barnUpgradeCostWood);
                 if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
                 localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-         setTimeout(function () { a.updateStored() }, 0);
+                setTimeout(function () { a.updateStored() }, 0);
                 //show upgrade anim and timer
                 upgradeCloud.setHidden(false);
                 scaffoldH.setHidden(false);
@@ -4215,14 +4215,29 @@ farming.start = function () {
 
                         toolMoverLabel.setHidden(true); scaffoldH.setHidden(true); upgradeCloud.setHidden(true); upgradeHomeBarnBtn.setHidden(true);
                         if (player.barnLevel == 2) {
-                            barn.setFill(imgArray6[1]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Artichoke"); unlockedCropImage.setFill("images/" + a.crops[2].harvest); barnUnlock3.setHidden(false);
+                            barn.setFill(imgArray6[1]); unlockedCropBack.setHidden(false);
+                            unlockedCropText2.setText("Artichoke");
+                            unlockedCropImage.setFill("images/" + a.crops[2].harvest);
+                            barnUnlock3.setHidden(false);
                             homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);
-                        };
-                        if (player.barnLevel == 3) { barn.setFill(imgArray6[2].src); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Eggplant"); unlockedCropImage.setFill("images/" + a.crops[3].harvest); barnUnlock3.setHidden(false); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeToolCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true); };
-                        if (player.barnLevel == 4) { barn.setFill(imgArray6[3].src); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Peppers"); unlockedCropImage.setFill("images/" + a.crops[4].harvest); barnUnlock3.setHidden(false); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true); homeToolCostLabel.setHidden(true); };
-                        if (player.barnLevel == 5) {
+                        }
+                        else if (player.barnLevel == 3) {
+                            barn.setFill(imgArray6[2].src); unlockedCropBack.setHidden(false);
+                            unlockedCropText2.setText("Eggplant"); unlockedCropImage.setFill("images/" + a.crops[3].harvest);
+                            barnUnlock3.setHidden(false); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true);
+                            homeWoodCostLabel.setHidden(true); homeToolCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);
+                        }
+                        else if (player.barnLevel == 4) {
+                            barn.setFill(imgArray6[3].src); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Peppers");
+                            unlockedCropImage.setFill("images/" + a.crops[4].harvest); barnUnlock3.setHidden(false);
+                            homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true);
+                            homeBarnShortLabel.setHidden(true); homeToolCostLabel.setHidden(true);
+                        }
+                        else if (player.barnLevel == 5) {
                             barn.setFill(imgArray6[4].src); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest);
-                            barnUnlock3.setHidden(true); barn.setPosition(86, 4).setSize(134, 155); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true); homeToolCostLabel.setHidden(true);
+                            barnUnlock3.setHidden(true); barn.setPosition(86, 4).setSize(134, 155); homeBarnCostToolsImg.setHidden(true);
+                            homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true);
+                            homeBarnShortLabel.setHidden(true); homeToolCostLabel.setHidden(true);
                             //remove handlers no longer needed                      
                             goog.events.removeAll(upgradeHomeBarnBtn);
                             goog.events.removeAll(barnUnlock3);
@@ -8097,8 +8112,8 @@ farming.start = function () {
             player.cropsStored[15].stored = player.cropsStored[15].stored + 50;
             blacksmithBubble.setHidden(true);
             townRep = townRep + 1;
-            setTimeout(checkTownRep(), 0);
-            setTimeout(function () { a.updateStored(); }, 0);
+          
+            setTimeout(function () { a.updateStored(); checkTownRep();}, 0);
 
         }
     });
@@ -8115,8 +8130,8 @@ farming.start = function () {
             player.cropsStored[15].stored = player.cropsStored[15].stored + 50;
             blacksmithBubble.setHidden(true);
             townRep = townRep + 1;
-            setTimeout(checkTownRep(), 0);
-            setTimeout(function () { a.updateStored(); }, 0);
+         
+            setTimeout(function () { a.updateStored(); checkTownRep(); }, 0);
 
         }
     });
@@ -8151,7 +8166,7 @@ farming.start = function () {
             gLabel16.setText(player.cropsStored[16].stored)
             townRep = townRep + 1;
         
-            setTimeout(function () { a.updateStored(); }, 0);
+            setTimeout(function () { a.updateStored(); checkTownRep();}, 0);
             animateBuyItemNormal(1);
         }
         e.event.stopPropagation();
@@ -9874,7 +9889,7 @@ farming.start = function () {
             sellItem1.value = 0;
             sellItem1.collectNumber = -1;
             sellItem1Img.setFill(imgArray[17].src)
-            setTimeout(function () { a.updateMoney }, 0);
+             setTimeout(function () { a.updateMoney }, 0);
             ////checkItemsOwned();
             ////CheckQuestInvItems();
         }
@@ -14320,17 +14335,19 @@ farming.start = function () {
                 function checkRewardCode(code) {
           
                     console.log("code tried is " + code);
-      
+                    var starValTxt = "YOU GET + 100 STARS!";
                     if (myRewards.indexOf(code.toString()) !== -1) {
                         if (usedCodesArray.indexOf(code.toString()) == -1) {
-                            starCash = starCash + 100;
+                            if (code.toString() == 'StarBoost') { starCash = starCash + 25; starValTxt = "YOU GET + 25 STARS!";  }
+                            else { starCash = starCash + 100 };
+                                                     
                             starCashCountBoost.setText(starCash);
                             starCashInvCount.setText(starCash);
                             document.getElementById("starCashOuterLabel").innerHTML = starCash;
                             localStorage.setItem('starCash', starCash);
-                            codeField.style.color = 'RED';
+                            codeField.style.color = 'Green';
                             codeField.style.fontSize = '16px';
-                            codeField.value = "YOU GET +100 STARS";
+                            codeField.value = starValTxt;
                             usedCodesArray.push(code)
                             localStorage.setItem("usedCodes", JSON.stringify(usedCodesArray))
                             setTimeout(function () { codeField.value = ""; codeField.style.color = 'Black'; }, 1000)

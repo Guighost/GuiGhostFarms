@@ -142,7 +142,7 @@
 
         #outerStarCashImg {
             width: 150px;
-            height:40px;
+            height:45px;
             margin-left: 50%;
             transform: translate(-75px,0px);
         }
@@ -155,7 +155,7 @@
             text-align: center;
             left: 50%;
             z-index: 100;
-            transform: translate(-12px,-19px);
+            transform: translate(-12px,-16px);
         }
 
         #currentStarCashBack, #currentStarCashBack2, #currentStarCashBack3, #currentStarCashBack4, #currentStarCashShare {
@@ -260,9 +260,9 @@
             transform: translate(75px, -50px);
         }
         #buyStarsFromModal {
-            width: 80px;
+            width: 88px;
             height: 55px;
-            transform: translate(45px, -35px);
+            transform: translate(35px, -33px);
         }
         /*#currentStarCashBack2 {
             width: 280px;
@@ -561,6 +561,7 @@
         }
         #rewardInputCode {
         margin: 10px;
+        margin-top: 2px;
         height: 30px;
         font-size:medium;
 
@@ -570,6 +571,18 @@
             margin-top: 3%;
         width: 90%;
         font-size:medium;
+        }
+        #shareUs2 {
+            width:70%;
+            margin:auto;
+            margin-top: 20px;
+            height: 32px;
+            background-color: #00ff00;
+            color: #000000;
+            font-family: 'Comic Sans MS';
+            font-size: 18px;
+            border: 2px solid brown;
+            border-radius: 3px;
         }
         #rateMeInner {
             position: absolute;
@@ -882,9 +895,10 @@
             <h1 id="rewardTitle"> Enter Reward Code </h1>
             <input id="rewardInputCode" type="text"/>
             <button id="submitRewardCode">Check Code</button>
-            <div id="rewardSubText">Reward codes are rare items. These are issued by GuiGhost Games for Loot Boy and other reward services</div>
+            <div id="rewardSubText">Reward codes are one use per player. You can also share your code for Medieval Farms with friends </div>
             <div id="rewardSubText3">
-                <button id="shareUs2">Share to FB</button>
+     
+                <div id="shareUs2">Share to Friends</div>
             </div> 
             <div id="rewardClose"></div>
 
@@ -1401,10 +1415,16 @@
                 message: 'Join me playing Medieval Farms', // not supported on some apps (Facebook, Instagram)
                 subject: 'Medieval Farms', // fi. for email
                 files: ['https://guighostgames.com/MedievalFarms/images/ads/promo580x400.png'], // an array of filenames either locally or remotely
-                url: 'https://play.google.com/store/apps/details?id=com.wGuiGhostFarms_9861566',
+                url: 'https://bit.ly/Stars4MedFarm',
                 chooserTitle: 'Pick an app to share with' // Android only, you can override the default share sheet title
             }
-
+            var optionsShare2 = {
+                message: 'Use Reward Code "StarBoost" in Medieval Farms for free stars', // not supported on some apps (Facebook, Instagram)
+                subject: 'Medieval Farms', // fi. for email
+                files: ['https://guighostgames.com/MedievalFarms/images/ads/rewardImg.png'], // an array of filenames either locally or remotely
+                url: 'https://bit.ly/Stars4MedFarm',
+                chooserTitle: 'Pick an app to share with' // Android only, you can override the default share sheet title
+            }
             var onSuccessShare = function (result) {
                 try {
                     Enhance.logEvent('app_shared', 'result', 'true');
