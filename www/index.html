@@ -1415,7 +1415,7 @@
                 message: 'Join me playing Medieval Farms', // not supported on some apps (Facebook, Instagram)
                 subject: 'Medieval Farms', // fi. for email
                 files: ['https://guighostgames.com/MedievalFarms/images/ads/promo580x400.png'], // an array of filenames either locally or remotely
-                url: 'https://bit.ly/Stars4MedFarm',
+                url: 'https://bit.ly/SharingMedFarms',
                 chooserTitle: 'Pick an app to share with' // Android only, you can override the default share sheet title
             }
             var optionsShare2 = {
@@ -1463,7 +1463,7 @@
                 else if (num == 2) {
                     try {
                         console.log("clicked share fb");
-                        window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint('Playing Medieval Farms', 'https://guighostgames.com/MedievalFarms/images/ads/promo580x400.png', 'https://play.google.com/store/apps/details?id=com.wGuiGhostFarms_9861566', 'Share This!', function () { console.log('share ok') }, function (errormsg) { alert(errormsg) })
+                        window.plugins.socialsharing.shareWithOptions(optionsShare2, onSuccessShare, onErrorShare);
                     } catch (err) { console.log(err); }}
             }
         });
