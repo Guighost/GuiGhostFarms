@@ -840,7 +840,7 @@
             <input id="rewardInputCode" type="text"/>
             <button id="submitRewardCode">Check Code</button>
             <div id="rewardSubText">Reward codes are rare items. These are issued by GuiGhost Games for Loot Boy and other reward services</div>
-            <div id="rewardSubText2"></div>
+            <div id="rewardSubText2"><button id="shareUs">Share Us</button></div>
             <div id="rewardClose"></div>
 
         </form>
@@ -970,16 +970,16 @@
         //};
 
 
-
+       
         function interPop2() {
             ////more games check
-
+          
             moreGamesClicked = localStorage.getItem("moreGamesClicked");
             showItOrNo2 = 0;
             showItOrNo2 = parseInt(localStorage.getItem('MedFarm_LoadAd'));
             showRewarded = parseInt(localStorage.getItem('MedFarm_StarCashBoost'));
             if (moreGamesClicked == 1) {
-                openLink();
+                seeTimeout(function () { openLink(); },0);
                 moreGamesClicked = 0;
             }
                    //interstatial ads
@@ -1029,7 +1029,7 @@
                 purchaseCheck();
             };
            
-
+    
         }
         ////rate me
         var rateMeBtnYes = document.getElementById("rateMeBtnYes")
@@ -1350,7 +1350,26 @@
         window.addEventListener('load', (event) => {
             var tid2 = setInterval(interPop2, 500);
             //console.log("page loaded ");
+            // this is the complete list of currently supported params you can pass to the plugin (all optional)
+            var options = {
+                message: 'Join me playing this cool retro themed farming game', // not supported on some apps (Facebook, Instagram)
+                subject: 'Medieval Farms', // fi. for email
+                files: ['', ''], // an array of filenames either locally or remotely
+                url: 'hhttps://play.google.com/store/apps/details?id=com.wGuiGhostFarms_9861566',
+                chooserTitle: 'Pick an app' // Android only, you can override the default share sheet title
+            }
 
+            var onSuccess = function (result) {
+                console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
+                console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+            }
+
+            var onError = function (msg) {
+                console.log("Sharing failed with message: " + msg);
+            }
+
+            var shareUs = document.getElementById("shareUs");
+            window.addEventListener(shareUs, function () { window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError); console.log("clicked share"); })
         });
 
         /////version check
@@ -1374,11 +1393,15 @@
         //}
         //catch (err) { console.log("failed versioncheck") }
 
-
+   
 
 
     </script>
+    <script>
 
+      
+
+    </script>
 </body>
 
 </html>
