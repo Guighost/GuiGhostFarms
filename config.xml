@@ -20,7 +20,7 @@
     <allow-intent href="mailto:*"/>
     <allow-intent href="geo:*"/>
     <content src="index.html" />
-	<gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
+	<gap:plugin name="cordova-plugin-x-socialsharing" source="npm" version="5.4.0"/>
     <!-- <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.2.4" /> -->
     <!-- <plugin name="cordova-plugin-camera" source="npm" spec="~2.4.1" /> -->
     <!-- <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.4.3" /> -->
