@@ -1350,6 +1350,7 @@
         window.addEventListener('load', (event) => {
             var tid2 = setInterval(interPop2, 500);
             //console.log("page loaded ");
+
             // this is the complete list of currently supported params you can pass to the plugin (all optional)
             var optionsShare = {
                 message: 'Join me playing this cool retro themed farming game', // not supported on some apps (Facebook, Instagram)
@@ -1369,7 +1370,12 @@
             }
 
             var shareUs = document.getElementById("shareUs");
-            window.addEventListener(shareUs, function () { window.plugins.socialsharing.shareWithOptions(optionsShare, onSuccessShare, onErrorShare); console.log("clicked share"); })
+            shareUs.addEventListener("mouseup", SocialShareGG);
+            shareUs.addEventListener("touchend", SocialShareGG);
+            rateMeBtnYes.addEventListener("click", openRateOnPlay);
+            rateMeBtnYes.addEventListener("touchstart", openRateOnPlay);
+
+            function SocialShareGG() { try { console.log("clicked share"); window.plugins.socialsharing.shareWithOptions(optionsShare, onSuccessShare, onErrorShare); } catch (err) { console.log(err); }}
         });
 
         /////version check
