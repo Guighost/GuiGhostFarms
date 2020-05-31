@@ -21,8 +21,8 @@
     <allow-intent href="geo:*"/>
     <content src="index.html" />
 	<gap:plugin name="cordova-plugin-x-socialsharing" source="npm" version="5.4.0"/>
-	<gap:plugin name="cordova-plugin-applist2" source="npm"  />
-	    < plugin name="fitatu-cordova-plugin-market" source="npm" />
+	
+	    <plugin name="fitatu-cordova-plugin-market" />
 	<plugin name="enhance-cordova-connector"/>
 	<plugin name="cordova-plugin-device" source="npm" spec="~1.1.6" />
 	<plugin name="cordova-plugin-file" source="npm" spec="~4.3.3" /> 
@@ -46,7 +46,7 @@
 	<platform name="android">
         <allow-intent href="market:*" />
 		<icon src="icon.png" />
-	<preference name="LoadingDialog" value="Loading.... ,Medieval Farms"/>
+	<preference name="LoadingDialog" value="Loading ,Medieval Farms"/>
         <preference name="android-targetSdkVersion" value="28" />
         <preference name="ANDROID_SUPPORT_RECYCLERVIEW_VERSION" default="27+" />
         <preference name="KeepRunning" value="false"/>
