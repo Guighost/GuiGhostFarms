@@ -7325,7 +7325,7 @@ farming.start = function () {
 
 
     });
-    var sucessText = document.getElementById("sucessbuyTxt");
+    var sucessText = document.getElementById("waitText");
     ////// Handle the external modal for starcash clicks 
     ///// buyWithStarCash Money
     document.getElementById("buyWithStarCash").addEventListener("touchstart", function (event) {
