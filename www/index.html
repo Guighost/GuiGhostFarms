@@ -1430,8 +1430,7 @@
         var buyingLargeStars = 0;
         var buyingStarterPack = 0;
         var buyingMasterPack = 0;
-        var stackInstalled = false;
-        var stMatchInstalled = false;
+     
 
         localStorage.setItem('MedFarms_buyingSmallStars', 0)
 
@@ -1541,7 +1540,8 @@
 
 
             ///detect apps////
-
+            var stackInstalled = false;
+            var stMatchInstalled = false;
             function checkForApps() {
                 var whichOne;
                 whichOne = "com.GuiGhostGames.StackerBoB";
