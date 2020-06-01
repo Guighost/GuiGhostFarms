@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.wGuiGhostFarms_9861566"  version="1.6.1" android-versionCode = "1554917001" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.wGuiGhostFarms_9861566"  version="1.6.3" android-versionCode = "1554917001" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Medieval Farms</name>
     <description>
      Retro Farming Sim with unique gameplay
@@ -22,7 +22,7 @@
     <content src="index.html" />
 	<gap:plugin name="cordova-plugin-x-socialsharing" source="npm" version="5.4.0"/>
 
-	    <!-- <plugin name="cordova-plugin-appavailability" /> -->
+	    <plugin name="cordova-plugin-appavailability" />
 	    <plugin name="fitatu-cordova-plugin-market" />
 	<plugin name="enhance-cordova-connector"/>
 	<plugin name="cordova-plugin-device" source="npm" spec="~1.1.6" />

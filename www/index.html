@@ -438,22 +438,52 @@
            
             margin-top: 8px;
         }
-        #dailyTable td{
-        background-color:olivedrab;
-        min-height:20px;
-        max-width: 40px;
+        #dailyTable td {
+            /*background-color:forestgreen;*/
+            min-height: 20px;
+            max-width: 40px;
+            margin-left: 0px;
+            margin-right: 0px;
         }
         #checkRow {
         min-height:25px;
         }
-        #collectDaily{
-            width: 150px;
-            margin: auto;
-            margin-top: 20px;
-            font-family: 'Comic Sans MS';
+        .clsChecks {
+        margin:auto;
+        }
+        .clsDayNums{
+            display:block;
+        clear: both;
+        margin: auto;
+
+        }
+        #stMtchRow {
+        padding-top:5px;
+        margin-top:10px;
+        }
+        #rewardRow {
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        .clsResult {
+            border: 1px solid black;
+            border-radius: 5px;
+            color: azure;
+            background-color:saddlebrown;
             font-size:large;
+        }
+        #dailyrewardTotal0 {
+            font-size: medium;
+        }
+        #collectDaily {
+            width: 160px;
+            margin: auto;
+            margin-top: 25px;
+            font-family: 'Comic Sans MS';
+            font-size: large;
+            border: 2px solid saddlebrown;
             border-radius: 10px;
-            background-color:forestgreen;
+            background-color: forestgreen;
             color: azure;
         }
         #closeDaily {
@@ -467,9 +497,7 @@
         } #bonusSubText {
             transform: translate3d(0px,-20px,0px);
         }
-        #subTextOther {
-            background-color:rosybrown;
-        } 
+       
         #foundIt, #rewardMe {
             background-image: url("images/UI/blankBack7.png");
             /*background-color: #8a2be2;*/
@@ -856,7 +884,7 @@
 
 
         <!--<script type="text/javascript" src="farmingMin_1.5.1.7.js"></script>-->
-        <script type="text/javascript" src="farming_1.6.2Min.js"></script>
+        <script type="text/javascript" src="farming_1.6.3Min.js"></script>
    
 </head>
 
@@ -973,44 +1001,54 @@
         <table id="dailyTable" width="290" height="300" >
            
             <tr><td colspan="7">Login each day to earn greater rewards</td></tr>
+            <tr id="Dailyrow0">
+                <td> 1 </td>
+                <td> 2 </td>
+                <td> 3 </td>
+                <td> 4 </td>
+                <td> 5 </td>
+                <td> 6 </td>
+                <td> 7 </td>
+            </tr>
             <tr id="Dailyrow1">
-                <td> 1 <img src="images/UI/coin4.png" loading="lazy" width="30" /></td>
-                <td> 2 <img src="images/UI/toolsIcon2.png" loading="lazy" width="30" /></td>
-                <td> 3 <img src="images/UI/plus5StarCash.png" loading="lazy" width="30" /></td>
-                <td> 4 <img src="images/UI/coin4.png" loading="lazy" width="30" /></td>
-                <td> 5 <img src="images/UI/plus10StarCash.png" loading="lazy" width="30" /></td>
-                <td> 6 <img src="images/items/logs.png" loading="lazy" width="30" /></td>
-                <td> 7 <img src="images/UI/unknownCrop.png" loading="lazy" width="30" /></td>
+                <td > <img src="images/UI/coin4.png" loading="lazy" width="30" class="clsDayNums"/></td>
+                <td> <img src="images/UI/toolsIcon2.png" loading="lazy" width="30" class="clsDayNums"/></td>
+                <td> <img src="images/UI/plus5StarCash.png" loading="lazy" width="30" class="clsDayNums"/></td>
+                <td> <img src="images/UI/coin4.png" loading="lazy" width="30" class="clsDayNums"/></td>
+                <td> <img src="images/UI/plus10StarCash.png" loading="lazy" width="30" class="clsDayNums"/></td>
+                <td> <img src="images/items/logs.png" loading="lazy" width="30" class="clsDayNums"/></td>
+                <td> <img src="images/UI/unknownCrop.png" loading="lazy" width="30" class="clsDayNums"/></td>
             </tr>
             <tr id="checkRow">
-                <td><img id="stMtchCheck1" src='images/UI/check.png' loading="lazy" width="20" /></td>
-                <td><img id="stMtchCheck2" src='images/UI/check.png' loading="lazy" width="20" /></td>
-                <td><img id="stMtchCheck3" src='images/UI/check.png' loading="lazy" width="20" /></td>
-                <td><img id="stMtchCheck4" src='images/UI/check.png' loading="lazy" width="20" /></td>
-                <td><img id="stMtchCheck5" src='images/UI/check.png' loading="lazy" width="20" /></td>
-                <td><img id="stMtchCheck6" src='images/UI/check.png' loading="lazy" width="20" /></td>
-                <td><img id="stMtchCheck7" src='images/UI/check.png' loading="lazy" width="20" /></td>
+                <td><img id="stMtchCheck1" src='images/UI/check.png' loading="lazy" width="20" class="clsChecks"/></td>
+                <td><img id="stMtchCheck2" src='images/UI/check.png' loading="lazy" width="20" class="clsChecks"/></td>
+                <td><img id="stMtchCheck3" src='images/UI/check.png' loading="lazy" width="20" class="clsChecks"/></td>
+                <td><img id="stMtchCheck4" src='images/UI/check.png' loading="lazy" width="20" class="clsChecks"/></td>
+                <td><img id="stMtchCheck5" src='images/UI/check.png' loading="lazy" width="20" class="clsChecks"/></td>
+                <td><img id="stMtchCheck6" src='images/UI/check.png' loading="lazy" width="20" class="clsChecks"/></td>
+                <td><img id="stMtchCheck7" src='images/UI/check.png' loading="lazy" width="20" class="clsChecks"/></td>
             </tr>
             <tr> <td colspan="7" id="subTextOther">Get Stars for every daily login with other GuiGhost Games installed       </td>          </tr>
             <tr id="stackRow">
                 <td colspan="2"><img id="stackCheck" src='images/UI/google-play-badge.png' loading="lazy" width="80" /></td>
-                <td colspan="4">Stacker Tower <img id="stackImg2" src='images/UI/stackIcon.png' loading="lazy" width="30" /></td>
+                <td colspan="4"><img id="stackImg2" src='images/UI/stackBanner.png' loading="lazy" width="150" /> </td>
                 
                 <td colspan="1"><img id="lowerStarCashImg5-2" src="images/UI/plus5StarCash.png" loading="lazy" width="30" alt="StarCashImg" /> </td>
           
             </tr>
             <tr id="stMtchRow">
                 <td colspan="2"><img id="stMtchCheck" src='images/UI/google-play-badge.png' loading="lazy" width="80" /></td>
-                <td colspan="4">Star Match <img id="stMtchImg2" src='images/UI/stMatchIcon.png' loading="lazy" width="30" /> </td>
+                <td colspan="4"><img id="stMtchImg2" src='images/UI/starMatchBanner.png' loading="lazy" width="150" alt="StarMatchImg" /> </td>
              
-                <td colspan="1"><img id="lowerStarCashImg5-3" src="images/UI/plus5StarCash.png" loading="lazy" width="30" alt="StarCashImg" /> </td>
+                <td colspan="1"><img id="lowerStarCashImg5-3" src="images/UI/plus5StarCash.png" loading="lazy" width="30" alt="StarCashImg2" /> </td>
             </tr>
-            <tr> <td colspan="2" id="dailyrewardTotal0"> Today's Rewards: </td>
-                <td colspan="4" id="dailyrewardTotal"> 100 Coins </td>
-                <td colspan="1" id="dailyrewardStars"><img id="lowerStarCashImg5-4" src="images/UI/plus10StarCash.png" loading="lazy" width="30" alt="StarCashImg" /></td>
+            <tr id="rewardRow"> 
+                <td colspan="2" id="dailyrewardTotal0"class="clsResult"> Today's Rewards: </td>
+                <td colspan="4" id="dailyrewardTotal" class="clsResult"> 100 Coins </td>
+                <td colspan="1" id="dailyrewardStars" class="clsResult"><img id="lowerStarCashImg5-4" src="images/UI/plus10StarCash.png" loading="lazy" width="35" alt="StarCashImg" /></td>
             </tr>
         </table>
-       <div id="collectDaily">Collect Rewards</div>
+       <div id="collectDaily"><p id="clickReward">Collect Rewards</p></div>
              <div id="closeDaily"> </div>
      
 
@@ -1025,7 +1063,9 @@
     <script type=text/javascript>
 
 
+        var deviceType = (navigator.userAgent.match(/iPad/i)) == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i)) == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
 
+        alert("DeviceType is " + deviceType);
 
         if (localStorage.getItem("rateMeNever") == null) { localStorage.setItem("rateMeNever", 0); };
         if (localStorage.getItem("showRewarded") == null) { localStorage.setItem("showRewarded", 0); };
@@ -1542,210 +1582,221 @@
             }
 
 
-            ///detect apps////
-            //var stackInstalled = false;
-            //var stMatchInstalled = false;
-            //function checkForApps() {
-            //    var whichOne;
-            //    whichOne = "com.GuiGhostGames.StackerBoB";
+            // /detect apps////
+            var stackInstalled = false;
+            var stMatchInstalled = false;
+            function checkForApps() {
+                var whichOne;
+                whichOne = "com.GuiGhostGames.StackerBoB";
 
-            //    appAvailability.check(
-            //        whichOne, // Package Name
-            //        function () {           // Success callback
-            //            console.log(whichOne + ' is available');
-            //            stackInstalled = true;
+                appAvailability.check(
+                    whichOne, // Package Name
+                    function () {           // Success callback
+                        console.log(whichOne + ' is available');
+                        stackInstalled = true;
 
-            //        },
-            //        function () {           // Error callback
-            //            console.log(whichOne + 'is not available');
-            //        }
-            //    );
-            //    whichOne = "com.GuiGhostGames.StarMatch2048";
-            //    appAvailability.check(
-            //        whichOne, // Package Name
-            //        function () {           // Success callback
-            //            console.log(whichOne + ' is available');
-            //            stMatchInstalled = true;
+                    },
+                    function () {           // Error callback
+                        console.log(whichOne + 'is not available');
+                    }
+                );
+                whichOne = "com.GuiGhostGames.StarMatch2048";
+                appAvailability.check(
+                    whichOne, // Package Name
+                    function () {           // Success callback
+                        console.log(whichOne + ' is available');
+                        stMatchInstalled = true;
 
-            //        },
-            //        function () {           // Error callback
-            //            console.log(whichOne + 'is not available');
-            //        }
-            //    );
-            //    //alert("starmatch is " + stMatchInstalled + " and Stack is " + stackInstalled);
-            //};
-
-      
-
-            //var dailyBack = document.getElementById("dailyBonus");
-            //var closeDailyRef = document.getElementById("closeDaily");
-            //var stackrBtn = document.getElementById("stackCheck");
-            //var stMtcBtn = document.getElementById("stMtchCheck");
-            //var collectBtnDaily = document.getElementById("collectDaily");
-
-            //var stackStar = document.getElementById("lowerStarCashImg5-2");
-            //var starStar = document.getElementById("lowerStarCashImg5-3");
-            //var starDailyTotal = document.getElementById("lowerStarCashImg5-4");
-
-            //var stMtchCheck1 = document.getElementById("stMtchCheck1");
-            //var stMtchCheck2 = document.getElementById("stMtchCheck2");
-            //var stMtchCheck3 = document.getElementById("stMtchCheck3");
-            //var stMtchCheck4 = document.getElementById("stMtchCheck4");
-            //var stMtchCheck5 = document.getElementById("stMtchCheck5");
-
-            //var stMtchCheck6 = document.getElementById("stMtchCheck6");
-            //var stMtchCheck7 = document.getElementById("stMtchCheck7");
-            //var dailyrewardtotal = document.getElementById("dailyrewardTotal");
-
-            //var dailyStars = 0;
-            //var daysInRow = 0;
+                    },
+                    function () {           // Error callback
+                        console.log(whichOne + 'is not available');
+                    }
+                );
+                alert("starmatch is " + stMatchInstalled + " and Stack is " + stackInstalled);
+            };
 
 
-            //closeDailyRef.addEventListener("click", function (event) { dailyBack.style.display = 'none'; event.preventDefault(); });
-            //closeDailyRef.addEventListener("touchend", function (event) { dailyBack.style.display = 'none'; event.preventDefault(); });
 
-            //stackrBtn.addEventListener("click", function (event) { whichMore = 'stack'; openLink(); });
-            //stackrBtn.addEventListener("touchend", function (event) { whichMore = 'stack'; openLink(); });
+            var dailyBack = document.getElementById("dailyBonus");
+            var closeDailyRef = document.getElementById("closeDaily");
+            var stackrBtn = document.getElementById("stackCheck");
+            var stMtcBtn = document.getElementById("stMtchCheck");
+            var collectBtnDaily = document.getElementById("collectDaily");
+            var clickReward2 = document.getElementById("clickReward");
 
-            //stMtcBtn.addEventListener("click", function (event) { whichMore = 'star'; openLink(); });
-            //stMtcBtn.addEventListener("touchend", function (event) { whichMore = 'star'; openLink(); });
+            var stackStar = document.getElementById("lowerStarCashImg5-2");
+            var starStar = document.getElementById("lowerStarCashImg5-3");
+            var starDailyTotal = document.getElementById("lowerStarCashImg5-4");
 
-         
+            var stMtchCheck1 = document.getElementById("stMtchCheck1");
+            var stMtchCheck2 = document.getElementById("stMtchCheck2");
+            var stMtchCheck3 = document.getElementById("stMtchCheck3");
+            var stMtchCheck4 = document.getElementById("stMtchCheck4");
+            var stMtchCheck5 = document.getElementById("stMtchCheck5");
 
-            //if (typeof localStorage["lastLoginDay"] === "undefined") { localStorage["lastLoginDay"] = 0; };
-            //var lastLoginDay = parseInt(localStorage["lastLoginDay"]);
+            var stMtchCheck6 = document.getElementById("stMtchCheck6");
+            var stMtchCheck7 = document.getElementById("stMtchCheck7");
+            var dailyrewardtotal = document.getElementById("dailyrewardTotal");
 
-            //if (typeof localStorage["daysInRow"] === "undefined") { localStorage["daysInRow"] = 0; };
-            //daysInRow = parseInt(localStorage["daysInRow"]);
+            var dailyStars = 0;
+            var daysInRow = 0;
 
-            //function checkDailyLogin() {
+
+            closeDailyRef.addEventListener("click", function (event) { dailyBack.style.display = 'none'; event.preventDefault(); });
+            closeDailyRef.addEventListener("touchend", function (event) { dailyBack.style.display = 'none'; event.preventDefault(); });
+
+            stackrBtn.addEventListener("click", function (event) { whichMore = 'stack'; openLink(); });
+            stackrBtn.addEventListener("touchend", function (event) { whichMore = 'stack'; openLink(); });
+
+            stMtcBtn.addEventListener("click", function (event) { whichMore = 'star'; openLink(); });
+            stMtcBtn.addEventListener("touchend", function (event) { whichMore = 'star'; openLink(); });
+
+
+
+            if (typeof localStorage["lastLoginDay"] === "undefined") { localStorage["lastLoginDay"] = 0; };
+            var lastLoginDay = parseInt(localStorage["lastLoginDay"]);
+
+            if (typeof localStorage["daysInRow"] === "undefined") { localStorage["daysInRow"] = 0; };
+            daysInRow = parseInt(localStorage["daysInRow"]);
+
+            function checkDailyLogin() {
+                dailyBack.style.display = 'block';
+                    starDailyTotal.style.display = 'none';
+                    if (stackInstalled) {
+                        stackrBtn.src = 'images/UI/check.png'; stackrBtn.style.width = '25px';
+                        starDailyTotal.src = 'images/UI/plus5StarCash.png';
+                        dailyStars = 5; starDailyTotal.style.display = 'block'; stackStar.style.display = 'block'
+                    }
+                    else { starDailyTotal.style.display = 'none'; stackStar.style.display = 'none'; };
+                    if (stMatchInstalled) {
+                        stMtcBtn.src = 'images/UI/check.png'; stMtcBtn.style.width = '25px';starDailyTotal.src = 'images/UI/plus5StarCash.png';
+                        dailyStars = 5; starDailyTotal.style.display = 'block'; starStar.style.display = 'block';
+                    }
+                    else { starDailyTotal.style.display = 'none'; starStar.style.display = 'none'; };
+                    if (stMatchInstalled && stackInstalled) { starDailyTotal.src = 'images/UI/plus10StarCash.png'; dailyStars = 10; };
+                    switch (daysInRow) {
+                        case 1: dailyrewardtotal.innerHTML = "+100 Coins"; break;
+                        case 2: dailyrewardtotal.innerHTML = "+150 Tools"; break;
+                        case 3: dailyrewardtotal.innerHTML = "+5 Stars"; break;
+                        case 4: dailyrewardtotal.innerHTML = "+250 Coins"; break;
+                        case 5: dailyrewardtotal.innerHTML = "+10 Stars"; break;
+                        case 6: dailyrewardtotal.innerHTML = "+150 Wood"; break;
+                        case 7: dailyrewardtotal.innerHTML = "+1000 Coins"; break;
+                        default: console.log("none");
+
+                    }
+
+
+                    stMtchCheck1.style.display = 'none';
+                    stMtchCheck2.style.display = 'none';
+                    stMtchCheck3.style.display = 'none';
+                    stMtchCheck4.style.display = 'none';
+                    stMtchCheck5.style.display = 'none';
+                    stMtchCheck6.style.display = 'none';
+                    stMtchCheck7.style.display = 'none';
+                    var now = new Date();
+                    var start = new Date(now.getFullYear(), 0, 0);
+                    var diff = now - start;
+                    var oneDay = 1000 * 60 * 60 * 24;
+                    var today = Math.floor(diff / oneDay);
+                    console.log('Day of year: ' + today);
+                    localStorage.setItem("lastLoginDay", today);
+                    if (lastLoginDay > 0) {
+                        if (lastLoginDay == today) {
+                            dailyBack.style.display = 'none';
+                            if (daysInRow >= 1) {
+                                stMtchCheck1.style.display = 'block';
+                                if (daysInRow >= 2) { stMtchCheck2.style.display = 'block' } else { stMtchCheck2.style.display = 'none' };
+                                if (daysInRow >= 3) { stMtchCheck3.style.display = 'block' } else { stMtchCheck3.style.display = 'none' };
+                                if (daysInRow >= 4) { stMtchCheck4.style.display = 'block' } else { stMtchCheck4.style.display = 'none' };
+                                if (daysInRow >= 5) { stMtchCheck5.style.display = 'block' } else { stMtchCheck5.style.display = 'none' };
+                                if (daysInRow >= 6) { stMtchCheck6.style.display = 'block' } else { stMtchCheck6.style.display = 'none' };
+                                if (daysInRow >= 7) { stMtchCheck7.style.display = 'block' } else { stMtchCheck7.style.display = 'none' };
+                            } else { stMtchCheck1.style.display = 'none' };
+
+                        }
+                        else if (lastLoginDay < (today - 1)) {
+                            console.log("more than 1 day ago");
+                            daysInRow = 0;
+                            localStorage.setItem("daysInRow", daysInRow);
+                            stMtchCheck1.style.display = 'none';
+                            stMtchCheck2.style.display = 'none';
+                            stMtchCheck3.style.display = 'none';
+                            stMtchCheck4.style.display = 'none';
+                            stMtchCheck5.style.display = 'none';
+                            stMtchCheck6.style.display = 'none';
+                            stMtchCheck7.style.display = 'none';
+                            collectBtnDaily.style.display = 'none';
+                        }
+                        else if (lastLoginDay == (today - 1)) {
+
+                            daysInRow = parseInt(localStorage["daysInRow"]);
+                            daysInRow = daysInRow + 1;
+                            localStorage.setItem("daysInRow", daysInRow);
+                            if (daysInRow >= 1) {
+                                stMtchCheck1.style.display = 'block';
+                                if (daysInRow >= 2) { stMtchCheck2.style.display = 'block' } else { stMtchCheck2.style.display = 'none' };
+                                if (daysInRow >= 3) { stMtchCheck3.style.display = 'block' } else { stMtchCheck3.style.display = 'none' };
+                                if (daysInRow >= 4) { stMtchCheck4.style.display = 'block' } else { stMtchCheck4.style.display = 'none' };
+                                if (daysInRow >= 5) { stMtchCheck5.style.display = 'block' } else { stMtchCheck5.style.display = 'none' };
+                                if (daysInRow >= 6) { stMtchCheck6.style.display = 'block' } else { stMtchCheck6.style.display = 'none' };
+                                if (daysInRow >= 7) { stMtchCheck7.style.display = 'block' } else { stMtchCheck7.style.display = 'none' };
+                            } else { stMtchCheck1.style.display = 'none' };
+
+                            console.log("1 day ago is true");
+
+                       
+                        }
+
+                    }
+             
+
+            }
+            clickReward2.addEventListener("click", function (event) { checkDailyLogin2(); event.preventDefault(); }, { passive: false });
+            clickReward2.addEventListener("touchend", function (event) { checkDailyLogin2(); event.preventDefault(); }, { passive: false });
+            function checkDailyLogin2() {
                 
-            //    starDailyTotal.style.display = 'none';
-            //    if (stackInstalled) {
-            //    stackrBtn.src = 'images/UI/check.png'; starDailyTotal.src = 'images/UI/plus5StarCash.png';
-            //        dailyStars = 5; starDailyTotal.style.display = 'block'; stackStar.style.display = 'block'
-            //    }
-            //    else { starDailyTotal.style.display = 'none'; stackStar.style.display = 'none'; };
-            //    if (stMatchInstalled) {
-            //    stMtcBtn.src = 'images/UI/check.png'; starDailyTotal.src = 'images/UI/plus5StarCash.png';
-            //        dailyStars = 5; starDailyTotal.style.display = 'block'; starStar.style.display = 'block';
-            //    }
-            //    else { starDailyTotal.style.display = 'none'; starStar.style.display = 'none'; };
-            //    if (stMatchInstalled && stackInstalled) { starDailyTotal.src = 'images/UI/plus10StarCash.png'; dailyStars = 10; };
-            //    switch (daysInRow) {
-            //        case 1: dailyrewardtotal.innerHTML = "+100 Coins"; break;
-            //        case 2: dailyrewardtotal.innerHTML = "+150 Tools"; break;
-            //        case 3: dailyrewardtotal.innerHTML = "+5 Stars"; break;
-            //        case 4: dailyrewardtotal.innerHTML = "+250 Coins"; break;
-            //        case 5: dailyrewardtotal.innerHTML = "+10 Stars"; break;
-            //        case 6: dailyrewardtotal.innerHTML = "+150 Wood"; break;
-            //        case 7: dailyrewardtotal.innerHTML = "+1000 Coins"; break;
-            //        default: console.log("none");
+                switch (daysInRow) {
+                    case 1: player.money = parseInt(player.money) + 100; break;
+                    case 2: player.tools = parseInt(player.tools) + 150; break;
+                    case 3: starCash = parseInt(starCash) + 5; break;
+                    case 4: player.money = parseInt(player.money) + 250; break;
+                    case 5: starCash = parseInt(starCash) + 10; break;
+                    case 6: player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 150; break;
+                    case 7: player.money = parseInt(player.money) + 1000; break;
+                    default: console.log("none");
 
-            //    }
-                                
-
-            //    stMtchCheck1.style.display = 'none';
-            //    stMtchCheck2.style.display = 'none';
-            //    stMtchCheck3.style.display = 'none';
-            //    stMtchCheck4.style.display = 'none';
-            //    stMtchCheck5.style.display = 'none';
-            //    stMtchCheck6.style.display = 'none';
-            //    stMtchCheck7.style.display = 'none';
-            //    var now = new Date();
-            //    var start = new Date(now.getFullYear(), 0, 0);
-            //    var diff = now - start;
-            //    var oneDay = 1000 * 60 * 60 * 24;
-            //    var today = Math.floor(diff / oneDay);
-            //    console.log('Day of year: ' + today);
-            //    localStorage.setItem("lastLoginDay", today);
-            //    if (lastLoginDay > 0) {
-            //        if (lastLoginDay == today) {
-            //            console.log("days equal");
-            //            if (daysInRow >= 1) {
-            //                stMtchCheck1.style.display = 'block';
-            //                if (daysInRow >= 2) { stMtchCheck2.style.display = 'block' } else { stMtchCheck2.style.display = 'none' };
-            //                if (daysInRow >= 3) { stMtchCheck3.style.display = 'block' } else { stMtchCheck3.style.display = 'none' };
-            //                if (daysInRow >= 4) { stMtchCheck4.style.display = 'block' } else { stMtchCheck4.style.display = 'none' };
-            //                if (daysInRow >= 5) { stMtchCheck5.style.display = 'block' } else { stMtchCheck5.style.display = 'none' };
-            //                if (daysInRow >= 6) { stMtchCheck6.style.display = 'block' } else { stMtchCheck6.style.display = 'none' };
-            //                if (daysInRow >= 7) { stMtchCheck7.style.display = 'block' } else { stMtchCheck7.style.display = 'none' };
-            //            } else { stMtchCheck1.style.display = 'none' };
-                 
-            //        }
-            //        else if (lastLoginDay < (today - 1)) {
-            //            console.log("more than 1 day ago");
-            //            daysInRow = 0;
-            //            localStorage.setItem("daysInRow", daysInRow);
-            //            stMtchCheck1.style.display = 'none';
-            //            stMtchCheck2.style.display = 'none';
-            //            stMtchCheck3.style.display = 'none';
-            //            stMtchCheck4.style.display = 'none';
-            //            stMtchCheck5.style.display = 'none';
-            //            stMtchCheck6.style.display = 'none';
-            //            stMtchCheck7.style.display = 'none';
-            //        }
-            //        else if (lastLoginDay == (today - 1)) {
-            //            daysInRow = parseInt(localStorage["daysInRow"]);
-            //            daysInRow = daysInRow + 1;
-            //            localStorage.setItem("daysInRow", daysInRow);
-            //            if (daysInRow >= 1) {
-            //                stMtchCheck1.style.display = 'block';
-            //                if (daysInRow >= 2) { stMtchCheck2.style.display = 'block' } else { stMtchCheck2.style.display = 'none' };
-            //                if (daysInRow >= 3) { stMtchCheck3.style.display = 'block' } else { stMtchCheck3.style.display = 'none' };
-            //                if (daysInRow >= 4) { stMtchCheck4.style.display = 'block' } else { stMtchCheck4.style.display = 'none' };
-            //                if (daysInRow >= 5) { stMtchCheck5.style.display = 'block' } else { stMtchCheck5.style.display = 'none' };
-            //                if (daysInRow >= 6) { stMtchCheck6.style.display = 'block' } else { stMtchCheck6.style.display = 'none' };
-            //                if (daysInRow >= 7) { stMtchCheck7.style.display = 'block' } else { stMtchCheck7.style.display = 'none' };
-            //            } else { stMtchCheck1.style.display = 'none' };
-                    
-            //            console.log("1 day ago is true");
-            //            starCash = parseInt(starCash) + dailyStars;
-            //            collectBtnDaily.addEventListener("click", function (event) { checkDailyLogin2(); });
-            //            collectBtnDaily.addEventListener("touchend", function (event) { checkDailyLogin2(); });
-            //            function checkDailyLogin2 () {
-            //                switch (daysInRow) {
-            //                    case 1: player.money = parseInt(player.money) + 100;  break;
-            //                    case 2: player.tools = parseInt(player.tools) + 150; break;
-            //                    case 3: starCash = parseInt(starCash) + 5; break;
-            //                    case 4: player.money = parseInt(player.money) + 250; break;
-            //                    case 5: starCash = parseInt(starCash) + 10; break;
-            //                    case 6: player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 150; break;
-            //                    case 7: player.money = parseInt(player.money) + 1000; break;
-            //                    default: console.log("none");
-
-            //                }
-            //                document.getElementById("starCashOuterLabel").innerHTML = starCash;
-            //            }
-            //        }
-
-            //    }
-
-
-            //}
-
-            //var timerDaily = setTimeout(function () {
-            //    try { console.log("trying check"); checkForApps(); }
-            //    catch (err) { alert("check apps failed " + err) };
-            //  //checkDailyLogin(); dailyBack.style.display = 'block';
-            //}, 20000);
-
-     
-
-            ///////close app on back button
-            //document.addEventListener("backbutton", function (e) {
-            //    try {
-            //        if (window.location.hash == '#home') {
-            //            e.preventDefault();
-            //            navigator.app.exitApp();
-            //        } else {
-            //            navigator.app.backHistory()
-            //        }
-            //    }
-            //    catch (err) { console.log(err); };
+                }
+                starCash = parseInt(starCash) + dailyStars;
+                document.getElementById("starCashOuterLabel").innerHTML = starCash;
           
-            //}, false);
+                collectBtnDaily.style.display = 'none';
+            }
+            var timerDaily = setTimeout(function () {
+                if (deviceType == 'Android') {
+                    try { console.log("trying check"); checkForApps(); }
+                    catch (err) { alert("check apps failed " + err) };
+                }
 
+                checkDailyLogin(); 
+            }, 15000);
+
+
+            if (deviceType == 'Android') {
+            /////close app on back button
+                document.addEventListener("backbutton", function (e) {
+                    try {
+                        if (window.location.hash == '#home') {
+                            e.preventDefault();
+                            navigator.app.exitApp();
+                        } else {
+                            navigator.app.backHistory()
+                        }
+                    }
+                    catch (err) { console.log(err); };
+
+                }, false);
+            }
         });
 
         /////version check
