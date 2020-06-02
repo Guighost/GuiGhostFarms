@@ -2853,7 +2853,7 @@ farming.start = function () {
         b.money = player.money;
         h.setText(player.money); pastureCash.setText(player.money); marketCash.setText(player.money); storeCash.setText(player.money);
         liveStockCash.setText(player.money); orchardCash.setText(player.money); vinyardCash.setText(player.money);
-        houseMoney.setText(player.money);
+        houseMoney.setText(player.money); marketSellCash.setText(player.money);
         inventoryCash.setText(player.money);
         localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
         localStorage.setItem('GuiGhostFarms_dayCount', dayCount);
@@ -3922,7 +3922,7 @@ farming.start = function () {
         if (globalModalBlock == 0) {
             fsClicked = 2;
             globalModalBlock = 1;
-            setTimeout(function () { a.updateMoney }, 0);
+            setTimeout(function () { a.updateMoney() }, 0);
             homeBlock.setHidden(false); confirmSale.setHidden(false);
             if (parseInt(player.money) >= 5000) { confirmTextSub.setHidden(true); confirmBtn.setHidden(false); } else { confirmBtn.setHidden(true); };
             confirmText.setText("Fruit Orchard 5000");
@@ -3937,7 +3937,7 @@ farming.start = function () {
             if (fsClicked == 1) {
                 acres[1].owned = 1;
                 player.money = player.money - 2500;
-                setTimeout(function () { a.updateMoney }, 0);
+                setTimeout(function () { a.updateMoney() }, 0);
                 roadLeft.setHidden(false); forSaleP.setHidden(true); confirmSale.setHidden(true);
                 lime.scheduleManager.callAfter(function () {
                     globalModalBlock = 0;
@@ -3946,7 +3946,7 @@ farming.start = function () {
             if (fsClicked == 2) {
                 acres[2].owned = 1;
                 player.money = player.money - 5000;
-                setTimeout(function () { a.updateMoney }, 0);
+                 a.updateMoney();
                 roadRight.setHidden(false); forSaleO.setHidden(true); confirmSale.setHidden(true);
                 lime.scheduleManager.callAfter(function () {
                     globalModalBlock = 0;
@@ -5201,7 +5201,7 @@ farming.start = function () {
     goog.events.listen(confirmBtnV, ["mousedown", "touchstart"], function () {            //forsale confirm
 
         player.money = (player.money - 12500);
-        setTimeout(function () { a.updateMoney}, 0);
+        a.updateMoney();
         acres[3].owned = 1;
         localStorage.setItem('GuiGhostFarms_acres', JSON.stringify(acres));
         confirmSaleV.setHidden(true);
@@ -6862,7 +6862,7 @@ farming.start = function () {
         globalModalBlock = 0;
 
         player.money = player.money - 10000;
-        setTimeout(function () { a.updateMoney(); }, 0);
+       a.updateMoney();
         acres[4].owned = 1;
         localStorage.setItem('GuiGhostFarms_acres', JSON.stringify(acres));
         confirmSaleLS.setHidden(true);
@@ -7353,7 +7353,7 @@ farming.start = function () {
     document.getElementById("buyWithStarCash").addEventListener("touchstart", function (event) {
         if (starCash >= 5) {
             boughtStarCash = true;
-            player.money += 500; setTimeout(function () { a.updateMoney }, 0); localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+            player.money += 500; a.updateMoney(); localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
             starCash = starCash - 5;
             localStorage.setItem('starCash', starCash);
             document.getElementById("starCashOuterLabel").innerHTML = starCash;
@@ -7370,7 +7370,7 @@ farming.start = function () {
     document.getElementById("buyWithStarCash").addEventListener("click", function (event) {
         if (starCash >= 5) {
             boughtStarCash = true;
-            player.money += 500; setTimeout(function () { a.updateMoney }, 0); localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+            player.money += 500; a.updateMoney(); localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
             starCash = starCash - 5;
             localStorage.setItem('starCash', starCash);
             document.getElementById("starCashOuterLabel").innerHTML = starCash;
@@ -8130,7 +8130,7 @@ farming.start = function () {
             animateBuyItemNormal(0);
             purchaseSound.play();
             player.money = player.money - buyGeneralItem0.price;
-            storeCash.setText(player.money); setTimeout(function () { a.updateMoney }, 0);
+            storeCash.setText(player.money);  a.updateMoney();
             player.cropsStored[15].stored = player.cropsStored[15].stored + 50;
             blacksmithBubble.setHidden(true);
             townRep = townRep + 1;
@@ -8183,7 +8183,7 @@ farming.start = function () {
 
             purchaseSound.play();
             player.money = player.money - buyGeneralItem1.price;
-            storeCash.setText(player.money); setTimeout(function () { a.updateMoney }, 0);
+            storeCash.setText(player.money); a.updateMoney();
             player.cropsStored[16].stored = player.cropsStored[16].stored + 50;
             gLabel16.setText(player.cropsStored[16].stored)
             townRep = townRep + 1;
@@ -8414,7 +8414,7 @@ farming.start = function () {
             townRep = townRep + 1;
             storeStars.setText(starCash);
      
-            setTimeout(function () { a.updateStored(); checkTownRep(); a.updateMoney }, 0);
+            setTimeout(function () { a.updateStored(); checkTownRep(); a.updateMoney(); }, 0);
             buyGeneralItem4.setHidden(true);
             buyGeneralItem6.setHidden(false);
             localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
@@ -8560,7 +8560,7 @@ farming.start = function () {
             townRep = townRep + 1;
             checkItemsOwned()
  
-            setTimeout(function () { a.updateStored(); checkTownRep(); a.updateMoney }, 0);
+            setTimeout(function () { a.updateStored(); checkTownRep(); a.updateMoney(); }, 0);
             localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
             animateBuyItemNormal(6);
             storeStars.setText(starCash);
@@ -8586,7 +8586,7 @@ farming.start = function () {
             townRep = townRep + 1;
             checkItemsOwned();
         
-            setTimeout(function () { a.updateStored(); checkTownRep();  a.updateMoney}, 0);
+            setTimeout(function () { a.updateStored(); checkTownRep(); a.updateMoney();}, 0);
             localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
             animateBuyItemNormal(6);
             storeStars.setText(starCash);
@@ -9241,7 +9241,7 @@ farming.start = function () {
             player.cropsStored[18].stored = 0;
             itemCountText.setText("0");
             ciderSellBtn.setHidden(true);
-            setTimeout(function () { a.updateStored(); checkTownRep(); a.updateMoney }, 0);
+            setTimeout(function () { a.updateStored(); checkTownRep(); a.updateMoney(); }, 0);
           
             saraQuest.setHidden(true); saraQuestBtn.setHidden(true);
 
@@ -9911,7 +9911,7 @@ farming.start = function () {
             sellItem1.value = 0;
             sellItem1.collectNumber = -1;
             sellItem1Img.setFill(imgArray[17].src)
-             setTimeout(function () { a.updateMoney }, 0);
+            a.updateMoney();
             ////checkItemsOwned();
             ////CheckQuestInvItems();
         }
@@ -9947,7 +9947,7 @@ farming.start = function () {
             sellItem2Img.setFill(imgArray[17].src)
 
 
-            setTimeout(function () { a.updateMoney }, 0);
+            a.updateMoney();
             //checkItemsOwned();
             //CheckQuestInvItems();
         }
@@ -9981,7 +9981,7 @@ farming.start = function () {
             sellItem3.collectNumber = -1;
             sellItem3Img.setFill(imgArray[17].src)
 
-            setTimeout(function () { a.updateMoney }, 0);
+           a.updateMoney();
             //checkItemsOwned();
             //CheckQuestInvItems();
         }
@@ -10013,7 +10013,7 @@ farming.start = function () {
             sellItem4.collectNumber = -1;
             sellItem4Img.setFill(imgArray[17].src)
 
-            setTimeout(function () { a.updateMoney }, 0);
+            a.updateMoney();
             //checkItemsOwned();
             //CheckQuestInvItems();
         }
@@ -10044,8 +10044,7 @@ farming.start = function () {
             sellItem5.value = 0;
             sellItem5.collectNumber = -1;
             sellItem5Img.setFill(imgArray[17].src)
-
-            setTimeout(function () { a.updateMoney }, 0);
+             a.updateMoney();
             //checkItemsOwned();
             //CheckQuestInvItems();
         }
@@ -10077,7 +10076,7 @@ farming.start = function () {
             sellItem6.collectNumber = -1;
             sellItem6Img.setFill(imgArray[17].src)
 
-            setTimeout(function () { a.updateMoney }, 0);
+            a.updateMoney();
             //checkItemsOwned();
             //CheckQuestInvItems();
         }
@@ -10168,6 +10167,10 @@ farming.start = function () {
 
     var topMarketyLabel = (new lime.Label).setText("Hit a tile to sell crop ").setFontSize(18).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setPosition(145, 135).setSize(200, 80);
     marketLayer.appendChild(topMarketyLabel);
+    var topCoinMarketSell = (new lime.Sprite).setPosition(285, 20).setSize(35, 35).setFill(imgArray11[0]);
+    marketLayer.appendChild(topCoinMarketSell);
+    var marketSellCash = (new lime.Label).setText(player.money).setFontColor("#E8FC08").setPosition(243, 24).setFontSize(18).setFontFamily("Comic Sans MS");
+    marketLayer.appendChild(marketSellCash);
     // market Tiles
     var marketX = 55, marketY = 135, colXoff = 72, rowYoff = 50, index = 0;
     //row 1
@@ -10442,7 +10445,7 @@ farming.start = function () {
     goog.events.listen(backBtnTown, ["mousedown", "touchstart"], function () {
         checkAchieves2();
         townSceneActive = 0;
-      
+        a.updateMoney();
         if (parseInt(a.sceneBefore) == 1) {
             b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
             homeCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
@@ -10635,7 +10638,7 @@ farming.start = function () {
         countTools.setText(player.tools);
         howManyBack.setHidden(true);
    
-        setTimeout(function () { a.updateStored(); a.updateMoney},0);
+        a.updateStored(); a.updateMoney();
         howManySellBtn.removeEventListener('mousedown', function () { console.log("howmanysellBtn removed listener") });
     }
 
@@ -13794,7 +13797,7 @@ farming.start = function () {
 
         localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades))
         houseMoney.setText(player.money);
-        setTimeout(function () { a.updateMoney(); setDeniseText(); }, 0);    
+       a.updateMoney(); setDeniseText();    
         localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player))
         
        
@@ -13908,7 +13911,7 @@ farming.start = function () {
             if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
             localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
  
-            setTimeout(function () { a.updateTools(); a.updateStored(); a.updateMoney }, 0);
+            setTimeout(function () { a.updateTools(); a.updateStored(); a.updateMoney(); }, 0);
        
             toolCountHouse.setText(player.tools)
             toolMoverLabelHo.setHidden(false); scaffoldHo.setHidden(false); upgradeCloudHo.setHidden(false);
