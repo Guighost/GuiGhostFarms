@@ -1601,7 +1601,7 @@
                     },
                     function () {           // Error callback
                         console.log(whichOne + 'is not available');
-                        alert("error checking stack");
+                        //alert("error checking stack");
                     }
                 );
                 whichOne = 'com.GuiGhostGames.StarMatch2048';
@@ -1614,10 +1614,10 @@
                     },
                     function () {           // Error callback
                         console.log(whichOne + 'is not available');
-                        alert("error checking starmatch");
+                        //alert("error checking starmatch");
                     }
                 );
-                alert("starmatch is " + stMatchInstalled + " and Stack is " + stackInstalled);
+                //alert("starmatch is " + stMatchInstalled + " and Stack is " + stackInstalled);
             };
 
 
@@ -1777,14 +1777,14 @@
           
                 collectBtnDaily.style.display = 'none';
             }
-            var timerDaily = setTimeout(function () {
-                if (deviceType == 'Android') {
-                    try { console.log("trying check"); checkForApps(); }
-                    catch (err) { alert("check apps failed " + err) };
-                }
+            //var timerDaily = setTimeout(function () {
+            //    if (deviceType == 'Android') {
+            //        try { console.log("trying check"); checkForApps(); }
+            //        catch (err) { alert("check apps failed " + err) };
+            //    }
 
-                checkDailyLogin(); 
-            }, 15000);
+            //    checkDailyLogin(); 
+            //}, 15000);
 
 
             //if (deviceType == 'Android') {
