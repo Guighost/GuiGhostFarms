@@ -887,7 +887,7 @@
 
 
         <!--<script type="text/javascript" src="farmingMin_1.5.1.7.js"></script>-->
-        <script type="text/javascript" src="farming_1.6.4Min.js"></script>
+        <script type="text/javascript" src="farming_1.6.js"></script>
    
 </head>
 
@@ -1601,9 +1601,13 @@
                     },
                     function () {           // Error callback
                         console.log(whichOne + 'is not available');
-                        //alert("error checking stack");
+                        alert("error checking stack");
                     }
                 );
+
+                window.plugins.socialsharing.canShareVia('com.GuiGhostGames.StackerBoB', 'msg', null, img, null, function (e) { alert("canShareVia  " + e) }, function (e) { alert(e) })
+
+
                 whichOne = 'com.GuiGhostGames.StarMatch2048';
                 appAvailability.check(
                     whichOne, // Package Name
@@ -1617,7 +1621,7 @@
                         //alert("error checking starmatch");
                     }
                 );
-                //alert("starmatch is " + stMatchInstalled + " and Stack is " + stackInstalled);
+                alert("starmatch is " + stMatchInstalled + " and Stack is " + stackInstalled);
             };
 
 

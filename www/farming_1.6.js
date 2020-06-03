@@ -1566,7 +1566,7 @@ var farming = {
             if (c.state == farming.PLOWED) {
                 quickGrow = Math.floor(Math.random() * 10);
                 if (quickGrow >= 8) { randomPlantTime = 1800; } else { randomPlantTime = 2000; };
-                console.log("qgtime " + randomPlantTime + " " + quickGrow);
+                //console.log("qgtime " + randomPlantTime + " " + quickGrow);
             };
             moneyBefore = player.money;
           
@@ -1613,7 +1613,7 @@ var farming = {
                             c.state = farming.GROWING,
                             c.crop = b.currentCrop,
                             c.ripeTime = randomPlantTime * a.crops[b.currentCrop].time_to_ripe,
-                            console.log("ripeT " + c.ripeTime),
+                            //console.log("ripeT " + c.ripeTime),
                             c.deathTime = 2000 * a.crops[b.currentCrop].time_to_death,
                             c.thirdTime = 1250 * a.crops[b.currentCrop].time_to_ripe,
                         
@@ -3549,9 +3549,12 @@ farming.start = function () {
         c.replaceScene(houseScene, lime.transitions.SlideInUp)
         sceneActive = 'House';
         seen1stHouseNotif = localStorage.getItem("MedFarms_seen1stHouseNotif");
+        if (seen1stHouseNotif != 0 || seen1stHouseNotif != 1) { seen1stHouseNotif = 0; localStorage.setItem("MedFarms_seen1stHouseNotif", 0);  }
         if (seen1stHouseNotif == 1) { questPanelHouse.setHidden(true); };
-        checkHouseUpgradesBought();
         sceneBefore = 1;
+        try { checkHouseUpgradesBought(); }
+        catch (err) { console.log("checkHouseUpgradesBought Failed") };        
+
 
     });
 
@@ -9316,8 +9319,8 @@ farming.start = function () {
                 gideonPanelItemImg2.setHidden(false); countTextGideon2.setHidden(false);
                 gideonPanelTokenImg.setHidden(true);
                 gideonGiveBtn.setHidden(true);
-
-                setTimeout(function () { setHeraldWant(heraldOrderTop) }, 0);
+            
+                setTimeout(function () { setHeraldWant(heraldOrderTop); }, 0) 
 
 
             } else {
@@ -9360,9 +9363,14 @@ farming.start = function () {
     goog.events.listen(gideonGiveBtn, ["mousedown", "touchstart"], function (e) {
         var isHidGid = panelGideon.getHidden();
         if (isHidGid == false) {
-
-            heraldOrder1 = questParamsHerald.crops[heraldOrderTop].crop1;
-            heraldOrder2 = questParamsHerald.crops[heraldOrderTop].crop2;
+            heraldOrderTop = parseInt(heraldOrderTop); 
+            var adjustedWant = 0;
+            if (heraldOrderTop > questParamsHerald.crops.length) {
+                adjustedWant = (heraldOrderTop % 10);
+                //console.log("adjusted want " + adjustedWant);
+            };
+            heraldOrder1 = questParamsHerald.crops[adjustedWant].crop1;
+            heraldOrder2 = questParamsHerald.crops[adjustedWant].crop2;
             player.cropsStored[heraldOrder1].stored = Math.abs(parseInt(parseInt(player.cropsStored[heraldOrder1].stored) - 50));
             player.cropsStored[heraldOrder2].stored = Math.abs(parseInt(parseInt(player.cropsStored[heraldOrder2].stored) - 50));
             setTimeout(function () { a.updateStored() }, 0);
@@ -9378,7 +9386,6 @@ farming.start = function () {
             tokenInvCount.setText(heraldOrderTop);
             localStorage.setItem("MedFarms_heraldOrdersFilled", heraldOrderTop);
 
-            if (heraldOrderTop > questParamsHerald.crops.length) { heraldOrderTop = 0; }
             daysTillHerald = 30;
             gideon.setHidden(true);
 
@@ -13484,9 +13491,11 @@ farming.start = function () {
     var checkHouseUpgradesBought = function () {
         if (houseUpgrades.upgrades[0].owned == 1) {
             houseExpandCover.setHidden(true);
-            goog.events.removeAll(houseExpandBtn);
-
-            goog.events.removeAll(upPanelConfirmBtnHouse);
+            try {
+                goog.events.removeAll(houseExpandBtn);
+                goog.events.removeAll(upPanelConfirmBtnHouse);
+            } catch (err) { console.log("expand house remove listener failed")}
+        
         }
         if (houseUpgrades.upgrades[1].owned == 1) { houseOptionReward1Base.setHidden(false); houseOptions1.setOpacity(0.2); }
         if (houseUpgrades.upgrades[2].owned == 1) { houseOptionReward2Base.setHidden(false); houseOptions2.setOpacity(0.2); }
@@ -13513,7 +13522,7 @@ farming.start = function () {
         if (houseUpgrades.upgrades[23].owned == 1) { houseBack.setFill(imgArray11[23]); houseOptions23.setOpacity(0.2); houseOptions22.setOpacity(1.0); houseOptions24.setOpacity(1.0); houseOptions25.setOpacity(1.0); }
         if (houseUpgrades.upgrades[24].owned == 1) { houseBack.setFill(imgArray11[24]); houseOptions24.setOpacity(0.2); houseOptions22.setOpacity(1.0); houseOptions23.setOpacity(1.0); houseOptions25.setOpacity(1.0); }
         if (houseUpgrades.upgrades[25].owned == 1) { houseBack.setFill(imgArray11[25]); houseOptions25.setOpacity(0.2); houseOptions22.setOpacity(1.0); houseOptions23.setOpacity(1.0); houseOptions24.setOpacity(1.0); }
-        setTimeout(function () { checkPositionsHouseUpgrades(); }, 0); 
+        checkPositionsHouseUpgrades(); 
         
     }
 
@@ -13548,28 +13557,28 @@ farming.start = function () {
 
     var checkPositionsHouseUpgrades = function () {
         move = optionPosH1.x;
-        if (houseUpgrades.upgrades[1].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); goog.events.removeAll(houseOptions1); } else { return; }
-        if (houseUpgrades.upgrades[2].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); goog.events.removeAll(houseOptions2); } else { return; }
-        if (houseUpgrades.upgrades[3].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions3); } else { return; }
-        if (houseUpgrades.upgrades[4].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions4); } else { return; }
-        if (houseUpgrades.upgrades[5].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions5); } else { return; }
-        if (houseUpgrades.upgrades[6].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions6); } else { return; }
-        if (houseUpgrades.upgrades[7].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions7); } else { return; }
-        if (houseUpgrades.upgrades[8].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions8); } else { return; }
-        if (houseUpgrades.upgrades[9].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions9); } else { return; }
-        if (houseUpgrades.upgrades[10].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions10); } else { return; }
-        if (houseUpgrades.upgrades[11].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions11); } else { return; }
-        if (houseUpgrades.upgrades[12].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions12); } else { return; }
-        if (houseUpgrades.upgrades[13].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions13); } else { return; }
-        if (houseUpgrades.upgrades[14].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions14); } else { return; }
-        if (houseUpgrades.upgrades[15].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions15); } else { return; }
-        if (houseUpgrades.upgrades[16].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions16); } else { return; }
-        if (houseUpgrades.upgrades[17].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions17); } else { return; }
-        if (houseUpgrades.upgrades[18].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions18); } else { return; }
-        if (houseUpgrades.upgrades[19].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions19); } else { return; }
-        if (houseUpgrades.upgrades[20].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions20); } else { return; }
-        if (houseUpgrades.upgrades[21].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions21); } else { return; }
-        if (houseUpgrades.upgrades[22].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); goog.events.removeAll(houseOptions22); } else { return; }
+        if (houseUpgrades.upgrades[1].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y);  try { goog.events.removeAll(houseOptions1); } catch (err) {console.log("houseOption1 removeListenerFailed") } } else { return; }
+        if (houseUpgrades.upgrades[2].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y);  try { goog.events.removeAll(houseOptions2); } catch (err) { console.log("houseOption2 removeListenerFailed") } } else { return; }
+        if (houseUpgrades.upgrades[3].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions3); } catch (err) { console.log("houseOption3 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[4].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions4); } catch (err) { console.log("houseOption4 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[5].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions5); } catch (err) { console.log("houseOption5 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[6].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions6); } catch (err) { console.log("houseOption6 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[7].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions7); } catch (err) { console.log("houseOption7 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[8].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions8); } catch (err) { console.log("houseOption8 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[9].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions9); } catch (err) { console.log("houseOption9 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[10].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions10); } catch (err) { console.log("houseOption10 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[11].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions11); } catch (err) { console.log("houseOption11 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[12].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions12); } catch (err) { console.log("houseOption12 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[13].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions13); } catch (err) { console.log("houseOption13 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[14].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions14); } catch (err) { console.log("houseOption14 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[15].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions15); } catch (err) { console.log("houseOption15 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[16].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions16); } catch (err) { console.log("houseOption16 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[17].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions17); } catch (err) { console.log("houseOption17 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[18].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions18); } catch (err) { console.log("houseOption18 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[19].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions19); } catch (err) { console.log("houseOption19 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[20].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions20); } catch (err) { console.log("houseOption20 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[21].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions21); } catch (err) { console.log("houseOption21 removeListenerFailed") }; } else { return; }
+        if (houseUpgrades.upgrades[22].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions22); } catch (err) { console.log("houseOption22 removeListenerFailed") }; } else { return; }
         if (houseUpgrades.upgrades[23].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
         if (houseUpgrades.upgrades[24].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
         if (houseUpgrades.upgrades[25].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
@@ -14246,7 +14255,12 @@ farming.start = function () {
     setTimeout(function () { upsInProgressAtLoad(); }, 0);
     /// set Herald Quests
 
-                function setHeraldWant(want) {
+    function setHeraldWant(want) {
+               console.log("heraldwant runnig")
+            if (want > questParamsHerald.crops.length) {
+                want = (heraldOrderTop % 10);
+                //console.log("adjusted want to " + want + " from " + heraldOrderTop);
+            };
                     setTimeout(function () { validCropsStored(); }, 0);
                     heraldOrder1 = questParamsHerald.crops[want].crop1;
                     heraldOrder2 = questParamsHerald.crops[want].crop2;
@@ -14258,13 +14272,15 @@ farming.start = function () {
                         gideonGiveBtn.setHidden(false);
                     } else { gideonGiveBtn.setHidden(true); };
 
-                }
-                setTimeout(function () { setHeraldWant(heraldOrderTop); }, 0);
-                
+    }
+                setTimeout(function () {
 
-                //////ABOUT Scene//////////////////////////////////////////////////////////////////////////////////////////////////Menu Scene/////////////////////////////////////////////////////////////////////
-                //////ABOUT Scene//////////////////////////////////////////////////////////////////////////////////////////////////Menu Scene/////////////////////////////////////////////////////////////////////
-                //////ABOUT Scene//////////////////////////////////////////////////////////////////////////////////////////////////Menu Scene/////////////////////////////////////////////////////////////////////
+                    setHeraldWant(heraldOrderTop);
+                }, 0);
+                
+    
+                //////ABOUT Scene//////////////////////////////////////////////////////////////////////////////////////////////////
+                //////ABOUT Scene//////////////////////////////////////////////////////////////////////////////////////////////////
                 var aboutScene = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
                     aboutLayer = (new lime.Layer).setAnchorPoint(0, 0),
                     aboutFill1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#0D0D0D");
@@ -14283,7 +14299,7 @@ farming.start = function () {
                 aboutLayer.appendChild(aboutLabel_4);
                 var aboutLabel_5 = (new lime.Label).setFontColor("#E8FC08").setFontSize(10).setPosition(150, 310).setSize(a.width - 30, 200).setText("Music by Estudio Cafofo http://estudiocafofo.com"); 
                 aboutLayer.appendChild(aboutLabel_5);
-                var aboutLabel_6 = (new lime.Label).setFontColor("#E8FC08").setFontSize(18).setPosition(150, 340).setSize(a.width - 30, 200).setText("Support Inquiries & Feedback");
+                var aboutLabel_6 = (new lime.Label).setFontColor("#E8FC08").setFontSize(14).setPosition(150, 340).setSize(a.width - 30, 200).setText("Support Inquiries & Feedback");
                 aboutLayer.appendChild(aboutLabel_6);
                 var aboutLabel_7 = (new lime.Label).setFontColor("#E8FC08").setFontSize(10).setPosition(150, 360).setSize(a.width - 30, 200).setText("Email us at info@guighost.com");
                 aboutLayer.appendChild(aboutLabel_7);
@@ -14306,7 +14322,23 @@ farming.start = function () {
                 var backBtnAbout = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 4 - 20, 400).setSize(a.width / 2 + 10, 40).setFill("#663300");
                 backBtnAbout = (new lime.GlossyButton).setColor("#1ce636").setText("Back").setPosition(155,a.height - 30).setSize(a.width / 2 + 10, 40);
                 aboutLayer.appendChild(backBtnAbout);
+                goog.events.listen(aboutLabel_7, "touchend", function (event) {
+                    try {
+                        var storedDataToSend = getLocalStorage();
 
+                        window.plugins.socialsharing.shareViaEmail(
+                            'Stored Data to Send to GuiGhost            /n /n /n /n' + storedDataToSend, // can contain HTML tags, but support on Android is rather limited:  http://stackoverflow.com/questions/15136480/how-to-send-html-content-with-image-through-android-default-email-client
+                            'Support Request for Medieval Farms',
+                            [ 'info@guighost.com'], // TO: must be null or an array
+                            null, // CC: must be null or an array
+                            null, // BCC: must be null or an array
+                            null, // FILES: can be null, a string, or an array
+                            function () { return}, // called when sharing worked, but also when the user cancelled sharing via email. On iOS, the callbacks' boolean result parameter is true when sharing worked, false if cancelled. On Android, this parameter is always true so it can't be used). See section "Notes about the successCallback" below.
+                            function () { alert("share to email failed");} // called when sh*t hits the fan
+                        );
+                    } catch (err) { alert("email failed with " + err); };
+                  
+                }, false);
 
                 var codeField = document.getElementById("rewardInputCode");
                 var submitReward = document.getElementById("submitRewardCode");
@@ -14351,11 +14383,7 @@ farming.start = function () {
 
         
                 });
-
-
-
-
-               
+                  
       
                 function checkRewardCode(code) {
           
@@ -14363,8 +14391,22 @@ farming.start = function () {
                     var starValTxt = "YOU GET + 100 STARS!";
                     if (myRewards.indexOf(code.toString()) !== -1) {
                         if (usedCodesArray.indexOf(code.toString()) == -1) {
-                            if (code.toString() == 'StarBoost') { starCash = starCash + 25; starValTxt = "YOU GET + 25 STARS!";  }
-                            else { starCash = starCash + 100 };
+                            if (code.toString() == 'StarBoost') {
+                                starCash = starCash + 25; starValTxt = "YOU GET + 25 STARS!";
+                                try { Enhance.logEvent('used_shared_rewardCode'); } catch (err) { console.log("logging failed") };
+                            }
+                            else {
+                                starCash = starCash + 100;
+                                code = code.toString();
+                                    if (code == 'GuiCoinz3d' || code == 'BetaUser123' || code == 'BetaUser456' || code == 'BetaUser789' || code == 'GuiTools3d' || code == 'GuiStars3d') {
+                                        try { Enhance.logEvent('used_GuiGhost_rewardCode'); } catch (err) {   console.log("logging failed"); }
+                                    }
+                                    else {
+                                        try { Enhance.logEvent('used_LootBoy_rewardCode'); }
+                                        catch (err) { console.log("logging failed"); }
+                                    }
+                            }
+                            
                                                      
                             starCashCountBoost.setText(starCash);
                             starCashInvCount.setText(starCash);
@@ -14399,3 +14441,13 @@ function openCodes() {
     xmlhttp.open("GET", "json_code_array.txt", true);
     xmlhttp.send();
 };
+
+function getLocalStorage() {
+    //console.log(JSON.stringify(localStorage));
+    return JSON.stringify(localStorage)
+  
+}
+getLocalStorage();
+function writeLocalStorage(data) {
+    Object.keys(data).forEach(function (key) { localStorage.setItem(key, data[key]) })
+}
