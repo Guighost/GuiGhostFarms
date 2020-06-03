@@ -14327,7 +14327,8 @@ farming.start = function () {
                         var storedDataToSend = getLocalStorage();
 
                         window.plugins.socialsharing.shareViaEmail(
-                            'Stored Data to Send to GuiGhost            /n /n /n /n' + storedDataToSend, // can contain HTML tags, but support on Android is rather limited:  http://stackoverflow.com/questions/15136480/how-to-send-html-content-with-image-through-android-default-email-client
+                            'Stored Data to Send to GuiGhost                                                                                       '
+                            + storedDataToSend, // can contain HTML tags, but support on Android is rather limited:  http://stackoverflow.com/questions/15136480/how-to-send-html-content-with-image-through-android-default-email-client
                             'Support Request for Medieval Farms',
                             [ 'info@guighost.com'], // TO: must be null or an array
                             null, // CC: must be null or an array
