@@ -1589,36 +1589,32 @@
             var stackInstalled = false;
             var stMatchInstalled = false;
             function checkForApps() {
-                var whichOne;
-                whichOne = 'com.GuiGhostGames.StackerBoB';
+              
 
                 appAvailability.check(
-                    whichOne, // Package Name
+                    'com.GuiGhostGames.StackerBoB', // Package Name
                     function () {           // Success callback
-                        console.log(whichOne + ' is available');
+                        console.log('com.GuiGhostGames.StackerBoB is available');
                         stackInstalled = true;
 
                     },
                     function () {           // Error callback
-                        console.log(whichOne + 'is not available');
+                        console.log(' com.GuiGhostGames.StackerBoB is not available');
                         alert("error checking stack");
                     }
                 );
-
-                window.plugins.socialsharing.canShareVia('com.GuiGhostGames.StackerBoB', 'msg', null, null, null, function (e) { alert("canShareVia  " + e) }, function (e) { alert(e) })
-
-
-                whichOne = 'com.GuiGhostGames.StarMatch2048';
+                             
+      
                 appAvailability.check(
-                    whichOne, // Package Name
+                    'com.GuiGhostGames.StarMatch2048', // Package Name
                     function () {           // Success callback
-                        console.log(whichOne + ' is available');
+                        console.log('com.GuiGhostGames.StarMatch2048 is available');
                         stMatchInstalled = true;
 
                     },
                     function () {           // Error callback
-                        console.log(whichOne + 'is not available');
-                        //alert("error checking starmatch");
+                        console.log('com.GuiGhostGames.StarMatch2048 is not available');
+                        alert("error checking starmatch");
                     }
                 );
                 alert("starmatch is " + stMatchInstalled + " and Stack is " + stackInstalled);
@@ -1727,6 +1723,7 @@
                         else if (lastLoginDay < (today - 1)) {
                             console.log("more than 1 day ago");
                             daysInRow = 0;
+                            dailyrewardtotal.innerHTML = 'Next Reward in 24 hours'
                             localStorage.setItem("daysInRow", daysInRow);
                             stMtchCheck1.style.display = 'none';
                             stMtchCheck2.style.display = 'none';

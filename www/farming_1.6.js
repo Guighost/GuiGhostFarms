@@ -14299,9 +14299,9 @@ farming.start = function () {
                 aboutLayer.appendChild(aboutLabel_4);
                 var aboutLabel_5 = (new lime.Label).setFontColor("#E8FC08").setFontSize(10).setPosition(150, 310).setSize(a.width - 30, 200).setText("Music by Estudio Cafofo http://estudiocafofo.com"); 
                 aboutLayer.appendChild(aboutLabel_5);
-                var aboutLabel_6 = (new lime.Label).setFontColor("#E8FC08").setFontSize(14).setPosition(150, 340).setSize(a.width - 30, 200).setText("Support Inquiries & Feedback");
+                var aboutLabel_6 = (new lime.Label).setFontColor("#E8FC08").setFontSize(16).setPosition(150, 340).setSize(a.width - 30, 200).setText("Support Inquiries & Feedback");
                 aboutLayer.appendChild(aboutLabel_6);
-                var aboutLabel_7 = (new lime.Label).setFontColor("#E8FC08").setFontSize(10).setPosition(150, 360).setSize(a.width - 30, 200).setText("Email us at info@guighost.com");
+                var aboutLabel_7 = (new lime.Label).setFontColor("#E8FC08").setFontSize(12).setPosition(150, 360).setSize(a.width - 30, 200).setText("Email us at info@guighost.com");
                 aboutLayer.appendChild(aboutLabel_7);
 
 
@@ -14325,10 +14325,11 @@ farming.start = function () {
                 goog.events.listen(aboutLabel_7, "touchend", function (event) {
                     try {
                         var storedDataToSend = getLocalStorage();
-
+                        var versionOf = '';
+                        versionOf = device.version.toString();
                         window.plugins.socialsharing.shareViaEmail(
-                            'Stored Data to Send to GuiGhost                                                                                       '
-                            + storedDataToSend, // can contain HTML tags, but support on Android is rather limited:  http://stackoverflow.com/questions/15136480/how-to-send-html-content-with-image-through-android-default-email-client
+                            'Stored Data to Send to GuiGhost                                   DeviceAndroidVersion: ' + versionOf + '                                                    SavedDataArray = BEGIN'
+                            + storedDataToSend + ' END', // text  
                             'Support Request for Medieval Farms',
                             [ 'info@guighost.com'], // TO: must be null or an array
                             null, // CC: must be null or an array
