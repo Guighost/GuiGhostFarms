@@ -1781,14 +1781,14 @@
           
                 collectBtnDaily.style.display = 'none';
             }
-            //var timerDaily = setTimeout(function () {
-            //    if (deviceType == 'Android') {
-            //        try { console.log("trying check"); checkForApps(); }
-            //        catch (err) { alert("check apps failed " + err) };
-            //    }
+            var timerDaily = setTimeout(function () {
+                if (deviceType == 'Android') {
+                    try { console.log("trying check"); checkForApps(); }
+                    catch (err) { alert("check apps failed " + err) };
+                }
 
-            //    checkDailyLogin(); 
-            //}, 15000);
+                checkDailyLogin(); 
+            }, 10000);
 
 
             //if (deviceType == 'Android') {
