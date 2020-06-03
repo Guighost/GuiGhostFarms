@@ -1590,12 +1590,14 @@
             var stMatchInstalled = false;
             function checkForApps() {
               
-
+                try { 
                 appAvailability.check(
                     'com.GuiGhostGames.StackerBoB', // Package Name
                     function () {           // Success callback
-                        console.log('com.GuiGhostGames.StackerBoB is available');
                         stackInstalled = true;
+                        console.log('com.GuiGhostGames.StackerBoB is available');
+                        alert("success callback stack");
+                       
 
                     },
                     function () {           // Error callback
@@ -1608,8 +1610,10 @@
                 appAvailability.check(
                     'com.GuiGhostGames.StarMatch2048', // Package Name
                     function () {           // Success callback
-                        console.log('com.GuiGhostGames.StarMatch2048 is available');
                         stMatchInstalled = true;
+                        console.log('com.GuiGhostGames.StarMatch2048 is available');
+                       
+                        alert("success callback stmatch");
 
                     },
                     function () {           // Error callback
@@ -1617,6 +1621,7 @@
                         alert("error checking starmatch");
                     }
                 );
+                } catch (err) { alert("error running check = " + err) };
                 alert("starmatch is " + stMatchInstalled + " and Stack is " + stackInstalled);
             };
 
