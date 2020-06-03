@@ -1605,7 +1605,12 @@
                         alert("error checking stack");
                     }
                 );
-                             
+                try {
+                    window.plugins.launcher.canLaunch({ packageName: 'com.GuiGhostGames.StackerBoB' },
+                        function () { stackInstalled = true;  },     ///success call
+                        function () { alert("stack install check from canLaunch failed insisde")}      ///fail call
+                    );
+                } catch (err) { alert("stack install check from canLaunch failed outside") };             
       
                 appAvailability.check(
                     'com.GuiGhostGames.StarMatch2048', // Package Name
@@ -1622,6 +1627,13 @@
                     }
                 );
                 } catch (err) { alert("error running check = " + err) };
+
+                try {
+                    window.plugins.launcher.canLaunch({ packageName: 'com.GuiGhostGames.StarMatch2048' },
+                        function () { stMatchInstalled = true; },     ///success call
+                        function () { alert("stMatch install check from canLaunch failed insisde") }      ///fail call
+                    );
+                } catch (err) { alert("stMatch install check from canLaunch failed outside") };   
                 alert("starmatch is " + stMatchInstalled + " and Stack is " + stackInstalled);
             };
 
