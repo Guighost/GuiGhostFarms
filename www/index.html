@@ -1627,10 +1627,10 @@
                     }
                 );
                 } catch (err) { alert("error running check = " + err) };
-
+                
                 try {
                     window.plugins.launcher.canLaunch({ packageName: 'com.GuiGhostGames.StarMatch2048' },
-                        function () { stMatchInstalled = true; },     ///success call
+                        function () { stMatchInstalled = true; alert("starmatch is " + stMatchInstalled + " and Stack is " + stackInstalled);},     ///success call
                         function () { alert("stMatch install check from canLaunch failed insisde") }      ///fail call
                     );
                 } catch (err) { alert("stMatch install check from canLaunch failed outside") };   
@@ -1725,7 +1725,7 @@
                     localStorage.setItem("lastLoginDay", today);
                     if (lastLoginDay > 0) {
                         if (lastLoginDay == today) {
-                            dailyBack.style.display = 'none';
+                            //dailyBack.style.display = 'none';
                             if (daysInRow >= 1) {
                                 stMtchCheck1.style.display = 'block';
                                 if (daysInRow >= 2) { stMtchCheck2.style.display = 'block' } else { stMtchCheck2.style.display = 'none' };
@@ -1798,7 +1798,7 @@
             var timerDaily = setTimeout(function () {
                 if (deviceType == 'Android') {
                     try { console.log("trying check"); checkForApps(); }
-                    catch (err) { alert("check apps failed " + err) };
+                    catch (err) { console.log("check apps failed " + err) };
                 }
 
                 checkDailyLogin(); 
