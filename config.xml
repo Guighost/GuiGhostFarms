@@ -22,7 +22,7 @@
     <content src="index.html" />
 	<gap:plugin name="cordova-plugin-x-socialsharing" source="npm" version="5.4.0"/>
 <plugin name="cordova-plugin-app-launcher" />
-	    <plugin name="cordova-plugin-appavailability" />
+	 
 	    <plugin name="fitatu-cordova-plugin-market" />
 	<plugin name="enhance-cordova-connector"/>
 	<plugin name="cordova-plugin-device" source="npm" spec="~1.1.6" />
