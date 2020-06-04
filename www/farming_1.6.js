@@ -1293,6 +1293,21 @@ var heraldOrder1 = 0;
 var heraldOrder2 = 1;
 var daysTillHerald = 30;
 
+
+var questParamsPatricia = {
+    speech: [
+        { index: 0, Text: "Da Da.... I want some toys"},
+        { index: 1, Text: "Round and round and round I go. I just don't seem to be getting anywhere"},
+        { index: 2, Text: "When Papa Elmo visits he is so silly. He is always saying DIBBA DABBA "},
+        { index: 3, Text: "Mom would not let me have candy. She is a meany meany McMeanerson." },
+        { index: 4, Text: " Well I was...sitting on a fencepost, chewing my hay straw, playing with my toys..... "},
+        { index: 5, Text: "I'm a liiiiitttttle girl. I like dresses, princesses, candy, and baby dolls" },
+ 
+    ],
+}
+console.log(questParamsPatricia.speech[0].Text)
+
+
 //questHeader.setText("Mayor Bouregard");
 //questText1.setText("I heard that some old things have been found on that farm of yours. If you come across any JEWELS, let me know")
 //questParams.mayor[0].text
@@ -2516,7 +2531,7 @@ farming.start = function () {
     var pig1Sound = new lime.audio.Audio('audio/snort.mp3');
     var pig2Sound = new lime.audio.Audio('audio/ofarm.mp3');
     var pig3Sound = new lime.audio.Audio('audio/pig3.mp3');
-
+    var patriciaLaugh = new lime.audio.Audio('audio/VannahLaugh.mp3');
     var horizRoad = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 438).setSize(320, 25).setFill("images/" + a.barnyard[15].image);
     ////////////////////////////// 
     ////////////////////////////// 
@@ -13022,7 +13037,25 @@ farming.start = function () {
 
     var patricia = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(202, 145).setSize(55, 55).setFill(imgArrayPatricia[0].src);
     houseLayer.appendChild(patricia);
+    var patriciaQuestBtn = (new lime.GlossyButton).setColor("#008000").setText("").setPosition(25, -4).setSize(25, 23).setOpacity(0.2);
+    patricia.appendChild(patriciaQuestBtn);
+    var patriciaQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, -15).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
+    patricia.appendChild(patriciaQuest);
 
+    goog.events.listen(patriciaQuestBtn, ["mousedown", "touchstart"], function () {
+
+        setTimeout(function () { setPatriciaText(); }, 0);
+        questPanelHouse2.setHidden(false);
+
+
+    });
+    var randomPatricia = ''
+    function setPatriciaText() {
+        randomPatricia = Math.round(Math.random() * 5);
+        questText1House2.setText(questParamsPatricia.speech[randomPatricia].Text);
+        patriciaLaugh.play();
+
+    } 
     // room 2 block house upgrades
 
     var houseExpandCover = (new lime.Sprite).setPosition(155, 217).setSize(a.width - 15, 180).setFill("#000000").setHidden(false);
@@ -13827,13 +13860,27 @@ farming.start = function () {
     questPanelHouse.appendChild(questPanelCloseBtnHouse);
     //questPanelHouse.setHidden(true);
 
-    //goog.events.listen(questPanelCloseBtnHouse, ["mousedown"], function () {
+    var questPanelHouse2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(25, 125).setSize(260, 220).setFill("images/UI/blankBack5.png").setHidden(true);
+    houseLayer.appendChild(questPanelHouse2);
+    var questHeaderHouse2 = (new lime.Label).setAnchorPoint(0, 0).setPosition(95, 19).setText("Patricia").setFontFamily("Comic Sans MS").setFontSize(24);
+    questPanelHouse2.appendChild(questHeaderHouse2);
+    var questText1House2 = (new lime.Label).setAnchorPoint(0, 0).setPosition(17, 115).setText("Dibba Dabba....Dibba Dabba........waaaaaahhhhh").setFontFamily("Comic Sans MS").setFontSize(16).setSize(225, a.height / 2 - 50);
+    questPanelHouse2.appendChild(questText1House2);
+    var questPanelAvatarHouse2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(80, 12).setSize(100, 100).setFill(imgArrayPatricia[0].src);
+    questPanelHouse2.appendChild(questPanelAvatarHouse2);
 
-    //    questPanelHouse.setHidden(true);
-    //    seen1stHouseNotif = 1
-    //    localStorage.setItem("MedFarms_seen1stHouseNotif", 1);
+    var questPanelCloseBtnHouse2 = (new lime.GlossyButton).setColor("#663300").setText("Close").setPosition(125, 207).setSize(100, 20);
+    questPanelHouse2.appendChild(questPanelCloseBtnHouse2);
+    questPanelHouse2.setHidden(true);
 
-    //}, {passive : false}); 
+    goog.events.listen(questPanelCloseBtnHouse2, ["mousedown", "touchstart"], function () {
+
+        questPanelHouse2.setHidden(true);
+        seen1stHouseNotif = 1
+        localStorage.setItem("MedFarms_seen1stHouseNotif", 1);
+
+    }, { passive: false });
+
     goog.events.listen(questPanelCloseBtnHouse, ["mousedown", "touchstart"], function () {
 
         questPanelHouse.setHidden(true);
