@@ -747,7 +747,10 @@ imgArray[49] = new Image(); imgArray[49].src = 'images/UI/lsBtn.png';
 imgArray[50] = new Image(); imgArray[50].src = 'images/UI/homeButton.png';
 imgArray[51] = new Image(); imgArray[51].src = 'images/items/royalToken.png';
 imgArray[52] = new Image(); imgArray[52].src = 'images/UI/tokenBack.png';
-
+imgArray[53] = new Image(); imgArray[53].src = 'images/UI/google-play-badge.png'
+imgArray[54] = new Image(); imgArray[54].src = 'images/UI/stackBanner.png'
+imgArray[55] = new Image(); imgArray[55].src = 'images/UI/starMatchBanner.png'
+imgArray[56] = new Image(); imgArray[56].src = 'images/UI/X.png'
 
 //growing images
 var imgArray2 = new Array();
@@ -1299,13 +1302,13 @@ var questParamsPatricia = {
         { index: 0, Text: "Da Da.... I want some toys"},
         { index: 1, Text: "Round and round and round I go. I just don't seem to be getting anywhere"},
         { index: 2, Text: "When Papa Elmo visits he is so silly. He is always saying DIBBA DABBA "},
-        { index: 3, Text: "Mom would not let me have candy. She is a meany meany McMeanerson." },
+        { index: 3, Text: "Mom would not let me have candy. She is a meany meany Mc\'Meanerson." },
         { index: 4, Text: " Well I was...sitting on a fencepost, chewing my hay straw, playing with my toys..... "},
         { index: 5, Text: "I'm a liiiiitttttle girl. I like dresses, princesses, candy, and baby dolls" },
  
     ],
 }
-console.log(questParamsPatricia.speech[0].Text)
+
 
 
 //questHeader.setText("Mayor Bouregard");
@@ -4342,9 +4345,12 @@ farming.start = function () {
 
     //cleanup listeners no longer needed
     if (player.barnLevel == 5) {
-        goog.events.removeAll(upgradeHomeBarnBtn);
-        goog.events.removeAll(barnUnlock3);
-        goog.events.removeAll(upgradeHomeBarnBackBtn);
+        try {
+            goog.events.removeAll(upgradeHomeBarnBtn);
+            goog.events.removeAll(barnUnlock3);
+            goog.events.removeAll(upgradeHomeBarnBackBtn);
+        } catch (err) { console.log("listener remove failed") }
+
     };
     //c.replaceScene(d);
     u.setHidden(false);
@@ -4353,6 +4359,337 @@ farming.start = function () {
     var costCoin = (new lime.Sprite).setPosition(30, -8).setSize(30, 30).setFill(imgArray11[0]); costDisplay.appendChild(costCoin);
     costDisplay.setHidden(true);
 
+
+    ///New tutorial Glass cover
+    //var glassCover = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(1, 1).setSize(a.width - 2, a.height - 2).setFill("images/UI/glasscover.png");
+    //e.appendChild(glassCover);
+
+    var dailyRewardLayer = (new lime.Layer).setAnchorPoint(0, 0);
+    var dailyRewardBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 45).setSize(a.width -10, a.height - 135).setFill("images/UI/blankBack6.png");
+    dailyRewardLayer.appendChild(dailyRewardBack);
+    var dailyLoginHeader = (new lime.Label).setText("Daily Login Bonus ").setFontFamily("ComicSans MS").setFontSize(22).setPosition(160, 23);
+    var dailyLoginHeaderSub = (new lime.Label).setText("Return each day to earn greater rewards").setFontFamily("ComicSans MS").setFontSize(16).setPosition(150, 53);
+    dailyRewardBack.appendChild(dailyLoginHeader);
+    dailyRewardBack.appendChild(dailyLoginHeaderSub);
+    var day1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(8, 68).setSize(34,85).setFill("#bfbfbf");
+    var day2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(48, 68).setSize(34, 85).setFill("#bfbfbf");
+    var day3 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(88, 68).setSize(34, 85).setFill("#bfbfbf");
+    var day4 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(128, 68).setSize(34, 85).setFill("#bfbfbf");
+    var day5 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(168, 68).setSize(34, 85).setFill("#bfbfbf");
+    var day6 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(208, 68).setSize(34, 85).setFill("#bfbfbf");
+    var day7 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(248, 68).setSize(34, 85).setFill("#bfbfbf");
+    dailyRewardBack.appendChild(day1);
+    dailyRewardBack.appendChild(day2);
+    dailyRewardBack.appendChild(day3);
+    dailyRewardBack.appendChild(day4);
+    dailyRewardBack.appendChild(day5);
+    dailyRewardBack.appendChild(day6);
+    dailyRewardBack.appendChild(day7);
+    var dailyLoginDay1 = (new lime.Label).setText("1").setFontFamily("ComicSans MS").setFontSize(16).setPosition(17, 14);
+    var dailyLoginDay2 = (new lime.Label).setText("2").setFontFamily("ComicSans MS").setFontSize(16).setPosition(17, 14);
+    var dailyLoginDay3 = (new lime.Label).setText("3").setFontFamily("ComicSans MS").setFontSize(16).setPosition(17, 14);
+    var dailyLoginDay4 = (new lime.Label).setText("4").setFontFamily("ComicSans MS").setFontSize(16).setPosition(17, 14);
+    var dailyLoginDay5 = (new lime.Label).setText("5").setFontFamily("ComicSans MS").setFontSize(16).setPosition(17, 14);
+    var dailyLoginDay6 = (new lime.Label).setText("6").setFontFamily("ComicSans MS").setFontSize(16).setPosition(17, 14);
+    var dailyLoginDay7 = (new lime.Label).setText("7").setFontFamily("ComicSans MS").setFontSize(16).setPosition(17, 14);
+    day1.appendChild(dailyLoginDay1);
+    day2.appendChild(dailyLoginDay2);
+    day3.appendChild(dailyLoginDay3);
+    day4.appendChild(dailyLoginDay4);
+    day5.appendChild(dailyLoginDay5);
+    day6.appendChild(dailyLoginDay6);
+    day7.appendChild(dailyLoginDay7);
+    var reward1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(2, 24).setSize(30, 30).setFill("images/UI/coin4.png");
+    var reward2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(2, 24).setSize(30, 30).setFill("images/UI/toolsIcon2.png");
+    var reward3 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(2, 24).setSize(30, 30).setFill(imgArray[38]);
+    var reward4 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(2, 24).setSize(30, 30).setFill("images/UI/coin4.png");
+    var reward5 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(2, 24).setSize(30, 30).setFill(imgArray[39]);
+    var reward6 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(2, 24).setSize(30, 30).setFill("images/items/logs.png");
+    var reward7 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(1, 24).setSize(32, 32).setFill("images/UI/unknownCrop.png");
+
+
+
+    day1.appendChild(reward1);
+    day2.appendChild(reward2);
+    day3.appendChild(reward3);
+    day4.appendChild(reward4);
+    day5.appendChild(reward5);
+    day6.appendChild(reward6);
+    day7.appendChild(reward7);
+
+    var rewardCheck1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 60).setSize(24, 24).setFill(imgArray[35]);
+    var rewardCheck2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 60).setSize(24, 24).setFill(imgArray[35]);
+    var rewardCheck3 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 60).setSize(24, 24).setFill(imgArray[35]);
+    var rewardCheck4 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 60).setSize(24, 24).setFill(imgArray[35]);
+    var rewardCheck5 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 60).setSize(24, 24).setFill(imgArray[35]);
+    var rewardCheck6 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 60).setSize(24, 24).setFill(imgArray[35]);
+    var rewardCheck7 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 60).setSize(24, 24).setFill(imgArray[35]);
+
+
+    day1.appendChild(rewardCheck1);
+    day2.appendChild(rewardCheck2);
+    day3.appendChild(rewardCheck3);
+    day4.appendChild(rewardCheck4);
+    day5.appendChild(rewardCheck5);
+    day6.appendChild(rewardCheck6);
+    day7.appendChild(rewardCheck7);
+
+
+    var rewardLabelBack1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(25, 205).setSize(245, 26).setFill("#8b4513");
+    dailyRewardLayer.appendChild(rewardLabelBack1)
+    var rewardLabel1Txt1 = (new lime.Label).setText("Today's Reward: ").setFontFamily("ComicSans MS").setFontSize(16).setPosition(60, 14).setFontColor("azure");
+    rewardLabelBack1.appendChild(rewardLabel1Txt1)
+    var rewardLabel1Txt2 = (new lime.Label).setText("+ 100 Coins").setFontFamily("ComicSans MS").setFontSize(20).setPosition(188, 15).setFontColor("azure");
+    rewardLabelBack1.appendChild(rewardLabel1Txt2);
+
+
+
+
+
+    var appSection = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(12, 250).setSize(285, 150).setFill("");
+    dailyRewardLayer.appendChild(appSection);
+    var rewardLabel1Txt3 = (new lime.Label).setText("Earn free Stars daily when you have other GuiGhost Games installed").setFontFamily("ComicSans MS").setFontSize(14).setPosition(145, 15).setSize(285, 50);
+    appSection.appendChild(rewardLabel1Txt3);
+
+    var stackerPlayLogo = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(45, 28).setSize(160, 40).setFill(imgArray[54]);
+    appSection.appendChild(stackerPlayLogo);
+    var stackerPlay = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(205, 36).setSize(80, 27).setFill(imgArray[53]);
+    appSection.appendChild(stackerPlay);
+    var stackerStar = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(2, 27).setSize(38, 38).setFill(imgArray[39]);
+    appSection.appendChild(stackerStar);
+    var stackerStarX = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(4, 30).setSize(32, 32).setFill(imgArray[56]);
+    appSection.appendChild(stackerStarX);
+
+    var starMatchPlayLogo = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(45, 75).setSize(160, 40).setFill(imgArray[55]);
+    appSection.appendChild(starMatchPlayLogo);
+    var starMatchPlay = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(205, 81).setSize(80, 27).setFill(imgArray[53]);
+    appSection.appendChild(starMatchPlay);
+    var starMatchStar = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(2, 75).setSize(38, 38).setFill(imgArray[39]);
+    appSection.appendChild(starMatchStar);
+    var starMatchStarX = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(4, 79).setSize(32, 32).setFill(imgArray[56]);
+    appSection.appendChild(starMatchStarX);
+
+
+    var collectDaily = (new lime.GlossyButton).setColor("#00ff00").setText("Collect Rewards").setPosition(150, a.height - 145).setSize(160, 28);
+    dailyRewardLayer.appendChild(collectDaily);
+
+    var closeDailyLayer = (new lime.GlossyButton).setColor("#663300").setText("Close").setPosition(150, a.height - 105).setSize(100, 20);
+    dailyRewardLayer.appendChild(closeDailyLayer);
+
+
+    ///add the layer that ahas all the above daily bonus stuff
+    e.appendChild(dailyRewardLayer);
+
+    goog.events.listen(dailyRewardLayer, ["mousedown", "touchstart"], function (e) {
+        e.event.stopPropagation();
+        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+        });
+    });
+
+
+    goog.events.listen(collectDaily, ["mousedown", "touchstart"], function (e) {
+        collectDailyLogin();
+        collectDaily.setHidden(true);
+        try { goog.events.removeAll(collectDaily); } catch (err) { }
+        e.event.stopPropagation();
+        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+        });
+    });
+
+    goog.events.listen(closeDailyLayer, ["mousedown", "touchstart"], function (e) {
+        
+        dailyRewardLayer.setHidden(true);
+        try { goog.events.removeAll(collectDaily); } catch (err) { }
+        e.event.stopPropagation();
+        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+        });
+    });
+
+    goog.events.listen(stackerPlay, ["mousedown", "touchstart"], function (e) {
+        whichMore = 'stack'; openLink();
+        e.event.stopPropagation();
+        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+        });
+    });
+    goog.events.listen(starMatchPlay, ["mousedown", "touchstart"], function (e) {
+        whichMore = 'star'; openLink();
+        e.event.stopPropagation();
+        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+        });
+    });
+    // /detect apps////
+    var stackInstalled = false;
+    var stMatchInstalled = false;
+    function checkForApps() {
+
+        var deviceType2 = (navigator.userAgent.match(/iPad/i)) == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i)) == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
+
+        if (deviceType2 == "Android") {
+
+            try {
+                window.plugins.launcher.canLaunch({ packageName: 'com.GuiGhostGames.StackerBoB' },
+                    function () { stackInstalled = true; },     ///success call
+                    function () { console.log("failed check for stack inside") }      ///fail call
+                );
+            } catch (err) { console.log("failed stack outside") };
+
+
+
+            try {
+                window.plugins.launcher.canLaunch({ packageName: 'com.GuiGhostGames.StarMatch2048' },
+                    function () { stMatchInstalled = true; },     ///success call
+                    function () { console.log("stMatch install check from canLaunch failed insisde") }      ///fail call
+                );
+            } catch (err) { console.log("stMatch install check from canLaunch failed outside") };
+        }
+
+        
+    };
+
+  
+    function removePlayListeners(numb) {
+        if (numb == 1) { try { goog.events.removeAll(stackerPlayLogo); } catch (err) { } }
+
+
+        if (numb == 1) { try { } catch (err) { goog.events.removeAll(starMatchPlayLogo); } }
+    }
+
+
+    var dailyStars = 0;
+    var daysInRow = 0;
+
+    if (typeof localStorage["lastLoginDay"] === "undefined") { localStorage["lastLoginDay"] = 0; };
+    var lastLoginDay = parseInt(localStorage["lastLoginDay"]);
+
+    if (typeof localStorage["daysInRow"] === "undefined") { localStorage["daysInRow"] = 0; };
+    daysInRow = parseInt(localStorage["daysInRow"]);
+
+
+    function checkDailyLogin() {
+        dailyRewardLayer.setHidden(false);
+  
+        if (stackInstalled) {
+            stackerPlayLogo.setSize(30, 30).setFill(imgArray[35]); removePlayListeners(1);
+            dailyStars = 5;
+            stackerStarX.setHidden(true);
+        }
+    
+
+        if (stMatchInstalled) {
+
+            dailyStars += 5;
+            starMatchPlayLogo.setSize(30, 30).setFill(imgArray[35]); removePlayListeners(2);
+            starMatchStarX.setHidden(true);
+        } 
+
+        if (stMatchInstalled && stackInstalled) { dailyStars = 10; };
+        switch (daysInRow) {
+            case 0: rewardLabel1Txt2.setText("+100 Coins").setFontColor("#E8FC08"); break;
+            case 1: rewardLabel1Txt2.setText("+150 Tools").setFontColor("#E8FC08"); break;
+            case 2: rewardLabel1Txt2.setText("+5 Stars").setFontColor("#E8FC08"); break;
+            case 3: rewardLabel1Txt2.setText("+250 Coins").setFontColor("#E8FC08"); break;
+            case 4: rewardLabel1Txt2.setText("+10 Stars").setFontColor("#E8FC08"); break;
+            case 5: rewardLabel1Txt2.setText("+150 Wood").setFontColor("#E8FC08"); break;
+            case 6: rewardLabel1Txt2.setText("+1000 Coins").setFontColor("#E8FC08"); break;
+            default: console.log("none");
+
+        }
+
+
+        rewardCheck1.setHidden(true);
+        rewardCheck2.setHidden(true);
+        rewardCheck3.setHidden(true);
+        rewardCheck4.setHidden(true);
+        rewardCheck5.setHidden(true);
+        rewardCheck6.setHidden(true);
+        rewardCheck7.setHidden(true);
+
+        var now = new Date();
+        var start = new Date(now.getFullYear(), 0, 0);
+        var diff = now - start;
+        var oneDay = 1000 * 60 * 60 * 24;
+        var today = Math.floor(diff / oneDay);
+        console.log('Day of year: ' + today);
+        localStorage.setItem("lastLoginDay", today);
+        if (lastLoginDay > 0) {
+            if (lastLoginDay == today) {
+                collectDaily.setHidden(true);
+                rewardLabel1Txt2.setText('Wait 24hrs');
+                if (daysInRow >= 0) {
+                    rewardCheck1.setHidden(false); day1.setFill("#00ff00");
+                    if (daysInRow >= 1) { rewardCheck2.setHidden(false); day2.setFill("#00ff00"); } else { rewardCheck2.setHidden(true); day2.setFill("#bfbfbf");};
+                    if (daysInRow >= 2) { rewardCheck3.setHidden(false); day3.setFill("#00ff00"); } else { rewardCheck3.setHidden(true); day3.setFill("#bfbfbf"); };
+                    if (daysInRow >= 3) { rewardCheck4.setHidden(false); day4.setFill("#00ff00"); } else { rewardCheck4.setHidden(true); day4.setFill("#bfbfbf"); };
+                    if (daysInRow >= 4) { rewardCheck5.setHidden(false); day5.setFill("#00ff00"); } else { rewardCheck5.setHidden(true); day5.setFill("#bfbfbf");};
+                    if (daysInRow >= 5) { rewardCheck6.setHidden(false); day6.setFill("#00ff00"); } else { rewardCheck6.setHidden(true); day6.setFill("#bfbfbf");};
+                    if (daysInRow >= 6) { rewardCheck7.setHidden(false); day7.setFill("#00ff00"); } else { rewardCheck7.setHidden(true); day7.setFill("#bfbfbf");};
+                } else { rewardCheck1.setHidden(true); day1.setFill("#bfbfbf"); };
+
+            }
+            else if (lastLoginDay < (today - 1)) {
+                console.log("more than 1 day ago");
+                daysInRow = 0;
+                rewardLabel1Txt2.setText('Wait 24hrs');
+                localStorage.setItem("daysInRow", daysInRow);
+                rewardCheck1.setHidden(false); day1.setFill("#00ff00");
+                rewardCheck2.setHidden(true);
+                rewardCheck3.setHidden(true);
+                rewardCheck4.setHidden(true);
+                rewardCheck5.setHidden(true);
+                rewardCheck6.setHidden(true);
+                rewardCheck7.setHidden(true);
+                //collectBtnDaily.style.display = 'none';
+            }
+            else if (lastLoginDay == (today - 1)) {
+
+                daysInRow = parseInt(localStorage["daysInRow"]);
+                daysInRow = daysInRow + 1;
+                localStorage.setItem("daysInRow", daysInRow);
+                if (daysInRow >= 0) {
+                    rewardCheck1.setHidden(false); day1.setFill("#00ff00");
+                    if (daysInRow >= 1) { rewardCheck2.setHidden(false); day2.setFill("#00ff00"); } else { rewardCheck2.setHidden(true); day2.setFill("#bfbfbf"); };
+                    if (daysInRow >= 2) { rewardCheck3.setHidden(false); day3.setFill("#00ff00"); } else { rewardCheck3.setHidden(true); day3.setFill("#bfbfbf"); };
+                    if (daysInRow >= 3) { rewardCheck4.setHidden(false); day4.setFill("#00ff00"); } else { rewardCheck4.setHidden(true); day4.setFill("#bfbfbf"); };
+                    if (daysInRow >= 4) { rewardCheck5.setHidden(false); day5.setFill("#00ff00"); } else { rewardCheck5.setHidden(true); day5.setFill("#bfbfbf"); };
+                    if (daysInRow >= 5) { rewardCheck6.setHidden(false); day6.setFill("#00ff00"); } else { rewardCheck6.setHidden(true); day6.setFill("#bfbfbf"); };
+                    if (daysInRow >= 6) { rewardCheck7.setHidden(false); day7.setFill("#00ff00"); } else { rewardCheck7.setHidden(true); day7.setFill("#bfbfbf"); };
+                } else { rewardCheck1.setHidden(true); day1.setFill("#bfbfbf"); };
+
+                console.log("1 day ago is true");
+
+
+            }
+
+        }
+
+
+    }
+    //clickReward2.addEventListener("click", function (event) { checkDailyLogin2(); event.preventDefault(); }, { passive: false });
+    //clickReward2.addEventListener("touchend", function (event) { checkDailyLogin2(); event.preventDefault(); }, { passive: false });
+    function collectDailyLogin() {
+        purchaseSound.play();
+        switch (daysInRow) {
+            case 1: player.money = parseInt(player.money) + 100; a.updateMoney(); break;
+            case 2: player.tools = parseInt(player.tools) + 150; a.updateTools(); break;
+            case 3: starCash = parseInt(starCash) + 5; break;
+            case 4: player.money = parseInt(player.money) + 250; a.updateMoney(); break;
+            case 5: starCash = parseInt(starCash) + 10; break;
+            case 6: player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 150; a.updateStored(); break;
+            case 7: player.money = parseInt(player.money) + 1000; a.updateMoney(); break;
+            default: console.log("none");
+
+        }
+     
+     
+        starCash = parseInt(starCash) + dailyStars;
+        document.getElementById("starCashOuterLabel").innerHTML = starCash;
+
+        //collectBtnDaily.style.display = 'none';
+    }
+
+
+    //////////seed scene///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     var l = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
         e = (new lime.Layer).setAnchorPoint(0, 0),
         f = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#0D0D0D");
@@ -5680,7 +6017,7 @@ farming.start = function () {
                         localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
                         barnUpInProgressPasture = 0;
                     }
-                    catch (err) { alert(err) }
+                    catch (err) { console.log(err) }
                 }, this, secondsToUpgradeP * 1000);
             }
         }
@@ -10707,8 +11044,8 @@ farming.start = function () {
         if (mutedAtStart == 0) { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); }
         else { lime.audio.setMute(true); setMute(1) }
         a.checkTutSeen();
-        setTimeout(function () { validCropsStored(); }, 0);
-
+        setTimeout(function () { validCropsStored(); checkForApps();  }, 0);
+        checkDailyLogin();
     });
     goog.events.listen(moreGameBtn, ["mousedown", "touchstart"], function () {
         localStorage.setItem("moreGamesClicked", 1);
@@ -14303,7 +14640,7 @@ farming.start = function () {
     /// set Herald Quests
 
     function setHeraldWant(want) {
-               console.log("heraldwant runnig")
+               //console.log("heraldwant runnig")
             if (want > questParamsHerald.crops.length) {
                 want = (heraldOrderTop % 10);
                 //console.log("adjusted want to " + want + " from " + heraldOrderTop);
@@ -14385,7 +14722,7 @@ farming.start = function () {
                             function () { return}, // called when sharing worked, but also when the user cancelled sharing via email. On iOS, the callbacks' boolean result parameter is true when sharing worked, false if cancelled. On Android, this parameter is always true so it can't be used). See section "Notes about the successCallback" below.
                             function () { alert("share to email failed");} // called when sh*t hits the fan
                         );
-                    } catch (err) { alert("email failed with " + err); };
+                    } catch (err) { console.log("email failed with " + err); };
                   
                 }, false);
 
