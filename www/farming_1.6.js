@@ -1782,15 +1782,22 @@ var farming = {
             this.state == farming.GROWING &&
                 (
 
-
+               
                 10000 >= this.ripeTime ?
-                        (this.setFill("images/" + a.crops[this.crop].grow3)
+                    (
+                        this.setFill("images/" + a.crops[this.crop].grow3)
                     ) :
                     this.thirdTime >= this.ripeTime ?
-                            (this.setFill("images/" + a.crops[this.crop].grow2)
-                            )
-                            : this.deathTime -= 1000
+                        (
+                            this.setFill("images/" + a.crops[this.crop].grow2)
+                         )
+                    : this.deathTime -= 1000
                 )
+            if (scene == 2 && c.state == farming.GROWING) {
+                if (10000 >= this.ripeTime) { c.setFill("images/" + a.crops[6].grow3) }
+                else if (this.thirdTime >= this.ripeTime) { c.setFill("images/" + a.crops[6].grow2) };
+
+            };
             if (pickedEver == 1) {
                 showHighLight = 1;
                 showHighLight2 = 1;
@@ -1800,7 +1807,7 @@ var farming = {
             if (a.crops[this.crop] == 8 && this.deathTime < 0) { this.setFill(imgArray4[8]) }
             if (a.crops[this.crop] == 9 && this.deathTime < 0) { this.setFill(imgArray4[8]) }
             if (a.crops[this.crop] == 12 && this.deathTime < 0) { this.setFill(imgArray[34]) }
-           
+     
             if (scene == 3 && c.state == farming.EMPTY) { c.setFill(imgArray4[8]) }
             if (scene == 32 && c.state == farming.EMPTY) { c.setFill(imgArray4[8]) }
             if (scene == 5 && c.state == farming.EMPTY) { c.setFill(imgArray[34]) }
@@ -2369,7 +2376,7 @@ farming.start = function () {
         { name: "Eggplant ", cost: 11, revenue: 22, time_to_ripe: 50, time_to_death: 440, image: "eggplant.png", harvest: "eggplant2.png", grow1: "eggplantGrow1.png", grow2: "eggplantGrow2.png", grow3: "eggplantGrow3.png", stored: 0, withered: "eggplantWithered.png" },
         { name: "Peppers  ", cost: 13, revenue: 24, time_to_ripe: 55, time_to_death: 460, image: "peppers.png", harvest: "peppers2.png", grow1: "pepperGrow1.png", grow2: "pepperGrow2.png", grow3: "pepperGrow3.png", stored: 0, withered: "peppersWithered.png" },
         { name: "Corn  ", cost: 15, revenue: 28, time_to_ripe: 60, time_to_death: 500, image: "corn.png", harvest: "corn2.png", grow1: "cornGrow1.png", grow2: "cornGrow2.png", grow3: "cornGrow3.png", stored: 0, withered: "cornWithered.png" },
-        { name: "Hay  ", cost: 5, revenue: 10, time_to_ripe: 35, time_to_death: 550, image: "hay.png", harvest: "hayCartFull.png", grow1: "hayGrow1.png", grow2: "hayGrow2.png", grow3: "hayGrow3.png",stored: 0, withered: "hayWithered.png" },
+        { name: "Hay  ", cost: 5, revenue: 10, time_to_ripe: 35, time_to_death: 550, image: "hay.png", harvest: "hayCartFull.png", grow1: "hayGrow1.png", grow2: "hayGrow2.png", grow3: "hayGrow3.png", stored: 0, withered: "hayWithered.png" },
         { name: "Milk  ", cost: 12, revenue: 22, time_to_ripe: 65, time_to_death: 22280, image: "Pasture/bucket.png", harvest: "Pasture/bucket.png", grow1: "Pasture/bucket.png", grow2: "Pasture/bucket.png", grow3: "Pasture/bucket.png", stored: 0, withered: "Pasture/bucket.png" },
         { name: "Apple", cost: 10, revenue: 25, time_to_ripe: 80, time_to_death: 450, image: "Orchard/ready_Apples.png", harvest: "apple.png", grow1: "Orchard/growing2_trees.png", grow2: "Orchard/growing3_trees.png", grow3: "Orchard/growing3_trees.png", stored: 0, withered: "Orchard/wither_treesApple.png" },
         { name: "Pear", cost: 15, revenue: 30, time_to_ripe: 90, time_to_death: 450, image: "Orchard/ready_treesPear.png", harvest: "pear.png", grow1: "Orchard/growing22_trees.png", grow2: "Orchard/growing4_trees.png", grow3: "Orchard/growing4_trees.png", stored: 0, withered: "Orchard/wither_treesPear.png" },
