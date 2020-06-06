@@ -4446,14 +4446,14 @@ farming.start = function () {
     dailyRewardLayer.appendChild(rewardLabelBack1)
     var rewardLabel1Txt1 = (new lime.Label).setText("Today's Reward: ").setFontFamily("ComicSans MS").setFontSize(16).setPosition(60, 14).setFontColor("azure");
     rewardLabelBack1.appendChild(rewardLabel1Txt1)
-    var rewardLabel1Txt2 = (new lime.Label).setText("+ 100 Coins").setFontFamily("ComicSans MS").setFontSize(20).setPosition(188, 15).setFontColor("azure");
+    var rewardLabel1Txt2 = (new lime.Label).setText(" ").setFontFamily("ComicSans MS").setFontSize(20).setPosition(188, 15).setFontColor("azure");
     rewardLabelBack1.appendChild(rewardLabel1Txt2);
 
 
 
 
 
-    var appSection = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(12, 250).setSize(285, 150).setFill("");
+    var appSection = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(12, 250).setSize(285, 150).setFill("").setHidden(true);
     dailyRewardLayer.appendChild(appSection);
     var rewardLabel1Txt3 = (new lime.Label).setText("Earn free Stars daily when you have other GuiGhost Games installed").setFontFamily("ComicSans MS").setFontSize(14).setPosition(145, 15).setSize(285, 50);
     appSection.appendChild(rewardLabel1Txt3);
@@ -4486,6 +4486,8 @@ farming.start = function () {
 
     ///add the layer that ahas all the above daily bonus stuff
     e.appendChild(dailyRewardLayer);
+    ///hiderewardByDefault
+    dailyRewardLayer.setHidden(true);
 
     goog.events.listen(dailyRewardLayer, ["mousedown", "touchstart"], function (e) {
         e.event.stopPropagation();
@@ -4532,7 +4534,7 @@ farming.start = function () {
         var deviceType2 = (navigator.userAgent.match(/iPad/i)) == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i)) == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
 
         if (deviceType2 == "Android") {
-
+            appSection.setHidden(false);
             try {
                 window.plugins.launcher.canLaunch({ packageName: 'com.GuiGhostGames.StackerBoB' },
                     function () { stackInstalled = true; },     ///success call
@@ -4548,8 +4550,8 @@ farming.start = function () {
                     function () { console.log("stMatch install check from canLaunch failed insisde") }      ///fail call
                 );
             } catch (err) { console.log("stMatch install check from canLaunch failed outside") };
-        }
-
+        } else { appSection.setHidden(true); moreGameBtn.setHidden(true); }
+    
         
     };
 
@@ -4558,7 +4560,7 @@ farming.start = function () {
         if (numb == 1) { try { goog.events.removeAll(stackerPlayLogo); } catch (err) { } }
 
 
-        if (numb == 1) { try { } catch (err) { goog.events.removeAll(starMatchPlayLogo); } }
+        if (numb == 2) { try { goog.events.removeAll(starMatchPlayLogo); } catch (err) {  } }
     }
 
 
@@ -4573,36 +4575,23 @@ farming.start = function () {
 
 
     function checkDailyLogin() {
-        dailyRewardLayer.setHidden(false);
+
   
-        if (stackInstalled) {
+        if (stackInstalled == true) {
             stackerPlayLogo.setSize(30, 30).setFill(imgArray[35]); removePlayListeners(1);
             dailyStars = 5;
             stackerStarX.setHidden(true);
         }
     
-
-        if (stMatchInstalled) {
+        if (stMatchInstalled == true) {
 
             dailyStars += 5;
             starMatchPlayLogo.setSize(30, 30).setFill(imgArray[35]); removePlayListeners(2);
             starMatchStarX.setHidden(true);
         } 
 
-        if (stMatchInstalled && stackInstalled) { dailyStars = 10; };
-        switch (daysInRow) {
-            case 0: rewardLabel1Txt2.setText("+100 Coins").setFontColor("#E8FC08"); break;
-            case 1: rewardLabel1Txt2.setText("+150 Tools").setFontColor("#E8FC08"); break;
-            case 2: rewardLabel1Txt2.setText("+5 Stars").setFontColor("#E8FC08"); break;
-            case 3: rewardLabel1Txt2.setText("+250 Coins").setFontColor("#E8FC08"); break;
-            case 4: rewardLabel1Txt2.setText("+10 Stars").setFontColor("#E8FC08"); break;
-            case 5: rewardLabel1Txt2.setText("+150 Wood").setFontColor("#E8FC08"); break;
-            case 6: rewardLabel1Txt2.setText("+1000 Coins").setFontColor("#E8FC08"); break;
-            default: console.log("none");
-
-        }
-
-
+        if (stMatchInstalled == true && stackInstalled == true) { dailyStars = 10; };
+ 
         rewardCheck1.setHidden(true);
         rewardCheck2.setHidden(true);
         rewardCheck3.setHidden(true);
@@ -4616,57 +4605,63 @@ farming.start = function () {
         var diff = now - start;
         var oneDay = 1000 * 60 * 60 * 24;
         var today = Math.floor(diff / oneDay);
-        console.log('Day of year: ' + today);
+        //console.log('Day of year: ' + today);
         localStorage.setItem("lastLoginDay", today);
         if (lastLoginDay > 0) {
+            console.log("lastloginday " + lastLoginDay)
+            console.log("today " +today)
             if (lastLoginDay == today) {
                 collectDaily.setHidden(true);
-                rewardLabel1Txt2.setText('Wait 24hrs');
-                if (daysInRow >= 0) {
-                    rewardCheck1.setHidden(false); day1.setFill("#00ff00");
-                    if (daysInRow >= 1) { rewardCheck2.setHidden(false); day2.setFill("#00ff00"); } else { rewardCheck2.setHidden(true); day2.setFill("#bfbfbf");};
-                    if (daysInRow >= 2) { rewardCheck3.setHidden(false); day3.setFill("#00ff00"); } else { rewardCheck3.setHidden(true); day3.setFill("#bfbfbf"); };
-                    if (daysInRow >= 3) { rewardCheck4.setHidden(false); day4.setFill("#00ff00"); } else { rewardCheck4.setHidden(true); day4.setFill("#bfbfbf"); };
-                    if (daysInRow >= 4) { rewardCheck5.setHidden(false); day5.setFill("#00ff00"); } else { rewardCheck5.setHidden(true); day5.setFill("#bfbfbf");};
-                    if (daysInRow >= 5) { rewardCheck6.setHidden(false); day6.setFill("#00ff00"); } else { rewardCheck6.setHidden(true); day6.setFill("#bfbfbf");};
-                    if (daysInRow >= 6) { rewardCheck7.setHidden(false); day7.setFill("#00ff00"); } else { rewardCheck7.setHidden(true); day7.setFill("#bfbfbf");};
-                } else { rewardCheck1.setHidden(true); day1.setFill("#bfbfbf"); };
+                dailyRewardLayer.setHidden(true);
+                //daysInRow = parseInt(localStorage["daysInRow"]);
+                //rewardLabel1Txt2.setText('Already recieved');
+                //switch (daysInRow) {
+                //    case 0:  rewardCheck1.setHidden(false); day1.setFill("#00ff00"); break;
+                //    case 1: rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00"); break;
+                //    case 2: rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00"); rewardCheck3.setHidden(false); day3.setFill("#00ff00"); break;
+                //    case 3: rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00"); rewardCheck3.setHidden(false); day3.setFill("#00ff00");rewardCheck4.setHidden(false); day4.setFill("#00ff00"); break;
+                //    case 4: rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00"); rewardCheck3.setHidden(false); day3.setFill("#00ff00"); rewardCheck4.setHidden(false); day4.setFill("#00ff00");rewardCheck5.setHidden(false); day5.setFill("#00ff00"); break;
+                //    case 5: rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00"); rewardCheck3.setHidden(false); day3.setFill("#00ff00"); rewardCheck4.setHidden(false); day4.setFill("#00ff00"); rewardCheck5.setHidden(false); day5.setFill("#00ff00");rewardCheck6.setHidden(false); day6.setFill("#00ff00"); break;
+                //    case 6: rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00"); rewardCheck3.setHidden(false); day3.setFill("#00ff00"); rewardCheck4.setHidden(false); day4.setFill("#00ff00"); rewardCheck5.setHidden(false); day5.setFill("#00ff00"); rewardCheck6.setHidden(false); day6.setFill("#00ff00");rewardCheck7.setHidden(false); day7.setFill("#00ff00"); break;
+                //    default: console.log("none");
+
+                //}
 
             }
             else if (lastLoginDay < (today - 1)) {
                 console.log("more than 1 day ago");
+
+                //been too long - start over on day 1 reward
+                dailyRewardLayer.setHidden(false);
                 daysInRow = 0;
-                rewardLabel1Txt2.setText('Wait 24hrs');
-                localStorage.setItem("daysInRow", daysInRow);
-                rewardCheck1.setHidden(false); day1.setFill("#00ff00");
-                rewardCheck2.setHidden(true);
-                rewardCheck3.setHidden(true);
-                rewardCheck4.setHidden(true);
-                rewardCheck5.setHidden(true);
-                rewardCheck6.setHidden(true);
-                rewardCheck7.setHidden(true);
-                //collectBtnDaily.style.display = 'none';
+                localStorage.setItem("daysInRow", 0);
+                rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardLabel1Txt2.setText("+100 Coins").setFontColor("#E8FC08");
+                rewardCheck2.setHidden(true);                rewardCheck3.setHidden(true);                rewardCheck4.setHidden(true);
+                rewardCheck5.setHidden(true);                rewardCheck6.setHidden(true);                rewardCheck7.setHidden(true);
+                collectDaily.setHidden(false);
             }
             else if (lastLoginDay == (today - 1)) {
+                ///daily reward condition is met - show the rewards   
+                dailyRewardLayer.setHidden(false);
+                collectDaily.setHidden(false);
+                daysInRow = parseInt(localStorage["daysInRow"]); 
+                switch (daysInRow) {
+                    case 0: rewardLabel1Txt2.setText("+100 Coins").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00"); break;
+                    case 1: rewardLabel1Txt2.setText("+150 Tools").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00"); break;
+                    case 2: rewardLabel1Txt2.setText("+5 Stars").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00");rewardCheck3.setHidden(false); day3.setFill("#00ff00"); break;
+                    case 3: rewardLabel1Txt2.setText("+250 Coins").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00"); rewardCheck3.setHidden(false); day3.setFill("#00ff00"); rewardCheck4.setHidden(false); day4.setFill("#00ff00"); break;
+                    case 4: rewardLabel1Txt2.setText("+10 Stars").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00"); rewardCheck3.setHidden(false); day3.setFill("#00ff00"); rewardCheck4.setHidden(false); day4.setFill("#00ff00"); rewardCheck5.setHidden(false); day5.setFill("#00ff00"); break;
+                    case 5: rewardLabel1Txt2.setText("+150 Wood").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00"); rewardCheck3.setHidden(false); day3.setFill("#00ff00"); rewardCheck4.setHidden(false); day4.setFill("#00ff00"); rewardCheck5.setHidden(false); day5.setFill("#00ff00"); rewardCheck6.setHidden(false); day6.setFill("#00ff00"); break;
+                    case 6: rewardLabel1Txt2.setText("+1000 Coins").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00"); rewardCheck3.setHidden(false); day3.setFill("#00ff00"); rewardCheck4.setHidden(false); day4.setFill("#00ff00"); rewardCheck5.setHidden(false); day5.setFill("#00ff00"); rewardCheck6.setHidden(false); day6.setFill("#00ff00"); rewardCheck7.setHidden(false); day7.setFill("#00ff00");  break;
+                    default: console.log("none");
 
-                daysInRow = parseInt(localStorage["daysInRow"]);
-                daysInRow = daysInRow + 1;
-                localStorage.setItem("daysInRow", daysInRow);
-                if (daysInRow >= 0) {
-                    rewardCheck1.setHidden(false); day1.setFill("#00ff00");
-                    if (daysInRow >= 1) { rewardCheck2.setHidden(false); day2.setFill("#00ff00"); } else { rewardCheck2.setHidden(true); day2.setFill("#bfbfbf"); };
-                    if (daysInRow >= 2) { rewardCheck3.setHidden(false); day3.setFill("#00ff00"); } else { rewardCheck3.setHidden(true); day3.setFill("#bfbfbf"); };
-                    if (daysInRow >= 3) { rewardCheck4.setHidden(false); day4.setFill("#00ff00"); } else { rewardCheck4.setHidden(true); day4.setFill("#bfbfbf"); };
-                    if (daysInRow >= 4) { rewardCheck5.setHidden(false); day5.setFill("#00ff00"); } else { rewardCheck5.setHidden(true); day5.setFill("#bfbfbf"); };
-                    if (daysInRow >= 5) { rewardCheck6.setHidden(false); day6.setFill("#00ff00"); } else { rewardCheck6.setHidden(true); day6.setFill("#bfbfbf"); };
-                    if (daysInRow >= 6) { rewardCheck7.setHidden(false); day7.setFill("#00ff00"); } else { rewardCheck7.setHidden(true); day7.setFill("#bfbfbf"); };
-                } else { rewardCheck1.setHidden(true); day1.setFill("#bfbfbf"); };
-
+                }
+             //daysInRow is advanced when collected
                 console.log("1 day ago is true");
 
 
             }
-
+            localStorage.setItem("lastLoginDay", today);
         }
 
 
@@ -4675,18 +4670,20 @@ farming.start = function () {
     //clickReward2.addEventListener("touchend", function (event) { checkDailyLogin2(); event.preventDefault(); }, { passive: false });
     function collectDailyLogin() {
         purchaseSound.play();
+        daysInRow = parseInt(localStorage["daysInRow"]); 
         switch (daysInRow) {
-            case 1: player.money = parseInt(player.money) + 100; a.updateMoney(); break;
-            case 2: player.tools = parseInt(player.tools) + 150; a.updateTools(); break;
-            case 3: starCash = parseInt(starCash) + 5; break;
-            case 4: player.money = parseInt(player.money) + 250; a.updateMoney(); break;
-            case 5: starCash = parseInt(starCash) + 10; break;
-            case 6: player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 150; a.updateStored(); break;
-            case 7: player.money = parseInt(player.money) + 1000; a.updateMoney(); break;
+            case 0: player.money = parseInt(player.money) + 100; a.updateMoney(); break;
+            case 1: player.tools = parseInt(player.tools) + 150; a.updateTools(); break;
+            case 2: starCash = parseInt(starCash) + 5; break;
+            case 3: player.money = parseInt(player.money) + 250; a.updateMoney(); break;
+            case 4: starCash = parseInt(starCash) + 10; break;
+            case 5: player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 150; a.updateStored(); break;
+            case 6: player.money = parseInt(player.money) + 1000; a.updateMoney(); break;
             default: console.log("none");
 
         }
-     
+        daysInRow = daysInRow + 1;
+        localStorage.setItem("daysInRow", daysInRow);
      
         starCash = parseInt(starCash) + dailyStars;
         document.getElementById("starCashOuterLabel").innerHTML = starCash;
@@ -5044,7 +5041,7 @@ farming.start = function () {
         if (sceneActive == 'Pasture') {
             josiahStep++
             cowI = cowI + 1;
-            if (cowI >= 16) { cowI = 1 };
+            if (cowI >= 25) { cowI = 1 };
             if (player.treesP == 1) {     ///only show right cows if trees are cleared
                 cowEatR.setHidden(false); cowForward1R.setHidden(false); cowLeft1R.setHidden(false);
             };
@@ -5061,6 +5058,7 @@ farming.start = function () {
                     poop4.setHidden(false); poop5.setHidden(false); poop6.setHidden(false);
                 }
             }
+
             else if (cowI == 4) {
                 cowEatL.setFill("images/Pasture/" + a.pasture[10].image);
                 cowLeft1.setFill("images/Pasture/" + a.pasture[15].image); cowLeft1.setPosition(14, 193);
@@ -5075,15 +5073,15 @@ farming.start = function () {
                 cowEatL.setFill("images/Pasture/" + a.pasture[6].image); cowLeft1.setFill("images/Pasture/" + a.pasture[17].image); cowLeft1.setPosition(7, 193); cowForward1.setFill("images/Pasture/cow_eatF2.png"); cowForward1R.setFill("images/Pasture/cow_eatF3.png");
                 if (player.treesP == 1) { cowEatR.setFill("images/Pasture/" + a.pasture[11].image); cowLeft1R.setFill("images/Pasture/" + a.pasture[16].image); cowLeft1R.setPosition(228, 193); }
             }
-            else if (cowI == 10) {
+            else if (cowI == 18) {
                 cowEatL.setFill("images/Pasture/" + a.pasture[11].image); cowLeft1.setFill("images/Pasture/" + a.pasture[18].image); cowLeft1.setPosition(14, 193); cowForward1.setFill("images/Pasture/cow_eatF1.png"); cowForward1R.setFill("images/Pasture/cow_eatF1.png");
                 if (player.treesP == 1) { cowEatR.setFill("images/Pasture/" + a.pasture[6].image); cowLeft1R.setFill("images/Pasture/" + a.pasture[15].image); cowLeft1R.setPosition(221, 193); }
             }
-            else if (cowI == 12) {
+            else if (cowI == 20) {
                 cowEatL.setFill("images/Pasture/" + a.pasture[10].image); cowLeft1.setFill("images/Pasture/" + a.pasture[17].image); cowLeft1.setPosition(21, 193); cowForward1.setFill("images/Pasture/cow_eatF2.png"); cowForward1R.setFill("images/Pasture/cow_eatF2.png");
                 if (player.treesP == 1) { cowEatR.setFill("images/Pasture/" + a.pasture[11].image); cowLeft1R.setFill("images/Pasture/" + a.pasture[16].image); cowLeft1R.setPosition(214, 193); }
             }
-            else if (cowI == 14) {
+            else if (cowI == 22) {
                 cowEatL.setFill("images/Pasture/" + a.pasture[11].image); cowLeft1.setFill("images/Pasture/" + a.pasture[18].image); cowLeft1.setPosition(28, 193);
                 if (player.treesP == 1) { cowEatR.setFill("images/Pasture/" + a.pasture[10].image); cowLeft1R.setFill("images/Pasture/" + a.pasture[17].image); cowLeft1R.setPosition(207, 193); cowForward1R.setFill("images/Pasture/cow_eatF1.png"); }
             };
@@ -10449,6 +10447,7 @@ farming.start = function () {
 
     });
     function animSellSuccessText() {
+        purchaseSound.play();
         lime.scheduleManager.callAfter(function () { sellItemSuccessText.setPosition(90, 184).setHidden(false); }, this, 75)
         lime.scheduleManager.callAfter(function () { sellItemSuccessText.setPosition(90, 180) }, this, 150)
         lime.scheduleManager.callAfter(function () { sellItemSuccessText.setPosition(90, 177) }, this, 225)
@@ -11032,7 +11031,14 @@ farming.start = function () {
     var introFill2 = (new lime.Sprite).setPosition(157, 260).setSize(300, 490).setFill(imgArray[14]);
     introScene.appendChild(introFill2);
 
+    //var timerDaily = setTimeout(function () {
+    //    if (deviceType == 'Android') {
+    //        try { console.log("trying check"); checkForApps(); }
+    //        catch (err) { console.log("check apps failed " + err) };
+    //    }
 
+    //    //checkDailyLogin(); 
+    //}, 2000);
 
 
 
@@ -11051,13 +11057,28 @@ farming.start = function () {
         if (mutedAtStart == 0) { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); }
         else { lime.audio.setMute(true); setMute(1) }
         a.checkTutSeen();
-        setTimeout(function () { validCropsStored(); checkForApps();  }, 0);
-        checkDailyLogin();
+
+        //check for daily bonus
+        setTimeout(function () {
+            validCropsStored(); 
+            if (deviceType == 'Android') {
+                appSection.setHidden(false);
+                try { console.log("trying check"); checkForApps(); }
+                catch (err) { console.log("check apps failed " + err) };
+              
+            } else {
+                //hide app bonus items
+                appSection.setHidden(true);
+            }
+                
+        }, 0);
+        setTimeout(function () { checkDailyLogin(); }, 2000);
+        
     });
+
     goog.events.listen(moreGameBtn, ["mousedown", "touchstart"], function () {
         localStorage.setItem("moreGamesClicked", 1);
-
-
+        
     });
 
     c.replaceScene(introScene);
@@ -14779,17 +14800,21 @@ farming.start = function () {
                   
       
                 function checkRewardCode(code) {
-          
-                    console.log("code tried is " + code);
                     var starValTxt = "YOU GET + 100 STARS!";
+                    console.log("code tried is " + code);
+
+               
+                  
                     if (myRewards.indexOf(code.toString()) !== -1) {
                         if (usedCodesArray.indexOf(code.toString()) == -1) {
                             if (code.toString() == 'StarBoost') {
                                 starCash = starCash + 25; starValTxt = "YOU GET + 25 STARS!";
                                 try { Enhance.logEvent('used_shared_rewardCode'); } catch (err) { console.log("logging failed") };
                             }
+                          
                             else {
                                 starCash = starCash + 100;
+                                purchaseSound.play();
                                 code = code.toString();
                                     if (code == 'GuiCoinz3d' || code == 'BetaUser123' || code == 'BetaUser456' || code == 'BetaUser789' || code == 'GuiTools3d' || code == 'GuiStars3d') {
                                         try { Enhance.logEvent('used_GuiGhost_rewardCode'); } catch (err) {   console.log("logging failed"); }
@@ -14812,9 +14837,21 @@ farming.start = function () {
                             localStorage.setItem("usedCodes", JSON.stringify(usedCodesArray))
                             setTimeout(function () { codeField.value = ""; codeField.style.color = 'Black'; }, 1000)
                         }
-                        else { codeField.value = "Code already used"; codeField.style.color = 'RED'; setTimeout(function () { codeField.value = " "; codeField.style.color = 'Black'; }, 1000) }
+                        else { codeField.value = "Code already used"; codeField.style.color = 'RED'; lime.scheduleManager.callAfter(function () { codeField.value = " "; codeField.style.color = 'Black'; }, this, 1000) }
                     }
-                    else { codeField.value = "Code already used"; codeField.style.color = 'RED'; setTimeout(function () { codeField.value = " "; codeField.style.color = 'Black'; }, 1000)}
+                   
+                    else if (code.toString() == 'TestDaily') {
+           
+
+                        var adjustMe = localStorage.getItem("lastLoginDay")
+                        adjustMe = adjustMe - 1;
+                        localStorage.setItem("lastLoginDay", adjustMe);
+                        localStorage.setItem("daysInRow", (daysInRow + 1));
+                        starValTxt = "Testing Daily";
+                        codeField.value = starValTxt;
+                        lime.scheduleManager.callAfter(function () { location.reload(); }, this, 750);
+                    }
+                    else { codeField.value = "Invalid Code"; codeField.style.color = 'RED'; lime.scheduleManager.callAfter(function () { codeField.value = " "; codeField.style.color = 'Black'; },this, 1000) };
                 };
 
 
