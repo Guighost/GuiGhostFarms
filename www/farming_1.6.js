@@ -683,6 +683,14 @@ imgArrayWaterfall[3] = new Image(); imgArrayWaterfall[3].src = "images/Orchard/w
 imgArrayWaterfall[4] = new Image(); imgArrayWaterfall[4].src = "images/Orchard/waterMoving1.png";
 imgArrayWaterfall[5] = new Image(); imgArrayWaterfall[5].src = "images/Orchard/waterMoving2.png";
 
+var imgArrayWindmill = new Array();
+imgArrayWindmill[0] = new Image(); imgArrayWindmill[0].src = 'images/windmill/windmillScene4.png';
+imgArrayWindmill[1] = new Image(); imgArrayWindmill[1].src = "images/windmill/windMillBuildingGreyed.png";
+imgArrayWindmill[2] = new Image(); imgArrayWindmill[2].src = "images/windmill/windmillBuildingRaw.png";
+imgArrayWindmill[3] = new Image(); imgArrayWindmill[3].src = "images/windmill/windMillFilled.png";
+imgArrayWindmill[4] = new Image(); imgArrayWindmill[4].src = "images/windmill/windMillFilled2.png";
+imgArrayWindmill[5] = new Image(); imgArrayWindmill[5].src = "images/windmill/bakery.png";
+
 
 var imgArrayGround = new Array();
 imgArrayGround[0] = new Image(); imgArrayGround[0].src = 'images/bare_land.png';
@@ -1549,6 +1557,7 @@ var farming = {
       
         if (arrayIndex == -1) {
             this.state = farming.EMPTY;
+            if (scene == 9) { b.currentCrop = 22 };
             var landStateThis = { name: landIdent, props: { state: parseInt(this.state), deathTime: 0, ripeTime: 0, crop: parseInt(b.currentCrop) } }
             landStateMaster.push(landStateThis);
             localStorage.setItem("landStates", JSON.stringify(landStateMaster));
@@ -1559,14 +1568,14 @@ var farming = {
            
             this.crop = parseInt(landStateMaster[arrayIndex].props.crop);
             this.crop = Math.abs(this.crop);
-
+          
             this.ripeTime = parseInt(landStateMaster[arrayIndex].props.ripeTime);
             this.ripeTime = Math.abs(this.ripeTime);
 
             this.deathTime = parseInt(landStateMaster[arrayIndex].props.deathTime);
             this.deathTime = Math.abs(this.deathTime);
 
-
+            if (scene == 9) { this.crop = 22;  landStateMaster[arrayIndex].props.crop = 22; };
             //console.log("state " + this.state)
             if (this.state == farming.GROWING) {
 
@@ -1601,8 +1610,11 @@ var farming = {
             if (scene == 1 ) { b.currentCrop = homeCrop; };
             if (scene == 32) { b.currentCrop = 9; };
             if (scene == 3) { b.currentCrop = 8; };
+            if (scene == 9) { b.currentCrop = 22; }
             b.currentCrop = Math.abs(b.currentCrop);
+           
             var toPlant = a.crops[b.currentCrop].grow1;
+            
             var toWithered = a.crops[b.currentCrop].withered;
           
             var quickGrow = 0;
@@ -1646,11 +1658,11 @@ var farming = {
                         //a.updateMoney()
 
                     )
-
+               
                     : c.state == farming.PLOWED && player.money >= a.crops[b.currentCrop].cost ?
 
                         (
-                            
+                    
                             b.currentCrop = Math.abs(b.currentCrop),
                             toPlant = a.crops[b.currentCrop].grow1,
                             c.setFill("images/" + toPlant),
@@ -2230,7 +2242,9 @@ cropsStored: [
         { index: 17, name: "Barrels", stored: 0 },
         { index: 18, name: "Cider", stored: 0 },
         { index: 19, name: "Grape Juice", stored: 0 },
-        { index: 20, name: "Bottles", stored: 0 }
+        { index: 20, name: "Bottles", stored: 0 },
+        { index: 21, name: "Planks", stored: 0 },
+        { index: 22, name: "Grain", stored: 0 }
 
     ]
    
@@ -2258,7 +2272,7 @@ collectItems = JSON.parse(localStorage.getItem('GuiGhostFarms_playerItems'));
 //above consoilidated into the below
 ///check all crops and set to 0 if not a integer
 function validCropsStored(){
-        for (i = 0; i < 21; i++){
+        for (i = 0; i < 23; i++){
             //1st - force int by default
             try{
                 player.cropsStored[i].stored = parseInt(player.cropsStored[i].stored);
@@ -2307,7 +2321,9 @@ if (typeof player.cropsStored[16] === "undefined") {    player.cropsStored.push(
 if (typeof player.cropsStored[17] === "undefined") {    player.cropsStored.push({ name: "Barrels", stored: 0 });};
 if (typeof player.cropsStored[18] === "undefined") {    player.cropsStored.push({ name: "Cider", stored: 50 });};
 if (typeof player.cropsStored[19] === "undefined"){    player.cropsStored.push({ name: "Grape Juice", stored: 0 });};
-if (typeof player.cropsStored[20] === "undefined") {    player.cropsStored.push({ name: "Bottles", stored: 0 });};
+if (typeof player.cropsStored[20] === "undefined") { player.cropsStored.push({ name: "Bottles", stored: 0 }); };
+if (typeof player.cropsStored[21] === "undefined") { player.cropsStored.push({ name: "Planks", stored: 0 }); };
+if (typeof player.cropsStored[22] === "undefined") { player.cropsStored.push({ name: "Grain", stored: 0 }); };
 if (parseInt(player.cropsStored[16].name) != "Jars") { player.cropsStored[16].name = "Jars" };
 if (parseInt(player.cropsStored[17].name) != "Barrels") { player.cropsStored[17].name = "Barrels" };
 //added after 1.6 for misty thief issue
@@ -2396,28 +2412,29 @@ farming.start = function () {
     //console.log("bCrop is " + b.currentCrop);
     //if (b.currentCrop > 5 || b.currentCrop == 'null') { b.currentCrop = 0; }
     a.crops = [
-        { name: "Tomatoes  ", cost: 4, revenue: 8, time_to_ripe: 30, time_to_death: 360, image: "tomato.png", harvest: "tomato2.png", grow1: "tomatoGrow1.png", grow2: "tomatoGrow2.png", grow3: "tomatoGrow3.png", stored: 0, withered: "tomatoWithered.png" },
-        { name: "Carrots    ", cost: 6, revenue: 12, time_to_ripe: 35, time_to_death: 400, image: "carrots.png", harvest: "carrots2.png", grow1: "carrotGrow1.png", grow2: "carrotGrow2.png", grow3: "carrotGrow3.png", stored: 0, withered: "carrotsWithered.png" },
-        { name: "Artichoke  ", cost: 8, revenue: 16, time_to_ripe: 42, time_to_death: 420, image: "artichoke.png", harvest: "artichoke2.png", grow1: "artiGrow1.png", grow2: "artiGrow2.png", grow3: "artiGrow3.png", stored: 0, withered: "artichokeWithered.png" },
-        { name: "Eggplant ", cost: 11, revenue: 22, time_to_ripe: 50, time_to_death: 440, image: "eggplant.png", harvest: "eggplant2.png", grow1: "eggplantGrow1.png", grow2: "eggplantGrow2.png", grow3: "eggplantGrow3.png", stored: 0, withered: "eggplantWithered.png" },
-        { name: "Peppers  ", cost: 13, revenue: 24, time_to_ripe: 55, time_to_death: 460, image: "peppers.png", harvest: "peppers2.png", grow1: "pepperGrow1.png", grow2: "pepperGrow2.png", grow3: "pepperGrow3.png", stored: 0, withered: "peppersWithered.png" },
-        { name: "Corn  ", cost: 15, revenue: 28, time_to_ripe: 60, time_to_death: 500, image: "corn.png", harvest: "corn2.png", grow1: "cornGrow1.png", grow2: "cornGrow2.png", grow3: "cornGrow3.png", stored: 0, withered: "cornWithered.png" },
-        { name: "Hay  ", cost: 5, revenue: 10, time_to_ripe: 35, time_to_death: 550, image: "hay.png", harvest: "hayCartFull.png", grow1: "hayGrow1.png", grow2: "hayGrow2.png", grow3: "hayGrow3.png", stored: 0, withered: "hayWithered.png" },
-        { name: "Milk  ", cost: 12, revenue: 22, time_to_ripe: 65, time_to_death: 22280, image: "Pasture/bucket.png", harvest: "Pasture/bucket.png", grow1: "Pasture/bucket.png", grow2: "Pasture/bucket.png", grow3: "Pasture/bucket.png", stored: 0, withered: "Pasture/bucket.png" },
-        { name: "Apple", cost: 10, revenue: 25, time_to_ripe: 80, time_to_death: 450, image: "Orchard/ready_Apples.png", harvest: "apple.png", grow1: "Orchard/growing2_trees.png", grow2: "Orchard/growing3_trees.png", grow3: "Orchard/growing3_trees.png", stored: 0, withered: "Orchard/wither_treesApple.png" },
-        { name: "Pear", cost: 15, revenue: 30, time_to_ripe: 90, time_to_death: 450, image: "Orchard/ready_treesPear.png", harvest: "pear.png", grow1: "Orchard/growing22_trees.png", grow2: "Orchard/growing4_trees.png", grow3: "Orchard/growing4_trees.png", stored: 0, withered: "Orchard/wither_treesPear.png" },
-        { name: "Pork", cost: 20, revenue: 35, time_to_ripe: 70, time_to_death: 14000, image: "livestockPens/hams.png", harvest: "livestockPens/hams.png", grow1: "livestockPens/hams.png", grow2: "livestockPens/hams.png", grow3: "livestockPens/hams.png", stored: 0, withered: "tomatoWithered.png" },
-        { name: "Eggs", cost: 5, revenue: 15, time_to_ripe: 70, time_to_death: 14000, image: "livestockPens/eggs.png", harvest: "livestockPens/eggs.png", grow1: "livestockPens/eggs.png", grow2: "livestockPens/eggs.png", grow3: "livestockPens/eggs.png", stored: 0, withered: "tomatoWithered.png" },
-        { name: "Grapes", cost: 15, revenue: 25, time_to_ripe: 60, time_to_death: 450, image: "vinyard/grapes_ready.png", harvest: "vinyard/grapes2.png", grow1: "vinyard/grapes_Grow1.png", grow2: "vinyard/grapes_Grow2.png", grow3: "vinyard/grapes_Grow3.png", stored: 0, withered: "vinyard/grapes_withered.png" },
-        { name: "Jelly", cost: 30, revenue: 35, time_to_ripe: 75, time_to_death: 14000, image: "vinyard/jelly.png", harvest: "vinyard/jelly.png", grow1: "vinyard/jelly.png", grow2: "vinyard/jelly.png", stored: 0 },
-        { name: "Wood", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/logs.png", harvest: "items/logs.png", grow1: "items/logs.png", grow2: "items/logs.png", stored: 0 },
-        { name: "Iron", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/ironBar.png", harvest: "items/ironBar.png", grow1: "items/ironBar.png", grow2: "items/ironBar.png", stored: 0 },
-        { name: "Jars", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/jars.png", harvest: "items/jars.png", grow1: "items/jars.png", grow2: "items/jars.png", stored: 0 },
-        { name: "Barrels", cost: 200, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/barrels.png", harvest: "items/barrels.png", grow1: "items/barrels.png", grow2: "items/barrels.png", stored: 0 },
-        { name: "Cider", cost: 0, revenue: 40, time_to_ripe: 75, time_to_death: 14000, image: "items/ciderBarrel.png", harvest: "items/ciderBarrel.png", grow1: "items/ciderBarrel.png", grow2: "items/ciderBarrel.png", stored: 0 },
-        { name: "Grape Juice", cost: 0, revenue: 40, time_to_ripe: 75, time_to_death: 14000, image: "items/planks.png", harvest: "items/planks.png", grow1: "items/planks.png", grow2: "items/planks.png", stored: 0 },
-        { name: "Bottles", cost: 200, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/bottles.png", harvest: "items/bottles.png", grow1: "items/bottles.png", grow2: "items/bottles.png", stored: 0 },
-        { name: "Planks", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/planks.png", harvest: "items/planks.png", grow1: "items/planks.png", grow2: "items/planks.png", stored: 0 },
+        { index: 0,  name: "Tomatoes  ", cost: 4, revenue: 8, time_to_ripe: 35, time_to_death: 360, image: "tomato.png", harvest: "tomato2.png", grow1: "tomatoGrow1.png", grow2: "tomatoGrow2.png", grow3: "tomatoGrow3.png", stored: 0, withered: "tomatoWithered.png" },
+        { index: 1, name: "Carrots    ", cost: 6, revenue: 12, time_to_ripe: 40, time_to_death: 400, image: "carrots.png", harvest: "carrots2.png", grow1: "carrotGrow1.png", grow2: "carrotGrow2.png", grow3: "carrotGrow3.png", stored: 0, withered: "carrotsWithered.png" },
+        { index: 2, name: "Artichoke  ", cost: 8, revenue: 16, time_to_ripe: 45, time_to_death: 420, image: "artichoke.png", harvest: "artichoke2.png", grow1: "artiGrow1.png", grow2: "artiGrow2.png", grow3: "artiGrow3.png", stored: 0, withered: "artichokeWithered.png" },
+        { index: 3, name: "Eggplant ", cost: 11, revenue: 22, time_to_ripe: 50, time_to_death: 440, image: "eggplant.png", harvest: "eggplant2.png", grow1: "eggplantGrow1.png", grow2: "eggplantGrow2.png", grow3: "eggplantGrow3.png", stored: 0, withered: "eggplantWithered.png" },
+        { index: 4, name: "Peppers  ", cost: 13, revenue: 24, time_to_ripe: 55, time_to_death: 460, image: "peppers.png", harvest: "peppers2.png", grow1: "pepperGrow1.png", grow2: "pepperGrow2.png", grow3: "pepperGrow3.png", stored: 0, withered: "peppersWithered.png" },
+        { index: 5, name: "Corn  ", cost: 15, revenue: 28, time_to_ripe: 60, time_to_death: 500, image: "corn.png", harvest: "corn2.png", grow1: "cornGrow1.png", grow2: "cornGrow2.png", grow3: "cornGrow3.png", stored: 0, withered: "cornWithered.png" },
+        { index: 6, name: "Hay  ", cost: 5, revenue: 10, time_to_ripe: 35, time_to_death: 550, image: "hay.png", harvest: "hayCartFull.png", grow1: "hayGrow1.png", grow2: "hayGrow2.png", grow3: "hayGrow3.png", stored: 0, withered: "hayWithered.png" },
+        { index: 7, name: "Milk  ", cost: 12, revenue: 22, time_to_ripe: 65, time_to_death: 22280, image: "Pasture/bucket.png", harvest: "Pasture/bucket.png", grow1: "Pasture/bucket.png", grow2: "Pasture/bucket.png", grow3: "Pasture/bucket.png", stored: 0, withered: "Pasture/bucket.png" },
+        { index: 8, name: "Apple", cost: 10, revenue: 25, time_to_ripe: 80, time_to_death: 450, image: "Orchard/ready_Apples.png", harvest: "apple.png", grow1: "Orchard/growing2_trees.png", grow2: "Orchard/growing3_trees.png", grow3: "Orchard/growing3_trees.png", stored: 0, withered: "Orchard/wither_treesApple.png" },
+        { index: 9, name: "Pear", cost: 15, revenue: 30, time_to_ripe: 90, time_to_death: 450, image: "Orchard/ready_treesPear.png", harvest: "pear.png", grow1: "Orchard/growing22_trees.png", grow2: "Orchard/growing4_trees.png", grow3: "Orchard/growing4_trees.png", stored: 0, withered: "Orchard/wither_treesPear.png" },
+        { index: 10, name: "Pork", cost: 20, revenue: 35, time_to_ripe: 70, time_to_death: 14000, image: "livestockPens/hams.png", harvest: "livestockPens/hams.png", grow1: "livestockPens/hams.png", grow2: "livestockPens/hams.png", grow3: "livestockPens/hams.png", stored: 0, withered: "tomatoWithered.png" },
+        { index: 11, name: "Eggs", cost: 5, revenue: 15, time_to_ripe: 70, time_to_death: 14000, image: "livestockPens/eggs.png", harvest: "livestockPens/eggs.png", grow1: "livestockPens/eggs.png", grow2: "livestockPens/eggs.png", grow3: "livestockPens/eggs.png", stored: 0, withered: "tomatoWithered.png" },
+        { index: 12, name: "Grapes", cost: 15, revenue: 25, time_to_ripe: 60, time_to_death: 450, image: "vinyard/grapes_ready.png", harvest: "vinyard/grapes2.png", grow1: "vinyard/grapes_Grow1.png", grow2: "vinyard/grapes_Grow2.png", grow3: "vinyard/grapes_Grow3.png", stored: 0, withered: "vinyard/grapes_withered.png" },
+        { index: 13, name: "Jelly", cost: 30, revenue: 35, time_to_ripe: 75, time_to_death: 14000, image: "vinyard/jelly.png", harvest: "vinyard/jelly.png", grow1: "vinyard/jelly.png", grow2: "vinyard/jelly.png", stored: 0 },
+        { index: 14, name: "Wood", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/logs.png", harvest: "items/logs.png", grow1: "items/logs.png", grow2: "items/logs.png", stored: 0 },
+        { index: 15, name: "Iron", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/ironBar.png", harvest: "items/ironBar.png", grow1: "items/ironBar.png", grow2: "items/ironBar.png", stored: 0 },
+        { index: 16, name: "Jars", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/jars.png", harvest: "items/jars.png", grow1: "items/jars.png", grow2: "items/jars.png", stored: 0 },
+        { index: 17, name: "Barrels", cost: 200, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/barrels.png", harvest: "items/barrels.png", grow1: "items/barrels.png", grow2: "items/barrels.png", stored: 0 },
+        { index: 18, name: "Cider", cost: 0, revenue: 40, time_to_ripe: 75, time_to_death: 14000, image: "items/ciderBarrel.png", harvest: "items/ciderBarrel.png", grow1: "items/ciderBarrel.png", grow2: "items/ciderBarrel.png", stored: 0 },
+        { index: 19, name: "Grape Juice", cost: 0, revenue: 40, time_to_ripe: 75, time_to_death: 14000, image: "items/planks.png", harvest: "items/planks.png", grow1: "items/planks.png", grow2: "items/planks.png", stored: 0 },
+        { index: 20, name: "Bottles", cost: 200, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/bottles.png", harvest: "items/bottles.png", grow1: "items/bottles.png", grow2: "items/bottles.png", stored: 0 },
+        { index: 21, name: "Planks", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/planks.png", harvest: "items/planks.png", grow1: "items/planks.png", grow2: "items/planks.png", stored: 0 },
+        { index: 22, name: "Grain", cost: 7, revenue: 14, time_to_ripe: 60, time_to_death: 550, image: "hay.png", harvest: "hay.png", grow1: "hayGrow1.png", grow2: "hayGrow2.png", grow3: "hayGrow3.png", stored: 0, withered: "hayWithered.png" },
 
     ];
 
@@ -2769,7 +2786,7 @@ farming.start = function () {
             closeAcresNav();
             a.sceneBefore = 4;
             c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
-         
+            b.currentCrop = 12;
             sceneActive = 'Vineyard';
             homeCrop = parseInt(b.currentCrop);
             if (homeCrop > 5 || isNaN(homeCrop) || homeCrop < 0) { homecrop = localStorage.getItem("MedFarms_selectedHomeCrop") };
@@ -2792,13 +2809,13 @@ farming.start = function () {
             a.sceneBefore = 5;
             ///from pature to Market
             c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
-            setTimeout(function () { validCropsStored(); checkShortage();}, 0);
+            setTimeout(function () { validCropsStored(); }, 0);
             sceneActive = 'LS';
             waterfallSound.stop();
             chickenSound.play();
             pig1Sound.play();
             lime.scheduleManager.callAfter(function () { pig2Sound.play(); }, this, 5000);
-         
+            checkShortage();
             globalModalBlock = 0;
             homeBlock.setHidden(true);
         }
@@ -3136,7 +3153,7 @@ farming.start = function () {
             tickHighlight++;
             //console.log("tickHighlight = " + tickHighlight);
             if (tickHighlight == 1) { market.setFill("images/" + a.barnyard[3].image); }
-            if (tickHighlight == 2) { market.setFill("images/marketCoin2.png"); tickHighlight = 0; }
+            if (tickHighlight == 2) { market.setFill("images/marketCoinArrow2.png"); tickHighlight = 0; }
 
         }
         else { market.setFill("images/" + a.barnyard[3].image); }
@@ -3276,8 +3293,7 @@ farming.start = function () {
 
     if (houseUpgrades.upgrades[0].owned == 1) { houseImg.setFill("images/house2.png").setSize(75, 100).setPosition(229, 22); }
     if (player.barnLevel == 5) {
-        barn.setFill(imgArray6[4]);
-        barn.setPosition(85, 1).setSize(134, 157);
+        barn.setFill(imgArray6[4]).setPosition(81, -14).setSize(146, 170);
     };
     ////blacksmith anim
     var flipBlacksmithNotif = 0;
@@ -3404,7 +3420,7 @@ farming.start = function () {
     e.appendChild(barnUnlock3);
 
     ///upgrading barn animation elements
-    var scaffoldH = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(105, 80).setSize(110, 80).setFill(imgArray[26]); e.appendChild(scaffoldH);
+    var scaffoldH = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(98, 80).setSize(110, 80).setFill(imgArray[26]); e.appendChild(scaffoldH);
 
     var upgradeCloud = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 0).setSize(120, 200).setFill(imgArray[24].src); e.appendChild(upgradeCloud);
 
@@ -3831,7 +3847,7 @@ farming.start = function () {
     achieveNotif.appendChild(achieveTextSub);
     var achieveSC = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ");
     achieveNotif.appendChild(achieveSC);
-    var confirmBtnA = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill("images/UI/checkButton.png");
+    var confirmBtnA = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill(imgArray[21]);
     achieveNotif.appendChild(confirmBtnA);
     e.appendChild(achieveNotif);
     achieveNotif.setHidden(true);
@@ -3908,11 +3924,11 @@ farming.start = function () {
     ///Crop Unlock Modal
     var unlockedCropBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 150).setSize(250, 250).setFill("images/UI/blankBack4.png");
     e.appendChild(unlockedCropBack);
-    var unlockedCropText = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(10, 45).setSize(230, 60).setFontSize(18).setText("NEW SEEDS TO PLANT!");
+    var unlockedCropText = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setPosition(10, 35).setSize(230, 60).setFontSize(18).setText("NEW SEEDS TO PLANT!");
     unlockedCropBack.appendChild(unlockedCropText);
-    var unlockedCropImage = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 105).setSize(70, 70).setFill("images/" + a.crops[2].harvest);
+    var unlockedCropImage = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 90).setSize(70, 70).setFill("images/" + a.crops[2].harvest);
     unlockedCropBack.appendChild(unlockedCropImage);
-    var unlockedCropText2 = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(50, 190).setSize(150, 50).setFontSize(18).setText("Artichoke");
+    var unlockedCropText2 = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#00ff00").setPosition(0, 190).setSize(200, 50).setFontSize(18).setText("Artichoke");
     unlockedCropBack.appendChild(unlockedCropText2);
     unlockedCropBack.setHidden(true);
     var upgradeHomeBarnBtn = (new lime.GlossyButton).setColor("#1ce636").setText("Build").setPosition(125, 200).setSize(60, 35);
@@ -4170,18 +4186,20 @@ farming.start = function () {
         else if (player.barnLevel == 3) { barnUpgradeCostTools = 500; barnUpgradeCostWood = 150; secondsToUpgrade = 180; nextBarn = imgArray6[3].src }
         else if (player.barnLevel == 4) { barnUpgradeCostTools = 1250; barnUpgradeCostWood = 250; secondsToUpgrade = 300; nextBarn = imgArray6[4].src }
         else { barnUpgradeCostTools = 100; }
-        unlockedCropBack.setHidden(false); unlockedCropText.setText("Upgrade Barn to Level " + (player.barnLevel + 1)); unlockedCropText2.setText(""); unlockedCropImage.setFill(nextBarn);
+        unlockedCropBack.setHidden(false); unlockedCropText.setText("Upgrade Barn to Level " + (player.barnLevel + 1));
+        unlockedCropText2.setText("Unlocks " + a.crops[(player.barnLevel + 1)].name).setPosition(30, 65);
+        unlockedCropImage.setFill("images/" + a.crops[(player.barnLevel + 1)].harvest).setPosition(90, 76);
 
         unlockedCropBack.setHidden(false); upgradeHomeBarnBtn.setHidden(false); upgradeHomeBarnBackBtn.setHidden(false); homeBarnCostToolsImg.setHidden(false);
         homeBarnCostWoodImg.setHidden(false); homeWoodCostLabel.setHidden(false); homeToolCostLabel.setHidden(false);
         homeBarnCostToolsImg.setAnchorPoint(0, 0).setPosition(40, 118).setSize(40, 40).setFill("images/toolsIcon.png").setHidden(false);
-        unlockedCropBack.appendChild(homeBarnCostToolsImg);
-        homeToolCostLabel.setPosition(60, 175).setSize(25, 25).setText(barnUpgradeCostTools).setFontSize(16).setFontFamily("Comic Sans MS").setFontColor("#000000");
-        unlockedCropBack.appendChild(homeToolCostLabel);
+        //unlockedCropBack.appendChild(homeBarnCostToolsImg);
+        homeToolCostLabel.setPosition(60, 175).setSize(25, 25).setText(player.tools + "/" + barnUpgradeCostTools).setFontSize(16).setFontFamily("Comic Sans MS").setFontColor("#000000");
+        //unlockedCropBack.appendChild(homeToolCostLabel);
         homeBarnCostWoodImg.setAnchorPoint(0, 0).setPosition(170, 115).setSize(40, 40).setFill("images/" + a.crops[14].harvest);
-        unlockedCropBack.appendChild(homeBarnCostWoodImg);
-        homeWoodCostLabel.setPosition(190, 175).setSize(25, 25).setText(barnUpgradeCostWood).setFontSize(16).setFontFamily("Comic Sans MS").setFontColor("#000000");
-        unlockedCropBack.appendChild(homeWoodCostLabel);
+        //unlockedCropBack.appendChild(homeBarnCostWoodImg);
+        homeWoodCostLabel.setPosition(190, 175).setSize(25, 25).setText(player.cropsStored[14].stored + "/" + barnUpgradeCostWood).setFontSize(16).setFontFamily("Comic Sans MS").setFontColor("#000000");
+        //unlockedCropBack.appendChild(homeWoodCostLabel);
         homeBarnShortLabel.setPosition(125, 200).setSize(175, 25).setText("You need more Resources").setFontSize(16).setFontFamily("Comic Sans MS").setFontColor("#000000");
         unlockedCropBack.appendChild(homeBarnShortLabel);
         if (barnUpgradeCostTools > player.tools || barnUpgradeCostWood > parseInt(player.cropsStored[14].stored)) {
@@ -4292,32 +4310,36 @@ farming.start = function () {
                         toolMoverLabel.setHidden(true); scaffoldH.setHidden(true); upgradeCloud.setHidden(true); upgradeHomeBarnBtn.setHidden(true);
                         if (player.barnLevel == 2) {
                             barn.setFill(imgArray6[1]); unlockedCropBack.setHidden(false);
-                            unlockedCropText2.setText("Artichoke");
-                            unlockedCropImage.setFill("images/" + a.crops[2].harvest);
+                            unlockedCropText2.setText("Artichoke"); homeWoodCostLabel.setHidden(true);
+                            unlockedCropImage.setFill("images/" + a.crops[2].harvest).setPosition(90, 90);
                             barnUnlock3.setHidden(false);
-                            homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);
+                            homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeToolCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);
                         }
                         else if (player.barnLevel == 3) {
                             barn.setFill(imgArray6[2].src); unlockedCropBack.setHidden(false);
-                            unlockedCropText2.setText("Eggplant"); unlockedCropImage.setFill("images/" + a.crops[3].harvest);
+                            unlockedCropText2.setText("Eggplant"); unlockedCropImage.setFill("images/" + a.crops[3].harvest).setPosition(90, 90);
                             barnUnlock3.setHidden(false); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true);
                             homeWoodCostLabel.setHidden(true); homeToolCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);
                         }
                         else if (player.barnLevel == 4) {
                             barn.setFill(imgArray6[3].src); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Peppers");
-                            unlockedCropImage.setFill("images/" + a.crops[4].harvest); barnUnlock3.setHidden(false);
+                            unlockedCropImage.setFill("images/" + a.crops[4].harvest).setPosition(90, 90); barnUnlock3.setHidden(false);
                             homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true);
                             homeBarnShortLabel.setHidden(true); homeToolCostLabel.setHidden(true);
                         }
                         else if (player.barnLevel == 5) {
-                            barn.setFill(imgArray6[4].src); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest);
+                            barn.setFill(imgArray6[4]).setPosition(81, -14).setSize(146, 170); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest).setPosition(90, 90);
                             barnUnlock3.setHidden(true); barn.setPosition(86, 4).setSize(134, 155); homeBarnCostToolsImg.setHidden(true);
                             homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true);
                             homeBarnShortLabel.setHidden(true); homeToolCostLabel.setHidden(true);
-                            //remove handlers no longer needed                      
-                            goog.events.removeAll(upgradeHomeBarnBtn);
-                            goog.events.removeAll(barnUnlock3);
-                            goog.events.removeAll(upgradeHomeBarnBackBtn);
+                            //remove handlers no longer needed        
+                            try {
+                                goog.events.removeAll(upgradeHomeBarnBtn);
+                                goog.events.removeAll(barnUnlock3);
+                                goog.events.removeAll(upgradeHomeBarnBackBtn);
+                            }
+                            catch (err) { console.log("failedremovelistener")}
+                      
                         };
                         barnUnlock.setText("Lvl " + player.barnLevel + "/5");
                         lime.scheduleManager.callAfter(function () {
@@ -5750,7 +5772,7 @@ farming.start = function () {
     achieveNotifP.appendChild(achieveTextSubP);
     var achieveSCP = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ");
     achieveNotifP.appendChild(achieveSCP);
-    var confirmBtnAP = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill("images/UI/checkButton.png");
+    var confirmBtnAP = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill(imgArray[21]);
     achieveNotifP.appendChild(confirmBtnAP);
     pastureLayer.appendChild(achieveNotifP);
     achieveNotifP.setHidden(true);
@@ -5767,7 +5789,7 @@ farming.start = function () {
     ////pasture SHORTAGE block modal
     var milkBlocked = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(62, 145).setSize(180, 200).setFill("images/UI/shortage.png");
     pastureLayer.appendChild(milkBlocked);
-    var confirmMilkBlocked = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(70, 195).setSize(40, 40).setFill("images/UI/checkButton.png");
+    var confirmMilkBlocked = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(70, 195).setSize(40, 40).setFill(imgArray[21]);
     milkBlocked.appendChild(confirmMilkBlocked);
     var blockedTextM = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(5, 120).setSize(170, 40).setFontSize(14).setText("Livestock Hungry!");
     milkBlocked.appendChild(blockedTextM);
@@ -5877,7 +5899,7 @@ farming.start = function () {
             chickenSound.play();
             pig1Sound.play();
             lime.scheduleManager.callAfter(function () { pig2Sound.play(); }, this, 5000);
-            setTimeout(function () { checkShortage(); validCropsStored();}, 0);
+            setTimeout(function () { validCropsStored(); checkShortage(); }, 0);
             globalModalBlock = 0;
         }
     });
@@ -7092,13 +7114,13 @@ farming.start = function () {
             oldCrop = b.currentCrop; b.currentCrop = 12;
      
             c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
-            setTimeout(function () { validCropsStored(); }, 0);
+            setTimeout(function () { validCropsStored(); checkShortage(); }, 0);
             sceneActive = 'LS';
             waterfallSound.stop();
             chickenSound.play();
             pig1Sound.play();
-            lime.scheduleManager.callAfter(function () { pig2Sound.play(); }, this, 5000);
-            setTimeout(function () { checkShortage() },0);
+            lime.scheduleManager.callAfter(function () { pig2Sound.play();  }, this, 5000);
+           
         }
     });
     ///end compass Orchard
@@ -7406,7 +7428,7 @@ farming.start = function () {
     achieveNotifO.appendChild(achieveTextSubO);
     var achieveSCO = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#000033").setFontFamily("Comic Sans MS").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ");
     achieveNotifO.appendChild(achieveSCO);
-    var confirmBtnAO = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill("images/UI/checkButton.png");
+    var confirmBtnAO = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill(imgArray[21]);
     achieveNotifO.appendChild(confirmBtnAO);
     orchardLayer.appendChild(achieveNotifO);
     achieveNotifO.setHidden(true);
@@ -7849,6 +7871,7 @@ farming.start = function () {
             c.replaceScene(liveStockScene, lime.transitions.SlideInDown); chickenSound.play();
             sceneActive = 'LS';
             pig1Sound.play();
+            checkShortage();
             lime.scheduleManager.callAfter(function () { pig2Sound.play(); }, this, 1000);
             lime.scheduleManager.callAfter(function () { pig3Sound.play(); }, this, 2000);
         }
@@ -8147,6 +8170,7 @@ farming.start = function () {
             c.replaceScene(liveStockScene, lime.transitions.SlideInDown); chickenSound.play();
             pig1Sound.play();
             sceneActive = 'LS';
+            checkShortage();
 
         }
         if (a.sceneBefore == 7) {
@@ -10980,7 +11004,7 @@ farming.start = function () {
         }
         else if (a.sceneBefore == 5) {
             c.replaceScene(liveStockScene, lime.transitions.SlideInDown); chickenSound.play(); sceneActive = 'LS';
-            pig1Sound.play();
+            pig1Sound.play(); checkShortage();
 
         }
         else if (a.sceneBefore == 7) {
@@ -11272,6 +11296,10 @@ farming.start = function () {
     if (coopLevel > 1) { liveStockBack.setFill("images/livestockPens/livestockPensBackUpCoop-1.png"); }
     liveStockLayer.appendChild(liveStockBack);
 
+
+
+
+
     ////livestock chicken coope upgrade 
     var chickenCoopUp = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(105, 210).setSize(39, 42).setFill("images/toolUp3.png");
     liveStockLayer.appendChild(chickenCoopUp);
@@ -11348,7 +11376,7 @@ farming.start = function () {
                         coopLevel = 2;
                         localStorage["GuiGhostFarms_coopLevel"] = 2;
                         egg2.setHidden(false);
-                        a.sparkles();
+                        
                         upgradesInProgress.buildings[4].timeLeft = 0;
                         upgradesInProgress.buildings[4].currentBarnLevel = 2;
                         localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
@@ -11406,8 +11434,7 @@ farming.start = function () {
     if (coopLevel == 2) { chickenCoopUp.setHidden(true); };
     var egg3 = (new lime.Sprite).setPosition(155, 282).setFill("images/livestockPens/egg3.png").setSize(17, 13);
     liveStockLayer.appendChild(egg3);
-    var sparkle1 = (new lime.Sprite).setPosition(159, 285).setFill("images/livestockPens/stars4.png").setSize(25, 30);
-    liveStockLayer.appendChild(sparkle1);
+    egg1.setHidden(true); egg2.setHidden(true); egg3.setHidden(true);
     var lsHarvest = 0;
     var eggHidden = {
         egg1: false,
@@ -11421,65 +11448,66 @@ farming.start = function () {
         egg3: false
     };
 
-    var eggX = 90;
-    var sparkleH = 0;
-    var sparkleVis = 1;
+  
     var eggPick = 0;
-    a.sparkles = function () {
-        lime.scheduleManager.scheduleWithDelay(function () {
-            if (sceneActive == 'LS') {
-                sparkleH = sparkleH + 1;
-                sparkleVis = sparkleVis + 1;
 
+ 
 
-                if (sparkleVis == 2) {
-                    sparkle1.setHidden(true);
-                    if (eggHidden[egg1] == false && eggPick == 0) { egg1.setPosition(90, 279); }
-                    if (eggHidden[egg2] == false && eggPick == 0) { egg2.setPosition(123, 292); }
-                    if (eggHidden[egg3] == false && eggPick == 0) { egg3.setPosition(159, 279); }
-                } else {
-                    sparkle1.setHidden(false); sparkleVis = 1;
-                    if (eggHidden[egg1] == false && eggPick == 0) { egg1.setPosition(90, 282); }
-                    if (eggHidden[egg2] == false && eggPick == 0) { egg2.setPosition(123, 289); }
-                    if (eggHidden[egg3] == false && eggPick == 0) { egg3.setPosition(159, 282); }
-                }
-
-                sparkle1.setHidden(true);
-
-                if (sparkleH > 3) { sparkleH = 0; };
-            }
-        }, this, 500)
-
-    };
-    a.sparkles();
-
-
+    ///pork harvest icon
+    var collectEggs = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(160, 210).setSize(45, 55).setFill("images/UI/speechBubble.png");
+    liveStockLayer.appendChild(collectEggs);
+    var collectEggsIcon = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(8, 5).setSize(35, 24).setFill("images/" + a.crops[11].harvest);
+    collectEggs.appendChild(collectEggsIcon);
+    var collectEggsLabel = (new lime.Label).setText("+ 0 ").setFontWeight(500).setFontColor("#E8FC08").setPosition(23, 37).setSize(30, 18).setFontFamily("Comic Sans MS");
+    collectEggs.appendChild(collectEggsLabel);
+    collectEggs.setHidden(true);
+    var eggWaiting = 0;
+    if (player.cropsStored[5].stored <= 0 && eggWaiting <= 0) { egg1.setHidden(true); egg2.setHidden(true); egg3.setHidden(true); collectEggs.setHidden(false); collectEggs.setFill("images/UI/needCorn.png"); collectEggsIcon.setHidden(true); collectEggsLabel.setHidden(true); }
     a.LivestockHarvest = function (player) {
         lime.scheduleManager.scheduleWithDelay(function () {
             lsHarvest = lsHarvest + 1;
-            if (player.cropsStored[5].stored >= 1) {
-
-                if (lsHarvest == 2) { egg1.setHidden(false); eggHidden[egg1] = false; player.cropsStored[5].stored = player.cropsStored[5].stored - 1; }
-                if (lsHarvest == 3) { egg3.setHidden(false); eggHidden[egg3] = false; player.cropsStored[5].stored = player.cropsStored[5].stored - 1; }
-                if (lsHarvest == 4 && coopLevel > 1) { egg2.setHidden(false); eggHidden[egg2] = false; player.cropsStored[5].stored = player.cropsStored[5].stored - 1; }
+            if ((eggWaiting > 0 && eggWaiting < 4) || (player.cropsStored[5].stored >= 1 && eggWaiting < 4)) {
+               
+                if (lsHarvest == 2) {
+                    egg1.setHidden(false); eggHidden[egg1] = false; player.cropsStored[5].stored = player.cropsStored[5].stored - 1;
+                    eggWaiting = 1; collectEggsLabel.setText("+ 3 "); collectEggs.setHidden(false).setFill("images/UI/speechBubble.png"); collectEggsIcon.setHidden(false); collectEggsLabel.setHidden(false); 
+                }
+                if (lsHarvest == 3) {
+                    egg3.setHidden(false); eggHidden[egg3] = false; player.cropsStored[5].stored = player.cropsStored[5].stored - 1;
+                    eggWaiting = 2; collectEggsLabel.setText("+ 6 "); collectEggs.setHidden(false).setFill("images/UI/speechBubble.png"); collectEggsIcon.setHidden(false); collectEggsLabel.setHidden(false); 
+                }
+                if (lsHarvest == 4 && coopLevel > 1) {
+                    egg2.setHidden(false); eggHidden[egg2] = false; player.cropsStored[5].stored = player.cropsStored[5].stored - 1;
+                    eggWaiting = 3; collectEggsLabel.setText("+ 9 "); collectEggs.setHidden(false).setFill("images/UI/speechBubble.png"); collectEggsIcon.setHidden(false); collectEggsLabel.setHidden(false); 
+                }
                 if (lsHarvest > 5) { lsHarvest = 0; }
                 gLabel5Pork.setText(player.cropsStored[5].stored);
                 gLabel8Pork.setText(player.cropsStored[8].stored);
             }
+            else if (player.cropsStored[5].stored <= 1 && eggWaiting <= 0) { collectEggs.setHidden(false); egg1.setHidden(true); egg2.setHidden(true); egg3.setHidden(true); 
+                collectEggs.setFill("images/UI/needCorn.png"); collectEggsIcon.setHidden(true); collectEggsLabel.setHidden(true); }
         }, this, 15000)
     }
     a.LivestockHarvest(player);
 
     ///egg clicks
-    goog.events.listen(egg1, ["mousedown", "touchstart", "touchmove"], function () {
-        a.eggClick(1);
+    goog.events.listen(collectEggs, ["mousedown", "touchstart", "touchmove"], function () {
+        if (eggWaiting >= 1) {
+            switch (eggWaiting) {
+                case 1: a.eggClick(1)
+                    break;
+                case 2: a.eggClick(1); lime.scheduleManager.callAfter(function () { a.eggClick(2); }, this, 100);
+                    break;
+                case 3: a.eggClick(1); lime.scheduleManager.callAfter(function () { a.eggClick(2); }, this, 1000); lime.scheduleManager.callAfter(function () { a.eggClick(3); }, this, 1000);
+                    break;
+                default:
+                    break;
+            }
+            collectEggs.setHidden(true); eggWaiting = 0;
+    
+        } else { porkBlocked.setHidden(false); gLabel5Pork.setText(player.cropsStored[5].stored); gLabel8Pork.setText(player.cropsStored[8].stored)}
     });
-    goog.events.listen(egg2, ["mousedown", "touchstart", "touchmove"], function () {
-        a.eggClick(2);
-    });
-    goog.events.listen(egg3, ["mousedown", "touchstart", "touchmove"], function () {
-        a.eggClick(3);
-    });
+
 
     a.eggClick = function (clicked) {
         if (clicked == 1) {
@@ -11513,36 +11541,6 @@ farming.start = function () {
         if (clicked == 2) {
 
             player.cropsStored[11].stored = player.cropsStored[11].stored + 3;
-            eggPick = 2;
-            lsHarvest = 0;
-            eggOnce[egg2] = true;
-            count11.setText(player.cropsStored[11].stored);
-            gLabel11.setText(player.cropsStored[11].stored);
-            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-
-            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 282); }, this, 100);
-            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 272); }, this, 150);
-            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 262); }, this, 200);
-            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 252); }, this, 100);
-            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 242); }, this, 300);
-            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 222); }, this, 400);
-            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 182); }, this, 500);
-            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 150); }, this, 600);
-            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 130); }, this, 700);
-            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 120); }, this, 730);
-            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 110); }, this, 760);
-            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 100); }, this, 790);
-            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 90); }, this, 820);
-            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 70); }, this, 850);
-            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 50); }, this, 875);
-            lime.scheduleManager.callAfter(function () { egg2.setHidden(true); eggPick = 0; eggOnce[egg2] = false; }, this, 900);
-            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 292); }, this, 1000);
-
-
-        }
-        if (clicked == 3) {
-
-            player.cropsStored[11].stored = player.cropsStored[11].stored + 3;
             eggPick = 3;
             lsHarvest = 0;
             eggOnce[egg3] = true;
@@ -11563,7 +11561,37 @@ farming.start = function () {
             lime.scheduleManager.callAfter(function () { egg3.setPosition(155, 70); }, this, 850);
             lime.scheduleManager.callAfter(function () { egg3.setPosition(155, 50); }, this, 875);
             lime.scheduleManager.callAfter(function () { egg3.setHidden(true); eggPick = 0; eggOnce[egg3] = false; }, this, 900);
-            lime.scheduleManager.callAfter(function () { egg3.setPosition(155, 282); }, this, 1000);
+            lime.scheduleManager.callAfter(function () { egg3.setPosition(155, 282).setHidden(true); }, this, 1000);
+                  
+
+        }
+        if (clicked == 3) {
+            player.cropsStored[11].stored = player.cropsStored[11].stored + 3;
+            eggPick = 2;
+            lsHarvest = 0;
+            eggOnce[egg2] = true;
+            count11.setText(player.cropsStored[11].stored);
+            gLabel11.setText(player.cropsStored[11].stored);
+            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+
+            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 282); }, this, 100);
+            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 272); }, this, 150);
+            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 262); }, this, 200);
+            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 252); }, this, 250);
+            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 242); }, this, 300);
+            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 222); }, this, 400);
+            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 182); }, this, 500);
+            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 150); }, this, 600);
+            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 130); }, this, 700);
+            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 120); }, this, 730);
+            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 110); }, this, 760);
+            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 100); }, this, 790);
+            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 90); }, this, 820);
+            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 70); }, this, 850);
+            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 50); }, this, 875);
+            lime.scheduleManager.callAfter(function () { egg2.setHidden(true); eggPick = 0; eggOnce[egg2] = false; }, this, 900);
+            lime.scheduleManager.callAfter(function () { egg2.setPosition(123, 292); }, this, 1000);
+
 
         }
     }
@@ -11605,122 +11633,176 @@ farming.start = function () {
                 evaTimer++;
                 if (chicken1Timer > 30) { chicken1Timer = 1; };
 
-                if (chicken1Timer == 1) { chicken1.setFill(imgArray3[3]); chicken2.setFill(imgArray3[4]); chicken2.setPosition(100, 315); chicken3.setFill(imgArray3[4]); pig2.setSize(20, 33); };
-                if (chicken1Timer == 2) { chicken1.setFill(imgArray3[4]); chicken2.setFill(imgArray3[5]); chicken2.setPosition(100, 315); chicken3.setFill(imgArray3[5]); pig1.setFill(imgArray3[27]); pig2.setFill(imgArray3[25]); pig2.setPosition(160, 115); pig3.setFill(imgArray3[25]) };
-                if (chicken1Timer == 3) { chicken1.setFill(imgArray3[5]); chicken2.setFill(imgArray3[4]); chicken2.setPosition(100, 315); chicken3.setFill(imgArray3[4]); };
-                if (chicken1Timer == 4) { chicken1.setFill(imgArray3[4]); chicken2.setFill(imgArray3[4]); chicken2.setPosition(100, 315); chicken3.setFill(imgArray3[5]); pig1.setFill(imgArray3[22]); pig1.setPosition(160, 180); pig3.setFill(imgArray3[26]) };
-                if (chicken1Timer == 5) { chicken1.setFill(imgArray3[5]); chicken2.setFill(imgArray3[12]); chicken2.setPosition(95, 315); chicken3.setFill(imgArray3[4]); };
-                if (chicken1Timer == 6) { chicken1.setFill(imgArray3[6]); chicken2.setFill(imgArray3[13]); chicken2.setPosition(90, 315); chicken3.setFill(imgArray3[5]); pig1.setFill(imgArray3[23]); pig1.setPosition(150, 180); };
-                if (chicken1Timer == 7) { chicken1.setFill(imgArray3[3]); chicken2.setFill(imgArray3[14]); chicken2.setPosition(85, 315); chicken3.setFill(imgArray3[4]); };
-                if (chicken1Timer == 8) { chicken1.setFill(imgArray3[12]); chicken1.setPosition(170, 350); chicken2.setFill(imgArray3[13]); chicken2.setPosition(80, 315); chicken3.setFill(imgArray3[4]); pig2.setFill(imgArray3[26]); pig2.setPosition(160, 120); pig3.setFill(imgArray3[25]); };
-                if (chicken1Timer == 9) { chicken1.setFill(imgArray3[13]); chicken1.setPosition(165, 350); chicken2.setFill(imgArray3[12]); chicken2.setPosition(75, 315); chicken3.setFill(imgArray3[5]); pig1.setFill(imgArray3[22]); pig1.setPosition(140, 180); };
-                if (chicken1Timer == 10) { chicken1.setFill(imgArray3[14]); chicken1.setPosition(160, 350); chicken2.setFill(imgArray3[13]); chicken2.setPosition(70, 315); chicken3.setFill(imgArray3[4]); pig2.setPosition(160, 125); pig2.setFill(imgArray3[25]); };
-                if (chicken1Timer == 11) { chicken1.setFill(imgArray3[12]); chicken1.setPosition(155, 350); chicken2.setFill(imgArray3[9]); chicken2.setPosition(70, 315); chicken3.setFill(imgArray3[3]); pig1.setFill(imgArray3[23]); };
-                if (chicken1Timer == 12) { chicken1.setFill(imgArray3[13]); chicken1.setPosition(150, 350); chicken2.setFill(imgArray3[10]); chicken2.setPosition(70, 310); chicken3.setFill(imgArray3[3]); pig2.setPosition(160, 130); pig2.setFill(imgArray3[24]); pig3.setFill(imgArray3[24]) };
-                if (chicken1Timer == 13) { chicken1.setFill(imgArray3[14]); chicken1.setPosition(145, 350); chicken2.setFill(imgArray3[11]); chicken2.setPosition(70, 305); chicken3.setFill(imgArray3[3]); };
-                if (chicken1Timer == 14) { chicken1.setFill(imgArray3[4]); chicken2.setFill(imgArray3[15]); chicken2.setPosition(70, 300); chicken3.setFill(imgArray3[3]); pig2.setFill(imgArray3[25]); pig2.setPosition(160, 135); };
-                if (chicken1Timer == 15) { chicken1.setFill(imgArray3[5]); chicken2.setFill(imgArray3[16]); chicken2.setPosition(75, 300); chicken3.setFill(imgArray3[3]); };
-                if (chicken1Timer == 16) { chicken1.setFill(imgArray3[4]); chicken2.setFill(imgArray3[17]); chicken2.setPosition(80, 300); chicken3.setFill(imgArray3[3]); };
-                if (chicken1Timer == 17) { chicken1.setFill(imgArray3[5]); chicken2.setFill(imgArray3[17]); chicken2.setPosition(80, 300); chicken3.setFill(imgArray3[3]); pig1.setFill(imgArray3[22]); pig2.setSize(39, 21); pig2.setPosition(150, 147); pig2.setFill(imgArray3[22]); pig3.setFill(imgArray3[25]); };
-                if (chicken1Timer == 18) { chicken1.setFill(imgArray3[2]); chicken2.setFill(imgArray3[15]); chicken2.setPosition(85, 300); chicken3.setFill(imgArray3[3]); pig2.setSize(20, 33); pig2.setFill(imgArray3[31]); pig2.setPosition(150, 130); pig3.setFill(imgArray3[26]); };
-                if (chicken1Timer == 19) { chicken1.setFill(imgArray3[15]); chicken1.setPosition(145, 350); chicken2.setFill(imgArray3[16]); chicken2.setPosition(90, 300); chicken3.setFill(imgArray3[3]); pig3.setFill(imgArray3[25]); };
-                if (chicken1Timer == 20) { chicken1.setFill(imgArray3[16]); chicken1.setPosition(150, 350); chicken2.setFill(imgArray3[17]); chicken2.setPosition(95, 300); chicken3.setFill(imgArray3[3]); pig2.setSize(20, 33); pig2.setFill(imgArray3[30]); pig2.setPosition(150, 120); pig3.setFill(imgArray3[26]); };
-                if (chicken1Timer == 21) { chicken1.setFill(imgArray3[17]); chicken1.setPosition(155, 350); chicken2.setFill(imgArray3[16]); chicken2.setPosition(100, 300); chicken3.setFill(imgArray3[3]); };
-                if (chicken1Timer == 22) { chicken1.setFill(imgArray3[15]); chicken1.setPosition(160, 350); chicken2.setFill(imgArray3[7]); chicken2.setPosition(100, 300); chicken3.setFill(imgArray3[3]); pig1.setFill(imgArray3[21]); pig3.setFill(imgArray3[25]); };
-                if (chicken1Timer == 23) { chicken1.setFill(imgArray3[16]); chicken1.setPosition(165, 350); chicken2.setFill(imgArray3[8]); chicken2.setPosition(100, 300); chicken3.setFill(imgArray3[3]); };
-                if (chicken1Timer == 24) { chicken1.setFill(imgArray3[17]); chicken1.setPosition(170, 350); chicken2.setFill(imgArray3[7]); chicken2.setPosition(100, 300); chicken3.setFill(imgArray3[4]); pig2.setFill(imgArray3[31]); pig2.setPosition(150, 117); pig3.setFill(imgArray3[26]); };
-                if (chicken1Timer == 25) { chicken1.setFill(imgArray3[7]); chicken1.setPosition(175, 350); chicken2.setFill(imgArray3[1]); chicken2.setPosition(100, 300); chicken3.setFill(imgArray3[5]); };
-                if (chicken1Timer == 26) { chicken1.setFill(imgArray3[8]); chicken1.setPosition(175, 350); chicken2.setFill(imgArray3[0]); chicken2.setPosition(100, 305); chicken3.setFill(imgArray3[4]); pig2.setFill(imgArray3[32]); pig2.setPosition(150, 115); };
-                if (chicken1Timer == 27) { chicken1.setFill(imgArray3[7]); chicken1.setPosition(175, 350); chicken2.setFill(imgArray3[1]); chicken2.setPosition(100, 310); chicken3.setFill(imgArray3[5]); pig1.setFill(imgArray3[22]); pig1.setPosition(150, 180); pig2.setFill(imgArray3[30]); pig2.setPosition(150, 110); };
-                if (chicken1Timer == 28) { chicken1.setFill(imgArray3[8]); chicken1.setPosition(175, 350); chicken2.setFill(imgArray3[3]); chicken2.setPosition(100, 315); chicken3.setFill(imgArray3[4]); };
-                if (chicken1Timer == 29) { chicken1.setFill(imgArray3[0]); chicken2.setFill(imgArray3[4]); pig1.setFill(imgArray3[23]); chicken3.setFill(imgArray3[4]); pig1.setPosition(160, 180); pig2.setFill(imgArray3[31]); pig2.setPosition(150, 105); };
-                if (chicken1Timer == 30) { chicken1.setFill(imgArray3[0]); chicken2.setFill(imgArray3[5]); chicken3.setFill(imgArray3[3]); pig2.setSize(39, 21); pig2.setPosition(150, 105); pig2.setFill(imgArray3[21]); };
+                switch (chicken1Timer) {
+                    case 1: chicken1.setFill(imgArray3[3]); chicken2.setFill(imgArray3[4]); chicken2.setPosition(100, 315); chicken3.setFill(imgArray3[4]); pig2.setSize(20, 33);
+                        break;
+                    case 2: chicken1.setFill(imgArray3[4]); chicken2.setFill(imgArray3[5]); chicken2.setPosition(100, 315); chicken3.setFill(imgArray3[5]); pig1.setFill(imgArray3[27]); pig2.setFill(imgArray3[25]);
+                        pig2.setPosition(160, 115); pig3.setFill(imgArray3[25]); break;
 
-                if (evaTimer >= 81) { evaTimer = 1; }
-                if (evaTimer == 1) { eva.setPosition(16, 145).setFill(imgArrayEva[0].src); }
-                if (evaTimer == 2) { eva.setPosition(16, 150).setFill(imgArrayEva[1].src); }
-                if (evaTimer == 3) { eva.setPosition(16, 155).setFill(imgArrayEva[2].src); }
-                if (evaTimer == 4) { eva.setPosition(16, 160).setFill(imgArrayEva[3].src); }
-                if (evaTimer == 5) { eva.setPosition(16, 165).setFill(imgArrayEva[0].src); }
-                if (evaTimer == 6) { eva.setPosition(16, 170).setFill(imgArrayEva[1].src); }
-                if (evaTimer == 7) { eva.setPosition(16, 175).setFill(imgArrayEva[2].src); }
-                if (evaTimer == 8) { eva.setPosition(16, 180).setFill(imgArrayEva[3].src); }
-                if (evaTimer == 9) { eva.setPosition(16, 185).setFill(imgArrayEva[0].src); }
-                if (evaTimer == 10) { eva.setPosition(16, 190).setFill(imgArrayEva[1].src); }
-                if (evaTimer == 11) { eva.setPosition(16, 195).setFill(imgArrayEva[2].src); }
-                if (evaTimer == 12) { eva.setPosition(16, 200).setFill(imgArrayEva[3].src); }
-                if (evaTimer == 13) { eva.setPosition(16, 205).setFill(imgArrayEva[0].src); }
-                if (evaTimer == 14) { eva.setPosition(16, 210).setFill(imgArrayEva[1].src); }
-                if (evaTimer == 15) { eva.setPosition(16, 215).setFill(imgArrayEva[2].src); }
-                if (evaTimer == 16) { eva.setPosition(16, 220).setFill(imgArrayEva[3].src); }
-                if (evaTimer == 17) { eva.setPosition(16, 225).setFill(imgArrayEva[0].src); }
-                if (evaTimer == 18) { eva.setPosition(16, 230).setFill(imgArrayEva[1].src); }
-                if (evaTimer == 19) { eva.setPosition(16, 235).setFill(imgArrayEva[2].src); }
-                if (evaTimer == 20) { eva.setPosition(16, 240).setFill(imgArrayEva[3].src); }
-                if (evaTimer == 21) { eva.setPosition(16, 245).setFill(imgArrayEva[0].src); }
-                if (evaTimer == 22) { eva.setPosition(16, 250).setFill(imgArrayEva[1].src); }
-                if (evaTimer == 23) { eva.setPosition(16, 255).setFill(imgArrayEva[2].src); }
-                if (evaTimer == 24) { eva.setPosition(16, 260).setFill(imgArrayEva[3].src); }
-                if (evaTimer == 25) { eva.setPosition(16, 265).setFill(imgArrayEva[0].src); }
-                if (evaTimer == 26) { eva.setPosition(16, 270).setFill(imgArrayEva[1].src); }
-                if (evaTimer == 27) { eva.setPosition(16, 275).setFill(imgArrayEva[2].src); }
-                if (evaTimer == 28) { eva.setPosition(16, 280).setFill(imgArrayEva[3].src); }
-                if (evaTimer == 29) { eva.setPosition(18, 285).setFill(imgArrayEva[0].src); }
-                if (evaTimer == 30) { eva.setPosition(20, 290).setFill(imgArrayEva[1].src); }
-                if (evaTimer == 31) { eva.setPosition(22, 295).setFill(imgArrayEva[2].src); }
-                if (evaTimer == 32) { eva.setPosition(24, 300).setFill(imgArrayEva[3].src); }
-                if (evaTimer == 33) { eva.setPosition(27, 305).setFill(imgArrayEva[0].src); }
-                if (evaTimer == 34) { eva.setPosition(27, 310).setFill(imgArrayEva[1].src); }
-                if (evaTimer == 35) { eva.setPosition(24, 315).setFill(imgArrayEva[2].src); }
-                if (evaTimer == 36) { eva.setPosition(27, 320).setFill(imgArrayEva[3].src); }
-                if (evaTimer == 37) { eva.setPosition(27, 320).setFill(imgArrayEva[8].src); }
-                if (evaTimer == 38) { eva.setPosition(27, 320).setFill(imgArrayEva[12].src); }
-                if (evaTimer == 39) { eva.setPosition(25, 315).setFill(imgArrayEva[13].src); }
-                if (evaTimer == 40) { eva.setPosition(23, 310).setFill(imgArrayEva[14].src); }
-                if (evaTimer == 41) { eva.setPosition(20, 305).setFill(imgArrayEva[15].src); }
-                if (evaTimer == 42) { eva.setPosition(18, 300).setFill(imgArrayEva[12].src); }
-                if (evaTimer == 43) { eva.setPosition(16, 295).setFill(imgArrayEva[13].src); }
-                if (evaTimer == 44) { eva.setPosition(16, 290).setFill(imgArrayEva[14].src); }
-                if (evaTimer == 45) { eva.setPosition(16, 285).setFill(imgArrayEva[15].src); }
-                if (evaTimer == 46) { eva.setPosition(16, 280).setFill(imgArrayEva[12].src); }
-                if (evaTimer == 47) { eva.setPosition(16, 275).setFill(imgArrayEva[13].src); }
-                if (evaTimer == 48) { eva.setPosition(16, 270).setFill(imgArrayEva[14].src); }
-                if (evaTimer == 49) { eva.setPosition(16, 265).setFill(imgArrayEva[15].src); }
+                    case 3: chicken1.setFill(imgArray3[5]); chicken2.setFill(imgArray3[4]); chicken2.setPosition(100, 315); chicken3.setFill(imgArray3[4]);
+                        break;
+                    case 4: chicken1.setFill(imgArray3[4]); chicken2.setFill(imgArray3[4]); chicken2.setPosition(100, 315); chicken3.setFill(imgArray3[5]); pig1.setFill(imgArray3[28]).setPosition(160, 180); pig3.setFill(imgArray3[26]);
+                        break;
+                    case 5: chicken1.setFill(imgArray3[5]); chicken2.setFill(imgArray3[12]); chicken2.setPosition(95, 315); chicken3.setFill(imgArray3[4]);
+                        break;
+                    case 6: chicken1.setFill(imgArray3[6]); chicken2.setFill(imgArray3[13]); chicken2.setPosition(90, 315); chicken3.setFill(imgArray3[5]); pig1.setFill(imgArray3[29]).setPosition(150, 180);
+                        break;
+                    case 7: chicken1.setFill(imgArray3[3]); chicken2.setFill(imgArray3[14]); chicken2.setPosition(85, 315); chicken3.setFill(imgArray3[4]);
+                        break;
+                    case 8: chicken1.setFill(imgArray3[12]); chicken1.setPosition(170, 350); chicken2.setFill(imgArray3[13]); chicken2.setPosition(80, 315); chicken3.setFill(imgArray3[4]);
+                        pig2.setFill(imgArray3[26]).setPosition(160, 120); pig3.setFill(imgArray3[25]); pig1.setFill(imgArray3[27]).setPosition(145, 180);
+                        break;
+                    case 9: chicken1.setFill(imgArray3[13]); chicken1.setPosition(165, 350); chicken2.setFill(imgArray3[12]); chicken2.setPosition(75, 315); chicken3.setFill(imgArray3[5]);
+                        pig1.setFill(imgArray3[28]).setPosition(140, 180);
+                        break;
+                    case 10: chicken1.setFill(imgArray3[14]); chicken1.setPosition(160, 350); chicken2.setFill(imgArray3[13]); chicken2.setPosition(70, 315);
+                        chicken3.setFill(imgArray3[4]); pig2.setPosition(160, 125); pig2.setFill(imgArray3[25]);
+                        break;
+                    case 11: chicken1.setFill(imgArray3[12]); chicken1.setPosition(155, 350); chicken2.setFill(imgArray3[9]); chicken2.setPosition(70, 315); chicken3.setFill(imgArray3[3]); pig1.setFill(imgArray3[23]);
+                        break;
+                    case 12: chicken1.setFill(imgArray3[13]); chicken1.setPosition(150, 350); chicken2.setFill(imgArray3[10]).setPosition(70, 310); chicken3.setFill(imgArray3[3]); pig2.setPosition(160, 130).setFill(imgArray3[24]); pig3.setFill(imgArray3[24]); 
+                        break;
+                    case 13: chicken1.setFill(imgArray3[14]).setPosition(145, 350); chicken2.setFill(imgArray3[11]).setPosition(70, 305); chicken3.setFill(imgArray3[3]); 
+                        break;
+                    case 14: chicken1.setFill(imgArray3[4]); chicken2.setFill(imgArray3[15]).setPosition(70, 300); chicken3.setFill(imgArray3[3]); pig2.setFill(imgArray3[25]).setPosition(160, 135); 
+                        break;
+                    case 15: chicken1.setFill(imgArray3[5]); chicken2.setFill(imgArray3[16]).setPosition(75, 300); chicken3.setFill(imgArray3[3]); 
+                        break;
+                    case 16: chicken1.setFill(imgArray3[4]); chicken2.setFill(imgArray3[17]).setPosition(80, 300); chicken3.setFill(imgArray3[3]);
+                        break;
+                    case 17: chicken1.setFill(imgArray3[5]); chicken2.setFill(imgArray3[17]).setPosition(80, 300); chicken3.setFill(imgArray3[3]); pig1.setFill(imgArray3[22]); pig2.setSize(39, 21).setPosition(150, 147).setFill(imgArray3[22]); pig3.setFill(imgArray3[25]);
+                        break;
+                    case 18: chicken1.setFill(imgArray3[2]); chicken2.setFill(imgArray3[15]); chicken2.setPosition(85, 300); chicken3.setFill(imgArray3[3]); pig2.setSize(20, 33).setFill(imgArray3[31]).setPosition(150, 130); pig3.setFill(imgArray3[26]); 
+                        break;
+                    case 19: chicken1.setFill(imgArray3[15]).setPosition(145, 350); chicken2.setFill(imgArray3[16]).setPosition(90, 300); chicken3.setFill(imgArray3[3]); pig3.setFill(imgArray3[25]); 
+                        break;
+                    case 20: chicken1.setFill(imgArray3[16]).setPosition(150, 350); chicken2.setFill(imgArray3[17]).setPosition(95, 300); chicken3.setFill(imgArray3[3]); pig2.setSize(20, 33).setFill(imgArray3[30]).setPosition(150, 120); pig3.setFill(imgArray3[26]);
+                        break;
+                    case 21: chicken1.setFill(imgArray3[17]).setPosition(155, 350); chicken2.setFill(imgArray3[16]).setPosition(100, 300); chicken3.setFill(imgArray3[3]);
+                        break;
+                    case 22: chicken1.setFill(imgArray3[15]).setPosition(160, 350); chicken2.setFill(imgArray3[7]).setPosition(100, 300); chicken3.setFill(imgArray3[3]); pig1.setFill(imgArray3[21]); pig3.setFill(imgArray3[25]);
+                        break;
+                    case 23: chicken1.setFill(imgArray3[16]).setPosition(165, 350); chicken2.setFill(imgArray3[8]).setPosition(100, 300); chicken3.setFill(imgArray3[3]);
+                        break;
+                    case 24: chicken1.setFill(imgArray3[17]).setPosition(170, 350); chicken2.setFill(imgArray3[7]).setPosition(100, 300); chicken3.setFill(imgArray3[4]); pig2.setFill(imgArray3[31]).setPosition(150, 117); pig3.setFill(imgArray3[26]);
+                        break;
+                    case 25: chicken1.setFill(imgArray3[7]).setPosition(175, 350); chicken2.setFill(imgArray3[1]).setPosition(100, 300); chicken3.setFill(imgArray3[5]);
+                        break;
+                    case 26: chicken1.setFill(imgArray3[8]).setPosition(175, 350); chicken2.setFill(imgArray3[0]).setPosition(100, 305); chicken3.setFill(imgArray3[4]); pig2.setFill(imgArray3[32]).setPosition(150, 115);
+                        break;
+                    case 27: chicken1.setFill(imgArray3[7]).setPosition(175, 350); chicken2.setFill(imgArray3[1]).setPosition(100, 310); chicken3.setFill(imgArray3[5]); pig1.setFill(imgArray3[22]).setPosition(150, 180); pig2.setFill(imgArray3[30]).setPosition(150, 110);
+                        break;
+                    case 28: chicken1.setFill(imgArray3[8]).setPosition(175, 350); chicken2.setFill(imgArray3[3]).setPosition(100, 315); chicken3.setFill(imgArray3[4]);
+                        break;
+                    case 29: chicken1.setFill(imgArray3[0]); chicken2.setFill(imgArray3[4]); pig1.setFill(imgArray3[23]).setPosition(160, 180); chicken3.setFill(imgArray3[4]);  pig2.setFill(imgArray3[31]).setPosition(150, 105); 
+                        break;
+                    case 30: chicken1.setFill(imgArray3[0]); chicken2.setFill(imgArray3[5]); chicken3.setFill(imgArray3[3]); pig2.setSize(39, 21).setPosition(150, 105).setFill(imgArray3[21]);
+                        break;
+                    default: chicken1.setFill(imgArray3[3]); chicken2.setFill(imgArray3[4]).setPosition(100, 315); chicken3.setFill(imgArray3[4]); pig2.setSize(20, 33);
+                        break;
+                }
+                if (evaTimer >= 105) { evaTimer = 1; }
+                switch (evaTimer) {
+                    case 1: eva.setPosition(16, 145).setFill(imgArrayEva[0].src); break;
+                    case 2: eva.setPosition(16, 150).setFill(imgArrayEva[1].src); break;
+                    case 3: eva.setPosition(16, 155).setFill(imgArrayEva[0].src); break;
+                    case 4: eva.setPosition(16, 160).setFill(imgArrayEva[3].src); break;
+                    case 5: eva.setPosition(16, 165).setFill(imgArrayEva[0].src); break;
+                    case 6: eva.setPosition(16, 170).setFill(imgArrayEva[1].src); break;
+                    case 7: eva.setPosition(16, 175).setFill(imgArrayEva[2].src); break;
+                    case 8: eva.setPosition(16, 180).setFill(imgArrayEva[3].src); break;
+                    case 9: eva.setPosition(16, 185).setFill(imgArrayEva[0].src); break;
+                    case 10: eva.setPosition(16, 190).setFill(imgArrayEva[1].src); break;
+                    case 11: eva.setPosition(16, 195).setFill(imgArrayEva[2].src); break;
+                    case 12: eva.setPosition(16, 200).setFill(imgArrayEva[3].src); break;
+                    case 13: eva.setPosition(16, 205).setFill(imgArrayEva[0].src); break;
+                    case 14: eva.setPosition(16, 210).setFill(imgArrayEva[1].src); break;
+                    case 15: eva.setPosition(16, 215).setFill(imgArrayEva[2].src); break;
+                    case 16: eva.setPosition(16, 220).setFill(imgArrayEva[3].src); break;
+                    case 17: eva.setPosition(16, 225).setFill(imgArrayEva[0].src); break;
+                    case 18: eva.setPosition(16, 230).setFill(imgArrayEva[1].src); break;
+                    case 19: eva.setPosition(16, 235).setFill(imgArrayEva[2].src); break;
+                    case 20: eva.setPosition(16, 240).setFill(imgArrayEva[3].src); break;
+                    case 21: eva.setPosition(16, 245).setFill(imgArrayEva[0].src); break;
+                    case 22: eva.setPosition(16, 250).setFill(imgArrayEva[1].src); break;
+                    case 23: eva.setPosition(16, 255).setFill(imgArrayEva[2].src); break;
+                    case 24: eva.setPosition(16, 260).setFill(imgArrayEva[3].src); break;
+                    case 25: eva.setPosition(16, 265).setFill(imgArrayEva[0].src); break;
+                    case 26: eva.setPosition(16, 270).setFill(imgArrayEva[1].src); break;
+                    case 27: eva.setPosition(16, 275).setFill(imgArrayEva[2].src); break;
+                    case 28: eva.setPosition(16, 280).setFill(imgArrayEva[3].src); break;
+                    case 29: eva.setPosition(18, 285).setFill(imgArrayEva[0].src); break;
+                    case 30: eva.setPosition(20, 290).setFill(imgArrayEva[1].src); break;
+                    case 31: eva.setPosition(22, 295).setFill(imgArrayEva[2].src); break;
+                    case 32: eva.setPosition(24, 300).setFill(imgArrayEva[3].src); break;
+                    case 33: eva.setPosition(27, 305).setFill(imgArrayEva[0].src); break;
+                    case 34: eva.setPosition(27, 310).setFill(imgArrayEva[1].src); break;
+                    case 35: eva.setPosition(24, 315).setFill(imgArrayEva[2].src); break;
+                    case 36: eva.setPosition(27, 320).setFill(imgArrayEva[3].src); break;
+                    case 37: eva.setPosition(27, 320).setFill(imgArrayEva[8].src); break;
+                    case 38: eva.setPosition(27, 320).setFill(imgArrayEva[8].src); break;    ////pause at the chickens
+                    case 39: eva.setPosition(27, 320).setFill(imgArrayEva[8].src); break; 
+                    case 40: eva.setPosition(27, 320).setFill(imgArrayEva[8].src); break; 
+                    case 41: eva.setPosition(27, 320).setFill(imgArrayEva[8].src); break; 
+                    case 42: eva.setPosition(27, 320).setFill(imgArrayEva[8].src); break; 
+                    case 43: eva.setPosition(27, 320).setFill(imgArrayEva[8].src); break; 
+                    case 44: eva.setPosition(27, 320).setFill(imgArrayEva[8].src); break; 
+                    case 45: eva.setPosition(27, 320).setFill(imgArrayEva[8].src); break; 
+                    case 46: eva.setPosition(27, 320).setFill(imgArrayEva[8].src); break; 
+                    case 47: eva.setPosition(27, 320).setFill(imgArrayEva[12].src); break; 
+                    case 48: eva.setPosition(27, 320).setFill(imgArrayEva[12].src); break; 
+                    case 49: eva.setPosition(25, 315).setFill(imgArrayEva[13].src); break;
+                    case 50: eva.setPosition(23, 310).setFill(imgArrayEva[14].src); break;
+                    case 51: eva.setPosition(20, 305).setFill(imgArrayEva[15].src); break;
+                    case 52: eva.setPosition(18, 300).setFill(imgArrayEva[12].src); break;
+                    case 53: eva.setPosition(16, 295).setFill(imgArrayEva[13].src); break;
+                    case 54: eva.setPosition(16, 290).setFill(imgArrayEva[14].src); break;
+                    case 55: eva.setPosition(16, 285).setFill(imgArrayEva[15].src); break;
+                    case 56: eva.setPosition(16, 280).setFill(imgArrayEva[12].src); break;
+                    case 57: eva.setPosition(16, 275).setFill(imgArrayEva[13].src); break;
+                    case 58: eva.setPosition(16, 270).setFill(imgArrayEva[14].src); break;
+                    case 59: eva.setPosition(16, 265).setFill(imgArrayEva[15].src); break;
+                    case 60: eva.setPosition(16, 260).setFill(imgArrayEva[14].src); break;
+                    case 61: eva.setPosition(16, 255).setFill(imgArrayEva[15].src); break;
+                    case 62: eva.setPosition(16, 250).setFill(imgArrayEva[12].src); break;
+                    case 63: eva.setPosition(16, 245).setFill(imgArrayEva[13].src); break;
+                    case 64: eva.setPosition(16, 240).setFill(imgArrayEva[14].src); break;
+                    case 65: eva.setPosition(16, 235).setFill(imgArrayEva[15].src); break;
+                    case 66: eva.setPosition(16, 230).setFill(imgArrayEva[12].src); break;
+                    case 67: eva.setPosition(16, 225).setFill(imgArrayEva[13].src); break;
+                    case 68: eva.setPosition(16, 220).setFill(imgArrayEva[14].src); break;
+                    case 69: eva.setPosition(16, 215).setFill(imgArrayEva[15].src); break;
+                    case 70: eva.setPosition(16, 210).setFill(imgArrayEva[14].src); break;
+                    case 71: eva.setPosition(16, 205).setFill(imgArrayEva[15].src); break;
+                    case 72: eva.setPosition(16, 200).setFill(imgArrayEva[12].src); break;
+                    case 73: eva.setPosition(16, 195).setFill(imgArrayEva[13].src); break;
+                    case 74: eva.setPosition(16, 190).setFill(imgArrayEva[14].src); break;
+                    case 75: eva.setPosition(16, 185).setFill(imgArrayEva[15].src); break;
+                    case 76: eva.setPosition(16, 180).setFill(imgArrayEva[12].src); break;
+                    case 77: eva.setPosition(16, 175).setFill(imgArrayEva[13].src); break;
+                    case 78: eva.setPosition(16, 170).setFill(imgArrayEva[14].src); break;
+                    case 79: eva.setPosition(16, 165).setFill(imgArrayEva[15].src); break;
+                    case 80: eva.setPosition(16, 160).setFill(imgArrayEva[12].src); break;
+                    case 81: eva.setPosition(16, 155).setFill(imgArrayEva[13].src); break;
+                    case 82: eva.setPosition(16, 150).setFill(imgArrayEva[14].src); break;
+                    case 83: eva.setPosition(16, 145).setFill(imgArrayEva[15].src); break;
+                    case 84: eva.setPosition(16, 145).setFill(imgArrayEva[8].src); break;
+                    case 85: eva.setPosition(16, 145).setFill(imgArrayEva[0].src); break;
+                    case 86: eva.setPosition(16, 145).setFill(imgArrayEva[0].src); break;
+                    case 87: eva.setPosition(16, 145).setFill(imgArrayEva[4].src); break;
+                    case 88: eva.setPosition(16, 145).setFill(imgArrayEva[4].src); break;
+                    case 89: eva.setPosition(16, 145).setFill(imgArrayEva[0].src); break;
+                    case 90: eva.setPosition(16, 145).setFill(imgArrayEva[0].src);  break;
+                    case 91: eva.setPosition(16, 145).setFill(imgArrayEva[8].src);  break;
+                    case 92: eva.setPosition(16, 145).setFill(imgArrayEva[8].src); break;
+                    case 93: eva.setPosition(16, 145).setFill(imgArrayEva[0].src);  break;
+                    default: eva.setPosition(16, 145).setFill(imgArrayEva[0].src);
+                        break;
+                }
 
-
-                if (evaTimer == 50) { eva.setPosition(16, 260).setFill(imgArrayEva[14].src); }
-                if (evaTimer == 51) { eva.setPosition(16, 255).setFill(imgArrayEva[15].src); }
-                if (evaTimer == 52) { eva.setPosition(16, 250).setFill(imgArrayEva[12].src); }
-                if (evaTimer == 53) { eva.setPosition(16, 245).setFill(imgArrayEva[13].src); }
-                if (evaTimer == 54) { eva.setPosition(16, 240).setFill(imgArrayEva[14].src); }
-                if (evaTimer == 55) { eva.setPosition(16, 235).setFill(imgArrayEva[15].src); }
-                if (evaTimer == 56) { eva.setPosition(16, 230).setFill(imgArrayEva[12].src); }
-                if (evaTimer == 57) { eva.setPosition(16, 225).setFill(imgArrayEva[13].src); }
-                if (evaTimer == 58) { eva.setPosition(16, 220).setFill(imgArrayEva[14].src); }
-                if (evaTimer == 59) { eva.setPosition(16, 215).setFill(imgArrayEva[15].src); }
-
-
-                if (evaTimer == 60) { eva.setPosition(16, 210).setFill(imgArrayEva[14].src); }
-                if (evaTimer == 61) { eva.setPosition(16, 205).setFill(imgArrayEva[15].src); }
-                if (evaTimer == 62) { eva.setPosition(16, 200).setFill(imgArrayEva[12].src); }
-                if (evaTimer == 63) { eva.setPosition(16, 195).setFill(imgArrayEva[13].src); }
-                if (evaTimer == 64) { eva.setPosition(16, 190).setFill(imgArrayEva[14].src); }
-                if (evaTimer == 65) { eva.setPosition(16, 185).setFill(imgArrayEva[15].src); }
-                if (evaTimer == 66) { eva.setPosition(16, 180).setFill(imgArrayEva[12].src); }
-                if (evaTimer == 67) { eva.setPosition(16, 175).setFill(imgArrayEva[13].src); }
-                if (evaTimer == 68) { eva.setPosition(16, 170).setFill(imgArrayEva[14].src); }
-                if (evaTimer == 69) { eva.setPosition(16, 165).setFill(imgArrayEva[15].src); }
-                if (evaTimer == 70) { eva.setPosition(16, 160).setFill(imgArrayEva[12].src); }
-                if (evaTimer == 71) { eva.setPosition(16, 155).setFill(imgArrayEva[13].src); }
-                if (evaTimer == 72) { eva.setPosition(16, 150).setFill(imgArrayEva[14].src); }
-                if (evaTimer == 73) { eva.setPosition(16, 145).setFill(imgArrayEva[15].src); }
-                if (evaTimer == 74) { eva.setPosition(16, 145).setFill(imgArrayEva[8].src); }
-                if (evaTimer == 75) { eva.setPosition(16, 145).setFill(imgArrayEva[0].src); }
-                if (evaTimer == 76) { eva.setPosition(16, 145).setFill(imgArrayEva[4].src); }
-                if (evaTimer == 77) { eva.setPosition(16, 145).setFill(imgArrayEva[0].src); }
-                if (evaTimer == 78) { eva.setPosition(16, 145).setFill(imgArrayEva[8].src); }
-                if (evaTimer == 79) { eva.setPosition(16, 145).setFill(imgArrayEva[0].src); }
-                if (evaTimer == 80) { eva.setPosition(16, 145).setFill(imgArrayEva[4].src); evaTimer = 1; }
+             
+             
+               
             }
         }, this, 250)
 
@@ -11762,12 +11844,13 @@ farming.start = function () {
         var porkPosY = porkPos.y - 5;
         if (porkPosY < 70) { porkPosY = 110 };
         if (porkTimer > 240 && player.cropsStored[8].stored >= 1 && acres[4].owned == 1) {
-
+            collectPorkLabel.setHidden(false);
             porkUpCount.setHidden(false);
+         
             porkUpCount.setPosition(155, porkPosY);
             porkUpIcon.setHidden(false);
             porkUpIcon.setPosition(95, (porkPosY - 15));
-            collectPork.setHidden(false);
+            collectPork.setHidden(false).setPosition(10, 60).setFill("images/UI/speechBubble.png").setSize(50, 55); collectPorkIcon.setHidden(false); collectPorkLabel.setHidden(false);
             //show the speechBubble to collect pork
             if (porkOnce == 0) {
                 porkOnce = 1;
@@ -11784,19 +11867,27 @@ farming.start = function () {
             }
 
         }
+        else if (player.cropsStored[8].stored <= 0 && acres[4].owned == 1 && porkWaiting <= 0) {
+            collectPork.setHidden(false).setFill("images/UI/needApple.png").setPosition(45, 50).setSize(40, 45); collectPorkIcon.setHidden(true); collectPorkLabel.setHidden(true);
+        }
         if (porkTimer > 248) { porkTimer = 0; porkUpCount.setHidden(true); porkOnce = 0; porkUpIcon.setHidden(true); }
 
 
     }, this, 250)
 
     goog.events.listen(collectPork, ["mousedown", "touchstart"], function () {
-        player.cropsStored[10].stored = parseInt(player.cropsStored[10].stored) + parseInt(porkWaiting);
-        porkWaiting = 0;
-        count10.setText(player.cropsStored[10].stored);
-        gLabel10.setText(player.cropsStored[10].stored);
-        localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-        collectPork.setHidden(true);
-        purchaseSound.play();
+        if (porkWaiting > 0) {
+            player.cropsStored[10].stored = parseInt(player.cropsStored[10].stored) + parseInt(porkWaiting);
+            porkWaiting = 0;
+            count10.setText(player.cropsStored[10].stored);
+            gLabel10.setText(player.cropsStored[10].stored);
+            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+            collectPork.setHidden(true);
+            purchaseSound.play();
+        }
+        else if (porkWaiting <= 0 && player.cropsStored[8].stored <= 0 && acres[4].owned == 1) {
+            porkBlocked.setHidden(false); collectPork.setHidden(true); gLabel5Pork.setText(player.cropsStored[5].stored); gLabel8Pork.setText(player.cropsStored[8].stored)
+        }
     });
     ///livestock layer menu
 
@@ -11875,6 +11966,7 @@ farming.start = function () {
            
             c.replaceScene(orchardScene, lime.transitions.SlideInLeft);
             sceneActive = 'Orchard';
+            porkBlocked.setHidden(true);
             sceneBefore = 3; waterfallSound.play(); chickenSound.stop(); pig1Sound.stop(); pig2Sound.stop(); pig3Sound.stop();
             setTimeout(function () { validCropsStored(); }, 0);
         }
@@ -11974,7 +12066,7 @@ farming.start = function () {
 
     var achieveSCLS = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#000033").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ").setFontFamily("Comic Sans MS");
     achieveNotifLS.appendChild(achieveSCLS);
-    var confirmBtnALS = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill("images/UI/checkButton.png");
+    var confirmBtnALS = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill(imgArray[21]);
     achieveNotifLS.appendChild(confirmBtnALS);
     liveStockLayer.appendChild(achieveNotifLS);
     achieveNotifLS.setHidden(true);
@@ -12074,7 +12166,7 @@ farming.start = function () {
             pig2Sound.stop();
             globalModalBlock = 0;
             //a.sceneBefore = 5;
-            setTimeout(function () { validCropsStored(); checkShortage(); }, 0);
+            setTimeout(function () { validCropsStored(); }, 0);
         }
     });
     goog.events.listen(lsNavLS, ["mousedown", "touchstart"], function () {
@@ -12093,27 +12185,34 @@ farming.start = function () {
 
 
     ////livestock SHORTAGE block modal
-    var porkBlocked = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(60, 145).setSize(180, 200).setFill("images/UI/shortage.png");
+    var porkBlocked = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(60, 145).setSize(180, 200).setFill("images/UI/blankBack6.png");
     liveStockLayer.appendChild(porkBlocked);
-    var confirmPorkBlocked = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(70, 195).setSize(40, 40).setFill("images/UI/checkButton.png");
+    var blockedHeader = (new lime.Label).setAnchorPoint(0, 0).setPosition(5, 19).setSize(170, 40).setFontSize(18).setFontFamily("Comic Sans MS").setText("Farmhand Eva");
+    porkBlocked.appendChild(blockedHeader);
+
+    var evaBlockImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(60, 26).setSize(60, 60).setFill(imgArrayEva[0].src);
+    porkBlocked.appendChild(evaBlockImg)
+    var confirmPorkBlocked = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(70, 195).setSize(40, 40).setFill(imgArray[21]);
     porkBlocked.appendChild(confirmPorkBlocked);
-    var blockedText = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#E8FC08").setPosition(5, 120).setSize(170, 40).setFontSize(14).setFontFamily("Comic Sans MS").setText("Livestock Hungry!");
+    var blockedText = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#E8FC08").setPosition(5, 85).setSize(170, 40).setFontSize(14).setFontFamily("Comic Sans MS").setText("Livestock Hungry!");
     porkBlocked.appendChild(blockedText);
-    var blockedSub = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#FFFFFF").setPosition(2, 140).setSize(175, 40).setFontSize(10).setFontFamily("Comic Sans MS").setText("CHICKENS eat CORN to lay EGGS");
+    var blockedSub = (new lime.Label).setAnchorPoint(0, 0).setPosition(2, 105).setSize(175, 40).setFontSize(10).setFontFamily("Comic Sans MS").setText("CHICKENS eat CORN to lay EGGS");
     porkBlocked.appendChild(blockedSub);
-    var blockedSub2 = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#FFFFFF").setPosition(2, 155).setSize(175, 40).setFontSize(10).setFontFamily("Comic Sans MS").setText("PIGS eat APPLES to yield HAM");
+    var blockedSub2 = (new lime.Label).setAnchorPoint(0, 0).setPosition(2, 120).setSize(175, 40).setFontSize(10).setFontFamily("Comic Sans MS").setText("PIGS eat APPLES to yield HAM");
     porkBlocked.appendChild(blockedSub2);
 
-    var cornIcon2 = (new lime.Sprite).setPosition(50, 180).setFill("images/" + a.crops[5].harvest).setSize(25, 25);
+
+    var cornIcon2 = (new lime.Sprite).setPosition(50, 145).setFill("images/" + a.crops[5].harvest).setSize(25, 25);
     porkBlocked.appendChild(cornIcon2);
-    var appleIcon2 = (new lime.Sprite).setPosition(120, 180).setFill("images/" + a.crops[8].harvest).setSize(25, 25);
+    var appleIcon2 = (new lime.Sprite).setPosition(120, 145).setFill("images/" + a.crops[8].harvest).setSize(25, 25);
     porkBlocked.appendChild(appleIcon2);
 
-    var gLabel5Pork = (new lime.Label).setPosition(64, 186).setSize(20, 16).setText(player.cropsStored[5].stored).setFontFamily("Comic Sans MS").setFontColor("#E8FC08");
+    var gLabel5Pork = (new lime.Label).setPosition(70, 141).setSize(20, 16).setText(player.cropsStored[5].stored).setFontFamily("Comic Sans MS").setFontColor("#E8FC08");
     porkBlocked.appendChild(gLabel5Pork);
-    var gLabel8Pork = (new lime.Label).setPosition(134, 186).setSize(20, 16).setText(player.cropsStored[8].stored).setFontFamily("Comic Sans MS").setFontColor("#E8FC08");
+    var gLabel8Pork = (new lime.Label).setPosition(140, 141).setSize(20, 16).setText(player.cropsStored[8].stored).setFontFamily("Comic Sans MS").setFontColor("#E8FC08");
     porkBlocked.appendChild(gLabel8Pork);
-
+    var blockedSub3 = (new lime.Label).setAnchorPoint(0, 0).setPosition(2, 165).setSize(175, 40).setFontSize(10).setFontFamily("Comic Sans MS").setText("Upgrade Home Barn to Level 5 to unlock Corn");
+    porkBlocked.appendChild(blockedSub3);
     porkBlocked.setHidden(true);
 
     goog.events.listen(confirmPorkBlocked, ["mousedown", "touchstart"], function () {
@@ -12409,6 +12508,13 @@ farming.start = function () {
     ///rocks Blocker for future path from Vinyard
     var rockBlockV = (new lime.Sprite).setFill("images/UI/rockBlock2.png").setPosition(43, 93).setSize(59, 32);
     vinyardLayer.appendChild(rockBlockV);
+
+
+    goog.events.listen(rockBlockV, ["mousedown", "touchstart"], function () {
+        b.currentCrop = 22;
+        c.replaceScene(windmillScene, lime.transitions.SlideInUp);
+    });
+
 
     //var comingSoonVBtn = (new lime.GlossyButton).setColor("#1ce636").setText("").setPosition(30, 60).setSize(25, 25);
     //vinyardLayer.appendChild(comingSoonVBtn);
@@ -12951,7 +13057,7 @@ farming.start = function () {
     achieveNotifV.appendChild(achieveTextSubV);
     var achieveSCV = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ");
     achieveNotifV.appendChild(achieveSCV);
-    var confirmBtnAV = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill("images/UI/checkButton.png");
+    var confirmBtnAV = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill(imgArray[21]);
     achieveNotifV.appendChild(confirmBtnAV);
     vinyardLayer.appendChild(achieveNotifV);
     achieveNotifV.setHidden(true);
@@ -13043,27 +13149,25 @@ farming.start = function () {
         if (acres[4].owned == 1 && compassVisible) {
             closeAcresNav();
             a.sceneBefore = 5;
-            setTimeout(function () { validCropsStored(); checkShortage();}, 0);
-           
+            setTimeout(function () { validCropsStored(); }, 0);
+
             ///from pature to Market
             c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
             sceneActive = 'LS';
-
+            checkShortage();
             chickenSound.play();
             pig1Sound.play();
             lime.scheduleManager.callAfter(function () { pig2Sound.play(); }, this, 5000);
-           
-            vinyardBlock.setHidden(true);
-            globalModalBlock = 0;
+            checkShortage();
         }
     });
 
-
+    
 
     ////vinyard SHORTAGE block modal
     var jellyBlocked = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(60, 145).setSize(180, 200).setFill("images/UI/shortage.png");
     vinyardLayer.appendChild(jellyBlocked);
-    var confirmjellyBlocked = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(70, 195).setSize(40, 40).setFill("images/UI/checkButton.png");
+    var confirmjellyBlocked = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(70, 195).setSize(40, 40).setFill(imgArray[21]);
     jellyBlocked.appendChild(confirmjellyBlocked);
     var blockedTextJ = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(5, 120).setSize(170, 40).setFontSize(14).setText("Jelly Making Halted!");
     jellyBlocked.appendChild(blockedTextJ);
@@ -14300,7 +14404,7 @@ farming.start = function () {
     cancelConfirmSaleHouseBack.appendChild(cancelConfirmSaleHouse);
     var confirmConfirmSaleHouseBack = (new lime.GlossyButton).setColor("#663300").setAnchorPoint(0.0).setPosition(100, 128).setSize(32, 32).setText("");
     confirmSaleHouse.appendChild(confirmConfirmSaleHouseBack);
-    var confirmConfirmSaleHouse = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-16, -15).setSize(32, 32).setFill("images/UI/checkButton.png");
+    var confirmConfirmSaleHouse = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-16, -15).setSize(32, 32).setFill(imgArray[21]);
     confirmConfirmSaleHouseBack.appendChild(confirmConfirmSaleHouse);
 
 
@@ -14500,6 +14604,7 @@ farming.start = function () {
             //}, this, 200, 450)
 
             //upgrade countdown timer
+      
 
             var upCloudWHo = 200;
             var upCloudXHo = -130;
@@ -14681,12 +14786,32 @@ farming.start = function () {
 
 
     function checkShortage() {
-        if (player.cropsStored[8].stored < 2 || player.cropsStored[5].stored < 2) {
-            gLabel5Pork.setText(player.cropsStored[5].stored);
-            gLabel8Pork.setText(player.cropsStored[8].stored);
-            porkBlocked.setHidden(false);
-            lsBlock.setHidden(false);
+        collectPork.setHidden(true);
+        collectEggs.setHidden(true);
+        if (player.barnLevel == 5) { blockedSub3.setHidden(true);}
+        if (porkWaiting <= 0) {
+            if (player.cropsStored[8].stored <= 0) {
+                collectPork.setHidden(false).setFill("images/UI/needApple.png").setPosition(45, 50); collectPorkIcon.setHidden(true); collectPorkLabel.setHidden(true);
+            }
+            else if (player.cropsStored[8].stored >= 1 ) {
+                collectPork.setHidden(true);
+            }
         }
+        else if (porkWaiting >= 1) {
+            collectPork.setHidden(false).setFill("images/UI/speechBubble.png").setPosition(10, 60); collectPorkIcon.setHidden(false); collectPorkLabel.setHidden(false);
+        }
+        if (eggWaiting <= 0) {
+            if (player.cropsStored[5].stored <= 0) { collectEggs.setHidden(false).setFill("images/UI/needCorn.png"); collectEggsIcon.setHidden(true); collectEggsLabel.setHidden(true); }
+            else if (player.cropsStored[5].stored >= 0) { collectEggs.setHidden(true); };
+        }
+        else if (eggWaiting >= 1) { collectEggs.setHidden(false).setFill("images/UI/speechBubble.png"); collectEggsIcon.setHidden(false); collectEggsLabel.setHidden(false); collectEggsLabel.setText("+ " + (eggWaiting * 3)); }
+
+        vinyardBlock.setHidden(true);
+        globalModalBlock = 0;
+
+
+
+
 
         if (player.cropsStored[12].stored < 2) {
             if (vinyardHouseLevel > 1) {
@@ -15005,6 +15130,95 @@ farming.start = function () {
                     }
                     else { codeField.value = "Invalid Code"; codeField.style.color = 'RED'; lime.scheduleManager.callAfter(function () { codeField.value = " "; codeField.style.color = 'Black'; },this, 1000) };
                 };
+
+
+
+      ///////////////////////////////////windmill Scene////////// //////////windmill scene//////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                var windmillScene = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
+                    windmillLayer = (new lime.Layer).setAnchorPoint(0, 0),
+                    windmillFill1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, -20).setSize(a.width, a.height - 55).setFill(imgArrayWindmill[0]).setHidden(false);
+                windmillScene.appendChild(windmillFill1);
+                windmillScene.appendChild(windmillLayer);
+                var windMillBldg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(11, 175).setSize(110, 127).setFill(imgArrayWindmill[2]);
+                windmillLayer.appendChild(windMillBldg);
+                var windMillSail = (new lime.Sprite).setPosition(44, 59).setSize(110, 90).setFill(imgArrayWindmill[4]);
+                windMillBldg.appendChild(windMillSail);
+                var windmillRotation = 1.0;
+                var windmillUpgraded = true;
+                if (windmillUpgraded) {
+                        lime.scheduleManager.scheduleWithDelay(function () {
+                            windmillRotation = windmillRotation - 2.25;
+                            windMillSail.setRotation(windmillRotation);
+                        }, this, 50);
+                }
+                var bakeryBldg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(215, 158).setSize(87, 127).setFill(imgArrayWindmill[5]);
+                windmillLayer.appendChild(bakeryBldg);
+
+
+                for (f = 0; f < 7; f++)
+                    for (var i = 0; i < 5; i++) {
+                        var posX = f * a.tile_size + 80;
+                        var posY = i * a.tile_size + 352;
+                        var pidentI = i;
+                        var pidentF = f;
+                        var pidentThis = "";
+                        var wmidentFinal = "";
+                        pidentThis = "wheat1--"
+                        wmidentFinal = wmidentFinal.concat(pidentThis.toString(), pidentF.toString(), pidentI.toString());
+                        //windmill lower field
+                        if (f == 0 && i == 0) { var wheat11 = (new farming.Land(a, b, posX, posY, 9, 'tlt', wmidentFinal)).setPosition(f * a.tile_size + 75, i * a.tile_size + 310); windmillLayer.appendChild(wheat11) }
+                        else if (f == 6 && i == 0) { var wheat12 = (new farming.Land(a, b, posX, posY, 9, 'trt', wmidentFinal)).setPosition(f * a.tile_size + 75, i * a.tile_size + 310); windmillLayer.appendChild(wheat12) }
+                        else if (f == 6 && i == 4) { var wheat13 = (new farming.Land(a, b, posX, posY, 9, 'brt', wmidentFinal)).setPosition(f * a.tile_size + 75, i * a.tile_size + 310); windmillLayer.appendChild(wheat13) }
+                        else if (f == 0 && i == 4) { var wheat14 = (new farming.Land(a, b, posX, posY, 9, 'blt', wmidentFinal)).setPosition(f * a.tile_size + 75, i * a.tile_size + 310); windmillLayer.appendChild(wheat14) }
+                        else { var wheat15 = (new farming.Land(a, b, posX, posY, 9, 'non', wmidentFinal)).setPosition(f * a.tile_size + 75, i * a.tile_size + 310); windmillLayer.appendChild(wheat15) }
+
+          
+                    }
+
+
+
+                var controlsBackWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-5, a.height - a.controlsLayer_h - 5).setSize(a.controlsLayer_w, a.controlsLayer_h + 5).setFill("images/UI/blackButton.png");
+                windmillLayer.appendChild(controlsBackWM);
+                //vinyard growing set
+                var hhWM = b.currentCrop;
+                var growingLabelWM = (new lime.Label).setText("Growing Grain ").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontSize(12).setPosition(a.controlsLayer_w / 2 - 5 , a.height - a.controlsLayer_h / 2 - 12);
+                windmillLayer.appendChild(growingLabelWM);
+                var growingImageWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.controlsLayer_w / 2 - 22, a.height - a.controlsLayer_h / 2 - 5).setFill("images/" + a.crops[22].harvest).setSize(30, 30);
+                windmillLayer.appendChild(growingImageWM);
+                var marketWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(208, a.height - a.controlsLayer_h).setSize(90, 61).setFill("images/" + a.barnyard[3].image);
+                windmillScene.appendChild(marketWM);
+                var vinyardNavWM1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(28, 427).setSize(35, 33).setFill(imgArray[46]); windmillScene.appendChild(vinyardNavWM1)
+                var menuWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(14, 467).setSize(35, 33).setFill("images/UI/gearButton.png");
+                windmillScene.appendChild(menuWM);
+                //MUTE Home
+                var muteBtnWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(14, 502).setSize(35, 33).setFill(imgArray[15]); windmillScene.appendChild(muteBtnWM);
+                var achieveBtnWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(52, 467).setSize(35, 33).setFill("images/UI/trophyBtn.png"); windmillScene.appendChild(achieveBtnWM);
+                var fbBtnWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(52, 502).setSize(35, 33).setFill("images/UI/starButton.png"); windmillScene.appendChild(fbBtnWM)
+                var compassWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(135, 449).setSize(35, 35).setFill("images/UI/compass22.png"); windmillScene.appendChild(compassWM)
+
+                /// compass nav
+                var compassWMBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 100).setSize(250, 250).setFill("images/UI/compass3.png"); windmillScene.appendChild(compassWMBack)
+                var orchardNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(170, 35).setSize(50, 50).setFill(imgArray[48]); compassWMBack.appendChild(orchardNavWM)
+                var lsNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(170, 170).setSize(50, 50).setFill(imgArray[49]); compassWMBack.appendChild(lsNavWM)
+                var vinyardNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 35).setSize(50, 50).setFill(imgArray[46]); compassWMBack.appendChild(vinyardNavWM)
+                var homeNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(96, 100).setSize(60, 60).setFill(imgArray[50]); compassWMBack.appendChild(homeNavWM)
+                var pastureNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 170).setSize(50, 50).setFill(imgArray[47]); compassWMBack.appendChild(pastureNavWM)
+                var closeNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(100, 222).setSize(50, 50).setFill(imgArray[21]); compassWMBack.appendChild(closeNavWM)
+                compassWMBack.setHidden(true);
+
+                goog.events.listen(vinyardNavWM1, ["mousedown", "touchstart"], function () {
+                    c.replaceScene(vinyardScene, lime.transitions.SlideInDown);
+                    b.currentCrop = 12;
+                    sceneActive = 'Vineyard';
+                });
+    
+
+
+
+
+
+
 
 
     //////end of farming.start
