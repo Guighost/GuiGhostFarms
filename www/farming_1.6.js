@@ -1344,7 +1344,7 @@ var daysTillHerald = 30;
 
 var questParamsPatricia = {
     speech: [
-        { index: 0, Text: "Da Da.... I want some toys"},
+        { index: 0, Text: "Da Da.... I want some toys. If you find some will you buy them for me?"},
         { index: 1, Text: "Round and round and round I go. I just don't seem to be getting anywhere"},
         { index: 2, Text: "When Papa Elmo visits he is so silly. He is always saying things like DIBBA DABBA "},
         { index: 3, Text: "Mom would not let me have candy. She is a meany meany Mc\'Meanerson." },
@@ -1367,14 +1367,15 @@ var questParams = {
         { name: "Gems", text: "The King sends hearlds sometimes. Please them and you may gain royal favor", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Felicia", text: "My wife Felicia spends all day in market, looking for new foods to cook", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Felicia2", text: "Old Man Haridison is considering selling his STABLE in the future", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Land", text: "If you gain enough royal favor, the king may grant you additional lands", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
     ],
     monk: [   ///church
         { highestCompleted: 0, available: true },
         { name: "Bounty", text: "I am here to study old relics. Bring me any ARTIFACTS you may DIG UP", completed: 0, rewardType: 4, rewardAmount: 10, rewardItem: 0, requiredItem: "none", successText: " " },
-        { name: "Artifact", text: "The more artifacts you bring, the more I can learn about this area", completed: 0, rewardType: 4, rewardAmount: 15, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Artifact", text: "The more artifacts you bring me, the more I can learn about this area", completed: 0, rewardType: 4, rewardAmount: 15, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Artifact2", text: "I learned that a previous owner of your farm may have been a noble", completed: 0, rewardType: 4, rewardAmount: 15, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Artifact3", text: "Some of the artifacts you find could be HEIRLOOMS. These are special items you keep", completed: 0, rewardType: 4, rewardAmount: 15, rewardItem: 0, requiredItem: "none", successText: " " },
-        { name: "Artifact4", text: "I heard that there are more farm ACRES coming up for sale in the area very soon", completed: 0, rewardType: 4, rewardAmount: 15, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Artifact4", text: "My research indicates that you have a strong claim to noble heritage", completed: 0, rewardType: 4, rewardAmount: 15, rewardItem: 0, requiredItem: "none", successText: " " },
     ],
     felicia: [   ///market
         { highestCompleted: 0, available: true },
@@ -1412,7 +1413,7 @@ var questParams = {
         { highestCompleted: 0, available: true },
         { name: "Upgrade", text: "If we had JARS and upgaded the Barn, we could make JELLY.", completed: 0, rewardType: 6, rewardAmount: 0, rewardItem: 0, requiredItem: "Jars" },
         { name: "Jars", text: "We need some more jelly JARS. Can you buy some in town?", completed: 0, rewardType: 6, rewardAmount: 0, rewardItem: 0, requiredItem: "Jars" },
-        { name: "Juice Press", text: "I wonder what else we can make with grapes", completed: 0, rewardType: 6, rewardAmount: 0, rewardItem: 0, requiredItem: "Fruit Press" },
+        { name: "Windmill", text: "The path north used to lead to a windmill, but was covered in a landslide", completed: 0, rewardType: 6, rewardAmount: 0, rewardItem: 0, requiredItem: "None" },
         { name: "Bottles", text: "We need some more BOTTLES. Can you buy some in town?", completed: 0, rewardType: 6, rewardAmount: 0, rewardItem: 0, requiredItem: "Bottles" },
 
     ],
@@ -2627,7 +2628,10 @@ farming.start = function () {
 
     var mayorSound = new lime.audio.Audio('audio/What.mp3');
     var saraSound = new lime.audio.Audio('audio/Tay.mp3');
-    var feliciaSound = new lime.audio.Audio('audio/Hunt.mp3');
+    var orchardSound = new lime.audio.Audio('audio/Hunt.mp3');
+    var blacksmithSound = new lime.audio.Audio('audio/Hiyo2.mp3');
+    var terricSound = new lime.audio.Audio('audio/Heh3.mp3');
+
 
     var horizRoad = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 438).setSize(320, 25).setFill("images/" + a.barnyard[15].image);
     ////////////////////////////// 
@@ -3225,7 +3229,8 @@ farming.start = function () {
         sceneActive = 'Market';
         acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
         if (acresOwned3 >= 4 && daysTillHerald <= 0) { gideon.setHidden(false); } else { gideon.setHidden(true); }
-
+        localStorage.setItem('showHighLight', 0);
+ 
         lime.scheduleManager.callAfter(function () { CheckQuestInvItems();}, this, 1500);
     });
 
@@ -3320,7 +3325,7 @@ farming.start = function () {
     var blacksmithBubble = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(10, -30).setSize(30, 30).setFill(imgArray[19].src); blacksmith.appendChild(blacksmithBubble);
     blacksmithBubble.setHidden(true);
     goog.events.listen(blacksmithBubble, ["mousedown", "touchstart"], function () {
-
+        blacksmithSound.play();
         blacksmithQuestPanel.setHidden(false);
     });
 
@@ -4670,19 +4675,7 @@ farming.start = function () {
             if (lastLoginDay == today) {
                 collectDaily.setHidden(true);
                 dailyRewardLayer.setHidden(true);
-                //daysInRow = parseInt(localStorage["daysInRow"]);
-                //rewardLabel1Txt2.setText('Already recieved');
-                //switch (daysInRow) {
-                //    case 0:  rewardCheck1.setHidden(false); day1.setFill("#00ff00"); break;
-                //    case 1: rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00"); break;
-                //    case 2: rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00"); rewardCheck3.setHidden(false); day3.setFill("#00ff00"); break;
-                //    case 3: rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00"); rewardCheck3.setHidden(false); day3.setFill("#00ff00");rewardCheck4.setHidden(false); day4.setFill("#00ff00"); break;
-                //    case 4: rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00"); rewardCheck3.setHidden(false); day3.setFill("#00ff00"); rewardCheck4.setHidden(false); day4.setFill("#00ff00");rewardCheck5.setHidden(false); day5.setFill("#00ff00"); break;
-                //    case 5: rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00"); rewardCheck3.setHidden(false); day3.setFill("#00ff00"); rewardCheck4.setHidden(false); day4.setFill("#00ff00"); rewardCheck5.setHidden(false); day5.setFill("#00ff00");rewardCheck6.setHidden(false); day6.setFill("#00ff00"); break;
-                //    case 6: rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00"); rewardCheck3.setHidden(false); day3.setFill("#00ff00"); rewardCheck4.setHidden(false); day4.setFill("#00ff00"); rewardCheck5.setHidden(false); day5.setFill("#00ff00"); rewardCheck6.setHidden(false); day6.setFill("#00ff00");rewardCheck7.setHidden(false); day7.setFill("#00ff00"); break;
-                //    default: console.log("none");
 
-                //}
 
             }
             else if (lastLoginDay < (today - 1)) {
@@ -4701,8 +4694,8 @@ farming.start = function () {
                 ///daily reward condition is met - show the rewards   
                 dailyRewardLayer.setHidden(false);
                 collectDaily.setHidden(false);
-                if (daysInRow > 6) { daysInRow = 0 };
-                localStorage.setItem("daysInRow", 0);
+                if (daysInRow > 6) { daysInRow = 0; localStorage.setItem("daysInRow", 0); };
+                
                 switch (daysInRow) {
                     case 0: rewardLabel1Txt2.setText("+100 Coins").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00");
                         try { Enhance.logEvent('achieved_Daily1'); } catch (err) { console.log("logging failed") };
@@ -4749,7 +4742,7 @@ farming.start = function () {
     //clickReward2.addEventListener("touchend", function (event) { checkDailyLogin2(); event.preventDefault(); }, { passive: false });
     function collectDailyLogin() {
         purchaseSound.play();
-        daysInRow = parseInt(localStorage["daysInRow"]); 
+     
         switch (daysInRow) {
             case 0: player.money = parseInt(player.money) + 100; a.updateMoney(); break;
             case 1: player.tools = parseInt(player.tools) + 150; a.updateTools(); break;
@@ -6873,6 +6866,7 @@ farming.start = function () {
 
     goog.events.listen(IsabelQuestBtn, ["mousedown", "touchstart"], function () {
         questPanelO.setHidden(false);
+        orchardSound.play();
         if (orchardBarnLevel == 1) {
             questText1O.setText("If you upgrade the barn, we can increase our harvests");
             questPanelRocksO.setHidden(true);
@@ -9914,9 +9908,9 @@ farming.start = function () {
         }
         else if (mayorReady == 0) {
             //console.log("mayorReady else= " + mayorReady)
-            var randomSpeech1 = Math.round(Math.random() * 5);
+            var randomSpeech1 = Math.round(Math.random() * 6);
             if (randomSpeech1 < 1) { randomSpeech1 = 1 };
-            if (randomSpeech1 > 5) { randomSpeech1 = 5 };
+            if (randomSpeech1 > 6) { randomSpeech1 = 6 };
             mayorQuest.setFill(imgArrayTown[15].src);
 
             goog.events.unlisten(mayorQuestBtn, ["mousedown", "touchstart"], function (e) { })
@@ -10230,7 +10224,7 @@ farming.start = function () {
                             case 4: questText1.setText("I grew up close to the castle and miss the spices we could get there"); break;
                             case 5: questText1.setText("The trader told me some old maps show caverns in the area. I wonder where"); break;
                             case 6: questText1.setText("I heard there is a healer named Connie that lives somewhere close by"); break;
-                            case 7: questText1.setText("There used to be a Windmill close by, but it was damaged in a storm and never repaired"); break;
+                            case 7: questText1.setText("There used to be a Windmill close by, but it closed and the road there is blocked"); break;
                             default: questText1.setText("My husband buys me awesome jewels all the time"); break;
                         }
                         //questText1.setText("I heard the king sometimes sends special orders to feed the troops");
@@ -12489,7 +12483,11 @@ farming.start = function () {
         vinRockPickBtn.setHidden(true);
         roadToWMfromVin.setHidden(true);
     }
-    
+    if (heraldOrderTop > 10 && acres[5].owned == 0) {
+        rockBlockV.setHidden(false);
+        vinRockPickBtn.setHidden(false);
+        roadToWMfromVin.setHidden(true);
+    }
 
     //var comingSoonVBtn = (new lime.GlossyButton).setColor("#1ce636").setText("").setPosition(30, 60).setSize(25, 25);
     //vinyardLayer.appendChild(comingSoonVBtn);
@@ -12517,7 +12515,7 @@ farming.start = function () {
 
     var vineyardUpgradePickMover = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(26, 43).setSize(38, 43).setFill(imgArrayStore[3].src).setRotation(-45);
     vinyardLayer.appendChild(vineyardUpgradePickMover);
-    var vineyardUpgradeRockCloud = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(16, 48).setSize(60, 70).setFill(imgArray[24].src);
+    var vineyardUpgradeRockCloud = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-40, 0).setSize(60, 70).setFill(imgArray[24].src);
     vinyardLayer.appendChild(vineyardUpgradeRockCloud);
     var toolMoverLabelV2 = (new lime.Label).setText("60").setPosition(46, 108).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("ComicSans MS").setFill(imgArray[27]);
     vinyardLayer.appendChild(toolMoverLabelV2);
@@ -12769,6 +12767,7 @@ farming.start = function () {
     var currentJelly = parseInt(player.cropsStored[13].stored);
 
     function checkVinFarmerQuest() {
+        terricSound.play();
         vinyardBlock.setHidden(false);
         questPanelV.setHidden(false);
         treesImgV.setHidden(true);
@@ -13283,22 +13282,21 @@ farming.start = function () {
     questPanelV2.setHidden(true);
     var questHeaderV2 = (new lime.Label).setAnchorPoint(0, 0).setPosition(40, 25).setText("Vinemaster Terric").setFontFamily("Comic Sans MS").setFontSize(24);
     questPanelV2.appendChild(questHeaderV2);
-    var questText1V2 = (new lime.Label).setAnchorPoint(0, 0).setPosition(20, 155).setText("This old path used to lead to the windmill before the landslide").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+    var questText1V2 = (new lime.Label).setAnchorPoint(0, 0).setPosition(20, 155).setText("This old path used to lead to the windmill").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
     questPanelV2.appendChild(questText1V2);
-    var questPanelAvatarV2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 45).setSize(100, 100).setFill("images/vinyard/vinFarmer7.png");
+    var questPanelAvatarV2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 45).setSize(80, 80).setFill("images/vinyard/vinFarmer7.png");
     questPanelV2.appendChild(questPanelAvatarV2);
     var questPanelClearVRockBtn = (new lime.GlossyButton).setColor("#00ff00").setText("Clear Rocks").setPosition(140, 205).setSize(100, 20);
     questPanelV2.appendChild(questPanelClearVRockBtn);
     var questPanelCloseBtnV2 = (new lime.GlossyButton).setColor("#663300").setText("Close").setPosition(140, 235).setSize(100, 20);
     questPanelV2.appendChild(questPanelCloseBtnV2);
 
-    goog.events.listen(questPanelClearVRockBtn, ["mousedown", "touchstart"], function (e) {
+    goog.events.listen(questPanelClearVRockBtn, ["mousedown", "touchstart"], function () {
         var isHidvq2 = questPanelV2.getHidden();
         if (isHidvq2 == false) {
             questPanelV2.setHidden(true);
-            animVinRocks()
-            e.event.stopPropagation();
-            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+            animVinRocks();
+     
         }
     });
     goog.events.listen(questPanelCloseBtnV2, ["mousedown", "touchstart"], function (e) {
@@ -13314,15 +13312,17 @@ farming.start = function () {
 
     function animVinRocks() {
         ///todo move pick and countdown
+        console.log("started");
         if (collectItems.storeItems[3].owned == 1) {
+            console.log("started2");
             vineyardUpgradeRockCloud.setHidden(false);
             vineyardUpgradePickMover.setHidden(false);
             toolMoverLabelV2.setHidden(false);
             vinRockPickBtn.setHidden(true);
             var secondsToClearRockWM = 60;
             var upCloudWRWM = 38;
-            var upCloudXRWM = 98;
-            var upCloudYRWM = 135;
+            var upCloudXRWM = 20;
+            var upCloudYRWM = 50;
             var pickRotateWM = 0;
             var quarterRocksWM = 0;
             var quatersecondsWM = secondsToClearRockWM * 4;
@@ -13334,21 +13334,22 @@ farming.start = function () {
                     toolMoverLabelV2.setText(secondsToClearRockWM);
                     quarterRocksWM = 0;
                 }
-
+                console.log("running");
 
                 vineyardUpgradeRockCloud.setPosition(upCloudXRWM, upCloudYRWM).setSize(upCloudWRWM, 46)
                 upCloudWRWM = upCloudWRWM + 10;
                 upCloudXRWM = upCloudXRWM - 5;
                 upCloudYRWM = upCloudYRWM - 5
-                if (upCloudXRWM < 70) { upCloudXRWM = 98; upCloudYRWM = 135; upCloudWRWM = 38; }
+                if (upCloudXRWM < 0) { upCloudXRWM = 20; upCloudYRWM = 50; upCloudWRWM = 38; }
 
                 pickRotateWM = pickRotateWM + 10;
                 if (pickRotateWM > -15) { pickRotateWM = -45; };
                 vineyardUpgradePickMover.setRotation(pickRotateWM);
                 //////ggggg
-                if (quatersecondsO <= 0) {
+                if (secondsToClearRockWM <= 0) {
 
                     acres[5].owned = 1;
+                    localStorage.setItem('GuiGhostFarms_acres', JSON.stringify(acres));
                     rockBlockV.setHidden(true);
 
                     roadToWMfromVin.setHidden(false);
@@ -13360,7 +13361,7 @@ farming.start = function () {
 
             }, this, 250, 241);
         }
-        else { return; }
+        else { return; console.log("running");}
     }
 
 
