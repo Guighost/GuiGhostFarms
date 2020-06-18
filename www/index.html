@@ -889,7 +889,7 @@
 
 
         <!--<script type="text/javascript" src="farmingMin_1.5.1.7.js"></script>-->
-        <script type="text/javascript" src="farming_1.6.js"></script>
+        <script type="text/javascript" src="farming_1.7.1Min.js"></script>
    
 </head>
 
@@ -931,7 +931,7 @@
                 </div>
                 <div>
                     <div id="currentStarCashShare">
-                        <p>Share to Earn</p> <img id="lowerStarCashImg5" src="images/UI/plus3StarCash.png" loading="lazy" width="45" alt="StarCashImg" />
+                        <p>Share to Earn</p> <img id="lowerStarCashImg5" src="images/UI/plus5StarCash.png" loading="lazy" width="45" alt="StarCashImg" />
                         <div id="shareUs"><img id="sharedBtnImg" src="images/UI/shareBtn.png" loading="lazy" width="88" alt="View Ad" /></div>
                     </div>
 
@@ -1547,12 +1547,9 @@
                 chooserTitle: 'Pick an app to share with' // Android only, you can override the default share sheet title
             }
             var onSuccessShare = function (result) {
-                try {
-                    Enhance.logEvent('app_shared', 'result', 'true');
-
-                } catch (err) { console.log("share failed") };
+             
                 starCash = parseInt(localStorage.getItem('starCash'));
-                starCash = parseInt(starCash) + 3;
+                starCash = parseInt(starCash) + 5;
                 localStorage.setItem('starCash', starCash);
 
                 document.getElementById("starCashOuterLabel").innerHTML = starCash;
@@ -1560,6 +1557,10 @@
 
                 console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
                 console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+                try {
+                    Enhance.logEvent('app_shared', 'result', result.app);
+
+                } catch (err) { console.log("share failed") };
             }
 
             var onErrorShare = function (msg) {
