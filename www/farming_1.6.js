@@ -15049,7 +15049,7 @@ farming.start = function () {
                     } else { gideonGiveBtn.setHidden(true); };
 
     }    
-    lime.scheduleManager.callAfter(function () { setHeraldWant(heraldOrderTop); }, this, 100);
+    lime.scheduleManager.callAfter(function () { setHeraldWant(heraldOrderTop); }, this, 5000);
 
 
                 //////ABOUT Scene//////////////////////////////////////////////////////////////////////////////////////////////////
