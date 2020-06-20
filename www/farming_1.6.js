@@ -764,6 +764,10 @@ imgArray[58] = new Image(); imgArray[58].src = "images/items/logs.png";
 imgArray[59] = new Image(); imgArray[59].src = "images/UI/windMillIcon2.png";
 imgArray[60] = new Image(); imgArray[60].src = "images/UI/needHay.png";
 imgArray[61] = new Image(); imgArray[61].src = "images/axe.png";
+imgArray[62] = new Image(); imgArray[62].src = "images/leftTrees.png";
+imgArray[63] = new Image(); imgArray[63].src = "images/rightTrees.png";
+
+
 
 
 //growing images
@@ -2312,7 +2316,8 @@ function validCropsStored(){
         }
     localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
     }
-setTimeout(function () { validCropsStored(); }, 0);
+
+validCropsStored(); 
 
 
 localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
@@ -2470,26 +2475,26 @@ farming.start = function () {
     ];
 
     a.barnyard = [
-        { name: "yard", image: "grass.png" },
-        { name: "road", image: "vertRoad.png" },
-        { name: "sacks", image: "sacks.png" },
-        { name: "market", image: "marketCoin2.png" },
-        { name: "vertFence", image: "vertFence.png" },
-        { name: "horizFence", image: "horizFence.png" },
-        { name: "shelter1", image: "shelter1.png" },
-        { name: "shelter2", image: "shelter2.png" },
-        { name: "crate1", image: "eggplantCrate.png" },
-        { name: "crate2", image: "cornCrate.png" },
-        { name: "well", image: "well2.png" },
-        { name: "anvil", image: "anvil1.png" },
-        { name: "anvil2", image: "anvil2.png" },
-        { name: "trees1", image: "leftTrees.png" },
-        { name: "trees2", image: "rightTrees.png" },
-        { name: "horizRoad", image: "horizRoad.png" },
-        { name: "toolTable", image: "toolTable.png" },
-        { name: "forge", image: "forge2.png" },
-        { name: "gateFence", image: "gateFence.png" },
-        { name: "marketArrow", image: "marketCoinArrow2.png" },
+        { index: 0, name: "yard", image: "grass.png" },
+        { index: 1, name: "road", image: "vertRoad.png" },
+        { index: 2, name: "sacks", image: "sacks.png" },
+        { index: 3, name: "market", image: "marketCoin2.png" },
+        { index: 4, name: "vertFence", image: "vertFence.png" },
+        { index: 5, name: "horizFence", image: "horizFence.png" },
+        { index: 6, name: "shelter1", image: "shelter1.png" },
+        { index: 7, name: "shelter2", image: "shelter2.png" },
+        { index: 8, name: "crate1", image: "eggplantCrate.png" },
+        { index: 9, name: "crate2", image: "cornCrate.png" },
+        { index: 10, name: "well", image: "well2.png" },
+        { index: 11, name: "anvil", image: "anvil1.png" },
+        { index: 12, name: "anvil2", image: "anvil2.png" },
+        { index: 13, name: "trees1", image: "leftTrees.png" },
+        { index: 14, name: "trees2", image: "rightTrees.png" },
+        { index: 15, name: "horizRoad", image: "horizRoad.png" },
+        { index: 16, name: "toolTable", image: "toolTable.png" },
+        { index: 17, name: "forge", image: "forge2.png" },
+        { index: 18, name: "gateFence", image: "gateFence.png" },
+        { index: 19, name: "marketArrow", image: "marketCoinArrow2.png" },
 
     ];
     a.barnlevelImg = [
@@ -2597,7 +2602,8 @@ farming.start = function () {
             toolsEver = toolsEver + (2 + parseInt(player.barnLevel));
             toolUpCount.setText("+" + (2 + player.barnLevel))
             localStorage["GuiGhostFarms_toolsEver"] = toolsEver;
-            setTimeout(function () { a.updateTools2(); },0);
+           
+            lime.scheduleManager.callAfter(function () { a.updateTools2(); }, this, 100);
         }
         else {
             ///put anim over blacksmith
@@ -2661,7 +2667,7 @@ farming.start = function () {
     var topCoin = (new lime.Sprite).setPosition(285, 20).setSize(35, 35).setFill(imgArray11[0]);
     f.appendChild(topCoin);
     //expanded top bar home
-    var toInventoryH = (new lime.Sprite).setPosition((a.controlsLayer_w / 2) - 5, 23).setSize(38, 38).setFill(imgArrayItems[25].src);
+    var toInventoryH = (new lime.Sprite).setPosition((a.controlsLayer_w / 2) - 9, 23).setSize(38, 38).setFill(imgArrayItems[25].src);
     f.appendChild(toInventoryH);
 
 
@@ -2788,7 +2794,8 @@ farming.start = function () {
             c.replaceScene(pastureScene, lime.transitions.SlideInLeft);
             sceneActive = 'Pasture';
             e.event.stopPropagation();
-            setTimeout(function () { validCropsStored(); checkShortage(); }, 0);
+            
+            lime.scheduleManager.callAfter(function () {  checkShortage(); }, this, 100);
         }
     });
     goog.events.listen(orchardNavH, ["mousedown", "touchstart"], function (e) {
@@ -2825,7 +2832,7 @@ farming.start = function () {
   
             oldCrop = localStorage.getItem("MedFarms_selectedHomeCrop");
             b.currentCrop = 12;
-            setTimeout(function () { validCropsStored();  checkShortage();}, 0);
+            lime.scheduleManager.callAfter(function () { checkShortage(); }, this, 100);
             globalModalBlock = 0;
             homeBlock.setHidden(true);
             //a.sceneBefore = 5;
@@ -3315,9 +3322,9 @@ farming.start = function () {
     var houseImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(238, 23).setSize(60, 92).setFill("images/house1.png"); e.appendChild(houseImg);
     var houseEnterBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(251, 115).setSize(30, 30).setFill("images/UI/houseButton.png"); e.appendChild(houseEnterBtn);
 
-    var forge = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(2, 32).setSize(86, 120).setFill("images/" + a.barnyard[17].image); e.appendChild(forge);
-    var anvil1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(65, 85).setSize(20, 20).setFill("images/" + a.barnyard[12].image); e.appendChild(anvil1);
-    var toolTable = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(10, 118).setSize(16, 18).setFill("images/" + a.barnyard[16].image); e.appendChild(toolTable);
+    var forge = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(3, 30).setSize(82, 120).setFill("images/" + a.barnyard[17].image); e.appendChild(forge);
+    var anvil1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(62, 89).setSize(20, 20).setFill("images/" + a.barnyard[12].image); e.appendChild(anvil1);
+    var toolTable = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(23, 127).setSize(16, 16).setFill("images/" + a.barnyard[16].image); e.appendChild(toolTable);
 
     var blacksmith = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(50, 75).setSize(26, 26).setFill("images/blacksmith2.png"); e.appendChild(blacksmith);
     var blacksmithI = 0;
@@ -3333,7 +3340,8 @@ farming.start = function () {
 
     if (houseUpgrades.upgrades[0].owned == 1) { houseImg.setFill("images/house2.png").setSize(75, 100).setPosition(229, 22); }
     if (player.barnLevel == 5) {
-        barn.setFill(imgArray6[4]).setPosition(81, -14).setSize(146, 170);
+        //barn.setFill(imgArray6[4]).setPosition(81, -14).setSize(146, 170);
+        barn.setFill(imgArray6[4]).setPosition(79, -20).setSize(149, 174);
     };
     ////blacksmith anim
     var flipBlacksmithNotif = 0;
@@ -3345,22 +3353,22 @@ farming.start = function () {
                 if (blacksmithI >= 20) { blacksmithI = 1 };
                 if (blacksmithI < 15) { blacksmith.setFill("images/blacksmith" + blacksmithI + ".png"); };
 
-                if (blacksmithI == 4) { blacksmith.setPosition(50, 80) };
-                if (blacksmithI == 5) { blacksmith.setPosition(50, 85) };
-                if (blacksmithI == 6) { blacksmith.setPosition(50, 90) };
+                if (blacksmithI == 4) { blacksmith.setPosition(48, 80) };
+                if (blacksmithI == 5) { blacksmith.setPosition(48, 85) };
+                if (blacksmithI == 6) { blacksmith.setPosition(48, 90) };
                 if (blacksmithI == 7) { blacksmith.setPosition(45, 90) };
-                if (blacksmithI == 8) { blacksmith.setPosition(37, 95) };
-                if (blacksmithI == 9) { blacksmith.setPosition(32, 100) };
-                if (blacksmithI == 10) { blacksmith.setPosition(37, 105) };
+                if (blacksmithI == 8) { blacksmith.setPosition(40, 95) };
+                if (blacksmithI == 9) { blacksmith.setPosition(40, 100) };
+                if (blacksmithI == 10) { blacksmith.setPosition(40, 105) };
                 if (blacksmithI == 11) { blacksmith.setPosition(42, 100) };
                 if (blacksmithI == 12) { blacksmith.setPosition(45, 95) };
-                if (blacksmithI == 13) { blacksmith.setPosition(50, 90) };
-                if (blacksmithI == 14) { blacksmith.setPosition(50, 85); if (sceneBefore == 1) { smithSound.play(); } };
-                if (blacksmithI == 15) { blacksmith.setPosition(50, 80); blacksmith.setFill("images/blacksmith13.png"); };
-                if (blacksmithI == 16) { blacksmith.setPosition(50, 71); blacksmith.setFill("images/blacksmith1.png") };
-                if (blacksmithI == 17) { blacksmith.setPosition(50, 71); blacksmith.setFill("images/blacksmith2.png") };
-                if (blacksmithI == 18) { blacksmith.setPosition(50, 73); blacksmith.setFill("images/blacksmith1.png") };
-                if (blacksmithI == 19) { blacksmith.setPosition(50, 73); blacksmith.setFill("images/blacksmith2.png"); checkAchieves2(); };
+                if (blacksmithI == 13) { blacksmith.setPosition(48, 90) };
+                if (blacksmithI == 14) { blacksmith.setPosition(48, 85); if (sceneBefore == 1) { smithSound.play(); } };
+                if (blacksmithI == 15) { blacksmith.setPosition(48, 80); blacksmith.setFill("images/blacksmith13.png"); };
+                if (blacksmithI == 16) { blacksmith.setPosition(48, 74); blacksmith.setFill("images/blacksmith1.png") };
+                if (blacksmithI == 17) { blacksmith.setPosition(48, 74); blacksmith.setFill("images/blacksmith2.png") };
+                if (blacksmithI == 18) { blacksmith.setPosition(48, 74); blacksmith.setFill("images/blacksmith1.png") };
+                if (blacksmithI == 19) { blacksmith.setPosition(48, 74); blacksmith.setFill("images/blacksmith2.png"); checkAchieves2(); };
             }
             else {
                 ///set anim needing iron
@@ -3434,7 +3442,7 @@ farming.start = function () {
             }
         }
     var treeUnlockBtn = (new lime.GlossyButton).setColor("#4CFF33").setText("").setPosition(68, 353).setSize(120, 125).setOpacity(0.8);
-    var treeUnlockBtn2 = (new lime.GlossyButton).setColor("#4CFF33").setText("").setPosition(241, 353).setSize(120, 125).setOpacity(0.8);
+    var treeUnlockBtn2 = (new lime.GlossyButton).setColor("#4CFF33").setText("").setPosition(241, 353).setSize(120, 125).setOpacity(0.8).setHidden(true);
 
     //var barnUnlock2 = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#E8FC08").setPosition(65, 105).setSize(180, 80).setFontWeight(600).setText(" 100 ");
     var barnUnlock3 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(136, 69).setSize(38, 35).setFill("images/UI/upBtn.png");
@@ -3466,7 +3474,7 @@ farming.start = function () {
 
     var toolMoverLabel = (new lime.Label).setText("60").setPosition(155, 127).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("ComicSans MS").setFill(imgArray[27]);
     var toolMover = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-22, -50).setSize(50, 50).setFill(imgArray[29]);
-    var barnUnlock = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#E8FC08").setPosition(117, 145).setSize(70, 16).setFontSize(16).setFontWeight(600).setText("Lvl " + player.barnLevel + "/5").setFill(imgArray[28]);
+    var barnUnlock = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#E8FC08").setPosition(117, 48).setSize(70, 16).setFontSize(16).setFontWeight(600).setText("Lvl " + player.barnLevel + "/5").setFill(imgArray[28]);
     e.appendChild(barnUnlock);
     e.appendChild(toolMoverLabel);
     toolMoverLabel.appendChild(toolMover);
@@ -3480,9 +3488,9 @@ farming.start = function () {
 
 
     if (homeTreesLeft == 0 && player.fields < 3) {
-        e.appendChild(treeUnlockBtn);
+        //e.appendChild(treeUnlockBtn);
         //console.log("hometreesleft = " + homeTreesLeft + " and player.fields = " + player.fields);
-        var trees1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(12, 295).setSize(110, 120).setFill("images/" + a.barnyard[13].image); e.appendChild(trees1)
+        var trees1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(4, 287).setSize(133, 133).setFill(imgArray[62] ); e.appendChild(trees1)
         var treeUnlock1 = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(12, 335).setSize(110, 120).setText(""); e.appendChild(treeUnlock1)
 
         var axeHLeft = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(35, 20).setSize(40, 40).setFill(imgArray[61]); trees1.appendChild(axeHLeft);
@@ -3490,7 +3498,7 @@ farming.start = function () {
     }
     if (homeTreesRight == 0 && player.fields < 4) {
         e.appendChild(treeUnlockBtn2);
-        var trees2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(181, 295).setSize(120, 120).setFill("images/" + a.barnyard[14].image); e.appendChild(trees2)
+        var trees2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(172, 287).setSize(132, 133).setFill(imgArray[63] ); e.appendChild(trees2)
         var treeUnlock2 = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(182, 335).setSize(120, 120).setText(""); e.appendChild(treeUnlock2)
         var axeHRight = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(35, 20).setSize(40, 40).setFill(imgArray[61]); trees2.appendChild(axeHRight);
         var trees2Img = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(220, 355).setSize(38, 35).setFill("images/tools250.png"); e.appendChild(trees2Img)
@@ -3766,7 +3774,8 @@ farming.start = function () {
 
         };
     }
-    setTimeout(function () { a.checkTutSeen(); },0);
+
+    lime.scheduleManager.callAfter(function () { a.checkTutSeen(); }, this, 250);
 
     ///Out of Cash modal
     var outOfCash = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(45, 100).setSize(210, 220).setFill(imgArray[33]);
@@ -3800,7 +3809,8 @@ farming.start = function () {
         townSceneActive = 1;
         c.replaceScene(marketScene, lime.transitions.SlideInUp);
         sceneActive = 'Market';
-        setTimeout(function () { validCropsStored(); a.updateStored();}, 0);
+       
+        lime.scheduleManager.callAfter(function () { a.updateStored(); }, this, 250);
         acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
         if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
 
@@ -3986,7 +3996,10 @@ farming.start = function () {
         if (globalModalBlock == 0) {//for sale pasture
             globalModalBlock = 1;
             fsClicked = 1;
-            setTimeout(function () { a.updateMoney }, 0);
+            lime.scheduleManager.callAfter(function () {
+                a.updateMoney()
+
+            }, this, 500);
         
             homeBlock.setHidden(false); confirmSale.setHidden(false);
 
@@ -3999,7 +4012,10 @@ farming.start = function () {
         if (globalModalBlock == 0) {
             fsClicked = 2;
             globalModalBlock = 1;
-            setTimeout(function () { a.updateMoney() }, 0);
+            lime.scheduleManager.callAfter(function () {
+                a.updateMoney()
+             
+            }, this, 500);
             homeBlock.setHidden(false); confirmSale.setHidden(false);
             if (parseInt(player.money) >= 5000) { confirmTextSub.setHidden(true); confirmBtn.setHidden(false); } else { confirmBtn.setHidden(true); };
             confirmText.setText("Fruit Orchard 5000");
@@ -4014,7 +4030,11 @@ farming.start = function () {
             if (fsClicked == 1) {
                 acres[1].owned = 1;
                 player.money = player.money - 2500;
-                setTimeout(function () { a.updateMoney() }, 0);
+               
+                lime.scheduleManager.callAfter(function () {
+                    a.updateMoney()
+                    try { Enhance.logEvent('level_up'); } catch (err) { console.log("logging failed") };
+                }, this, 500);
                 roadLeft.setHidden(false); forSaleP.setHidden(true); confirmSale.setHidden(true);
                 lime.scheduleManager.callAfter(function () {
                     globalModalBlock = 0;
@@ -4027,6 +4047,7 @@ farming.start = function () {
                 roadRight.setHidden(false); forSaleO.setHidden(true); confirmSale.setHidden(true);
                 lime.scheduleManager.callAfter(function () {
                     globalModalBlock = 0;
+                    try { Enhance.logEvent('level_up'); } catch (err) { console.log("logging failed") };
                 }, this, 500);
             }
             localStorage.setItem('GuiGhostFarms_acres', JSON.stringify(acres));
@@ -4047,13 +4068,17 @@ farming.start = function () {
 
     var clearTrees1 = 0;
     ////Home tree unlocks
-    goog.events.listen(treeUnlockBtn, ["mousedown", "touchstart"], function () {            //left field
+    goog.events.listen(trees1Img, ["mousedown", "touchstart"], function () {            //left field
         if (tutSeen == 1 && globalModalBlock == 0 && player.tools >= 50 && clearTrees1 == 0) {
             clearTrees1 = 1;
             lime.scheduleManager.scheduleWithDelay(function () {
 
                 player.tools = player.tools - 50;
-                setTimeout(function () {a.updateTools() }, 0);
+            
+                lime.scheduleManager.callAfter(function () {
+                    a.updateTools();
+
+                }, this, 500);
                 trees1Img.setHidden(true);
                 upgradeCloudTH1.setHidden(false);
                 axeMoverLabelTH1.setHidden(false);
@@ -4093,7 +4118,11 @@ farming.start = function () {
                         axeMoverLabelTH1.setHidden(true); upgradeCloudTH1.setHidden(true); secondsToUpgradeTH1 = 60;
                         player.fields = player.fields + 1;
                         localStorage.setItem('MedFarms_homeTreesLeft', 1);
-                        setTimeout(function () {a.updateTools() }, 0);
+
+                        lime.scheduleManager.callAfter(function () {
+                            a.updateTools();
+                        }, this, 500);
+                        a.updateTools()
                         trees1.setHidden(true); treeUnlock1.setHidden(true); treeUnlockBtn.setHidden(true); axeHLeft.setHidden(true);
                         player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 250;
                         if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 250; }
@@ -4115,13 +4144,16 @@ farming.start = function () {
 
     });
     var clearTrees2 = 0;
-    goog.events.listen(treeUnlockBtn2, ["mousedown", "touchstart"], function () {         //right field
+    goog.events.listen(trees2Img, ["mousedown", "touchstart"], function () {         //right field
         if (tutSeen == 1 && globalModalBlock == 0 && player.tools >= 250 && clearTrees2 == 0) {
             clearTrees2 = 1;
             lime.scheduleManager.scheduleWithDelay(function () {
 
                 player.tools = player.tools - 250;
-                setTimeout(function () {a.updateTools() }, 0);
+              
+                lime.scheduleManager.callAfter(function () {
+                    a.updateTools();
+                }, this, 500);
                 trees2Img.setHidden(true);
                 upgradeCloudTH2.setHidden(false);
                 axeMoverLabelTH2.setHidden(false);
@@ -4163,7 +4195,10 @@ farming.start = function () {
                         axeMoverLabelTH2.setHidden(true); upgradeCloudTH2.setHidden(true); secondsToUpgradeTH2 = 60;
                         player.fields = player.fields + 1;
                         localStorage.setItem('MedFarms_homeTreesRight', 1);
-                        setTimeout(function () {a.updateTools() }, 0);
+                   
+                        lime.scheduleManager.callAfter(function () {
+                            a.updateTools();
+                        }, this, 500);
                         trees2.setHidden(true); treeUnlock2.setHidden(true); treeUnlockBtn2.setHidden(true); axeHRight.setHidden(true);
                         player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 250;
 
@@ -4263,12 +4298,16 @@ farming.start = function () {
                 barnUnlock3.setHidden(true);
                 barnUpRunningHome = 1;
                 player.tools = player.tools - barnUpgradeCostTools;
-                setTimeout(function () {a.updateTools() }, 0);
+                
+             
 
                 player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - parseInt(barnUpgradeCostWood);
                 if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
                 localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-                setTimeout(function () { a.updateStored() }, 0);
+               
+                lime.scheduleManager.callAfter(function () {
+                    a.updateTools(); a.updateStored();
+                }, this, 500);
                 //show upgrade anim and timer
                 upgradeCloud.setHidden(false);
                 scaffoldH.setHidden(false);
@@ -4305,8 +4344,11 @@ farming.start = function () {
                         barnUnlock3.setHidden(true);            //barnUnlockBtn.setHidden(true);
                         player.barnLevel = player.barnLevel + 1;
 
-                        setTimeout(function () {a.updateTools() }, 0);
-
+                 
+                        lime.scheduleManager.callAfter(function () {
+                            a.updateTools();
+                        }, this, 300);
+                        a.updateStored()
                         if (player.barnLevel > 5) { player.barnLevel = 5; barnUnlock3.setHidden(true); };
                         //save upgrade in progress complete
                         upgradesInProgress.buildings[0].timeLeft = 0;
@@ -4336,7 +4378,7 @@ farming.start = function () {
                             homeBarnShortLabel.setHidden(true); homeToolCostLabel.setHidden(true);
                         }
                         else if (player.barnLevel == 5) {
-                            barn.setFill(imgArray6[4]).setPosition(81, -14).setSize(146, 170); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest).setPosition(90, 90);
+                            barn.setFill(imgArray6[4]).setPosition(79, -20).setSize(149, 174); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest).setPosition(90, 90);
                             barnUnlock3.setHidden(true); barn.setPosition(86, 4).setSize(134, 155); homeBarnCostToolsImg.setHidden(true);
                             homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true);
                             homeBarnShortLabel.setHidden(true); homeToolCostLabel.setHidden(true);
@@ -4635,6 +4677,10 @@ farming.start = function () {
 
         if (stMatchInstalled == true && stackInstalled == true) {
             dailyStars = 10;
+            stackerStarX.setHidden(true);
+            stackerPlay.setSize(30, 30).setFill(imgArray[35]); removePlayListeners(1);
+            starMatchStarX.setHidden(true);
+            starMatchPlay.setSize(30, 30).setFill(imgArray[35]); removePlayListeners(2);
             try { Enhance.logEvent('achieved_trifecta'); } catch (err) { console.log("logging failed") };
         }
        else if (stackInstalled == true) {
@@ -4891,7 +4937,10 @@ farming.start = function () {
             sceneActive = 'Vineyard';
             b.currentCrop = 12;
       
-            setTimeout(function () { validCropsStored(); checkShortage(); }, 0);
+      
+            lime.scheduleManager.callAfter(function () {
+                checkShortage(); 
+            }, this, 300);
             //a.sceneBefore = 5;
         }
     });
@@ -5386,8 +5435,16 @@ farming.start = function () {
     lime.scheduleManager.scheduleWithDelay(function () {
 
         if (sceneBefore == 2) { cowSound.play(); }
-        if (acres[1].owned == 1) { setTimeout(function () { a.harvestMilk(); },0); };
-        if (vinyardHouseLevel > 1) { setTimeout(function () { a.makeJelly();},0); };
+        if (acres[1].owned == 1) {
+            lime.scheduleManager.callAfter(function () {
+                a.harvestMilk();
+            }, this, 200);
+        };
+        if (vinyardHouseLevel > 1) {
+            lime.scheduleManager.callAfter(function () {
+                a.makeJelly();
+            }, this, 300);
+        }
     }, this, 60000)
 
     /// havestMilk    ////////// PASTURE BARN LEVEL + # OF PASTURES (1 OR 2) = HAY EATEN & MILK RETURNED
@@ -5610,7 +5667,8 @@ farming.start = function () {
         outOfCashV.setHidden(true); marketBtn1V.setHidden(true); buyStarCashV.setHidden(true);
         outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
         pastureBlock.setHidden(true); homeBlock.setHidden(true); orchardBlock.setHidden(true); vinyardBlock.setHidden(true); lsBlock.setHidden(true);
-        setTimeout(function () { a.updateStored();},0);
+        //setTimeout(function () { a.updateStored(); }, 0);
+        lime.scheduleManager.callAfter(function () { a.updateStored(); }, this, 200);
         globalModalBlock = 0;
         townSceneActive = 1;
      
@@ -5689,6 +5747,7 @@ farming.start = function () {
     
         acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
         if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
+        try { Enhance.logEvent('level_up'); } catch (err) { console.log("logging failed") };
 
     });
     goog.events.listen(cancelBtnV, ["mousedown", "touchstart"], function () { confirmSaleV.setHidden(true); pastureBlock.setHidden(true); globalModalBlock = 0; });     //forsale cancel
@@ -5855,7 +5914,8 @@ farming.start = function () {
       
             c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
             sceneActive = 'Vineyard';
-            setTimeout(function () { validCropsStored(); checkShortage();}, 0);
+        
+            lime.scheduleManager.callAfter(function () { a.updateStored(); checkShortage();}, this, 200);
            
             waterfallSound.stop();
             oldCrop = b.currentCrop; b.currentCrop = 12;
@@ -5874,8 +5934,9 @@ farming.start = function () {
             waterfallSound.stop();
             chickenSound.play();
             pig1Sound.play();
-            lime.scheduleManager.callAfter(function () { pig2Sound.play(); }, this, 5000);
-            setTimeout(function () { validCropsStored(); checkShortage(); }, 0);
+            lime.scheduleManager.callAfter(function () { pig2Sound.play(); checkShortage(); }, this, 2500);
+          
+           
             globalModalBlock = 0;
         }
     });
@@ -5897,7 +5958,9 @@ farming.start = function () {
             oldCrop = localStorage.getItem("MedFarms_selectedHomeCrop");
             b.currentCrop = 6;
             sceneBefore = 2; cowSound.play();
-            setTimeout(function () { checkShortage(); validCropsStored();}, 0);
+           
+            lime.scheduleManager.callAfter(function () {  checkShortage(); }, this, 100);
+
         }
     });
     ////from pasture to home
@@ -5909,7 +5972,7 @@ farming.start = function () {
     
             b.currentCrop = homeCrop;
             c.replaceScene(d, lime.transitions.SlideInRight);
-            setTimeout(function () { validCropsStored();}, 0);
+            //setTimeout(function () { validCropsStored();}, 0);
             sceneActive = 'Home';
             //b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
             if (b.currentCrop > 5 || isNaN(b.currentCrop) || b.currentCrop < 0) {
@@ -6068,7 +6131,8 @@ farming.start = function () {
 
         goog.events.listen(upgradePastureBarnBtn, ["mousedown", "touchstart"], function (e) {
             upgradeBarnConfirmP.setHidden(true);
-            setTimeout(function () { pastureBarnUpgrade1(barnUpgradeCostToolsP, barnUpgradeCostWoodP); },0);
+          
+            lime.scheduleManager.callAfter(function () { pastureBarnUpgrade1(barnUpgradeCostToolsP, barnUpgradeCostWoodP); }, this, 100);
             e.event.stopPropagation();
         });  ///initiate pasture barn upgrade
 
@@ -6093,7 +6157,8 @@ farming.start = function () {
                 scaffoldP.setHidden(false);
                 toolMoverLabelP.setText(secondsToUpgradeP);
                 toolMoverLabelP.setHidden(false);
-                setTimeout(function () { a.updateStored(); a.updateTools(); }, 0);
+                lime.scheduleManager.callAfter(function () { a.updateStored(); a.updateTools(); },this, 100);
+
                 //lime.scheduleManager.scheduleWithDelay(function () {
                 //    currentRotateP = currentRotateP + 10;
                 //    if (currentRotateP > 35) { currentRotateP = -10; };
@@ -6575,7 +6640,7 @@ farming.start = function () {
     goog.events.listen(ciderPlaceBubble, ["mousedown", "touchstart"], function () {
         player.cropsStored[18].stored = parseInt(player.cropsStored[18].stored) + parseInt(ciderWaiting);
         gLabel18.setText(player.cropsStored[18].stored);
-        setTimeout(function () { a.updateStored();},0);
+        lime.scheduleManager.callAfter(function () { a.updateStored();},this, 100);
         ciderWaiting = 0;
         ciderPlaceBubble.setHidden(true);
     });
@@ -7037,7 +7102,8 @@ farming.start = function () {
                 b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
                 w.setText("Plant " + a.crops[b.currentCrop].name); z.setFill("images/" + a.crops[b.currentCrop].harvest);
             };
-            setTimeout(function () { closeAcresNav(); }, 0);
+            lime.scheduleManager.callAfter(function () { closeAcresNav(); },this, 100);
+
            
 
             a.sceneBefore = 1;
@@ -7054,7 +7120,9 @@ farming.start = function () {
             a.sceneBefore = 2;
             waterfallSound.stop();
             closeAcresNav();
-            cowSound.play(); setTimeout(function () { checkShortage();}, 0);
+            cowSound.play();
+            lime.scheduleManager.callAfter(function () { checkShortage(); }, this, 100);
+      
             oldCrop = b.currentCrop; b.currentCrop = 6;
            
             c.replaceScene(pastureScene, lime.transitions.SlideInLeft);
@@ -7077,7 +7145,7 @@ farming.start = function () {
             sceneActive = 'Vineyard';
             waterfallSound.stop();
             oldCrop = b.currentCrop; b.currentCrop = 12;
-            setTimeout(function () { checkShortage();}, 0);
+            lime.scheduleManager.callAfter(function () { checkShortage(); }, this, 100);
             //a.sceneBefore = 5;
         }
     });
@@ -7088,7 +7156,7 @@ farming.start = function () {
             oldCrop = b.currentCrop; b.currentCrop = 12;
      
             c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
-            setTimeout(function () {  checkShortage(); }, 0);
+            lime.scheduleManager.callAfter(function () { checkShortage(); }, this, 100);
             sceneActive = 'LS';
             waterfallSound.stop();
             chickenSound.play();
@@ -7383,6 +7451,7 @@ farming.start = function () {
    
         acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
         if (acresOwned3 >= 4) { gideon.setHidden(false); }
+            try { Enhance.logEvent('level_up'); } catch (err) { console.log("logging failed") };
     });
 
     goog.events.listen(cancelBtnLS, ["mousedown", "touchstart"], function () { confirmSaleLS.setHidden(true); orchardBlock.setHidden(true); globalModalBlock = 0; });     //for sale cancel
@@ -7439,7 +7508,8 @@ farming.start = function () {
             pig1Sound.play();
             lime.scheduleManager.callAfter(function () { pig2Sound.play(); }, this, 5000);
 
-            setTimeout(function () { checkShortage(); },0);
+
+            lime.scheduleManager.callAfter(function () { checkShortage(); }, this, 100);
         }
     });
 
@@ -7613,6 +7683,7 @@ farming.start = function () {
     goog.events.listen(aboutBtn, ["mousedown", "touchstart"], function (e) {
      
         c.replaceScene(aboutScene, lime.transitions.SlideInUp);
+        lime.scheduleManager.callAfter(function () { openCodes(); getLocalStorage(); }, this, 300);
 
     });
 
@@ -7755,14 +7826,14 @@ farming.start = function () {
         }
         if (a.sceneBefore == 4) {
             c.replaceScene(vinyardScene, lime.transitions.SlideInDown);
-            setTimeout(function () { checkShortage();}, 0);
+            lime.scheduleManager.callAfter(function () { checkShortage(); }, this, 100);
             sceneActive = 'Vineyard';
         }
         if (a.sceneBefore == 5) {
             c.replaceScene(liveStockScene, lime.transitions.SlideInDown); chickenSound.play();
             sceneActive = 'LS';
             pig1Sound.play();
-            checkShortage();
+            lime.scheduleManager.callAfter(function () { checkShortage(); }, this, 100);
             lime.scheduleManager.callAfter(function () { pig2Sound.play(); }, this, 1000);
             lime.scheduleManager.callAfter(function () { pig3Sound.play(); }, this, 2000);
         }
@@ -7817,7 +7888,8 @@ farming.start = function () {
 
             player.tools += 500; localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
             starCash = starCash - 10;
-            setTimeout(function () { a.updateTools();}, 0);
+            lime.scheduleManager.callAfter(function () { a.updateTools(); }, this, 100);
+             
             localStorage.setItem('starCash', starCash);
             document.getElementById("starCashOuterLabel").innerHTML = starCash;
             sucessText.innerHTML = '+ 500 Tools';
@@ -8538,7 +8610,8 @@ farming.start = function () {
             blacksmithBubble.setHidden(true);
             townRep = townRep + 1;
           
-            setTimeout(function () { a.updateStored(); checkTownRep();}, 0);
+         
+            lime.scheduleManager.callAfter(function () { a.updateStored(); checkTownRep();  }, this, 100);
 
         }
     });
@@ -8556,7 +8629,8 @@ farming.start = function () {
             blacksmithBubble.setHidden(true);
             townRep = townRep + 1;
          
-            setTimeout(function () { a.updateStored(); checkTownRep(); }, 0);
+     
+            lime.scheduleManager.callAfter(function () { a.updateStored(); checkTownRep(); }, this, 100);
 
         }
     });
@@ -8591,7 +8665,7 @@ farming.start = function () {
             gLabel16.setText(player.cropsStored[16].stored)
             townRep = townRep + 1;
         
-            setTimeout(function () { a.updateStored(); checkTownRep();}, 0);
+            lime.scheduleManager.callAfter(function () { a.updateStored(); checkTownRep(); }, this, 100);
             animateBuyItemNormal(1);
         }
         e.event.stopPropagation();
@@ -8611,7 +8685,7 @@ farming.start = function () {
             gLabel16.setText(player.cropsStored[16].stored)
             townRep = townRep + 1;
            
-            setTimeout(function () { a.updateStored(); checkTownRep(); }, 0);
+            lime.scheduleManager.callAfter(function () { a.updateStored(); checkTownRep(); }, this, 100);
             animateBuyItemNormal(1);
         }
         e.event.stopPropagation();
@@ -8653,7 +8727,7 @@ farming.start = function () {
             shovelImg.setFill(imgArrayStore[2].src);
             townRep = townRep + 1;
          
-            setTimeout(function () { a.updateStored(); a.updateMoney; checkTownRep();}, 0);
+            lime.scheduleManager.callAfter(function () { a.updateMoney; a.updateStored(); checkTownRep(); }, this, 100);
             buyGeneralItem2.setHidden(true);
             localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
             repositionStoreItems();
@@ -8682,7 +8756,7 @@ farming.start = function () {
             shovelImg.setFill(imgArrayStore[2].src);
             townRep = townRep + 1;
          
-            setTimeout(function () { a.updateStored(); checkTownRep(); }, 0);
+            lime.scheduleManager.callAfter(function () { a.updateStored(); checkTownRep(); }, this, 100);
             buyGeneralItem2.setHidden(true);
             localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
             repositionStoreItems();
@@ -8741,7 +8815,8 @@ farming.start = function () {
             townRep = townRep + 1;
 
          
-            setTimeout(function () { a.updateStored(); a.updateMoney; checkTownRep(); }, 0);
+          
+            lime.scheduleManager.callAfter(function () { a.updateMoney; a.updateStored(); checkTownRep(); }, this, 100);
             buyGeneralItem3.setHidden(true);
             localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
             repositionStoreItems();
@@ -8770,7 +8845,7 @@ farming.start = function () {
             townRep = townRep + 1;
 
        
-            setTimeout(function () { a.updateStored(); checkTownRep(); }, 0);
+            lime.scheduleManager.callAfter(function () {  a.updateStored(); checkTownRep(); }, this, 100);
             buyGeneralItem2.setHidden(true);
             localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
             repositionStoreItems();
@@ -8830,7 +8905,7 @@ farming.start = function () {
             townRep = townRep + 1;
             storeStars.setText(starCash);
      
-            setTimeout(function () { a.updateStored(); checkTownRep(); a.updateMoney(); }, 0);
+            lime.scheduleManager.callAfter(function () { a.updateMoney; a.updateStored(); checkTownRep(); }, this, 100);
             buyGeneralItem4.setHidden(true);
             buyGeneralItem6.setHidden(false);
             localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
@@ -8860,7 +8935,7 @@ farming.start = function () {
             townRep = townRep + 1;
             storeStars.setText(starCash);
            
-            setTimeout(function () { a.updateStored(); checkTownRep(); }, 0);
+            lime.scheduleManager.callAfter(function () {  a.updateStored(); checkTownRep(); }, this, 100);
             buyGeneralItem4.setHidden(true);;
             localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
             repositionStoreItems();
@@ -8982,7 +9057,7 @@ farming.start = function () {
             townRep = townRep + 1;
             checkItemsOwned()
  
-            setTimeout(function () { a.updateStored(); checkTownRep(); a.updateMoney(); }, 0);
+            lime.scheduleManager.callAfter(function () { a.updateMoney; a.updateStored(); checkTownRep(); }, this, 100);
             localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
             animateBuyItemNormal(6);
             storeStars.setText(starCash);
@@ -9008,7 +9083,7 @@ farming.start = function () {
             townRep = townRep + 1;
             checkItemsOwned();
         
-            setTimeout(function () { a.updateStored(); checkTownRep(); a.updateMoney();}, 0);
+            lime.scheduleManager.callAfter(function () { a.updateMoney; a.updateStored(); checkTownRep(); }, this, 100);
             localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
             animateBuyItemNormal(6);
             storeStars.setText(starCash);
@@ -9660,7 +9735,7 @@ farming.start = function () {
             player.cropsStored[18].stored = 0;
             itemCountText.setText("0");
             ciderSellBtn.setHidden(true);
-            setTimeout(function () { a.updateStored(); checkTownRep(); a.updateMoney(); }, 0);
+            lime.scheduleManager.callAfter(function () { a.updateMoney; a.updateStored(); checkTownRep(); }, this, 100);
           
             saraQuest.setHidden(true); saraQuestBtn.setHidden(true);
 
@@ -9788,7 +9863,8 @@ farming.start = function () {
                     gideonPanelTokenImg.setHidden(true);
                     gideonGiveBtn.setHidden(true);
                     gideonNext.setHidden(true);
-                    setTimeout(function () { setHeraldWant(heraldOrderTop); }, 0) 
+                  
+                    lime.scheduleManager.callAfter(function () { setHeraldWant(heraldOrderTop);}, this, 50);
                 }
 
             } else {     ////first time seeing Gideon
@@ -9809,8 +9885,7 @@ farming.start = function () {
                     gideonPanelItemImg2.setHidden(false); countTextGideon2.setHidden(false);
                     gideonPanelTokenImg.setHidden(true);
                     gideonGiveBtn.setHidden(true);
-
-                    setTimeout(function () { setHeraldWant(heraldOrderTop) }, 0);
+                    lime.scheduleManager.callAfter(function () { setHeraldWant(heraldOrderTop); }, this, 50);
                     e.event.stopPropagation();
                     e.swallow(['mouseup', 'touchend', 'touchcancel'], function (e) { });
                     goog.events.unlisten(gideonNext, ["mousedown", "touchstart"], function (e) { })
@@ -9848,7 +9923,8 @@ farming.start = function () {
             heraldOrder2 = questParamsHerald.crops[adjustedWant].crop2;
             player.cropsStored[heraldOrder1].stored = Math.abs(parseInt(parseInt(player.cropsStored[heraldOrder1].stored) - crop1amount));
             player.cropsStored[heraldOrder2].stored = Math.abs(parseInt(parseInt(player.cropsStored[heraldOrder2].stored) - crop2amount));
-            setTimeout(function () { a.updateStored() }, 0);
+          
+            lime.scheduleManager.callAfter(function () { a.updateStored(); }, this, 50);
       
       
                 gideonPanelItemImg.setHidden(true); countTextGideon.setHidden(true);
@@ -10192,7 +10268,8 @@ farming.start = function () {
                             questParams.felicia[2].completed = 1, questParams.felicia[0].highestCompleted = 2;
                             collectItems.digUpSells[3].owned = 0; collectItems.digUpSells[3].onlyOnce = 1;
                             townRep = townRep + 1;
-                            setTimeout(function () { checkTownRep(); }, 0);
+                            
+                            lime.scheduleManager.callAfter(function () { checkTownRep();}, this, 50);
                             giveBtn.setHidden(true);
                             questPanelCloseBtn.setPosition(140, 235);
                             questPanel.removeChild(giveBtn);
@@ -10384,7 +10461,7 @@ farming.start = function () {
             //console.log("sellItem1 touched- player.money before = " + player.money);
             player.money = parseInt(player.money) + sellItem1.value;
             townRep = townRep + 1;
-            setTimeout(function () { checkTownRep() }, 0);
+            lime.scheduleManager.callAfter(function () { checkTownRep(); }, this, 50);
 
             sellItemSuccessText.setText("+ " + sellItem1.value);
             animSellSuccessText();
@@ -10419,7 +10496,7 @@ farming.start = function () {
             //console.log("sellItem2 touched- player.money before = " + player.money);
             player.money = parseInt(player.money) + sellItem2.value;
             townRep = townRep + 1;
-            setTimeout(function () { checkTownRep(); }, 0);
+            lime.scheduleManager.callAfter(function () { checkTownRep(); }, this, 50);
 
             sellItemSuccessText.setText("+ " + sellItem2.value);
             animSellSuccessText();
@@ -10454,7 +10531,7 @@ farming.start = function () {
             //console.log("sellItem3 touched- player.money before = " + player.money);
             player.money = parseInt(player.money) + sellItem3.value;
             townRep = townRep + 1;
-            setTimeout(function () { checkTownRep(); }, 0);
+    
 
             sellItemSuccessText.setText("+ " + sellItem3.value);
             animSellSuccessText();
@@ -10469,8 +10546,8 @@ farming.start = function () {
             sellItem3.value = 0;
             sellItem3.collectNumber = -1;
             sellItem3Img.setFill(imgArray[17].src)
-
-           a.updateMoney();
+            lime.scheduleManager.callAfter(function () { checkTownRep(); a.updateMoney();}, this, 100);
+          
             //checkItemsOwned();
             //CheckQuestInvItems();
         }
@@ -10486,8 +10563,7 @@ farming.start = function () {
             //console.log("sellItem4 touched- player.money before = " + player.money);
             player.money = parseInt(player.money) + sellItem4.value;
             townRep = townRep + 1;
-            setTimeout(function () { checkTownRep(); }, 0);
-
+        
             sellItemSuccessText.setText("+ " + sellItem4.value);
             animSellSuccessText();
 
@@ -10502,7 +10578,7 @@ farming.start = function () {
             sellItem4.collectNumber = -1;
             sellItem4Img.setFill(imgArray[17].src)
 
-            a.updateMoney();
+            lime.scheduleManager.callAfter(function () { checkTownRep(); a.updateMoney(); }, this, 100);
             //checkItemsOwned();
             //CheckQuestInvItems();
         }
@@ -10518,7 +10594,7 @@ farming.start = function () {
             //console.log("sellItem5 touched- player.money before = " + player.money);
             player.money = parseInt(player.money) + sellItem5.value;
             townRep = townRep + 1;
-            setTimeout(function () { checkTownRep(); }, 0);
+   
 
             sellItemSuccessText.setText("+ " + sellItem5.value);
             animSellSuccessText();
@@ -10533,7 +10609,7 @@ farming.start = function () {
             sellItem5.value = 0;
             sellItem5.collectNumber = -1;
             sellItem5Img.setFill(imgArray[17].src)
-             a.updateMoney();
+            lime.scheduleManager.callAfter(function () { checkTownRep(); a.updateMoney(); }, this, 100);
             //checkItemsOwned();
             //CheckQuestInvItems();
         }
@@ -10549,7 +10625,7 @@ farming.start = function () {
             //console.log("sellItem6 touched- player.money before = " + player.money);
             player.money = parseInt(player.money) + sellItem6.value;
             townRep = townRep + 1;
-            setTimeout(function () { checkTownRep() }, 0);
+         
 
             sellItemSuccessText.setText("+ " + sellItem6.value);
             animSellSuccessText();
@@ -10565,7 +10641,7 @@ farming.start = function () {
             sellItem6.collectNumber = -1;
             sellItem6Img.setFill(imgArray[17].src)
 
-            a.updateMoney();
+            lime.scheduleManager.callAfter(function () { checkTownRep(); a.updateMoney(); }, this, 100);
             //checkItemsOwned();
             //CheckQuestInvItems();
         }
@@ -12630,7 +12706,8 @@ farming.start = function () {
                 globalModalBlock = 0;
                 vinFarmerQuest.setHidden(true);
                 vinFarmerQuestBtn.setHidden(true);
-                setTimeout(function () { vinyardBarnUpgrade(barnUpgradeCostToolsV, barnUpgradeCostWoodV) },0);
+             
+                lime.scheduleManager.callAfter(function () { vinyardBarnUpgrade(barnUpgradeCostToolsV, barnUpgradeCostWoodV) }, this, 50);
             });
 
         });
@@ -12963,10 +13040,11 @@ farming.start = function () {
    
         c.replaceScene(marketScene, lime.transitions.SlideInUp);
         sceneActive = 'Market';
-        setTimeout(function () { validCropsStored(); a.updateStored(); }, 0);
+        
+      
         acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
         if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
-        lime.scheduleManager.callAfter(function () { CheckQuestInvItems(); }, this, 1500);
+        lime.scheduleManager.callAfter(function () { CheckQuestInvItems(); validCropsStored(); a.updateStored(); }, this, 1500);
         globalModalBlock = 0;
     });
     goog.events.listen(cancelBtnCashV, ["mousedown", "touchstart"], function () {            //cancel Button
@@ -13083,7 +13161,8 @@ farming.start = function () {
           
             c.replaceScene(pastureScene, lime.transitions.SlideInRight);
             sceneActive = 'Pasture';
-            setTimeout(function () { checkShortage();  }, 0);
+       
+            lime.scheduleManager.callAfter(function () { checkShortage();  }, this, 500);
             vinyardBlock.setHidden(true);
             globalModalBlock = 0;
             e.event.stopPropagation();
@@ -14714,7 +14793,9 @@ farming.start = function () {
         if (a.achievements[15] == false) { achieve15Check.setHidden(true); }
         if (a.achievements[16] == false) { achieve16Check.setHidden(true); }
     }
-    setTimeout(function () { checkAchieves(); }, 0);
+
+    lime.scheduleManager.callAfter(function () { checkAchieves();  }, this, 200)
+
     
     goog.events.listen(backBtnAchieve, ["mousedown", "touchstart"], function (e) {
         //setTimeout(function () { validCropsStored(); }, 0);
@@ -15048,6 +15129,7 @@ farming.start = function () {
                         //prompt();
                     }, false);
                     submitReward.addEventListener("touchend", function (event) {
+
                         enteredCode = codeField.value.toString();
                         console.log("code = " + enteredCode);
                         checkRewardCode(enteredCode);
@@ -15116,7 +15198,8 @@ farming.start = function () {
                             codeField.value = starValTxt;
                             usedCodesArray.push(code)
                             localStorage.setItem("usedCodes", JSON.stringify(usedCodesArray))
-                            setTimeout(function () { codeField.value = ""; codeField.style.color = 'Black'; }, 1000)
+                    
+                            lime.scheduleManager.callAfter(function () { codeField.value = ""; codeField.style.color = 'Black'; }, this, 1000);
                         }
                         else { codeField.value = "Code already used"; codeField.style.color = 'RED'; lime.scheduleManager.callAfter(function () { codeField.value = " "; codeField.style.color = 'Black'; }, this, 1000) }
                     }
@@ -16150,7 +16233,7 @@ farming.start = function () {
 };
 
 //code functions
-setTimeout(function () { openCodes(); }, 0);
+
 
 
 function openCodes() {
@@ -16171,7 +16254,7 @@ function getLocalStorage() {
     return JSON.stringify(localStorage)
   
 }
-getLocalStorage();
+
 function writeLocalStorage(data) {
     Object.keys(data).forEach(function (key) { localStorage.setItem(key, data[key]) })
 }
