@@ -28,7 +28,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.0'
-        implementation 'com.appodeal.ads:sdk:2.6.0.0'
+     
         implementation 'androidx.appcompat:appcompat:1.0.2'
         // For control over item selection of both touch and mouse driven selection
         implementation 'androidx.recyclerview:1.1.0-alpha03'
@@ -40,9 +40,7 @@ allprojects {
     repositories {
         mavenCentral()
         jcenter()
-        maven {
-            url "https://artifactory.appodeal.com/appodeal"
-        }
+     
     }
 }
 
@@ -105,7 +103,7 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
-apply from: "../cordova-appodeal-prime/wGuiGhostFarms_9861566-dependency_fix.gradle"
+
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras1 = file('build-extras.gradle').exists()
@@ -311,9 +309,9 @@ dependencies {
     implementation "com.android.support:multidex:1.0.3"
     implementation "com.android.support:support-v4:27+"
     implementation "com.android.support:recyclerview-v7:27+"
-    implementation "com.appodeal.ads:maxdex:2.5.7"
-    implementation "com.appodeal.optional:flurry-ads:11.6.0"
-    implementation "com.appodeal.optional:flurry-analytics:11.6.0"
+ 
+ 
+
     // SUB-PROJECT DEPENDENCIES END
 }
 

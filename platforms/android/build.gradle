@@ -37,9 +37,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven {
-            url "https://artifactory.appodeal.com/appodeal"
-        }
+
     }
 
     //This replaces project.properties w.r.t. build settings
