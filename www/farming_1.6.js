@@ -819,7 +819,7 @@ imgArray[102] = new Image(); imgArray[102].src = "images/Pasture/hayPile.png"
 imgArray[103] = new Image(); imgArray[103].src = "images/UI/swipe-right.png"
 imgArray[104] = new Image(); imgArray[104].src = "images/UI/nextButton.png"
 imgArray[105] = new Image(); imgArray[105].src = "images/UI/helpBtn1.png"
-
+imgArray[106] = new Image(); imgArray[106].src = "images/UI/needFlour.png"
 
 
 
@@ -938,7 +938,7 @@ imgArray5[2] = new Image(); imgArray5[2].src = 'images/UI/tut3.png';
 imgArray5[3] = new Image(); imgArray5[3].src = 'images/UI/tut4.png';
 imgArray5[4] = new Image(); imgArray5[4].src = 'images/UI/tut5.png';
 imgArray5[5] = new Image(); imgArray5[5].src = 'images/UI/tut6.png';
-imgArray5[6] = new Image(); imgArray5[6].src = 'images/UI/tut7.png';
+imgArray5[6] = new Image(); imgArray5[6].src = 'images/UI/tut7-2.png';
 imgArray5[7] = new Image(); imgArray5[7].src = 'images/UI/tut8.png';
 imgArray5[8] = new Image(); imgArray5[8].src = 'images/UI/tut9.png';
 imgArray5[9] = new Image(); imgArray5[9].src = 'images/UI/tut10.png';
@@ -2594,20 +2594,20 @@ farming.start = function () {
     //console.log("bCrop is " + b.currentCrop);
     //if (b.currentCrop > 5 || b.currentCrop == 'null') { b.currentCrop = 0; }
     a.crops = [
-        { index: 0,  name: "Tomatoes  ", cost: 4, revenue: 8, time_to_ripe: 30, time_to_death: 500, image: "tomato.png", harvest: "tomato2.png", grow1: "tomatoGrow1.png", grow2: "tomatoGrow2.png", grow3: "tomatoGrow3.png", stored: 0, withered: "tomatoWithered.png" },
-        { index: 1, name: "Carrots    ", cost: 6, revenue: 12, time_to_ripe: 45, time_to_death: 500, image: "carrots.png", harvest: "carrots2.png", grow1: "carrotGrow1.png", grow2: "carrotGrow2.png", grow3: "carrotGrow3.png", stored: 0, withered: "carrotsWithered.png" },
-        { index: 2, name: "Broccoli   ", cost: 8, revenue: 16, time_to_ripe: 55, time_to_death: 500, image: "brocReady.png", harvest: "brocIcon2.png", grow1: "brocGrow1.png", grow2: "brocGrow2.png", grow3: "brocGrow3.png", stored: 0, withered: "brocWither.png" },
-        { index: 3, name: "Eggplant ", cost: 11, revenue: 22, time_to_ripe: 70, time_to_death: 600, image: "eggplant.png", harvest: "eggplant2.png", grow1: "eggplantGrow1.png", grow2: "eggplantGrow2.png", grow3: "eggplantGrow3.png", stored: 0, withered: "eggplantWithered.png" },
-        { index: 4, name: "Peppers  ", cost: 13, revenue: 24, time_to_ripe: 90, time_to_death: 600, image: "peppers.png", harvest: "peppers2.png", grow1: "pepperGrow1.png", grow2: "pepperGrow2.png", grow3: "pepperGrow3.png", stored: 0, withered: "peppersWithered.png" },
-        { index: 5, name: "Corn  ", cost: 15, revenue: 28, time_to_ripe: 110, time_to_death: 600, image: "corn.png", harvest: "corn2.png", grow1: "cornGrow1.png", grow2: "cornGrow2.png", grow3: "cornGrow3.png", stored: 0, withered: "cornWithered.png" },
-        { index: 6, name: "Hay  ", cost: 5, revenue: 10, time_to_ripe: 40, time_to_death: 650, image: "hay.png", harvest: "hayPile.png", grow1: "hayGrow1.png", grow2: "hayGrow2.png", grow3: "hayGrow3.png", stored: 0, withered: "hayWithered.png" },
-        { index: 7, name: "Milk  ", cost: 12, revenue: 22, time_to_ripe: 65, time_to_death: 22280, image: "Pasture/bucket.png", harvest: "Pasture/bucket.png", grow1: "Pasture/bucket.png", grow2: "Pasture/bucket.png", grow3: "Pasture/bucket.png", stored: 0, withered: "Pasture/bucket.png" },
-        { index: 8, name: "Apple", cost: 10, revenue: 25, time_to_ripe: 100, time_to_death: 650, image: "Orchard/ready_Apples.png", harvest: "apple.png", grow1: "Orchard/growing2_trees.png", grow2: "Orchard/growing3_trees.png", grow3: "Orchard/growing3_trees.png", stored: 0, withered: "Orchard/wither_treesApple.png" },
-        { index: 9, name: "Pear", cost: 15, revenue: 30, time_to_ripe: 110, time_to_death: 650, image: "Orchard/ready_treesPear.png", harvest: "pear.png", grow1: "Orchard/growing22_trees.png", grow2: "Orchard/growing4_trees.png", grow3: "Orchard/growing4_trees.png", stored: 0, withered: "Orchard/wither_treesPear.png" },
-        { index: 10, name: "Pork", cost: 20, revenue: 35, time_to_ripe: 70, time_to_death: 14000, image: "livestockPens/hams.png", harvest: "livestockPens/hams.png", grow1: "livestockPens/hams.png", grow2: "livestockPens/hams.png", grow3: "livestockPens/hams.png", stored: 0, withered: "tomatoWithered.png" },
-        { index: 11, name: "Eggs", cost: 5, revenue: 15, time_to_ripe: 70, time_to_death: 14000, image: "livestockPens/eggs.png", harvest: "livestockPens/eggs.png", grow1: "livestockPens/eggs.png", grow2: "livestockPens/eggs.png", grow3: "livestockPens/eggs.png", stored: 0, withered: "tomatoWithered.png" },
+        { index: 0,  name: "Tomatoes  ", cost: 4, revenue: 7, time_to_ripe: 30, time_to_death: 500, image: "tomato.png", harvest: "tomato2.png", grow1: "tomatoGrow1.png", grow2: "tomatoGrow2.png", grow3: "tomatoGrow3.png", stored: 0, withered: "tomatoWithered.png" },
+        { index: 1, name: "Carrots    ", cost: 6, revenue: 10, time_to_ripe: 45, time_to_death: 500, image: "carrots.png", harvest: "carrots2.png", grow1: "carrotGrow1.png", grow2: "carrotGrow2.png", grow3: "carrotGrow3.png", stored: 0, withered: "carrotsWithered.png" },
+        { index: 2, name: "Broccoli   ", cost: 8, revenue: 12, time_to_ripe: 55, time_to_death: 500, image: "brocReady.png", harvest: "brocIcon2.png", grow1: "brocGrow1.png", grow2: "brocGrow2.png", grow3: "brocGrow3.png", stored: 0, withered: "brocWither.png" },
+        { index: 3, name: "Eggplant ", cost: 11, revenue: 16, time_to_ripe: 70, time_to_death: 600, image: "eggplant.png", harvest: "eggplant2.png", grow1: "eggplantGrow1.png", grow2: "eggplantGrow2.png", grow3: "eggplantGrow3.png", stored: 0, withered: "eggplantWithered.png" },
+        { index: 4, name: "Peppers  ", cost: 13, revenue: 20, time_to_ripe: 90, time_to_death: 600, image: "peppers.png", harvest: "peppers2.png", grow1: "pepperGrow1.png", grow2: "pepperGrow2.png", grow3: "pepperGrow3.png", stored: 0, withered: "peppersWithered.png" },
+        { index: 5, name: "Corn  ", cost: 15, revenue: 22, time_to_ripe: 110, time_to_death: 600, image: "corn.png", harvest: "corn2.png", grow1: "cornGrow1.png", grow2: "cornGrow2.png", grow3: "cornGrow3.png", stored: 0, withered: "cornWithered.png" },
+        { index: 6, name: "Hay  ", cost: 4, revenue: 7, time_to_ripe: 40, time_to_death: 650, image: "hay.png", harvest: "hayPile.png", grow1: "hayGrow1.png", grow2: "hayGrow2.png", grow3: "hayGrow3.png", stored: 0, withered: "hayWithered.png" },
+        { index: 7, name: "Milk  ", cost: 12, revenue: 18, time_to_ripe: 65, time_to_death: 22280, image: "Pasture/bucket.png", harvest: "Pasture/bucket.png", grow1: "Pasture/bucket.png", grow2: "Pasture/bucket.png", grow3: "Pasture/bucket.png", stored: 0, withered: "Pasture/bucket.png" },
+        { index: 8, name: "Apple", cost: 10, revenue: 20, time_to_ripe: 100, time_to_death: 650, image: "Orchard/ready_Apples.png", harvest: "apple.png", grow1: "Orchard/growing2_trees.png", grow2: "Orchard/growing3_trees.png", grow3: "Orchard/growing3_trees.png", stored: 0, withered: "Orchard/wither_treesApple.png" },
+        { index: 9, name: "Pear", cost: 15, revenue: 25, time_to_ripe: 110, time_to_death: 650, image: "Orchard/ready_treesPear.png", harvest: "pear.png", grow1: "Orchard/growing22_trees.png", grow2: "Orchard/growing4_trees.png", grow3: "Orchard/growing4_trees.png", stored: 0, withered: "Orchard/wither_treesPear.png" },
+        { index: 10, name: "Pork", cost: 20, revenue: 30, time_to_ripe: 70, time_to_death: 14000, image: "livestockPens/hams.png", harvest: "livestockPens/hams.png", grow1: "livestockPens/hams.png", grow2: "livestockPens/hams.png", grow3: "livestockPens/hams.png", stored: 0, withered: "tomatoWithered.png" },
+        { index: 11, name: "Eggs", cost: 5, revenue: 30, time_to_ripe: 70, time_to_death: 14000, image: "livestockPens/eggs.png", harvest: "livestockPens/eggs.png", grow1: "livestockPens/eggs.png", grow2: "livestockPens/eggs.png", grow3: "livestockPens/eggs.png", stored: 0, withered: "tomatoWithered.png" },
         { index: 12, name: "Grapes", cost: 10, revenue: 18, time_to_ripe: 100, time_to_death: 650, image: "vinyard/grapes_ready.png", harvest: "vinyard/grapes2.png", grow1: "vinyard/grapes_Grow1.png", grow2: "vinyard/grapes_Grow2.png", grow3: "vinyard/grapes_Grow3.png", stored: 0, withered: "vinyard/grapes_withered.png" },
-        { index: 13, name: "Jelly", cost: 30, revenue: 45, time_to_ripe: 75, time_to_death: 14000, image: "vinyard/jelly.png", harvest: "vinyard/jelly.png", grow1: "vinyard/jelly.png", grow2: "vinyard/jelly.png", stored: 0 },
+        { index: 13, name: "Jelly", cost: 30, revenue: 50, time_to_ripe: 75, time_to_death: 14000, image: "vinyard/jelly.png", harvest: "vinyard/jelly.png", grow1: "vinyard/jelly.png", grow2: "vinyard/jelly.png", stored: 0 },
         { index: 14, name: "Wood", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/logs.png", harvest: "items/logs.png", grow1: "items/logs.png", grow2: "items/logs.png", stored: 0 },
         { index: 15, name: "Iron", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/ironBar.png", harvest: "items/ironBar.png", grow1: "items/ironBar.png", grow2: "items/ironBar.png", stored: 0 },
         { index: 16, name: "Jars", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/jars.png", harvest: "items/jars.png", grow1: "items/jars.png", grow2: "items/jars.png", stored: 0 },
@@ -2616,9 +2616,9 @@ farming.start = function () {
         { index: 19, name: "Grape Juice", cost: 0, revenue: 40, time_to_ripe: 75, time_to_death: 14000, image: "items/planks.png", harvest: "items/planks.png", grow1: "items/planks.png", grow2: "items/planks.png", stored: 0 },
         { index: 20, name: "Bottles", cost: 200, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/bottles.png", harvest: "items/bottles.png", grow1: "items/bottles.png", grow2: "items/bottles.png", stored: 0 },
         { index: 21, name: "Planks", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/planks.png", harvest: "items/planks.png", grow1: "items/planks.png", grow2: "items/planks.png", stored: 0 },
-        { index: 22, name: "Wheat", cost: 15, revenue: 30, time_to_ripe: 110, time_to_death: 650, image: "wheat_ready.png", harvest: "wheatIcon.png", grow1: "wheat_grow0.png", grow2: "wheat_grow1.png", grow3: "wheat_grow2.png", stored: 0, withered: "hayWithered.png" },
-        { index: 23, name: "Flour", cost: 0, revenue: 50, time_to_ripe: 100, time_to_death: 10000, image: "flour.png", harvest: "flour.png", grow1: "flour.png", grow2: "flour.png", grow3: "flour.png", stored: 0, withered: "flour.png" },
-        { index: 24, name: "Bread", cost: 0, revenue: 25, time_to_ripe: 25, time_to_death: 10000, image: "bread.png", harvest: "bread.png", grow1: "bread.png", grow2: "bread.png", grow3: "bread.png", stored: 0, withered: "bread.png" },
+        { index: 22, name: "Wheat", cost: 4, revenue: 6, time_to_ripe: 110, time_to_death: 650, image: "wheat_ready.png", harvest: "wheatIcon.png", grow1: "wheat_grow0.png", grow2: "wheat_grow1.png", grow3: "wheat_grow2.png", stored: 0, withered: "hayWithered.png" },
+        { index: 23, name: "Flour", cost: 0, revenue: 24, time_to_ripe: 100, time_to_death: 10000, image: "flour.png", harvest: "flour.png", grow1: "flour.png", grow2: "flour.png", grow3: "flour.png", stored: 0, withered: "flour.png" },
+        { index: 24, name: "Bread", cost: 0, revenue: 20, time_to_ripe: 25, time_to_death: 10000, image: "bread.png", harvest: "bread.png", grow1: "bread.png", grow2: "bread.png", grow3: "bread.png", stored: 0, withered: "bread.png" },
         { index: 25, name: "Mushrooms", cost: 0, revenue: 25, time_to_ripe: 25, time_to_death: 10000, image: "bread.png", harvest: "bread.png", grow1: "bread.png", grow2: "bread.png", grow3: "bread.png", stored: 0, withered: "bread.png" },
 
     ];
@@ -8606,7 +8606,8 @@ farming.start = function () {
     storedIcon = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, 393).setFill("images/" + a.crops[17].harvest).setSize(33, 33), cropsLayer.appendChild(storedIcon);
     storedIcon = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(114, 393).setFill(imgArray4[21]).setSize(33, 33), cropsLayer.appendChild(storedIcon);
     storedIcon = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(220, 393).setFill("images/" + a.crops[22].harvest).setSize(31, 31), cropsLayer.appendChild(storedIcon);
-    storedIcon = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(220, 435).setFill("images/" + a.crops[23].harvest).setSize(33, 33), cropsLayer.appendChild(storedIcon);
+    storedIcon = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(114, 435).setFill("images/" + a.crops[23].harvest).setSize(33, 33), cropsLayer.appendChild(storedIcon);
+    storedIcon = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(220, 435).setFill("images/" + a.crops[24].harvest).setSize(33, 33), cropsLayer.appendChild(storedIcon);
     var gLabel0 = (new lime.Label).setPosition(170, 118).setSize(26, 20).setText(player.cropsStored[0].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel0);
     var gLabel1 = (new lime.Label).setPosition(170, 159).setSize(26, 20).setText(player.cropsStored[1].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel1);
     var gLabel2 = (new lime.Label).setPosition(170, 203).setSize(26, 20).setText(player.cropsStored[2].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel2);
@@ -8631,9 +8632,9 @@ farming.start = function () {
     var gLabel20 = (new lime.Label).setPosition(170, 450).setSize(26, 12).setText("?").setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); /*cropsLayer.appendChild(gLabel20);*/
     var gLabel21 = (new lime.Label).setPosition(272, 450).setSize(26, 12).setText("?").setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); /*cropsLayer.appendChild(gLabel21);*/
     var gLabel22 = (new lime.Label).setPosition(272, 410).setSize(26, 12).setText(player.cropsStored[22].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel22);
-    var gLabel23 = (new lime.Label).setPosition(272, 450).setSize(26, 12).setText(player.cropsStored[23].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel23);
-    var gLabel24 = (new lime.Label).setPosition(67, 450).setSize(26, 12).setText("?").setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel24);
-    var gLabel25 = (new lime.Label).setPosition(170, 450).setSize(26, 12).setText("?").setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel25);
+    var gLabel23 = (new lime.Label).setPosition(170, 450).setSize(26, 12).setText(player.cropsStored[23].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel23);
+    var gLabel24 = (new lime.Label).setPosition(272, 450).setSize(26, 12).setText(player.cropsStored[24].stored).setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel24);
+    var gLabel25 = (new lime.Label).setPosition(67, 450).setSize(26, 12).setText("?").setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel25);
 
     var starCashInvImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(11, 168).setSize(80, 35).setFill(imgArray[25].src);
     cropsLayer.appendChild(starCashInvImg);
@@ -10074,20 +10075,26 @@ farming.start = function () {
             count11.setText(player.cropsStored[11].stored);
             count12.setText(player.cropsStored[12].stored);
             count13.setText(player.cropsStored[13].stored);
-            if (player.cropsStored[0].stored <= 0) { rowBack.setOpacity(0.6); } else {  rowBack.setOpacity(1.0); };
-            if (player.cropsStored[1].stored <= 0) { rowBack2.setOpacity(0.6); } else { rowBack2.setOpacity(1.0); };
-            if (player.cropsStored[2].stored <= 0) { rowBack3.setOpacity(0.6); } else { rowBack3.setOpacity(1.0); };
-            if (player.cropsStored[3].stored <= 0) { rowBack4.setOpacity(0.6); } else { rowBack4.setOpacity(1.0); };
-            if (player.cropsStored[4].stored <= 0) { rowBack5.setOpacity(0.6); } else { rowBack5.setOpacity(1.0); };
-            if (player.cropsStored[5].stored <= 0) { rowBack6.setOpacity(0.6); } else { rowBack6.setOpacity(1.0); };
-            if (player.cropsStored[6].stored <= 0) { rowBack7.setOpacity(0.6); } else { rowBack7.setOpacity(1.0); };
-            if (player.cropsStored[7].stored <= 0) { rowBack8.setOpacity(0.6); } else { rowBack8.setOpacity(1.0); };
-            if (player.cropsStored[8].stored <= 0) { rowBack9.setOpacity(0.6); } else { rowBack9.setOpacity(1.0); };
-            if (player.cropsStored[9].stored <= 0) { rowBack10.setOpacity(0.6); } else { rowBack10.setOpacity(1.0); };
-            if (player.cropsStored[10].stored <= 0) { rowBack11.setOpacity(0.6); } else { rowBack11.setOpacity(1.0); };
-            if (player.cropsStored[11].stored <= 0) { rowBack12.setOpacity(0.6); } else { rowBack12.setOpacity(1.0); };
-            if (player.cropsStored[12].stored <= 0) { rowBack13.setOpacity(0.6); } else { rowBack13.setOpacity(1.0); };
-            if (player.cropsStored[13].stored <= 0) { rowBack14.setOpacity(0.6); } else { rowBack14.setOpacity(1.0); };
+            count22.setText(player.cropsStored[22].stored);
+            count23.setText(player.cropsStored[23].stored);
+            count24.setText(player.cropsStored[24].stored);
+            if (player.cropsStored[0].stored <= 0) { rowBack.setOpacity(0.6); g0.setOpacity(0.6); } else { rowBack.setOpacity(1.0); g0.setOpacity(1.0);};
+            if (player.cropsStored[1].stored <= 0) { rowBack2.setOpacity(0.6); g1.setOpacity(0.6);} else { rowBack2.setOpacity(1.0); g1.setOpacity(1.0);};
+            if (player.cropsStored[2].stored <= 0) { rowBack3.setOpacity(0.6); g3.setOpacity(0.6);} else { rowBack3.setOpacity(1.0); g3.setOpacity(1.0);};
+            if (player.cropsStored[3].stored <= 0) { rowBack4.setOpacity(0.6); g4.setOpacity(0.6); } else { rowBack4.setOpacity(1.0); g4.setOpacity(1.0);};
+            if (player.cropsStored[4].stored <= 0) { rowBack5.setOpacity(0.6); g5.setOpacity(0.6);} else { rowBack5.setOpacity(1.0); g5.setOpacity(1.0);};
+            if (player.cropsStored[5].stored <= 0) { rowBack6.setOpacity(0.6); g6.setOpacity(0.6);} else { rowBack6.setOpacity(1.0); g6.setOpacity(1.0);};
+            if (player.cropsStored[6].stored <= 0) { rowBack7.setOpacity(0.6); g7.setOpacity(0.6);} else { rowBack7.setOpacity(1.0); g7.setOpacity(1.0);};
+            if (player.cropsStored[7].stored <= 0) { rowBack8.setOpacity(0.6); g8.setOpacity(0.6);} else { rowBack8.setOpacity(1.0); g8.setOpacity(1.0);};
+            if (player.cropsStored[8].stored <= 0) { rowBack9.setOpacity(0.6); g9.setOpacity(0.6);} else { rowBack9.setOpacity(1.0); g9.setOpacity(1.0);};
+            if (player.cropsStored[9].stored <= 0) { rowBack10.setOpacity(0.6); g10.setOpacity(0.6);} else { rowBack10.setOpacity(1.0); g10.setOpacity(1.0);};
+            if (player.cropsStored[10].stored <= 0) { rowBack11.setOpacity(0.6); g11.setOpacity(0.6); } else { rowBack11.setOpacity(1.0); g11.setOpacity(1.0);};
+            if (player.cropsStored[11].stored <= 0) { rowBack12.setOpacity(0.6); g12.setOpacity(0.6); } else { rowBack12.setOpacity(1.0); g12.setOpacity(1.0);};
+            if (player.cropsStored[12].stored <= 0) { rowBack13.setOpacity(0.6); g13.setOpacity(0.6); } else { rowBack13.setOpacity(1.0); g13.setOpacity(1.0);};
+            if (player.cropsStored[13].stored <= 0) { rowBack14.setOpacity(0.6); g14.setOpacity(0.6); } else { rowBack14.setOpacity(1.0); g14.setOpacity(1.0); };
+            if (player.cropsStored[22].stored <= 0) { rowBack22.setOpacity(0.6); g22.setOpacity(0.6); } else { rowBack22.setOpacity(1.0); g22.setOpacity(1.0); };
+            if (player.cropsStored[23].stored <= 0) { rowBack23.setOpacity(0.6); g23.setOpacity(0.6); } else { rowBack23.setOpacity(1.0); g23.setOpacity(1.0); };
+            if (player.cropsStored[24].stored <= 0) { rowBack24.setOpacity(0.6); g24.setOpacity(0.6); } else { rowBack24.setOpacity(1.0); g24.setOpacity(1.0); };
             if (player.tools <= 0) { rowBack15.setOpacity(0.6); } else { rowBack15.setOpacity(1.0); };
             countTools.setText(player.tools);
             rowBack14
@@ -11140,13 +11147,13 @@ farming.start = function () {
     var marketSellCash = (new lime.Label).setText(player.money).setFontColor("#E8FC08").setPosition(235, 24).setFontSize(18).setFontFamily("Comic Sans MS");
     marketLayer.appendChild(marketSellCash);
     // market Tiles
-    var marketX = 55, marketY = 135, colXoff = 72, rowYoff = 50, index = 0;
+    var marketX = 70, marketY = 135, colXoff = 72, rowYoff = 50, index = 0;
     //row 1
     var rowBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(80, 44).setFill(imgArray[18].src);
     marketLayer.appendChild(rowBack);
-    count0 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(75, marketY + 15);
+    count0 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(90, marketY + 15);
     marketLayer.appendChild(count0);
-    g0 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(97, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //tomatoes
+    g0 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(112, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //tomatoes
     marketLayer.appendChild(g0);
     i0 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(98, marketY + 36);
     marketLayer.appendChild(i0);
@@ -11154,11 +11161,11 @@ farming.start = function () {
     marketLayer.appendChild(g0I);
   
     index = 1;
-    var rowBack2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(150, marketY).setSize(80, 44).setFill(imgArray[18].src);
+    var rowBack2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX + 90, marketY).setSize(80, 44).setFill(imgArray[18].src);
     marketLayer.appendChild(rowBack2);
-    count1 = (new lime.Label).setText(player.cropsStored[1].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(170, marketY + 15);
+    count1 = (new lime.Label).setText(player.cropsStored[1].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(185, marketY + 15);
     marketLayer.appendChild(count1);
-    g1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(192, marketY).setFill("images/" + a.crops[1].harvest).setSize(30, 30);      //carrots
+    g1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(200, marketY).setFill("images/" + a.crops[1].harvest).setSize(30, 30);      //carrots
     marketLayer.appendChild(g1);
     i1 = (new lime.Label).setText(" +" + a.crops[1].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(188, marketY + 36);
     marketLayer.appendChild(i1);
@@ -11169,9 +11176,9 @@ farming.start = function () {
     marketY = marketY + (rowYoff); index = 2;
     var rowBack3 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(80, 44).setFill(imgArray[18].src);
     marketLayer.appendChild(rowBack3);
-    count2 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(75, marketY + 15);
+    count2 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(90, marketY + 15);
     marketLayer.appendChild(count2);
-    g3 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(97, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //Broccoli s
+    g3 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(112, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //Broccoli s
     marketLayer.appendChild(g3);
     i3 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(97, marketY + 36);
     marketLayer.appendChild(i3);
@@ -11180,11 +11187,11 @@ farming.start = function () {
 
 
     index = 3;
-    var rowBack4 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(150, marketY).setSize(80, 44).setFill(imgArray[18].src);
+    var rowBack4 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX + 90, marketY).setSize(80, 44).setFill(imgArray[18].src);
     marketLayer.appendChild(rowBack4);
-    count3 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(170, marketY + 15);
+    count3 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(185, marketY + 15);
     marketLayer.appendChild(count3);
-    g4 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(195, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //eggplants
+    g4 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(200, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //eggplants
     marketLayer.appendChild(g4);
     i4 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(186, marketY + 36);
     marketLayer.appendChild(i4);
@@ -11197,9 +11204,9 @@ farming.start = function () {
     marketY = marketY + (rowYoff); index = 4;
     var rowBack5 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(80, 44).setFill(imgArray[18].src);
     marketLayer.appendChild(rowBack5);
-    count4 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(75, marketY + 15);
+    count4 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(90, marketY + 15);
     marketLayer.appendChild(count4);
-    g5 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(97, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //peppers
+    g5 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(112, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //peppers
     marketLayer.appendChild(g5);
     i5 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(97, marketY + 36);
     marketLayer.appendChild(i5);
@@ -11207,11 +11214,11 @@ farming.start = function () {
     marketLayer.appendChild(i5I);
 
     index = 5;
-    var rowBack6 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(150, marketY).setSize(80, 44).setFill(imgArray[18].src);
+    var rowBack6 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX + 90, marketY).setSize(80, 44).setFill(imgArray[18].src);
     marketLayer.appendChild(rowBack6);
-    count5 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(170, marketY + 15);
+    count5 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(185, marketY + 15);
     marketLayer.appendChild(count5);
-    g6 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(195, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //corn
+    g6 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(200, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //corn
     marketLayer.appendChild(g6);
     i6 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(188, marketY + 36);
     marketLayer.appendChild(i6);
@@ -11222,9 +11229,9 @@ farming.start = function () {
     marketY = marketY + (rowYoff); index = 6;
     var rowBack7 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(80, 44).setFill(imgArray[18].src);
     marketLayer.appendChild(rowBack7);
-    count6 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(75, marketY + 15);
+    count6 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(90, marketY + 15);
     marketLayer.appendChild(count6);
-    g7 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, marketY).setFill("images/" + a.crops[index].harvest).setSize(40, 30);      //hay
+    g7 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(112, marketY).setFill("images/" + a.crops[index].harvest).setSize(40, 30);      //hay
     marketLayer.appendChild(g7);
     i7 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(98, marketY + 36);
     marketLayer.appendChild(i7);
@@ -11233,11 +11240,11 @@ farming.start = function () {
 
 
     index = 7;
-    var rowBack8 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(150, marketY).setSize(80, 44).setFill(imgArray[18].src);
+    var rowBack8 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX + 90, marketY).setSize(80, 44).setFill(imgArray[18].src);
     marketLayer.appendChild(rowBack8);
-    count7 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(170, marketY + 15);
+    count7 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(185, marketY + 15);
     marketLayer.appendChild(count7);
-    g8 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(192, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //milk
+    g8 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(200, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //milk
     marketLayer.appendChild(g8);
     i8 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(188, marketY + 36);
     marketLayer.appendChild(i8);
@@ -11247,9 +11254,9 @@ farming.start = function () {
     marketY = marketY + (rowYoff); index = 8;
     var rowBack9 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(80, 44).setFill(imgArray[18].src);
     marketLayer.appendChild(rowBack9);
-    count8 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(75, marketY + 15);
+    count8 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(90, marketY + 15);
     marketLayer.appendChild(count8);
-    g9 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(100, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //apples
+    g9 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(115, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //apples
     marketLayer.appendChild(g9);
     i9 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(98, marketY + 36);
     marketLayer.appendChild(i9);
@@ -11257,11 +11264,11 @@ farming.start = function () {
     marketLayer.appendChild(i9I);
 
     index = 9;
-    var rowBack10 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(150, marketY).setSize(80, 44).setFill(imgArray[18].src);
+    var rowBack10 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX + 90, marketY).setSize(80, 44).setFill(imgArray[18].src);
     marketLayer.appendChild(rowBack10);
-    count9 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(170, marketY + 15);
+    count9 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(185, marketY + 15);
     marketLayer.appendChild(count9);
-    g10 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(195, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //pears
+    g10 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(200, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //pears
     marketLayer.appendChild(g10);
     i10 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(188, marketY + 38);
     marketLayer.appendChild(i10);
@@ -11273,9 +11280,9 @@ farming.start = function () {
     var rowBack11 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(80, 44).setFill(imgArray[18].src);
     marketLayer.appendChild(rowBack11);
 
-    count10 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(75, marketY + 15);
+    count10 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(90, marketY + 15);
     marketLayer.appendChild(count10);
-    g11 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(100, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //hams
+    g11 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(115, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //hams
     marketLayer.appendChild(g11);
     i11 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(98, marketY + 36);
     marketLayer.appendChild(i11);
@@ -11283,12 +11290,12 @@ farming.start = function () {
     marketLayer.appendChild(i11I);
 
     index = 11;
-    var rowBack12 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(150, marketY).setSize(80, 44).setFill(imgArray[18].src);
+    var rowBack12 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX + 90, marketY).setSize(80, 44).setFill(imgArray[18].src);
     marketLayer.appendChild(rowBack12);
 
-    count11 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(170, marketY + 15);
+    count11 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(185, marketY + 15);
     marketLayer.appendChild(count11);
-    g12 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(195, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //eggs
+    g12 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(200, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //eggs
     marketLayer.appendChild(g12);
     i12 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(188, marketY + 36);
     marketLayer.appendChild(i12);
@@ -11301,9 +11308,9 @@ farming.start = function () {
     var rowBack13 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(80, 44).setFill(imgArray[18].src);
     marketLayer.appendChild(rowBack13);
 
-    count12 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(75, marketY + 15);
+    count12 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(90, marketY + 15);
     marketLayer.appendChild(count12);
-    g13 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(100, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //grapes
+    g13 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(115, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //grapes
     marketLayer.appendChild(g13);
     i13 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(98, marketY + 36);
     marketLayer.appendChild(i13);
@@ -11312,12 +11319,12 @@ farming.start = function () {
 
 
     index = 13;
-    var rowBack14 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(150, marketY).setSize(80, 44).setFill(imgArray[18].src);
+    var rowBack14 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(marketX + 90, marketY).setSize(80, 44).setFill(imgArray[18].src);
     marketLayer.appendChild(rowBack14);
 
-    count13 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(170, marketY + 15);
+    count13 = (new lime.Label).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(185, marketY + 15);
     marketLayer.appendChild(count13);
-    g14 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(195, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //jelly
+    g14 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(200, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //jelly
     marketLayer.appendChild(g14);
     i14 = (new lime.Label).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(188, marketY + 36);
     marketLayer.appendChild(i14);
@@ -11325,19 +11332,61 @@ farming.start = function () {
     marketLayer.appendChild(i14I);
 
     //Selling Tools tile
-    var rowBack15 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(240, 240).setSize(54, 70).setFill(imgArray[18].src);
+    var rowBack15 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(250, 240).setSize(54, 70).setFill(imgArray[18].src);
     marketLayer.appendChild(rowBack15);
 
-    countTools = (new lime.Label).setText(player.tools).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(266, 255);
+    countTools = (new lime.Label).setText(player.tools).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(276, 255);
     marketLayer.appendChild(countTools);
-    g15 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(250, 260).setFill(imgArray[30]).setSize(30, 30);      //tools
+    g15 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(260, 260).setFill(imgArray[30]).setSize(30, 30);      //tools
     marketLayer.appendChild(g15);
-    i15 = (new lime.Label).setText("+5").setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(275, 303);
+    i15 = (new lime.Label).setText("+5").setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(285, 303);
     marketLayer.appendChild(i15);
-    i15I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(245, 290).setFill(imgArray11[0]).setSize(20, 20);
+    i15I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(255, 290).setFill(imgArray11[0]).setSize(20, 20);
     marketLayer.appendChild(i15I);
 
 
+
+
+    //Selling Flour tile
+    var rowBack22 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(6, 240).setSize(54, 70).setFill(imgArray[18].src);
+    marketLayer.appendChild(rowBack22);
+
+    count22 = (new lime.Label).setText(player.cropsStored[22].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(30, 255);
+    marketLayer.appendChild(count22);
+    g22 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(22, 260).setFill("images/" + a.crops[22].harvest).setSize(30, 30);      //tools
+    marketLayer.appendChild(g22);
+    i22 = (new lime.Label).setText(" +" + a.crops[22].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(37, 303);
+    marketLayer.appendChild(i22);
+    i22I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(8, 290).setFill(imgArray11[0]).setSize(20, 20);
+    marketLayer.appendChild(i22I);
+
+    //Selling Flour tile
+    var rowBack23 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(6, 330).setSize(54, 70).setFill(imgArray[18].src);
+    marketLayer.appendChild(rowBack23);
+
+    count23 = (new lime.Label).setText(player.cropsStored[23].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(30, 345);
+    marketLayer.appendChild(count23);
+    g23 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(22, 350).setFill("images/" + a.crops[23].harvest).setSize(30, 30);      //tools
+    marketLayer.appendChild(g23);
+    i23 = (new lime.Label).setText(" +" + a.crops[23].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(37, 393);
+    marketLayer.appendChild(i23);
+    i23I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(8, 380).setFill(imgArray11[0]).setSize(20, 20);
+    marketLayer.appendChild(i23I);
+
+    //Selling Bread tile
+    var rowBack24 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(250, 330).setSize(54, 70).setFill(imgArray[18].src);
+    marketLayer.appendChild(rowBack24);
+
+    count24 = (new lime.Label).setText(player.cropsStored[23].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(276, 345);
+    marketLayer.appendChild(count24);
+    g24 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(260, 350).setFill("images/" + a.crops[24].harvest).setSize(30, 30);      //tools
+    marketLayer.appendChild(g24);
+    i24 = (new lime.Label).setText(" +" + a.crops[24].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(285, 393);
+    marketLayer.appendChild(i24);
+    i24I = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(255, 380).setFill(imgArray11[0]).setSize(20, 20);
+    marketLayer.appendChild(i24I);
+
+   
 
 
 
@@ -11350,7 +11399,7 @@ farming.start = function () {
     marketLayer.appendChild(howManyBack);
     var howMany = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 150).setSize(250, 250).setFill(imgArray[78]);
     howManyBack.appendChild(howMany);
-    var howManyLabel1 = (new lime.Label).setText("$ Sell Crop $").setFontColor("#00004d").setFontFamily("Comic Sans MS").setFontSize(26).setPosition(125, 60);
+    var howManyLabel1 = (new lime.Label).setText("Sell " + a.crops[index].name).setFontColor("#00004d").setFontFamily("Comic Sans MS").setFontSize(26).setPosition(125, 60);
     howMany.appendChild(howManyLabel1);
     var howManyLabel2 = (new lime.Label).setText(cropSaleCurrent + "/" + cropSaleTotal).setFontColor("#00004d").setFontFamily("Comic Sans MS").setFontSize(20).setPosition(55, 140);
     howMany.appendChild(howManyLabel2);
@@ -11491,7 +11540,8 @@ farming.start = function () {
     goog.events.listen(rowBack13, ["mousedown", "touchstart"], function () { a.updateCropsandCash(12); });
     goog.events.listen(rowBack14, ["mousedown", "touchstart"], function () { a.updateCropsandCash(13); });
     goog.events.listen(rowBack15, ["mousedown", "touchstart"], function () { a.updateCropsandCash(14); });
-
+    goog.events.listen(rowBack22, ["mousedown", "touchstart"], function () { a.updateCropsandCash(22); });
+    goog.events.listen(rowBack23, ["mousedown", "touchstart"], function () { a.updateCropsandCash(23); });
 
     ////market Updates
     a.updateCropsandCash = function (crop) {
@@ -11504,7 +11554,7 @@ farming.start = function () {
             cropSaleTotal = player.tools;
             cropSaleCurrent = player.tools;
             cropSaleCurrentPrice = (5 * player.tools);
-
+            howManyLabel1.setText("Sell Tools")
             howManyLabel3.setText(cropSaleCurrentPrice);
             howManyLabel2.setText(cropSaleCurrent + "/" + cropSaleTotal);
             howManyImg.setFill(imgArray[30]);
@@ -11532,7 +11582,7 @@ farming.start = function () {
             cropSaleTotal = player.cropsStored[crop].stored;
             cropSaleCurrent = player.cropsStored[crop].stored;
             cropSaleCurrentPrice = (a.crops[crop].revenue * player.cropsStored[crop].stored);
-
+            howManyLabel1.setText("Sell " + a.crops[crop].name)
             howManyLabel3.setText(cropSaleCurrentPrice);
             howManyLabel2.setText(cropSaleCurrent + "/" + cropSaleTotal);
             howManyImg.setFill("images/" + a.crops[crop].harvest);
@@ -11553,9 +11603,7 @@ farming.start = function () {
         }
     }
 
-    a.hideRowBacks = function () {
-        rowBack
-    }
+
     a.cropDown = function (crop) {
         if (cropSaleCurrent < 100) { cropSaleCurrent = cropSaleCurrent - 1; }
         else if (cropSaleCurrent >= 100 && cropSaleCurrent < 1000) { cropSaleCurrent = cropSaleCurrent - 10; }
@@ -11589,9 +11637,14 @@ farming.start = function () {
         purchaseSound.play();
         howManyBack.setHidden(true);
         payVis = true;
-        if (crop < 14) { player.cropsStored[crop].stored = Math.abs(parseInt(player.cropsStored[crop].stored - cropSaleCurrent)); }
+        if (crop < 14 || crop >= 22) { player.cropsStored[crop].stored = Math.abs(parseInt(player.cropsStored[crop].stored - cropSaleCurrent)); }
         else if (crop == 14) { player.tools = player.tools - cropSaleCurrent; }
-        if (crop >= 2) { questParams.felicia[0].highestcompleted = 1, questParams.felicia[1].completed = 1; }
+        if (crop >= 2) {
+            questParams.felicia[1].completed = 1;
+            if (questParams.felicia[0].highestcompleted == 0) {
+                questParams.felicia[0].highestcompleted = 1;
+            };
+        };
         count0.setText(player.cropsStored[0].stored);
         count1.setText(player.cropsStored[1].stored);
         count2.setText(player.cropsStored[2].stored);
@@ -11606,6 +11659,9 @@ farming.start = function () {
         count11.setText(player.cropsStored[11].stored);
         count12.setText(player.cropsStored[12].stored);
         count13.setText(player.cropsStored[13].stored);
+        count22.setText(player.cropsStored[22].stored);
+        count23.setText(player.cropsStored[23].stored);
+        count24.setText(player.cropsStored[24].stored);
         countTools.setText(player.tools);
         howManyBack.setHidden(true);
    
@@ -15865,7 +15921,7 @@ farming.start = function () {
                             windmillBldgUpgradeBtn.setHidden(true);
                           
                                 lime.scheduleManager.scheduleWithDelay(function () {
-                                    if (sceneActive == 'Windmill' && player.cropsStored[22].stored >= 4 && windmillUpgraded == 1) {
+                                    if (sceneActive == 'Windmill' && player.cropsStored[22].stored >= 3 && windmillUpgraded == 1) {
                                     
                                         windmillRotation = windmillRotation - 2.25;
                                         windMillSail.setRotation(windmillRotation);
@@ -15873,10 +15929,10 @@ farming.start = function () {
 
                                     } else { needWheatBubble.setHidden(false); };
                                     flourticker = flourticker + 1;
-                                    if (flourticker == 2000 && player.cropsStored[22].stored >= 4) {
+                                    if (flourticker == 2000 && player.cropsStored[22].stored >= 3) {
                                         flourWaiting = flourWaiting + 1;
                                         flourticker = 0;
-                                        player.cropsStored[22].stored = parseInt(player.cropsStored[22].stored) - 4;
+                                        player.cropsStored[22].stored = parseInt(player.cropsStored[22].stored) - 3;
                                         gLabel22.setText(player.cropsStored[22].stored);
                                         collectFlour.setHidden(false);
                                         collectFlourLabel.setText("+ " + flourWaiting);
@@ -15926,6 +15982,49 @@ farming.start = function () {
                 var storeHouseSmoke2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(223, 127).setSize(30, 30).setFill(imgArray[24]);
                 windmillLayer.appendChild(storeHouseSmoke2);
 
+                var needFlourBubble = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(200, 157).setSize(40, 40).setFill(imgArray[106]).setHidden(false);
+                windmillLayer.appendChild(needFlourBubble);
+                var breadWaiting = 0;
+                var collectBreadBubble = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(257, 157).setSize(40, 40).setSize(50, 64).setFill(imgArray[90]);
+                windmillLayer.appendChild(collectBreadBubble);                        
+                var collectBreadIcon = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(12, 2).setSize(27, 30).setFill("images/" + a.crops[24].harvest);
+                collectBreadBubble.appendChild(collectBreadIcon);
+                var collectBreadLabel = (new lime.Label).setText("+ " + breadWaiting).setFontWeight(500).setFontColor("#E8FC08").setPosition(23, 42).setSize(30, 18).setFontFamily("Comic Sans MS");
+                collectBreadBubble.appendChild(collectBreadLabel);
+
+                lime.scheduleManager.scheduleWithDelay(function () {
+                    //add upgrade anim
+                    collectBreadBubble.setHidden(true);
+                    needFlourBubble.setHidden(true);
+                    if (acres[5].owned == 1 && storeHouseUpgraded == 1) {
+                        if (player.cropsStored[23].stored >= 1) {
+                            player.cropsStored[23].stored = parseInt(player.cropsStored[23].stored) - 1;
+                            breadWaiting = breadWaiting + 2;
+                            collectBreadBubble.setHidden(false);
+                            needFlourBubble.setHidden(true);
+                            collectBreadLabel.setText("+ " + breadWaiting);
+                        }
+                        else {
+                            collectBreadBubble.setHidden(true);
+                            needFlourBubble.setHidden(false);
+                        }
+
+                    }
+
+                }, this, 30000)
+
+                goog.events.listen(collectBreadBubble, ["mousedown", "touchstart"], function () {
+
+                    player.cropsStored[24].stored = parseInt(player.cropsStored[24].stored) + breadWaiting;
+                    gLabel24.setText(player.cropsStored[24].stored);
+                    breadWaiting = 0;
+                    purchaseSound.play();
+                    collectBreadBubble.setHidden(true);
+                    lime.scheduleManager.callAfter(function () { localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player)); }, this, 500);
+
+
+                });
+
                 function checkStoreHouseUpgrade() {
                    
                     if (storeHouseUpgraded == 1) {
@@ -15948,6 +16047,7 @@ farming.start = function () {
                             }
 
                         }, this, 150)
+              
                     }
                     else {
                         storeHouseWM.setFill(imgArrayWindmill[5]);
@@ -16821,9 +16921,12 @@ farming.start = function () {
                 var windmillHelpPanel = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(15, 100).setSize(a.width - 30, a.height / 2).setFill(imgArray[78]).setHidden(true);
                 var helpHeaderwindmill = (new lime.Label).setAnchorPoint(0, 0).setPosition(75, 25).setText("Grain Fields").setFontFamily("Comic Sans MS").setFontSize(24);
                 windmillHelpPanel.appendChild(helpHeaderwindmill);
-                var helpText1windmill = (new lime.Label).setAnchorPoint(0, 0).setPosition(20, 85).setText("This farm has soil best suited to WHEAT. Repair the storehouse and windmill to unlock the ability to make FLOUR from your wheat").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+                var helpText1windmill = (new lime.Label).setAnchorPoint(0, 0).setPosition(20, 65).setText("This farm has soil best suited to WHEAT").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
                 windmillHelpPanel.appendChild(helpText1windmill);
-        
+                var helpText1windmill2 = (new lime.Label).setAnchorPoint(0, 0).setPosition(20, 110).setText("Repair the windmill to unlock the ability to make FLOUR ").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+                windmillHelpPanel.appendChild(helpText1windmill2);
+                var helpText1windmill3 = (new lime.Label).setAnchorPoint(0, 0).setPosition(20, 160).setText("Repairing the Storehouse will convert it to a Bakery where you can make BREAD").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+                windmillHelpPanel.appendChild(helpText1windmill3);
       
                 var windmillHelpPanelCloseBtn = (new lime.GlossyButton).setColor("#663300").setText("Close").setPosition(140, 235).setSize(100, 20);
                 windmillHelpPanel.appendChild(windmillHelpPanelCloseBtn);
