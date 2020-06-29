@@ -2453,7 +2453,8 @@ cropsStored: [
 
 if (typeof localStorage["GuiGhostFarms_player"] === "undefined") { localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));};
 player = JSON.parse(localStorage.getItem('GuiGhostFarms_player'));
-if (player.cropsStored[22].name != "Wheat") { player.cropsStored[22].name }
+
+
 
 
 if (typeof localStorage["GuiGhostFarms_playerItems"] === "undefined") { localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems)); };
@@ -2473,6 +2474,25 @@ collectItems = JSON.parse(localStorage.getItem('GuiGhostFarms_playerItems'));
 
 //above consoilidated into the below
 ///check all crops and set to 0 if not a integer
+if (typeof player.cropsStored[14] === "undefined") { player.cropsStored.push({ name: "Wood", stored: 200 }); };
+if (typeof player.cropsStored[15] === "undefined") { player.cropsStored.push({ name: "Iron", stored: 200 }); };
+if (typeof player.cropsStored[16] === "undefined") { player.cropsStored.push({ name: "Jars", stored: 0 }); };
+if (typeof player.cropsStored[17] === "undefined") { player.cropsStored.push({ name: "Barrels", stored: 0 }); };
+if (typeof player.cropsStored[18] === "undefined") { player.cropsStored.push({ name: "Cider", stored: 50 }); };
+if (typeof player.cropsStored[19] === "undefined") { player.cropsStored.push({ name: "Grape Juice", stored: 0 }); };
+if (typeof player.cropsStored[20] === "undefined") { player.cropsStored.push({ name: "Bottles", stored: 0 }); };
+if (typeof player.cropsStored[21] === "undefined") { player.cropsStored.push({ name: "Planks", stored: 0 }); };
+if (typeof player.cropsStored[22] === "undefined") { player.cropsStored.push({ name: "Wheat", stored: 0 }); };
+if (typeof player.cropsStored[23] === "undefined") { player.cropsStored.push({ name: "Flour", stored: 0 }); };
+if (typeof player.cropsStored[24] === "undefined") { player.cropsStored.push({ name: "Bread", stored: 0 }); };
+if (typeof player.cropsStored[25] === "undefined") { player.cropsStored.push({ name: "Mushrooms", stored: 0 }); };
+if (parseInt(player.cropsStored[2].name) != "Broccoli") { player.cropsStored[2].name = "Broccoli" };
+if (parseInt(player.cropsStored[16].name) != "Jars") { player.cropsStored[16].name = "Jars" };
+if (parseInt(player.cropsStored[17].name) != "Barrels") { player.cropsStored[17].name = "Barrels" };
+if (parseInt(player.cropsStored[22].name) != "Wheat") { player.cropsStored[17].name = "Wheat" };
+//added after 1.6 for misty thief issue
+localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+
 function validCropsStored(){
         for (i = 0; i < 25; i++){
             //1st - force int by default
@@ -2503,28 +2523,9 @@ localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
 localStorage.setItem('MedFarm_LoadAd', 0);
 
 var globalModalBlock = 0;
-if (typeof player.cropsStored[14] === "undefined") {   
-   player.cropsStored.push({ name: "Wood", stored: 200 }); 
-};
 
-if (typeof player.cropsStored[14] === "undefined") { player.cropsStored.push({ name: "Wood", stored: 200 }); };
-if (typeof player.cropsStored[15] === "undefined") {    player.cropsStored.push({ name: "Iron", stored: 200 });};
-if (typeof player.cropsStored[16] === "undefined") {    player.cropsStored.push({ name: "Jars", stored: 0 });};
-if (typeof player.cropsStored[17] === "undefined") {    player.cropsStored.push({ name: "Barrels", stored: 0 });};
-if (typeof player.cropsStored[18] === "undefined") {    player.cropsStored.push({ name: "Cider", stored: 50 });};
-if (typeof player.cropsStored[19] === "undefined"){    player.cropsStored.push({ name: "Grape Juice", stored: 0 });};
-if (typeof player.cropsStored[20] === "undefined") { player.cropsStored.push({ name: "Bottles", stored: 0 }); };
-if (typeof player.cropsStored[21] === "undefined") { player.cropsStored.push({ name: "Planks", stored: 0 }); };
-if (typeof player.cropsStored[22] === "undefined") { player.cropsStored.push({ name: "Wheat", stored: 0 }); };
-if (typeof player.cropsStored[23] === "undefined") { player.cropsStored.push({ name: "Flour", stored: 0 }); };
-if (typeof player.cropsStored[24] === "undefined") { player.cropsStored.push({ name: "Bread", stored: 0 }); };
-if (typeof player.cropsStored[25] === "undefined") { player.cropsStored.push({ name: "Mushrooms", stored: 0 }); };
-if (parseInt(player.cropsStored[2].name) != "Broccoli") { player.cropsStored[2].name = "Broccoli" };
-if (parseInt(player.cropsStored[16].name) != "Jars") { player.cropsStored[16].name = "Jars" };
-if (parseInt(player.cropsStored[17].name) != "Barrels") { player.cropsStored[17].name = "Barrels" };
-if (parseInt(player.cropsStored[22].name) != "Wheat") { player.cropsStored[17].name = "Wheat" };
-//added after 1.6 for misty thief issue
-localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+
+
 
 
 var fsClicked = 0;
@@ -2612,7 +2613,7 @@ var playerMuted = 0;
 var warningSeen = 0;
 
 farming.start = function () {
-    try {
+    
         var a = { width: 310, height: 540, tile_size: 30, num_tiles_x: 4, num_tiles_y: 4, landLayer_w: 320, landLayer_h: 388, controlsLayer_w: 320, controlsLayer_h: 70, costPlowing: 0, shop_margin_x: 50, shop_margin_y: 38 },
             b = { money: 500, currentCrop: 0 };
         b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
@@ -17174,13 +17175,12 @@ farming.start = function () {
             gLabel18.setText(player.cropsStored[18].stored);
             gLabel22.setText(player.cropsStored[22].stored);
             gLabel23.setText(player.cropsStored[23].stored);
-            //setTimeout(function () { validCropsStored(); }, 0);
+            ////setTimeout(function () { validCropsStored(); }, 0);
             lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
         }
 
         //////end of farming.start
-    }
-    catch (err) { alert(err) };
+ 
 };
 
 //code functions
