@@ -2907,10 +2907,11 @@ farming.start = function () {
         console.log("tutstep = " + tutStep)
         if (globalModalBlock == 0) {
 
-
+            helpHSeen = 1;
+            helpBtnH.setOpacity(1.0);
             var isHidTut = tutModal.getHidden();
             if (isHidTut) { 
-                tutStep = 6; localStorage.setItem('GuiGhostFarms_tutStep', 6);
+                tutStep = 7; localStorage.setItem('GuiGhostFarms_tutStep', 7);
                 homeBlock.setHidden(false);
                 tutModal.setHidden(false);
                 //tutModal.setFill(imgArray5[tutStep]);
@@ -3544,6 +3545,9 @@ farming.start = function () {
     var flipBlacksmithNotif = 0;
     var flicker = 0;
     var tickHighlight = 0;
+    var tut6Seen = 0;
+    var helpTickH = 0;
+    var helpHSeen = 0;
     lime.scheduleManager.scheduleWithDelay(function () {
         //add upgrade anim
         if (sceneActive == 'Home') {
@@ -3593,11 +3597,20 @@ farming.start = function () {
             }
             if (showHighLight == 1 && tutStep == 6) {
                 tickHighlight++;
-                tutModal.setHidden(false).setFill(imgArray5[5]);
+                if (tut6Seen == 0) { tut6Seen = 1; tutModal.setHidden(false).setFill(imgArray5[5]); }
+               
                 if (tickHighlight == 1) { market.setFill(imgArray[81] ); }
                 if (tickHighlight == 2) { market.setFill(imgArray[82]); tickHighlight = 0; }
             }
-            else { market.setFill(imgArray[81] ); }
+            else { market.setFill(imgArray[81]); }
+          
+            if (countPlanted == 64 && tutStep >= 6 && helpHSeen == 0) {
+            
+                if (helpTickH == 0) { helpTickH = 1; helpBtnH.setOpacity(1.0); }
+                else if (helpTickH == 1) { helpTickH = 0; helpBtnH.setOpacity(0.5);  }
+
+
+            }
         
        
 
@@ -4066,9 +4079,9 @@ farming.start = function () {
     var glassCover = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill(imgArray5[16]).setHidden(true);
     e.appendChild(glassCover);
 
-    var tutModal = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(48, 130).setSize(210, 220).setFill(imgArray5[0]).setHidden(false);
+    var tutModal = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(48, 130).setSize(210, 220).setFill(imgArray5[0]).setHidden(true);
     e.appendChild(tutModal);
-
+    if (tutStep <= 3) { tutModal.setHidden(false)}
     var nextBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 210).setSize(35, 35).setFill(imgArray[104]);
     tutModal.appendChild(nextBtn);
     var swipeRightHint2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 125).setSize(44, 44).setFill(imgArray[103]);
@@ -4145,7 +4158,7 @@ farming.start = function () {
             }
 
             else if (tutStep == 3) {
-       
+                
                 tutModal.setHidden(true);
                 swipeRightHint.setHidden(false);
                 countSwipe = 1;
@@ -4178,8 +4191,14 @@ farming.start = function () {
                 tutModal.setHidden(true);
                 //lime.scheduleManager.callAfter(function () { glassCover.setHidden(true); }, this, 3500);
             }
- 
-            else if (tutStep > 5 && tutStep < 15) { tutStep = parseInt(tutStep) + 1; }
+            else if (tutStep == 6) {
+                tutModal.setHidden(true);
+                homeBlock.setHidden(true);
+                glassCover.setHidden(true);
+              
+                //lime.scheduleManager.callAfter(function () { glassCover.setHidden(true); }, this, 3500);
+            }
+            else if (tutStep > 6 && tutStep < 15) { tutStep = parseInt(tutStep) + 1; }
 
       
             
@@ -5231,11 +5250,12 @@ farming.start = function () {
         openSeedScene();
 
     });
+
     lime.scheduleManager.scheduleWithDelay(function () {
         if (countPlanted == 16 && tutStep == 3) { tutStep = 4; glassCover.setHidden(false).setFill(imgArray5[16]); localStorage.setItem('GuiGhostFarms_tutStep', tutStep); }
         else if (countPlanted == 32 && tutStep == 4) { tutStep = 5; glassCover.setHidden(false).setFill(imgArray5[17]); localStorage.setItem('GuiGhostFarms_tutStep', tutStep); }
         pickedEver = parseInt(localStorage["GuiGhostFarms_pickedEver"]);
-        if (pickedEver >= 16 && pickedEver < 33 && tutStep == 6 && moneyEver == 0) {
+        if (pickedEver == 32 && tutStep == 6 && moneyEver == 0 && tut6Seen == 0) {
          
             tutStep = 6;
             showHighLight = 1;
@@ -5245,7 +5265,8 @@ farming.start = function () {
 
 
         }
-    }, this, 2000, 240)
+       
+    }, this, 1500, 480)
 
 
     ////from seeds menu back to home farm
