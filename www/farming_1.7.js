@@ -2850,7 +2850,7 @@ farming.start = function () {
             a.sceneBefore = 1;
             checkItemsOwned();
             starCashInvCount.setText(starCash);
-
+            hideAndDelayNavIcons();
             c.replaceScene(inventoryScene, lime.transitions.SlideInUp);
             sceneActive = 'Inventory';
 
@@ -2962,6 +2962,7 @@ farming.start = function () {
                 homeCrop = parseInt(b.currentCrop);
                 if (homeCrop > 5 || isNaN(homeCrop) || homeCrop < 0) { homecrop = localStorage.getItem("MedFarms_selectedHomeCrop") };
                 localStorage.setItem("MedFarms_selectedHomeCrop", parseInt(homeCrop));
+                hideAndDelayNavIcons();
                 c.replaceScene(windmillScene, lime.transitions.SlideInLeft);
                 sceneActive = 'Windmill';
                 b.currentCrop = 22;
@@ -2984,9 +2985,10 @@ farming.start = function () {
                 globalModalBlock = 0;
                 homeBlock.setHidden(true);
 
-
+                hideAndDelayNavIcons();
                 c.replaceScene(pastureScene, lime.transitions.SlideInLeft);
                 sceneActive = 'Pasture';
+                
                 e.event.stopPropagation();
 
                 lime.scheduleManager.callAfter(function () { checkShortage(); }, this, 100);
@@ -3002,7 +3004,7 @@ farming.start = function () {
                 localStorage.setItem("MedFarms_selectedHomeCrop", parseInt(homeCrop));
                 oldCrop = localStorage.getItem("MedFarms_selectedHomeCrop");
                 b.currentCrop = 8;
-
+                hideAndDelayNavIcons();
                 c.replaceScene(orchardScene, lime.transitions.SlideInRight);
                 lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
                 sceneActive = 'Orchard';
@@ -3019,6 +3021,7 @@ farming.start = function () {
                 homeCrop = parseInt(b.currentCrop);
                 if (homeCrop > 5 || isNaN(homeCrop) || homeCrop < 0) { homecrop = localStorage.getItem("MedFarms_selectedHomeCrop") };
                 localStorage.setItem("MedFarms_selectedHomeCrop", homeCrop);
+                hideAndDelayNavIcons();
                 c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
                 b.currentCrop = 12;
                 sceneActive = 'Vineyard';
@@ -3042,6 +3045,7 @@ farming.start = function () {
                 closeAcresNav();
                 a.sceneBefore = 5;
                 ///from pature to Market
+                hideAndDelayNavIcons();
                 c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
                 lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
                 sceneActive = 'LS';
@@ -3408,7 +3412,7 @@ farming.start = function () {
         goog.events.listen(market, ["mousedown", "touchstart"], function () {
             a.sceneBefore = 1;
             townSceneActive = 1;
-
+            hideAndDelayNavIcons();
             c.replaceScene(marketScene, lime.transitions.SlideInUp);
             lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
             sceneActive = 'Market';
@@ -4066,6 +4070,7 @@ farming.start = function () {
 
         goog.events.listen(houseEnterBtn, ["mousedown", "touchstart"], function () {
             //validCropsStored();
+            hideAndDelayNavIcons();
             c.replaceScene(houseScene, lime.transitions.SlideInUp)
             sceneActive = 'House';
             seen1stHouseNotif = localStorage.getItem("MedFarms_seen1stHouseNotif");
@@ -4251,6 +4256,7 @@ farming.start = function () {
 
             globalModalBlock = 0;
             townSceneActive = 1;
+            hideAndDelayNavIcons();
             c.replaceScene(marketScene, lime.transitions.SlideInUp);
             sceneActive = 'Market';
 
@@ -4485,7 +4491,7 @@ farming.start = function () {
                     b.currentCrop = 6;
                     globalModalBlock = 0;
                     homeBlock.setHidden(true);
-
+                    hideAndDelayNavIcons();
                     c.replaceScene(pastureScene, lime.transitions.SlideInLeft);
                     sceneActive = 'Pasture';
 
@@ -4514,7 +4520,7 @@ farming.start = function () {
                     localStorage.setItem("MedFarms_selectedHomeCrop", parseInt(homeCrop));
                     oldCrop = localStorage.getItem("MedFarms_selectedHomeCrop");
                     b.currentCrop = 8;
-
+                    hideAndDelayNavIcons();
                     c.replaceScene(orchardScene, lime.transitions.SlideInRight);
                     lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
                     sceneActive = 'Orchard';
@@ -4922,8 +4928,8 @@ farming.start = function () {
         dailyRewardLayer.setHidden(true);
 
         goog.events.listen(dailyRewardLayer, ["mousedown", "touchstart"], function (e) {
-            var isHidDW = dailyRewardLayer.getHidden();
-            if (isHidDW) {
+            var isHidDW0 = dailyRewardLayer.getHidden();
+            if (!isHidDW0) {
                 e.event.stopPropagation();
                 e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
                 });
@@ -4933,35 +4939,46 @@ farming.start = function () {
 
 
         goog.events.listen(collectDaily, ["mousedown", "touchstart"], function (e) {
-            collectDailyLogin();
-            collectDaily.setHidden(true);
-            dailyRewardLayer.setHidden(true);
-            try { goog.events.removeAll(collectDaily); } catch (err) { }
-            e.event.stopPropagation();
-            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-            });
+            var isHidDW1 = dailyRewardLayer.getHidden();
+            if (!isHidDW1) {
+                collectDailyLogin();
+                collectDaily.setHidden(true);
+                dailyRewardLayer.setHidden(true);
+                try { goog.events.removeAll(collectDaily); } catch (err) { }
+                e.event.stopPropagation();
+                e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+                });
+            }
         });
 
         goog.events.listen(closeDailyLayer, ["mousedown", "touchstart"], function (e) {
-
-            dailyRewardLayer.setHidden(true);
-            try { goog.events.removeAll(collectDaily); } catch (err) { }
-            e.event.stopPropagation();
-            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-            });
+            var isHidDW2 = dailyRewardLayer.getHidden();
+            if (!isHidDW2) {
+                dailyRewardLayer.setHidden(true);
+                try { goog.events.removeAll(collectDaily); } catch (err) { }
+                e.event.stopPropagation();
+                e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+                });
+            }
         });
 
         goog.events.listen(stackerPlay, ["mousedown", "touchstart"], function (e) {
-            whichMore = 'stack'; openLink();
-            e.event.stopPropagation();
-            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-            });
+            var isHidDW3 = dailyRewardLayer.getHidden();
+            if (!isHidDW3) {
+                whichMore = 'stack'; openLink();
+                e.event.stopPropagation();
+                e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+                });
+            }
         });
         goog.events.listen(starMatchPlay, ["mousedown", "touchstart"], function (e) {
-            whichMore = 'star'; openLink();
-            e.event.stopPropagation();
-            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-            });
+            var isHidDW4 = dailyRewardLayer.getHidden();
+            if (!isHidDW4) {
+                whichMore = 'star'; openLink();
+                e.event.stopPropagation();
+                e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+                });
+            }
         });
         // /detect apps////
         var stackInstalled = false;
@@ -5195,7 +5212,7 @@ farming.start = function () {
                             goog.events.listen(y, ["mousedown", "touchstart"],
                                 function () {
                                     //console.log("crop = " + e)
-                                    b.currentCrop = e; c.replaceScene(d, lime.transitions.moveInRight);
+                                    b.currentCrop = e; c.replaceScene(d);
                                     localStorage.setItem("MedFarms_selectedHomeCrop", e);
 
                                     sceneActive = 'Home';
@@ -5219,7 +5236,7 @@ farming.start = function () {
                             goog.events.listen(y, ["mousedown", "touchstart"],
                                 function () {
                                     //console.log("croplabel = " + e)
-                                    b.currentCrop = e; c.replaceScene(d, lime.transitions.moveInRight);
+                                    b.currentCrop = e; c.replaceScene(d);
                                     localStorage.setItem("MedFarms_selectedHomeCrop", e);
                                     sceneActive = 'Home';
                                     //var z = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(130, a.height - a.controlsLayer_h / 2 - 12).setFill("images/" + a.crops[e].harvest).setSize(a.tile_size * 1.2, a.tile_size * 1.2);
@@ -5271,7 +5288,7 @@ farming.start = function () {
 
 
         ////from seeds menu back to home farm
-        goog.events.listen(f, ["mousedown", "touchstart"], function () { c.replaceScene(d, lime.transitions.SlideInUp); sceneActive = 'Home'; changeSeeds.setHidden(false); });
+        goog.events.listen(f, ["mousedown", "touchstart"], function () { c.replaceScene(d, lime.transitions.SlideInUp); sceneActive = 'Home'; changeSeeds.setHidden(false); hideAndDelayNavIcons();});
 
         ////////pasture scene ////////pasture scene////////////////////////////////////////                         ////////pasture scene ////////pasture scene////////////////////////////////////////
         ////////pasture scene ////////pasture scene////////////////////////////////////////                         ////////pasture scene ////////pasture scene////////////////////////////////////////
@@ -5298,7 +5315,7 @@ farming.start = function () {
         goog.events.listen(roadLeft2, ["mousedown", "touchstart"], function () {
             if (globalModalBlock == 0) {
                 a.sceneBefore = 4;
-
+                hideAndDelayNavIcons();
                 c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
                 sceneActive = 'Vineyard';
                 b.currentCrop = 12;
@@ -5360,6 +5377,7 @@ farming.start = function () {
 
         goog.events.listen(menuP, ["mousedown", "touchstart"], function () {
             a.sceneBefore = 2;
+            hideAndDelayNavIcons();
             c.replaceScene(menuScene, lime.transitions.SlideInUp);
             sceneActive = 'Menu';
 
@@ -5955,7 +5973,7 @@ farming.start = function () {
                 a.sceneBefore = 2;
                 townSceneActive = 1;
                 ///from pature to Market
-
+                hideAndDelayNavIcons();
                 c.replaceScene(marketScene, lime.transitions.SlideInUp);
 
                 acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
@@ -5984,7 +6002,7 @@ farming.start = function () {
             a.sceneBefore = 2;
             checkItemsOwned();
             starCashInvCount.setText(starCash);
-
+            hideAndDelayNavIcons();
             c.replaceScene(inventoryScene, lime.transitions.SlideInUp);
             lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
             sceneActive = 'Invntory';
@@ -6040,7 +6058,7 @@ farming.start = function () {
             lime.scheduleManager.callAfter(function () { a.updateStored(); }, this, 200);
             globalModalBlock = 0;
             townSceneActive = 1;
-
+            hideAndDelayNavIcons();
             c.replaceScene(marketScene, lime.transitions.SlideInUp);
 
             acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
@@ -6110,7 +6128,7 @@ farming.start = function () {
             globalModalBlock = 0;
 
             a.sceneBefore = 4;
-
+            hideAndDelayNavIcons();
             c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
             sceneActive = 'Vineyard';
             acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
@@ -6240,6 +6258,7 @@ farming.start = function () {
         goog.events.listen(windmillNavP, ["mousedown", "touchstart"], function (e) {
             if (acres[5].owned == 1 && compassVisible) {
                 a.sceneBefore = 10;
+                hideAndDelayNavIcons();
                 c.replaceScene(windmillScene, lime.transitions.SlideInUp);
                 sceneActive = 'Windmill';
                 b.currentCrop = 22;
@@ -6261,6 +6280,7 @@ farming.start = function () {
                 z.setFill("images/" + a.crops[homeCrop].harvest);
                 w.setText("Plant " + a.crops[homeCrop].name);
                 changeSeedsCrop.setFill("images/" + a.crops[homeCrop].harvest);
+                hideAndDelayNavIcons();
                 c.replaceScene(d, lime.transitions.SlideInRight);
                 b.currentCrop = homeCrop;
                 sceneActive = 'Home';
@@ -6282,7 +6302,7 @@ farming.start = function () {
                 a.sceneBefore = 3;
                 waterfallSound.play();
                 closeAcresNav();
-
+                hideAndDelayNavIcons();
                 c.replaceScene(orchardScene, lime.transitions.SlideInRight);
                 lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
                 sceneActive = 'Orchard';
@@ -6293,7 +6313,7 @@ farming.start = function () {
             if (acres[3].owned == 1 && compassVisible) {
                 closeAcresNav();
                 a.sceneBefore = 4;
-
+                hideAndDelayNavIcons();
                 c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
                 sceneActive = 'Vineyard';
 
@@ -6309,7 +6329,7 @@ farming.start = function () {
             if (acres[4].owned == 1 && compassVisible) {
                 closeAcresNav();
                 a.sceneBefore = 5;
-
+                hideAndDelayNavIcons();
                 ///from pature to Market
                 c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
                 sceneActive = 'LS';
@@ -6330,7 +6350,9 @@ farming.start = function () {
         ///from home to pasture
         goog.events.listen(roadLeft, ["mousedown", "touchstart"], function () {
             if (globalModalBlock == 0) {
-
+             
+                roadLeft.setHidden(true);
+                hideAndDelayNavIcons();
                 c.replaceScene(pastureScene, lime.transitions.SlideInLeft);
                 sceneActive = 'Pasture';
 
@@ -6350,9 +6372,10 @@ farming.start = function () {
             if (globalModalBlock == 0) {
                 oldCrop = localStorage.getItem("MedFarms_selectedHomeCrop");
                 homeCrop = parseInt(oldCrop);
-
+                hideAndDelayNavIcons();
 
                 b.currentCrop = homeCrop;
+                hideAndDelayNavIcons();
                 c.replaceScene(d, lime.transitions.SlideInRight);
                 //setTimeout(function () { validCropsStored();}, 0);
                 sceneActive = 'Home';
@@ -7309,7 +7332,7 @@ farming.start = function () {
             a.sceneBefore = 3;
             checkItemsOwned();
             starCashInvCount.setText(starCash);
-
+            hideAndDelayNavIcons();
             c.replaceScene(inventoryScene, lime.transitions.SlideInUp);
             lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
             sceneActive = 'Inventory';
@@ -7497,6 +7520,7 @@ farming.start = function () {
         goog.events.listen(windmillNavO, ["mousedown", "touchstart"], function (e) {
             if (compassVisible && acres[5].owned == 1) {
                 a.sceneBefore = 10;
+                hideAndDelayNavIcons();
                 c.replaceScene(windmillScene, lime.transitions.SlideInLeft);
                 sceneActive = 'Windmill';
                 b.currentCrop = 22;
@@ -7519,7 +7543,7 @@ farming.start = function () {
 
                 a.sceneBefore = 1;
                 waterfallSound.stop();
-
+                hideAndDelayNavIcons();
                 c.replaceScene(d, lime.transitions.SlideInLeft);
                 //setTimeout(function () { validCropsStored(); }, 0);
 
@@ -7535,7 +7559,7 @@ farming.start = function () {
                 lime.scheduleManager.callAfter(function () { checkShortage(); }, this, 100);
 
                 oldCrop = b.currentCrop; b.currentCrop = 6;
-
+                hideAndDelayNavIcons();
                 c.replaceScene(pastureScene, lime.transitions.SlideInLeft);
                 //setTimeout(function () { validCropsStored(); }, 0);
                 sceneActive = 'Pasture';
@@ -7550,7 +7574,7 @@ farming.start = function () {
             if (acres[3].owned == 1 && compassVisible) {
                 closeAcresNav();
                 a.sceneBefore = 4;
-
+                hideAndDelayNavIcons();
                 c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
                 //setTimeout(function () { validCropsStored(); }, 0);
                 sceneActive = 'Vineyard';
@@ -7565,7 +7589,7 @@ farming.start = function () {
                 closeAcresNav();
                 a.sceneBefore = 5;
                 oldCrop = b.currentCrop; b.currentCrop = 12;
-
+                hideAndDelayNavIcons();
                 c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
                 lime.scheduleManager.callAfter(function () { checkShortage(); }, this, 100);
                 sceneActive = 'LS';
@@ -7653,7 +7677,7 @@ farming.start = function () {
         goog.events.listen(menuO, ["mousedown", "touchstart"], function () {
             if (globalModalBlock == 0) {
                 a.sceneBefore = 3;
-
+                hideAndDelayNavIcons();
                 ///from pature to Market
                 c.replaceScene(menuScene, lime.transitions.SlideInUp);
                 sceneActive = 'Menu';
@@ -7870,7 +7894,7 @@ farming.start = function () {
             fsClicked = 0;
             a.sceneBefore = 5;
             oldCrop = b.currentCrop; b.currentCrop = 12;
-
+            hideAndDelayNavIcons();
             c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
 
             sceneActive = 'LS';
@@ -7941,7 +7965,7 @@ farming.start = function () {
                 a.sceneBefore = 5;
 
                 ///from orchard to Livestock
-
+                hideAndDelayNavIcons();
                 c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
                 //setTimeout(function () { validCropsStored(); }, 0);
                 sceneActive = 'LS';
@@ -7960,7 +7984,7 @@ farming.start = function () {
             if (globalModalBlock == 0) {
                 a.sceneBefore = 3;
                 townSceneActive = 1;///from orchard to Market
-
+                hideAndDelayNavIcons();
                 c.replaceScene(marketScene, lime.transitions.SlideInUp);
                 acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
                 if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
@@ -8006,7 +8030,7 @@ farming.start = function () {
             outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
             orchardBlock.setHidden(true); homeBlock.setHidden(true); vinyardBlock.setHidden(true); pastureBlock.setHidden(true); lsBlock.setHidden(true);
             townSceneActive = 1;
-
+            hideAndDelayNavIcons();
             c.replaceScene(marketScene, lime.transitions.SlideInUp);
             acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
             if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
@@ -8155,7 +8179,7 @@ farming.start = function () {
         menuLayer.appendChild(aboutBtn);
 
         goog.events.listen(aboutBtn, ["mousedown", "touchstart"], function (e) {
-
+            hideAndDelayNavIcons();
             c.replaceScene(aboutScene, lime.transitions.SlideInUp);
             lime.scheduleManager.callAfter(function () { openCodes(); getLocalStorage(); }, this, 300);
 
@@ -8177,7 +8201,7 @@ farming.start = function () {
         //to  orchard from home
         goog.events.listen(roadRight, ["mousedown", "touchstart"], function () {
             if (globalModalBlock == 0) {
-
+                hideAndDelayNavIcons();
                 c.replaceScene(orchardScene, lime.transitions.SlideInRight); sceneBefore = 3; waterfallSound.play(true);
                 sceneActive = 'Orchard';
 
@@ -8197,7 +8221,7 @@ farming.start = function () {
         ///to home from orchard
         goog.events.listen(roadLeftO, ["mousedown", "touchstart"], function () {
             if (globalModalBlock == 0) {
-
+                hideAndDelayNavIcons();
                 c.replaceScene(d, lime.transitions.SlideInLeft); sceneBefore = 1; waterfallSound.stop();
                 sceneActive = 'Home';
                 b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
@@ -8220,7 +8244,7 @@ farming.start = function () {
             localStorage.setItem('GuiGhostFarms_pickedEver', parseInt(pickedEver));
             localStorage.setItem('GuiGhostFarms_moneyEver', moneyEver);
             // window.open("../", "_self");
-
+            
             c.replaceScene(introScene, lime.transitions.SlideInUp)
             lime.audio.setMute(true);
             lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
@@ -8284,7 +8308,7 @@ farming.start = function () {
 
         //menu Back Btn
         goog.events.listen(backBtnMenu, ["mousedown", "touchstart"], function (event) {
-
+            hideAndDelayNavIcons();
             if (parseInt(a.sceneBefore) == 1) {
 
                 c.replaceScene(d, lime.transitions.SlideInDown);
@@ -8477,7 +8501,7 @@ farming.start = function () {
             homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
             globalModalBlock = 0;
             showingStarCash = 0;
-
+            hideAndDelayNavIcons();
             c.replaceScene(storeScene, lime.transitions.SlideInDown);
             storePremiumBtn.setOpacity(1.0);
             storeGeneralBtn.setOpacity(0.5);
@@ -8492,6 +8516,7 @@ farming.start = function () {
             document.getElementById("fbshare").style.display = 'none';
             homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
             globalModalBlock = 0; showingStarCash = 0;
+            hideAndDelayNavIcons();
             c.replaceScene(storeScene, lime.transitions.SlideInDown);
             sceneActive = 'Store';
             storePremiumBtn.setOpacity(1.0);
@@ -8583,6 +8608,7 @@ farming.start = function () {
         inventoryScene.appendChild(backBtnInventory);
         goog.events.listen(backBtnInventory, ["mousedown", "touchstart"], function () {
             checkAchieves2();
+            hideAndDelayNavIcons();
             itemInfoHeader.setPosition(110, 25).setText('Item Information')
             itemInfoDetails1.setPosition(110, 65).setText('Click on an item')
             itemInfoDetails2.setPosition(110, 90).setText('to see the details')
@@ -9796,7 +9822,7 @@ farming.start = function () {
 
         goog.events.listen(storeCloseBtn, ["mousedown", "touchstart"], function () {
             townSceneActive = 1;
-
+            hideAndDelayNavIcons();
             c.replaceScene(marketScene, lime.transitions.SlideInDown);
 
             acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
@@ -9829,7 +9855,7 @@ farming.start = function () {
             starCashInvCount.setText(starCash);
             checkItemsOwned();
             townSceneActive = 0;
-
+            hideAndDelayNavIcons();
             c.replaceScene(inventoryScene, lime.transitions.SlideInUp);
             sceneActive = 'Inventory';
             starCashInvCount.setText(starCash);
@@ -9917,7 +9943,7 @@ farming.start = function () {
             questPanel.setHidden(true);
             checkItemsOwned();
             townSceneActive = 0;
-
+            hideAndDelayNavIcons();
             c.replaceScene(inventoryScene, lime.transitions.SlideInUp);
             sceneActive = 'Inventory';
             a.sceneBefore = 8;
@@ -9949,6 +9975,7 @@ farming.start = function () {
             //buyGeneralItem4.setPosition(0, item4y);
             //buyGeneralItem5.setPosition(0, item5y);
             //validCropsStored();
+            hideAndDelayNavIcons();
             c.replaceScene(storeScene, lime.transitions.SlideInUp);
             sceneActive = 'Store';
             repositionStoreItems();
@@ -10147,7 +10174,7 @@ farming.start = function () {
             marketFill1.setHidden(false);
 
             townSceneActive = 0;
-
+            hideAndDelayNavIcons();
             c.replaceScene(marketSellScene, lime.transitions.SlideInDown);
             sceneActive = 'MarketSell';
             lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
@@ -10583,6 +10610,7 @@ farming.start = function () {
                     try { sellItemsBtn.setHidden(true); }
                     catch (err) { console.log("caught from sellbtn " + err) }
                     if (who == "mayor") {
+                        ciderSellBtn.setHidden(true);
                         itemCountText.setHidden(true);
                         ////////clear any previous loop still running            
                         // try { clearInterval(looperMayor); }
@@ -10615,6 +10643,7 @@ farming.start = function () {
 
                     }
                     if (who == "monk") {
+                        ciderSellBtn.setHidden(true);
                         itemCountText.setHidden(true);
                         //try { sellItemsBtn.setHidden(true); }
                         //catch (err) { console.log("caught from sellbtn " + err) }
@@ -10646,6 +10675,7 @@ farming.start = function () {
                         monkSound.play();
                     }
                     if (who == "felicia") {
+                        ciderSellBtn.setHidden(true);
                         questPanelCloseBtn.setPosition(75, 235);
                         itemCountText.setHidden(true);
                         questHeader.setText("Lady Felicia").setPosition(80, 25);
@@ -10716,6 +10746,7 @@ farming.start = function () {
                 if (complete = 1) {
                     sellItemsBtn.setHidden(false);
                     if (who == "mayor") {
+                        ciderSellBtn.setHidden(true);
                         questPanelCloseBtn.setPosition(75, 235);
                         itemCountText.setHidden(true);
                         questHeader.setText("Mayor Borgan").setPosition(75, 25);
@@ -10730,6 +10761,7 @@ farming.start = function () {
 
                     }
                     if (who == "monk") {
+                        ciderSellBtn.setHidden(true);
                         questPanelCloseBtn.setPosition(75, 235);
                         itemCountText.setHidden(true);
                         questPanelAvatar.setPosition(90, 38);
@@ -10745,6 +10777,7 @@ farming.start = function () {
                         monkSound.play();
                     }
                     if (who == "felicia") {
+                        ciderSellBtn.setHidden(true);
                         questPanelCloseBtn.setPosition(140, 235);
                         itemCountText.setHidden(true);
                         questPanelAvatar.setPosition(90, 38);
@@ -11188,7 +11221,7 @@ farming.start = function () {
             /////only add listeners to the promo if they have not seen it before
             goog.events.listen(goPremiumBtn, ["mousedown", "touchstart"], function (event) {
                 goPremiumBack.setHidden(true);
-
+                hideAndDelayNavIcons();
                 c.replaceScene(storeScene, lime.transitions.SlideInDown);
                 //setTimeout(function () { validCropsStored(); }, 0);
                 sceneActive = 'Store';
@@ -11555,6 +11588,7 @@ farming.start = function () {
             checkAchieves2();
             townSceneActive = 0;
             a.updateMoney();
+            hideAndDelayNavIcons();
             if (parseInt(a.sceneBefore) == 1) {
                 b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
                 homeCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
@@ -11600,7 +11634,7 @@ farming.start = function () {
         goog.events.listen(backBtnMarket, ["mousedown", "touchstart"], function () {
             checkAchieves2();
             townSceneActive = 1;
-
+            hideAndDelayNavIcons();
             c.replaceScene(marketScene, lime.transitions.SlideInUp);
             acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
             if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
@@ -11809,7 +11843,7 @@ farming.start = function () {
             var mutedAtStart = localStorage.getItem('GuiGhostFarms_muted')
             if (mutedAtStart == 0) { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); }
             else { lime.audio.setMute(true); setMute(1) }
-
+            hideAndDelayNavIcons();
             c.replaceScene(d, lime.transitions.SlideInUp);
             sceneActive = 'Home'; sceneBefore = 1;
 
@@ -12060,7 +12094,8 @@ farming.start = function () {
             lime.scheduleManager.scheduleWithDelay(function () {
                 lsHarvest = lsHarvest + 1;
                 if ((eggWaiting > 0 && eggWaiting < 4) || (player.cropsStored[5].stored >= 1 && eggWaiting < 4)) {
-
+                    egg1.setHidden(true); egg2.setHidden(true); egg3.setHidden(true);
+                   
                     if (lsHarvest == 2) {
                         egg1.setHidden(false); eggHidden[egg1] = false; player.cropsStored[5].stored = player.cropsStored[5].stored - 1;
                         eggWaiting = 1; collectEggsLabel.setText("+ 3 "); collectEggs.setHidden(false).setFill(imgArray[90]); collectEggsIcon.setHidden(false); collectEggsLabel.setHidden(false);
@@ -12495,7 +12530,7 @@ farming.start = function () {
             if (globalModalBlock == 0) {
                 a.sceneBefore = 5;
                 townSceneActive = 1;
-
+                hideAndDelayNavIcons();
                 c.replaceScene(marketScene, lime.transitions.SlideInUp);
                 acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
                 if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
@@ -12508,7 +12543,7 @@ farming.start = function () {
         goog.events.listen(menuLS, ["mousedown", "touchstart"], function () {
             if (globalModalBlock == 0) {
                 sceneBefore = 5;
-
+                hideAndDelayNavIcons();
                 c.replaceScene(menuScene, lime.transitions.SlideInUp);
                 sceneActive = 'Menu';
             }
@@ -12558,7 +12593,7 @@ farming.start = function () {
         ////back to Orchard from pens
         goog.events.listen(roadLeftLS, ["mousedown", "touchstart"], function () {
             if (globalModalBlock == 0) {
-
+                hideAndDelayNavIcons();
                 c.replaceScene(orchardScene, lime.transitions.SlideInLeft);
                 sceneActive = 'Orchard';
                 porkBlocked.setHidden(true);
@@ -12599,7 +12634,7 @@ farming.start = function () {
             a.sceneBefore = 5;
             checkItemsOwned();
             starCashInvCount.setText(starCash);
-
+            hideAndDelayNavIcons();
             c.replaceScene(inventoryScene, lime.Transition.SlideInUp);
             sceneActive = 'Inventory';
 
@@ -12666,6 +12701,7 @@ farming.start = function () {
         goog.events.listen(windmillNavLS, ["mousedown", "touchstart"], function (e) {
             if (compassVisible && acres[5].owned == 1) {
                 a.sceneBefore = 10;
+                hideAndDelayNavIcons();
                 c.replaceScene(windmillScene, lime.transitions.SlideInUp);
                 sceneActive = 'Windmill';
                 b.currentCrop = 22;
@@ -12687,6 +12723,7 @@ farming.start = function () {
                 a.sceneBefore = 1;
                 waterfallSound.stop();
                 globalModalBlock = 0;
+                hideAndDelayNavIcons();
                 c.replaceScene(d, lime.transitions.SlideInLeft);
 
                 sceneActive = 'Home';
@@ -12700,9 +12737,11 @@ farming.start = function () {
         goog.events.listen(pastureNavLS, ["mousedown", "touchstart"], function () {
 
             if (acres[1].owned == 1 && compassVisible) {
+             
                 closeAcresNav();
                 a.sceneBefore = 2;
                 b.currentCrop = 6;
+                     hideAndDelayNavIcons();
                 c.replaceScene(pastureScene, lime.transitions.SlideInLeft);
                 sceneActive = 'Pasture';
                 chickenSound.stop();
@@ -12716,9 +12755,11 @@ farming.start = function () {
         goog.events.listen(orchardNavLS, ["mousedown", "touchstart"], function () {
 
             if (acres[2].owned == 1 && compassVisible) {
+                
                 a.sceneBefore = 3;
                 closeAcresNav();
                 b.currentCrop = 8;
+                hideAndDelayNavIcons();
                 c.replaceScene(orchardScene, lime.transitions.SlideInLeft);
                 sceneActive = 'Orchard';
                 waterfallSound.play();
@@ -12732,8 +12773,10 @@ farming.start = function () {
         goog.events.listen(vinyardNavLS, ["mousedown", "touchstart"], function () {
 
             if (acres[3].owned == 1 && compassVisible) {
+                
                 closeAcresNav();
                 a.sceneBefore = 4;
+                hideAndDelayNavIcons();
                 c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
                 sceneActive = 'Vineyard';
                 waterfallSound.stop();
@@ -13137,6 +13180,7 @@ farming.start = function () {
             if (isHidRoadToWM == false) {
                 a.sceneBefore = 10;
                 b.currentCrop = 22;
+                hideAndDelayNavIcons();
                 c.replaceScene(windmillScene, lime.transitions.SlideInUp);
                 sceneActive = 'Windmill'
             }
@@ -13539,6 +13583,7 @@ farming.start = function () {
         goog.events.listen(menuV, ["mousedown", "touchstart"], function () {
             if (globalModalBlock == 0) {
                 sceneBefore = 4;
+                hideAndDelayNavIcons();
                 c.replaceScene(menuScene, lime.transitions.SlideInUp);
             }
         });
@@ -13551,7 +13596,7 @@ farming.start = function () {
             if (globalModalBlock == 0) {
                 a.sceneBefore = 4;
                 townSceneActive = 1;
-
+                hideAndDelayNavIcons();
                 c.replaceScene(marketScene, lime.transitions.SlideInUp);
                 sceneActive = 'Market';
                 acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
@@ -13562,7 +13607,7 @@ farming.start = function () {
 
         goog.events.listen(roadRightV, ["mousedown", "touchstart"], function () {
             if (globalModalBlock == 0) {
-
+                hideAndDelayNavIcons();
                 c.replaceScene(pastureScene, lime.transitions.SlideInRight); sceneBefore = 2; b.currentCrop = 6;
                 sceneActive = 'Pasture';
                 //setTimeout(function () { validCropsStored(); }, 0);
@@ -13599,7 +13644,7 @@ farming.start = function () {
             a.sceneBefore = 4;
             checkItemsOwned();
             starCashInvCount.setText(starCash);
-
+            hideAndDelayNavIcons();
             c.replaceScene(inventoryScene, lime.transitions.SlideInUp); sceneActive = 'Inventory';
             //setTimeout(function () { validCropsStored(); }, 0);
             updateInventoryCounts();
@@ -13647,7 +13692,7 @@ farming.start = function () {
             pastureBlock.setHidden(true); homeBlock.setHidden(true); orchardBlock.setHidden(true); vinyardBlock.setHidden(true); lsBlock.setHidden(true);
 
             townSceneActive = 1;
-
+            hideAndDelayNavIcons();
             c.replaceScene(marketScene, lime.transitions.SlideInUp);
             sceneActive = 'Market';
 
@@ -13732,6 +13777,7 @@ farming.start = function () {
         goog.events.listen(windmillNavV, ["mousedown", "touchstart"], function (e) {
             if (compassVisible && acres[5].owned == 1) {
                 a.sceneBefore = 10;
+                hideAndDelayNavIcons();
                 c.replaceScene(windmillScene, lime.transitions.SlideInUp);
                 sceneActive = 'Windmill';
                 b.currentCrop = 22;
@@ -13752,7 +13798,7 @@ farming.start = function () {
 
                 };
                 homeCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
-
+                hideAndDelayNavIcons();
                 c.replaceScene(d, lime.transitions.SlideInRight);
                 sceneActive = 'Home';
                 //setTimeout(function () { validCropsStored(); }, 0);
@@ -13768,7 +13814,7 @@ farming.start = function () {
                 closeAcresNav();
                 cowSound.play();
                 b.currentCrop = 6;
-
+                hideAndDelayNavIcons();
                 c.replaceScene(pastureScene, lime.transitions.SlideInRight);
                 sceneActive = 'Pasture';
 
@@ -13785,7 +13831,7 @@ farming.start = function () {
                 waterfallSound.play();
                 closeAcresNav();
                 oldCrop = b.currentCrop; b.currentCrop = 8;
-
+                hideAndDelayNavIcons();
                 c.replaceScene(orchardScene, lime.transitions.SlideInRight);
                 sceneActive = 'Orchard';
                 vinyardBlock.setHidden(true);
@@ -13810,7 +13856,7 @@ farming.start = function () {
                 closeAcresNav();
                 a.sceneBefore = 5;
                 //setTimeout(function () { validCropsStored(); }, 0);
-
+                hideAndDelayNavIcons();
                 ///from pature to Market
                 c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
                 sceneActive = 'LS';
@@ -15111,7 +15157,7 @@ farming.start = function () {
         backBtnHouse = (new lime.GlossyButton).setColor("#1ce636").setText("Back").setPosition(a.width / 2, 25).setSize(80, 40);
         houseLowerMenu.appendChild(backBtnHouse);
         goog.events.listen(backBtnHouse, ["mousedown", "touchstart"], function () {
-
+            hideAndDelayNavIcons();
             c.replaceScene(d, lime.transitions.SlideInDown); sceneBefore = 1;
             //setTimeout(function () { validCropsStored(); }, 0); 
             b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
@@ -15138,6 +15184,7 @@ farming.start = function () {
                 a.sceneBefore = 7;
                 townSceneActive = 1;
                 //setTimeout(function () { validCropsStored(); }, 0);
+                hideAndDelayNavIcons();
                 c.replaceScene(marketScene, lime.transitions.SlideInUp);
                 sceneActive = 'Market';
                 acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
@@ -15456,6 +15503,7 @@ farming.start = function () {
 
         goog.events.listen(backBtnAchieve, ["mousedown", "touchstart"], function (e) {
             //setTimeout(function () { validCropsStored(); }, 0);
+            hideAndDelayNavIcons();
             if (sceneBefore == 1) {
                 sceneActive = 'Home';
                 b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
@@ -15466,6 +15514,7 @@ farming.start = function () {
 
                 };
                 homeCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
+            
                 c.replaceScene(d, lime.transitions.SlideInUp); sceneBefore = 1;
             }
             if (sceneBefore == 2) { c.replaceScene(pastureScene, lime.transitions.SlideInUp); sceneBefore = 2; b.currentCrop = 6; sceneActive = 'Pasture'; }
@@ -15535,7 +15584,7 @@ farming.start = function () {
         }
 
         function achieve(sceneBefore) {
-
+            hideAndDelayNavIcons();
             c.replaceScene(achieveScene, lime.transitions.SlideInDown);
             sceneActive = 'Achieve';
         }
@@ -15832,7 +15881,7 @@ farming.start = function () {
         });
 
         goog.events.listen(backBtnAbout, ["mousedown", "touchstart"], function (event) {
-
+            hideAndDelayNavIcons();
             c.replaceScene(menuScene, lime.transitions.SlideInUp);
             event.stopPropagation();
 
@@ -15932,7 +15981,7 @@ farming.start = function () {
             a.sceneBefore = 10;
             checkItemsOwned();
             starCashInvCount.setText(starCash);
-
+            hideAndDelayNavIcons();
             c.replaceScene(inventoryScene, lime.transitions.SlideInUp); sceneActive = 'Inventory';
 
             updateInventoryCounts();
@@ -16353,6 +16402,7 @@ farming.start = function () {
         });
 
         goog.events.listen(vinyardNavWM1, ["mousedown", "touchstart"], function (e) {
+            hideAndDelayNavIcons();
             c.replaceScene(vinyardScene, lime.transitions.SlideInDown);
             b.currentCrop = 12;
             sceneActive = 'Vineyard';
@@ -16370,7 +16420,7 @@ farming.start = function () {
         goog.events.listen(menuWM, ["mousedown", "touchstart"], function (e) {
             if (globalModalBlock == 0) {
                 a.sceneBefore = 10;
-
+                hideAndDelayNavIcons();
                 ///from pature to Market
                 c.replaceScene(menuScene, lime.transitions.SlideInUp);
                 sceneActive = 'Menu';
@@ -16385,7 +16435,7 @@ farming.start = function () {
             if (globalModalBlock == 0) {
                 a.sceneBefore = 10;
                 townSceneActive = 1;
-
+                hideAndDelayNavIcons();
                 c.replaceScene(marketScene, lime.transitions.SlideInUp);
                 sceneActive = 'Market';
                 acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
@@ -16441,6 +16491,7 @@ farming.start = function () {
                 z.setFill("images/" + a.crops[homeCrop].harvest);
                 w.setText("Plant " + a.crops[homeCrop].name);
                 changeSeedsCrop.setFill("images/" + a.crops[b.currentCrop].harvest);
+                hideAndDelayNavIcons();
                 c.replaceScene(d, lime.transitions.SlideInRight);
                 b.currentCrop = homeCrop;
                 sceneActive = 'Home';
@@ -16463,7 +16514,7 @@ farming.start = function () {
                 globalModalBlock = 0;
                 homeBlock.setHidden(true);
 
-
+                hideAndDelayNavIcons();
                 c.replaceScene(pastureScene, lime.transitions.SlideInLeft);
                 sceneActive = 'Pasture';
 
@@ -16480,7 +16531,7 @@ farming.start = function () {
                 closeAcresNav();
 
                 b.currentCrop = 8;
-
+                hideAndDelayNavIcons();
                 c.replaceScene(orchardScene, lime.transitions.SlideInRight);
 
                 sceneActive = 'Orchard';
@@ -16496,7 +16547,7 @@ farming.start = function () {
             if (acres[3].owned == 1 && compassVisible) {
                 closeAcresNav();
                 a.sceneBefore = 4;
-
+                hideAndDelayNavIcons();
                 c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
                 b.currentCrop = 12;
                 sceneActive = 'Vineyard';
@@ -16519,6 +16570,7 @@ farming.start = function () {
                 closeAcresNav();
                 a.sceneBefore = 5;
                 ///from pature to Market
+                hideAndDelayNavIcons();
                 c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
                 //setTimeout(function () { validCropsStored(); }, 0);
                 sceneActive = 'LS';
@@ -17180,7 +17232,47 @@ farming.start = function () {
         }
 
         //////end of farming.start
- 
+
+
+        function hideAndDelayNavIcons() {
+            ////hide all icons by default
+            roadLeft.setHidden(true); roadRight.setHidden(true); houseEnterBtn.setHidden(true); backBtnHouse.setHidden(true); backBtnMarket.setHidden(true);
+            backBtnAchieve.setHidden(true);   backBtnInventory.setHidden(true);   backBtnTown.setHidden(true);    marketTrigger.setHidden(true); 
+            roadRight2.setHidden(true);   roadLeft2.setHidden(true); roadRightV.setHidden(true); roadRightO.setHidden(true);  roadLeftO.setHidden(true); roadLeftLS.setHidden(true);   
+        
+            lime.scheduleManager.callAfter(function () {          
+               
+                houseEnterBtn.setHidden(false);
+                backBtnHouse.setHidden(false);
+                backBtnAchieve.setHidden(false);
+                backBtnInventory.setHidden(false);
+                backBtnTown.setHidden(false);
+                marketTrigger.setHidden(false);
+                backBtnMarket.setHidden(false);
+                if (acres[1].owned == 1) {
+                    roadLeft.setHidden(false);
+                    roadRight2.setHidden(false);
+                    roadLeft2.setHidden(false);
+                }
+                if (acres[2].owned == 1) {
+                    roadRight.setHidden(false);
+                    roadRightO.setHidden(false);
+                    roadLeftO.setHidden(false);
+                }
+                if (acres[3].owned == 1) {
+                    roadRightV.setHidden(true);
+                }
+
+                if (acres[4].owned == 1) {
+                    roadLeftLS.setHidden(false);
+                }
+                if (acres[5].owned == 1) {
+                    roadToWMfromVin.setHidden(false);
+                }
+                        
+            }, this, 1250);
+
+        }
 };
 
 //code functions
