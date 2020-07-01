@@ -2673,7 +2673,7 @@ farming.start = function () {
             { index: 8, name: "crate1", image: "eggplantCrate.png" },
             { index: 9, name: "crate2", image: "cornCrate.png" },
             { index: 10, name: "well", image: "well2.png" },
-            { index: 11, name: "anvil", image: "anvil1.png" },
+            { index: 11, name: "anvil", image: "anvil2.png" },
             { index: 12, name: "anvil2", image: "anvil2.png" },
             { index: 13, name: "trees1", image: "leftTrees.png" },
             { index: 14, name: "trees2", image: "rightTrees.png" },
@@ -5132,7 +5132,7 @@ farming.start = function () {
                             rewardCheck6.setHidden(false); day6.setFill("#00ff00");
                             try { Enhance.logEvent('achieved_Daily6'); } catch (err) { console.log("logging failed") };
                             break;
-                        case 6: rewardLabel1Txt2.setText("+10000 Coins").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00");
+                        case 6: rewardLabel1Txt2.setText("+10,000 Coins").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00");
                             rewardCheck3.setHidden(false); day3.setFill("#00ff00"); rewardCheck4.setHidden(false); day4.setFill("#00ff00"); rewardCheck5.setHidden(false); day5.setFill("#00ff00");
                             rewardCheck6.setHidden(false); day6.setFill("#00ff00"); rewardCheck7.setHidden(false); day7.setFill("#00ff00");
                             try { Enhance.logEvent('achieved_Daily7'); } catch (err) { console.log("logging failed") };
@@ -6497,11 +6497,15 @@ farming.start = function () {
             if (player.tools < barnUpgradeCostToolsP) { upgradePastureBarnBtn.setHidden(true); upgradeBarnShortText.setHidden(false); }
 
             goog.events.listen(closePastureBarnBtn, ["mousedown", "touchstart"], function (e) {
-                upgradeBarnConfirmP.setHidden(true);
-                try {
-                    goog.events.removeAll(closePastureBarnBtn);
-                } catch (err) { console.log('remove failed'); };
-                e.event.stopPropagation();
+                var isItHidPUpgrade = upgradeBarnConfirmP.getHidden();
+                if (isItHidPUpgrade == false) {
+                    upgradeBarnConfirmP.setHidden(true);
+                    try {
+                        goog.events.removeAll(closePastureBarnBtn);
+                    } catch (err) { console.log('remove failed'); };
+                    e.event.stopPropagation();
+                }
+             
             });   //close pasture upgrade
 
             goog.events.listen(upgradePastureBarnBtn, ["mousedown", "touchstart"], function (e) {
@@ -11885,11 +11889,11 @@ farming.start = function () {
                     //hide app bonus items
                     appSection.setHidden(true);
                 }
-            }, this, 1000);
+            }, this, 2000);
             //check days logged in
             lime.scheduleManager.callAfter(function () {
                 checkDailyLogin(); validCropsStored();
-            }, this, 2000);
+            }, this, 3000);
 
 
         });
