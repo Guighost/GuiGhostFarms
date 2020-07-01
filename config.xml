@@ -20,7 +20,7 @@
     <allow-intent href="mailto:*"/>
     <allow-intent href="geo:*"/>
     <content src="index.html" />
-	<gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
+	<gap:plugin name="cordova-plugin-x-socialsharing" source="npm" version="5.4.0"/>
 	<plugin name="cordova-plugin-app-launcher" />
 	<plugin name="fitatu-cordova-plugin-market" />
 	<plugin name="enhance-cordova-connector"/>
