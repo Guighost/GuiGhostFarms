@@ -846,8 +846,8 @@ imgArrayVin[17] = new Image(); imgArrayVin[17].src = "images/vinyard/vinFarmer19
 //growing images
 var imgArray2 = new Array();
 
-imgArray2[0] = new Image(); imgArray2[0].src = 'images/artiGrow1.png';
-imgArray2[1] = new Image(); imgArray2[1].src = 'images/artiGrow2.png';
+imgArray2[0] = new Image(); imgArray2[0].src = 'images/brocGrow1.png';
+imgArray2[1] = new Image(); imgArray2[1].src = 'images/brocGrow2.png';
 imgArray2[2] = new Image(); imgArray2[2].src = 'images/plowed.png';
 imgArray2[3] = new Image(); imgArray2[3].src = 'images/tomatoGrow1.png';
 imgArray2[4] = new Image(); imgArray2[4].src = 'images/tomatoGrow2.png';
@@ -1266,31 +1266,31 @@ imgArrayMiller[17] = new Image(); imgArrayMiller[17].src = "images/windmill/oldS
 imgArrayMiller[18] = new Image(); imgArrayMiller[18].src = "images/windmill/oldSoldier_a3.png";
 
 
-var imgArrayIsabel = new Array();
-imgArrayIsabel[0] = new Image(); imgArrayIsabel[0].src = "images/windmill/Isabel_f0.png";
-imgArrayIsabel[1] = new Image(); imgArrayIsabel[1].src = "images/windmill/Isabel_f1.png";
-imgArrayIsabel[2] = new Image(); imgArrayIsabel[2].src = "images/windmill/Isabel_f2.png";
-imgArrayIsabel[3] = new Image(); imgArrayIsabel[3].src = "images/windmill/Isabel_f3.png";
-imgArrayIsabel[4] = new Image(); imgArrayIsabel[4].src = "images/windmill/Isabel_f4.png";
-imgArrayIsabel[5] = new Image(); imgArrayIsabel[5].src = "images/windmill/Isabel_f5.png";
-imgArrayIsabel[6] = new Image(); imgArrayIsabel[6].src = "images/windmill/Isabel_l0.png";
-imgArrayIsabel[7] = new Image(); imgArrayIsabel[7].src = "images/windmill/Isabel_l1.png";
-imgArrayIsabel[8] = new Image(); imgArrayIsabel[8].src = "images/windmill/Isabel_l2.png";
-imgArrayIsabel[9] = new Image(); imgArrayIsabel[9].src = "images/windmill/Isabel_l3.png";
-imgArrayIsabel[10] = new Image(); imgArrayIsabel[10].src = "images/windmill/Isabel_l4.png";
-imgArrayIsabel[11] = new Image(); imgArrayIsabel[11].src = "images/windmill/Isabel_l5.png";
-imgArrayIsabel[12] = new Image(); imgArrayIsabel[12].src = "images/windmill/Isabel_r0.png";
-imgArrayIsabel[13] = new Image(); imgArrayIsabel[13].src = "images/windmill/Isabel_r1.png";
-imgArrayIsabel[14] = new Image(); imgArrayIsabel[14].src = "images/windmill/Isabel_r2.png";
-imgArrayIsabel[15] = new Image(); imgArrayIsabel[15].src = "images/windmill/Isabel_r3.png";
-imgArrayIsabel[16] = new Image(); imgArrayIsabel[16].src = "images/windmill/Isabel_r4.png";
-imgArrayIsabel[17] = new Image(); imgArrayIsabel[17].src = "images/windmill/Isabel_r5.png";
-imgArrayIsabel[18] = new Image(); imgArrayIsabel[18].src = "images/windmill/Isabel_a0.png";
-imgArrayIsabel[19] = new Image(); imgArrayIsabel[19].src = "images/windmill/Isabel_a1.png";
-imgArrayIsabel[20] = new Image(); imgArrayIsabel[20].src = "images/windmill/Isabel_a2.png";
-imgArrayIsabel[21] = new Image(); imgArrayIsabel[21].src = "images/windmill/Isabel_a3.png";
-imgArrayIsabel[22] = new Image(); imgArrayIsabel[22].src = "images/windmill/Isabel_a4.png";
-imgArrayIsabel[23] = new Image(); imgArrayIsabel[23].src = "images/windmill/Isabel_a5.png";
+var imgArrayConnie = new Array();
+imgArrayConnie[0] = new Image(); imgArrayConnie[0].src = "images/windmill/Isabel_f0.png";
+imgArrayConnie[1] = new Image(); imgArrayConnie[1].src = "images/windmill/Isabel_f1.png";
+imgArrayConnie[2] = new Image(); imgArrayConnie[2].src = "images/windmill/Isabel_f2.png";
+imgArrayConnie[3] = new Image(); imgArrayConnie[3].src = "images/windmill/Isabel_f3.png";
+imgArrayConnie[4] = new Image(); imgArrayConnie[4].src = "images/windmill/Isabel_f4.png";
+imgArrayConnie[5] = new Image(); imgArrayConnie[5].src = "images/windmill/Isabel_f5.png";
+imgArrayConnie[6] = new Image(); imgArrayConnie[6].src = "images/windmill/Isabel_l0.png";
+imgArrayConnie[7] = new Image(); imgArrayConnie[7].src = "images/windmill/Isabel_l1.png";
+imgArrayConnie[8] = new Image(); imgArrayConnie[8].src = "images/windmill/Isabel_l2.png";
+imgArrayConnie[9] = new Image(); imgArrayConnie[9].src = "images/windmill/Isabel_l3.png";
+imgArrayConnie[10] = new Image(); imgArrayConnie[10].src = "images/windmill/Isabel_l4.png";
+imgArrayConnie[11] = new Image(); imgArrayConnie[11].src = "images/windmill/Isabel_l5.png";
+imgArrayConnie[12] = new Image(); imgArrayConnie[12].src = "images/windmill/Isabel_r0.png";
+imgArrayConnie[13] = new Image(); imgArrayConnie[13].src = "images/windmill/Isabel_r1.png";
+imgArrayConnie[14] = new Image(); imgArrayConnie[14].src = "images/windmill/Isabel_r2.png";
+imgArrayConnie[15] = new Image(); imgArrayConnie[15].src = "images/windmill/Isabel_r3.png";
+imgArrayConnie[16] = new Image(); imgArrayConnie[16].src = "images/windmill/Isabel_r4.png";
+imgArrayConnie[17] = new Image(); imgArrayConnie[17].src = "images/windmill/Isabel_r5.png";
+imgArrayConnie[18] = new Image(); imgArrayConnie[18].src = "images/windmill/Isabel_a0.png";
+imgArrayConnie[19] = new Image(); imgArrayConnie[19].src = "images/windmill/Isabel_a1.png";
+imgArrayConnie[20] = new Image(); imgArrayConnie[20].src = "images/windmill/Isabel_a2.png";
+imgArrayConnie[21] = new Image(); imgArrayConnie[21].src = "images/windmill/Isabel_a3.png";
+imgArrayConnie[22] = new Image(); imgArrayConnie[22].src = "images/windmill/Isabel_a4.png";
+imgArrayConnie[23] = new Image(); imgArrayConnie[23].src = "images/windmill/Isabel_a5.png";
 
 
 var imgArrayStore = new Array();
@@ -1479,7 +1479,7 @@ var questParamsHerald = {
         { index: 6, crop1: 11, crop1Amount: 50, crop2: 12, crop2Amount: 50 },
         { index: 7, crop1: 18, crop1Amount: 50, crop2: 13, crop2Amount: 50 },
         { index: 8, crop1: 0, crop1Amount: 50, crop2: 3, crop2Amount: 50 },
-        { index: 9, crop1: 18, crop1Amount: 7, crop2: 7, crop2Amount: 50 },
+        { index: 9, crop1: 18, crop1Amount: 50, crop2: 7, crop2Amount: 50 },
     ],
 }
 
@@ -1514,10 +1514,22 @@ var questParamsMiller = {
     speech: [ //vineyard
         { highestCompleted: 0, available: true },
         { name: 1, Text: "I used to be a kings guardsman, but then I lost my eye in battle. I'm getting to old for that life anyway" },
-        { name: 2, Text: "My wife Isabel and I came right away when the King told us you were restoring the WINDMILL." },
-        { name: 3, Text: "Isabel says that she could make use of the flour we are making if she had a BAKERY to work in"},
+        { name: 2, Text: "My wife Connie and I came right away when the King told us you were restoring the WINDMILL." },
+        { name: 3, Text: "Connie says that she could make use of the flour we are making if she had a BAKERY to work in"},
         { name: 4, Text: "Life is peaceful here on this farm. Thank you for allowing us to live here, our service is the least we could do" },
         { name: 5, Text: "I'm going to explore around in the woods surrounding this farm. I will let you know if I find something interesting"},
+
+    ],
+}
+var questParamsConnie = {
+
+    speech: [ //vineyard
+        { highestCompleted: 0, available: true },
+        { name: 1, Text: "If we cleared out this old storehouse, we could convert it to a BAKERY" },
+        { name: 2, Text: "Thanks for giving my husband something to do, he was driving me crazy at home since he retired." },
+        { name: 3, Text: "While I am good at making BREAD, I also like to learn about herbs and medicines" },
+        { name: 4, Text: "We always said that someday we would retire to a farm. Well here we are, thanks to you!" },
+        { name: 5, Text: "Maybe someday we could make more than just bread, but not yet." },
 
     ],
 }
@@ -5033,13 +5045,13 @@ farming.start = function () {
             if (stMatchInstalled == true && stackInstalled == true) {
                 dailyStars = 10;
                 stackerStarX.setHidden(true);
-                stackerPlay.setSize(30, 30).setFill(imgArray[35]); removePlayListeners(1);
+                stackerPlay.setSize(30, 30).setFill(imgArray[35]).setPosition(225, 36); removePlayListeners(1);
                 starMatchStarX.setHidden(true);
-                starMatchPlay.setSize(30, 30).setFill(imgArray[35]); removePlayListeners(2);
+                starMatchPlay.setSize(30, 30).setFill(imgArray[35]).setPosition(225, 81); removePlayListeners(2);
                 try { Enhance.logEvent('achieved_trifecta'); } catch (err) { console.log("logging failed") };
             }
             else if (stackInstalled == true) {
-                stackerPlay.setSize(30, 30).setFill(imgArray[35]); removePlayListeners(1);
+                stackerPlay.setSize(30, 30).setFill(imgArray[35]).setPosition(225, 36); removePlayListeners(1);
                 dailyStars = 5;
                 stackerStarX.setHidden(true);
                 try { Enhance.logEvent('achieved_stacker'); } catch (err) { console.log("logging failed") };
@@ -5047,7 +5059,7 @@ farming.start = function () {
             else if (stMatchInstalled == true) {
 
                 dailyStars += 5;
-                starMatchPlay.setSize(30, 30).setFill(imgArray[35]); removePlayListeners(2);
+                starMatchPlay.setSize(30, 30).setFill(imgArray[35]).setPosition(225, 81); removePlayListeners(2);
                 starMatchStarX.setHidden(true);
                 try { Enhance.logEvent('achieved_starMatch'); } catch (err) { console.log("logging failed") };
             }
@@ -10180,6 +10192,19 @@ farming.start = function () {
             lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
             questPanel.setHidden(true);
 
+            updateMarketCropVals();
+
+
+            e.event.stopPropagation();
+            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+            });
+
+
+
+        });
+        function updateMarketCropVals() {
+
+
             count0.setText(player.cropsStored[0].stored);
             count1.setText(player.cropsStored[1].stored);
             count2.setText(player.cropsStored[2].stored);
@@ -10216,17 +10241,7 @@ farming.start = function () {
             if (player.cropsStored[24].stored <= 0) { rowBack24.setOpacity(0.6); g24.setOpacity(0.6); } else { rowBack24.setOpacity(1.0); g24.setOpacity(1.0); };
             if (player.tools <= 0) { rowBack15.setOpacity(0.6); } else { rowBack15.setOpacity(1.0); };
             countTools.setText(player.tools);
-            rowBack14
-
-
-            e.event.stopPropagation();
-            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-            });
-
-
-
-        });
-
+        };
         //var itemToSell = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(135, 80).setSize(64, 64).setFill(imgArrayItems[8].src);
         //questPanel.appendChild(itemToSell);
         //var itemToSellText = (new lime.Label).setAnchorPoint(0, 0).setPosition(105, 60).setText("Item Title").setFontFamily("Comic Sans MS").setFontColor("#0101DF").setFontSize(16);
@@ -10443,12 +10458,25 @@ farming.start = function () {
                 heraldOrderTop = parseInt(heraldOrderTop);
                 var adjustedWant = 0;
 
-                if (heraldOrderTop > questParamsHerald.crops.length) {
+                if (heraldOrderTop == 18) {
+                    heraldOrder1 = 22;
+                    heraldOrder2 = 23;
+                }
+                else if (heraldOrderTop == 19) {
+                    heraldOrder1 = 24;
+                    heraldOrder2 = 23;
+                }
+                else if (heraldOrderTop > questParamsHerald.crops.length) {
                     adjustedWant = (heraldOrderTop % 10);
                     //console.log("adjusted want " + adjustedWant);
+                    heraldOrder1 = questParamsHerald.crops[adjustedWant].crop1;
+                    heraldOrder2 = questParamsHerald.crops[adjustedWant].crop2;
                 };
-                heraldOrder1 = questParamsHerald.crops[adjustedWant].crop1;
-                heraldOrder2 = questParamsHerald.crops[adjustedWant].crop2;
+                if (heraldOrderTop == 18) {
+                    heraldOrder1 = 22;
+                    heraldOrder2 = 23;
+                }
+                
                 player.cropsStored[heraldOrder1].stored = Math.abs(parseInt(parseInt(player.cropsStored[heraldOrder1].stored) - crop1amount));
                 player.cropsStored[heraldOrder2].stored = Math.abs(parseInt(parseInt(player.cropsStored[heraldOrder2].stored) - crop2amount));
 
@@ -10833,10 +10861,25 @@ farming.start = function () {
                                 case 3: questText1.setText("The Friar told me that the local lordship has been vacant for years"); break;
                                 case 4: questText1.setText("I grew up close to the castle and miss the spices we could get there"); break;
                                 case 5: questText1.setText("The trader told me some old maps show caverns in the area. I wonder where"); break;
-                                case 6: questText1.setText("I heard there is a healer named Connie that lives somewhere close by"); break;
-                                case 7: questText1.setText("There used to be a Windmill close by, but it closed and the road there is blocked"); break;
+                                case 6: questText1.setText("I heard there is a healer named Connie that lives somewhere close by");
+                                    if (windmillUpgraded == 1 && acres[5].owned == 1) {
+                                    questText1.setText("The new couple from your grain farm came into town yesterday. They are nice folks");
+                                }
+                               break;
+                                case 7: questText1.setText("There used to be a Windmill close by, but it closed and the road there is blocked");
+                                    if (windmillUpgraded == 0 && heraldOrderTop >= 11) {
+                                    questText1.setText("If you upgrade the Windmill on your new farm, you can make FLOUR");
+                                }
+                                else if (windmillUpgraded == 1 && storeHouseUpgraded == 0) {
+                                    questText1.setText("Now that you have Flour, if you upgrade your Storehouse, you can make Bread");
+                                }
+                                else if (windmillUpgraded == 1 && storeHouseUpgraded == 1) {
+                                    questText1.setText("I am so exicited that we now have Bread at the market!");
+                                } break;
                                 default: questText1.setText("My husband buys me awesome jewels all the time"); break;
                             }
+                          
+                        
                             //questText1.setText("I heard the king sometimes sends special orders to feed the troops");
                             feliciaQuestBtn.setHidden(true);
                             feliciaQuest.setHidden(true);
@@ -11771,27 +11814,10 @@ farming.start = function () {
                     questParams.felicia[0].highestcompleted = 1;
                 };
             };
-            count0.setText(player.cropsStored[0].stored);
-            count1.setText(player.cropsStored[1].stored);
-            count2.setText(player.cropsStored[2].stored);
-            count3.setText(player.cropsStored[3].stored);
-            count4.setText(player.cropsStored[4].stored);
-            count5.setText(player.cropsStored[5].stored);
-            count6.setText(player.cropsStored[6].stored);
-            count7.setText(player.cropsStored[7].stored);
-            count8.setText(player.cropsStored[8].stored);
-            count9.setText(player.cropsStored[9].stored);
-            count10.setText(player.cropsStored[10].stored);
-            count11.setText(player.cropsStored[11].stored);
-            count12.setText(player.cropsStored[12].stored);
-            count13.setText(player.cropsStored[13].stored);
-            count22.setText(player.cropsStored[22].stored);
-            count23.setText(player.cropsStored[23].stored);
-            count24.setText(player.cropsStored[24].stored);
-            countTools.setText(player.tools);
+            updateMarketCropVals();
             howManyBack.setHidden(true);
 
-            a.updateStored(); a.updateMoney();
+             a.updateMoney();
             howManySellBtn.removeEventListener('mousedown', function () { console.log("howmanysellBtn removed listener") });
         }
 
@@ -15736,6 +15762,7 @@ farming.start = function () {
                 crop1amount = 150;
                 crop2amount = 150;
             };
+     
             if (want > questParamsHerald.crops.length - 1) {
                 want = (heraldOrderTop % 10);
                 console.log("adjusted want to " + want + " from " + heraldOrderTop);
@@ -15745,6 +15772,14 @@ farming.start = function () {
             //setTimeout(function () { validCropsStored(); }, 0);
             heraldOrder1 = questParamsHerald.crops[want].crop1;
             heraldOrder2 = questParamsHerald.crops[want].crop2;
+            if (heraldOrderTop == 18) {
+                heraldOrder1 = 22;
+                heraldOrder2 = 23;
+            }
+            else if (heraldOrderTop == 19) {
+                heraldOrder1 = 24;
+                heraldOrder2 = 23;
+            }
             gideonPanelItemImg.setFill("images/" + a.crops[heraldOrder1].harvest);
             gideonPanelItemImg2.setFill("images/" + a.crops[heraldOrder2].harvest);
 
@@ -15755,7 +15790,7 @@ farming.start = function () {
             } else { gideonGiveBtn.setHidden(true); };
 
         }
-        lime.scheduleManager.callAfter(function () { setHeraldWant(heraldOrderTop); }, this, 5000);
+        lime.scheduleManager.callAfter(function () { setHeraldWant(heraldOrderTop); }, this, 4000);
 
 
         //////ABOUT Scene//////////////////////////////////////////////////////////////////////////////////////////////////
@@ -15888,75 +15923,7 @@ farming.start = function () {
 
         });
 
-
-        function checkRewardCode(code) {
-            var starValTxt = "YOU GET + 100 STARS!";
-            console.log("code tried is " + code);
-
-
-
-            if (myRewards.indexOf(code.toString()) !== -1) {
-                if (usedCodesArray.indexOf(code.toString()) == -1) {
-                    if (code.toString() == 'StarBoost') {
-                        starCash = starCash + 25; starValTxt = "YOU GET + 25 STARS!";
-                        try { Enhance.logEvent('used_shared_rewardCode'); } catch (err) { console.log("logging failed") };
-                    }
-
-                    else {
-                        starCash = starCash + 100;
-                        purchaseSound.play();
-                        code = code.toString();
-                        if (code == 'GuiCoinz3d' || code == 'BetaUser123' || code == 'BetaUser456' || code == 'BetaUser789' || code == 'GuiTools3d' || code == 'GuiStars3d') {
-                            try { Enhance.logEvent('used_GuiGhost_rewardCode'); } catch (err) { console.log("logging failed"); }
-                        }
-                        else {
-                            try { Enhance.logEvent('used_LootBoy_rewardCode'); }
-                            catch (err) { console.log("logging failed"); }
-                        }
-                    }
-
-
-                    starCashCountBoost.setText(starCash);
-                    starCashInvCount.setText(starCash);
-                    document.getElementById("starCashOuterLabel").innerHTML = starCash;
-                    localStorage.setItem('starCash', starCash);
-                    codeField.style.color = 'Green';
-                    codeField.style.fontSize = '16px';
-                    codeField.value = starValTxt;
-                    usedCodesArray.push(code)
-                    localStorage.setItem("usedCodes", JSON.stringify(usedCodesArray))
-
-                    lime.scheduleManager.callAfter(function () { codeField.value = ""; codeField.style.color = 'Black'; }, this, 1000);
-                }
-                else { codeField.value = "Code already used"; codeField.style.color = 'RED'; lime.scheduleManager.callAfter(function () { codeField.value = " "; codeField.style.color = 'Black'; }, this, 1000) }
-            }
-            else if (code.toString() == 'FixTheHouse') {
-                houseUpgrades.upgrades[0].owned = 1;
-                localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades))
-
-            }
-            else if (code.toString() == 'Herald10') {
-                heraldOrderTop = 10;
-                tokenInvCount.setText(heraldOrderTop);
-                localStorage.setItem("MedFarms_heraldOrdersFilled", heraldOrderTop);
-
-            }
-            else if (code.toString() == 'TestDaily') {
-
-
-                var adjustMe = localStorage.getItem("lastLoginDay")
-                adjustMe = adjustMe - 1;
-                localStorage.setItem("lastLoginDay", adjustMe);
-                localStorage.setItem("daysInRow", (daysInRow + 1));
-
-                starValTxt = "Testing Daily";
-                codeField.value = starValTxt;
-                lime.scheduleManager.callAfter(function () { location.reload(); }, this, 1550);
-            }
-            else { codeField.value = "Invalid Code"; codeField.style.color = 'RED'; lime.scheduleManager.callAfter(function () { codeField.value = " "; codeField.style.color = 'Black'; }, this, 1000) };
-        };
-
-
+////////end about scene/////////
 
         ///////////////////////////////////windmill Scene////////// //////////windmill scene//////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -16080,7 +16047,7 @@ farming.start = function () {
         function checkWindmillUpgrade() {
 
             if (windmillUpgraded == 1) {
-
+             
                 windMillBldg.setFill(imgArrayWindmill[2]); windMillSail.setHidden(false);
                 windmillBldgUpgradeBtn.setHidden(true);
 
@@ -16093,7 +16060,7 @@ farming.start = function () {
 
                     } else { needWheatBubble.setHidden(false); };
                     flourticker = flourticker + 1;
-                    if (flourticker == 2000 && player.cropsStored[22].stored >= 3) {
+                    if (flourticker == 600 && player.cropsStored[22].stored >= 3) {
                         flourWaiting = flourWaiting + 1;
                         flourticker = 0;
                         player.cropsStored[22].stored = parseInt(player.cropsStored[22].stored) - 3;
@@ -16101,17 +16068,19 @@ farming.start = function () {
                         collectFlour.setHidden(false);
                         collectFlourLabel.setText("+ " + flourWaiting);
                         lime.scheduleManager.callAfter(function () { updateInventoryCounts(); }, this, 1000);
-                    } else if (player.cropsStored[22].stored < 5) { needWheatBubble.setHidden(false); };
+                    } else if (player.cropsStored[22].stored < 3) { needWheatBubble.setHidden(false); };
                 }, this, 50);
 
 
             }
             else {
+              
                 lime.scheduleManager.callAfter(function () {
                     lime.scheduleManager.scheduleWithDelay(function () {
                         //add upgrade anim
 
                         if (sceneActive == 'Windmill' && windmillUpgraded != 1) {
+                            millerSprite.setHidden(true); connieSprite.setHidden(true);
                             needWheatBubble.setHidden(true); collectFlour.setHidden(true);
                             windMillBldg.setFill(imgArrayWindmill[1]); windMillSail.setHidden(true);
                             var currentPosWMB = windmillBldgUpgradeBtn.getPosition();
@@ -16146,10 +16115,10 @@ farming.start = function () {
         var storeHouseSmoke2 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(223, 127).setSize(30, 30).setFill(imgArray[24]);
         windmillLayer.appendChild(storeHouseSmoke2);
 
-        var needFlourBubble = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(200, 157).setSize(40, 40).setFill(imgArray[106]).setHidden(false);
+        var needFlourBubble = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(200, 157).setSize(40, 40).setFill(imgArray[106]).setHidden(true);
         windmillLayer.appendChild(needFlourBubble);
         var breadWaiting = 0;
-        var collectBreadBubble = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(257, 157).setSize(40, 40).setSize(50, 64).setFill(imgArray[90]);
+        var collectBreadBubble = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(257, 157).setSize(40, 40).setSize(50, 64).setFill(imgArray[90]).setHidden(true);
         windmillLayer.appendChild(collectBreadBubble);
         var collectBreadIcon = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(12, 2).setSize(27, 30).setFill("images/" + a.crops[24].harvest);
         collectBreadBubble.appendChild(collectBreadIcon);
@@ -16174,8 +16143,9 @@ farming.start = function () {
                 }
 
             }
+            else { needFlourBubble.setHidden(true); collectBreadBubble.setHidden(true);}
 
-        }, this, 30000)
+        }, this, 45000)
 
         goog.events.listen(collectBreadBubble, ["mousedown", "touchstart"], function () {
 
@@ -16740,98 +16710,117 @@ farming.start = function () {
 
         var millerStartX = 120;
         var millerStartY = 255;
+        var connieStartX = 265;
+        var connieStartY = 250;
 
-        var millerSprite = (new lime.Sprite).setAnchorPoint(0, 0).setSize(35, 35).setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]);
+        var millerSprite = (new lime.Sprite).setAnchorPoint(0, 0).setSize(35, 35).setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]).setHidden(true);
         windmillLayer.appendChild(millerSprite);
         var millerQuestBtn = (new lime.GlossyButton).setColor("#008000").setText("").setPosition(25, -4).setSize(25, 23).setOpacity(0.2);
         millerSprite.appendChild(millerQuestBtn);
         var millerQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, -15).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
         millerSprite.appendChild(millerQuest);
 
+        var connieSprite = (new lime.Sprite).setAnchorPoint(0, 0).setSize(35, 35).setPosition(connieStartX, connieStartY).setFill(imgArrayConnie[0]);
+        windmillLayer.appendChild(connieSprite);
+        var connieQuestBtn = (new lime.GlossyButton).setColor("#008000").setText("").setPosition(25, -4).setSize(25, 23).setOpacity(0.2);
+        connieSprite.appendChild(connieQuestBtn);
+        var connieQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, -15).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
+        connieSprite.appendChild(connieQuest);
+
+        if (windmillUpgraded == 1) { millerSprite.setHidden(false); connieSprite.setHidden(false);}
+
+
         var millerAnimCount = 0;
 
         ////monk anim
         lime.scheduleManager.scheduleWithDelay(function () {
+            if (sceneActive == "Windmill" && windmillUpgraded == 1) {
+                millerSprite.setHidden(false); connieSprite.setHidden(false);
+                if (millerAnimCount > 66) {
+                    millerAnimCount = 0
+                };
+                switch (millerAnimCount) {
+                    case 0: millerSprite.setPosition(millerStartX - 5, millerStartY).setFill(imgArrayMiller[5]); connieSprite.setPosition(connieStartX, connieStartY).setFill(imgArrayConnie[1]);  break;
+                    case 1: millerSprite.setPosition(millerStartX - 10, millerStartY).setFill(imgArrayMiller[6]); connieSprite.setPosition(connieStartX, connieStartY).setFill(imgArrayConnie[1]);  break;
+                    case 2: millerSprite.setPosition(millerStartX - 15, millerStartY).setFill(imgArrayMiller[7]); connieSprite.setPosition(connieStartX, connieStartY).setFill(imgArrayConnie[1]);  break;
+                    case 3: millerSprite.setPosition(millerStartX - 20, millerStartY).setFill(imgArrayMiller[8]); connieSprite.setPosition(connieStartX - 5, connieStartY).setFill(imgArrayConnie[7]); break;
+                    case 4: millerSprite.setPosition(millerStartX - 25, millerStartY).setFill(imgArrayMiller[9]); connieSprite.setPosition(connieStartX - 10, connieStartY).setFill(imgArrayConnie[8]); break;
+                    case 5: millerSprite.setPosition(millerStartX - 30, millerStartY).setFill(imgArrayMiller[5]); connieSprite.setPosition(connieStartX - 15, connieStartY).setFill(imgArrayConnie[9]); break;
+                    case 6: millerSprite.setPosition(millerStartX - 35, millerStartY).setFill(imgArrayMiller[6]); connieSprite.setPosition(connieStartX - 20, connieStartY).setFill(imgArrayConnie[10]); break;
+                    case 7: millerSprite.setPosition(millerStartX - 40, millerStartY).setFill(imgArrayMiller[7]); connieSprite.setPosition(connieStartX - 25, connieStartY).setFill(imgArrayConnie[11]); break;
+                    case 8: millerSprite.setPosition(millerStartX - 45, millerStartY).setFill(imgArrayMiller[8]); connieSprite.setPosition(connieStartX - 30, connieStartY).setFill(imgArrayConnie[7]); break;
+                    case 9: millerSprite.setPosition(millerStartX - 50, millerStartY).setFill(imgArrayMiller[9]); connieSprite.setPosition(connieStartX - 35, connieStartY).setFill(imgArrayConnie[8]); break;
+                    case 10: millerSprite.setPosition(millerStartX - 55, millerStartY).setFill(imgArrayMiller[8]); connieSprite.setPosition(connieStartX - 40, connieStartY).setFill(imgArrayConnie[9]); break;
+                    case 11: millerSprite.setPosition(millerStartX - 55, millerStartY).setFill(imgArrayMiller[0]); connieSprite.setPosition(connieStartX - 45, connieStartY).setFill(imgArrayConnie[10]); break;
 
-            if (millerAnimCount > 66) { millerAnimCount = 0 }
-            switch (millerAnimCount) {
-                case 0: millerSprite.setPosition(millerStartX - 5, millerStartY).setFill(imgArrayMiller[5]); break;
-                case 1: millerSprite.setPosition(millerStartX - 10, millerStartY).setFill(imgArrayMiller[6]); break;
-                case 2: millerSprite.setPosition(millerStartX - 15, millerStartY).setFill(imgArrayMiller[7]); break;
-                case 3: millerSprite.setPosition(millerStartX - 20, millerStartY).setFill(imgArrayMiller[8]); break;
-                case 4: millerSprite.setPosition(millerStartX - 25, millerStartY).setFill(imgArrayMiller[9]); break;
-                case 5: millerSprite.setPosition(millerStartX - 30, millerStartY).setFill(imgArrayMiller[5]); break;
-                case 6: millerSprite.setPosition(millerStartX - 35, millerStartY).setFill(imgArrayMiller[6]); break;
-                case 7: millerSprite.setPosition(millerStartX - 40, millerStartY).setFill(imgArrayMiller[7]); break;
-                case 8: millerSprite.setPosition(millerStartX - 45, millerStartY).setFill(imgArrayMiller[8]); break;
-                case 9: millerSprite.setPosition(millerStartX - 50, millerStartY).setFill(imgArrayMiller[9]); break;
-                case 10: millerSprite.setPosition(millerStartX - 55, millerStartY).setFill(imgArrayMiller[8]); break;
-                case 11: millerSprite.setPosition(millerStartX - 55, millerStartY).setFill(imgArrayMiller[0]); break;
+                    case 12: millerSprite.setPosition(millerStartX - 55, millerStartY).setFill(imgArrayMiller[10]); connieSprite.setPosition(connieStartX - 50, connieStartY).setFill(imgArrayConnie[11]); break;
+                    case 13: millerSprite.setPosition(millerStartX - 50, millerStartY).setFill(imgArrayMiller[11]); connieSprite.setPosition(connieStartX - 55, connieStartY).setFill(imgArrayConnie[7]); break;
+                    case 14: millerSprite.setPosition(millerStartX - 45, millerStartY).setFill(imgArrayMiller[12]); connieSprite.setPosition(connieStartX - 60, connieStartY).setFill(imgArrayConnie[8]); break;
+                    case 15: millerSprite.setPosition(millerStartX - 40, millerStartY).setFill(imgArrayMiller[13]); connieSprite.setPosition(connieStartX - 65, connieStartY).setFill(imgArrayConnie[9]); break;
+                    case 16: millerSprite.setPosition(millerStartX - 35, millerStartY).setFill(imgArrayMiller[14]); connieSprite.setPosition(connieStartX - 70, connieStartY).setFill(imgArrayConnie[10]); break;
+                    case 17: millerSprite.setPosition(millerStartX - 35, millerStartY - 5).setFill(imgArrayMiller[15]); connieSprite.setPosition(connieStartX - 75, connieStartY).setFill(imgArrayConnie[11]);  break;
+                    case 18: millerSprite.setPosition(millerStartX - 35, millerStartY - 10).setFill(imgArrayMiller[16]); connieSprite.setPosition(connieStartX - 80, connieStartY).setFill(imgArrayConnie[7]);  break;
+                    case 19: millerSprite.setPosition(millerStartX - 35, millerStartY - 15).setFill(imgArrayMiller[17]); connieSprite.setPosition(connieStartX - 85, connieStartY).setFill(imgArrayConnie[8]); break;
+                    case 20: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 90, connieStartY).setFill(imgArrayConnie[9]); break;
+                    case 21: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 95, connieStartY).setFill(imgArrayConnie[10]); break;
+                    case 22: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[11]); break;
+                    case 23: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[11]); break;
+                    case 24: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[11]); break;
+                    case 25: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[1]);break;
+                    case 26: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[1]);break;
+                    case 27: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[1]); break;
+                    case 28: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[1]); break;
+                    case 29: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[7]); break;
+                    case 30: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[7]); break;
+                    case 31: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[18]); break;
+                    case 32: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[18]); break;
+                    case 33: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[18]);break;
+                    case 34: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[18]); break;
+                    case 35: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[18]);  break;
+                    case 36: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[12]); break;
+                    case 37: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[12]);break;
+                    case 38: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[1]);break;
+                    case 39: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[1]); break;
 
-                case 12: millerSprite.setPosition(millerStartX - 55, millerStartY).setFill(imgArrayMiller[10]); break;
-                case 13: millerSprite.setPosition(millerStartX - 50, millerStartY).setFill(imgArrayMiller[11]); break;
-                case 14: millerSprite.setPosition(millerStartX - 45, millerStartY).setFill(imgArrayMiller[12]); break;
-                case 15: millerSprite.setPosition(millerStartX - 40, millerStartY).setFill(imgArrayMiller[13]); break;
-                case 16: millerSprite.setPosition(millerStartX - 35, millerStartY).setFill(imgArrayMiller[14]); break;
-                case 17: millerSprite.setPosition(millerStartX - 35, millerStartY - 5).setFill(imgArrayMiller[15]); break;
-                case 18: millerSprite.setPosition(millerStartX - 35, millerStartY - 10).setFill(imgArrayMiller[16]); break;
-                case 19: millerSprite.setPosition(millerStartX - 35, millerStartY - 15).setFill(imgArrayMiller[17]); break;
-                case 20: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 21: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 22: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 23: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 24: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 25: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 26: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 27: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 28: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 29: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 30: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 31: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 32: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 33: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 34: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 35: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 36: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 37: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 38: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
-                case 39: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[18]); break;
+                    case 40: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[10]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[1]); break;
+                    case 41: millerSprite.setPosition(millerStartX - 35, millerStartY - 14).setFill(imgArrayMiller[0]); connieSprite.setPosition(connieStartX - 100, connieStartY).setFill(imgArrayConnie[12]); break;
+                    case 42: millerSprite.setPosition(millerStartX - 35, millerStartY - 10).setFill(imgArrayMiller[1]); connieSprite.setPosition(connieStartX - 95, connieStartY).setFill(imgArrayConnie[13]); break;
+                    case 43: millerSprite.setPosition(millerStartX - 35, millerStartY - 6).setFill(imgArrayMiller[2]); connieSprite.setPosition(connieStartX - 90, connieStartY).setFill(imgArrayConnie[14]); break;
+                    case 44: millerSprite.setPosition(millerStartX - 35, millerStartY - 2).setFill(imgArrayMiller[3]); connieSprite.setPosition(connieStartX - 85, connieStartY).setFill(imgArrayConnie[15]);break;
+                    case 45: millerSprite.setPosition(millerStartX - 35, millerStartY).setFill(imgArrayMiller[4]); connieSprite.setPosition(connieStartX - 80, connieStartY).setFill(imgArrayConnie[16]);break;
+                    case 46: millerSprite.setPosition(millerStartX - 30, millerStartY).setFill(imgArrayMiller[10]); connieSprite.setPosition(connieStartX - 75, connieStartY).setFill(imgArrayConnie[17]);break;
+                    case 47: millerSprite.setPosition(millerStartX - 25, millerStartY).setFill(imgArrayMiller[11]); connieSprite.setPosition(connieStartX - 70, connieStartY).setFill(imgArrayConnie[12]); break;
+                    case 48: millerSprite.setPosition(millerStartX - 20, millerStartY).setFill(imgArrayMiller[12]); connieSprite.setPosition(connieStartX - 65, connieStartY).setFill(imgArrayConnie[13]);  break;
+                    case 49: millerSprite.setPosition(millerStartX - 15, millerStartY).setFill(imgArrayMiller[13]); connieSprite.setPosition(connieStartX - 60, connieStartY).setFill(imgArrayConnie[14]);  break;
+                    case 50: millerSprite.setPosition(millerStartX - 10, millerStartY).setFill(imgArrayMiller[14]); connieSprite.setPosition(connieStartX - 55, connieStartY).setFill(imgArrayConnie[15]);  break;
+                    case 51: millerSprite.setPosition(millerStartX - 5, millerStartY).setFill(imgArrayMiller[10]); connieSprite.setPosition(connieStartX - 50, connieStartY).setFill(imgArrayConnie[16]);  break;
+                    case 52: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[11]); connieSprite.setPosition(connieStartX - 45, connieStartY).setFill(imgArrayConnie[17]);  break;
+                    case 53: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); connieSprite.setPosition(connieStartX - 40, connieStartY).setFill(imgArrayConnie[12]); break;
+                    case 54: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); connieSprite.setPosition(connieStartX - 35, connieStartY).setFill(imgArrayConnie[13]);  break;
+                    case 55: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); connieSprite.setPosition(connieStartX - 30, connieStartY).setFill(imgArrayConnie[14]);   break;
+                    case 56: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); connieSprite.setPosition(connieStartX - 25, connieStartY).setFill(imgArrayConnie[15]); break;
+                    case 57: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); connieSprite.setPosition(connieStartX - 20, connieStartY).setFill(imgArrayConnie[16]);   break;
+                    case 58: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); connieSprite.setPosition(connieStartX - 15, connieStartY).setFill(imgArrayConnie[17]);  break;
+                    case 59: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); connieSprite.setPosition(connieStartX - 10, connieStartY).setFill(imgArrayConnie[12]); break;
+                    case 60: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); connieSprite.setPosition(connieStartX - 5, connieStartY).setFill(imgArrayConnie[13]);  break;
+                    case 61: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[1]); connieSprite.setPosition(connieStartX - 5, connieStartY).setFill(imgArrayConnie[14]);  break;
+                    case 62: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); connieSprite.setPosition(connieStartX, connieStartY).setFill(imgArrayConnie[15]); break;
+                    case 63: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[1]); connieSprite.setPosition(connieStartX, connieStartY).setFill(imgArrayConnie[19]);  break;
+                    case 64: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); connieSprite.setPosition(connieStartX, connieStartY).setFill(imgArrayConnie[19]); break;
+                    case 65: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[1]); connieSprite.setPosition(connieStartX, connieStartY).setFill(imgArrayConnie[12]);  break;
+                    case 66: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); connieSprite.setPosition(connieStartX, connieStartY).setFill(imgArrayConnie[12]); break;
 
-                case 40: millerSprite.setPosition(millerStartX - 35, millerStartY - 17).setFill(imgArrayMiller[10]); break;
-                case 41: millerSprite.setPosition(millerStartX - 35, millerStartY - 14).setFill(imgArrayMiller[0]); break;
-                case 42: millerSprite.setPosition(millerStartX - 35, millerStartY - 10).setFill(imgArrayMiller[1]); break;
-                case 43: millerSprite.setPosition(millerStartX - 35, millerStartY - 6).setFill(imgArrayMiller[2]); break;
-                case 44: millerSprite.setPosition(millerStartX - 35, millerStartY - 2).setFill(imgArrayMiller[3]); break;
-                case 45: millerSprite.setPosition(millerStartX - 35, millerStartY).setFill(imgArrayMiller[4]); break;
-                case 46: millerSprite.setPosition(millerStartX - 30, millerStartY).setFill(imgArrayMiller[10]); break;
-                case 47: millerSprite.setPosition(millerStartX - 25, millerStartY).setFill(imgArrayMiller[11]); break;
-                case 48: millerSprite.setPosition(millerStartX - 20, millerStartY).setFill(imgArrayMiller[12]); break;
-                case 49: millerSprite.setPosition(millerStartX - 15, millerStartY).setFill(imgArrayMiller[13]); break;
-                case 50: millerSprite.setPosition(millerStartX - 10, millerStartY).setFill(imgArrayMiller[14]); break;
-                case 51: millerSprite.setPosition(millerStartX - 5, millerStartY).setFill(imgArrayMiller[10]); break;
-                case 52: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[11]); break;
-                case 53: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); break;
-                case 54: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); break;
-                case 55: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); break;
-                case 56: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); break;
-                case 57: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); break;
-                case 58: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); break;
-                case 59: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); break;
-                case 60: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); break;
-                case 61: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[1]); break;
-                case 62: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); break;
-                case 63: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[1]); break;
-                case 64: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); break;
-                case 65: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[1]); break;
-                case 66: millerSprite.setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]); break;
-                default: console.log('defaulted');
+                
+                   
+
+                        default: console.log('defaulted');
+
+                    }
+
+                millerAnimCount = parseInt(millerAnimCount) + 1;
+
 
             }
-
-            millerAnimCount = parseInt(millerAnimCount) + 1;
-
-
-
         }, this, 250)
 
         goog.events.listen(millerQuestBtn, ["mousedown", "touchstart"], function (e) {
@@ -16842,7 +16831,14 @@ farming.start = function () {
             millerQuestBtn.setHidden(true); millerQuest.setHidden(true);
             handleMillerQuest();
         });
-
+        goog.events.listen(connieQuestBtn, ["mousedown", "touchstart"], function (e) {
+            connieQuestBtn.setHidden(true); connieQuest.setHidden(true);
+            handleConnieQuest();
+        });
+        goog.events.listen(connieSprite, ["mousedown", "touchstart"], function (e) {
+            connieQuestBtn.setHidden(true); connieQuest.setHidden(true);
+            handleConnieQuest();
+        });
 
         var millerQuestPanel = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(15, 100).setSize(a.width - 30, a.height / 2).setFill(imgArray[78]).setHidden(true);
         var questHeadermiller = (new lime.Label).setAnchorPoint(0, 0).setPosition(75, 25).setText("Miller Ulric").setFontFamily("Comic Sans MS").setFontSize(24);
@@ -16863,7 +16859,7 @@ farming.start = function () {
             millerQuestPanel.setHidden(false);
             var randomMiller = Math.round(Math.random() * 5);
             if (randomMiller == 0) { randomMiller = 4; };
-            console.log(" randommiller " + randomMiller)
+            //console.log(" randommiller " + randomMiller)
             questText1miller.setText(questParamsMiller.speech[randomMiller].Text);
             millerSound.play();
 
@@ -16873,7 +16869,6 @@ farming.start = function () {
             }, this, 10000)
 
         }
-
         goog.events.listen(millerQuestPanelCloseBtn, ["mousedown", "touchstart"], function (e) {
             var isHid123x = millerQuestPanel.getHidden();
             if (isHid123x == false) {
@@ -16887,7 +16882,46 @@ farming.start = function () {
 
 
         /// end miller
+        var connieQuestPanel = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(15, 100).setSize(a.width - 30, a.height / 2).setFill(imgArray[78]).setHidden(true);
+        var questHeaderConnie = (new lime.Label).setAnchorPoint(0, 0).setPosition(75, 25).setText("Connie").setFontFamily("Comic Sans MS").setFontSize(24);
+        connieQuestPanel.appendChild(questHeaderConnie);
 
+        var connieQuestPanelAvatar = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(100, 38).setSize(75, 75).setFill(imgArrayConnie[0]);
+        connieQuestPanel.appendChild(connieQuestPanelAvatar);
+        var questText1Connie = (new lime.Label).setAnchorPoint(0, 0).setPosition(20, 135).setText("With Floud I can make bread").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        connieQuestPanel.appendChild(questText1Connie);
+        var questText1ConnieShort11 = (new lime.Label).setAnchorPoint(0, 0).setPosition(25, 205).setText("").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50).setFontColor("#FF0000");
+        connieQuestPanel.appendChild(questText1ConnieShort11)
+        questText1ConnieShort11.setHidden(true);
+        var connieQuestPanelCloseBtn = (new lime.GlossyButton).setColor("#663300").setText("Close").setPosition(140, 235).setSize(100, 20);
+        connieQuestPanel.appendChild(connieQuestPanelCloseBtn);
+        windmillScene.appendChild(connieQuestPanel);
+
+        function handleConnieQuest() {
+            connieQuestPanel.setHidden(false);
+            var randomConnie = Math.round(Math.random() * 5);
+            if (randomConnie == 0) { randomConnie = 4; };
+            console.log(" randomconnnie " + randomConnie)
+            questText1Connie.setText(questParamsConnie.speech[randomConnie].Text);
+         
+
+            lime.scheduleManager.callAfter(function () {
+               connieQuestBtn.setHidden(false); connieQuest.setHidden(false);
+
+            }, this, 10000)
+
+        }
+  
+        goog.events.listen(connieQuestPanelCloseBtn, ["mousedown", "touchstart"], function (e) {
+            var isHid124x = connieQuestPanel.getHidden();
+            if (isHid124x == false) {
+                connieQuestPanel.setHidden(true);
+
+
+                e.stopPropagation();
+                e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+            }
+        });
         var windmillQuestPanel = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(15, 100).setSize(a.width - 30, a.height / 2).setFill(imgArray[78]).setHidden(true);
         var questHeaderwindmill = (new lime.Label).setAnchorPoint(0, 0).setPosition(45, 25).setText("Overgrown Field").setFontFamily("Comic Sans MS").setFontSize(24);
         windmillQuestPanel.appendChild(questHeaderwindmill);
@@ -17260,7 +17294,7 @@ farming.start = function () {
                     roadLeftO.setHidden(false);
                 }
                 if (acres[3].owned == 1) {
-                    roadRightV.setHidden(true);
+                    roadRightV.setHidden(false);
                 }
 
                 if (acres[4].owned == 1) {
@@ -17273,6 +17307,76 @@ farming.start = function () {
             }, this, 1250);
 
         }
+
+
+        function checkRewardCode(code) {
+            var starValTxt = "YOU GET + 100 STARS!";
+            console.log("code tried is " + code);
+
+
+
+            if (myRewards.indexOf(code.toString()) !== -1) {
+                if (usedCodesArray.indexOf(code.toString()) == -1) {
+                    if (code.toString() == 'StarBoost') {
+                        starCash = starCash + 25; starValTxt = "YOU GET + 25 STARS!";
+                        try { Enhance.logEvent('used_shared_rewardCode'); } catch (err) { console.log("logging failed") };
+                    }
+
+                    else {
+                        starCash = starCash + 100;
+                        purchaseSound.play();
+                        code = code.toString();
+                        if (code == 'GuiCoinz3d' || code == 'BetaUser123' || code == 'BetaUser456' || code == 'BetaUser789' || code == 'GuiTools3d' || code == 'GuiStars3d') {
+                            try { Enhance.logEvent('used_GuiGhost_rewardCode'); } catch (err) { console.log("logging failed"); }
+                        }
+                        else {
+                            try { Enhance.logEvent('used_LootBoy_rewardCode'); }
+                            catch (err) { console.log("logging failed"); }
+                        }
+                    }
+
+
+                    starCashCountBoost.setText(starCash);
+                    starCashInvCount.setText(starCash);
+                    document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                    localStorage.setItem('starCash', starCash);
+                    codeField.style.color = 'Green';
+                    codeField.style.fontSize = '16px';
+                    codeField.value = starValTxt;
+                    usedCodesArray.push(code)
+                    localStorage.setItem("usedCodes", JSON.stringify(usedCodesArray))
+
+                    lime.scheduleManager.callAfter(function () { codeField.value = ""; codeField.style.color = 'Black'; }, this, 1000);
+                }
+                else { codeField.value = "Code already used"; codeField.style.color = 'RED'; lime.scheduleManager.callAfter(function () { codeField.value = " "; codeField.style.color = 'Black'; }, this, 1000) }
+            }
+            else if (code.toString() == 'FixTheHouse') {
+                houseUpgrades.upgrades[0].owned = 1;
+                localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades))
+
+            }
+            else if (code.toString() == 'Herald10') {
+                heraldOrderTop = 10;
+                tokenInvCount.setText(heraldOrderTop);
+                localStorage.setItem("MedFarms_heraldOrdersFilled", heraldOrderTop);
+
+            }
+            else if (code.toString() == 'TestDaily') {
+
+
+                var adjustMe = localStorage.getItem("lastLoginDay")
+                adjustMe = adjustMe - 1;
+                localStorage.setItem("lastLoginDay", adjustMe);
+                localStorage.setItem("daysInRow", (daysInRow + 1));
+
+                starValTxt = "Testing Daily";
+                codeField.value = starValTxt;
+                lime.scheduleManager.callAfter(function () { location.reload(); }, this, 1550);
+            }
+            else { codeField.value = "Invalid Code"; codeField.style.color = 'RED'; lime.scheduleManager.callAfter(function () { codeField.value = " "; codeField.style.color = 'Black'; }, this, 1000) };
+        };
+
+
 };
 
 //code functions
