@@ -8332,92 +8332,107 @@ farming.start = function () {
         ////// Handle the external modal for starcash clicks 
         ///// buyWithStarCash Money
         document.getElementById("buyWithStarCash").addEventListener("touchstart", function (event) {
-            if (starCash >= 5) {
-                boughtStarCash = true;
-                player.money += 500; a.updateMoney(); localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-                starCash = starCash - 5;
-                localStorage.setItem('starCash', starCash);
-                document.getElementById("starCashOuterLabel").innerHTML = starCash;
-                sucessText.innerHTML = '+ 500 Coins';
-                sucessText.style.display = 'block';
-                lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 1000);
-                checkAchieves2();
+            var isVisFBe = document.getElementById("fbshare").style.display;
+            if (isVisFBe == 'block') {
+                if (starCash >= 5) {
+                    boughtStarCash = true;
+                    player.money += 500; a.updateMoney(); localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                    starCash = starCash - 5;
+                    localStorage.setItem('starCash', starCash);
+                    document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                    sucessText.innerHTML = '+ 500 Coins';
+                    sucessText.style.display = 'block';
+                    lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 1000);
+                    checkAchieves2();
 
+                }
+                event.stopPropagation();
             }
-            event.stopPropagation();
 
         }, false);
 
         document.getElementById("buyWithStarCash").addEventListener("click", function (event) {
-            if (starCash >= 5) {
-                boughtStarCash = true;
-                player.money += 500; a.updateMoney(); localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-                starCash = starCash - 5;
-                localStorage.setItem('starCash', starCash);
-                document.getElementById("starCashOuterLabel").innerHTML = starCash;
-                sucessText.innerHTML = '+ 500 Coins';
-                sucessText.style.display = 'block';
-                lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 750);
+            var isVisFBd = document.getElementById("fbshare").style.display;
+            if (isVisFBd == 'block') {
+                if (starCash >= 5) {
+                    boughtStarCash = true;
+                    player.money += 500; a.updateMoney(); localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                    starCash = starCash - 5;
+                    localStorage.setItem('starCash', starCash);
+                    document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                    sucessText.innerHTML = '+ 500 Coins';
+                    sucessText.style.display = 'block';
+                    lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 750);
+                }
+                event.stopPropagation();
             }
-            event.stopPropagation();
 
         }, false);
 
         ///// buyWithStarCashTools
         document.getElementById("buyWithStarCashTools").addEventListener("touchstart", function (event) {
-            if (starCash >= 10) {
+            var isVisFBc = document.getElementById("fbshare").style.display;
+            if (isVisFBc == 'block') {
+                if (starCash >= 10) {
 
-                player.tools += 500; localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-                starCash = starCash - 10;
-                lime.scheduleManager.callAfter(function () { a.updateTools(); }, this, 100);
+                    player.tools += 500; localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                    starCash = starCash - 10;
+                    lime.scheduleManager.callAfter(function () { a.updateTools(); }, this, 100);
 
-                localStorage.setItem('starCash', starCash);
-                document.getElementById("starCashOuterLabel").innerHTML = starCash;
-                sucessText.innerHTML = '+ 500 Tools';
-                sucessText.style.display = 'block';
-                lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 1000);
-                purchaseSound.play();
+                    localStorage.setItem('starCash', starCash);
+                    document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                    sucessText.innerHTML = '+ 500 Tools';
+                    sucessText.style.display = 'block';
+                    lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 1000);
+                    purchaseSound.play();
 
+                }
+                event.stopPropagation();
             }
-            event.stopPropagation();
 
 
         }, false);
 
         document.getElementById("buyWithStarCashTools").addEventListener("click", function (event) {
-            if (starCash >= 10) {
+            var isVisFBb = document.getElementById("fbshare").style.display;
+            if (isVisFBb == 'block') {
+                if (starCash >= 10) {
 
-                player.tools += 500; localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-                starCash = starCash - 10;
-                lime.scheduleManager.callAfter(function () { a.updateTools(); }, this, 100);
-                localStorage.setItem('starCash', starCash);
-                document.getElementById("starCashOuterLabel").innerHTML = starCash;
-                sucessText.innerHTML = '+ 500 Tools';
-                sucessText.style.display = 'block';
-                lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 1000);
-                purchaseSound.play();
+                    player.tools += 500; localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                    starCash = starCash - 10;
+                    lime.scheduleManager.callAfter(function () { a.updateTools(); }, this, 100);
+                    localStorage.setItem('starCash', starCash);
+                    document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                    sucessText.innerHTML = '+ 500 Tools';
+                    sucessText.style.display = 'block';
+                    lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 1000);
+                    purchaseSound.play();
 
+                }
+                event.stopPropagation();
             }
-            event.stopPropagation();
 
 
         }, false);
 
         document.getElementById("viewAdImg").addEventListener("touchstart", function (event) {
-
-            //console.log("touched viewAd")
-            starCashViewAd();
-            event.stopPropagation();
-
+            var isVisFBa = document.getElementById("fbshare").style.display;
+            if (isVisFBa == 'block') {
+                //console.log("touched viewAd")
+                starCashViewAd();
+                event.stopPropagation();
+            }
 
 
         }, false);
 
         document.getElementById("viewAdImg").addEventListener("click", function (event) {
-
-            //console.log("clicked viewAd")
-            starCashViewAd();
-            event.stopPropagation();
+            var isVisFB0 = document.getElementById("fbshare").style.display;
+            if (isVisFB0 == 'block') {
+                //console.log("clicked viewAd")
+                starCashViewAd();
+                event.stopPropagation();
+            }
 
 
         }, false);
@@ -8452,84 +8467,93 @@ farming.start = function () {
 
 
         document.getElementById("closeFB").addEventListener("touchstart", function (event) {
-
-            document.getElementById("fbshare").style.display = 'none';
-            homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
-            globalModalBlock = 0;
-            showingStarCash = 0;
-            var mutedAtStart3 = localStorage.getItem('GuiGhostFarms_muted');
-            //console.log("3 = " + mutedAtStart3)
-            if (mutedAtStart3 == 0) { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); }
-            else { lime.audio.setMute(true); setMute(1) }
-            event.stopPropagation();
-
+            var isVisFB = document.getElementById("fbshare").style.display;
+            if (isVisFB == 'block') { 
+                document.getElementById("fbshare").style.display = 'none';
+                console.log(document.getElementById("fbshare").style.display)
+                homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
+                globalModalBlock = 0;
+                showingStarCash = 0;
+                var mutedAtStart3 = localStorage.getItem('GuiGhostFarms_muted');
+                //console.log("3 = " + mutedAtStart3)
+                if (mutedAtStart3 == 0) { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); }
+                else { lime.audio.setMute(true); setMute(1) }
+                event.stopPropagation();
+            }
         }, false);
         document.getElementById("closeFB").addEventListener("click", function (event) {
+            var isVisFB2 = document.getElementById("fbshare").style.display;
+            if (isVisFB2 == 'block') {
+                document.getElementById("fbshare").style.display = 'none';
+                homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
+                globalModalBlock = 0;
 
-            document.getElementById("fbshare").style.display = 'none';
-            homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
-            globalModalBlock = 0;
-
-            showingStarCash = 0;
-            var mutedAtStart4 = localStorage.getItem('GuiGhostFarms_muted');
-            //console.log(mutedAtStart4)
-            if (mutedAtStart4 == 0) { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); }
-            else { lime.audio.setMute(true); setMute(1) }
-            event.stopPropagation();
+                showingStarCash = 0;
+                var mutedAtStart4 = localStorage.getItem('GuiGhostFarms_muted');
+                //console.log(mutedAtStart4)
+                if (mutedAtStart4 == 0) { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); }
+                else { lime.audio.setMute(true); setMute(1) }
+                event.stopPropagation();
+            }
         }, false);
 
         document.getElementById("buyStarsFromModal").addEventListener("touchstart", function (event) {
-
-            document.getElementById("fbshare").style.display = 'none';
-            homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
-            globalModalBlock = 0;
-            showingStarCash = 0;
-            hideAndDelayNavIcons();
-            c.replaceScene(storeScene, lime.transitions.SlideInDown);
-            storePremiumBtn.setOpacity(1.0);
-            storeGeneralBtn.setOpacity(0.5);
-            storeBuyGeneralLayer.setHidden(true);
-            buyGeneralContainer.setHidden(true);
-            storeBuyPremiumLayer.setHidden(false);
-            lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
-            event.stopPropagation();
+            var isVisFB3 = document.getElementById("fbshare").style.display;
+            if (isVisFB3 == 'block') {
+                document.getElementById("fbshare").style.display = 'none';
+                homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
+                globalModalBlock = 0;
+                showingStarCash = 0;
+                hideAndDelayNavIcons();
+                c.replaceScene(storeScene, lime.transitions.SlideInDown);
+                storePremiumBtn.setOpacity(1.0);
+                storeGeneralBtn.setOpacity(0.5);
+                storeBuyGeneralLayer.setHidden(true);
+                buyGeneralContainer.setHidden(true);
+                storeBuyPremiumLayer.setHidden(false);
+                lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
+                event.stopPropagation();
+            }
         }, false);
         document.getElementById("buyStarsFromModal").addEventListener("click", function (event) {
-
-            document.getElementById("fbshare").style.display = 'none';
-            homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
-            globalModalBlock = 0; showingStarCash = 0;
-            hideAndDelayNavIcons();
-            c.replaceScene(storeScene, lime.transitions.SlideInDown);
-            sceneActive = 'Store';
-            storePremiumBtn.setOpacity(1.0);
-            storeGeneralBtn.setOpacity(0.5);
-            storeBuyGeneralLayer.setHidden(true);
-            buyGeneralContainer.setHidden(true);
-            storeBuyPremiumLayer.setHidden(false);
-            lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
-            event.stopPropagation();
-
+            var isVisFB4 = document.getElementById("fbshare").style.display;
+            if (isVisFB5 == 'block') {
+                document.getElementById("fbshare").style.display = 'none';
+                homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
+                globalModalBlock = 0; showingStarCash = 0;
+                hideAndDelayNavIcons();
+                c.replaceScene(storeScene, lime.transitions.SlideInDown);
+                sceneActive = 'Store';
+                storePremiumBtn.setOpacity(1.0);
+                storeGeneralBtn.setOpacity(0.5);
+                storeBuyGeneralLayer.setHidden(true);
+                buyGeneralContainer.setHidden(true);
+                storeBuyPremiumLayer.setHidden(false);
+                lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
+                event.stopPropagation();
+            }
         }, false);
 
 
 
         document.getElementById("foundItClose").addEventListener("touchstart", function (event) {
+            var isVisFound = document.getElementById("foundIt").style.display;
+            if (isVisFound == 'block') {
+                document.getElementById("foundIt").style.display = 'none';
 
-            document.getElementById("foundIt").style.display = 'none';
-
-            homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
-            globalModalBlock = 0;
-            event.stopPropagation();
-
+                homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
+                globalModalBlock = 0;
+                event.stopPropagation();
+            }
         }, false);
         document.getElementById("foundItClose").addEventListener("click", function (event) {
-
-            document.getElementById("foundIt").style.display = 'none';
-            homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
-            globalModalBlock = 0;
-            event.stopPropagation();
-
+            var isVisFound = document.getElementById("foundIt").style.display;
+            if (isVisFound == 'block') {
+                document.getElementById("foundIt").style.display = 'none';
+                homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
+                globalModalBlock = 0;
+                event.stopPropagation();
+            }
         }, false);
 
         //hide For ad free
