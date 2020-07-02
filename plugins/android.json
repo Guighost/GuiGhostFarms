@@ -8,9 +8,7 @@
   },
   "installed_plugins": {
   
-    "cordova-plugin-inappbrowser": {
-      "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
-    },
+ 
     "cordova-plugin-market": {
       "PACKAGE_NAME": "com.wGuiGhostFarms_9861566"
     },
