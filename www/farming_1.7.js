@@ -820,7 +820,7 @@ imgArray[103] = new Image(); imgArray[103].src = "images/UI/swipe-right.png"
 imgArray[104] = new Image(); imgArray[104].src = "images/UI/nextButton.png"
 imgArray[105] = new Image(); imgArray[105].src = "images/UI/helpBtn1.png"
 imgArray[106] = new Image(); imgArray[106].src = "images/UI/needFlour.png"
-
+imgArray[107] = new Image(); imgArray[107].src = "images/UI/checkButton.png"
 
 
 var imgArrayVin = new Array();
@@ -3555,8 +3555,8 @@ farming.start = function () {
         if (houseUpgrades.upgrades[0].owned == 1) { houseImg.setFill(imgArray[98]).setSize(75, 100).setPosition(229, 22); }
 
         if (player.barnLevel == 2) { barn.setFill(imgArray6[1]).setPosition(110, 35).setSize(85, 107); }
-        else if (player.barnLevel == 3) { barn.setSize(135, 160).setFill(imgArray6[2]).setPosition(85, -6); }
-        else if (player.barnLevel == 4) { barn.setSize(135, 161).setFill(imgArray6[3]).setPosition(86, -9);; }
+        else if (player.barnLevel == 3) { barn.setSize(135, 160).setFill(imgArray6[2]).setPosition(87, -6); }
+        else if (player.barnLevel == 4) { barn.setSize(135, 161).setFill(imgArray6[3]).setPosition(87, -9);; }
         else if (player.barnLevel == 5) { barn.setFill(imgArray6[4]).setPosition(80, -18).setSize(149, 174); };
         ////blacksmith anim
         var flipBlacksmithNotif = 0;
@@ -3695,17 +3695,20 @@ farming.start = function () {
 
         //var barnUnlock2 = (new lime.Label).setAnchorPoint(0, 0).setFontColor("#E8FC08").setPosition(65, 105).setSize(180, 80).setFontWeight(600).setText(" 100 ");
         var barnUnlock3 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(140, 130).setSize(28, 28).setFill(imgArray[83]);
-        lime.scheduleManager.scheduleWithDelay(function () {
-            //add upgrade anim
-            if (sceneActive == 'Home') {
-                var currentPos = barnUnlock3.getPosition();
-                currentPos.y -= 3;
+   
+        if (parseInt(player.barnLevel) >= 5) { barnUnlock3.setHidden(true); }
+        else {
+            lime.scheduleManager.scheduleWithDelay(function () {
+                //add upgrade anim
+                if (sceneActive == 'Home') {
+                    var currentPos = barnUnlock3.getPosition();
+                    currentPos.y -= 3;
 
-                if (currentPos.y < 127) { currentPos.y = 130 };
-                barnUnlock3.setPosition(currentPos);
-            }
-        }, this, 500)
-        if (parseInt(player.barnLevel) >= 5) { barnUnlock3.setHidden(true); };
+                    if (currentPos.y < 127) { currentPos.y = 130 };
+                    barnUnlock3.setPosition(currentPos);
+                }
+            }, this, 500)
+        };
 
         //if (player.barnLevel == 2 || player.barnLevel == 3) { barnUnlock3.setFill(ImgArrayTools[2]); }
         //else if (player.barnLevel == 4) { barnUnlock3.setFill(ImgArrayTools[4]); }
@@ -4569,6 +4572,7 @@ farming.start = function () {
         //var nextBarn = imgArray6[0].src;
         //var toolCostImgToShow = ImgArrayTools[1]
         goog.events.listen(barnUnlock3, ["mousedown", "touchstart"], function () {
+
             if (player.barnLevel == 1) { barnUpgradeCostTools = 100; barnUpgradeCostWood = 50; secondsToUpgrade = 60; nextBarn = imgArray6[1].src }
             if (player.barnLevel == 2) { barnUpgradeCostTools = 250; barnUpgradeCostWood = 100; secondsToUpgrade = 120; nextBarn = imgArray6[2].src }
             else if (player.barnLevel == 3) { barnUpgradeCostTools = 500; barnUpgradeCostWood = 150; secondsToUpgrade = 180; nextBarn = imgArray6[3].src }
@@ -4608,7 +4612,7 @@ farming.start = function () {
             }
 
         });
-        goog.events.listen(upgradeHomeBarnBtn, ["mousedown", "touchstart"], function () {
+        goog.events.listen(upgradeHomeBarnBtn, ["mousedown", "touchstart"], function (e) {
             var upgradeHomeBarnBtnHid = unlockedCropBack.getHidden();
             //console.log(upgradeHomeBarnBtnHid + " hidden upgradeHomeBarnBtn");
 
@@ -4628,6 +4632,8 @@ farming.start = function () {
                 homeBarnShortLabel.setHidden(true);
                 ///fire home barn upgrade
                 upgradeHomeBarn(barnUpgradeCostTools, barnUpgradeCostWood);
+                e.event.stopPropagation();
+                e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
             }
         });
 
@@ -4752,47 +4758,8 @@ farming.start = function () {
 
                     }, this, 1000, secondsToUpgrade)
 
-                    //upgrade the barn after the 60 seconds
-                    //setTimeout(function () {
-                    //    barnUnlock3.setHidden(true);            //barnUnlockBtn.setHidden(true);
-                    //    player.barnLevel = player.barnLevel + 1;
-
-                    //    a.updateTools();
-
-                    //    if (player.barnLevel > 5) { player.barnLevel = 5; barnUnlock3.setHidden(true); };
-                    //    //save upgrade in progress complete
-                    //    upgradesInProgress.buildings[0].timeLeft = 0;
-                    //    upgradesInProgress.buildings[0].currentBarnLevel = player.barnLevel;
-                    //    localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
-                    //    //console.log("Barn timer expired")
-                    //    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
 
 
-
-                    //    if (player.barnLevel == 2) { barn.setFill(imgArray6[1]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Broccoli "); unlockedCropImage.setFill("images/" + a.crops[2].harvest); barnUnlock3.setHidden(false); };
-                    //    if (player.barnLevel == 3) { barn.setFill(imgArray6[2]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Eggplant"); unlockedCropImage.setFill("images/" + a.crops[3].harvest); barnUnlock3.setHidden(false); };
-                    //    if (player.barnLevel == 4) { barn.setFill(imgArray6[3]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Peppers"); unlockedCropImage.setFill("images/" + a.crops[4].harvest); barnUnlock3.setHidden(false); };
-                    //    if (player.barnLevel == 5) {
-                    //        barn.setFill(imgArray6[4]); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest);
-                    //        barnUnlock3.setHidden(true); barn.setPosition(86, 4).setSize(134, 155);
-                    //        //remove handlers no longer needed                      
-                    //        goog.events.removeAll(upgradeHomeBarnBtn);
-                    //        goog.events.removeAll(barnUnlock3);
-                    //        goog.events.removeAll(upgradeHomeBarnBackBtn);
-
-
-                    //    };
-                    //    barnUnlock.setText("Lvl " + player.barnLevel + "/5");
-                    //    setTimeout(function () {
-                    //        unlockedCropBack.setHidden(true);
-                    //        checkAchieves2();
-                    //    }, 2000); 
-
-                    //    //if (player.barnLevel == 2) { barnUnlock3.setFill(ImgArrayTools[2]); }
-                    //    //else if (player.barnLevel == 3) { barnUnlock3.setFill(ImgArrayTools[3]); }
-                    //    //else if (player.barnLevel == 4) { barnUnlock3.setFill(ImgArrayTools[4]); }
-                    //    //else { barnUnlock3.setFill(ImgArrayTools[1]); };
-                    //}, (secondsToUpgrade * 1000));
 
                 }
             }
@@ -9965,7 +9932,7 @@ farming.start = function () {
             a.sceneBefore = 8;
             updateInventoryCounts();
 
-
+        
         });
 
 
@@ -10285,11 +10252,12 @@ farming.start = function () {
                 lime.scheduleManager.callAfter(function () { a.updateMoney; a.updateStored(); checkTownRep(); }, this, 100);
 
                 saraQuest.setHidden(true); saraQuestBtn.setHidden(true);
-
+               
+                e.event.stopPropagation();
+                e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+                });
             } else { return };
-            e.event.stopPropagation();
-            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-            });
+           
 
 
         });
@@ -10930,7 +10898,7 @@ farming.start = function () {
             CheckQuestInvItems();
             marketTrigger.setHidden(false);
             storeOpenBtn.setHidden(false);
-
+            questPanel.setHidden(true);
         });
 
         var sellItem1 = (new lime.Sprite).setPosition(70, 260).setSize(60, 60).setFill("#008000"); sellLayerFill1.appendChild(sellItem1).setHidden(false);
@@ -11633,6 +11601,7 @@ farming.start = function () {
         //Market event listeners
         goog.events.listen(backBtnTown, ["mousedown", "touchstart"], function () {
             checkAchieves2();
+            questPanel.setHidden(true);
             townSceneActive = 0;
             a.updateMoney();
             hideAndDelayNavIcons();
@@ -15260,7 +15229,7 @@ farming.start = function () {
         cancelConfirmSaleHouseBack.appendChild(cancelConfirmSaleHouse);
         var confirmConfirmSaleHouseBack = (new lime.GlossyButton).setColor("#663300").setAnchorPoint(0.0).setPosition(100, 128).setSize(32, 32).setText("");
         confirmSaleHouse.appendChild(confirmConfirmSaleHouseBack);
-        var confirmConfirmSaleHouse = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-16, -15).setSize(32, 32).setFill(imgArray[21]);
+        var confirmConfirmSaleHouse = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-16, -15).setSize(32, 32).setFill(imgArray[107]);
         confirmConfirmSaleHouseBack.appendChild(confirmConfirmSaleHouse);
 
 
