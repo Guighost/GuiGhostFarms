@@ -1445,6 +1445,45 @@ var houseUpgrades = {
     ]
 
 };
+
+
+
+if (typeof localStorage["GuiGhostFarms_houseUpgrades"] === "undefined") { localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades)); };
+houseUpgrades = JSON.parse(localStorage.getItem('GuiGhostFarms_houseUpgrades'));
+
+
+function checkHouseUpgradeState() { 
+
+    if (houseUpgrades.upgrades[0].owned != 0 || houseUpgrades.upgrades[0].owned != 1) { houseUpgrades.upgrades[0].owned = 0; houseUpgrades.upgrades[0].cost = 0; };
+    if (houseUpgrades.upgrades[1].owned != 0 || houseUpgrades.upgrades[1].owned != 1) { houseUpgrades.upgrades[1].owned = 0; houseUpgrades.upgrades[1].cost = 200; };
+    if (houseUpgrades.upgrades[2].owned != 0 || houseUpgrades.upgrades[2].owned != 1) { houseUpgrades.upgrades[2].owned = 0; houseUpgrades.upgrades[2].cost = 250; };
+    if (houseUpgrades.upgrades[3].owned != 0 || houseUpgrades.upgrades[3].owned != 1) { houseUpgrades.upgrades[3].owned = 0; houseUpgrades.upgrades[3].cost = 300; };
+    if (houseUpgrades.upgrades[4].owned != 0 || houseUpgrades.upgrades[4].owned != 1) { houseUpgrades.upgrades[4].owned = 0; houseUpgrades.upgrades[4].cost = 250; };
+    if (houseUpgrades.upgrades[5].owned != 0 || houseUpgrades.upgrades[5].owned != 1) { houseUpgrades.upgrades[5].owned = 0; houseUpgrades.upgrades[5].cost = 150; };
+    if (houseUpgrades.upgrades[6].owned != 0 || houseUpgrades.upgrades[6].owned != 1) { houseUpgrades.upgrades[6].owned = 0; houseUpgrades.upgrades[6].cost = 500; };
+    if (houseUpgrades.upgrades[7].owned != 0 || houseUpgrades.upgrades[7].owned != 1) { houseUpgrades.upgrades[7].owned = 0; houseUpgrades.upgrades[7].cost = 250; };
+    if (houseUpgrades.upgrades[8].owned != 0 || houseUpgrades.upgrades[8].owned != 1) { houseUpgrades.upgrades[8].owned = 0; houseUpgrades.upgrades[8].cost = 150; };
+    if (houseUpgrades.upgrades[9].owned != 0 || houseUpgrades.upgrades[9].owned != 1) { houseUpgrades.upgrades[9].owned = 0; houseUpgrades.upgrades[9].cost = 500; };
+    if (houseUpgrades.upgrades[10].owned != 0 || houseUpgrades.upgrades[10].owned != 1) { houseUpgrades.upgrades[10].owned = 0; houseUpgrades.upgrades[10].cost = 125; };
+    if (houseUpgrades.upgrades[11].owned != 0 || houseUpgrades.upgrades[11].owned != 1) { houseUpgrades.upgrades[11].owned = 0; houseUpgrades.upgrades[11].cost = 600; };
+    if (houseUpgrades.upgrades[12].owned != 0 || houseUpgrades.upgrades[12].owned != 1) { houseUpgrades.upgrades[12].owned = 0; houseUpgrades.upgrades[12].cost = 150; };
+    if (houseUpgrades.upgrades[13].owned != 0 || houseUpgrades.upgrades[13].owned != 1) { houseUpgrades.upgrades[13].owned = 0; houseUpgrades.upgrades[13].cost = 750; };
+    if (houseUpgrades.upgrades[14].owned != 0 || houseUpgrades.upgrades[14].owned != 1) { houseUpgrades.upgrades[14].owned = 0; houseUpgrades.upgrades[14].cost = 750; };
+    if (houseUpgrades.upgrades[15].owned != 0 || houseUpgrades.upgrades[15].owned != 1) { houseUpgrades.upgrades[15].owned = 0; houseUpgrades.upgrades[15].cost = 1000; };
+    if (houseUpgrades.upgrades[16].owned != 0 || houseUpgrades.upgrades[16].owned != 1) { houseUpgrades.upgrades[16].owned = 0; houseUpgrades.upgrades[16].cost = 800; };
+    if (houseUpgrades.upgrades[17].owned != 0 || houseUpgrades.upgrades[17].owned != 1) { houseUpgrades.upgrades[17].owned = 0; houseUpgrades.upgrades[17].cost = 850; };
+    if (houseUpgrades.upgrades[18].owned != 0 || houseUpgrades.upgrades[18].owned != 1) { houseUpgrades.upgrades[18].owned = 0; houseUpgrades.upgrades[18].cost = 750; };
+    if (houseUpgrades.upgrades[19].owned != 0 || houseUpgrades.upgrades[19].owned != 1) { houseUpgrades.upgrades[19].owned = 0; houseUpgrades.upgrades[19].cost = 1000; };
+    if (houseUpgrades.upgrades[20].owned != 0 || houseUpgrades.upgrades[20].owned != 1) { houseUpgrades.upgrades[20].owned = 0; houseUpgrades.upgrades[20].cost = 800; };
+    if (houseUpgrades.upgrades[21].owned != 0 || houseUpgrades.upgrades[21].owned != 1) { houseUpgrades.upgrades[21].owned = 0; houseUpgrades.upgrades[21].cost = 700; };
+    if (houseUpgrades.upgrades[22].owned != 0 || houseUpgrades.upgrades[22].owned != 1) { houseUpgrades.upgrades[22].owned = 0; houseUpgrades.upgrades[22].cost = 1500; };
+    if (houseUpgrades.upgrades[23].owned != 0 || houseUpgrades.upgrades[23].owned != 1) { houseUpgrades.upgrades[23].owned = 0; houseUpgrades.upgrades[23].cost = 1500; };
+    if (houseUpgrades.upgrades[24].owned != 0 || houseUpgrades.upgrades[24].owned != 1) { houseUpgrades.upgrades[24].owned = 0; houseUpgrades.upgrades[24].cost = 1500; };
+    if (houseUpgrades.upgrades[25].owned != 0 || houseUpgrades.upgrades[25].owned != 1) { houseUpgrades.upgrades[25].owned = 0; houseUpgrades.upgrades[25].cost = 1500; };
+    }
+checkHouseUpgradeState();
+
+
 var mayorReady = 0;
 var friarReady = 0;
 var saraReady = 0;
@@ -1599,7 +1638,18 @@ var questParams = {
 
 };
 
+var questParamsEva = {
+    speech: [
+        { index: 0, text: "I take care of the chickens and pigs" },
+        { index: 1, text: "My grandfather used to tell a story about a local lord who disappeared" },
+        { index: 2, text: "I named the pigs Hambone, Bacon, and PorkChop" },
+        { index: 3, text: "Make sure you keep some crops around to feed the livestock or they will stop producing" },
+        { index: 4, text: "Lengends say there are caverns close by, but the entrance location was lost a long time ago" },
+        { index: 5, text: "I named the 3 chickens Soup, Feathers, and Bob" },
+  
 
+    ],
+}
 var tutStep = 1;
 if (typeof localStorage["GuiGhostFarms_tutStep"] === "undefined") { localStorage.setItem('GuiGhostFarms_tutStep', 1); };
 tutStep = localStorage.getItem('GuiGhostFarms_tutStep')
@@ -1618,8 +1668,6 @@ if (typeof localStorage["MedFarms_seenPremiumPromo"] === "undefined") { localSto
 seenPremiumPromo = JSON.parse(localStorage.getItem('MedFarms_seenPremiumPromo'));
 
 
-if (typeof localStorage["GuiGhostFarms_houseUpgrades"] === "undefined") { localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades)); };
-houseUpgrades = JSON.parse(localStorage.getItem('GuiGhostFarms_houseUpgrades'));
 
 if (typeof localStorage["adWatched"] === "undefined") { localStorage.setItem('adWatched', 0) };
 var adWatched = 0;
@@ -2821,8 +2869,8 @@ farming.start = function () {
         var blacksmithSound = new lime.audio.Audio('audio/Hiyo2.mp3');
         var millerSound = new lime.audio.Audio('audio/Hiyo1.mp3');
         var terricSound = new lime.audio.Audio('audio/Heh3.mp3');
-
-
+        var evaSound = new lime.audio.Audio('audio/evaSound.mp3');
+    
         var horizRoad = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 438).setSize(320, 25).setFill(imgArray[77]);
         ////////////////////////////// 
         ////////////////////////////// 
@@ -4088,9 +4136,13 @@ farming.start = function () {
             hideAndDelayNavIcons();
             c.replaceScene(houseScene, lime.transitions.SlideInUp)
             sceneActive = 'House';
-            seen1stHouseNotif = localStorage.getItem("MedFarms_seen1stHouseNotif");
-            if (seen1stHouseNotif != 0 || seen1stHouseNotif != 1) { seen1stHouseNotif = 0; localStorage.setItem("MedFarms_seen1stHouseNotif", 0); }
-            if (seen1stHouseNotif == 1) { questPanelHouse.setHidden(true); };
+            try {
+                seen1stHouseNotif = parseInt(localStorage.getItem("MedFarms_seen1stHouseNotif"));
+                if (seen1stHouseNotif != 0 || seen1stHouseNotif != 1) { seen1stHouseNotif = 0; localStorage.setItem("MedFarms_seen1stHouseNotif", 0); }
+                if (seen1stHouseNotif == 1) { questPanelHouse.setHidden(true); };
+            }
+            catch (err) { console.log("check houseNotif Failed") }
+          
             sceneBefore = 1;
             try { checkHouseUpgradesBought(); }
             catch (err) { console.log("checkHouseUpgradesBought Failed") };
@@ -4893,7 +4945,7 @@ farming.start = function () {
         appSection.appendChild(stackerPlayLogo);
         var stackerPlay = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(205, 36).setSize(80, 27).setFill(imgArray[53]);
         appSection.appendChild(stackerPlay);
-        var stackerStar = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(2, 27).setSize(38, 38).setFill(imgArray[39]);
+        var stackerStar = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(2, 27).setSize(38, 38).setFill(imgArray[38]);
         appSection.appendChild(stackerStar);
         var stackerStarX = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(4, 30).setSize(32, 32).setFill(imgArray[56]);
         appSection.appendChild(stackerStarX);
@@ -4902,7 +4954,7 @@ farming.start = function () {
         appSection.appendChild(starMatchPlayLogo);
         var starMatchPlay = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(205, 81).setSize(80, 27).setFill(imgArray[53]);
         appSection.appendChild(starMatchPlay);
-        var starMatchStar = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(2, 75).setSize(38, 38).setFill(imgArray[39]);
+        var starMatchStar = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(2, 75).setSize(38, 38).setFill(imgArray[38]);
         appSection.appendChild(starMatchStar);
         var starMatchStarX = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(4, 79).setSize(32, 32).setFill(imgArray[56]);
         appSection.appendChild(starMatchStarX);
@@ -12286,6 +12338,30 @@ farming.start = function () {
         ///eva sprite 
         var eva = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(16, 115).setSize(35, 35).setFill(imgArrayEva[0].src);
         liveStockLayer.appendChild(eva);
+        var evaQuestBtn = (new lime.GlossyButton).setColor("#008000").setText("").setPosition(25, -4).setSize(25, 23).setOpacity(0.2);
+        eva.appendChild(evaQuestBtn);
+        var evaQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, -15).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
+        eva.appendChild(evaQuest);
+
+        goog.events.listen(eva, ["mousedown", "touchstart"], function () {
+            randomEvaSpeech();
+        });
+        goog.events.listen(evaQuestBtn, ["mousedown", "touchstart"], function () {
+            randomEvaSpeech();
+        });
+
+        function randomEvaSpeech() {
+            evaSound.play();
+            var randomEva = Math.round(Math.random() * 5);
+            questPanelLS.setHidden(false);
+            questText1LS.setText(questParamsEva.speech[randomEva].text);
+            evaQuestBtn.setHidden(true);
+            evaQuest.setHidden(true);
+            lime.scheduleManager.callAfter(function () {
+                evaQuestBtn.setHidden(false);
+                evaQuest.setHidden(false);}, this, 20000);
+        }
+
 
         //livestock animals
         var chicken1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(175, 350).setSize(23, 22).setFill(imgArray3[3]);
@@ -12930,6 +13006,33 @@ farming.start = function () {
                 e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
             }
         });
+
+
+
+
+        var questPanelLS = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(15, 115).setSize(a.width - 30, a.height / 2).setFill(imgArray[78]).setHidden(true);
+        liveStockLayer.appendChild(questPanelLS);
+        var questHeaderLS = (new lime.Label).setAnchorPoint(0, 0).setPosition(55, 25).setText("Farmhand Eva").setFontFamily("Comic Sans MS").setFontSize(24);
+        questPanelLS.appendChild(questHeaderLS);
+        var questText1LS = (new lime.Label).setAnchorPoint(0, 0).setPosition(20, 145).setText(questParamsEva.speech[0].text).setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        questPanelLS.appendChild(questText1LS);
+        var questPanelAvatarLS = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(90, 40).setSize(100, 100).setFill(imgArrayEva[0]);
+        questPanelLS.appendChild(questPanelAvatarLS);
+        var questPanelCloseBtnLS = (new lime.GlossyButton).setColor("#663300").setText("Close").setPosition(140, 235).setSize(100, 20);
+        questPanelLS.appendChild(questPanelCloseBtnLS);
+
+        goog.events.listen(questPanelCloseBtnLS, ["mousedown", "touchstart"], function (e) {
+            var isItHidWMConfirm6 = questPanelLS.getHidden();
+            if (isItHidWMConfirm6 == false) {
+                //to do storehouse upgrade timing
+
+                questPanelLS.setHidden(true);
+
+                e.event.stopPropagation();
+                e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+            }
+        });
+
 
         ////end livestock scene /////
 
@@ -14457,9 +14560,14 @@ farming.start = function () {
 
 
         }
-
+        var patricia = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(202, 145).setSize(55, 55).setFill(imgArrayPatricia[0].src);
+        houseLayer.appendChild(patricia);
+        var patriciaQuestBtn = (new lime.GlossyButton).setColor("#008000").setText("").setPosition(25, -4).setSize(25, 23).setOpacity(0.2);
+        patricia.appendChild(patriciaQuestBtn);
+        var patriciaQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, -15).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
+        patricia.appendChild(patriciaQuest);
         var deniseCount = 0;
-        fireState = 1
+        var fireState = 1;
         lime.scheduleManager.scheduleWithDelay(function () {
             if (sceneActive == 'House') {
                 if (houseUpgrades.upgrades[0].owned == 1) { patricia.setHidden(false); } else { patricia.setHidden(true); }
@@ -14572,12 +14680,7 @@ farming.start = function () {
             }
         }, this, 200)
 
-        var patricia = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(202, 145).setSize(55, 55).setFill(imgArrayPatricia[0].src);
-        houseLayer.appendChild(patricia);
-        var patriciaQuestBtn = (new lime.GlossyButton).setColor("#008000").setText("").setPosition(25, -4).setSize(25, 23).setOpacity(0.2);
-        patricia.appendChild(patriciaQuestBtn);
-        var patriciaQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, -15).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
-        patricia.appendChild(patriciaQuest);
+  
 
         goog.events.listen(patriciaQuestBtn, ["mousedown", "touchstart"], function () {
             lime.scheduleManager.callAfter(function () { setPatriciaText(); }, this, 50);
@@ -15059,14 +15162,7 @@ farming.start = function () {
         var optionPosH1 = optionsHomeContainer.getPosition();
         var move = optionPosH1.x;
         var checkHouseUpgradesBought = function () {
-            if (houseUpgrades.upgrades[0].owned == 1) {
-                houseExpandCover.setHidden(true);
-                try {
-                    goog.events.removeAll(houseExpandBtn);
-                    goog.events.removeAll(upPanelConfirmBtnHouse);
-                } catch (err) { console.log("expand house remove listener failed") }
-
-            }
+            if (houseUpgrades.upgrades[0].owned == 1) {  houseExpandCover.setHidden(true);  }
             if (houseUpgrades.upgrades[1].owned == 1) { houseOptionReward1Base.setHidden(false); houseOptions1.setOpacity(0.2); }
             if (houseUpgrades.upgrades[2].owned == 1) { houseOptionReward2Base.setHidden(false); houseOptions2.setOpacity(0.2); }
             if (houseUpgrades.upgrades[3].owned == 1) { houseOptionReward3Img.setHidden(false); houseOptions3.setOpacity(0.2); }
@@ -15237,7 +15333,7 @@ farming.start = function () {
         });
 
 
-        var marketBtnHouse = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(210, a.height - a.controlsLayer_h + 20).setSize(75, 44).setFill(imgArray[81]);
+        var marketBtnHouse = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(215, 492).setSize(45, 45).setFill(imgArray[81]);
         houseLayer.appendChild(marketBtnHouse)
         goog.events.listen(marketBtnHouse, ["mousedown", "touchstart"], function () {
             if (globalModalBlock == 0) {
@@ -15450,17 +15546,19 @@ farming.start = function () {
         var secondsToUpgradeHo = 90;
         var expandOnce = 0;
         goog.events.listen(houseExpandBtn, ["mousedown", "touchstart"], function (e) {
-
-            if (parseInt(player.cropsStored[14].stored) >= 200 && player.tools >= 1000) {
-                upPanelConfirmBtnHouse.setHidden(false); shortCostHouse.setHidden(true);
-            }
-            else {
-                upPanelConfirmBtnHouse.setHidden(true); shortCostHouse.setHidden(false);
-            }
-            upgradePanelHouse.setHidden(false);
-            e.event.stopPropagation();
-            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-            });
+            var isHidPanelHouse = houseExpandCover.getHidden();
+            if (isHidPanelHouse == false){
+                if (parseInt(player.cropsStored[14].stored) >= 200 && player.tools >= 1000) {
+                    upPanelConfirmBtnHouse.setHidden(false); shortCostHouse.setHidden(true);
+                }
+                else {
+                    upPanelConfirmBtnHouse.setHidden(true); shortCostHouse.setHidden(false);
+                }
+                upgradePanelHouse.setHidden(false);
+                e.event.stopPropagation();
+                e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+                });
+            };
         });
 
         function expandHouseGo() {
@@ -16494,7 +16592,7 @@ farming.start = function () {
                 homeCrop = parseInt(oldCrop);
                 z.setFill("images/" + a.crops[homeCrop].harvest);
                 w.setText("Plant " + a.crops[homeCrop].name);
-                changeSeedsCrop.setFill("images/" + a.crops[b.currentCrop].harvest);
+                changeSeedsCrop.setFill("images/" + a.crops[homeCrop].harvest);
                 hideAndDelayNavIcons();
                 c.replaceScene(d, lime.transitions.SlideInRight);
                 b.currentCrop = homeCrop;
@@ -16917,7 +17015,7 @@ farming.start = function () {
 
         /// end miller
         var connieQuestPanel = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(15, 100).setSize(a.width - 30, a.height / 2).setFill(imgArray[78]).setHidden(true);
-        var questHeaderConnie = (new lime.Label).setAnchorPoint(0, 0).setPosition(75, 25).setText("Connie").setFontFamily("Comic Sans MS").setFontSize(24);
+        var questHeaderConnie = (new lime.Label).setAnchorPoint(0, 0).setPosition(105, 25).setText("Connie").setFontFamily("Comic Sans MS").setFontSize(24);
         connieQuestPanel.appendChild(questHeaderConnie);
 
         var connieQuestPanelAvatar = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(100, 38).setSize(75, 75).setFill(imgArrayConnie[0]);
@@ -16935,7 +17033,7 @@ farming.start = function () {
             connieQuestPanel.setHidden(false);
             var randomConnie = Math.round(Math.random() * 5);
             if (randomConnie == 0) { randomConnie = 4; };
-            console.log(" randomconnnie " + randomConnie)
+            //console.log(" randomconnnie " + randomConnie)
             questText1Connie.setText(questParamsConnie.speech[randomConnie].Text);
          
 
