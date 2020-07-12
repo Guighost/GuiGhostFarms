@@ -1328,7 +1328,10 @@ imgArrayPasture[18] = new Image(); imgArrayPasture[18].src = "images/Pasture/cow
 imgArrayPasture[19] = new Image(); imgArrayPasture[19].src ="images/Pasture/poop.png"
 
 
-
+//var imgArrayStables = new Array();
+//imgArrayStables[0] = new Image(); imgArrayStables[0].src = "images/stables/stableBack2-0.png";
+//imgArrayStables[1] = new Image(); imgArrayStables[1].src = "images/stables/stableBack2-1.png";
+//imgArrayStables[2] = new Image(); imgArrayStables[2].src = "images/stables/lake.png";
 
 //////Codesarray
 var myRewards = new Array();
@@ -1368,12 +1371,12 @@ var collectItems = {
     storeItems: [
 
         { name: "50 Iron Bars", value: 100, owned: 0, onlyOnce: 0, src: imgArrayStore[0].src },
-        { name: "50 Jars", value: 100, owned: 0, onlyOnce: 1, src: imgArrayStore[1].src },
-        { name: "Blessed Shovel", value: 2500, owned: 0, onlyOnce: 0, src: imgArrayStore[2].src },
-        { name: "Steel Pick", value: 5000, owned: 0, onlyOnce: 0, src: imgArrayStore[3].src },
+        { name: "50 Jars", value: 100, owned: 0, onlyOnce: 0, src: imgArrayStore[1].src },
+        { name: "Blessed Shovel", value: 2500, owned: 0, onlyOnce: 1, src: imgArrayStore[2].src },
+        { name: "Steel Pick", value: 5000, owned: 0, onlyOnce: 1, src: imgArrayStore[3].src },
         { name: "Fruit Press", value: 7500, owned: 0, onlyOnce: 1, src: imgArrayStore[4].src },
-        { name: "50 Bottles", value: 200, owned: 0, onlyOnce: 1, src: imgArrayStore[5].src },
-        { name: "50 Barrels", value: 200, owned: 0, onlyOnce: 1, src: imgArrayStore[6].src },
+        { name: "50 Bottles", value: 200, owned: 0, onlyOnce: 0, src: imgArrayStore[5].src },
+        { name: "50 Barrels", value: 200, owned: 0, onlyOnce: 0, src: imgArrayStore[6].src },
         
     ]
 
@@ -1454,32 +1457,32 @@ houseUpgrades = JSON.parse(localStorage.getItem('GuiGhostFarms_houseUpgrades'));
 
 function checkHouseUpgradeState() { 
 
-    if (houseUpgrades.upgrades[0].owned != 0 || houseUpgrades.upgrades[0].owned != 1) { houseUpgrades.upgrades[0].owned = 0; houseUpgrades.upgrades[0].cost = 0; };
-    if (houseUpgrades.upgrades[1].owned != 0 || houseUpgrades.upgrades[1].owned != 1) { houseUpgrades.upgrades[1].owned = 0; houseUpgrades.upgrades[1].cost = 200; };
-    if (houseUpgrades.upgrades[2].owned != 0 || houseUpgrades.upgrades[2].owned != 1) { houseUpgrades.upgrades[2].owned = 0; houseUpgrades.upgrades[2].cost = 250; };
-    if (houseUpgrades.upgrades[3].owned != 0 || houseUpgrades.upgrades[3].owned != 1) { houseUpgrades.upgrades[3].owned = 0; houseUpgrades.upgrades[3].cost = 300; };
-    if (houseUpgrades.upgrades[4].owned != 0 || houseUpgrades.upgrades[4].owned != 1) { houseUpgrades.upgrades[4].owned = 0; houseUpgrades.upgrades[4].cost = 250; };
-    if (houseUpgrades.upgrades[5].owned != 0 || houseUpgrades.upgrades[5].owned != 1) { houseUpgrades.upgrades[5].owned = 0; houseUpgrades.upgrades[5].cost = 150; };
-    if (houseUpgrades.upgrades[6].owned != 0 || houseUpgrades.upgrades[6].owned != 1) { houseUpgrades.upgrades[6].owned = 0; houseUpgrades.upgrades[6].cost = 500; };
-    if (houseUpgrades.upgrades[7].owned != 0 || houseUpgrades.upgrades[7].owned != 1) { houseUpgrades.upgrades[7].owned = 0; houseUpgrades.upgrades[7].cost = 250; };
-    if (houseUpgrades.upgrades[8].owned != 0 || houseUpgrades.upgrades[8].owned != 1) { houseUpgrades.upgrades[8].owned = 0; houseUpgrades.upgrades[8].cost = 150; };
-    if (houseUpgrades.upgrades[9].owned != 0 || houseUpgrades.upgrades[9].owned != 1) { houseUpgrades.upgrades[9].owned = 0; houseUpgrades.upgrades[9].cost = 500; };
-    if (houseUpgrades.upgrades[10].owned != 0 || houseUpgrades.upgrades[10].owned != 1) { houseUpgrades.upgrades[10].owned = 0; houseUpgrades.upgrades[10].cost = 125; };
-    if (houseUpgrades.upgrades[11].owned != 0 || houseUpgrades.upgrades[11].owned != 1) { houseUpgrades.upgrades[11].owned = 0; houseUpgrades.upgrades[11].cost = 600; };
-    if (houseUpgrades.upgrades[12].owned != 0 || houseUpgrades.upgrades[12].owned != 1) { houseUpgrades.upgrades[12].owned = 0; houseUpgrades.upgrades[12].cost = 150; };
-    if (houseUpgrades.upgrades[13].owned != 0 || houseUpgrades.upgrades[13].owned != 1) { houseUpgrades.upgrades[13].owned = 0; houseUpgrades.upgrades[13].cost = 750; };
-    if (houseUpgrades.upgrades[14].owned != 0 || houseUpgrades.upgrades[14].owned != 1) { houseUpgrades.upgrades[14].owned = 0; houseUpgrades.upgrades[14].cost = 750; };
-    if (houseUpgrades.upgrades[15].owned != 0 || houseUpgrades.upgrades[15].owned != 1) { houseUpgrades.upgrades[15].owned = 0; houseUpgrades.upgrades[15].cost = 1000; };
-    if (houseUpgrades.upgrades[16].owned != 0 || houseUpgrades.upgrades[16].owned != 1) { houseUpgrades.upgrades[16].owned = 0; houseUpgrades.upgrades[16].cost = 800; };
-    if (houseUpgrades.upgrades[17].owned != 0 || houseUpgrades.upgrades[17].owned != 1) { houseUpgrades.upgrades[17].owned = 0; houseUpgrades.upgrades[17].cost = 850; };
-    if (houseUpgrades.upgrades[18].owned != 0 || houseUpgrades.upgrades[18].owned != 1) { houseUpgrades.upgrades[18].owned = 0; houseUpgrades.upgrades[18].cost = 750; };
-    if (houseUpgrades.upgrades[19].owned != 0 || houseUpgrades.upgrades[19].owned != 1) { houseUpgrades.upgrades[19].owned = 0; houseUpgrades.upgrades[19].cost = 1000; };
-    if (houseUpgrades.upgrades[20].owned != 0 || houseUpgrades.upgrades[20].owned != 1) { houseUpgrades.upgrades[20].owned = 0; houseUpgrades.upgrades[20].cost = 800; };
-    if (houseUpgrades.upgrades[21].owned != 0 || houseUpgrades.upgrades[21].owned != 1) { houseUpgrades.upgrades[21].owned = 0; houseUpgrades.upgrades[21].cost = 700; };
-    if (houseUpgrades.upgrades[22].owned != 0 || houseUpgrades.upgrades[22].owned != 1) { houseUpgrades.upgrades[22].owned = 0; houseUpgrades.upgrades[22].cost = 1500; };
-    if (houseUpgrades.upgrades[23].owned != 0 || houseUpgrades.upgrades[23].owned != 1) { houseUpgrades.upgrades[23].owned = 0; houseUpgrades.upgrades[23].cost = 1500; };
-    if (houseUpgrades.upgrades[24].owned != 0 || houseUpgrades.upgrades[24].owned != 1) { houseUpgrades.upgrades[24].owned = 0; houseUpgrades.upgrades[24].cost = 1500; };
-    if (houseUpgrades.upgrades[25].owned != 0 || houseUpgrades.upgrades[25].owned != 1) { houseUpgrades.upgrades[25].owned = 0; houseUpgrades.upgrades[25].cost = 1500; };
+    if (houseUpgrades.upgrades[0].owned != 0 && houseUpgrades.upgrades[0].owned != 1) { houseUpgrades.upgrades[0].owned = 0; houseUpgrades.upgrades[0].cost = 0; };
+    if (houseUpgrades.upgrades[1].owned != 0 && houseUpgrades.upgrades[1].owned != 1) { houseUpgrades.upgrades[1].owned = 0; houseUpgrades.upgrades[1].cost = 200; };
+    if (houseUpgrades.upgrades[2].owned != 0 && houseUpgrades.upgrades[2].owned != 1) { houseUpgrades.upgrades[2].owned = 0; houseUpgrades.upgrades[2].cost = 250; };
+    if (houseUpgrades.upgrades[3].owned != 0 && houseUpgrades.upgrades[3].owned != 1) { houseUpgrades.upgrades[3].owned = 0; houseUpgrades.upgrades[3].cost = 300; };
+    if (houseUpgrades.upgrades[4].owned != 0 && houseUpgrades.upgrades[4].owned != 1) { houseUpgrades.upgrades[4].owned = 0; houseUpgrades.upgrades[4].cost = 250; };
+    if (houseUpgrades.upgrades[5].owned != 0 && houseUpgrades.upgrades[5].owned != 1) { houseUpgrades.upgrades[5].owned = 0; houseUpgrades.upgrades[5].cost = 150; };
+    if (houseUpgrades.upgrades[6].owned != 0 && houseUpgrades.upgrades[6].owned != 1) { houseUpgrades.upgrades[6].owned = 0; houseUpgrades.upgrades[6].cost = 500; };
+    if (houseUpgrades.upgrades[7].owned != 0 && houseUpgrades.upgrades[7].owned != 1) { houseUpgrades.upgrades[7].owned = 0; houseUpgrades.upgrades[7].cost = 250; };
+    if (houseUpgrades.upgrades[8].owned != 0 && houseUpgrades.upgrades[8].owned != 1) { houseUpgrades.upgrades[8].owned = 0; houseUpgrades.upgrades[8].cost = 150; };
+    if (houseUpgrades.upgrades[9].owned != 0 && houseUpgrades.upgrades[9].owned != 1) { houseUpgrades.upgrades[9].owned = 0; houseUpgrades.upgrades[9].cost = 500; };
+    if (houseUpgrades.upgrades[10].owned != 0 && houseUpgrades.upgrades[10].owned != 1) { houseUpgrades.upgrades[10].owned = 0; houseUpgrades.upgrades[10].cost = 125; };
+    if (houseUpgrades.upgrades[11].owned != 0 && houseUpgrades.upgrades[11].owned != 1) { houseUpgrades.upgrades[11].owned = 0; houseUpgrades.upgrades[11].cost = 600; };
+    if (houseUpgrades.upgrades[12].owned != 0 && houseUpgrades.upgrades[12].owned != 1) { houseUpgrades.upgrades[12].owned = 0; houseUpgrades.upgrades[12].cost = 150; };
+    if (houseUpgrades.upgrades[13].owned != 0 && houseUpgrades.upgrades[13].owned != 1) { houseUpgrades.upgrades[13].owned = 0; houseUpgrades.upgrades[13].cost = 750; };
+    if (houseUpgrades.upgrades[14].owned != 0 && houseUpgrades.upgrades[14].owned != 1) { houseUpgrades.upgrades[14].owned = 0; houseUpgrades.upgrades[14].cost = 750; };
+    if (houseUpgrades.upgrades[15].owned != 0 && houseUpgrades.upgrades[15].owned != 1) { houseUpgrades.upgrades[15].owned = 0; houseUpgrades.upgrades[15].cost = 1000; };
+    if (houseUpgrades.upgrades[16].owned != 0 && houseUpgrades.upgrades[16].owned != 1) { houseUpgrades.upgrades[16].owned = 0; houseUpgrades.upgrades[16].cost = 800; };
+    if (houseUpgrades.upgrades[17].owned != 0 && houseUpgrades.upgrades[17].owned != 1) { houseUpgrades.upgrades[17].owned = 0; houseUpgrades.upgrades[17].cost = 850; };
+    if (houseUpgrades.upgrades[18].owned != 0 && houseUpgrades.upgrades[18].owned != 1) { houseUpgrades.upgrades[18].owned = 0; houseUpgrades.upgrades[18].cost = 750; };
+    if (houseUpgrades.upgrades[19].owned != 0 && houseUpgrades.upgrades[19].owned != 1) { houseUpgrades.upgrades[19].owned = 0; houseUpgrades.upgrades[19].cost = 1000; };
+    if (houseUpgrades.upgrades[20].owned != 0 && houseUpgrades.upgrades[20].owned != 1) { houseUpgrades.upgrades[20].owned = 0; houseUpgrades.upgrades[20].cost = 800; };
+    if (houseUpgrades.upgrades[21].owned != 0 && houseUpgrades.upgrades[21].owned != 1) { houseUpgrades.upgrades[21].owned = 0; houseUpgrades.upgrades[21].cost = 700; };
+    if (houseUpgrades.upgrades[22].owned != 0 && houseUpgrades.upgrades[22].owned != 1) { houseUpgrades.upgrades[22].owned = 0; houseUpgrades.upgrades[22].cost = 1500; };
+    if (houseUpgrades.upgrades[23].owned != 0 && houseUpgrades.upgrades[23].owned != 1) { houseUpgrades.upgrades[23].owned = 0; houseUpgrades.upgrades[23].cost = 1500; };
+    if (houseUpgrades.upgrades[24].owned != 0 && houseUpgrades.upgrades[24].owned != 1) { houseUpgrades.upgrades[24].owned = 0; houseUpgrades.upgrades[24].cost = 1500; };
+    if (houseUpgrades.upgrades[25].owned != 0 && houseUpgrades.upgrades[25].owned != 1) { houseUpgrades.upgrades[25].owned = 0; houseUpgrades.upgrades[25].cost = 1500; };
     }
 checkHouseUpgradeState();
 
@@ -2984,7 +2987,7 @@ farming.start = function () {
         });
 
         /// compass nav
-        var compassHBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 100).setSize(250, 250).setFill(imgArray[74]); f.appendChild(compassHBack)
+        var compassHBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 100).setSize(250, 250).setFill(imgArray[74]).setHidden(true); f.appendChild(compassHBack)
         var orchardNavH = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(170, 170).setSize(50, 50).setFill(imgArray[48]); compassHBack.appendChild(orchardNavH)
         var lsNavH = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(197, 105).setSize(50, 50).setFill(imgArray[49]); compassHBack.appendChild(lsNavH)
         var vinyardNavH = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 105).setSize(50, 50).setFill(imgArray[46]); compassHBack.appendChild(vinyardNavH)
@@ -2994,10 +2997,15 @@ farming.start = function () {
         var stableNavH = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(170, 35).setSize(50, 50).setFill(imgArray[57]); compassHBack.appendChild(stableNavH)
         var closeNavH = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(100, 222).setSize(50, 50).setFill(imgArray[21]); compassHBack.appendChild(closeNavH)
 
-        compassHBack.setHidden(true);
+    
 
 
-
+        //goog.events.listen(stableNavH, ["mousedown", "touchstart"], function (e) {
+        //    var compassisHid = compassHBack.getHidden()
+        //    if (!compassisHid) {
+        //        c.replaceScene(stableScene, lime.transitions.SlideInRight);
+        //    }
+        //});
 
         goog.events.listen(compassH, ["mousedown", "touchstart"], function (e) {
             if (globalModalBlock == 0) { checkAcresNav(); homeBlock.setHidden(false); }
@@ -4144,8 +4152,8 @@ farming.start = function () {
             catch (err) { console.log("check houseNotif Failed") }
           
             sceneBefore = 1;
-            try { checkHouseUpgradesBought(); }
-            catch (err) { console.log("checkHouseUpgradesBought Failed") };
+          checkHouseUpgradesBought(); 
+           
 
 
         });
@@ -8774,7 +8782,7 @@ farming.start = function () {
         //var playerToolImgs = (new lime.Sprite).setPosition(50, 310).setSize(90, 250).setFill("#000000");
         //cropsLayer.appendChild(playerToolImgs);
 
-        var supplyBox = (new lime.RoundedRect()).setPosition(52, 357).setSize(99, 233).setFill("#00ff00");
+        var supplyBox = (new lime.RoundedRect()).setPosition(52, 380).setSize(99, 272).setFill("#00ff00");
         cropsLayer.appendChild(supplyBox);
         var stockLabel = (new lime.Label).setPosition(51, 271).setSize(71, 50).setText("Consumables").setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(16);
         cropsLayer.appendChild(stockLabel);
@@ -8784,16 +8792,17 @@ farming.start = function () {
 
         //inventory Icons HEREEREERE
 
-        for (x = 0; x < (9); x++) storedBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(105, 88 + (x * 42) + 6).setFill(imgArrayTown[18]).setSize(95, 40), cropsLayer.appendChild(storedBack);
+        for (x = 0; x < (10); x++) storedBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(105, 88 + (x * 42) + 6).setFill(imgArrayTown[18]).setSize(95, 40), cropsLayer.appendChild(storedBack);
         for (x = 0; x < (7); x++) storedIcon = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(115, 90 + (x * 42) + 7).setFill("images/" + a.crops[x].harvest).setSize(33, 33), cropsLayer.appendChild(storedIcon);
 
-        for (x = 9; x < (18); x++) storedBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(210, 88 + ((x - 9) * 42) + 6).setFill(imgArrayTown[18]).setSize(95, 40), cropsLayer.appendChild(storedBack);
+        for (x = 9; x < (19); x++) storedBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(210, 88 + ((x - 9) * 42) + 6).setFill(imgArrayTown[18]).setSize(95, 40), cropsLayer.appendChild(storedBack);
         for (x = 7; x < (14); x++) storedIcon = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(220, 90 + ((x - 7) * 42) + 7).setFill("images/" + a.crops[x].harvest).setSize(33, 33), cropsLayer.appendChild(storedIcon);
         storedBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(4, 262).setFill(imgArrayTown[18]).setSize(95, 40), cropsLayer.appendChild(storedBack);
         storedBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(4, 304).setFill(imgArrayTown[18]).setSize(95, 40), cropsLayer.appendChild(storedBack);
         storedBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(4, 346).setFill(imgArrayTown[18]).setSize(95, 40), cropsLayer.appendChild(storedBack);
         storedBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(4, 388).setFill(imgArrayTown[18]).setSize(95, 40), cropsLayer.appendChild(storedBack);
         storedBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(4, 430).setFill(imgArrayTown[18]).setSize(95, 40), cropsLayer.appendChild(storedBack);
+        storedBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(4, 472).setFill(imgArrayTown[18]).setSize(95, 40), cropsLayer.appendChild(storedBack);
         storedIcon = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, 265).setFill("images/" + a.crops[14].harvest).setSize(33, 33), cropsLayer.appendChild(storedIcon);
         storedIcon = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, 308).setFill("images/" + a.crops[15].harvest).setSize(33, 33), cropsLayer.appendChild(storedIcon);
         storedIcon = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, 348).setFill("images/" + a.crops[16].harvest).setSize(33, 33), cropsLayer.appendChild(storedIcon);
@@ -8822,9 +8831,9 @@ farming.start = function () {
         var gLabel16 = (new lime.Label).setPosition(67, 367).setSize(26, 12).setText(player.cropsStored[16].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel16);
         var gLabel17 = (new lime.Label).setPosition(67, 410).setSize(26, 12).setText(player.cropsStored[17].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel17);
         var gLabel18 = (new lime.Label).setPosition(170, 410).setSize(26, 12).setText(player.cropsStored[18].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel18);
-        var gLabel19 = (new lime.Label).setPosition(67, 450).setSize(26, 12).setText("?").setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); /*cropsLayer.appendChild(gLabel19);*/
-        var gLabel20 = (new lime.Label).setPosition(170, 450).setSize(26, 12).setText("?").setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); /*cropsLayer.appendChild(gLabel20);*/
-        var gLabel21 = (new lime.Label).setPosition(272, 450).setSize(26, 12).setText("?").setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); /*cropsLayer.appendChild(gLabel21);*/
+        var gLabel19 = (new lime.Label).setPosition(67, 492).setSize(26, 12).setText("?").setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel19);
+        var gLabel20 = (new lime.Label).setPosition(170, 492).setSize(26, 12).setText("?").setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel20);
+        var gLabel21 = (new lime.Label).setPosition(272, 492).setSize(26, 12).setText("?").setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel21);
         var gLabel22 = (new lime.Label).setPosition(272, 410).setSize(26, 12).setText(player.cropsStored[22].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel22);
         var gLabel23 = (new lime.Label).setPosition(170, 450).setSize(26, 12).setText(player.cropsStored[23].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel23);
         var gLabel24 = (new lime.Label).setPosition(272, 450).setSize(26, 12).setText(player.cropsStored[24].stored).setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel24);
@@ -8897,18 +8906,18 @@ farming.start = function () {
                 itemsStoredBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(20 + (i * 70), 195 + (x * 62) + 6).setFill(imgArrayTown[18]).setSize(60, 52), itemsBack.appendChild(itemsStoredBack);
         }
         itemsStoredBack.setHidden(true);
-        var itemInvBtn1 = (new lime.GlossyButton).setPosition(50, 229).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn1);
-        var itemInvBtn2 = (new lime.GlossyButton).setPosition(120, 229).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn2);
-        var itemInvBtn3 = (new lime.GlossyButton).setPosition(185, 229).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn3);
-        var itemInvBtn4 = (new lime.GlossyButton).setPosition(255, 229).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn4);
-        var itemInvBtn5 = (new lime.GlossyButton).setPosition(50, 294).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn5);
-        var itemInvBtn6 = (new lime.GlossyButton).setPosition(120, 294).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn6);
-        var itemInvBtn7 = (new lime.GlossyButton).setPosition(190, 294).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn7);
-        var itemInvBtn8 = (new lime.GlossyButton).setPosition(260, 294).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn8);
-        var itemInvBtn9 = (new lime.GlossyButton).setPosition(50, 358).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn9);
-        var itemInvBtn10 = (new lime.GlossyButton).setPosition(120, 358).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn10);
-        var itemInvBtn11 = (new lime.GlossyButton).setPosition(190, 358).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn11);
-        var itemInvBtn12 = (new lime.GlossyButton).setPosition(260, 358).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn12);
+        var itemInvBtn1 = (new lime.GlossyButton).setPosition(50, 228).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn1);
+        var itemInvBtn2 = (new lime.GlossyButton).setPosition(120, 228).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn2);
+        var itemInvBtn3 = (new lime.GlossyButton).setPosition(190, 228).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn3);
+        var itemInvBtn4 = (new lime.GlossyButton).setPosition(260, 228).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn4);
+        var itemInvBtn5 = (new lime.GlossyButton).setPosition(50, 292).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn5);
+        var itemInvBtn6 = (new lime.GlossyButton).setPosition(120, 291).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn6);
+        var itemInvBtn7 = (new lime.GlossyButton).setPosition(190, 291).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn7);
+        var itemInvBtn8 = (new lime.GlossyButton).setPosition(260, 291).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn8);
+        var itemInvBtn9 = (new lime.GlossyButton).setPosition(50, 353).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn9);
+        var itemInvBtn10 = (new lime.GlossyButton).setPosition(120, 353).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn10);
+        var itemInvBtn11 = (new lime.GlossyButton).setPosition(190, 353).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn11);
+        var itemInvBtn12 = (new lime.GlossyButton).setPosition(260, 353).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn12);
         //var itemInvBtn13 = (new lime.GlossyButton).setPosition(50, 338).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn13);
         //var itemInvBtn14 = (new lime.GlossyButton).setPosition(120, 338).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn14);
         //var itemInvBtn15 = (new lime.GlossyButton).setPosition(190, 338).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn15);
@@ -11925,7 +11934,7 @@ farming.start = function () {
         var moreGameBtnLabel = (new lime.Label).setText("MORE GAMES").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(150, 346).setFontSize(20);
         introLayer.appendChild(moreGameBtnLabel);
 
-        if (adFreeVersion == 1) { moreGameBtn.setHidden(true); moreGameBtnLabel.setHidden(true); }
+        moreGameBtn.setHidden(true); moreGameBtnLabel.setHidden(true); 
         var introFill2 = (new lime.Sprite).setPosition(157, 260).setSize(300, 490).setFill(imgArray[14]);
         introScene.appendChild(introFill2);
 
@@ -13035,9 +13044,6 @@ farming.start = function () {
 
 
         ////end livestock scene /////
-
-
-
 
 
         //////////////////////////////////Vinyard Scene///////////////////////////////////////////  //////////////////////////////////Vinyard Scene///////////////////////////////////////////
@@ -15161,6 +15167,13 @@ farming.start = function () {
         ///check for previously bought
         var optionPosH1 = optionsHomeContainer.getPosition();
         var move = optionPosH1.x;
+        function checkHouseIntegrity() {
+            var i;
+            for (i = 0; i < 25; i++) {
+                if (houseUpgrades.upgrades[i].owned != 1 && houseUpgrades.upgrades[i].owned != 0) { houseUpgrades.upgrades[i].owned = 0;}
+            }
+        }
+        checkHouseIntegrity();
         var checkHouseUpgradesBought = function () {
             if (houseUpgrades.upgrades[0].owned == 1) {  houseExpandCover.setHidden(true);  }
             if (houseUpgrades.upgrades[1].owned == 1) { houseOptionReward1Base.setHidden(false); houseOptions1.setOpacity(0.2); }
@@ -15223,28 +15236,28 @@ farming.start = function () {
 
         var checkPositionsHouseUpgrades = function () {
             move = optionPosH1.x;
-            if (houseUpgrades.upgrades[1].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); try { goog.events.removeAll(houseOptions1); } catch (err) { console.log("houseOption1 removeListenerFailed") } } else { return; }
-            if (houseUpgrades.upgrades[2].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); try { goog.events.removeAll(houseOptions2); } catch (err) { console.log("houseOption2 removeListenerFailed") } } else { return; }
-            if (houseUpgrades.upgrades[3].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions3); } catch (err) { console.log("houseOption3 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[4].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions4); } catch (err) { console.log("houseOption4 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[5].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions5); } catch (err) { console.log("houseOption5 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[6].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions6); } catch (err) { console.log("houseOption6 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[7].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions7); } catch (err) { console.log("houseOption7 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[8].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions8); } catch (err) { console.log("houseOption8 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[9].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions9); } catch (err) { console.log("houseOption9 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[10].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions10); } catch (err) { console.log("houseOption10 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[11].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions11); } catch (err) { console.log("houseOption11 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[12].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions12); } catch (err) { console.log("houseOption12 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[13].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions13); } catch (err) { console.log("houseOption13 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[14].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions14); } catch (err) { console.log("houseOption14 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[15].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions15); } catch (err) { console.log("houseOption15 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[16].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions16); } catch (err) { console.log("houseOption16 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[17].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions17); } catch (err) { console.log("houseOption17 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[18].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions18); } catch (err) { console.log("houseOption18 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[19].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions19); } catch (err) { console.log("houseOption19 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[20].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions20); } catch (err) { console.log("houseOption20 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[21].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions21); } catch (err) { console.log("houseOption21 removeListenerFailed") }; } else { return; }
-            if (houseUpgrades.upgrades[22].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); try { goog.events.removeAll(houseOptions22); } catch (err) { console.log("houseOption22 removeListenerFailed") }; } else { return; }
+            if (houseUpgrades.upgrades[1].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); } else { return; }
+            if (houseUpgrades.upgrades[2].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); } else { return; }
+            if (houseUpgrades.upgrades[3].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false);  } else { return; }
+            if (houseUpgrades.upgrades[4].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
+            if (houseUpgrades.upgrades[5].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
+            if (houseUpgrades.upgrades[6].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
+            if (houseUpgrades.upgrades[7].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
+            if (houseUpgrades.upgrades[8].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
+            if (houseUpgrades.upgrades[9].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
+            if (houseUpgrades.upgrades[10].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
+            if (houseUpgrades.upgrades[11].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
+            if (houseUpgrades.upgrades[12].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
+            if (houseUpgrades.upgrades[13].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
+            if (houseUpgrades.upgrades[14].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
+            if (houseUpgrades.upgrades[15].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
+            if (houseUpgrades.upgrades[16].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
+            if (houseUpgrades.upgrades[17].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
+            if (houseUpgrades.upgrades[18].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
+            if (houseUpgrades.upgrades[19].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
+            if (houseUpgrades.upgrades[20].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
+            if (houseUpgrades.upgrades[21].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
+            if (houseUpgrades.upgrades[22].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
             if (houseUpgrades.upgrades[23].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
             if (houseUpgrades.upgrades[24].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
             if (houseUpgrades.upgrades[25].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); houseOptionsArrowL.setHidden(false); } else { return; }
@@ -15402,6 +15415,7 @@ farming.start = function () {
                 if (houseOptionNumber < 10 || (houseOptionNumber >= 10 && houseUpgrades.upgrades[0].owned == 1)) {
                     player.money -= houseUpgrades.upgrades[houseOptionNumber].cost;
                     houseUpgrades.upgrades[houseOptionNumber].owned = 1;
+                    localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades));
                     switch (houseOptionNumber) {
                         case 1: houseOptionReward1Base.setHidden(false); houseOptionNumber = 0; houseOptions1.setOpacity(0.2); break;
                         case 2: houseOptionReward2Base.setHidden(false); houseOptionNumber = 0; houseOptions2.setOpacity(0.2); break;
@@ -15441,7 +15455,8 @@ farming.start = function () {
 
             localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades))
             houseMoney.setText(player.money);
-            a.updateMoney(); setDeniseText();
+            a.updateMoney();
+            setDeniseText();
             localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player))
 
 
@@ -16953,7 +16968,7 @@ farming.start = function () {
 
 
             }
-        }, this, 250)
+        }, this, 200)
 
         goog.events.listen(millerQuestBtn, ["mousedown", "touchstart"], function (e) {
             millerQuestBtn.setHidden(true); millerQuest.setHidden(true);
@@ -17290,8 +17305,52 @@ farming.start = function () {
         ////////////End of windmill scene///////
 
 
+        /////////////////////////////////////stable Scene////////// //////////stable scene//////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //var stableScene = (new lime.Scene).setRenderer(lime.Renderer.CANVAS);
+        //var stableLayer = (new lime.Layer).setAnchorPoint(0, 0);
+        //var stableFill = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height - 35).setFill(imgArrayStables[0]).setHidden(false);
+        //stableScene.appendChild(stableFill);
+        //stableScene.appendChild(stableLayer);
 
 
+        //var topBackWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-5, 0).setSize(a.controlsLayer_w, a.controlsLayer_h - 30).setFill(imgArray[75]).setOpacity(0.6);
+        //stableFill.appendChild(topBackWM);
+        ////var topLogo = (new lime.Sprite).setPosition(155, 11).setSize(150, 22).setFill("images/UI/topMenuPlain.png");
+        ////f.appendChild(topLogo);
+
+        //var toInventoryST = (new lime.Sprite).setPosition((a.controlsLayer_w / 2) - 5, 20).setSize(38, 38).setFill(imgArrayItems[25].src);
+        //stableFill.appendChild(toInventoryST);
+
+
+
+        //goog.events.listen(toInventoryST, ["mousedown", "touchstart"], function (e) {
+        //    a.sceneBefore = 11;
+        //    checkItemsOwned();
+        //    hideAndDelayNavIcons();
+        //    c.replaceScene(inventoryScene, lime.transitions.SlideInUp); sceneActive = 'Inventory';
+        //    updateInventoryCounts();
+
+        //    e.event.stopPropagation();
+        //    e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+        //});
+
+        //var stCash = (new lime.Label).setText(player.money).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(230, 24).setFontSize(18);
+        //stableFill.appendChild(stCash);
+        //var topCoinST = (new lime.Sprite).setPosition(285, 20).setSize(35, 35).setFill(imgArray11[0]);
+        //stableFill.appendChild(topCoinST);
+
+
+        //var toolCountImgST = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(7, 5).setSize(35, 35).setFill(imgArray[30]);
+        //var toolCountST = (new lime.Label).setText(player.tools).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(60, 24).setFontSize(18);
+        //stableFill.appendChild(toolCountImgST);
+        //stableFill.appendChild(toolCountST);
+
+
+
+
+
+       ////////////End of stable scene///////
 
         //upgrade barn from load after quit in progress
         upgradesInProgress = JSON.parse(localStorage.getItem('MedFarm_upgradesInProgress'));
