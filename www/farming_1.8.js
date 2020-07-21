@@ -1693,7 +1693,7 @@ var starCash = 5;
 var moneyBefore = 0;
 var startedMove = 0;
 
-if (typeof localStorage["starCash"] === "undefined") { localStorage["starCash"] = 0; starCash = 5; };
+if (typeof localStorage["starCash"] === "undefined") { localStorage["starCash"] = 5; starCash = 5; };
 starCash = parseInt(localStorage["starCash"]);
 
 
@@ -1970,7 +1970,9 @@ var farming = {
                                 player.cropsStored[c.crop].stored += 1,
                                 //double yield wheat when storehouse upgraded
                                 scene == 10 && storeHouseUpgraded == 1 && (player.cropsStored[22].stored += 1),
-                        
+                                //double yield grapes when vinhouse upgraded
+                                scene == 5 && vinyardHouseLevel == 2 && (player.cropsStored[12].stored += 1),
+                  
                                ///double yield on orchard if barn level 2
                                 scene == 3 && orchardBarnLevel == 2 && (c.setFill(imgArray4[8]), player.cropsStored[c.crop].stored += 1, pickedEver = parseInt(pickedEver) + 1),
                                 scene == 32 && orchardBarnLevel == 2 && (c.setFill(imgArray4[8]), player.cropsStored[c.crop].stored += 1, pickedEver = parseInt(pickedEver) + 1),
@@ -3596,7 +3598,7 @@ farming.start = function () {
         var anvil1 = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(59, 102).setSize(20, 20).setFill(imgArray[96]); e.appendChild(anvil1);
         var toolTable = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(6, 107).setSize(16, 16).setFill(imgArray[97]); e.appendChild(toolTable);
 
-        var blacksmith = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(49, 85).setSize(26, 26).setFill(imgArray[1]); e.appendChild(blacksmith);
+        var blacksmith = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(42, 85).setSize(26, 26).setFill(imgArray[1]); e.appendChild(blacksmith);
         var blacksmithI = 0;
         var blacksmithBubble = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(10, -30).setSize(30, 30).setFill(imgArray[19].src); blacksmith.appendChild(blacksmithBubble);
         blacksmithBubble.setHidden(true);
@@ -3635,11 +3637,11 @@ farming.start = function () {
                     if (blacksmithI >= 25) { blacksmithI = 1 };
                     //if (blacksmithI < 15) { blacksmith.setFill("images/blacksmith" + blacksmithI + ".png"); };
 
-                    if (blacksmithI == 1) { blacksmith.setPosition(44, 89); }
-                    else if (blacksmithI == 2) { blacksmith.setPosition(44, 89); blacksmith.setFill(imgArray[0]); }
-                    else if (blacksmithI == 3) { blacksmith.setPosition(44, 89); blacksmith.setFill(imgArray[1]); }
-                    else if (blacksmithI == 4) { blacksmith.setPosition(44, 89); blacksmith.setFill(imgArray[2]); }
-                    else if (blacksmithI == 5) { blacksmith.setPosition(43, 85); blacksmith.setFill(imgArray[6]); }
+                    if (blacksmithI == 1) { blacksmith.setPosition(42, 89); }
+                    else if (blacksmithI == 2) { blacksmith.setPosition(42, 89); blacksmith.setFill(imgArray[0]); }
+                    else if (blacksmithI == 3) { blacksmith.setPosition(42, 89); blacksmith.setFill(imgArray[1]); }
+                    else if (blacksmithI == 4) { blacksmith.setPosition(42, 89); blacksmith.setFill(imgArray[2]); }
+                    else if (blacksmithI == 5) { blacksmith.setPosition(42, 85); blacksmith.setFill(imgArray[6]); }
                     else if (blacksmithI == 6) { blacksmith.setPosition(38, 85); blacksmith.setFill(imgArray[7]); }
                     else if (blacksmithI == 7) { blacksmith.setPosition(33, 85); blacksmith.setFill(imgArray[8]); }
                     else if (blacksmithI == 8) { blacksmith.setPosition(28, 85); blacksmith.setFill(imgArray[6]); }
@@ -3653,13 +3655,13 @@ farming.start = function () {
                     else if (blacksmithI == 16) { blacksmith.setPosition(28, 85); blacksmith.setFill(imgArray[10]); }
                     else if (blacksmithI == 17) { blacksmith.setPosition(33, 85); blacksmith.setFill(imgArray[9]); }
                     else if (blacksmithI == 18) { blacksmith.setPosition(38, 85); blacksmith.setFill(imgArray[10]); if (sceneBefore == 1) { smithSound.play(); } }
-                    else if (blacksmithI == 19) { blacksmith.setPosition(43, 85); blacksmith.setFill(imgArray[9]); }
-                    else if (blacksmithI == 20) { blacksmith.setPosition(44, 89); blacksmith.setFill(imgArray[10]) }
-                    else if (blacksmithI == 21) { blacksmith.setPosition(44, 89); blacksmith.setFill(imgArray[0]); }
-                    else if (blacksmithI == 22) { blacksmith.setPosition(44, 89); blacksmith.setFill(imgArray[1]); }
-                    else if (blacksmithI == 23) { blacksmith.setPosition(44, 89); blacksmith.setFill(imgArray[0]); }
-                    else if (blacksmithI == 24) { blacksmith.setPosition(44, 89); blacksmith.setFill(imgArray[1]); }
-                    else if (blacksmithI == 25) { blacksmith.setPosition(44, 89); blacksmith.setFill(imgArray[0]); checkAchieves2(); };
+                    else if (blacksmithI == 19) { blacksmith.setPosition(42, 85); blacksmith.setFill(imgArray[9]); }
+                    else if (blacksmithI == 20) { blacksmith.setPosition(42, 89); blacksmith.setFill(imgArray[10]) }
+                    else if (blacksmithI == 21) { blacksmith.setPosition(42, 89); blacksmith.setFill(imgArray[0]); }
+                    else if (blacksmithI == 22) { blacksmith.setPosition(42, 89); blacksmith.setFill(imgArray[1]); }
+                    else if (blacksmithI == 23) { blacksmith.setPosition(42, 89); blacksmith.setFill(imgArray[0]); }
+                    else if (blacksmithI == 24) { blacksmith.setPosition(42, 89); blacksmith.setFill(imgArray[1]); }
+                    else if (blacksmithI == 25) { blacksmith.setPosition(42, 89); blacksmith.setFill(imgArray[0]); checkAchieves2(); };
                 }
                 else {
                     ///set anim needing iron
@@ -4139,23 +4141,28 @@ farming.start = function () {
         }, false);
 
 
-        goog.events.listen(houseEnterBtn, ["mousedown", "touchstart"], function () {
+        goog.events.listen(houseEnterBtn, ["mousedown", "touchstart"], function (e) {
             //validCropsStored();
-            hideAndDelayNavIcons();
+          
             c.replaceScene(houseScene, lime.transitions.SlideInUp)
             sceneActive = 'House';
+           
             try {
-                seen1stHouseNotif = parseInt(localStorage.getItem("MedFarms_seen1stHouseNotif"));
+                seen1stHouseNotif = localStorage.getItem("MedFarms_seen1stHouseNotif");
                 if (seen1stHouseNotif != 0 || seen1stHouseNotif != 1) { seen1stHouseNotif = 0; localStorage.setItem("MedFarms_seen1stHouseNotif", 0); }
                 if (seen1stHouseNotif == 1) { questPanelHouse.setHidden(true); };
             }
             catch (err) { console.log("check houseNotif Failed") }
           
             sceneBefore = 1;
-          checkHouseUpgradesBought(); 
+            try { checkHouseUpgradesBought(); }
+            catch (err) { console.log("check houseupgrades Failed") }
            
-
-
+            try { hideAndDelayNavIcons(); }
+            catch (err) { console.log("check navicons Failed") }
+            e.event.stopPropagation();
+            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+            });
         });
         var glassCover = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill(imgArray5[16]).setHidden(true);
         e.appendChild(glassCover);
@@ -11925,9 +11932,9 @@ farming.start = function () {
 
 
         //var playGameBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(a.width / 2 - 50, 510).setSize(50, 50).setFill("#663300");
-        playGameBtn = (new lime.GlossyButton).setColor("#663300").setText("").setPosition(150, 250).setSize(a.width / 2 + 10, 70);
+        playGameBtn = (new lime.GlossyButton).setColor("#663300").setText("").setPosition(150, 290).setSize(a.width / 2 + 10, 70);
         introLayer.appendChild(playGameBtn);
-        var playButtonLabel = (new lime.Label).setText("PLAY").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(150, 255).setFontSize(36);
+        var playButtonLabel = (new lime.Label).setText("PLAY").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(150, 295).setFontSize(36);
         introLayer.appendChild(playButtonLabel);
         var moreGameBtn = (new lime.GlossyButton).setColor("#663300").setText("").setPosition(150, 340).setSize(a.width / 2 - 5, 50);
         introLayer.appendChild(moreGameBtn);
@@ -15175,7 +15182,7 @@ farming.start = function () {
         }
         checkHouseIntegrity();
         var checkHouseUpgradesBought = function () {
-            if (houseUpgrades.upgrades[0].owned == 1) {  houseExpandCover.setHidden(true);  }
+            if (houseUpgrades.upgrades[0].owned == 1) { houseExpandCover.setHidden(true); patricia.setHidden(false);  }
             if (houseUpgrades.upgrades[1].owned == 1) { houseOptionReward1Base.setHidden(false); houseOptions1.setOpacity(0.2); }
             if (houseUpgrades.upgrades[2].owned == 1) { houseOptionReward2Base.setHidden(false); houseOptions2.setOpacity(0.2); }
             if (houseUpgrades.upgrades[3].owned == 1) { houseOptionReward3Img.setHidden(false); houseOptions3.setOpacity(0.2); }
@@ -15235,6 +15242,7 @@ farming.start = function () {
         goog.events.listen(houseOptions25, ['mousedown', 'touchstart'], function () { houseOptionNumber = 25; applyHouseOption(25); resetConfirmImgSize(); });
 
         var checkPositionsHouseUpgrades = function () {
+            optionPosH1 = optionsHomeContainer.getPosition();
             move = optionPosH1.x;
             if (houseUpgrades.upgrades[1].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); } else { return; }
             if (houseUpgrades.upgrades[2].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); } else { return; }
@@ -15493,7 +15501,7 @@ farming.start = function () {
         goog.events.listen(questPanelCloseBtnHouse2, ["mousedown", "touchstart"], function () {
 
             questPanelHouse2.setHidden(true);
-            seen1stHouseNotif = 1
+            seen1stHouseNotif = 1;
             localStorage.setItem("MedFarms_seen1stHouseNotif", 1);
 
         }, { passive: false });
@@ -15615,6 +15623,9 @@ farming.start = function () {
                 lime.scheduleManager.scheduleWithDelay(function () {
                     //add upgrade anim
                     secondsToUpgradeHo = secondsToUpgradeHo - 1;
+                    upgradesInProgress.buildings[5].timeLeft = secondsToUpgradeHo;
+                    upgradesInProgress.buildings[5].currentBarnLevel = 1
+                    localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
 
                     if (secondsToUpgradeHo <= 0) {
                         toolMoverLabelHo.setHidden(true); scaffoldHo.setHidden(true); upgradeCloudHo.setHidden(true); secondsToUpgradeHo = 90;
@@ -15622,6 +15633,8 @@ farming.start = function () {
                         houseUpgrades.upgrades[0].owned = 1;
                         localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades))
                         houseImg.setFill(imgArray[98]).setSize(71, 91).setPosition(232, 23)
+                        upgradesInProgress.buildings[5].timeLeft = 0;
+                        upgradesInProgress.buildings[5].currentBarnLevel = 2;
                     }
 
                 }, this, 1000, 90);
@@ -16207,7 +16220,7 @@ farming.start = function () {
 
                     } else { needWheatBubble.setHidden(false); };
                     flourticker = flourticker + 1;
-                    if (flourticker == 600 && player.cropsStored[22].stored >= 3) {
+                    if (flourticker == 1200 && player.cropsStored[22].stored >= 3) {
                         flourWaiting = flourWaiting + 1;
                         flourticker = 0;
                         player.cropsStored[22].stored = parseInt(player.cropsStored[22].stored) - 3;
@@ -16292,7 +16305,7 @@ farming.start = function () {
             }
             else { needFlourBubble.setHidden(true); collectBreadBubble.setHidden(true);}
 
-        }, this, 45000)
+        }, this, 60000)
 
         goog.events.listen(collectBreadBubble, ["mousedown", "touchstart"], function () {
 
@@ -17412,7 +17425,13 @@ farming.start = function () {
                 lime.scheduleManager.callAfter(function () { upgradeCoop(1); }, this, 700);
             }
             if (parseInt(upgradesInProgress.buildings[5].timeLeft) > 0) {   ///houseUpgrade
-
+                upgradesInProgress.buildings[5].timeLeft = 0; upgradesInProgress.buildings[5].currentBarnLevel = 2;
+                houseUpgrades.upgrades[0].owned = 1;
+          
+                houseImg.setFill(imgArray[98]).setSize(75, 100).setPosition(229, 22);
+                houseExpandCover.setHidden(true); patricia.setHidden(false); 
+                localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades))
+                localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
             }
             if (parseInt(upgradesInProgress.buildings[6].timeLeft) > 0) {    ///windmill upgrade
                 var wmTimeLeft = parseInt(upgradesInProgress.buildings[6].timeLeft)
@@ -17452,7 +17471,6 @@ farming.start = function () {
             gLabel18.setText(player.cropsStored[18].stored);
             gLabel22.setText(player.cropsStored[22].stored);
             gLabel23.setText(player.cropsStored[23].stored);
-            ////setTimeout(function () { validCropsStored(); }, 0);
             lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
         }
 
@@ -17542,9 +17560,44 @@ farming.start = function () {
                 else { codeField.value = "Code already used"; codeField.style.color = 'RED'; lime.scheduleManager.callAfter(function () { codeField.value = " "; codeField.style.color = 'Black'; }, this, 1000) }
             }
             else if (code.toString() == 'FixTheHouse') {
-                houseUpgrades.upgrades[0].owned = 1;
-                localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades))
+                houseUpgrades = {
+                    upgrades: [
+                        { name: "expansion", cost: 0, owned: 0 },
+                        { name: "Single Bed", cost: 200, owned: 0 },
+                        { name: "Chest", cost: 250, owned: 0 },
+                        { name: "Sink", cost: 300, owned: 0 },
+                        { name: "Table", cost: 250, owned: 0 },
+                        { name: "Wood Chairs", cost: 150, owned: 0 },
+                        { name: "Dressing Table", cost: 500, owned: 0 },
+                        { name: "Bedside Table", cost: 250, owned: 0 },
+                        { name: "Potted Plant", cost: 150, owned: 0 },
+                        { name: "Couch", cost: 500, owned: 0 },
+                        { name: "Curtains", cost: 125, owned: 0 },
+                        { name: "Double Bed", cost: 600, owned: 0 },
+                        { name: "Stool", cost: 150, owned: 0 },
+                        { name: "Wardrobe", cost: 750, owned: 0 },
+                        { name: "Fancy Couch", cost: 750, owned: 0 },
+                        { name: "Bookshelves", cost: 1000, owned: 0 },
+                        { name: "Fancy Table", cost: 800, owned: 0 },
+                        { name: "Fancy Chairs", cost: 850, owned: 0 },
+                        { name: "Desk", cost: 750, owned: 0 },
+                        { name: "Painting", cost: 1000, owned: 0 },
+                        { name: "Dish Cabinet", cost: 800, owned: 0 },
+                        { name: "Trunk", cost: 700, owned: 0 },
+                        { name: "Paint Walls Green", cost: 1500, owned: 0 },
+                        { name: "Paint Walls Blue", cost: 1500, owned: 0 },
+                        { name: "Paint Walls Pink", cost: 1500, owned: 0 },
+                        { name: "Paint Walls Tan", cost: 1500, owned: 1 },
 
+
+                    ]
+
+                };
+                localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades))
+          
+                upgradesInProgress.buildings[5].timeLeft = 0; upgradesInProgress.buildings[5].currentBarnLevel = 1;
+                        
+                localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
             }
             else if (code.toString() == 'Herald10') {
                 heraldOrderTop = 10;
