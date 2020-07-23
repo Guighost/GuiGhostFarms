@@ -4147,12 +4147,12 @@ farming.start = function () {
             c.replaceScene(houseScene, lime.transitions.SlideInUp)
             sceneActive = 'House';
            
-            try {
-                seen1stHouseNotif = localStorage.getItem("MedFarms_seen1stHouseNotif");
-                if (seen1stHouseNotif != 0 || seen1stHouseNotif != 1) { seen1stHouseNotif = 0; localStorage.setItem("MedFarms_seen1stHouseNotif", 0); }
-                if (seen1stHouseNotif == 1) { questPanelHouse.setHidden(true); };
-            }
-            catch (err) { alert("check houseNotif Failed with ") + err }
+            //try {
+            //    seen1stHouseNotif = localStorage.getItem("MedFarms_seen1stHouseNotif");
+            //    if (seen1stHouseNotif != 0 || seen1stHouseNotif != 1) { seen1stHouseNotif = 0; localStorage.setItem("MedFarms_seen1stHouseNotif", 0); }
+            //    if (seen1stHouseNotif == 1) { questPanelHouse.setHidden(true); };
+            //}
+            //catch (err) { alert("check houseNotif Failed with ") + err }
           
             sceneBefore = 1;
             try { checkHouseUpgradesBought(); }
@@ -14701,7 +14701,7 @@ farming.start = function () {
 
 
         });
-        var randomPatricia = ''
+        var randomPatricia = 0;
         function setPatriciaText() {
             randomPatricia = Math.round(Math.random() * 5);
             questText1House2.setText(questParamsPatricia.speech[randomPatricia].Text);
