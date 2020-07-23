@@ -4142,7 +4142,7 @@ farming.start = function () {
 
 
         goog.events.listen(houseEnterBtn, ["mousedown", "touchstart"], function (e) {
-            //validCropsStored();
+           
           
             c.replaceScene(houseScene, lime.transitions.SlideInUp)
             sceneActive = 'House';
@@ -4152,14 +4152,13 @@ farming.start = function () {
                 if (seen1stHouseNotif != 0 || seen1stHouseNotif != 1) { seen1stHouseNotif = 0; localStorage.setItem("MedFarms_seen1stHouseNotif", 0); }
                 if (seen1stHouseNotif == 1) { questPanelHouse.setHidden(true); };
             }
-            catch (err) { console.log("check houseNotif Failed") }
+            catch (err) { alert("check houseNotif Failed with ") + err }
           
             sceneBefore = 1;
             try { checkHouseUpgradesBought(); }
-            catch (err) { console.log("check houseupgrades Failed") }
+            catch (err) { alert("check houseupgrades failed with " + err) }
            
-            try { hideAndDelayNavIcons(); }
-            catch (err) { console.log("check navicons Failed") }
+      
             e.event.stopPropagation();
             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
             });
@@ -15208,7 +15207,8 @@ farming.start = function () {
             if (houseUpgrades.upgrades[23].owned == 1) { houseBack.setFill(imgArray11[23]); houseOptions23.setOpacity(0.2); houseOptions22.setOpacity(1.0); houseOptions24.setOpacity(1.0); houseOptions25.setOpacity(1.0); }
             if (houseUpgrades.upgrades[24].owned == 1) { houseBack.setFill(imgArray11[24]); houseOptions24.setOpacity(0.2); houseOptions22.setOpacity(1.0); houseOptions23.setOpacity(1.0); houseOptions25.setOpacity(1.0); }
             if (houseUpgrades.upgrades[25].owned == 1) { houseBack.setFill(imgArray11[25]); houseOptions25.setOpacity(0.2); houseOptions22.setOpacity(1.0); houseOptions23.setOpacity(1.0); houseOptions24.setOpacity(1.0); }
-            checkPositionsHouseUpgrades();
+            try { checkPositionsHouseUpgrades(); }
+            catch (err) { alert("check positions house upgrades failed with " + err) };
 
         }
 
