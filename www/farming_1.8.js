@@ -4143,9 +4143,10 @@ farming.start = function () {
 
         goog.events.listen(houseEnterBtn, ["mousedown", "touchstart"], function (e) {
            
-          
+        
             c.replaceScene(houseScene, lime.transitions.SlideInUp)
             sceneActive = 'House';
+            sceneBefore = 1;
            
             //try {
             //    seen1stHouseNotif = localStorage.getItem("MedFarms_seen1stHouseNotif");
@@ -4154,10 +4155,11 @@ farming.start = function () {
             //}
             //catch (err) { alert("check houseNotif Failed with ") + err }
           
-            sceneBefore = 1;
-            try { checkHouseUpgradesBought(); }
-            catch (err) { alert("check houseupgrades failed with " + err) }
+            lime.scheduleManager.callAfter(function () { 
+                try { checkHouseUpgradesBought(); }
+                catch (err) { alert("check houseupgrades failed with " + err) }
            
+            }, this, 2000);
       
             e.event.stopPropagation();
             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
@@ -15180,7 +15182,7 @@ farming.start = function () {
             }
         }
         checkHouseIntegrity();
-        var checkHouseUpgradesBought = function () {
+        function checkHouseUpgradesBought() {
             if (houseUpgrades.upgrades[0].owned == 1) { houseExpandCover.setHidden(true); patricia.setHidden(false);  }
             if (houseUpgrades.upgrades[1].owned == 1) { houseOptionReward1Base.setHidden(false); houseOptions1.setOpacity(0.2); }
             if (houseUpgrades.upgrades[2].owned == 1) { houseOptionReward2Base.setHidden(false); houseOptions2.setOpacity(0.2); }
@@ -15241,7 +15243,7 @@ farming.start = function () {
         goog.events.listen(houseOptions24, ['mousedown', 'touchstart'], function () { houseOptionNumber = 24; applyHouseOption(24); resetConfirmImgSize(); });
         goog.events.listen(houseOptions25, ['mousedown', 'touchstart'], function () { houseOptionNumber = 25; applyHouseOption(25); resetConfirmImgSize(); });
 
-        var checkPositionsHouseUpgrades = function () {
+        function checkPositionsHouseUpgrades() {
             optionPosH1 = optionsHomeContainer.getPosition();
             move = optionPosH1.x;
             if (houseUpgrades.upgrades[1].owned == 1) { move -= 70; optionsHomeContainer.setPosition(move, optionPosH1.y); } else { return; }
@@ -15509,7 +15511,7 @@ farming.start = function () {
         goog.events.listen(questPanelCloseBtnHouse, ["mousedown", "touchstart"], function () {
 
             questPanelHouse.setHidden(true);
-            seen1stHouseNotif = 1
+            seen1stHouseNotif = 1;
             localStorage.setItem("MedFarms_seen1stHouseNotif", 1);
 
         }, { passive: false });
@@ -16487,18 +16489,49 @@ farming.start = function () {
         scaffoldWM2.appendChild(toolMoverWM2);
         scaffoldWM2.setHidden(true);
 
+        var cropBoostBtnWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(153, 175).setSize(36, 36).setFill(imgArray[92]);
+        windmillLayer.appendChild(cropBoostBtnWM);
+
+   
+
+
+
+        //begin miller
+
+        var millerStartX = 120;
+        var millerStartY = 255;
+        var connieStartX = 265;
+        var connieStartY = 250;
+
+        var millerSprite = (new lime.Sprite).setAnchorPoint(0, 0).setSize(35, 35).setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]).setHidden(true);
+        windmillLayer.appendChild(millerSprite);
+        var millerQuestBtn = (new lime.GlossyButton).setColor("#008000").setText("").setPosition(25, -4).setSize(25, 23).setOpacity(0.2);
+        millerSprite.appendChild(millerQuestBtn);
+        var millerQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, -15).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
+        millerSprite.appendChild(millerQuest);
+
+        var connieSprite = (new lime.Sprite).setAnchorPoint(0, 0).setSize(35, 35).setPosition(connieStartX, connieStartY).setFill(imgArrayConnie[0]);
+        windmillLayer.appendChild(connieSprite);
+        var connieQuestBtn = (new lime.GlossyButton).setColor("#008000").setText("").setPosition(25, -4).setSize(25, 23).setOpacity(0.2);
+        connieSprite.appendChild(connieQuestBtn);
+        var connieQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, -15).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
+        connieSprite.appendChild(connieQuest);
+
+        if (windmillUpgraded == 1) { millerSprite.setHidden(false); connieSprite.setHidden(false); };
+
+
         /// compass nav
-        var compassWMBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 100).setSize(250, 250).setFill(imgArray[74]).setHidden(true); windmillScene.appendChild(compassWMBack)
+        var compassWMBack = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 100).setSize(250, 250).setFill(imgArray[74]).setHidden(true); windmillLayer.appendChild(compassWMBack);
 
 
-        var orchardNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(170, 170).setSize(50, 50).setFill(imgArray[48]); compassWMBack.appendChild(orchardNavWM)
-        var lsNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(197, 105).setSize(50, 50).setFill(imgArray[49]); compassWMBack.appendChild(lsNavWM)
-        var vinyardNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 105).setSize(50, 50).setFill(imgArray[46]); compassWMBack.appendChild(vinyardNavWM)
-        var homeNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(96, 100).setSize(60, 60).setFill(imgArray[50]); compassWMBack.appendChild(homeNavWM)
-        var pastureNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 170).setSize(50, 50).setFill(imgArray[47]); compassWMBack.appendChild(pastureNavWM)
-        var windmillNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 35).setSize(50, 50).setFill(imgArray[59]); compassWMBack.appendChild(windmillNavWM)
-        var stableNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(170, 35).setSize(50, 50).setFill(imgArray[57]); compassWMBack.appendChild(stableNavWM)
-        var closeNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(100, 222).setSize(50, 50).setFill(imgArray[21]); compassWMBack.appendChild(closeNavWM)
+        var orchardNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(170, 170).setSize(50, 50).setFill(imgArray[48]); compassWMBack.appendChild(orchardNavWM);
+        var lsNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(197, 105).setSize(50, 50).setFill(imgArray[49]); compassWMBack.appendChild(lsNavWM);
+        var vinyardNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(5, 105).setSize(50, 50).setFill(imgArray[46]); compassWMBack.appendChild(vinyardNavWM);
+        var homeNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(96, 100).setSize(60, 60).setFill(imgArray[50]); compassWMBack.appendChild(homeNavWM);
+        var pastureNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 170).setSize(50, 50).setFill(imgArray[47]); compassWMBack.appendChild(pastureNavWM);
+        var windmillNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(30, 35).setSize(50, 50).setFill(imgArray[59]); compassWMBack.appendChild(windmillNavWM);
+        var stableNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(170, 35).setSize(50, 50).setFill(imgArray[57]); compassWMBack.appendChild(stableNavWM);
+        var closeNavWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(100, 222).setSize(50, 50).setFill(imgArray[21]); compassWMBack.appendChild(closeNavWM);
 
         goog.events.listen(helpBtnWM, ["mousedown", "touchstart"], function (e) {
 
@@ -16866,33 +16899,12 @@ farming.start = function () {
 
 
 
-        //begin miller
 
-        var millerStartX = 120;
-        var millerStartY = 255;
-        var connieStartX = 265;
-        var connieStartY = 250;
-
-        var millerSprite = (new lime.Sprite).setAnchorPoint(0, 0).setSize(35, 35).setPosition(millerStartX, millerStartY).setFill(imgArrayMiller[0]).setHidden(true);
-        windmillLayer.appendChild(millerSprite);
-        var millerQuestBtn = (new lime.GlossyButton).setColor("#008000").setText("").setPosition(25, -4).setSize(25, 23).setOpacity(0.2);
-        millerSprite.appendChild(millerQuestBtn);
-        var millerQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, -15).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
-        millerSprite.appendChild(millerQuest);
-
-        var connieSprite = (new lime.Sprite).setAnchorPoint(0, 0).setSize(35, 35).setPosition(connieStartX, connieStartY).setFill(imgArrayConnie[0]);
-        windmillLayer.appendChild(connieSprite);
-        var connieQuestBtn = (new lime.GlossyButton).setColor("#008000").setText("").setPosition(25, -4).setSize(25, 23).setOpacity(0.2);
-        connieSprite.appendChild(connieQuestBtn);
-        var connieQuest = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(13, -15).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
-        connieSprite.appendChild(connieQuest);
-
-        if (windmillUpgraded == 1) { millerSprite.setHidden(false); connieSprite.setHidden(false);}
 
 
         var millerAnimCount = 0;
 
-        ////monk anim
+        ////miller anim
         lime.scheduleManager.scheduleWithDelay(function () {
             if (sceneActive == "Windmill" && windmillUpgraded == 1) {
                 millerSprite.setHidden(false); connieSprite.setHidden(false);
@@ -17307,10 +17319,100 @@ farming.start = function () {
         });
 
 
+        ///crop boost modal
+        var boostCropsWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(40, 120).setSize(230, 280).setFill("images/UI/cropBoostBack2.png");
+        windmillLayer.appendChild(boostCropsWM);
+        boostCropsWM.setHidden(true);
+        var starCashCountBoostWM = (new lime.Label).setText(starCash).setPosition(121, 31).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#000F00").setFontWeight(600).setFontSize(20).setFontFamily("ComicSans MS");
+        boostCropsWM.appendChild(starCashCountBoostWM);
 
 
+        //end ad free hide
+        var speedAdConfirmSCWM = (new lime.GlossyButton).setColor("#00FF00").setText("-       ").setPosition(115, 180).setSize(50, 32);
+        boostCropsWM.appendChild(speedAdConfirmSCWM);
+        var starCashBoostWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-10, -17).setSize(35, 35).setFill(imgArray[37]);
+        speedAdConfirmSCWM.appendChild(starCashBoostWM);
+
+        var speedAdOrWM = (new lime.Label).setAnchorPoint(0, 0).setPosition(-10, 20).setText("or").setFontFamily("Comic Sans MS").setFontSize(18);
+        speedAdConfirmSC.appendChild(speedAdOrWM);
+
+        var speedAdConfirmWM = (new lime.GlossyButton).setColor("#00FF00").setText("View Ad").setPosition(115, 233).setSize(85, 32);
+        boostCropsWM.appendChild(speedAdConfirmWM);
+        //hide for AdFree
+        if (adFreeVersion == 1) { speedAdConfirmWM.setHidden(true); }
+        var speedAdCancelWM = (new lime.GlossyButton).setColor("#8B0000").setText("").setPosition(117, 288).setSize(36, 36);
+        boostCropsWM.appendChild(speedAdCancelWM);
+        var cancelBoostImgWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-20, -20).setSize(40, 40).setFill(imgArray[21]);
+        speedAdCancelWM.appendChild(cancelBoostImgWM);
+
+        var visibleLinkWM = true;
+        goog.events.listen(speedAdConfirmWM, ["mousedown", "touchstart"], function (e) {
+            //console.log("clicked confirm");
+            visibleLinkWM = boostCropsWM.getHidden();
+
+            //console.log("visibleLinkWM = " + visibleLinkWM);
+            if (visibleLinkWM == false) {
+                localStorage.setItem('MedFarm_LoadAd', 1);
+                localStorage.setItem('MedFarm_StarCashBoost', 0);
+                lime.audio.setMute(true);
+
+                e.event.stopPropagation();
+                e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+            }
+
+        });
+        goog.events.listen(speedAdConfirmSCWM, ["mousedown", "touchstart"], function (e) {
+            visibleLinkWM = boostCropsWM.getHidden();
+            //console.log("visibleLinkWM = " + visibleLinkWM);
+
+            if (visibleLinkWM == false) {
+                //console.log("clicked confirm SC");
+                if (starCash >= 3) {
+                    adWatched2 = 1;
+                    localStorage.setItem('adWatched', 1)
+                    localStorage.setItem('MedFarm_StarCashBoost', 0);
+                    starCash = starCash - 3;
+                    boostCropsWM.setHidden(true);
 
 
+                }
+                e.event.stopPropagation();
+                e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+                });
+            }
+
+
+        });
+        goog.events.listen(speedAdCancelWM, ["mousedown", "touchstart"], function (e) {
+            visibleLink = boostCropsWM.getHidden();
+            //console.log("visibleLink = " + visibleLink);
+            if (visibleLink == false) {
+                //console.log("clicked cancel");
+                var isMuted22 = parseInt(localStorage.getItem('GuiGhostFarms_muted'));
+                if (isMuted22 == 1) { lime.audio.setMute(true); setMute(1); }
+                else { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); setMute(2); }
+
+
+                boostCropsWM.setHidden(true);
+                e.event.stopPropagation();
+                e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+                });
+            }
+
+        }, false);
+
+
+        goog.events.listen(cropBoostBtnWM, ["mousedown", "touchstart"], function () {
+            //console.log("clicked it"); 
+            var isItHidWMConfirm5 = windmillHelpPanel.getHidden();
+            var isHid129 = windmillQuestPanel.getHidden();
+            var isHid19 = windmillQuestPanel2.getHidden();
+            if (isItHidWMConfirm5 == true && isHid129 == true && isHid19 == true ) {
+                boostCropsWM.setHidden(false);
+                starCashCountBoostWM.setText(starCash);
+            }
+   
+        });
 
 
 
@@ -17594,7 +17696,8 @@ farming.start = function () {
 
                 };
                 localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades))
-          
+                seen1stHouseNotif = 0;
+                localStorage.setItem('MedFarms_seen1stHouseNotif', 0);
                 upgradesInProgress.buildings[5].timeLeft = 0; upgradesInProgress.buildings[5].currentBarnLevel = 1;
                         
                 localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
