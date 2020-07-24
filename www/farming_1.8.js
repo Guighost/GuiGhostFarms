@@ -4141,10 +4141,10 @@ farming.start = function () {
         }, false);
 
 
-        goog.events.listen(houseEnterBtn, ["mousedown", "touchstart"], function (e) {
+        goog.events.listen(houseEnterBtn, ["mousedown", "touchstart"], function () {
            
-        
-            c.replaceScene(houseScene, lime.transitions.SlideInUp)
+         
+            c.replaceScene(houseScene, lime.transitions.SlideInDown);
             sceneActive = 'House';
             sceneBefore = 1;
            
@@ -4156,14 +4156,12 @@ farming.start = function () {
             //catch (err) { alert("check houseNotif Failed with ") + err }
           
             lime.scheduleManager.callAfter(function () { 
-                try { checkHouseUpgradesBought(); }
-                catch (err) { alert("check houseupgrades failed with " + err) }
+                try{ checkHouseUpgradesBought(); }
+                catch(err) { alert("check houseupgrades failed with " + err) }
            
             }, this, 2000);
       
-            e.event.stopPropagation();
-            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-            });
+        
         });
         var glassCover = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill(imgArray5[16]).setHidden(true);
         e.appendChild(glassCover);
@@ -17706,6 +17704,10 @@ farming.start = function () {
                 heraldOrderTop = 10;
                 tokenInvCount.setText(heraldOrderTop);
                 localStorage.setItem("MedFarms_heraldOrdersFilled", heraldOrderTop);
+
+            }
+            else if (code.toString() == 'OpenHouse') {
+                c.replaceScene(houseScene, lime.transitions.SlideInDown); sceneActive = 'House';
 
             }
             else if (code.toString() == 'TestDaily') {
