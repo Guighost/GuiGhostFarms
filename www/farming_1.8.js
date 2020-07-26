@@ -1883,7 +1883,7 @@ var farming = {
             var randomPlantTime = 2000;
             if (c.state == farming.PLOWED) {
                 quickGrow = Math.floor(Math.random() * 10);
-                if (quickGrow >= 8) { randomPlantTime = 1800; } else { randomPlantTime = 2000; };
+                if (quickGrow >= 8) { randomPlantTime = 1750; } else { randomPlantTime = 2000; };
                 //console.log("qgtime " + randomPlantTime + " " + quickGrow);
             };
             moneyBefore = player.money;
@@ -4074,7 +4074,7 @@ farming.start = function () {
         var speedAdConfirm = (new lime.GlossyButton).setColor("#00FF00").setText("View Ad").setPosition(115, 233).setSize(85, 32);
         boostCrops.appendChild(speedAdConfirm);
         //hide for AdFree
-        if (adFreeVersion == 1) { speedAdConfirm.setHidden(true); }
+        if (adFreeVersion == 1) { speedAdConfirm.setHidden(true); speedAdOr.setHidden(true); }
         var speedAdCancel = (new lime.GlossyButton).setColor("#8B0000").setText("").setPosition(117, 288).setSize(36, 36);
         boostCrops.appendChild(speedAdCancel);
         var cancelBoostImg = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-20, -20).setSize(40, 40).setFill(imgArray[21]);
@@ -4159,7 +4159,7 @@ farming.start = function () {
                 try{ checkHouseUpgradesBought(); }
                 catch(err) { alert("check houseupgrades failed with " + err) }
            
-            }, this, 2000);
+            }, this, 1500);
       
         
         });
@@ -14586,110 +14586,118 @@ farming.start = function () {
 
                 deniseCount++;
                 firesInFireplace.setFill(imgArray12[fireState]);
-                stoveFire.setFill(imgArray12[(fireState + 3)])
+                stoveFire.setFill(imgArray12[(fireState + 3)]);
                 fireState++;
-                if (fireState > 3) { fireState = 1; }
-                if (deniseCount == 1) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
-                if (deniseCount == 2) { denise.setPosition(190, 360).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 150).setFill(imgArrayPatricia[1].src); }
-                if (deniseCount == 3) { denise.setPosition(185, 360).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 155).setFill(imgArrayPatricia[2].src); }
-                if (deniseCount == 4) { denise.setPosition(180, 360).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 160).setFill(imgArrayPatricia[3].src); }
-                if (deniseCount == 5) { denise.setPosition(175, 360).setFill(imgArrayDenise[10].src); patricia.setPosition(202, 165).setFill(imgArrayPatricia[0].src); }
-                if (deniseCount == 6) { denise.setPosition(170, 360).setFill(imgArrayDenise[11].src); patricia.setPosition(202, 170).setFill(imgArrayPatricia[1].src); }
-                if (deniseCount == 7) { denise.setPosition(165, 360).setFill(imgArrayDenise[10].src); patricia.setPosition(202, 175).setFill(imgArrayPatricia[2].src); }
-                if (deniseCount == 8) { denise.setPosition(160, 360).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 180).setFill(imgArrayPatricia[3].src); }
-                if (deniseCount == 9) { denise.setPosition(155, 360).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 185).setFill(imgArrayPatricia[0].src); }
-                if (deniseCount == 10) { denise.setPosition(150, 360).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 190).setFill(imgArrayPatricia[1].src); }
-                if (deniseCount == 11) { denise.setPosition(145, 360).setFill(imgArrayDenise[10].src); patricia.setPosition(202, 195).setFill(imgArrayPatricia[2].src); }
-                if (deniseCount == 12) { denise.setPosition(140, 360).setFill(imgArrayDenise[11].src); patricia.setPosition(202, 200).setFill(imgArrayPatricia[3].src); }
-                if (deniseCount == 12) { denise.setPosition(135, 355).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 205).setFill(imgArrayPatricia[0].src); }
-                if (deniseCount == 12) { denise.setPosition(130, 355).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 205).setFill(imgArrayPatricia[4].src); }
-                if (deniseCount == 12) { denise.setPosition(125, 350).setFill(imgArrayDenise[10].src); patricia.setPosition(195, 205).setFill(imgArrayPatricia[5].src); }
-                if (deniseCount == 13) { denise.setPosition(120, 350).setFill(imgArrayDenise[11].src); patricia.setPosition(190, 205).setFill(imgArrayPatricia[6].src); }
-                if (deniseCount == 14) { denise.setPosition(115, 350).setFill(imgArrayDenise[10].src); patricia.setPosition(185, 205).setFill(imgArrayPatricia[7].src); }
-                if (deniseCount == 15) { denise.setPosition(110, 350).setFill(imgArrayDenise[9].src); patricia.setPosition(180, 205).setFill(imgArrayPatricia[4].src); }
-                if (deniseCount == 16) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(175, 205).setFill(imgArrayPatricia[5].src); }
-                if (deniseCount == 17) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(170, 205).setFill(imgArrayPatricia[6].src); }
-                if (deniseCount == 18) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(165, 205).setFill(imgArrayPatricia[7].src); }
-                if (deniseCount == 19) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(160, 205).setFill(imgArrayPatricia[6].src); }
-                if (deniseCount == 20) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(155, 205).setFill(imgArrayPatricia[5].src); }
-                if (deniseCount == 21) { denise.setPosition(110, 350).setFill(imgArrayDenise[14].src); patricia.setPosition(150, 205).setFill(imgArrayPatricia[4].src); }
-                if (deniseCount == 22) { denise.setPosition(110, 350).setFill(imgArrayDenise[8].src); patricia.setPosition(145, 205).setFill(imgArrayPatricia[5].src); }
-                if (deniseCount == 23) { denise.setPosition(110, 350).setFill(imgArrayDenise[1].src); patricia.setPosition(140, 205).setFill(imgArrayPatricia[6].src); }
-                if (deniseCount == 24) { denise.setPosition(110, 355).setFill(imgArrayDenise[0].src); patricia.setPosition(135, 205).setFill(imgArrayPatricia[7].src); }
-                if (deniseCount == 25) { denise.setPosition(110, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(130, 205).setFill(imgArrayPatricia[6].src); }
-                if (deniseCount == 26) { denise.setPosition(110, 365).setFill(imgArrayDenise[2].src); patricia.setPosition(125, 205).setFill(imgArrayPatricia[5].src); }
-                if (deniseCount == 27) { denise.setPosition(110, 370).setFill(imgArrayDenise[3].src); patricia.setPosition(120, 205).setFill(imgArrayPatricia[4].src); }
-                if (deniseCount == 28) { denise.setPosition(110, 375).setFill(imgArrayDenise[0].src); patricia.setPosition(115, 205).setFill(imgArrayPatricia[7].src); }
-                if (deniseCount == 29) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(110, 205).setFill(imgArrayPatricia[6].src); }
-                if (deniseCount == 30) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(105, 205).setFill(imgArrayPatricia[5].src); }
-                if (deniseCount == 31) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(100, 205).setFill(imgArrayPatricia[4].src); }
-                if (deniseCount == 32) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(95, 205).setFill(imgArrayPatricia[5].src); }
-                if (deniseCount == 33) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(90, 205).setFill(imgArrayPatricia[6].src); }
-                if (deniseCount == 34) { denise.setPosition(110, 375).setFill(imgArrayDenise[4].src); patricia.setPosition(85, 205).setFill(imgArrayPatricia[7].src); }
-                if (deniseCount == 35) { denise.setPosition(115, 370).setFill(imgArrayDenise[5].src); patricia.setPosition(80, 205).setFill(imgArrayPatricia[6].src); }
-                if (deniseCount == 36) { denise.setPosition(120, 365).setFill(imgArrayDenise[6].src); patricia.setPosition(75, 205).setFill(imgArrayPatricia[5].src); }
-                if (deniseCount == 37) { denise.setPosition(125, 360).setFill(imgArrayDenise[7].src); patricia.setPosition(70, 205).setFill(imgArrayPatricia[4].src); }
-                if (deniseCount == 38) { denise.setPosition(130, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 205).setFill(imgArrayPatricia[12].src); }
-                if (deniseCount == 39) { denise.setPosition(135, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 200).setFill(imgArrayPatricia[13].src); }
-                if (deniseCount == 40) { denise.setPosition(140, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 195).setFill(imgArrayPatricia[14].src); }
-                if (deniseCount == 41) { denise.setPosition(145, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 190).setFill(imgArrayPatricia[15].src); }
-                if (deniseCount == 42) { denise.setPosition(150, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 185).setFill(imgArrayPatricia[12].src); }
-                if (deniseCount == 43) { denise.setPosition(155, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 180).setFill(imgArrayPatricia[13].src); }
-                if (deniseCount == 44) { denise.setPosition(160, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 175).setFill(imgArrayPatricia[14].src); }
-                if (deniseCount == 45) { denise.setPosition(175, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 170).setFill(imgArrayPatricia[15].src); }
-                if (deniseCount == 46) { denise.setPosition(180, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 165).setFill(imgArrayPatricia[12].src); }
-                if (deniseCount == 47) { denise.setPosition(185, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 160).setFill(imgArrayPatricia[13].src); }
-                if (deniseCount == 48) { denise.setPosition(190, 360).setFill(imgArrayDenise[6].src); patricia.setPosition(70, 155).setFill(imgArrayPatricia[14].src); }
-                if (deniseCount == 49) { denise.setPosition(190, 360).setFill(imgArrayDenise[0].src); patricia.setPosition(70, 150).setFill(imgArrayPatricia[15].src); }
-                if (deniseCount == 50) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[4].src); }
-                if (deniseCount == 51) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[0].src); }
-                if (deniseCount == 52) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[8].src); }
-                if (deniseCount == 53) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[0].src); }
-                if (deniseCount == 54) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[4].src); }
-                if (deniseCount == 55) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[0].src); }
-                if (deniseCount == 58) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[12].src); }
-                if (deniseCount == 59) { denise.setPosition(190, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 145).setFill(imgArrayPatricia[12].src); }
-                if (deniseCount == 60) { patricia.setPosition(70, 145).setFill(imgArrayPatricia[8].src); }
-                if (deniseCount == 61) { patricia.setPosition(75, 145).setFill(imgArrayPatricia[9].src); }
-                if (deniseCount == 62) { patricia.setPosition(80, 145).setFill(imgArrayPatricia[10].src); }
-                if (deniseCount == 63) { patricia.setPosition(85, 145).setFill(imgArrayPatricia[11].src); }
-                if (deniseCount == 64) { patricia.setPosition(90, 145).setFill(imgArrayPatricia[8].src); }
-                if (deniseCount == 65) { patricia.setPosition(95, 145).setFill(imgArrayPatricia[9].src); }
-                if (deniseCount == 66) { patricia.setPosition(100, 145).setFill(imgArrayPatricia[10].src); }
-                if (deniseCount == 67) { patricia.setPosition(105, 145).setFill(imgArrayPatricia[11].src); }
-                if (deniseCount == 68) { patricia.setPosition(110, 145).setFill(imgArrayPatricia[8].src); }
-                if (deniseCount == 69) { denise.setPosition(190, 360).setFill(imgArrayDenise[0].src); patricia.setPosition(115, 145).setFill(imgArrayPatricia[9].src); }
-                if (deniseCount == 70) { patricia.setPosition(120, 145).setFill(imgArrayPatricia[10].src); }
-                if (deniseCount == 71) { patricia.setPosition(125, 145).setFill(imgArrayPatricia[11].src); }
-                if (deniseCount == 72) { patricia.setPosition(130, 145).setFill(imgArrayPatricia[8].src); }
-                if (deniseCount == 73) { patricia.setPosition(135, 145).setFill(imgArrayPatricia[9].src); }
-                if (deniseCount == 74) { patricia.setPosition(140, 145).setFill(imgArrayPatricia[11].src); }
-                if (deniseCount == 75) { patricia.setPosition(145, 145).setFill(imgArrayPatricia[8].src); }
-                if (deniseCount == 76) { patricia.setPosition(150, 145).setFill(imgArrayPatricia[9].src); }
-                if (deniseCount == 77) { patricia.setPosition(155, 145).setFill(imgArrayPatricia[10].src); }
-                if (deniseCount == 78) { patricia.setPosition(160, 145).setFill(imgArrayPatricia[11].src); }
+                if (fireState > 3) { fireState = 1; };
+                if (deniseCount <= 25) {
+                    if (deniseCount == 1) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); };
+                    if (deniseCount == 2) { denise.setPosition(190, 360).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 150).setFill(imgArrayPatricia[1].src); };
+                    if (deniseCount == 3) { denise.setPosition(185, 360).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 155).setFill(imgArrayPatricia[2].src); };
+                    if (deniseCount == 4) { denise.setPosition(180, 360).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 160).setFill(imgArrayPatricia[3].src); };
+                    if (deniseCount == 5) { denise.setPosition(175, 360).setFill(imgArrayDenise[10].src); patricia.setPosition(202, 165).setFill(imgArrayPatricia[0].src); };
+                    if (deniseCount == 6) { denise.setPosition(170, 360).setFill(imgArrayDenise[11].src); patricia.setPosition(202, 170).setFill(imgArrayPatricia[1].src); };
+                    if (deniseCount == 7) { denise.setPosition(165, 360).setFill(imgArrayDenise[10].src); patricia.setPosition(202, 175).setFill(imgArrayPatricia[2].src); };
+                    if (deniseCount == 8) { denise.setPosition(160, 360).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 180).setFill(imgArrayPatricia[3].src); };
+                    if (deniseCount == 9) { denise.setPosition(155, 360).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 185).setFill(imgArrayPatricia[0].src); };
+                    if (deniseCount == 10) { denise.setPosition(150, 360).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 190).setFill(imgArrayPatricia[1].src); };
+                    if (deniseCount == 11) { denise.setPosition(145, 360).setFill(imgArrayDenise[10].src); patricia.setPosition(202, 195).setFill(imgArrayPatricia[2].src); };
+                    if (deniseCount == 12) { denise.setPosition(140, 360).setFill(imgArrayDenise[11].src); patricia.setPosition(202, 200).setFill(imgArrayPatricia[3].src); };
+                    if (deniseCount == 12) { denise.setPosition(135, 355).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 205).setFill(imgArrayPatricia[0].src); };
+                    if (deniseCount == 12) { denise.setPosition(130, 355).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 205).setFill(imgArrayPatricia[4].src); };
+                    if (deniseCount == 12) { denise.setPosition(125, 350).setFill(imgArrayDenise[10].src); patricia.setPosition(195, 205).setFill(imgArrayPatricia[5].src); };
+                    if (deniseCount == 13) { denise.setPosition(120, 350).setFill(imgArrayDenise[11].src); patricia.setPosition(190, 205).setFill(imgArrayPatricia[6].src); };
+                    if (deniseCount == 14) { denise.setPosition(115, 350).setFill(imgArrayDenise[10].src); patricia.setPosition(185, 205).setFill(imgArrayPatricia[7].src); };
+                    if (deniseCount == 15) { denise.setPosition(110, 350).setFill(imgArrayDenise[9].src); patricia.setPosition(180, 205).setFill(imgArrayPatricia[4].src); };
+                    if (deniseCount == 16) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(175, 205).setFill(imgArrayPatricia[5].src); };
+                    if (deniseCount == 17) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(170, 205).setFill(imgArrayPatricia[6].src); };
+                    if (deniseCount == 18) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(165, 205).setFill(imgArrayPatricia[7].src); };
+                    if (deniseCount == 19) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(160, 205).setFill(imgArrayPatricia[6].src); };
+                    if (deniseCount == 20) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(155, 205).setFill(imgArrayPatricia[5].src); };
+                    if (deniseCount == 21) { denise.setPosition(110, 350).setFill(imgArrayDenise[14].src); patricia.setPosition(150, 205).setFill(imgArrayPatricia[4].src); };
+                    if (deniseCount == 22) { denise.setPosition(110, 350).setFill(imgArrayDenise[8].src); patricia.setPosition(145, 205).setFill(imgArrayPatricia[5].src); };
+                    if (deniseCount == 23) { denise.setPosition(110, 350).setFill(imgArrayDenise[1].src); patricia.setPosition(140, 205).setFill(imgArrayPatricia[6].src); };
+                    if (deniseCount == 24) { denise.setPosition(110, 355).setFill(imgArrayDenise[0].src); patricia.setPosition(135, 205).setFill(imgArrayPatricia[7].src); };
+                    if (deniseCount == 25) { denise.setPosition(110, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(130, 205).setFill(imgArrayPatricia[6].src); };
+                }
+                else if (deniseCount > 25 && deniseCount <= 50) {
+                    if (deniseCount == 26) { denise.setPosition(110, 365).setFill(imgArrayDenise[2].src); patricia.setPosition(125, 205).setFill(imgArrayPatricia[5].src); };
+                    if (deniseCount == 27) { denise.setPosition(110, 370).setFill(imgArrayDenise[3].src); patricia.setPosition(120, 205).setFill(imgArrayPatricia[4].src); };
+                    if (deniseCount == 28) { denise.setPosition(110, 375).setFill(imgArrayDenise[0].src); patricia.setPosition(115, 205).setFill(imgArrayPatricia[7].src); };
+                    if (deniseCount == 29) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(110, 205).setFill(imgArrayPatricia[6].src); };
+                    if (deniseCount == 30) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(105, 205).setFill(imgArrayPatricia[5].src); };
+                    if (deniseCount == 31) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(100, 205).setFill(imgArrayPatricia[4].src); };
+                    if (deniseCount == 32) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(95, 205).setFill(imgArrayPatricia[5].src); };
+                    if (deniseCount == 33) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(90, 205).setFill(imgArrayPatricia[6].src); };
+                    if (deniseCount == 34) { denise.setPosition(110, 375).setFill(imgArrayDenise[4].src); patricia.setPosition(85, 205).setFill(imgArrayPatricia[7].src); };
+                    if (deniseCount == 35) { denise.setPosition(115, 370).setFill(imgArrayDenise[5].src); patricia.setPosition(80, 205).setFill(imgArrayPatricia[6].src); };
+                    if (deniseCount == 36) { denise.setPosition(120, 365).setFill(imgArrayDenise[6].src); patricia.setPosition(75, 205).setFill(imgArrayPatricia[5].src); };
+                    if (deniseCount == 37) { denise.setPosition(125, 360).setFill(imgArrayDenise[7].src); patricia.setPosition(70, 205).setFill(imgArrayPatricia[4].src); };
+                    if (deniseCount == 38) { denise.setPosition(130, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 205).setFill(imgArrayPatricia[12].src); };
+                    if (deniseCount == 39) { denise.setPosition(135, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 200).setFill(imgArrayPatricia[13].src); };
+                    if (deniseCount == 40) { denise.setPosition(140, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 195).setFill(imgArrayPatricia[14].src); };
+                    if (deniseCount == 41) { denise.setPosition(145, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 190).setFill(imgArrayPatricia[15].src); };
+                    if (deniseCount == 42) { denise.setPosition(150, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 185).setFill(imgArrayPatricia[12].src); };
+                    if (deniseCount == 43) { denise.setPosition(155, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 180).setFill(imgArrayPatricia[13].src); };
+                    if (deniseCount == 44) { denise.setPosition(160, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 175).setFill(imgArrayPatricia[14].src); };
+                    if (deniseCount == 45) { denise.setPosition(175, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 170).setFill(imgArrayPatricia[15].src); };
+                    if (deniseCount == 46) { denise.setPosition(180, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 165).setFill(imgArrayPatricia[12].src); };
+                    if (deniseCount == 47) { denise.setPosition(185, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 160).setFill(imgArrayPatricia[13].src); };
+                    if (deniseCount == 48) { denise.setPosition(190, 360).setFill(imgArrayDenise[6].src); patricia.setPosition(70, 155).setFill(imgArrayPatricia[14].src); };
+                    if (deniseCount == 49) { denise.setPosition(190, 360).setFill(imgArrayDenise[0].src); patricia.setPosition(70, 150).setFill(imgArrayPatricia[15].src); };
+                    if (deniseCount == 50) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[4].src); };
+                }
+                else if (deniseCount > 50 && deniseCount <= 75) {
+                    if (deniseCount == 51) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[0].src); };
+                    if (deniseCount == 52) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[8].src); };
+                    if (deniseCount == 53) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[0].src); };
+                    if (deniseCount == 54) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[4].src); };
+                    if (deniseCount == 55) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[0].src); };
+                    if (deniseCount == 58) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[12].src); };
+                    if (deniseCount == 59) { denise.setPosition(190, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 145).setFill(imgArrayPatricia[12].src); };
+                    if (deniseCount == 60) { patricia.setPosition(70, 145).setFill(imgArrayPatricia[8].src); };
+                    if (deniseCount == 61) { patricia.setPosition(75, 145).setFill(imgArrayPatricia[9].src); };
+                    if (deniseCount == 62) { patricia.setPosition(80, 145).setFill(imgArrayPatricia[10].src); };
+                    if (deniseCount == 63) { patricia.setPosition(85, 145).setFill(imgArrayPatricia[11].src); };
+                    if (deniseCount == 64) { patricia.setPosition(90, 145).setFill(imgArrayPatricia[8].src); };
+                    if (deniseCount == 65) { patricia.setPosition(95, 145).setFill(imgArrayPatricia[9].src); };
+                    if (deniseCount == 66) { patricia.setPosition(100, 145).setFill(imgArrayPatricia[10].src); };
+                    if (deniseCount == 67) { patricia.setPosition(105, 145).setFill(imgArrayPatricia[11].src); };
+                    if (deniseCount == 68) { patricia.setPosition(110, 145).setFill(imgArrayPatricia[8].src); };
+                    if (deniseCount == 69) { denise.setPosition(190, 360).setFill(imgArrayDenise[0].src); patricia.setPosition(115, 145).setFill(imgArrayPatricia[9].src); };
+                    if (deniseCount == 70) { patricia.setPosition(120, 145).setFill(imgArrayPatricia[10].src); };
+                    if (deniseCount == 71) { patricia.setPosition(125, 145).setFill(imgArrayPatricia[11].src); };
+                    if (deniseCount == 72) { patricia.setPosition(130, 145).setFill(imgArrayPatricia[8].src); };
+                    if (deniseCount == 73) { patricia.setPosition(135, 145).setFill(imgArrayPatricia[9].src); };
+                    if (deniseCount == 74) { patricia.setPosition(140, 145).setFill(imgArrayPatricia[11].src); };
+                    if (deniseCount == 75) { patricia.setPosition(145, 145).setFill(imgArrayPatricia[8].src); };
+                }
+                else if (deniseCount > 75 && deniseCount < 100) {
+                    if (deniseCount == 76) { patricia.setPosition(150, 145).setFill(imgArrayPatricia[9].src); };
+                    if (deniseCount == 77) { patricia.setPosition(155, 145).setFill(imgArrayPatricia[10].src); };
+                    if (deniseCount == 78) { patricia.setPosition(160, 145).setFill(imgArrayPatricia[11].src); };
 
-                if (deniseCount == 79) { denise.setPosition(190, 360).setFill(imgArrayDenise[15].src); patricia.setPosition(165, 145).setFill(imgArrayPatricia[9].src); }
-                if (deniseCount == 80) { patricia.setPosition(170, 145).setFill(imgArrayPatricia[10].src); }
-                if (deniseCount == 81) { patricia.setPosition(175, 145).setFill(imgArrayPatricia[11].src); }
-                if (deniseCount == 82) { patricia.setPosition(180, 145).setFill(imgArrayPatricia[8].src); }
-                if (deniseCount == 83) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(185, 145).setFill(imgArrayPatricia[9].src); }
-                if (deniseCount == 84) { patricia.setPosition(190, 145).setFill(imgArrayPatricia[10].src); }
-                if (deniseCount == 85) { patricia.setPosition(195, 145).setFill(imgArrayPatricia[11].src); }
-                if (deniseCount == 86) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[8].src); }
-                if (deniseCount == 89) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[4].src); }
-                if (deniseCount == 90) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
-                if (deniseCount == 91) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[8].src); }
-                if (deniseCount == 92) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
-                if (deniseCount == 93) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[4].src); }
-                if (deniseCount == 94) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
-                if (deniseCount == 95) { denise.setPosition(190, 360).setFill(imgArrayDenise[15].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[8].src); }
-                if (deniseCount == 96) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
-                if (deniseCount == 97) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[4].src); }
-                if (deniseCount == 98) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
-                if (deniseCount == 99) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
-                if (deniseCount >= 100) { deniseCount = 0; }
-            }
+                    if (deniseCount == 79) { denise.setPosition(190, 360).setFill(imgArrayDenise[15].src); patricia.setPosition(165, 145).setFill(imgArrayPatricia[9].src); };
+                    if (deniseCount == 80) { patricia.setPosition(170, 145).setFill(imgArrayPatricia[10].src); };
+                    if (deniseCount == 81) { patricia.setPosition(175, 145).setFill(imgArrayPatricia[11].src); };
+                    if (deniseCount == 82) { patricia.setPosition(180, 145).setFill(imgArrayPatricia[8].src); };
+                    if (deniseCount == 83) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(185, 145).setFill(imgArrayPatricia[9].src); };
+                    if (deniseCount == 84) { patricia.setPosition(190, 145).setFill(imgArrayPatricia[10].src); };
+                    if (deniseCount == 85) { patricia.setPosition(195, 145).setFill(imgArrayPatricia[11].src); };
+                    if (deniseCount == 86) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[8].src); };
+                    if (deniseCount == 89) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[4].src); };
+                    if (deniseCount == 90) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); };
+                    if (deniseCount == 91) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[8].src); };
+                    if (deniseCount == 92) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); };
+                    if (deniseCount == 93) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[4].src); };
+                    if (deniseCount == 94) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); };
+                    if (deniseCount == 95) { denise.setPosition(190, 360).setFill(imgArrayDenise[15].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[8].src); };
+                    if (deniseCount == 96) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); };
+                    if (deniseCount == 97) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[4].src); };
+                    if (deniseCount == 98) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); };
+                    if (deniseCount == 99) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); };
+                }
+                else if (deniseCount >= 100) { deniseCount = 0; };
+            };
         }, this, 200)
 
   
@@ -17337,7 +17345,7 @@ farming.start = function () {
         var speedAdConfirmWM = (new lime.GlossyButton).setColor("#00FF00").setText("View Ad").setPosition(115, 233).setSize(85, 32);
         boostCropsWM.appendChild(speedAdConfirmWM);
         //hide for AdFree
-        if (adFreeVersion == 1) { speedAdConfirmWM.setHidden(true); }
+        if (adFreeVersion == 1) { speedAdConfirmWM.setHidden(true); speedAdOrWM.setHidden(true);}
         var speedAdCancelWM = (new lime.GlossyButton).setColor("#8B0000").setText("").setPosition(117, 288).setSize(36, 36);
         boostCropsWM.appendChild(speedAdCancelWM);
         var cancelBoostImgWM = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(-20, -20).setSize(40, 40).setFill(imgArray[21]);
