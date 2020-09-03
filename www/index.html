@@ -21,6 +21,7 @@
             background-repeat: no-repeat;
             text-size-adjust: none;
             -webkit-text-size-adjust: none;
+
         }
 
 
@@ -159,7 +160,7 @@
             transform: translate(-12px,-16px);
         }
 
-        #currentStarCashBack, #currentStarCashBack2, #currentStarCashBack3, #currentStarCashBack4, #currentStarCashShare {
+        #currentStarCashBack, #currentStarCashBack2,  #currentStarCashBack4, #currentStarCashShare {
             width: 267px;
             height: 50px;
             font-family: 'Comic Sans MS';
@@ -178,7 +179,7 @@
         #currentStarCashBack2 {
             margin-top: 8px;
         }
-        #currentStarCashBack3 {
+        /*#currentStarCashBack3 {
             width: 267px;
             height: 50px;
             text-align: left;
@@ -186,7 +187,7 @@
             padding-top: -20px;
             margin-top: 8px;
             /*display: none;*/
-        }
+        /*}*/
         #currentStarCashBack4 {
             width: 267px;
             margin-top: 5px;
@@ -889,7 +890,7 @@
 
         <!--<script type="text/javascript" src="farmingMin_1.5.1.7.js"></script>-->
      
-        <script type="text/javascript" src="farming_1.7.8Min.js"></script>
+        <script type="text/javascript" src="farming_1.8.js"></script>
    
 </head>
 
@@ -923,12 +924,12 @@
                     <img id="lowerArrow2" src="images/UI/rightBtn.png" loading="lazy" width="35" alt="rightBtn2" />
                     <img id="lowerStarCashCoin" src="images/tools500.png" loading="lazy" width="50" alt="tools500" /><img id="buyWithStarCashTools" src="images/UI/greenBuy.png" alt="StarCashBuyImg" />
                 </div>
-                <div id="currentStarCashBack3">
+                <!--<div id="currentStarCashBack3">
                     <div id="starCashRow3">
                         Watch to Earn <img id="lowerStarCashImg3" src="images/UI/plus3StarCash.png" loading="lazy" width="45" alt="StarCashImg" />
                         <img id="viewAdImg" src="images/UI/viewAd.png" loading="lazy" width="88" alt="View Ad" />
                     </div>
-                </div>
+                </div>-->
                 <div>
                     <div id="currentStarCashShare">
                         <p>Share to Earn</p> <img id="lowerStarCashImg5" src="images/UI/plus5StarCash.png" loading="lazy" width="45" alt="StarCashImg" />
@@ -956,8 +957,8 @@
             <div id="rateMeTopWrap">
 
                 <div id="rateMeText">
-
-                    <p><h2>Please Rate Our App</h2> It takes only a moment and helps alot</p>
+                    <h2>Please Rate Our App</h2> 
+                    <p>It takes only a moment and helps alot</p>
                 </div>
 
             </div>
@@ -1068,16 +1069,17 @@
     <script type=text/javascript>
 
 
+
         var deviceType = (navigator.userAgent.match(/iPad/i)) == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i)) == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
 
         //alert("DeviceType is " + deviceType);
 
-        if (localStorage.getItem("rateMeNever") == null) { localStorage.setItem("rateMeNever", 0); };
-        if (localStorage.getItem("showRewarded") == null) { localStorage.setItem("showRewarded", 0); };
-        if (localStorage.getItem("MedFarms_boughtMasterPack") == null) { localStorage.setItem("MedFarms_boughtMasterPack", 0);   };
-        if (localStorage.getItem("MedFarms_boughtSmallStars") == null) {  localStorage.setItem("MedFarms_boughtSmallStars", 0);   };
-        if (localStorage.getItem("MedFarms_boughtStarterPack") == null) { localStorage.setItem("MedFarms_boughtStarterPack", 0); };
-        if (localStorage.getItem("MedFarms_boughtLargeStars") == null) { localStorage.setItem("MedFarms_boughtLargeStars", 0); };
+        if (localStorage.getItem("rateMeNever") == null) { localStorage.setItem("rateMeNever", 0); }
+        if (localStorage.getItem("showRewarded") == null) { localStorage.setItem("showRewarded", 0); }
+        if (localStorage.getItem("MedFarms_boughtMasterPack") == null) { localStorage.setItem("MedFarms_boughtMasterPack", 0); }
+        if (localStorage.getItem("MedFarms_boughtSmallStars") == null) { localStorage.setItem("MedFarms_boughtSmallStars", 0); }
+        if (localStorage.getItem("MedFarms_boughtStarterPack") == null) { localStorage.setItem("MedFarms_boughtStarterPack", 0); }
+        if (localStorage.getItem("MedFarms_boughtLargeStars") == null) { localStorage.setItem("MedFarms_boughtLargeStars", 0); }
 
 
         localStorage.setItem('adWatched', 0);
@@ -1115,15 +1117,15 @@
             };
 
             var onRewardDeclined = function () {
-                setTimeout(function () { try { Enhance.logEvent('reward declined'); } catch (err) { console.log("logging failed") }; }, 0);
-                    rewardedCompleted = 0;
+                setTimeout(function () { try { Enhance.logEvent('reward declined'); } catch (err) { console.log("logging failed"); } }, 0);
+                rewardedCompleted = 0;
                 document.getElementById("waitText").innerHTML = 'Reward declined- you must watch the ad to get the reward';
             };
 
             var onRewardUnavailable = function () {
                 app.writeLog('Reward unavailable');
                 rewardedCompleted = 0;
-                document.getElementById("waitText").innerHTML = 'Reward unavailable- please wait a while before you boost again', c.setPaused(0);
+                document.getElementById("waitText").innerHTML = 'Reward unavailable- please wait a while before you boost again'; c.setPaused(0);
             };
 
             Enhance.showRewardedAd(onRewardGranted, onRewardDeclined, onRewardUnavailable);
@@ -1141,21 +1143,21 @@
 
         };
         //    ////primary loop 2 - external loads
-    
 
-       
+
+
         function interPop2() {
             ////more games check
-          
+
             moreGamesClicked = localStorage.getItem("moreGamesClicked");
             showItOrNo2 = 0;
             showItOrNo2 = parseInt(localStorage.getItem('MedFarm_LoadAd'));
             showRewarded = parseInt(localStorage.getItem('MedFarm_StarCashBoost'));
             if (moreGamesClicked == 1) {
-                setTimeout(function () { openLink(); },0);
+                setTimeout(function () { openLink(); }, 0);
                 moreGamesClicked = 0;
             }
-                   //interstatial ads
+            //interstatial ads
             else if (showItOrNo2 == 1) {
                 localStorage.setItem('MedFarm_LoadAd', 0);
                 localStorage.setItem('adWatched', 1);
@@ -1165,13 +1167,13 @@
                 //give time for save before load ad
                 setTimeout(function () {
                     try { Enhance.isInterstitialReady(callback); }
-                    catch (err) { console.log("Caught interstital  error " + err) }
-                }, 300)
-      
+                    catch (err) { console.log("Caught interstital  error " + err); }
+                }, 300);
+
             }
             //hide for AdFree
             //rewarded video
-           
+
             else if (showRewarded == 1) {
                 //console.log("interpop2 detected showRewarded = " + showRewarded);
                 showRewarded = 0;
@@ -1186,44 +1188,44 @@
                 localStorage.setItem('starCash', starCash);
                 //document.getElementById("sucessbuyTxt").style.display = 'block';
                 document.getElementById("starCashOuterLabel").innerHTML = starCash;
-             
+
                 localStorage.setItem('MedFarm_Rewarded', 0);
-                setTimeout(function () { try { Enhance.logEvent('earn_virtual_currency'); } catch (err) { console.log("logging failed") }; }, 0);
+                setTimeout(function () { try { Enhance.logEvent('earn_virtual_currency'); } catch (err) { console.log("logging failed"); } }, 0);
                 try { Enhance.isRewardedAdReady(callback2); document.getElementById("waitText").innerHTML = '+ 3 Stars'; }
                 catch (err) { console.log("Caught rewarded error " + err); document.getElementById("waitText").innerHTML = 'Ad failed - try again soon.'; }
                 showRewarded = 0;
                 localStorage.setItem('MedFarm_StarCashBoost', 0);
                 localStorage.setItem('MedFarm_LoadAd', 0);
-                
-                setTimeout(function () { document.getElementById("waitText").style.display = 'none';  }, 10000);
+
+                setTimeout(function () { document.getElementById("waitText").style.display = 'none'; }, 10000);
             }
-                 //check for purchases (combined timer)
+            //check for purchases (combined timer)
             else {
-               
+
                 purchaseCheck();
-            };
-           
-    
+            }
+
+
         }
         ////rate me
-        var rateMeBtnYes = document.getElementById("rateMeBtnYes")
+        var rateMeBtnYes = document.getElementById("rateMeBtnYes");
         rateMeBtnYes.addEventListener("click", openRateOnPlay);
         rateMeBtnYes.addEventListener("touchstart", openRateOnPlay);
 
 
-        var rateMeBtnNo = document.getElementById("rateMeBtnNo")
+        var rateMeBtnNo = document.getElementById("rateMeBtnNo");
         rateMeBtnNo.addEventListener("click", closeRate1);
         rateMeBtnNo.addEventListener("touchstart", closeRate1);
 
-        var rateMeBtnLater = document.getElementById("rateMeBtnLater")
+        var rateMeBtnLater = document.getElementById("rateMeBtnLater");
         rateMeBtnLater.addEventListener("click", closeRate2);
         rateMeBtnLater.addEventListener("touchstart", closeRate2);
 
-        var rateImage = document.getElementById("rateImage")
+        var rateImage = document.getElementById("rateImage");
         rateImage.addEventListener("click", openRateOnPlay);
         rateImage.addEventListener("touchstart", openRateOnPlay);
 
-     
+
 
         function closeFBShare() {
 
@@ -1232,25 +1234,25 @@
 
         function closeRate1() {
             document.getElementById("rateMe").style.display = 'none';
-            localStorage.setItem("rateMeNever", 1)
+            localStorage.setItem("rateMeNever", 1);
 
         }
         function closeRate2() {
             document.getElementById("rateMe").style.display = 'none';
-            localStorage.setItem("rateMeNever", 0)
+            localStorage.setItem("rateMeNever", 0);
 
         }
 
         function openRateOnPlay() {
             document.getElementById("rateMe").style.display = 'none';
             try { cordova.plugins.market.open('com.wGuiGhostFarms_9861566'); }
-            catch (err) { console.log("caught = " + err) }
-            try { Enhance.logEvent('app_rate_clicked'); } catch (err) { console.log("logging failed") };
+            catch (err) { console.log("caught = " + err); }
+            try { Enhance.logEvent('app_rate_clicked'); } catch (err) { console.log("logging failed"); }
 
         }
 
         function showAdFallback() {
-            console.log("clicked fallback and starCash = " + starCash)
+            console.log("clicked fallback and starCash = " + starCash);
             localStorage.setItem('MedFarm_LoadAd', 1);
             //localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
             starCash = localStorage.getItem('starCash');
@@ -1271,26 +1273,26 @@
             localStorage.setItem("moreGamesClicked", 0);
             if (deviceType == "Android") {
                 if (whichMore == 'stack') {
-                    whichMore == 'star'
+                    whichMore = 'star';
                     try {
                         cordova.plugins.market.open('com.GuiGhostGames.StackerBoB');
                         //cordova.plugins.market.search('guighost')
                     }
-                    catch (err) { console.log("caught = " + err) }
+                    catch (err) { console.log("caught = " + err); }
                 }
                 else if (whichMore == 'star') {
-                    whichMore == 'stack'
+                    whichMore = 'stack';
                     try {
                         cordova.plugins.market.open('com.GuiGhostGames.StarMatch2048');
                         //cordova.plugins.market.search('guighost')
                     }
-                    catch (err) { console.log("caught = " + err) }
+                    catch (err) { console.log("caught = " + err); }
                 }
-            };
-      
+            }
 
 
-        };
+
+        }
 
         ///In App Payments
         var callback_SmallSP = function () {
@@ -1320,7 +1322,7 @@
                         catch (err) { console.log(err); }
                     }
                 }
-                )
+                );
                 alert('Purchased failed');
             };
             var onConsumeSuccessCallback = function () {
@@ -1364,7 +1366,7 @@
                         catch (err) { console.log(err); }
                     }
                 }
-                )
+                );
                 alert('purchased failed');
             };
             var onConsumeSuccessCallback = function () {
@@ -1393,9 +1395,9 @@
                 player.tools = parseInt(player.tools) + 250;
 
                 player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 250;
-                if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 250 }
+                if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 250; }
                 player.cropsStored[15].stored = parseInt(player.cropsStored[15].stored) + 250;
-                if (player.cropsStored[15].stored < 0) { player.cropsStored[15].stored = 250 }
+                if (player.cropsStored[15].stored < 0) { player.cropsStored[15].stored = 250; }
                 localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
                 buyStarterPack.owned = 1;
                 try { Enhance.purchases.consume('starter_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
@@ -1411,7 +1413,7 @@
                         catch (err) { console.log(err); }
                     }
                 }
-                )
+                );
                 alert('Purchased failed');
             };
             var onConsumeSuccessCallback = function () {
@@ -1461,7 +1463,7 @@
                         catch (err) { console.log(err); }
                     }
                 }
-                )
+                );
                 alert('Purchased failed- try again soon');
             };
             var onConsumeSuccessCallback = function () {
@@ -1481,15 +1483,15 @@
         var buyingLargeStars = 0;
         var buyingStarterPack = 0;
         var buyingMasterPack = 0;
-     
 
-        localStorage.setItem('MedFarms_buyingSmallStars', 0)
 
-        localStorage.setItem('MedFarms_buyingLargeStars', 0)
+        localStorage.setItem('MedFarms_buyingSmallStars', 0);
 
-        localStorage.setItem('MedFarms_buyingStarterPack', 0)
+        localStorage.setItem('MedFarms_buyingLargeStars', 0);
 
-        localStorage.setItem('MedFarms_buyingMasterPack', 0)
+        localStorage.setItem('MedFarms_buyingStarterPack', 0);
+
+        localStorage.setItem('MedFarms_buyingMasterPack', 0);
 
         function purchaseCheck() {
             //console.log("tickk");
@@ -1500,7 +1502,7 @@
             if (buyingSmallStars == 1) {
                 //console.log("in IF buying small stars");
                 try { Enhance.purchases.isSupported(callback_SmallSP); }
-                catch (err) { console.log("failed small stars"); };
+                catch (err) { console.log("failed small stars"); }
                 localStorage.setItem('MedFarms_buyingSmallStars', 0);
 
             }
@@ -1512,7 +1514,7 @@
             }
             else if (buyingStarterPack == 1) {
                 try { Enhance.purchases.isSupported(callback_starterPack); }
-                catch (err) { console.log("failed buystarter"); };
+                catch (err) { console.log("failed buystarter"); }
                 localStorage.setItem('MedFarms_buyingStarterPack', 0);
 
             }
@@ -1522,12 +1524,12 @@
                 localStorage.setItem('MedFarms_buyingMasterPack', 0);
 
 
-            };
+            }
 
-        };
+        }
 
 
-        window.addEventListener('load', (event) => {
+        window.addEventListener('load', function (event) {
             var tid2 = setInterval(interPop2, 500);
             //console.log("page loaded ");
 
@@ -1538,16 +1540,16 @@
                 files: ['https://guighostgames.com/MedievalFarms/images/ads/promo580x400.png'], // an array of filenames either locally or remotely
                 url: 'https://bit.ly/SharingMedFarms',
                 chooserTitle: 'Pick an app to share with' // Android only, you can override the default share sheet title
-            }
+            };
             var optionsShare2 = {
                 message: 'Use Reward Code "StarBoost" for free stars in Medieval Farms ', // not supported on some apps (Facebook, Instagram)
                 subject: 'Medieval Farms', // fi. for email
                 files: ['https://guighostgames.com/MedievalFarms/images/ads/rewardImg.png'], // an array of filenames either locally or remotely
                 url: 'https://bit.ly/Stars4MedFarm',
                 chooserTitle: 'Pick an app to share with' // Android only, you can override the default share sheet title
-            }
+            };
             var onSuccessShare = function (result) {
-             
+
                 starCash = parseInt(localStorage.getItem('starCash'));
                 starCash = parseInt(starCash) + 5;
                 localStorage.setItem('starCash', starCash);
@@ -1560,13 +1562,13 @@
                 try {
                     Enhance.logEvent('app_shared', 'result', result.app);
 
-                } catch (err) { console.log("share failed") };
-            }
+                } catch (err) { console.log("share failed"); }
+            };
 
             var onErrorShare = function (msg) {
-                try { Enhance.logEvent('app_shared', 'result', 'false'); } catch (err) { console.log("share failed") };
+                try { Enhance.logEvent('app_shared', 'result', 'false'); } catch (err) { console.log("share failed"); }
                 console.log("Sharing failed with message: " + msg);
-            }
+            };
 
             var shareUs = document.getElementById("shareUs");
             var shareUs2 = document.getElementById("shareUs2");
@@ -1593,9 +1595,8 @@
 
 
 
-   
-        });
 
+        });
         /////version check
         //var currentGameVersion = 1.5;
         //let requestURL = 'https://guighostgames.com/MedievalFarms/currentAppVersion.json';
@@ -1620,11 +1621,7 @@
 
 
     </script>
-    <script>
-
-      
-
-    </script>
+ 
 </body>
 
 </html>
