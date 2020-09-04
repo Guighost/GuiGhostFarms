@@ -1158,47 +1158,47 @@
                 moreGamesClicked = 0;
             }
             //interstatial ads
-            else if (showItOrNo2 == 1) {
-                localStorage.setItem('MedFarm_LoadAd', 0);
-                localStorage.setItem('adWatched', 1);
-                showItOrNo2 = 0;
-                ///hack fix - save crops before play ads
-                localStorage.setItem("landStates", JSON.stringify(landStateMaster));
-                //give time for save before load ad
-                setTimeout(function () {
-                    try { Enhance.isInterstitialReady(callback); }
-                    catch (err) { console.log("Caught interstital  error " + err); }
-                }, 300);
+            <!-- else if (showItOrNo2 == 1) { -->
+                <!-- localStorage.setItem('MedFarm_LoadAd', 0); -->
+                <!-- localStorage.setItem('adWatched', 1); -->
+                <!-- showItOrNo2 = 0; -->
+                <!-- ///hack fix - save crops before play ads -->
+                <!-- localStorage.setItem("landStates", JSON.stringify(landStateMaster)); -->
+                <!-- //give time for save before load ad -->
+                <!-- setTimeout(function () { -->
+                    <!-- try { Enhance.isInterstitialReady(callback); } -->
+                    <!-- catch (err) { console.log("Caught interstital  error " + err); } -->
+                <!-- }, 300); -->
 
-            }
+            <!-- } -->
             //hide for AdFree
             //rewarded video
 
-            else if (showRewarded == 1) {
-                //console.log("interpop2 detected showRewarded = " + showRewarded);
-                showRewarded = 0;
-                //award starcash
+            <!-- else if (showRewarded == 1) { -->
+                <!-- //console.log("interpop2 detected showRewarded = " + showRewarded); -->
+                <!-- showRewarded = 0; -->
+                <!-- //award starcash -->
 
-                //console.log("adRewardCompleted1 = " + rewardCompleted);
-                rewardedCompleted = 0;
-                starCash = parseInt(localStorage.getItem('starCash'));
-                //console.log("before starcash = " + starCash);
-                starCash = parseInt(starCash) + 3;
-                //console.log("after add starcash = " + starCash);
-                localStorage.setItem('starCash', starCash);
-                //document.getElementById("sucessbuyTxt").style.display = 'block';
-                document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                <!-- //console.log("adRewardCompleted1 = " + rewardCompleted); -->
+                <!-- rewardedCompleted = 0; -->
+                <!-- starCash = parseInt(localStorage.getItem('starCash')); -->
+                <!-- //console.log("before starcash = " + starCash); -->
+                <!-- starCash = parseInt(starCash) + 3; -->
+                <!-- //console.log("after add starcash = " + starCash); -->
+                <!-- localStorage.setItem('starCash', starCash); -->
+                <!-- //document.getElementById("sucessbuyTxt").style.display = 'block'; -->
+                <!-- document.getElementById("starCashOuterLabel").innerHTML = starCash; -->
 
-                localStorage.setItem('MedFarm_Rewarded', 0);
-                setTimeout(function () { try { Enhance.logEvent('earn_virtual_currency'); } catch (err) { console.log("logging failed"); } }, 0);
-                try { Enhance.isRewardedAdReady(callback2); document.getElementById("waitText").innerHTML = '+ 3 Stars'; }
-                catch (err) { console.log("Caught rewarded error " + err); document.getElementById("waitText").innerHTML = 'Ad failed - try again soon.'; }
-                showRewarded = 0;
-                localStorage.setItem('MedFarm_StarCashBoost', 0);
-                localStorage.setItem('MedFarm_LoadAd', 0);
+                <!-- localStorage.setItem('MedFarm_Rewarded', 0); -->
+                <!-- setTimeout(function () { try { Enhance.logEvent('earn_virtual_currency'); } catch (err) { console.log("logging failed"); } }, 0); -->
+                <!-- try { Enhance.isRewardedAdReady(callback2); document.getElementById("waitText").innerHTML = '+ 3 Stars'; } -->
+                <!-- catch (err) { console.log("Caught rewarded error " + err); document.getElementById("waitText").innerHTML = 'Ad failed - try again soon.'; } -->
+                <!-- showRewarded = 0; -->
+                <!-- localStorage.setItem('MedFarm_StarCashBoost', 0); -->
+                <!-- localStorage.setItem('MedFarm_LoadAd', 0); -->
 
-                setTimeout(function () { document.getElementById("waitText").style.display = 'none'; }, 10000);
-            }
+                <!-- setTimeout(function () { document.getElementById("waitText").style.display = 'none'; }, 10000); -->
+            <!-- } -->
             //check for purchases (combined timer)
             else {
 
@@ -1530,7 +1530,7 @@
 
 
         window.addEventListener('load', function (event) {
-            var tid2 = setInterval(interPop2, 500);
+            var tid2 = setInterval(purchaseCheck();, 500);
             //console.log("page loaded ");
 
             // this is the complete list of currently supported params you can pass to the plugin (all optional)
