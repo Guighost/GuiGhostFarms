@@ -50,7 +50,7 @@
 	 <preference name="android-minSdkVersion" value="19" />
         <preference name="android-targetSdkVersion" value="29" />
         <preference name="ANDROID_SUPPORT_RECYCLERVIEW_VERSION" default="27+" />
-        <preference name="KeepRunning" value="false"/>
+        <preference name="KeepRunning" value="true"/>
         <!-- <preference name="InAppBrowserStorageEnabled" value="true"/> -->
         <preference name="AndroidLaunchMode" value="singleTop"/>
         <preference name="DefaultVolumeStream" value="call" />
