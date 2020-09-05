@@ -1932,7 +1932,7 @@ var farming = {
                             c.crop = b.currentCrop,
                             c.ripeTime = randomPlantTime * a.crops[b.currentCrop].time_to_ripe,
                             //console.log("ripeT " + c.ripeTime),
-                            c.deathTime = 2000 * a.crops[b.currentCrop].time_to_death,
+                            c.deathTime = 5000 * a.crops[b.currentCrop].time_to_death,
                             c.thirdTime = 1250 * a.crops[b.currentCrop].time_to_ripe,
 
                             player.money = player.money - (a.crops[b.currentCrop].cost),
@@ -2079,7 +2079,7 @@ var farming = {
 
                         )
 
-                        : this.deathTime -= 1000
+                        : this.deathTime -= 1
 
                 );
 
@@ -2095,7 +2095,7 @@ var farming = {
                             (
                                 this.setFill("images/" + a.crops[this.crop].grow2)
                             )
-                            : this.deathTime -= 1000
+                            : this.deathTime -= 1
                 );
             if (scene == 2 && c.state == farming.GROWING) {
                 if (10000 >= this.ripeTime) { c.setFill("images/" + a.crops[6].grow3); }
@@ -17723,6 +17723,9 @@ farming.start = function () {
 
 
         });
+        if (localStorage.getItem("wmFieldCleared") == 1) {
+            lowerWheatBlock.setHidden(true); lowerWheatBlockBtn.setHidden(true);
+        } 
         var costDisplayWM = (new lime.Label()).setPosition(75, 180).setSize(50, 25).setText("-50").setFontSize(14).setFontFamily("Comic Sans MS").setFontColor("#e1f00e").setFontWeight(600);
         windmillLayer.appendChild(costDisplayWM);
         var costCoinWM = (new lime.Sprite()).setPosition(30, -8).setSize(30, 30).setFill(imgArray11[0]);
