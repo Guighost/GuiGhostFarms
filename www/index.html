@@ -1296,7 +1296,7 @@
             if (buyingSmallStars == 1) {
                 //console.log("in IF buying small stars");
                 try { Enhance.purchases.isSupported(callback_SmallSP); }
-                catch (err) { console.log("failed small stars"); }
+                catch (err) { console.log("failed small stars"); alert('Purchased failed isSupported '); }
                 localStorage.setItem('MedFarms_buyingSmallStars', 0);
 
             }
@@ -1324,7 +1324,7 @@
 
 
         window.addEventListener('load', function (event) {
-            var tid2 = setInterval(purchaseCheck(), 750);
+            var tid2 = setInterval(purchaseCheck(), 500);
 
             var optionsShare = {
                 message: 'Join me playing Medieval Farms', // not supported on some apps (Facebook, Instagram)
