@@ -1496,7 +1496,7 @@ var townSceneActive = 0;
 var sceneActive = 'home';
 
 
-var adFreeVersion = 1;
+var adFreeVersion = 0;
 
 ///// quest definitions:
 var rewardTypes = {
@@ -2053,7 +2053,9 @@ var farming = {
         lime.scheduleManager.scheduleWithDelay(function () {
             adWatched2 = localStorage.getItem('adWatched');
             fromSCBoost = localStorage.getItem('MedFarm_StarCashBoost');
-            if (adWatched2 == 1 && c.state == farming.GROWING && fromSCBoost == 0) { c.ripeTime = 0; lime.scheduleManager.callAfter(function () { localStorage.setItem('adWatched', 0); adWatched2 = 0; }, this, 400); }
+            if (adWatched2 == 1 && c.state == farming.GROWING && fromSCBoost == 0) { 
+			c.ripeTime = 0; 
+			lime.scheduleManager.callAfter(function () { localStorage.setItem('adWatched', 0); adWatched2 = 0; }, this, 400); }
             //else {
             //    setTimeout(function () { localStorage.setItem('MedFarm_StarCashBoost', 0); fromSCBoost = 0; }, 5000);
             //}
@@ -9695,27 +9697,27 @@ farming.start = function () {
 
         }, false);
 
-        //document.getElementById("viewAdImg").addEventListener("touchstart", function (event) {
-        //    var isVisFBa = document.getElementById("fbshare").style.display;
-        //    if (isVisFBa == 'block') {
-        //        //console.log("touched viewAd")
-        //        starCashViewAd();
-        //        event.stopPropagation();
-        //    }
+       document.getElementById("viewAdImg").addEventListener("touchstart", function (event) {
+           var isvisfba = document.getElementById("fbshare").style.display;
+         if (isvisfba == 'block') {
+               //console.log("touched viewad")
+               starCashViewAd();
+              event.stopPropagation();
+          }
 
 
-        //}, false);
+        }, false);
 
-        //document.getElementById("viewAdImg").addEventListener("click", function (event) {
-        //    var isVisFB0 = document.getElementById("fbshare").style.display;
-        //    if (isVisFB0 == 'block') {
-        //        //console.log("clicked viewAd")
-        //        starCashViewAd();
-        //        event.stopPropagation();
-        //    }
+       document.getElementById("viewAdImg").addEventListener("click", function (event) {
+          var isvisfb0 = document.getElementById("fbshare").style.display;
+          if (isvisfb0 == 'block') {
+               //console.log("clicked viewad")
+              starCashViewAd();
+               event.stopPropagation();
+           }
 
 
-        //}, false);
+       }, false);
 
         function starCashViewAd() {
             localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
@@ -9725,20 +9727,20 @@ farming.start = function () {
             lime.audio.setMute(true);
 
             lime.scheduleManager.callAfter(function () {
-                //document.getElementById("sucessbuyTxt").style.display = 'block';
+                document.getElementById("sucessbuyTxt").style.display = 'block';
                 starCash = localStorage.getItem('starCash');
                 document.getElementById("starCashOuterLabel").innerHTML = starCash;
-                //document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
+                document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
 
                 document.getElementById("starCashOuterLabel").innerHTML = starCash;
             }, this, 1500);
 
-            lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 33000);
-            //var adImg = document.getElementById("viewAdImg");
-            //sucessText.innerHTML = 'Wait time is required before you can boost again';
+            lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; document.getElementById("sucessbuyTxt").style.display = 'none';}, this, 3000);
+            var adImg = document.getElementById("viewAdImg");
+            sucessText.innerHTML = 'Wait time is required before you can boost again';
             ////hide boost for 2 min
 
-            //adImg.style.display = 'none';
+            adImg.style.display = 'none';
             lime.scheduleManager.callAfter(function () {
                 adImg.style.display = 'block';
                 document.getElementById("waitText").innerHTML = '';
@@ -10983,7 +10985,8 @@ farming.start = function () {
                     buySmallStars.setOpacity(0.2);
                     buySmallStarsBtn.setHidden(true);
 
-                    storeStars.setText(starCash);
+                       lime.scheduleManager.callAfter(function () { storeStars.setText(starCash); storeCash.setText(player.money); }, this, 3000)
+					lime.scheduleManager.callAfter(function () { storeStars.setText(starCash); storeCash.setText(player.money); }, this, 10000)
                 }
             });
 
@@ -11015,12 +11018,19 @@ farming.start = function () {
             var isHidPreLayer2 = storeBuyPremiumLayer.getHidden();
             var isHidStarL = buyLargeStarsBtn.getHidden();
             if (isHidStarL == false && isHidPreLayer2 == false) {
-                purchaseSound.play();
-                localStorage.setItem('MedFarms_buyingLargeStars', 1);
+
+                try { Enhance.purchases.isSupported(callback_LargeSP);
+                    purchaseSound.play();
+                     localStorage.setItem('MedFarms_buyingLargeStars', 0);
+                    }
+                 catch (err) { console.log("failed large stars "); }
+
+                //localStorage.setItem('MedFarms_buyingLargeStars', 1);
                 buyLargeStars.setOpacity(0.2);
                 buyLargeStarsBtn.setHidden(true);
 
-                storeStars.setText(starCash);
+                  lime.scheduleManager.callAfter(function () { storeStars.setText(starCash); storeCash.setText(player.money); }, this, 3000)
+					lime.scheduleManager.callAfter(function () { storeStars.setText(starCash); storeCash.setText(player.money); }, this, 10000)
             }
         });
 
@@ -11057,7 +11067,8 @@ farming.start = function () {
                     buyStarterPack.setOpacity(0.2);
                     buyStarterPackBtn.setHidden(true);
 
-                    storeStars.setText(starCash);
+                    lime.scheduleManager.callAfter(function () { storeStars.setText(starCash); storeCash.setText(player.money); }, this, 3000)
+					lime.scheduleManager.callAfter(function () { storeStars.setText(starCash); storeCash.setText(player.money); }, this, 10000)
                 }
             });
         }
@@ -11739,25 +11750,28 @@ farming.start = function () {
                 heraldOrderTop = parseInt(heraldOrderTop);
                 var adjustedWant = 0;
 
-                if (heraldOrderTop == 18) {
-                    heraldOrder1 = 22;
-                    heraldOrder2 = 23;
-                }
-                else if (heraldOrderTop == 19) {
-                    heraldOrder1 = 24;
-                    heraldOrder2 = 23;
-                }
+                 if (heraldOrderTop == 18) {
+                heraldOrder1 = 5;
+                heraldOrder2 = 13;
+            }
+            else if (heraldOrderTop == 19) {
+                heraldOrder1 = 18;
+                heraldOrder2 = 24;
+            }
                 else if (heraldOrderTop > questParamsHerald.crops.length) {
                     adjustedWant = (heraldOrderTop % 10);
                     //console.log("adjusted want " + adjustedWant);
                     heraldOrder1 = questParamsHerald.crops[adjustedWant].crop1;
                     heraldOrder2 = questParamsHerald.crops[adjustedWant].crop2;
                 };
-                if (heraldOrderTop == 18) {
-                    heraldOrder1 = 22;
-                    heraldOrder2 = 23;
-                }
-                
+               if (heraldOrderTop == 18) {
+                heraldOrder1 = 5;
+                heraldOrder2 = 13;
+            }
+            else if (heraldOrderTop == 19) {
+                heraldOrder1 = 18;
+                heraldOrder2 = 24;
+            }
                 player.cropsStored[heraldOrder1].stored = Math.abs(parseInt(parseInt(player.cropsStored[heraldOrder1].stored) - crop1amount));
                 player.cropsStored[heraldOrder2].stored = Math.abs(parseInt(parseInt(player.cropsStored[heraldOrder2].stored) - crop2amount));
 
@@ -17238,12 +17252,12 @@ farming.start = function () {
             heraldOrder1 = questParamsHerald.crops[want].crop1;
             heraldOrder2 = questParamsHerald.crops[want].crop2;
             if (heraldOrderTop == 18) {
-                heraldOrder1 = 22;
-                heraldOrder2 = 23;
+                heraldOrder1 = 5;
+                heraldOrder2 = 13;
             }
             else if (heraldOrderTop == 19) {
-                heraldOrder1 = 24;
-                heraldOrder2 = 23;
+                heraldOrder1 = 18;
+                heraldOrder2 = 24;
             }
             gideonPanelItemImg.setFill("images/" + a.crops[heraldOrder1].harvest);
             gideonPanelItemImg2.setFill("images/" + a.crops[heraldOrder2].harvest);
@@ -19064,3 +19078,65 @@ function getLocalStorage() {
 function writeLocalStorage(data) {
     Object.keys(data).forEach(function (key) { localStorage.setItem(key, data[key]); });
 }
+
+ // var optionsShare = {
+                // message: 'Join me playing Medieval Farms', // not supported on some apps (Facebook, Instagram)
+                // subject: 'Medieval Farms', // fi. for email
+                // files: ['https://guighostgames.com/MedievalFarms/images/ads/promo580x400.png'], // an array of filenames either locally or remotely
+                // url: 'https://bit.ly/SharingMedFarms',
+                // chooserTitle: 'Pick an app to share with' // Android only, you can override the default share sheet title
+            // };
+ // var optionsShare2 = {
+                // message: 'Use Reward Code "StarBoost" for free stars in Medieval Farms ', // not supported on some apps (Facebook, Instagram)
+                // subject: 'Medieval Farms', // fi. for email
+                // files: ['https://guighostgames.com/MedievalFarms/images/ads/rewardImg.png'], // an array of filenames either locally or remotely
+                // url: 'https://bit.ly/Stars4MedFarm',
+                // chooserTitle: 'Pick an app to share with' // Android only, you can override the default share sheet title
+            // };
+ // var onSuccessShare = function (result) {
+
+                // starCash = parseInt(localStorage.getItem('starCash'));
+                // starCash = parseInt(starCash) + 5;
+                // localStorage.setItem('starCash', starCash);
+
+                // document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                // document.getElementById("currentStarCashShare").style.display = 'none';
+
+                // console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
+                // console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+                // try {
+                    // Enhance.logEvent('app_shared', 'result', result.app);
+
+                // } catch (err) { console.log("share failed"); }
+            // };
+
+ // var onErrorShare = function (msg) {
+                // try { Enhance.logEvent('app_shared', 'result', 'false'); } catch (err) { console.log("share failed"); }
+                // console.log("Sharing failed with message: " + msg);
+            // };
+
+         
+            
+// function SocialShareGG(num) {
+                // if (num == 1) {
+                    // try {
+                        // console.log("clicked share");
+                       // window.plugins.socialsharing.shareWithOptions(optionsShare, onSuccessShare, onErrorShare);
+                    // } catch (err) { console.log(err); alert(err)}
+                // }
+                // else if (num == 2) {
+                    // try {
+                        // console.log("clicked share from reward");
+                        // window.plugins.socialsharing.shareWithOptions(optionsShare2, onSuccessShare, onErrorShare);
+                    // } catch (err) { console.log(err); alert(err) }
+                // }
+            // }
+
+
+			// goog.events.listen(shareUs, "touchend", function (event) {SocialShareGG(1); });
+			
+			// shareUs.addEventListener("click", function (event) { SocialShareGG(1); });
+            // // shareUs.addEventListener("touchend", function (event) { SocialShareGG(1); });
+            // shareUs2.addEventListener("click", function (event) { SocialShareGG(2); });
+            // shareUs2.addEventListener("touchstart", function (event) { SocialShareGG(2); });
+
