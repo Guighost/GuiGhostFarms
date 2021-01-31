@@ -93,14 +93,6 @@
     "is_top_level": false,
     "variables": {}
   },
-  "cordova-plugin-statusbar": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-statusbar@2.4.2"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-device": {
     "source": {
       "type": "registry",
@@ -164,5 +156,15 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-purchase": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-purchase"
+    },
+    "is_top_level": true,
+    "variables": {
+      "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAszWy3+gugXcoHoSKNb+4lGe+IHsi22dmZytSNXDB4Exo7SSfid6j8qrk7YKlB5nsZCVQU+tZG1qMwH28BXHFjhCZ9J85LcIDJT3yf2gGiXPtJtNE2ZzCYOZEtjZk7o/t45VCFZRjJQ1fzI1o0G6HfMlS8FkjKMs4q8ebMcujvl1IFSUK1nBgikeaHAemNpt3w6rGJOY+58PQDzI5NmT65EBsEvjw3fmeF9pGILuF1UtBnHhEOC8suvkkAH4IB4MZPqEYfGCjQXZErP0MqAdOyPmvlZSRZ5n7FoNXJ4j09K660XDPt83vTcGOwLFHMleqeQdz72eFAccg8Wob/TdWowIDAQAB"
+    }
   }
 }

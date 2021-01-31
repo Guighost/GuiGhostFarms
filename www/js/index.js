@@ -4,13 +4,9 @@ const { App2 } = Plugins;
 var app = {
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-	
-
-
-
 		
-  });
-});
+	};
+	
     },
 
     onDeviceReady: function() {
@@ -31,12 +27,13 @@ var app = {
         }
     }
 	const routerEl = document.querySelector('ion-router');
-		document.addEventListener('ionBackButton', (ev: BackButtonEvent) => {
+	document.addEventListener('ionBackButton', (ev: BackButtonEvent) => {
 		ev.detail.register(-1, () => {
 			const path = window.location.pathname;
 			if (path === routerEl.root) {
 			App2.exitApp();
-		}
-};
-
+			}
+		};
+	}
+	
 app.initialize();

@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, viewport-fit=cover, target-densitydpi=device-dpi" />
         <!--<meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-inline' ; script-src 'self' 'unsafe-inline' ; style-src 'self' 'unsafe-inline'; media-src *; ">-->
         <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://cdnjs.cloudflare.com ">
 
@@ -22,7 +22,11 @@
             background-repeat: no-repeat;
             text-size-adjust: none;
             -webkit-text-size-adjust: none;
+		
+			margin: 0;
+			height: 100%; 
 			overflow: hidden;
+			overflow-y: hidden;
         }
 
 
@@ -197,6 +201,7 @@
             padding-left: 2px;
             text-align: left;
             font-size: 15px;
+			display:none;
         }
         #currentStarCashShare {
             width: 267px;
@@ -891,13 +896,13 @@
 
         <!--<script type="text/javascript" src="farmingMin_1.5.1.7.js"></script>-->
      
-        <script type="text/javascript" src="farming_1.8.js"></script>
+        <script type="text/javascript" src="farming_1.9Min.js"></script>
    <script type="text/javascript" src="js/SocialSharing.js"></script>
    <script type="text/javascript" src="cordova.js"></script>
 </head>
 
 
-<body onload="farming.start()">
+<body onload="farming.start()" >
 
     <!--<script>
         //window.setTimeout(function () { farming.start(); }, 15000);
@@ -1212,67 +1217,75 @@
         }
 
         ///In App Payments
-       var callback_SmallSP = function () {
-            var onPurchaseSuccess = function () {
-			    starCash = parseInt(localStorage.getItem('starCash'));
-                starCash = parseInt(starCash) + 50;
-                localStorage.setItem('starCash', starCash);
-                buySmallStars.owned = 1;
+<!-- var callback_SmallSP = function () { -->
+        <!-- var onPurchaseSuccess = function () { -->
+			<!-- alert('Processing Purchase');  -->
+			<!-- try{ -->
+			<!-- starCash = parseInt(localStorage.getItem('starCash')); -->
+            <!-- starCash = parseInt(starCash) + 50; -->
+                <!-- localStorage.setItem('starCash', starCash); -->
+                <!-- // <!-- buySmallStars.owned = 1; --> -->
+				<!-- } -->
+				<!-- catch(err){alert("assign stars failed with " + err)}; -->
 			
-                try {
-					Enhance.purchases.getDisplayTitle('starpack_small', '50 Stars', function (result) {
+                <!-- try { -->
+					<!-- Enhance.purchases.getDisplayTitle('starpack_small', '50 Stars', function (result) { -->
                     
-                    alert("You have sucessfully purchased " + result);
-					localStorage.setItem('MedFarms_boughtSmallStars', 1);
+                    <!-- alert("You have sucessfully purchased " + result); -->
+					<!-- localStorage.setItem('MedFarms_boughtSmallStars', 1); -->
 
-                });
-				} catch(err) {alert(err)};
+                <!-- }); -->
+				<!-- } catch(err) {alert("get display title failed with" + err)}; -->
 				
             
-                try { Enhance.purchases.consume('starpack_small', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                catch (err) { console.log(err); }
-            };
-
-            var onPurchaseFailed = function () {
-                // Failure
-                //check it owned and try to consume
-				try {
-					Enhance.purchases.isItemOwned('starpack_small', function (result) {
-						if (result == true) {
-							try { Enhance.purchases.consume('starpack_small', onConsumeSuccessCallback, onConsumeFailedCallback); }
-							catch (err) { console.log(err); }
-						}
-					});
+                <!-- try { Enhance.purchases.consume('starpack_small', onConsumeSuccessCallback, onConsumeFailedCallback); } -->
+                <!-- catch (err) { console.log(err); } -->
+            
+		<!-- }; -->
+            <!-- var onPurchaseFailed = function () { -->
+                <!-- // Failure -->
+                <!-- //check it owned and try to consume -->
+				<!-- try { -->
+					<!-- Enhance.purchases.isItemOwned('starpack_small', function (result) { -->
+						<!-- if (result == true) { -->
+							<!-- try { Enhance.purchases.consume('starpack_small', onConsumeSuccessCallback, onConsumeFailedCallback); } -->
+							<!-- catch (err) { console.log(err); } -->
+						<!-- } -->
+					<!-- }); -->
 									
-				} 
-				catch(err) {alert('Purchased failed');};
+				<!-- }  -->
+				<!-- catch(err) {alert('Purchased failed');}; -->
                 
-            };
-            var onConsumeSuccessCallback = function () {
-                //consumed
-                console.log('product consumed');
-            };
-            var onConsumeFailedCallback = function () {
-                // consume failee Failure
-                console.log('consume failed');
-            };
+            <!-- }; -->
+            <!-- var onConsumeSuccessCallback = function () { -->
+                <!-- //consumed -->
+                <!-- console.log('product consumed'); -->
+            <!-- }; -->
+            <!-- var onConsumeFailedCallback = function () { -->
+                <!-- // consume failee Failure -->
+                <!-- console.log('consume failed'); -->
+            <!-- }; -->
 
-            Enhance.purchases.attemptPurchase('starpack_small', onPurchaseSuccess, onPurchaseFailed);
+            <!-- Enhance.purchases.attemptPurchase('starpack_small', onPurchaseSuccess, onPurchaseFailed); -->
 
 
-        };
+		
+    <!-- };    -->
 
 
 
         var callback_LargeSP = function () {
             var onPurchaseSuccess = function () { 
-				
+			alert('Processing Purchase'); 
+				try {
 				starCash = parseInt(localStorage.getItem('starCash'));
-				console.log("before starcash = " + starCash);
+				<!-- console.log("before starcash = " + starCash); -->
 				starCash = parseInt(starCash) + 300;
-				console.log("after buy large starcash = " + starCash);
+				<!-- console.log("after buy large starcash = " + starCash); -->
 				localStorage.setItem('starCash', starCash);
-				buyLargeStars.owned = 1;
+				<!-- buyLargeStars.owned = 1; -->
+				}
+				catch(err){ alert('grant stars fail with '  + err);}
 				try {
 				Enhance.purchases.getDisplayTitle('starpack_large', '300 Stars', function (result) {
 						localStorage.setItem('MedFarms_boughtLargeStars', 1);
@@ -1315,13 +1328,15 @@
 
         var callback_starterPack = function () {
             var onPurchaseSuccess = function () {
-					player.tools = parseInt(player.tools) + 250;
-					player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 250;
-					if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 250; }
-					player.cropsStored[15].stored = parseInt(player.cropsStored[15].stored) + 250;
-					if (player.cropsStored[15].stored < 0) { player.cropsStored[15].stored = 250; }
-					localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-					buyStarterPack.owned = 1;
+			alert('Processing Purchase'); 
+					var playerHTML = JSON.parse(localStorage.getItem('GuiGhostFarms_player'));
+					playerHTML.tools = parseInt(playerHTML.tools) + 250;
+					playerHTML.cropsStored[14].stored = parseInt(playerHTML.cropsStored[14].stored) + 250;
+					if (playerHTML.cropsStored[14].stored < 0) { playerHTML.cropsStored[14].stored = 250; }
+					playerHTML.cropsStored[15].stored = parseInt(playerHTML.cropsStored[15].stored) + 250;
+					if (playerHTML.cropsStored[15].stored < 0) { playerHTML.cropsStored[15].stored = 250; }
+					localStorage.setItem('GuiGhostFarms_player', JSON.stringify(playerHTML));
+					<!-- buyStarterPack.owned = 1; -->
 				try{
 					Enhance.purchases.getDisplayTitle('starter_pack', 'Resource Starter Pack', function (result) {
 
@@ -1366,45 +1381,50 @@
 
         var callback_masterPack = function () {
             var onPurchaseSuccess = function () {
-		
-				
-                player.tools = parseInt(player.tools) + 750;
-                player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 750;
-                if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 750; }
-                player.cropsStored[15].stored = parseInt(player.cropsStored[15].stored) + 750;
-                if (player.cropsStored[15].stored < 0) { player.cropsStored[15].stored = 750; }
+			<!-- alert('in onPurchaseSuccess');  -->
+				try {
+					var playerHTML = JSON.parse(localStorage.getItem('GuiGhostFarms_player'));
+					playerHTML.tools = parseInt(playerHTML.tools) + 750;
+					playerHTML.cropsStored[14].stored = parseInt(playerHTML.cropsStored[14].stored) + 750;
+					if (playerHTML.cropsStored[14].stored < 0) { playerHTML.cropsStored[14].stored = 750; }
+					playerHTML.cropsStored[15].stored = parseInt(playerHTML.cropsStored[15].stored) + 750;
+					if (playerHTML.cropsStored[15].stored < 0) { playerHTML.cropsStored[15].stored = 750; }
 
-                player.money = parseInt(player.money) + 2500;
-                localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-                starCash = parseInt(localStorage.getItem('starCash'));
-                starCash = parseInt(starCash) + 50;
+					playerHTML.money = parseInt(playerHTML.money) + 2500;
+					localStorage.setItem('GuiGhostFarms_player', JSON.stringify(playerHTML));
+					starCash = parseInt(localStorage.getItem('starCash'));
+					starCash = parseInt(starCash) + 50;
 
-                localStorage.setItem('starCash', starCash);
-                buyMasterPack.owned = 1;
-			try {
-					Enhance.purchases.getDisplayTitle('master_pack', 'Resource Master Pack', function (result) {
-						localStorage.setItem('MedFarms_boughtMasterPack', 1);
-						alert("You have sucessfully purchased " + result);
-					});
-				}
-				catch(err) {alert('Purchased failed with ' + err);};
-                try { 
-					Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback);
+					localStorage.setItem('starCash', starCash);
+					<!-- buyMasterPack.owned = 1; -->
 					}
-                catch (err) { console.log(err); }
+					catch(err){alert('assign vals master pack failed with ' + err)};
+				try {
+						Enhance.purchases.getDisplayTitle('master_pack', 'Resource Master Pack', function (result) {
+							localStorage.setItem('MedFarms_boughtMasterPack', 1);
+							alert("You have sucessfully purchased " + result);
+						});
+					}
+					catch(err) {alert('Purchased failed with ' + err);};
+					try { 
+						Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback);
+						}
+					catch (err) { console.log(err); };
 
             };
+			//end pourchase success master
 
             var onPurchaseFailed = function () {
                 // Failure
-                Enhance.purchases.isItemOwned('master_pack', function (result) {
-                    if (result == true) {
-                        try { Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                        catch (err) { console.log(err); }
-                    }
-                }
-                );
-                alert('Purchased failed- try again soon');
+				try{
+					Enhance.purchases.isItemOwned('master_pack', function (result) {
+						if (result == true) {
+							try { Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
+							catch (err) { console.log(err); }
+						}
+					});
+				}
+				catch(err){alert('Purchased failed- try again soon ' + err);};
             };
             var onConsumeSuccessCallback = function () {
                 //consumed
@@ -1413,6 +1433,7 @@
             var onConsumeFailedCallback = function () {
                 // consume failee Failure
                 console.log('consume failed');
+				alert('comsume failed')
             };
 
 
@@ -1442,25 +1463,25 @@
             if (buyingSmallStars == 1) {
                 //console.log("in IF buying small stars");
                 try { Enhance.purchases.isSupported(callback_SmallSP); }
-                catch (err) { console.log("failed small stars"); alert('Purchased failed isSupported '); }
+                catch (err) { console.log("failed small stars"); alert('Purchase failed isSupported '); }
                 localStorage.setItem('MedFarms_buyingSmallStars', 0);
 				document.getElementById("starCashOuterLabel").innerHTML = starCash;
             }
             else if (buyingLargeStars == 1) {
                 try { Enhance.purchases.isSupported(callback_LargeSP); }
-                catch (err) { console.log("failed large stars "); }
+                catch (err) { console.log("failed large stars "); alert('Purchase failed isSupported ');}
                 localStorage.setItem('MedFarms_buyingLargeStars', 0);
 				document.getElementById("starCashOuterLabel").innerHTML = starCash;
             }
             else if (buyingStarterPack == 1) {
                 try { Enhance.purchases.isSupported(callback_starterPack); }
-                catch (err) { console.log("failed buystarter"); }
+                catch (err) { console.log("failed buystarter"); alert('Purchase failed isSupported ');}
                 localStorage.setItem('MedFarms_buyingStarterPack', 0);
 				document.getElementById("starCashOuterLabel").innerHTML = starCash;
             }
             else if (buyingMasterPack == 1) {
                 try { Enhance.purchases.isSupported(callback_masterPack); }
-                catch (err) { console.log("failedBuyMaster"); }
+                catch (err) { console.log("failedBuyMaster"); alert('Purchase failed isSupported ');}
                 localStorage.setItem('MedFarms_buyingMasterPack', 0);
 				document.getElementById("starCashOuterLabel").innerHTML = starCash;
 
