@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GuiFarm0.5.iml" filepath="$PROJECT_DIR$/GuiFarm0.5.iml" group="GuiFarm0.5" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/medieval-farms.iml" filepath="$PROJECT_DIR$/.idea/modules/medieval-farms.iml" />
     </modules>
   </component>
 </project>
