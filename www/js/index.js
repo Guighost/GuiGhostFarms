@@ -25,7 +25,7 @@ var app = {
                 window.open(''.concat(this.href), '_blank');
             }
         }
-    }
+    },
 	const routerEl = document.querySelector('ion-router');
 	document.addEventListener('ionBackButton', (ev: BackButtonEvent) => {
 		ev.detail.register(-1, () => {

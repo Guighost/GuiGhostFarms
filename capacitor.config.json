@@ -1,0 +1,21 @@
+{
+  "appId": "com.wMedievalFarms_GuiGhostGames",
+  "appName": "Medieval Farms",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "splashImmersive": true
+    }
+  },
+  "cordova": {
+    "preferences": {
+      "ScrollEnabled": "false",
+      "BackupWebStorage": "none",
+      "SplashMaintainAspectRatio": "true",
+      "SplashShowOnlyFirstTime": "false",
+      "SplashScreen": "screen"
+    }
+  }
+}

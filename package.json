@@ -1,16 +1,15 @@
 {
   "name": "Medieval-Farms",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "Farming Game",
   "main": "index.js",
   "author": "GuiGhostGames",
   "devDependencies": {
-    "@capacitor/cli": "2.4.6",
+    "@capacitor/cli": "^3.0.0-rc.0",
     "@ionic/v1-toolkit": "3.2.15",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-ionic": "^5.4.7",
     "cordova-plugin-splashscreen": "5.0.2",
-    "cordova-plugin-whitelist": "^1.3.4",
     "cordova-plugin-x-socialsharing": "^6.0.3",
     "enhance-cordova-connector": "^3.0.1",
     "fitatu-cordova-plugin-market": "^1.2.0",
@@ -20,14 +19,6 @@
     "plugins": {
       "cordova-plugin-inappbrowser": {},
       "fitatu-cordova-plugin-market": {},
-      "cordova-plugin-ionic": {
-        "APP_ID": "--app-id=\"0f6d1503\" \\",
-        "CHANNEL_NAME": "Production",
-        "UPDATE_METHOD": "background",
-        "MAX_STORE": "2",
-        "MIN_BACKGROUND_DURATION": "30",
-        "UPDATE_API": "https://api.ionicjs.com"
-      },
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},
       "cordova-plugin-app-launcher": {},
@@ -43,12 +34,15 @@
     }
   },
   "dependencies": {
-    "@angular/core": "^11.0.9",
-    "@capacitor/android": "^2.4.6",
-    "@capacitor/core": "2.4.6",
-    "@ionic-native/core": "^4.11.0",
-    "@ionic-native/in-app-purchase-2": "^5.31.1",
+    "@angular/core": "^11.2.9",
+    "@capacitor/android": "^3.0.0-rc.0",
+    "@capacitor/core": "^3.0.0-rc.0",
+    "@ionic-native/app-launcher": "^5.32.0",
+    "@ionic-native/core": "^4.20.0",
+    "@ionic-native/in-app-purchase-2": "^5.32.0",
     "@ionic-native/social-sharing": "^4.20.0",
+    "bufferutil": "^4.0.1",
+    "cordova-plugin-whitelist": "^1.3.4",
     "es6-promise-plugin": "^4.2.2",
     "rxjs": "^5.5.12"
   },
