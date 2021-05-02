@@ -1,5 +1,8 @@
 node_modules
-
+node_modulesbbb
+/node_modulesbbb
+plugins
+resources
 # dependencies
 /node_modules
 /.pnp
