@@ -1496,7 +1496,7 @@ var townSceneActive = 0;
 var sceneActive = 'home';
 
 
-var adFreeVersion = 1;
+var adFreeVersion = 0;
 
 ///// quest definitions:
 var rewardTypes = {
@@ -5221,13 +5221,13 @@ farming.start = function () {
         var speedAdConfirm = (new lime.GlossyButton()).setColor("#00FF00").setText("View Ad").setPosition(115, 233).setSize(85, 32);
         boostCrops.appendChild(speedAdConfirm);
         //hide for AdFree
-        if (adFreeVersion == 1) { speedAdConfirm.setHidden(true); speedAdOr.setHidden(true); }
+        //if (adFreeVersion == 1) { speedAdConfirm.setHidden(true); speedAdOr.setHidden(true); }
         var speedAdCancel = (new lime.GlossyButton()).setColor("#8B0000").setText("").setPosition(117, 288).setSize(36, 36);
         boostCrops.appendChild(speedAdCancel);
         var cancelBoostImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-20, -20).setSize(40, 40).setFill(imgArray[21]);
         speedAdCancel.appendChild(cancelBoostImg);
 
-        var visibleLink = true;
+        var visibleLink = false;
         goog.events.listen(speedAdConfirm, ["mousedown", "touchstart"], function (e) {
             //console.log("clicked confirm");
             visibleLink = boostCrops.getHidden();
@@ -5237,12 +5237,12 @@ farming.start = function () {
                 localStorage.setItem('MedFarm_LoadAd', 1);
                 localStorage.setItem('MedFarm_StarCashBoost', 0);
                 lime.audio.setMute(true);
-                //setTimeout(function () {
-                //    boostCrops.setHidden(true);
-                //    homeBlock.setHidden(true);
-                //    globalModalBlock = 0;
-                //}, 500);
-                e.event.stopPropagation();
+                setTimeout(function () {
+                    boostCrops.setHidden(true);
+                    homeBlock.setHidden(true);
+                    globalModalBlock = 0;
+                }, 500);
+             
                 e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
             }
 
@@ -9695,27 +9695,27 @@ farming.start = function () {
 
         }, false);
 
-        //document.getElementById("viewAdImg").addEventListener("touchstart", function (event) {
-        //    var isVisFBa = document.getElementById("fbshare").style.display;
-        //    if (isVisFBa == 'block') {
-        //        //console.log("touched viewAd")
-        //        starCashViewAd();
-        //        event.stopPropagation();
-        //    }
+        document.getElementById("viewAdImg").addEventListener("touchstart", function (event) {
+            var isVisFB = document.getElementById("fbshare").style.display;
+            if (isVisFB == 'block') { 
+                //console.log("touched viewAd")
+                starCashViewAd();
+                event.stopPropagation();
+            }
 
 
-        //}, false);
+        }, false);
 
-        //document.getElementById("viewAdImg").addEventListener("click", function (event) {
-        //    var isVisFB0 = document.getElementById("fbshare").style.display;
-        //    if (isVisFB0 == 'block') {
-        //        //console.log("clicked viewAd")
-        //        starCashViewAd();
-        //        event.stopPropagation();
-        //    }
+        document.getElementById("viewAdImg").addEventListener("click", function (event) {
+            var isVisFB = document.getElementById("fbshare").style.display;
+            if (isVisFB == 'block') { 
+                //console.log("clicked viewAd")
+                starCashViewAd();
+                event.stopPropagation();
+            }
 
 
-        //}, false);
+        }, false);
 
         function starCashViewAd() {
             localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
@@ -9734,11 +9734,11 @@ farming.start = function () {
             }, this, 1500);
 
             lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 33000);
-            //var adImg = document.getElementById("viewAdImg");
-            //sucessText.innerHTML = 'Wait time is required before you can boost again';
+            var adImg = document.getElementById("viewAdImg");
+            sucessText.innerHTML = 'Wait time is required before you can boost again';
             ////hide boost for 2 min
 
-            //adImg.style.display = 'none';
+            adImg.style.display = 'none';
             lime.scheduleManager.callAfter(function () {
                 adImg.style.display = 'block';
                 document.getElementById("waitText").innerHTML = '';
@@ -9837,10 +9837,10 @@ farming.start = function () {
         }, false);
 
         //hide For ad free
-        if (adFreeVersion == 1) {
-            //document.getElementById("currentStarCashBack3").style.display = 'none';
-            //document.getElementById("currentStarCashBack4").style.display = 'none';
-        };
+        //if (adFreeVersion == 1) {
+        //    //document.getElementById("currentStarCashBack3").style.display = 'none';
+        //    //document.getElementById("currentStarCashBack4").style.display = 'none';
+        //};
         //end hide
 
         //////////////    //////////////    //////////////    //////////////    //////////////    //////////////     //////////////    //////////////    //////////////    //////////////    //////////////
@@ -10973,7 +10973,8 @@ farming.start = function () {
         buySmallStarsBtn.appendChild(smallstarsBuyLabel);
 
         if (buySmallStars.owned == 1) { buySmallStars.setOpacity(0.2); buySmallStarsBtn.setHidden(true); }
-        else {
+
+
             goog.events.listen(buySmallStarsBtn, ["mousedown", "touchstart"], function () {
                 var isHidPreLayer1 = storeBuyPremiumLayer.getHidden();
                 var isHidStarS = buySmallStarsBtn.getHidden();
@@ -10987,7 +10988,7 @@ farming.start = function () {
                 }
             });
 
-        }
+        
 
         //large star Pack
         var buyLargeStars = (new lime.Sprite()).setSize(220, 60).setPosition(0, -71).setFill(imgArray[18].src);
@@ -18645,7 +18646,7 @@ farming.start = function () {
         var speedAdConfirmWM = (new lime.GlossyButton()).setColor("#00FF00").setText("View Ad").setPosition(115, 233).setSize(85, 32);
         boostCropsWM.appendChild(speedAdConfirmWM);
         //hide for AdFree
-        if (adFreeVersion == 1) { speedAdConfirmWM.setHidden(true); speedAdOrWM.setHidden(true); }
+        //if (adFreeVersion == 1) { speedAdConfirmWM.setHidden(true); speedAdOrWM.setHidden(true); }
         var speedAdCancelWM = (new lime.GlossyButton()).setColor("#8B0000").setText("").setPosition(117, 288).setSize(36, 36);
         boostCropsWM.appendChild(speedAdCancelWM);
         var cancelBoostImgWM = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-20, -20).setSize(40, 40).setFill(imgArray[21]);

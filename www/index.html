@@ -161,7 +161,7 @@
             transform: translate(-12px,-16px);
         }
 
-        #currentStarCashBack, #currentStarCashBack2,  #currentStarCashBack4, #currentStarCashShare {
+        #currentStarCashBack, #currentStarCashBack2, #currentStarCashBack4, #currentStarCashBack3, #currentStarCashShare {
             width: 267px;
             height: 50px;
             font-family: 'Comic Sans MS';
@@ -180,7 +180,7 @@
         #currentStarCashBack2 {
             margin-top: 8px;
         }
-        /*#currentStarCashBack3 {
+        #currentStarCashBack3 {
             width: 267px;
             height: 50px;
             text-align: left;
@@ -188,7 +188,7 @@
             padding-top: -20px;
             margin-top: 8px;
             /*display: none;*/
-        /*}*/
+        }
         #currentStarCashBack4 {
             width: 267px;
             margin-top: 5px;
@@ -925,12 +925,12 @@
                     <img id="lowerArrow2" src="images/UI/rightBtn.png" loading="lazy" width="35" alt="rightBtn2" />
                     <img id="lowerStarCashCoin" src="images/tools500.png" loading="lazy" width="50" alt="tools500" /><img id="buyWithStarCashTools" src="images/UI/greenBuy.png" alt="StarCashBuyImg" />
                 </div>
-                <!--<div id="currentStarCashBack3">
+                <div id="currentStarCashBack3">
                     <div id="starCashRow3">
                         Watch to Earn <img id="lowerStarCashImg3" src="images/UI/plus3StarCash.png" loading="lazy" width="45" alt="StarCashImg" />
                         <img id="viewAdImg" src="images/UI/viewAd.png" loading="lazy" width="88" alt="View Ad" />
                     </div>
-                </div>-->
+                </div>
                 <div>
                     <div id="currentStarCashShare">
                         <p>Share to Earn</p> <img id="lowerStarCashImg5" src="images/UI/plus5StarCash.png" loading="lazy" width="45" alt="StarCashImg" />
@@ -1254,7 +1254,7 @@
                 Enhance.purchases.isItemOwned('master_pack', function (result) {
                     if (result == true) {
                         try { Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                        catch (err) { console.log(err); }
+                        catch (err) { console.log(err);}
                     }
                 }
                 );
@@ -1287,7 +1287,7 @@
 
         localStorage.setItem('MedFarms_buyingMasterPack', 0);
 
-        function purchaseCheck() {
+        var purchaseCheck = function (){
             //console.log("tickk");
             buyingSmallStars = localStorage.getItem('MedFarms_buyingSmallStars');
             buyingLargeStars = localStorage.getItem('MedFarms_buyingLargeStars');
@@ -1319,6 +1319,51 @@
 
 
             }
+
+
+            //interstatial
+            var callbackAdInter = function (result) {
+                if (!result) {
+                    app.writeLog('Interstitial ad is not ready');
+                    return;
+                }
+
+                Enhance.showInterstitialAd();
+            };
+            if (localStorage.getItem('MedFarm_LoadAd') == 1) { Enhance.isInterstitialReady(callbackAdInter); }
+
+
+
+            ///rewarded
+            var callbackRewarded = function (result) {
+                if (!result) {
+                    app.writeLog('Rewarded ad is not ready');
+                    return;
+                }
+
+                // The ad is ready
+                var onRewardGranted = function (rewardValue, rewardType) {
+                    if (rewardType == Enhance.RewardType.ITEM)
+                        app.writeLog("Reward granted (item)");
+
+                    else if (rewardType == Enhance.RewardType.COINS)
+                        app.writeLog("Reward granted (coins), value: " + rewardValue);
+                };
+
+                var onRewardDeclined = function () {
+                    app.writeLog('Reward declined');
+                };
+
+                var onRewardUnavailable = function () {
+                    app.writeLog('Reward unavailable');
+                };
+
+                Enhance.showRewardedAd(onRewardGranted, onRewardDeclined, onRewardUnavailable);
+            };
+
+            if (localStorage.getItem('MedFarm_StarCashBoost') == 1) { Enhance.isRewardedAdReady(callbackRewarded); localStorage.setItem('MedFarm_StarCashBoost', 0); }
+            
+
 
         }
 
