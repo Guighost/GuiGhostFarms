@@ -1,45 +1,45 @@
- var COMPILED=!0,goog=goog||{};goog.global=this;goog.DEBUG=!1;goog.LOCALE="en";goog.provide=function(a){if(!COMPILED){if(goog.isProvided_(a))throw Error('Namespace "'+a+'" already declared.');delete goog.implicitNamespaces_[a];for(var b=a;(b=b.substring(0,b.lastIndexOf(".")))&&!goog.getObjectByName(b);)goog.implicitNamespaces_[b]=!0}goog.exportPath_(a)};goog.setTestOnly=function(a){if(COMPILED&&!goog.DEBUG)throw a=a||"",Error("Importing test-only code into non-debug environment"+a?": "+a:".");};
-COMPILED||(goog.isProvided_=function(a){return!goog.implicitNamespaces_[a]&&!!goog.getObjectByName(a)},goog.implicitNamespaces_={});goog.exportPath_=function(a,b,c){a=a.split(".");c=c||goog.global;!(a[0]in c)&&c.execScript&&c.execScript("var "+a[0]);for(var d;a.length&&(d=a.shift());)!a.length&&goog.isDef(b)?c[d]=b:c=c[d]?c[d]:c[d]={}};goog.getObjectByName=function(a,b){for(var c=a.split("."),d=b||goog.global,e;e=c.shift();)if(goog.isDefAndNotNull(d[e]))d=d[e];else return null;return d};
-goog.globalize=function(a,b){var c=b||goog.global,d;for(d in a)c[d]=a[d]};goog.addDependency=function(a,b,c){if(!COMPILED){for(var d,a=a.replace(/\\/g,"/"),e=goog.dependencies_,f=0;d=b[f];f++){e.nameToPath[d]=a;a in e.pathToNames||(e.pathToNames[a]={});e.pathToNames[a][d]=true}for(d=0;b=c[d];d++){a in e.requires||(e.requires[a]={});e.requires[a][b]=true}}};goog.ENABLE_DEBUG_LOADER=!0;
-goog.require=function(a){if(!COMPILED&&!goog.isProvided_(a)){if(goog.ENABLE_DEBUG_LOADER){var b=goog.getPathFromDeps_(a);if(b){goog.included_[b]=true;goog.writeScripts_();return}}a="goog.require could not find: "+a;goog.global.console&&goog.global.console.error(a);throw Error(a);}};goog.basePath="";goog.nullFunction=function(){};goog.identityFunction=function(a){return a};goog.abstractMethod=function(){throw Error("unimplemented abstract method");};
-goog.addSingletonGetter=function(a){a.getInstance=function(){if(a.instance_)return a.instance_;goog.DEBUG&&(goog.instantiatedSingletons_[goog.instantiatedSingletons_.length]=a);return a.instance_=new a}};goog.instantiatedSingletons_=[];
-!COMPILED&&goog.ENABLE_DEBUG_LOADER&&(goog.included_={},goog.dependencies_={pathToNames:{},nameToPath:{},requires:{},visited:{},written:{}},goog.inHtmlDocument_=function(){var a=goog.global.document;return typeof a!="undefined"&&"write"in a},goog.findBasePath_=function(){if(goog.global.CLOSURE_BASE_PATH)goog.basePath=goog.global.CLOSURE_BASE_PATH;else if(goog.inHtmlDocument_())for(var a=goog.global.document.getElementsByTagName("script"),b=a.length-1;b>=0;--b){var c=a[b].src,d=c.lastIndexOf("?"),
-d=d==-1?c.length:d;if(c.substr(d-7,7)=="base.js"){goog.basePath=c.substr(0,d-7);break}}},goog.importScript_=function(a){var b=goog.global.CLOSURE_IMPORT_SCRIPT||goog.writeScriptTag_;!goog.dependencies_.written[a]&&b(a)&&(goog.dependencies_.written[a]=true)},goog.writeScriptTag_=function(a){if(goog.inHtmlDocument_()){goog.global.document.write('<script type="text/javascript" src="'+a+'"><\/script>');return true}return false},goog.writeScripts_=function(){function a(e){if(!(e in d.written)){if(!(e in
-d.visited)){d.visited[e]=true;if(e in d.requires)for(var g in d.requires[e])if(!goog.isProvided_(g))if(g in d.nameToPath)a(d.nameToPath[g]);else throw Error("Undefined nameToPath for "+g);}if(!(e in c)){c[e]=true;b.push(e)}}}var b=[],c={},d=goog.dependencies_,e;for(e in goog.included_)d.written[e]||a(e);for(e=0;e<b.length;e++)if(b[e])goog.importScript_(goog.basePath+b[e]);else throw Error("Undefined script input");},goog.getPathFromDeps_=function(a){return a in goog.dependencies_.nameToPath?goog.dependencies_.nameToPath[a]:
-null},goog.findBasePath_(),goog.global.CLOSURE_NO_DEPS||goog.importScript_(goog.basePath+"deps.js"));
-goog.typeOf=function(a){var b=typeof a;if(b=="object")if(a){if(a instanceof Array)return"array";if(a instanceof Object)return b;var c=Object.prototype.toString.call(a);if(c=="[object Window]")return"object";if(c=="[object Array]"||typeof a.length=="number"&&typeof a.splice!="undefined"&&typeof a.propertyIsEnumerable!="undefined"&&!a.propertyIsEnumerable("splice"))return"array";if(c=="[object Function]"||typeof a.call!="undefined"&&typeof a.propertyIsEnumerable!="undefined"&&!a.propertyIsEnumerable("call"))return"function"}else return"null";
-else if(b=="function"&&typeof a.call=="undefined")return"object";return b};goog.isDef=function(a){return a!==void 0};goog.isNull=function(a){return a===null};goog.isDefAndNotNull=function(a){return a!=null};goog.isArray=function(a){return goog.typeOf(a)=="array"};goog.isArrayLike=function(a){var b=goog.typeOf(a);return b=="array"||b=="object"&&typeof a.length=="number"};goog.isDateLike=function(a){return goog.isObject(a)&&typeof a.getFullYear=="function"};
-goog.isString=function(a){return typeof a=="string"};goog.isBoolean=function(a){return typeof a=="boolean"};goog.isNumber=function(a){return typeof a=="number"};goog.isFunction=function(a){return goog.typeOf(a)=="function"};goog.isObject=function(a){var b=typeof a;return b=="object"&&a!=null||b=="function"};goog.getUid=function(a){return a[goog.UID_PROPERTY_]||(a[goog.UID_PROPERTY_]=++goog.uidCounter_)};goog.removeUid=function(a){"removeAttribute"in a&&a.removeAttribute(goog.UID_PROPERTY_);try{delete a[goog.UID_PROPERTY_]}catch(b){}};
-goog.UID_PROPERTY_="closure_uid_"+Math.floor(2147483648*Math.random()).toString(36);goog.uidCounter_=0;goog.getHashCode=goog.getUid;goog.removeHashCode=goog.removeUid;goog.cloneObject=function(a){var b=goog.typeOf(a);if(b=="object"||b=="array"){if(a.clone)return a.clone();var b=b=="array"?[]:{},c;for(c in a)b[c]=goog.cloneObject(a[c]);return b}return a};goog.bindNative_=function(a,b,c){return a.call.apply(a.bind,arguments)};
-goog.bindJs_=function(a,b,c){if(!a)throw Error();if(arguments.length>2){var d=Array.prototype.slice.call(arguments,2);return function(){var c=Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(c,d);return a.apply(b,c)}}return function(){return a.apply(b,arguments)}};goog.bind=function(a,b,c){goog.bind=Function.prototype.bind&&Function.prototype.bind.toString().indexOf("native code")!=-1?goog.bindNative_:goog.bindJs_;return goog.bind.apply(null,arguments)};
-goog.partial=function(a,b){var c=Array.prototype.slice.call(arguments,1);return function(){var b=Array.prototype.slice.call(arguments);b.unshift.apply(b,c);return a.apply(this,b)}};goog.mixin=function(a,b){for(var c in b)a[c]=b[c]};goog.now=Date.now||function(){return+new Date};
-goog.globalEval=function(a){if(goog.global.execScript)goog.global.execScript(a,"JavaScript");else if(goog.global.eval){if(goog.evalWorksForGlobals_==null){goog.global.eval("var _et_ = 1;");if(typeof goog.global._et_!="undefined"){delete goog.global._et_;goog.evalWorksForGlobals_=true}else goog.evalWorksForGlobals_=false}if(goog.evalWorksForGlobals_)goog.global.eval(a);else{var b=goog.global.document,c=b.createElement("script");c.type="text/javascript";c.defer=false;c.appendChild(b.createTextNode(a));
-b.body.appendChild(c);b.body.removeChild(c)}}else throw Error("goog.globalEval not available");};goog.evalWorksForGlobals_=null;goog.getCssName=function(a,b){var c=function(a){return goog.cssNameMapping_[a]||a},d=function(a){for(var a=a.split("-"),b=[],d=0;d<a.length;d++)b.push(c(a[d]));return b.join("-")},d=goog.cssNameMapping_?goog.cssNameMappingStyle_=="BY_WHOLE"?c:d:function(a){return a};return b?a+"-"+d(b):d(a)};
-goog.setCssNameMapping=function(a,b){goog.cssNameMapping_=a;goog.cssNameMappingStyle_=b};!COMPILED&&goog.global.CLOSURE_CSS_NAME_MAPPING&&(goog.cssNameMapping_=goog.global.CLOSURE_CSS_NAME_MAPPING);goog.getMsg=function(a,b){var c=b||{},d;for(d in c)var e=(""+c[d]).replace(/\$/g,"$$$$"),a=a.replace(RegExp("\\{\\$"+d+"\\}","gi"),e);return a};goog.exportSymbol=function(a,b,c){goog.exportPath_(a,b,c)};goog.exportProperty=function(a,b,c){a[b]=c};
-goog.inherits=function(a,b){function c(){}c.prototype=b.prototype;a.superClass_=b.prototype;a.prototype=new c;a.prototype.constructor=a};
+ var COMPILED=!0,goog=goog||{};goog.global=this;goog.DEBUG=!1;goog.LOCALE="en";goog.provide=function(a){if(!COMPILED){if(goog.isProvided_(a))throw Error('Namespace "'+a+'" already declared.');delete goog.implicitNamespaces_[a];for(var b=a;(b=b.substring(0,b.lastIndexOf(".")))&&!goog.getObjectByName(b);)goog.implicitNamespaces_[b]=!0;}goog.exportPath_(a);};goog.setTestOnly=function(a){if(COMPILED&&!goog.DEBUG)throw a=a||"",Error("Importing test-only code into non-debug environment"+a?": "+a:".");};
+COMPILED||(goog.isProvided_=function(a){return!goog.implicitNamespaces_[a]&&!!goog.getObjectByName(a);},goog.implicitNamespaces_={});goog.exportPath_=function(a,b,c){a=a.split(".");c=c||goog.global;!(a[0]in c)&&c.execScript&&c.execScript("var "+a[0]);for(var d;a.length&&(d=a.shift());)!a.length&&goog.isDef(b)?c[d]=b:c=c[d]?c[d]:c[d]={};};goog.getObjectByName=function(a,b){for(var c=a.split("."),d=b||goog.global,e;e=c.shift();)if(goog.isDefAndNotNull(d[e]))d=d[e];else return null;return d;};
+goog.globalize=function(a,b){var c=b||goog.global,d;for(d in a)c[d]=a[d];};goog.addDependency=function(a,b,c){if(!COMPILED){for(var d,a=a.replace(/\\/g,"/"),e=goog.dependencies_,f=0;d=b[f];f++){e.nameToPath[d]=a;a in e.pathToNames||(e.pathToNames[a]={});e.pathToNames[a][d]=true;}for(d=0;b=c[d];d++){a in e.requires||(e.requires[a]={});e.requires[a][b]=true;}}};goog.ENABLE_DEBUG_LOADER=!0;
+goog.require=function(a){if(!COMPILED&&!goog.isProvided_(a)){if(goog.ENABLE_DEBUG_LOADER){var b=goog.getPathFromDeps_(a);if(b){goog.included_[b]=true;goog.writeScripts_();return;}}a="goog.require could not find: "+a;goog.global.console&&goog.global.console.error(a);throw Error(a);}};goog.basePath="";goog.nullFunction=function(){};goog.identityFunction=function(a){return a;};goog.abstractMethod=function(){throw Error("unimplemented abstract method");};
+goog.addSingletonGetter=function(a){a.getInstance=function(){if(a.instance_)return a.instance_;goog.DEBUG&&(goog.instantiatedSingletons_[goog.instantiatedSingletons_.length]=a);return a.instance_=new a();};};goog.instantiatedSingletons_=[];
+!COMPILED&&goog.ENABLE_DEBUG_LOADER&&(goog.included_={},goog.dependencies_={pathToNames:{},nameToPath:{},requires:{},visited:{},written:{}},goog.inHtmlDocument_=function(){var a=goog.global.document;return typeof a!="undefined"&&"write"in a;},goog.findBasePath_=function(){if(goog.global.CLOSURE_BASE_PATH)goog.basePath=goog.global.CLOSURE_BASE_PATH;else if(goog.inHtmlDocument_())for(var a=goog.global.document.getElementsByTagName("script"),b=a.length-1;b>=0;--b){var c=a[b].src,d=c.lastIndexOf("?"),
+d=d==-1?c.length:d;if(c.substr(d-7,7)=="base.js"){goog.basePath=c.substr(0,d-7);break;}}},goog.importScript_=function(a){var b=goog.global.CLOSURE_IMPORT_SCRIPT||goog.writeScriptTag_;!goog.dependencies_.written[a]&&b(a)&&(goog.dependencies_.written[a]=true);},goog.writeScriptTag_=function(a){if(goog.inHtmlDocument_()){goog.global.document.write('<script type="text/javascript" src="'+a+'"><\/script>');return true;}return false;},goog.writeScripts_=function(){function a(e){if(!(e in d.written)){if(!(e in
+d.visited)){d.visited[e]=true;if(e in d.requires)for(var g in d.requires[e])if(!goog.isProvided_(g))if(g in d.nameToPath)a(d.nameToPath[g]);else throw Error("Undefined nameToPath for "+g);}if(!(e in c)){c[e]=true;b.push(e);}}}var b=[],c={},d=goog.dependencies_,e;for(e in goog.included_)d.written[e]||a(e);for(e=0;e<b.length;e++)if(b[e])goog.importScript_(goog.basePath+b[e]);else throw Error("Undefined script input");},goog.getPathFromDeps_=function(a){return a in goog.dependencies_.nameToPath?goog.dependencies_.nameToPath[a]:
+null;},goog.findBasePath_(),goog.global.CLOSURE_NO_DEPS||goog.importScript_(goog.basePath+"deps.js"));
+goog.typeOf=function(a){var b=typeof a;if(b=="object")if(a){if(a instanceof Array)return"array";if(a instanceof Object)return b;var c=Object.prototype.toString.call(a);if(c=="[object Window]")return"object";if(c=="[object Array]"||typeof a.length=="number"&&typeof a.splice!="undefined"&&typeof a.propertyIsEnumerable!="undefined"&&!a.propertyIsEnumerable("splice"))return"array";if(c=="[object Function]"||typeof a.call!="undefined"&&typeof a.propertyIsEnumerable!="undefined"&&!a.propertyIsEnumerable("call"))return"function";}else return"null";
+else if(b=="function"&&typeof a.call=="undefined")return"object";return b;};goog.isDef=function(a){return a!==void 0;};goog.isNull=function(a){return a===null;};goog.isDefAndNotNull=function(a){return a!=null;};goog.isArray=function(a){return goog.typeOf(a)=="array";};goog.isArrayLike=function(a){var b=goog.typeOf(a);return b=="array"||b=="object"&&typeof a.length=="number";};goog.isDateLike=function(a){return goog.isObject(a)&&typeof a.getFullYear=="function";};
+goog.isString=function(a){return typeof a=="string";};goog.isBoolean=function(a){return typeof a=="boolean";};goog.isNumber=function(a){return typeof a=="number";};goog.isFunction=function(a){return goog.typeOf(a)=="function";};goog.isObject=function(a){var b=typeof a;return b=="object"&&a!=null||b=="function";};goog.getUid=function(a){return a[goog.UID_PROPERTY_]||(a[goog.UID_PROPERTY_]=++goog.uidCounter_);};goog.removeUid=function(a){"removeAttribute"in a&&a.removeAttribute(goog.UID_PROPERTY_);try{delete a[goog.UID_PROPERTY_];}catch(b){}};
+goog.UID_PROPERTY_="closure_uid_"+Math.floor(2147483648*Math.random()).toString(36);goog.uidCounter_=0;goog.getHashCode=goog.getUid;goog.removeHashCode=goog.removeUid;goog.cloneObject=function(a){var b=goog.typeOf(a);if(b=="object"||b=="array"){if(a.clone)return a.clone();var b=b=="array"?[]:{},c;for(c in a)b[c]=goog.cloneObject(a[c]);return b;}return a;};goog.bindNative_=function(a,b,c){return a.call.apply(a.bind,arguments);};
+goog.bindJs_=function(a,b,c){if(!a)throw Error();if(arguments.length>2){var d=Array.prototype.slice.call(arguments,2);return function(){var c=Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(c,d);return a.apply(b,c);};}return function(){return a.apply(b,arguments);};};goog.bind=function(a,b,c){goog.bind=Function.prototype.bind&&Function.prototype.bind.toString().indexOf("native code")!=-1?goog.bindNative_:goog.bindJs_;return goog.bind.apply(null,arguments);};
+goog.partial=function(a,b){var c=Array.prototype.slice.call(arguments,1);return function(){var b=Array.prototype.slice.call(arguments);b.unshift.apply(b,c);return a.apply(this,b);};};goog.mixin=function(a,b){for(var c in b)a[c]=b[c];};goog.now=Date.now||function(){return+new Date();};
+goog.globalEval=function(a){if(goog.global.execScript)goog.global.execScript(a,"JavaScript");else if(goog.global.eval){if(goog.evalWorksForGlobals_==null){goog.global.eval("var _et_ = 1;");if(typeof goog.global._et_!="undefined"){delete goog.global._et_;goog.evalWorksForGlobals_=true;}else goog.evalWorksForGlobals_=false;}if(goog.evalWorksForGlobals_)goog.global.eval(a);else{var b=goog.global.document,c=b.createElement("script");c.type="text/javascript";c.defer=false;c.appendChild(b.createTextNode(a));
+b.body.appendChild(c);b.body.removeChild(c);}}else throw Error("goog.globalEval not available");};goog.evalWorksForGlobals_=null;goog.getCssName=function(a,b){var c=function(a){return goog.cssNameMapping_[a]||a;},d=function(a){for(var a=a.split("-"),b=[],d=0;d<a.length;d++)b.push(c(a[d]));return b.join("-");},d=goog.cssNameMapping_?goog.cssNameMappingStyle_=="BY_WHOLE"?c:d:function(a){return a;};return b?a+"-"+d(b):d(a);};
+goog.setCssNameMapping=function(a,b){goog.cssNameMapping_=a;goog.cssNameMappingStyle_=b;};!COMPILED&&goog.global.CLOSURE_CSS_NAME_MAPPING&&(goog.cssNameMapping_=goog.global.CLOSURE_CSS_NAME_MAPPING);goog.getMsg=function(a,b){var c=b||{},d;for(d in c)var e=(""+c[d]).replace(/\$/g,"$$$$"),a=a.replace(RegExp("\\{\\$"+d+"\\}","gi"),e);return a;};goog.exportSymbol=function(a,b,c){goog.exportPath_(a,b,c);};goog.exportProperty=function(a,b,c){a[b]=c;};
+goog.inherits=function(a,b){function c(){}c.prototype=b.prototype;a.superClass_=b.prototype;a.prototype=new c();a.prototype.constructor=a;};
 goog.base=function(a,b,c){var d=arguments.callee.caller;if(d.superClass_)return d.superClass_.constructor.apply(a,Array.prototype.slice.call(arguments,1));for(var e=Array.prototype.slice.call(arguments,2),f=false,g=a.constructor;g;g=g.superClass_&&g.superClass_.constructor)if(g.prototype[b]===d)f=true;else if(f)return g.prototype[b].apply(a,e);if(a[b]===d)return a.constructor.prototype[b].apply(a,e);throw Error("goog.base called from a method of one name to a method of a different name");};
-goog.scope=function(a){a.call(goog.global)};var lime={DirtyObject:function(){}};lime.DirtyObject.prototype.update=function(){};goog.math={};goog.math.Coordinate=function(a,b){this.x=goog.isDef(a)?a:0;this.y=goog.isDef(b)?b:0};goog.math.Coordinate.prototype.clone=function(){return new goog.math.Coordinate(this.x,this.y)};goog.DEBUG&&(goog.math.Coordinate.prototype.toString=function(){return"("+this.x+", "+this.y+")"});goog.math.Coordinate.equals=function(a,b){return a==b?true:!a||!b?false:a.x==b.x&&a.y==b.y};goog.math.Coordinate.distance=function(a,b){var c=a.x-b.x,d=a.y-b.y;return Math.sqrt(c*c+d*d)};
-goog.math.Coordinate.squaredDistance=function(a,b){var c=a.x-b.x,d=a.y-b.y;return c*c+d*d};goog.math.Coordinate.difference=function(a,b){return new goog.math.Coordinate(a.x-b.x,a.y-b.y)};goog.math.Coordinate.sum=function(a,b){return new goog.math.Coordinate(a.x+b.x,a.y+b.y)};goog.math.Box=function(a,b,c,d){this.top=a;this.right=b;this.bottom=c;this.left=d};goog.math.Box.boundingBox=function(a){for(var b=new goog.math.Box(arguments[0].y,arguments[0].x,arguments[0].y,arguments[0].x),c=1;c<arguments.length;c++){var d=arguments[c];b.top=Math.min(b.top,d.y);b.right=Math.max(b.right,d.x);b.bottom=Math.max(b.bottom,d.y);b.left=Math.min(b.left,d.x)}return b};goog.math.Box.prototype.clone=function(){return new goog.math.Box(this.top,this.right,this.bottom,this.left)};
-goog.DEBUG&&(goog.math.Box.prototype.toString=function(){return"("+this.top+"t, "+this.right+"r, "+this.bottom+"b, "+this.left+"l)"});goog.math.Box.prototype.contains=function(a){return goog.math.Box.contains(this,a)};goog.math.Box.prototype.expand=function(a,b,c,d){if(goog.isObject(a)){this.top=this.top-a.top;this.right=this.right+a.right;this.bottom=this.bottom+a.bottom;this.left=this.left-a.left}else{this.top=this.top-a;this.right=this.right+b;this.bottom=this.bottom+c;this.left=this.left-d}return this};
-goog.math.Box.prototype.expandToInclude=function(a){this.left=Math.min(this.left,a.left);this.top=Math.min(this.top,a.top);this.right=Math.max(this.right,a.right);this.bottom=Math.max(this.bottom,a.bottom)};goog.math.Box.equals=function(a,b){return a==b?true:!a||!b?false:a.top==b.top&&a.right==b.right&&a.bottom==b.bottom&&a.left==b.left};
-goog.math.Box.contains=function(a,b){return!a||!b?false:b instanceof goog.math.Box?b.left>=a.left&&b.right<=a.right&&b.top>=a.top&&b.bottom<=a.bottom:b.x>=a.left&&b.x<=a.right&&b.y>=a.top&&b.y<=a.bottom};goog.math.Box.relativePositionX=function(a,b){return b.x<a.left?b.x-a.left:b.x>a.right?b.x-a.right:0};goog.math.Box.relativePositionY=function(a,b){return b.y<a.top?b.y-a.top:b.y>a.bottom?b.y-a.bottom:0};
-goog.math.Box.distance=function(a,b){var c=goog.math.Box.relativePositionX(a,b),d=goog.math.Box.relativePositionY(a,b);return Math.sqrt(c*c+d*d)};goog.math.Box.intersects=function(a,b){return a.left<=b.right&&b.left<=a.right&&a.top<=b.bottom&&b.top<=a.bottom};goog.math.Box.intersectsWithPadding=function(a,b,c){return a.left<=b.right+c&&b.left<=a.right+c&&a.top<=b.bottom+c&&b.top<=a.bottom+c};goog.math.Size=function(a,b){this.width=a;this.height=b};goog.math.Size.equals=function(a,b){return a==b?!0:!a||!b?!1:a.width==b.width&&a.height==b.height};goog.math.Size.prototype.clone=function(){return new goog.math.Size(this.width,this.height)};goog.DEBUG&&(goog.math.Size.prototype.toString=function(){return"("+this.width+" x "+this.height+")"});goog.math.Size.prototype.getLongest=function(){return Math.max(this.width,this.height)};
-goog.math.Size.prototype.getShortest=function(){return Math.min(this.width,this.height)};goog.math.Size.prototype.area=function(){return this.width*this.height};goog.math.Size.prototype.perimeter=function(){return(this.width+this.height)*2};goog.math.Size.prototype.aspectRatio=function(){return this.width/this.height};goog.math.Size.prototype.isEmpty=function(){return!this.area()};goog.math.Size.prototype.ceil=function(){this.width=Math.ceil(this.width);this.height=Math.ceil(this.height);return this};
-goog.math.Size.prototype.fitsInside=function(a){return this.width<=a.width&&this.height<=a.height};goog.math.Size.prototype.floor=function(){this.width=Math.floor(this.width);this.height=Math.floor(this.height);return this};goog.math.Size.prototype.round=function(){this.width=Math.round(this.width);this.height=Math.round(this.height);return this};goog.math.Size.prototype.scale=function(a){this.width=this.width*a;this.height=this.height*a;return this};
-goog.math.Size.prototype.scaleToFit=function(a){return this.scale(this.aspectRatio()>a.aspectRatio()?a.width/this.width:a.height/this.height)};goog.math.Box.size={};goog.math.Size.scaleVec2={};goog.math.Box.prototype.size=function(){return new goog.math.Size(this.right-this.left,this.bottom-this.top)};goog.math.Size.prototype.scaleVec2=function(a){this.width*=a.x;this.height*=a.y;return this};lime.Renderer=function(){};lime.Renderer.prototype.draw=goog.nullFunction;lime.Renderer.prototype.getType=function(){return this.base?this.base:this};lime.Renderer.prototype.makeSubRenderer=function(a){goog.object.extend(a,this);a.base=this.getType();return a};lime.Renderer.CANVAS=new lime.Renderer;lime.Renderer.CANVAS.updateLayout=function(){};
+goog.scope=function(a){a.call(goog.global);};var lime={DirtyObject:function(){}};lime.DirtyObject.prototype.update=function(){};goog.math={};goog.math.Coordinate=function(a,b){this.x=goog.isDef(a)?a:0;this.y=goog.isDef(b)?b:0;};goog.math.Coordinate.prototype.clone=function(){return new goog.math.Coordinate(this.x,this.y);};goog.DEBUG&&(goog.math.Coordinate.prototype.toString=function(){return"("+this.x+", "+this.y+")";});goog.math.Coordinate.equals=function(a,b){return a==b?true:!a||!b?false:a.x==b.x&&a.y==b.y;};goog.math.Coordinate.distance=function(a,b){var c=a.x-b.x,d=a.y-b.y;return Math.sqrt(c*c+d*d);};
+goog.math.Coordinate.squaredDistance=function(a,b){var c=a.x-b.x,d=a.y-b.y;return c*c+d*d;};goog.math.Coordinate.difference=function(a,b){return new goog.math.Coordinate(a.x-b.x,a.y-b.y);};goog.math.Coordinate.sum=function(a,b){return new goog.math.Coordinate(a.x+b.x,a.y+b.y);};goog.math.Box=function(a,b,c,d){this.top=a;this.right=b;this.bottom=c;this.left=d;};goog.math.Box.boundingBox=function(a){for(var b=new goog.math.Box(arguments[0].y,arguments[0].x,arguments[0].y,arguments[0].x),c=1;c<arguments.length;c++){var d=arguments[c];b.top=Math.min(b.top,d.y);b.right=Math.max(b.right,d.x);b.bottom=Math.max(b.bottom,d.y);b.left=Math.min(b.left,d.x);}return b;};goog.math.Box.prototype.clone=function(){return new goog.math.Box(this.top,this.right,this.bottom,this.left);};
+goog.DEBUG&&(goog.math.Box.prototype.toString=function(){return"("+this.top+"t, "+this.right+"r, "+this.bottom+"b, "+this.left+"l)";});goog.math.Box.prototype.contains=function(a){return goog.math.Box.contains(this,a);};goog.math.Box.prototype.expand=function(a,b,c,d){if(goog.isObject(a)){this.top=this.top-a.top;this.right=this.right+a.right;this.bottom=this.bottom+a.bottom;this.left=this.left-a.left;}else{this.top=this.top-a;this.right=this.right+b;this.bottom=this.bottom+c;this.left=this.left-d;}return this;};
+goog.math.Box.prototype.expandToInclude=function(a){this.left=Math.min(this.left,a.left);this.top=Math.min(this.top,a.top);this.right=Math.max(this.right,a.right);this.bottom=Math.max(this.bottom,a.bottom);};goog.math.Box.equals=function(a,b){return a==b?true:!a||!b?false:a.top==b.top&&a.right==b.right&&a.bottom==b.bottom&&a.left==b.left;};
+goog.math.Box.contains=function(a,b){return!a||!b?false:b instanceof goog.math.Box?b.left>=a.left&&b.right<=a.right&&b.top>=a.top&&b.bottom<=a.bottom:b.x>=a.left&&b.x<=a.right&&b.y>=a.top&&b.y<=a.bottom;};goog.math.Box.relativePositionX=function(a,b){return b.x<a.left?b.x-a.left:b.x>a.right?b.x-a.right:0;};goog.math.Box.relativePositionY=function(a,b){return b.y<a.top?b.y-a.top:b.y>a.bottom?b.y-a.bottom:0;};
+goog.math.Box.distance=function(a,b){var c=goog.math.Box.relativePositionX(a,b),d=goog.math.Box.relativePositionY(a,b);return Math.sqrt(c*c+d*d);};goog.math.Box.intersects=function(a,b){return a.left<=b.right&&b.left<=a.right&&a.top<=b.bottom&&b.top<=a.bottom;};goog.math.Box.intersectsWithPadding=function(a,b,c){return a.left<=b.right+c&&b.left<=a.right+c&&a.top<=b.bottom+c&&b.top<=a.bottom+c;};goog.math.Size=function(a,b){this.width=a;this.height=b;};goog.math.Size.equals=function(a,b){return a==b?!0:!a||!b?!1:a.width==b.width&&a.height==b.height;};goog.math.Size.prototype.clone=function(){return new goog.math.Size(this.width,this.height);};goog.DEBUG&&(goog.math.Size.prototype.toString=function(){return"("+this.width+" x "+this.height+")";});goog.math.Size.prototype.getLongest=function(){return Math.max(this.width,this.height);};
+goog.math.Size.prototype.getShortest=function(){return Math.min(this.width,this.height);};goog.math.Size.prototype.area=function(){return this.width*this.height;};goog.math.Size.prototype.perimeter=function(){return(this.width+this.height)*2;};goog.math.Size.prototype.aspectRatio=function(){return this.width/this.height;};goog.math.Size.prototype.isEmpty=function(){return!this.area();};goog.math.Size.prototype.ceil=function(){this.width=Math.ceil(this.width);this.height=Math.ceil(this.height);return this;};
+goog.math.Size.prototype.fitsInside=function(a){return this.width<=a.width&&this.height<=a.height;};goog.math.Size.prototype.floor=function(){this.width=Math.floor(this.width);this.height=Math.floor(this.height);return this;};goog.math.Size.prototype.round=function(){this.width=Math.round(this.width);this.height=Math.round(this.height);return this;};goog.math.Size.prototype.scale=function(a){this.width=this.width*a;this.height=this.height*a;return this;};
+goog.math.Size.prototype.scaleToFit=function(a){return this.scale(this.aspectRatio()>a.aspectRatio()?a.width/this.width:a.height/this.height);};goog.math.Box.size={};goog.math.Size.scaleVec2={};goog.math.Box.prototype.size=function(){return new goog.math.Size(this.right-this.left,this.bottom-this.top);};goog.math.Size.prototype.scaleVec2=function(a){this.width*=a.x;this.height*=a.y;return this;};lime.Renderer=function(){};lime.Renderer.prototype.draw=goog.nullFunction;lime.Renderer.prototype.getType=function(){return this.base?this.base:this;};lime.Renderer.prototype.makeSubRenderer=function(a){goog.object.extend(a,this);a.base=this.getType();return a;};lime.Renderer.CANVAS=new lime.Renderer();lime.Renderer.CANVAS.updateLayout=function(){};
 lime.Renderer.CANVAS.drawCanvas=function(){var a=this.getQuality(),b=this.measureContents(),c=this.relativeQuality_||1,d=c/a,e;if(this.domElement){this.boundsCache&&this.boundsCache.contains(b)&&(e=this.boundsCache.size().area()/b.size().area())&&1.6>e&&0.5<e?b=this.boundsCache:1!=this.staticCanvas&&0!=this.children_.length&&(this instanceof lime.Scene||b.expand(12,12,12,12));this.boundsCache=b;var f=b.size();e=f.clone().scale(c).ceil();if(this.domElement.width!=e.width||this.domElement.height!=e.height)this.domElement.width=
 e.width,this.domElement.height=e.height,this.redraw_=1;var g=this.getScale().clone();this.transitionsActive_[lime.Transition.SCALE]&&(g=this.transitionsActive_[lime.Transition.SCALE]);0!=e.width?g.scale(f.width*d/e.width):g.scale(1/a);a=this.getFrame();this.ax=(a.left-b.left)*c;this.ay=(a.top-b.top)*c;b=this.getSize().clone().scaleVec2(this.getAnchorPoint()).scale(c);c=this.getPosition().clone();this.transitionsActive_[lime.Transition.POSITION]&&(c=this.transitionsActive_[lime.Transition.POSITION]);
 c.x*=d;c.y*=d;c.x-=b.width+this.ax;c.y-=b.height+this.ay;lime.style.setTransformOrigin(this.domElement,100*((this.ax+b.width)/e.width),100*((this.ay+b.height)/e.height),!0);!this.transitionsActiveSet_[lime.Transition.POSITION]&&(!this.transitionsActiveSet_[lime.Transition.SCALE]&&!this.transitionsActiveSet_[lime.Transition.ROTATION])&&(d=-this.getRotation(),goog.isDef(this.transitionsActive_[lime.Transition.ROTATION])&&(d=-this.transitionsActive_[lime.Transition.ROTATION]),lime.style.setTransform(this.domElement,
-(new lime.style.Transform).setPrecision(0.1).translate(c.x,c.y).scale(g.x,g.y).rotate(d)));this.redraw_&&(d=this.domElement.getContext("2d"),c=this.relativeQuality_||1,d.clearRect(0,0,e.width,e.height),d.save(),d.translate(this.ax,this.ay),d.scale(c,c),e=this.getSize(),g=this.getAnchorPoint(),d.translate(e.width*g.x,e.height*g.y),this.renderer.drawCanvasObject.call(this,d),d.restore(),this.redraw_=0)}};lime.Renderer.CANVAS.update=function(){};
+(new lime.style.Transform()).setPrecision(0.1).translate(c.x,c.y).scale(g.x,g.y).rotate(d)));this.redraw_&&(d=this.domElement.getContext("2d"),c=this.relativeQuality_||1,d.clearRect(0,0,e.width,e.height),d.save(),d.translate(this.ax,this.ay),d.scale(c,c),e=this.getSize(),g=this.getAnchorPoint(),d.translate(e.width*g.x,e.height*g.y),this.renderer.drawCanvasObject.call(this,d),d.restore(),this.redraw_=0);}};lime.Renderer.CANVAS.update=function(){};
 lime.Renderer.CANVAS.drawCanvasObject=function(a){if(this.inTree_&&(this.mask_!=this.activeMask_&&(this.activeMask_&&lime.Renderer.DOM.removeMask.call(this),this.mask_&&lime.Renderer.DOM.addMask.call(this)),!this.maskTarget_&&!this.hidden_&&!(0==this.opacity_||1==this.isMask))){1!=this.opacity_&&(a.globalAlpha*=this.opacity_);if(this.mask_){lime.Renderer.DOM.calculateMaskPosition.call(this.mask_);var b=this.activeMask_,c=this.scale_;a.save();a.save();a.translate(b.mPos.x,b.mPos.y);a.rotate(-b.mRot);
-this.needsDomElement&&a.rotate(this.getRotation()*Math.PI/180);a.beginPath();a.moveTo(0,0);a.lineTo(b.mWidth/c.x,0);a.lineTo(b.mWidth/c.x,b.mHeight/c.y);a.lineTo(0,b.mHeight/c.y);a.closePath();a.restore();a.clip()}b=new goog.math.Coordinate(0,0);this.renderer.draw.call(this,a);for(var d=0,e;e=this.children_[d];d++){var f=e.localToParent(b).clone(),g=e.getRotation(),c=e.getScale();a.save();a.translate(f.x,f.y);a.scale(c.x,c.y);0!=g&&a.rotate(-g*Math.PI/180);this.renderer.drawCanvasObject.call(e,a);
-a.restore()}1!=this.opacity_&&(a.globalAlpha/=this.opacity_);this.activeMask_&&a.restore()}};goog.debug={};goog.debug.Error=function(a){Error.captureStackTrace?Error.captureStackTrace(this,goog.debug.Error):this.stack=Error().stack||"";a&&(this.message=""+a)};goog.inherits(goog.debug.Error,Error);goog.debug.Error.prototype.name="CustomError";goog.string={};goog.string.Unicode={NBSP:"\u00a0"};goog.string.startsWith=function(a,b){return 0==a.lastIndexOf(b,0)};goog.string.endsWith=function(a,b){var c=a.length-b.length;return 0<=c&&a.indexOf(b,c)==c};goog.string.caseInsensitiveStartsWith=function(a,b){return 0==goog.string.caseInsensitiveCompare(b,a.substr(0,b.length))};goog.string.caseInsensitiveEndsWith=function(a,b){return 0==goog.string.caseInsensitiveCompare(b,a.substr(a.length-b.length,b.length))};
-goog.string.subs=function(a,b){for(var c=1;c<arguments.length;c++)var d=(""+arguments[c]).replace(/\$/g,"$$$$"),a=a.replace(/\%s/,d);return a};goog.string.collapseWhitespace=function(a){return a.replace(/[\s\xa0]+/g," ").replace(/^\s+|\s+$/g,"")};goog.string.isEmpty=function(a){return/^[\s\xa0]*$/.test(a)};goog.string.isEmptySafe=function(a){return goog.string.isEmpty(goog.string.makeSafe(a))};goog.string.isBreakingWhitespace=function(a){return!/[^\t\n\r ]/.test(a)};goog.string.isAlpha=function(a){return!/[^a-zA-Z]/.test(a)};
-goog.string.isNumeric=function(a){return!/[^0-9]/.test(a)};goog.string.isAlphaNumeric=function(a){return!/[^a-zA-Z0-9]/.test(a)};goog.string.isSpace=function(a){return" "==a};goog.string.isUnicodeChar=function(a){return 1==a.length&&" "<=a&&"~">=a||"\u0080"<=a&&"\ufffd">=a};goog.string.stripNewlines=function(a){return a.replace(/(\r\n|\r|\n)+/g," ")};goog.string.canonicalizeNewlines=function(a){return a.replace(/(\r\n|\r|\n)/g,"\n")};
-goog.string.normalizeWhitespace=function(a){return a.replace(/\xa0|\s/g," ")};goog.string.normalizeSpaces=function(a){return a.replace(/\xa0|[ \t]+/g," ")};goog.string.collapseBreakingSpaces=function(a){return a.replace(/[\t\r\n ]+/g," ").replace(/^[\t\r\n ]+|[\t\r\n ]+$/g,"")};goog.string.trim=function(a){return a.replace(/^[\s\xa0]+|[\s\xa0]+$/g,"")};goog.string.trimLeft=function(a){return a.replace(/^[\s\xa0]+/,"")};goog.string.trimRight=function(a){return a.replace(/[\s\xa0]+$/,"")};
-goog.string.caseInsensitiveCompare=function(a,b){var c=(""+a).toLowerCase(),d=(""+b).toLowerCase();return c<d?-1:c==d?0:1};goog.string.numerateCompareRegExp_=/(\.\d+)|(\d+)|(\D+)/g;
-goog.string.numerateCompare=function(a,b){if(a==b)return 0;if(!a)return-1;if(!b)return 1;for(var c=a.toLowerCase().match(goog.string.numerateCompareRegExp_),d=b.toLowerCase().match(goog.string.numerateCompareRegExp_),e=Math.min(c.length,d.length),f=0;f<e;f++){var g=c[f],h=d[f];if(g!=h)return c=parseInt(g,10),!isNaN(c)&&(d=parseInt(h,10),!isNaN(d)&&c-d)?c-d:g<h?-1:1}return c.length!=d.length?c.length-d.length:a<b?-1:1};goog.string.urlEncode=function(a){return encodeURIComponent(""+a)};
-goog.string.urlDecode=function(a){return decodeURIComponent(a.replace(/\+/g," "))};goog.string.newLineToBr=function(a,b){return a.replace(/(\r\n|\r|\n)/g,b?"<br />":"<br>")};
+this.needsDomElement&&a.rotate(this.getRotation()*Math.PI/180);a.beginPath();a.moveTo(0,0);a.lineTo(b.mWidth/c.x,0);a.lineTo(b.mWidth/c.x,b.mHeight/c.y);a.lineTo(0,b.mHeight/c.y);a.closePath();a.restore();a.clip();}b=new goog.math.Coordinate(0,0);this.renderer.draw.call(this,a);for(var d=0,e;e=this.children_[d];d++){var f=e.localToParent(b).clone(),g=e.getRotation(),c=e.getScale();a.save();a.translate(f.x,f.y);a.scale(c.x,c.y);0!=g&&a.rotate(-g*Math.PI/180);this.renderer.drawCanvasObject.call(e,a);
+a.restore();}1!=this.opacity_&&(a.globalAlpha/=this.opacity_);this.activeMask_&&a.restore();}};goog.debug={};goog.debug.Error=function(a){Error.captureStackTrace?Error.captureStackTrace(this,goog.debug.Error):this.stack=Error().stack||"";a&&(this.message=""+a);};goog.inherits(goog.debug.Error,Error);goog.debug.Error.prototype.name="CustomError";goog.string={};goog.string.Unicode={NBSP:"\u00a0"};goog.string.startsWith=function(a,b){return 0==a.lastIndexOf(b,0);};goog.string.endsWith=function(a,b){var c=a.length-b.length;return 0<=c&&a.indexOf(b,c)==c;};goog.string.caseInsensitiveStartsWith=function(a,b){return 0==goog.string.caseInsensitiveCompare(b,a.substr(0,b.length));};goog.string.caseInsensitiveEndsWith=function(a,b){return 0==goog.string.caseInsensitiveCompare(b,a.substr(a.length-b.length,b.length));};
+goog.string.subs=function(a,b){for(var c=1;c<arguments.length;c++)var d=(""+arguments[c]).replace(/\$/g,"$$$$"),a=a.replace(/\%s/,d);return a;};goog.string.collapseWhitespace=function(a){return a.replace(/[\s\xa0]+/g," ").replace(/^\s+|\s+$/g,"");};goog.string.isEmpty=function(a){return/^[\s\xa0]*$/.test(a);};goog.string.isEmptySafe=function(a){return goog.string.isEmpty(goog.string.makeSafe(a));};goog.string.isBreakingWhitespace=function(a){return!/[^\t\n\r ]/.test(a);};goog.string.isAlpha=function(a){return!/[^a-zA-Z]/.test(a);};
+goog.string.isNumeric=function(a){return!/[^0-9]/.test(a);};goog.string.isAlphaNumeric=function(a){return!/[^a-zA-Z0-9]/.test(a);};goog.string.isSpace=function(a){return" "==a;};goog.string.isUnicodeChar=function(a){return 1==a.length&&" "<=a&&"~">=a||"\u0080"<=a&&"\ufffd">=a;};goog.string.stripNewlines=function(a){return a.replace(/(\r\n|\r|\n)+/g," ");};goog.string.canonicalizeNewlines=function(a){return a.replace(/(\r\n|\r|\n)/g,"\n");};
+goog.string.normalizeWhitespace=function(a){return a.replace(/\xa0|\s/g," ");};goog.string.normalizeSpaces=function(a){return a.replace(/\xa0|[ \t]+/g," ");};goog.string.collapseBreakingSpaces=function(a){return a.replace(/[\t\r\n ]+/g," ").replace(/^[\t\r\n ]+|[\t\r\n ]+$/g,"");};goog.string.trim=function(a){return a.replace(/^[\s\xa0]+|[\s\xa0]+$/g,"");};goog.string.trimLeft=function(a){return a.replace(/^[\s\xa0]+/,"");};goog.string.trimRight=function(a){return a.replace(/[\s\xa0]+$/,"");};
+goog.string.caseInsensitiveCompare=function(a,b){var c=(""+a).toLowerCase(),d=(""+b).toLowerCase();return c<d?-1:c==d?0:1;};goog.string.numerateCompareRegExp_=/(\.\d+)|(\d+)|(\D+)/g;
+goog.string.numerateCompare=function(a,b){if(a==b)return 0;if(!a)return-1;if(!b)return 1;for(var c=a.toLowerCase().match(goog.string.numerateCompareRegExp_),d=b.toLowerCase().match(goog.string.numerateCompareRegExp_),e=Math.min(c.length,d.length),f=0;f<e;f++){var g=c[f],h=d[f];if(g!=h)return c=parseInt(g,10),!isNaN(c)&&(d=parseInt(h,10),!isNaN(d)&&c-d)?c-d:g<h?-1:1;}return c.length!=d.length?c.length-d.length:a<b?-1:1;};goog.string.urlEncode=function(a){return encodeURIComponent(""+a);};
+goog.string.urlDecode=function(a){return decodeURIComponent(a.replace(/\+/g," "));};goog.string.newLineToBr=function(a,b){return a.replace(/(\r\n|\r|\n)/g,b?"<br />":"<br>");};
 goog.string.htmlEscape=function(a,b){if(b)return a.replace(goog.string.amperRe_,"&amp;").replace(goog.string.ltRe_,"&lt;").replace(goog.string.gtRe_,"&gt;").replace(goog.string.quotRe_,"&quot;");if(!goog.string.allRe_.test(a))return a;-1!=a.indexOf("&")&&(a=a.replace(goog.string.amperRe_,"&amp;"));-1!=a.indexOf("<")&&(a=a.replace(goog.string.ltRe_,"&lt;"));-1!=a.indexOf(">")&&(a=a.replace(goog.string.gtRe_,"&gt;"));-1!=a.indexOf('"')&&(a=a.replace(goog.string.quotRe_,"&quot;"));return a};
 goog.string.amperRe_=/&/g;goog.string.ltRe_=/</g;goog.string.gtRe_=/>/g;goog.string.quotRe_=/\"/g;goog.string.allRe_=/[&<>\"]/;goog.string.unescapeEntities=function(a){return goog.string.contains(a,"&")?"document"in goog.global?goog.string.unescapeEntitiesUsingDom_(a):goog.string.unescapePureXmlEntities_(a):a};
 goog.string.unescapeEntitiesUsingDom_=function(a){var b={"&amp;":"&","&lt;":"<","&gt;":">","&quot;":'"'},c=document.createElement("div");return a.replace(goog.string.HTML_ENTITY_PATTERN_,function(a,e){var f=b[a];if(f)return f;if("#"==e.charAt(0)){var g=Number("0"+e.substr(1));isNaN(g)||(f=String.fromCharCode(g))}f||(c.innerHTML=a+" ",f=c.firstChild.nodeValue.slice(0,-1));return b[a]=f})};
@@ -700,6 +700,8 @@ imgArrayWindmill[4] = new Image(); imgArrayWindmill[4].src = "images/windmill/wi
 imgArrayWindmill[5] = new Image(); imgArrayWindmill[5].src = "images/windmill/bakery1.png";
 imgArrayWindmill[6] = new Image(); imgArrayWindmill[6].src = "images/windmill/bakery2.png";
 imgArrayWindmill[7] = new Image(); imgArrayWindmill[7].src = "images/UI/overgrown.png";
+imgArrayWindmill[8] = new Image(); imgArrayWindmill[8].src = "images/windmill/bakeryButton.png";
+imgArrayWindmill[9] = new Image(); imgArrayWindmill[9].src = "images/windmill/bakeryInside.png";
 
 var imgArrayGround = [];
 imgArrayGround[0] = new Image(); imgArrayGround[0].src = 'images/bare_land.png';
@@ -734,7 +736,7 @@ imgArray[19] = new Image(); imgArray[19].src = 'images/UI/needIron.png';
 imgArray[20] = new Image(); imgArray[20].src = 'images/items/noPick.png';
 imgArray[21] = new Image(); imgArray[21].src = 'images/UI/XButton.png';
 imgArray[22] = new Image(); imgArray[22].src = 'images/UI/needJars.png';
-imgArray[23] = new Image(); imgArray[23].src = 'images/UI/needApple.png';
+imgArray[23] = new Image(); imgArray[23].src = 'images/UI/needCarrots.png';
 imgArray[24] = new Image(); imgArray[24].src = 'images/clouds.png';
 imgArray[25] = new Image(); imgArray[25].src = 'images/UI/starCashBack.png';
 imgArray[26] = new Image(); imgArray[26].src = 'images/scaffold.png';
@@ -787,7 +789,7 @@ imgArray[71] = new Image(); imgArray[71].src = "images/UI/trophyBtn.png";
 imgArray[72] = new Image(); imgArray[72].src = "images/UI/starButton2.png";
 imgArray[73] = new Image(); imgArray[73].src = "images/UI/compass22.png";
 imgArray[74] = new Image(); imgArray[74].src = "images/UI/compass3.png";
-imgArray[75] = new Image(); imgArray[75].src = "images/UI/greenButtonLg.png";
+imgArray[75] = new Image(); imgArray[75].src = "images/UI/transparentBtnTop.png";
 imgArray[76] = new Image(); imgArray[76].src = "images/vertFence.png";
 imgArray[77] = new Image(); imgArray[77].src = "images/horizRoad.png";
 imgArray[78] = new Image(); imgArray[78].src = "images/UI/blankBack4.png";
@@ -821,6 +823,18 @@ imgArray[104] = new Image(); imgArray[104].src = "images/UI/nextButton.png";
 imgArray[105] = new Image(); imgArray[105].src = "images/UI/helpBtn1.png";
 imgArray[106] = new Image(); imgArray[106].src = "images/UI/needFlour.png";
 imgArray[107] = new Image(); imgArray[107].src = "images/UI/checkButton.png";
+imgArray[108] = new Image(); imgArray[108].src = "images/UI/viewAd2.png";
+imgArray[109] = new Image(); imgArray[109].src = "images/UI/viewAdBuild.png";
+imgArray[110] = new Image(); imgArray[110].src ="images/UI/drop.png"
+imgArray[111] = new Image(); imgArray[111].src ="images/UI/waterBtn.png"
+imgArray[112] = new Image(); imgArray[112].src ="images/selfPromoteBack2.png"
+imgArray[113] = new Image(); imgArray[113].src ="images/UI/mapPiece.png"
+imgArray[114] = new Image(); imgArray[114].src ="images/UI/mapPiece2.png"
+imgArray[115] = new Image(); imgArray[115].src = "images/UI/speechBubbleR.png";
+imgArray[116] = new Image(); imgArray[116].src = "images/UI/speechBubble2.png";
+imgArray[117] = new Image(); imgArray[117].src = "images/UI/speechBubble3.png";
+imgArray[118] = new Image(); imgArray[118].src = "images/UI/map1_treasureText.png";
+
 
 
 var imgArrayVin = [];
@@ -899,7 +913,11 @@ imgArray3[29] = new Image(); imgArray3[29].src = 'images/livestockPens/pig_right
 imgArray3[30] = new Image(); imgArray3[30].src = 'images/livestockPens/pig_up1.png';
 imgArray3[31] = new Image(); imgArray3[31].src = 'images/livestockPens/pig_up2.png';
 imgArray3[32] = new Image(); imgArray3[32].src = 'images/livestockPens/pig_up3.png';
-
+imgArray3[33] = new Image(); imgArray3[33].src = 'images/livestockPens/soldier2_f1.png';
+imgArray3[34] = new Image(); imgArray3[34].src = 'images/livestockPens/soldier2_l1.png';
+imgArray3[35] = new Image(); imgArray3[35].src = 'images/livestockPens/soldier2_l2.png';
+imgArray3[36] = new Image(); imgArray3[36].src = 'images/livestockPens/soldier2_l3.png';
+imgArray3[37] = new Image(); imgArray3[37].src = 'images/livestockPens/soldier2_l4.png';
 
 
 
@@ -922,7 +940,7 @@ imgArray4[11] = new Image(); imgArray4[11].src = 'images/Orchard/growing4_trees.
 imgArray4[12] = new Image(); imgArray4[12].src = 'images/Orchard/ready_Apples.png';
 imgArray4[13] = new Image(); imgArray4[13].src = 'images/Orchard/ready_treesPear.png';
 imgArray4[14] = new Image(); imgArray4[14].src = 'images/Orchard/treeBlockO.png';
-imgArray4[15] = new Image(); imgArray4[15].src = 'images/Orchard/OrchardBack4.png';
+imgArray4[15] = new Image(); imgArray4[15].src = 'images/Orchard/OrchardLandslide.png';
 imgArray4[16] = new Image(); imgArray4[16].src = 'images/Orchard/growing22_trees.png';
 imgArray4[17] = new Image(); imgArray4[17].src = "images/Orchard/orchardBarn1.png";
 imgArray4[18] = new Image(); imgArray4[18].src = "images/Orchard/orchardBarn2.png";
@@ -949,6 +967,16 @@ imgArrayCiderPlace[13] = new Image(); imgArrayCiderPlace[13].src = "images/Orcha
 imgArrayCiderPlace[14] = new Image(); imgArrayCiderPlace[14].src = "images/Orchard/ciderPlace17.png";
 imgArrayCiderPlace[15] = new Image(); imgArrayCiderPlace[15].src = "images/Orchard/ciderPlace18.png";
 imgArrayCiderPlace[16] = new Image(); imgArrayCiderPlace[16].src = "images/Orchard/ciderPlace19.png";
+
+///caves
+var imgArrayCave = [];
+imgArrayCave[0] = new Image(); imgArrayCave[0].src = "images/Orchard/shrooms.png";
+imgArrayCave[1] = new Image(); imgArrayCave[1].src = "images/Orchard/shroom1.png";
+imgArrayCave[2] = new Image(); imgArrayCave[2].src = "images/Orchard/shroom2.png";
+imgArrayCave[3] = new Image(); imgArrayCave[3].src = "images/Orchard/shroom3.png";
+imgArrayCave[4] = new Image(); imgArrayCave[4].src = "images/Orchard/shroom4.png";
+imgArrayCave[5] = new Image(); imgArrayCave[5].src = "images/Orchard/caveTrans.png";
+imgArrayCave[6] = new Image(); imgArrayCave[6].src = "images/UI/opaqueTile.png";
 
 
 //tutorial
@@ -1159,13 +1187,13 @@ imgArrayGideon[2] = new Image(); imgArrayGideon[2].src = 'images/marketTown/gide
 
 ////items
 var imgArrayItems = [];
-imgArrayItems[0] = new Image(); imgArrayItems[0].src = 'images/items/shield1.png';
+imgArrayItems[0] = new Image(); imgArrayItems[0].src = "images/items/shield1.png";
 imgArrayItems[1] = new Image(); imgArrayItems[1].src = 'images/items/shield2.png';
-imgArrayItems[2] = new Image(); imgArrayItems[2].src = 'images/items/shield3.png';
+imgArrayItems[2] = new Image(); imgArrayItems[2].src = 'images/items/shield3.png';     /// heirloom forefathers shield
 imgArrayItems[3] = new Image(); imgArrayItems[3].src = 'images/items/book1.png';
 imgArrayItems[4] = new Image(); imgArrayItems[4].src = 'images/items/locket.png';
 imgArrayItems[5] = new Image(); imgArrayItems[5].src = 'images/items/mail1.png';
-imgArrayItems[6] = new Image(); imgArrayItems[6].src = 'images/items/mail2.png';
+imgArrayItems[6] = new Image(); imgArrayItems[6].src = 'images/items/mail2.png';        /// heirloom forefathers mail
 imgArrayItems[7] = new Image(); imgArrayItems[7].src = 'images/items/key.png';
 imgArrayItems[8] = new Image(); imgArrayItems[8].src = 'images/items/necklaceEmerald.png';
 imgArrayItems[9] = new Image(); imgArrayItems[9].src = 'images/items/necklacepurple.png';
@@ -1180,12 +1208,32 @@ imgArrayItems[17] = new Image(); imgArrayItems[17].src = 'images/items/scroll1.p
 imgArrayItems[18] = new Image(); imgArrayItems[18].src = 'images/items/shovel1.png';
 imgArrayItems[19] = new Image(); imgArrayItems[19].src = 'images/items/sword1.png';
 imgArrayItems[20] = new Image(); imgArrayItems[20].src = 'images/items/sword2.png';
-imgArrayItems[21] = new Image(); imgArrayItems[21].src = 'images/items/sword3.png';
+imgArrayItems[21] = new Image(); imgArrayItems[21].src = 'images/items/sword3.png';     /// heirloom forefathers sword
 imgArrayItems[22] = new Image(); imgArrayItems[22].src = 'images/items/pick1.png';
-imgArrayItems[23] = new Image(); imgArrayItems[23].src = 'images/items/crest.png';
+imgArrayItems[23] = new Image(); imgArrayItems[23].src = 'images/items/crest.png';      /// heirloom crest
 imgArrayItems[24] = new Image(); imgArrayItems[24].src = 'images/items/coal.png';
 imgArrayItems[25] = new Image(); imgArrayItems[25].src = 'images/UI/inventoryBtn.png';
 imgArrayItems[26] = new Image(); imgArrayItems[26].src = 'images/items/jars.png';
+imgArrayItems[27] = new Image(); imgArrayItems[27].src = 'images/items/tome.png';       /// heirloom tome
+imgArrayItems[28] = new Image(); imgArrayItems[28].src = 'images/items/shield3_no.png';     /// heirloom forefathers shield - darkened
+imgArrayItems[29] = new Image(); imgArrayItems[29].src = 'images/items/helm1.png';     /// heirloom forefathers shield
+imgArrayItems[30] = new Image(); imgArrayItems[30].src = 'images/items/helm1_no.png';     /// heirloom forefathers helm no
+imgArrayItems[31] = new Image(); imgArrayItems[31].src = 'images/items/greaves.png';     /// heirloom forefathers greaves
+imgArrayItems[32] = new Image(); imgArrayItems[32].src = 'images/items/greaves_no.png';     /// heirloom forefathers greaves
+imgArrayItems[33] = new Image(); imgArrayItems[33].src = 'images/items/sword3_no.png';     /// heirloom sword NO
+imgArrayItems[34] = new Image(); imgArrayItems[34].src = 'images/items/mail2_no.png';       ///heirloom mail NO
+imgArrayItems[35] = new Image(); imgArrayItems[35].src = 'images/items/tome_no.png';       ///heirloom mail NO
+imgArrayItems[36] = new Image(); imgArrayItems[36].src = 'images/items/gauntlets_no.png';       ///heirloom gauntlets NO
+imgArrayItems[37] = new Image(); imgArrayItems[37].src = 'images/items/gauntlets.png';       ///heirloom gauntlets
+imgArrayItems[38] = new Image(); imgArrayItems[38].src = 'images/items/boots_no.png';       ///heirloom boots no
+imgArrayItems[39] = new Image(); imgArrayItems[39].src = 'images/items/boots.png';       ///heirloom boots
+imgArrayItems[40] = new Image(); imgArrayItems[40].src = 'images/items/heirAmulet.png';       ///heirloom amulet
+imgArrayItems[41] = new Image(); imgArrayItems[41].src = 'images/items/heirAmulet_no.png';       ///heirloom amulet
+imgArrayItems[42] = new Image(); imgArrayItems[42].src = 'images/items/chestHeir.png';       ///heirloom chest
+imgArrayItems[43] = new Image(); imgArrayItems[43].src = 'images/UI/totem.png';    
+imgArrayItems[44] = new Image(); imgArrayItems[44].src = 'images/UI/planter.png';    
+
+
 
 
 var imgArrayJosiah = [];
@@ -1327,6 +1375,16 @@ imgArrayPasture[17] = new Image(); imgArrayPasture[17].src = "images/Pasture/cow
 imgArrayPasture[18] = new Image(); imgArrayPasture[18].src = "images/Pasture/cowRight2.png" ;
 imgArrayPasture[19] = new Image(); imgArrayPasture[19].src = "images/Pasture/poop.png";
 
+var imgArrayWheel = [];
+imgArrayWheel[0] = new Image(); imgArrayWheel[0].src = "images/wheelSlices/none.png";
+imgArrayWheel[1] = new Image(); imgArrayWheel[1].src = "images/wheelSlices/5starSlice.png";
+imgArrayWheel[2] = new Image(); imgArrayWheel[2].src = "images/wheelSlices/50toolsSlice.png";
+imgArrayWheel[3] = new Image(); imgArrayWheel[3].src = "images/wheelSlices/50coinSlice.png";
+imgArrayWheel[4] = new Image(); imgArrayWheel[4].src = "images/wheelSlices/25starSlice.png";
+imgArrayWheel[5] = new Image(); imgArrayWheel[5].src = "images/wheelSlices/250coinSlice.png";
+imgArrayWheel[6] = new Image(); imgArrayWheel[6].src = "images/wheelSlices/100toolsSlice.png";
+imgArrayWheel[7] = new Image(); imgArrayWheel[7].src = "images/wheelSlices/100coinSlice.png";
+imgArrayWheel[8] = new Image(); imgArrayWheel[8].src = "images/wheelSlices/wheel_back.png";
 
 //var imgArrayStables =[];
 //imgArrayStables[0] = new Image(); imgArrayStables[0].src = "images/stables/stableBack2-0.png";
@@ -1335,6 +1393,9 @@ imgArrayPasture[19] = new Image(); imgArrayPasture[19].src = "images/Pasture/poo
 
 //////Codesarray
 var myRewards = [];
+
+////
+
 
 /////////Collectibles
 var collectItems = {
@@ -1362,10 +1423,15 @@ var collectItems = {
 
     ],
     digUpCollect: [
-        { name: "Family Crest", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[23].src },
-        { name: "Forefathers Shield", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[2].src },
-        { name: "Forefathers Sword", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[21].src },
-        { name: "Forefathers Mail", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[6].src },
+        { name: "Forefather's Journal", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[27].src },
+        { name: "Forefather's Shield", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[2].src },
+        { name: "Forefather's Sword", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[21].src },
+        { name: "Forefather's Mail", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[6].src },
+        { name: "Forefather's Helm", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[29].src },
+        { name: "Forefather's Boots", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[39].src },
+        { name: "Forefather's Greaves", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[31].src },
+        { name: "Forefather's Gauntlets", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[37].src },
+        { name: "Forefather's Amulet", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[40].src },
 
     ],
     storeItems: [
@@ -1385,7 +1451,36 @@ var collectItems = {
 
 if (typeof localStorage["GuiGhostFarms_playerItems"] === "undefined") { localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems)); };
 collectItems = JSON.parse(localStorage.getItem('GuiGhostFarms_playerItems'));
-
+if (typeof collectItems.digUpCollect[4] === "undefined") {  collectItems.digUpCollect.push({ name: "Forefather's Helm ", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[29].src });
+  };
+ if (typeof collectItems.digUpCollect[5] === "undefined") {     collectItems.digUpCollect.push({ name: "Forefather's Boots ", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[39].src });
+   };
+if (typeof collectItems.digUpCollect[6] === "undefined") {    collectItems.digUpCollect.push({ name: "Forefather's Greaves", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[31].src }); 
+};
+if (typeof collectItems.digUpCollect[7] === "undefined") {     collectItems.digUpCollect.push({ name: "Forefather's Gauntlets", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[37].src });
+};
+if (typeof collectItems.digUpCollect[8] === "undefined") {     collectItems.digUpCollect.push({ name: "Forefather's Amulet ", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[40].src });
+};
+collectItems.digUpCollect[0].name = "Forefather's Journal ";
+collectItems.digUpCollect[1].name = "Forefather's Shield";
+collectItems.digUpCollect[2].name = "Forefather's Sword";
+collectItems.digUpCollect[3].name = "Forefather's Mail";
+collectItems.digUpCollect[4].name = "Forefather's Helm";
+collectItems.digUpCollect[5].name = "Forefather's Boots";
+collectItems.digUpCollect[6].name = "Forefather's Greaves";
+collectItems.digUpCollect[7].name = "Forefather's Gauntlets";
+collectItems.digUpCollect[8].name = "Forefather's Amulet";
+collectItems.digUpCollect[0].src = imgArrayItems[27].src;
+collectItems.digUpCollect[1].src = imgArrayItems[2].src;
+collectItems.digUpCollect[2].src = imgArrayItems[21].src;
+collectItems.digUpCollect[3].src = imgArrayItems[6].src;
+collectItems.digUpCollect[4].src = imgArrayItems[29].src;
+collectItems.digUpCollect[5].src = imgArrayItems[39].src ;
+collectItems.digUpCollect[6].src = imgArrayItems[31].src ;
+collectItems.digUpCollect[7].src = imgArrayItems[37].src;
+collectItems.digUpCollect[8].src = imgArrayItems[40].src;
+collectItems.digUpSells[0].src= imgArrayItems[0].src;
+localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
 
 var usedCodesArray = [];
 
@@ -1405,6 +1500,8 @@ var upgradesInProgress = {
     ]
 };
 
+if (typeof localStorage["showStory"] === "undefined") { localStorage.setItem('showStory', 1); };
+var showStory = localStorage.getItem('showStory');
 
 if (typeof localStorage["MedFarm_upgradesInProgress"] === "undefined") { localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress)); };
 upgradesInProgress = JSON.parse(localStorage.getItem('MedFarm_upgradesInProgress'));
@@ -1449,8 +1546,10 @@ var houseUpgrades = {
 
 };
 
-
-
+var bakeryOptionVisible = 0;
+var bakeryOptionSelected = 0;
+if (typeof localStorage["bakeryOptionSelected"] === "undefined") { localStorage.setItem('bakeryOptionSelected', 0) };
+bakeryOptionSelected = localStorage.getItem('bakeryOptionSelected');
 if (typeof localStorage["GuiGhostFarms_houseUpgrades"] === "undefined") { localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades)); };
 houseUpgrades = JSON.parse(localStorage.getItem('GuiGhostFarms_houseUpgrades'));
 
@@ -1493,7 +1592,7 @@ var saraReady = 0;
 var feliciaReady = 0;
 var collectibleOnScreen = false;
 var townSceneActive = 0;
-var sceneActive = 'home';
+var sceneActive = 'Home';
 
 
 var adFreeVersion = 0;
@@ -1586,8 +1685,8 @@ var questParams = {
         { name: "Necklackes", text: "Many things have been found on your farm. If you DIG UP any JEWELRY, let me know", completed: 0, rewardType: 0, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: "Ill buy that jewelery  " },
         { name: "Rings", text: "Come back to me time to time. I may have things to do. Got any Jewels?", completed: 0, rewardType: 0, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Gems", text: "The King sends hearlds sometimes. Please them and you may gain royal favor", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
-        { name: "Felicia", text: "My wife Felicia spends all day in market, looking for new foods to cook", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
-        { name: "Felicia2", text: "Old Man Haridison is considering selling his STABLE in the future", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Felicia", text: "My wife Felicia runs the market, and is always looking for new foods to sell", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Felicia2", text: "If you find map fragments, the Friar and assemble them", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Land", text: "If you gain enough royal favor, the king may grant you additional lands", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
     ],
     monk: [   ///church
@@ -1607,7 +1706,7 @@ var questParams = {
     ],
     sara: [ ///Inn
         { highestCompleted: 0, available: false },
-        { name: "Royal Lineage", text: "I heard a rumor you came from royal stock", completed: 0, rewardType: 0, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: "You found my locket! " },
+        { name: "Royal Lineage", text: "I heard a rumor you came from royal stock", completed: 0, rewardType: 0, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: "You found my broach! " },
         { name: "Cider", text: "This cooler weather has people wanting APPLE CIDER. Can you make some?", completed: 0, rewardType: 0, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: " " },
 
     ],
@@ -1647,12 +1746,24 @@ var questParamsEva = {
         { index: 1, text: "My grandfather used to tell a story about a local lord who disappeared" },
         { index: 2, text: "I named the pigs Hambone, Bacon, and PorkChop" },
         { index: 3, text: "Make sure you keep some crops around to feed the livestock or they will stop producing" },
-        { index: 4, text: "Lengends say there are caverns close by, but the entrance location was lost a long time ago" },
+        { index: 4, text: "Legends say there are caverns close by, but the entrance location was lost a long time ago" },
         { index: 5, text: "I named the 3 chickens Soup, Feathers, and Bob" },
   
 
     ],
 }
+var questParamsPlayer = {
+    quests: [
+        { index: 0, event: 'tremor', text: "Did you feel that tremor? There are earthquakes here" },
+        { index: 1, event: 'slide', text: "Look a landslide occurred and opened a new cave up" },
+        
+
+    ],
+}
+var landSlideDone = 0;
+if (typeof localStorage["landSlideDone"] === "undefined") { localStorage.setItem('landSlideDone', 0); };
+landSlideDone = localStorage.getItem('landSlideDone');
+
 var tutStep = 1;
 if (typeof localStorage["GuiGhostFarms_tutStep"] === "undefined") { localStorage.setItem('GuiGhostFarms_tutStep', 1); };
 tutStep = localStorage.getItem('GuiGhostFarms_tutStep')
@@ -1701,10 +1812,9 @@ starCash = parseInt(localStorage["starCash"]);
 var orchardText = "Apple Trees"
 var landStateMaster =[];
 var homeTreesLeft = 0;
-var homeTreesRight = 0
-localStorage.setItem('MedFarms_homeTreesLeft', 0);
-localStorage.setItem('MedFarms_homeTreesRight', 0);
-if (typeof localStorage["MedFarms_homeTreesLeft"] === "undefined") { localStorage.setItem('MedFarms_homeTreesLeft', 0) };
+var homeTreesRight = 0;
+
+if (typeof localStorage["MedFarms_homeTreesLeft"] === "undefined") { localStorage.setItem('MedFarms_homeTreesLeft', 0); };
 homeTreesLeft = localStorage.getItem('MedFarms_homeTreesLeft');
 
 if (typeof localStorage["MedFarms_homeTreesRight"] === "undefined") { localStorage.setItem('MedFarms_homeTreesRight', 0); };
@@ -1719,14 +1829,23 @@ seen1stHouseNotif = localStorage.getItem('MedFarms_seen1stHouseNotif');
 
 
 
-if (typeof localStorage["MedFarms_buyingSmallStars"] === "undefined") { localStorage.setItem('MedFarms_buyingSmallStars', 0) };
+localStorage.setItem('MedFarms_buyingSmallStars', 0);
+localStorage.setItem('MedFarms_buyingLargeStars', 0);
+localStorage.setItem('MedFarms_buyingStarterPack', 0);
+localStorage.setItem('MedFarms_buyingMasterPack', 0);
+localStorage.setItem("acreDiscount1", 0);
+localStorage.setItem("acreDiscount2", 0);
+localStorage.setItem("acreDiscount3", 0);
 
-if (typeof localStorage["MedFarms_buyingLargeStars"] === "undefined") { localStorage.setItem('MedFarms_buyingLargeStars', 0) };
-
-if (typeof localStorage["MedFarms_buyingStarterPack"] === "undefined") { localStorage.setItem('MedFarms_buyingStarterPack', 0) };
-
-if (typeof localStorage["MedFarms_buyingMasterPack"] === "undefined") { localStorage.setItem('MedFarms_buyingMasterPack', 0) };
-
+//crop and barn sounds
+var waterSound = new lime.audio.Audio('audio/water.mp3');
+var incorrectSound = new lime.audio.Audio('audio/incorrect.mp3');
+var digSound = new lime.audio.Audio('audio/dig3.mp3');
+var hammerSound = new lime.audio.Audio('audio/hammer.mp3');
+var pickSound = new lime.audio.Audio('audio/pickup.mp3');
+var successSound = new lime.audio.Audio('audio/success.mp3');
+var caveLoop = new lime.audio.Audio('audio/Cafofo_Tension4.mp3')
+var successSound2 = new lime.audio.Audio('audio/blessing21.mp3')
 
 var itemCarryOver = -1;
 var showHighlight2 = localStorage.getItem('showHighLight');
@@ -1738,9 +1857,13 @@ var flourWaiting = 0;
 var countPlanted = 0;
 if (typeof localStorage["countPlanted"] === "undefined") { localStorage.setItem("countPlanted", 0); }
 countPlanted = localStorage.getItem("countPlanted");
+var waterPopNotif = 0;
+var heirloom1Chest = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(218, 305).setSize(50, 40).setFill(imgArrayItems[42]);
+
+// width: 310, height: 540
 
 var farming = {
-    EMPTY: 0, PLOWED: 1, GROWING: 2, READY: 3, WITHER: 4,
+    EMPTY: 0, PLOWED: 1, GROWING: 2, READY: 3, WITHER: 4, WATER: 5,
     Land: function (a, b, posX, posY, scene, block, landIdent) {
         lime.Sprite.call(this);
         this.setAnchorPoint(0, 0);
@@ -1819,6 +1942,7 @@ var farming = {
 
         if (arrayIndex == -1) {
             this.state = farming.EMPTY;
+            this.needsWater = false;
             if (scene == 10) { b.currentCrop = 22; }
             var landStateThis = { name: landIdent, props: { state: parseInt(this.state), deathTime: 0, ripeTime: 0, crop: parseInt(b.currentCrop) } };
             landStateMaster.push(landStateThis);
@@ -1831,7 +1955,7 @@ var farming = {
             this.crop = parseInt(landStateMaster[arrayIndex].props.crop);
             this.crop = Math.abs(this.crop);
 
-            this.ripeTime = parseInt(landStateMaster[arrayIndex].props.ripeTime);
+            this.ripeTime = 5;
             this.ripeTime = Math.abs(this.ripeTime);
 
             this.deathTime = parseInt(landStateMaster[arrayIndex].props.deathTime);
@@ -1839,15 +1963,16 @@ var farming = {
 
             if (scene == 10) { this.crop = 22; landStateMaster[arrayIndex].props.crop = 22; }
             //console.log("state " + this.state)
+            
             if (this.state == farming.GROWING) {
 
                 c.setFill("images/" + a.crops[this.crop].grow1);
             }
-            if (this.state == farming.GROWING && (this.ripeTime < 1250 * a.crops[this.crop].time_to_ripe)) {
+            if (this.state == farming.GROWING && (this.ripeTime < 1230 * a.crops[this.crop].time_to_ripe)) {
 
                 c.setFill("images/" + a.crops[this.crop].grow2);
             }
-            if (this.state == farming.GROWING && (this.ripeTime <= 10000)) {
+            if (this.state == farming.GROWING && (this.ripeTime <= 30000)) {
 
                 c.setFill("images/" + a.crops[this.crop].grow3);
             }
@@ -1878,12 +2003,19 @@ var farming = {
             var toPlant = a.crops[b.currentCrop].grow1;
 
             var toWithered = a.crops[b.currentCrop].withered;
+            // console.log("beforevals scene= " +scene +' hometreesright =' + homeTreesRight + " landIdent= " + landIdent + " collectItemOwned = " + collectItems.digUpCollect[0].owned )
+             if( scene == 1 && homeTreesRight == 1 && landIdent == 't10' && collectItems.digUpCollect[1].owned != 1){
+                //  console.log("in if heirloom")
+                heirloom1Chest.setHidden(false);
+     
+              }
+
 
             var quickGrow = 0;
-            var randomPlantTime = 2000;
+            var randomPlantTime = 1000;
             if (c.state == farming.PLOWED) {
                 quickGrow = Math.floor(Math.random() * 10);
-                if (quickGrow >= 8) { randomPlantTime = 1750; } else { randomPlantTime = 2000; }
+                if (quickGrow >= 8) { randomPlantTime = 1700; } else { randomPlantTime = 2000; }
                 //console.log("qgtime " + randomPlantTime + " " + quickGrow);
             }
             moneyBefore = player.money;
@@ -1914,14 +2046,32 @@ var farming = {
                         scene == 3 && (c.setFill("images/Orchard/fertilize_trees.png")),
                         scene == 32 && (c.setFill("images/Orchard/fertilize_trees.png")),
                         scene == 5 && (c.setFill("images/vinyard/grapes_Fertilize.png")),
-                        runRandomChance()
-
+                        runRandomChance(),
+                        digSound.play()
 
                         //a.updateMoney()
 
                     )
+                : c.state == farming.WATER && waterStored > 0 ?
+                        (
 
-                    : c.state == farming.PLOWED && player.money >= a.crops[b.currentCrop].cost ?
+                          c.needsWater = false,
+                          waterSound.play(),
+                          waterDrop.setHidden(true),
+                          c.setFill("images/" + a.crops[c.crop].grow2),
+                          waterStored = parseInt(waterStored - 1),
+                          localStorage.setItem("MedFarms_waterStored", waterStored),
+                         c.ripeTime -= 2000,
+                            c.state = farming.GROWING
+                        )
+                : c.state == farming.WATER && waterStored <=0 ?
+                    (
+                        incorrectSound.play(),
+                        waterStored = 0,
+                        waterPopNotif++
+                        
+                    )
+                :c.state == farming.PLOWED && player.money >= a.crops[b.currentCrop].cost ?
 
                         (
 
@@ -1930,16 +2080,17 @@ var farming = {
                             c.setFill("images/" + toPlant),
                             c.state = farming.GROWING,
                             c.crop = b.currentCrop,
-                            c.ripeTime = randomPlantTime * a.crops[b.currentCrop].time_to_ripe,
+                            c.ripeTime = (randomPlantTime * a.crops[b.currentCrop].time_to_ripe) ,
                             //console.log("ripeT " + c.ripeTime),
-                            c.deathTime = 5000 * a.crops[b.currentCrop].time_to_death,
-                            c.thirdTime = 1250 * a.crops[b.currentCrop].time_to_ripe,
+                            c.deathTime = 15000 * a.crops[b.currentCrop].time_to_death,
+                            c.thirdTime = 1214 * a.crops[b.currentCrop].time_to_ripe,
 
                             player.money = player.money - (a.crops[b.currentCrop].cost),
                             countPlanted = parseInt(countPlanted) + 1,
                             localStorage.setItem("countPlanted", countPlanted),
                             a.updateMoney(),
                             a.displayCost(posX, posY, a.crops[b.currentCrop].cost),
+                          
                             arrayIndex2 = findWithAttr(landStateMaster, 'name', landIdent),
                             currentLandState = { state: c.state, deathTime: c.deathTime, ripeTime: c.ripeTime, crop: c.crop },
                             landStateMaster[arrayIndex2].props = currentLandState,
@@ -1948,6 +2099,7 @@ var farming = {
                         : c.state == farming.PLOWED && player.money < a.crops[b.currentCrop].cost ?    ///player doesnt have enough to plant that crop
 
                             (
+                                incorrectSound.play(),
                                 b.currentCrop = Math.abs(b.currentCrop),
                                 a.displayCost(posX, posY, a.crops[b.currentCrop].cost + " Required")
                             )
@@ -1964,19 +2116,23 @@ var farming = {
                                 scene == 32 && (c.setFill(imgArray4[8])),
                                 scene == 5 && (c.setFill(imgArray[34])),
                                 scene == 10 && (c.crop = 22),
-
+                                pickSound.stop(),
+                                pickSound.play(),
                                 c.state = farming.EMPTY,
                                 pickedEver = parseInt(pickedEver) + 1,
                                 player.cropsStored[c.crop].stored += 1,
                                 //double yield wheat when storehouse upgraded
-                                scene == 10 && storeHouseUpgraded == 1 && (player.cropsStored[22].stored += 1),
+                                scene == 10 && storeHouseUpgraded == 1 && (player.cropsStored[22].stored += 1, pickedEver = parseInt(pickedEver) + 1),
                                 //double yield grapes when vinhouse upgraded
-                                scene == 5 && vinyardHouseLevel == 2 && (player.cropsStored[12].stored += 1),
+                                scene == 5 && vinyardHouseLevel == 2 && (player.cropsStored[12].stored += 1, pickedEver = parseInt(pickedEver) + 1),
+
+                                ///double Hay 
+                                scene == 2 && (player.cropsStored[6].stored += 1, pickedEver = parseInt(pickedEver) + 1),
 
                                 ///double yield on orchard if barn level 2
                                 scene == 3 && orchardBarnLevel == 2 && (c.setFill(imgArray4[8]), player.cropsStored[c.crop].stored += 1, pickedEver = parseInt(pickedEver) + 1),
                                 scene == 32 && orchardBarnLevel == 2 && (c.setFill(imgArray4[8]), player.cropsStored[c.crop].stored += 1, pickedEver = parseInt(pickedEver) + 1),
-
+                                readyCropIcon.setHidden(true),
 
                                 a.updateMoney(),
 
@@ -1994,18 +2150,25 @@ var farming = {
         }
         var itemReceived = '';
         var ownedAlready = 0;
-        var randomMultiplier = 90;
+        var randomMultiplier = 95;
         var randomInPlay = 0;
+        var randomAddition = 1;
 
         var runRandomChance = function () {
-            if (collectItems.storeItems[2].owned == 1) { randomMultiplier = 70; }    ///user has blessed shovel
-            if (scene == 1 && randomInPlay == 0) {
+            dayCount = parseInt(localStorage["GuiGhostFarms_dayCount"]);
+            if (collectItems.storeItems[2].owned == 1) {        ///user has blessed shovel
+                randomMultiplier = 70; 
+                randomAddition = 4;
+            }    
+            if (scene == 1 && randomInPlay == 0 && dayCount > 35) {
                 randomInPlay = 1;
                 randomChance = Math.round(Math.random() * randomMultiplier);
-                if (randomChance >= randomMultiplier - 1) {
+                // console.log(randomChance + " = random chance")
+                if (randomChance >= randomMultiplier - randomAddition) {
                     var countDigUpSells = Object.keys(collectItems.digUpSells).length;
                     randomItemNumber = Math.round(Math.random() * (countDigUpSells - 1));
-                    ownedAlready = collectItems.digUpSells[randomItemNumber].owned;
+                    if(randomItemNumber < 0){randomItemNumber = 0;};
+                    ownedAlready = collectItems.digUpSells[randomItemNumber].owned || 0;
 
                     if (ownedAlready == 0 && collectibleOnScreen == false) {
 
@@ -2019,22 +2182,8 @@ var farming = {
                         lime.scheduleManager.callAfter(function () { randomInPlay = 0; }, this, 1000);
                     }
                 }
-                //else if (randomChance == 10) {
-                //    var countDigUpCollect = Object.keys(collectItems.digUpCollect).length;
-                //    randomItemNumber = Math.round(Math.random() * (countDigUpCollect - 1));
-                //    //only allow once
-                //    if (collectItems.digUpCollect[randomItemNumber].onlyOnce == 1) { return; }
-                //    else {
-                //        ownedAlready = collectItems.digUpSells[randomItemNumber].owned;
-                //        if (ownedAlready == 0) {
-                //            itemReceived = collectItems.digUpCollect[randomItemNumber].name;
-                //            collectItems.digUpCollect[randomItemNumber].owned = 1;
-                //            console.log("random chance number was " + randomChance + " and randomItemNumber was " + randomItemNumber + " and  item  name = " + itemReceived);
-                //            a.displayCollectible(posX, posY, itemReceived, true)
-                //        }
-                //    }
-                //}
-                else {
+            
+            else {
                     //console.log("random chance number was " + randomChance);
                     return;
                 }
@@ -2044,65 +2193,101 @@ var farming = {
         if (scene == 3 && c.state == farming.EMPTY) { c.setFill(imgArray4[8]); }
         if (scene == 32 && c.state == farming.EMPTY) { c.setFill(imgArray4[8]); }
         if (scene == 5 && c.state == farming.EMPTY) { c.setFill(imgArray[34]); }
-        dt = 2000;
+        dt = 1000;
 
         adWatched = 0;
         var adWatched2 = 0;
         var fromSCBoost = 0;
-
+        var timerDisplayCrop = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-5, 21).setSize(25, 25).setText('6').setFontColor('azure').setFontSize(8).setOpacity(0.5);
+        var waterDrop = (new lime.Sprite()).setPosition(23, 16).setSize(12, 16).setFill(imgArray[110]);
+        var readyCropIcon = (new lime.Sprite()).setPosition(20, 16).setSize(25, 25).setFill('images/stars4.png');
         lime.scheduleManager.scheduleWithDelay(function () {
             adWatched2 = localStorage.getItem('adWatched');
             fromSCBoost = localStorage.getItem('MedFarm_StarCashBoost');
-            if (adWatched2 == 1 && c.state == farming.GROWING && fromSCBoost == 0) { c.ripeTime = 0; lime.scheduleManager.callAfter(function () { localStorage.setItem('adWatched', 0); adWatched2 = 0; }, this, 400); }
+            if (adWatched2 == 1 && (c.state == farming.GROWING || c.state == farming.WATER) && fromSCBoost == 0) { 
+                
+                c.ripeTime = 0; c.state = farming.GROWING; this.needsWater = false; waterDrop.setHidden(true); this.setFill("images/" + a.crops[this.crop].image);
+                 lime.scheduleManager.callAfter(function () { localStorage.setItem('adWatched', 0); adWatched2 = 0; }, this, 100); successSound.play()}
             //else {
             //    setTimeout(function () { localStorage.setItem('MedFarm_StarCashBoost', 0); fromSCBoost = 0; }, 5000);
             //}
         }, this, 1000);
-
+        
+        var waterDropTick = 0;
+        var addBack = 0;
         lime.scheduleManager.scheduleWithDelay(function () {
-
-
+            let origRipe = this.ripeTime;
+        
             this.state == farming.GROWING ?
 
-
+            
                 0 >= this.ripeTime ?
                     (
-                        this.state = farming.READY, this.setFill("images/" + a.crops[this.crop].image)
+                        this.state = farming.READY, this.setFill("images/" + a.crops[this.crop].image),
+                        timerDisplayCrop.setHidden(true).setOpacity(0.6),
+                        this.appendChild(readyCropIcon), 
+                        readyCropIcon.setHidden(false)
                     ) :
                     this.ripeTime -= 1000 :
-
+            
+               
+            
                 this.state == farming.READY &&
                 (
                     0 >= this.deathTime ?
                         (
                             this.state = farming.WITHER, this.setFill("images/" + a.crops[this.crop].withered)
-
+                            
                         )
 
                         : this.deathTime -= 1
 
                 );
-
+           
             this.state == farming.GROWING &&
                 (
 
-
-                    10000 >= this.ripeTime ?
+                    this.appendChild(timerDisplayCrop),
+                    timerDisplayCrop.setText(Math.round((this.ripeTime / 1000)/2)).setHidden(false) ,
+                     onlyOnceWater = 1,
+                    
+                    
+                  
+                    60000 >= this.ripeTime &&  59000 <= this.ripeTime ?
                         (
-                            this.setFill("images/" + a.crops[this.crop].grow3)
+                            this.setFill("images/" + a.crops[this.crop].grow2).appendChild(timerDisplayCrop),
+                            timerDisplayCrop.setText(Math.round((this.ripeTime / 1000)/2)).setHidden(false).setOpacity(0.9),
+                            this.appendChild(waterDrop),
+                            waterDrop.setHidden(false),
+                            
+                            this.needsWater = true, 
+                            this.ripeTime += 1000,
+                            this.state = farming.WATER
+                        ) :
+                        30000 >= this.ripeTime ?
+                        (
+                            this.setFill("images/" + a.crops[this.crop].grow3).appendChild(timerDisplayCrop),
+                            timerDisplayCrop.setText(Math.round((this.ripeTime / 1000)/2)).setHidden(false).setOpacity(1.0)                    
+                       
                         ) :
                         this.thirdTime >= this.ripeTime ?
                             (
-                                this.setFill("images/" + a.crops[this.crop].grow2)
+                                this.setFill("images/" + a.crops[this.crop].grow2).appendChild(timerDisplayCrop),
+                                timerDisplayCrop.setText(Math.round((this.ripeTime / 1000)/2)).setHidden(false).setOpacity(0.8)
+                                
+                              
                             )
                             : this.deathTime -= 1
                 );
+            
             if (scene == 2 && c.state == farming.GROWING) {
-                if (10000 >= this.ripeTime) { c.setFill("images/" + a.crops[6].grow3); }
+                if (15000 >= this.ripeTime) { c.setFill("images/" + a.crops[6].grow3); }
                 else if (this.thirdTime >= this.ripeTime) { c.setFill("images/" + a.crops[6].grow2); }
 
             }
-
+            if (scene == 3 || scene == 32){  timerDisplayCrop.setPosition(15, 40); readyCropIcon.setPosition(25, 16)};
+            if (scene == 5){  timerDisplayCrop.setPosition(5, 40)};
+            //here
             if (a.crops[this.crop] == 8 && this.deathTime < 0) { this.setFill(imgArray4[8]); }
             if (a.crops[this.crop] == 9 && this.deathTime < 0) { this.setFill(imgArray4[8]); }
             if (a.crops[this.crop] == 12 && this.deathTime < 0) { this.setFill(imgArray[34]); }
@@ -2118,12 +2303,39 @@ var farming = {
             landStateMaster[arrayIndexFinal].props = currentLandState2;
             localStorage.setItem("landStates", JSON.stringify(landStateMaster));
 
-
-
+            if (this.state == farming.WATER) {this.appendChild(waterDrop); waterDrop.setHidden(false); this.needsWater = true; 
+                this.setFill("images/" + a.crops[this.crop].grow2);
+                waterDrop.setPosition(23, 16); 
+                 lime.scheduleManager.callAfter( function(){
+                    waterDrop.setPosition(23, 20)
+                 },this,500);
+                // if(waterDropTick == 0){ waterDrop.setPosition(23, 16); waterDropTick = 1; }
+                // else if(waterDropTick == 1){ waterDropTick = 0;};
+            };
+            if (this.state == farming.READY) {
+               waterDrop.setHidden(true),
+               this.needsWater = false,
+                this.setFill('images/' + a.crops[this.crop].image).appendChild(readyCropIcon);
+                readyCropIcon.setPosition(15, 12).setHidden(false).setRotation(0); 
+                 lime.scheduleManager.callAfter( function(){
+                    readyCropIcon.setPosition(15, 12).setRotation(90);
+                 },this,250);
+                 lime.scheduleManager.callAfter( function(){
+                    readyCropIcon.setPosition(15, 12).setRotation(180);
+                 },this,500);
+                 lime.scheduleManager.callAfter( function(){
+                    readyCropIcon.setPosition(15, 12).setRotation(270);
+                 },this,750);
+                 
+            };
+           
+           
         }, this, dt);
 
     }
 };
+
+
 goog.inherits(farming.Land, lime.Sprite);
 
 lime.Scene = function () {
@@ -2525,7 +2737,7 @@ goog.inherits(lime.GlossyButton, lime.Button);
 lime.GlossyButton.prototype.makeState_ = function (a) {
     var b = new lime.RoundedRect();
     b.inner = new lime.RoundedRect();
-    b.label = new lime.Label(a).setAlign("center").setFontFamily('"Trebuchet MS"').setFontColor("#010101").setFontSize(17);
+    b.label = new lime.Label(a).setAlign("center").setFontFamily('"Proxima Nova"').setFontColor("#010101").setFontSize(17);
     b.appendChild(b.inner);
     b.inner.appendChild(b.label);
     return b;
@@ -3197,7 +3409,7 @@ lime.Director = function (a, b, c) {
         var d = document.createElement("meta");
         d.name = "viewport";
         var e = "width=device-width,initial-scale=1.0,minimum-scale=1,maximum-scale=1.0,user-scalable=no";
-        /android/i.test(navigator.userAgent) && (e += ",target-densityDpi=device-dpi");
+        // /android/i.test(navigator.userAgent) && (e += ",target-densityDpi=device-dpi");
         d.content = e;
         document.getElementsByTagName("head").item(0).appendChild(d);
         if (goog.userAgent.MOBILE && !goog.global.navigator.standalone) {
@@ -3222,7 +3434,7 @@ lime.Director = function (a, b, c) {
         this,
         ["touchmove", "touchstart"],
         function (a) {
-            a.event.preventDefault();
+            // a.event.preventDefault();
         },
         !1,
         this
@@ -3618,6 +3830,8 @@ goog.inherits(lime.transitions.MoveInDown, lime.transitions.SlideInDown);
 
 
 /////start globals
+
+var enteredPrizeToday = 0;
 var sceneBefore = 1;
 var player = {
     playerLevel: 1, 
@@ -3656,8 +3870,12 @@ cropsStored: [
         { index: 21, name: "Planks", stored: 0 },
         { index: 22, name: "Wheat", stored: 0 },
         { index: 23, name: "Flour", stored: 0 },
-         { index: 24, name: "Bread", stored: 0 }
-
+         { index: 24, name: "Bread", stored: 0 },
+         {index: 25, name: "Mushrooms", stored: 0},
+         {index: 26, name: "Apple Pie", stored: 0},
+         {index: 27, name: "Manchet Loaf", stored: 0},
+         {index: 28, name: "Creme Eclair", stored: 0},
+         {index: 29, name: "Jelly Donuts", stored: 0}
     ]
    
 };
@@ -3671,7 +3889,17 @@ player = JSON.parse(localStorage.getItem('GuiGhostFarms_player'));
 
 if (typeof localStorage["GuiGhostFarms_playerItems"] === "undefined") { localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems)); };
 collectItems = JSON.parse(localStorage.getItem('GuiGhostFarms_playerItems'));
+var waterStored = 0;
+if (typeof localStorage["MedFarms_waterStored"] === "undefined") { localStorage.setItem('MedFarms_waterStored', 100); };
+waterStored = parseInt(localStorage.getItem('MedFarms_waterStored'));
 
+
+
+
+
+var enteredPrizeToday = 0;
+if (typeof localStorage["enteredPrizeToday"] === "undefined") { localStorage.setItem('enteredPrizeToday', 0); };
+enteredPrizeToday = parseInt(localStorage.getItem('enteredPrizeToday'));
 //var checkWoodType = Number.isInteger(player.cropsStored[14].stored);
 ////console.log("wood is integer " + checkWoodType);
 //if (checkWoodType == false) { player.cropsStored[14].stored = 100; };
@@ -3698,15 +3926,19 @@ if (typeof player.cropsStored[22] === "undefined") { player.cropsStored.push({ n
 if (typeof player.cropsStored[23] === "undefined") { player.cropsStored.push({ name: "Flour", stored: 0 }); };
 if (typeof player.cropsStored[24] === "undefined") { player.cropsStored.push({ name: "Bread", stored: 0 }); };
 if (typeof player.cropsStored[25] === "undefined") { player.cropsStored.push({ name: "Mushrooms", stored: 0 }); };
-if (parseInt(player.cropsStored[2].name) != "Broccoli") { player.cropsStored[2].name = "Broccoli" };
-if (parseInt(player.cropsStored[16].name) != "Jars") { player.cropsStored[16].name = "Jars" };
-if (parseInt(player.cropsStored[17].name) != "Barrels") { player.cropsStored[17].name = "Barrels" };
-if (parseInt(player.cropsStored[22].name) != "Wheat") { player.cropsStored[17].name = "Wheat" };
+if (typeof player.cropsStored[26] === "undefined") { player.cropsStored.push({ name: "Apple Pie", stored: 0 }); };
+if (typeof player.cropsStored[27] === "undefined") { player.cropsStored.push({ name: "Manchet Loaf", stored: 0 }); };
+if (typeof player.cropsStored[28] === "undefined") { player.cropsStored.push({ name: "Creme Eclair", stored: 0 }); };
+if (typeof player.cropsStored[29] === "undefined") { player.cropsStored.push({ name: "Jelly Donuts", stored: 0 }); };
+if (player.cropsStored[2].name != "Broccoli") { player.cropsStored[2].name = "Broccoli" };
+if (player.cropsStored[16].name != "Jars") { player.cropsStored[16].name = "Jars" };
+if (player.cropsStored[17].name != "Barrels") { player.cropsStored[17].name = "Barrels" };
+if (player.cropsStored[22].name != "Wheat") { player.cropsStored[17].name = "Wheat" };
 //added after 1.6 for misty thief issue
 localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
 
 function validCropsStored(){
-        for (i = 0; i < 25; i++){
+        for (i = 0; i < 30; i++){
             //1st - force int by default
             try{
                 player.cropsStored[i].stored = parseInt(player.cropsStored[i].stored);
@@ -3714,10 +3946,7 @@ function validCropsStored(){
                 if (player.cropsStored[i].stored == null || player.cropsStored[i].stored == "null") { player.cropsStored[i].stored = 0 };
                 //check for negative
                 if (player.cropsStored[i].stored < 0) { player.cropsStored[i].stored = Math.abs(player.cropsStored[i].stored); }
-                //check if still not a num
-                //var check = Number.isInteger(player.cropsStored[i].stored);
-                //if (check == false) { player.cropsStored[i].stored = 50; console.log("fixing  " + player.cropsStored[i].name)};
-                //console.log("player.cropsStored " + player.cropsStored[i].name + " " + player.cropsStored[i].stored);
+              
             }
             catch (err) { console.log("error with crop number " + i); }
         }
@@ -3733,10 +3962,11 @@ localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
 
 
 localStorage.setItem('MedFarm_LoadAd', 0);
+localStorage.setItem('MedFarm_StarCashBoost', 0);
 
 var globalModalBlock = 0;
 
-
+var currentAcre4Sale = 0;
 
 
 
@@ -3815,14 +4045,72 @@ if (typeof localStorage["GuiGhostFarms_vinyardBlocks2"] === "undefined") { local
 var isblocked1 = localStorage.getItem("GuiGhostFarms_vinyardBlocks");
 var isblocked2 = localStorage.getItem("GuiGhostFarms_vinyardBlocks2");
 
+if (typeof localStorage["mapPieces"] === "undefined") { localStorage.setItem('mapPieces', 0); };
+var mapPieces =  localStorage.getItem('mapPieces') || 0;
 
 
+if (typeof localStorage["mapsComplete"] === "undefined") { localStorage.setItem('mapsComplete', 0); };
+var mapsComplete =  localStorage.getItem('mapsComplete') || 0;
 
+if (typeof localStorage["chests_Complete"] === "undefined") { localStorage.setItem('chests_Complete', 0); };
+var chests_Complete =  localStorage.getItem('chests_Complete') || 0;
+var treasurePendingLocation = 'Stockpens'
 
+var mapLocations = {
+    places: [
+        { index: 0, name: "h1", found: 0},
+        { index: 1, name: "h2", found: 0},
+        { index: 2, name: "h3", found: 0},
+        { index: 3, name: "h4", found: 0},
+        { index: 4, name: "c1", found: 0},
+        { index: 5, name: "c2", found: 0},
+        { index: 6, name: "c3", found: 0},
+        { index: 7, name: "c4", found: 0},
+        { index: 8, name: "c5", found: 0},
+        { index: 9, name: "c6", found: 0},
+        { index: 10, name: "p1", found: 0},
+        { index: 11, name: "p2", found: 0},
+        { index: 12, name: "p3", found: 0},
+        { index: 13, name: "o1", found: 0},
+        { index: 14, name: "o2", found: 0},
+        { index: 15, name: "ls1", found: 0},
+        { index: 16, name: "ls2", found: 0},
+        { index: 17, name: "ls3", found: 0},
+        { index: 18, name: "v1", found: 0},
+        { index: 19, name: "v2", found: 0},
+        { index: 20, name: "v3", found: 0},
+        { index: 21, name: "w1", found: 0},
+        { index: 22, name: "w2", found: 0},
+        { index: 23, name: "w3", found: 0},
+        { index: 24, name: "h1", found: 0},
+        { index: 25, name: "h2", found: 0},
+        { index: 26, name: "t1", found: 0},
+        { index: 27, name: "t2", found: 0},
+        { index: 28, name: "t3", found: 0},
+        { index: 29, name: "t4", found: 0},
+        { index: 30, name: "kw3", found: 0}
+    ]
+};
+if (typeof localStorage["mapLocations"] === "undefined") { localStorage.setItem('mapLocations', JSON.stringify(mapLocations));};
+mapLocations = JSON.parse(localStorage.getItem('mapLocations'));
+mapLocations.places[24].name = 'h1';
+mapLocations.places[25].name = 'h2';
+mapLocations.places[26].name = 't1';
+mapLocations.places[27].name = 't2';
+mapLocations.places[28].name = 't3';
+// console.log("map0 found is "+ mapLocations.places[0].found );
 var compassVisible = false;
 var playerMuted = 0;
 
 var warningSeen = 0;
+var foundHeir = document.getElementById("foundHeir");
+var foundHeirSubText = document.getElementById("foundHeirSubText");
+var foundHeirImage = document.getElementById("foundHeirImage");
+var  heirStars = document.getElementById("heirStars");
+var foundHeirClose = document.getElementById("foundHeirClose");
+var viewAdImgHeir = document.getElementById("viewAdImgHeir");
+var foundHeirTitle = document.getElementById("foundHeirTitle");
+var heirImgParent = document.getElementById("heirImgParent");
 
 farming.start = function () {
     
@@ -3832,33 +4120,36 @@ farming.start = function () {
         //console.log("bCrop is " + b.currentCrop);
         //if (b.currentCrop > 5 || b.currentCrop == 'null') { b.currentCrop = 0; }
         a.crops = [
-            { index: 0, name: "Tomatoes  ", cost: 4, revenue: 7, time_to_ripe: 30, time_to_death: 500, image: "tomato.png", harvest: "tomato2.png", grow1: "tomatoGrow1.png", grow2: "tomatoGrow2.png", grow3: "tomatoGrow3.png", stored: 0, withered: "tomatoWithered.png" },
-            { index: 1, name: "Carrots    ", cost: 6, revenue: 10, time_to_ripe: 50, time_to_death: 500, image: "carrots.png", harvest: "carrots2.png", grow1: "carrotGrow1.png", grow2: "carrotGrow2.png", grow3: "carrotGrow3.png", stored: 0, withered: "carrotsWithered.png" },
-            { index: 2, name: "Broccoli   ", cost: 8, revenue: 12, time_to_ripe: 65, time_to_death: 500, image: "brocReady.png", harvest: "brocIcon2.png", grow1: "brocGrow1.png", grow2: "brocGrow2.png", grow3: "brocGrow3.png", stored: 0, withered: "brocWither.png" },
-            { index: 3, name: "Eggplant ", cost: 11, revenue: 16, time_to_ripe: 80, time_to_death: 600, image: "eggplant.png", harvest: "eggplant2.png", grow1: "eggplantGrow1.png", grow2: "eggplantGrow2.png", grow3: "eggplantGrow3.png", stored: 0, withered: "eggplantWithered.png" },
-            { index: 4, name: "Peppers  ", cost: 13, revenue: 20, time_to_ripe: 100, time_to_death: 600, image: "peppers.png", harvest: "peppers2.png", grow1: "pepperGrow1.png", grow2: "pepperGrow2.png", grow3: "pepperGrow3.png", stored: 0, withered: "peppersWithered.png" },
-            { index: 5, name: "Corn  ", cost: 15, revenue: 22, time_to_ripe: 120, time_to_death: 600, image: "corn.png", harvest: "corn2.png", grow1: "cornGrow1.png", grow2: "cornGrow2.png", grow3: "cornGrow3.png", stored: 0, withered: "cornWithered.png" },
-            { index: 6, name: "Hay  ", cost: 4, revenue: 7, time_to_ripe: 50, time_to_death: 650, image: "hay.png", harvest: "hayPile.png", grow1: "hayGrow1.png", grow2: "hayGrow2.png", grow3: "hayGrow3.png", stored: 0, withered: "hayWithered.png" },
+            { index: 0, name: "Tomatoes  ", cost: 4, revenue: 7, time_to_ripe: 90, time_to_death: 500, image: "tomato.png", harvest: "tomato2.png", grow1: "tomatoGrow1.png", grow2: "tomatoGrow2.png", grow3: "tomatoGrow3.png", stored: 0, withered: "tomatoWithered.png" },
+            { index: 1, name: "Carrots    ", cost: 6, revenue: 10, time_to_ripe: 120, time_to_death: 500, image: "carrots.png", harvest: "carrots2.png", grow1: "carrotGrow1.png", grow2: "carrotGrow2.png", grow3: "carrotGrow3.png", stored: 0, withered: "carrotsWithered.png" },
+            { index: 2, name: "Broccoli   ", cost: 8, revenue: 13, time_to_ripe: 150, time_to_death: 500, image: "brocReady.png", harvest: "brocIcon2.png", grow1: "brocGrow1.png", grow2: "brocGrow2.png", grow3: "brocGrow3.png", stored: 0, withered: "brocWither.png" },
+            { index: 3, name: "Eggplant ", cost: 11, revenue: 17, time_to_ripe: 180, time_to_death: 600, image: "eggplant.png", harvest: "eggplant2.png", grow1: "eggplantGrow1.png", grow2: "eggplantGrow2.png", grow3: "eggplantGrow3.png", stored: 0, withered: "eggplantWithered.png" },
+            { index: 4, name: "Peppers  ", cost: 13, revenue: 20, time_to_ripe: 210, time_to_death: 600, image: "peppers.png", harvest: "peppers2.png", grow1: "pepperGrow1.png", grow2: "pepperGrow2.png", grow3: "pepperGrow3.png", stored: 0, withered: "peppersWithered.png" },
+            { index: 5, name: "Corn  ", cost: 15, revenue: 23, time_to_ripe: 240, time_to_death: 600, image: "corn.png", harvest: "corn2.png", grow1: "cornGrow1.png", grow2: "cornGrow2.png", grow3: "cornGrow3.png", stored: 0, withered: "cornWithered.png" },
+            { index: 6, name: "Hay  ", cost: 4, revenue: 7, time_to_ripe: 120, time_to_death: 650, image: "hay.png", harvest: "hayPile.png", grow1: "hayGrow1.png", grow2: "hayGrow2.png", grow3: "hayGrow3.png", stored: 0, withered: "hayWithered.png" },
             { index: 7, name: "Milk  ", cost: 12, revenue: 18, time_to_ripe: 65, time_to_death: 22280, image: "Pasture/bucket.png", harvest: "Pasture/bucket.png", grow1: "Pasture/bucket.png", grow2: "Pasture/bucket.png", grow3: "Pasture/bucket.png", stored: 0, withered: "Pasture/bucket.png" },
-            { index: 8, name: "Apple", cost: 10, revenue: 20, time_to_ripe: 120, time_to_death: 650, image: "Orchard/ready_Apples.png", harvest: "apple.png", grow1: "Orchard/growing2_trees.png", grow2: "Orchard/growing3_trees.png", grow3: "Orchard/growing3_trees.png", stored: 0, withered: "Orchard/wither_treesApple.png" },
-            { index: 9, name: "Pear", cost: 15, revenue: 25, time_to_ripe: 120, time_to_death: 650, image: "Orchard/ready_treesPear.png", harvest: "pear.png", grow1: "Orchard/growing22_trees.png", grow2: "Orchard/growing4_trees.png", grow3: "Orchard/growing4_trees.png", stored: 0, withered: "Orchard/wither_treesPear.png" },
+            { index: 8, name: "Apple", cost: 10, revenue: 20, time_to_ripe: 240, time_to_death: 650, image: "Orchard/ready_Apples.png", harvest: "apple.png", grow1: "Orchard/growing2_trees.png", grow2: "Orchard/growing3_trees.png", grow3: "Orchard/growing3_trees.png", stored: 0, withered: "Orchard/wither_treesApple.png" },
+            { index: 9, name: "Pear", cost: 15, revenue: 22, time_to_ripe: 240, time_to_death: 650, image: "Orchard/ready_treesPear.png", harvest: "pear.png", grow1: "Orchard/growing22_trees.png", grow2: "Orchard/growing4_trees.png", grow3: "Orchard/growing4_trees.png", stored: 0, withered: "Orchard/wither_treesPear.png" },
             { index: 10, name: "Pork", cost: 20, revenue: 30, time_to_ripe: 70, time_to_death: 14000, image: "livestockPens/hams.png", harvest: "livestockPens/hams.png", grow1: "livestockPens/hams.png", grow2: "livestockPens/hams.png", grow3: "livestockPens/hams.png", stored: 0, withered: "tomatoWithered.png" },
             { index: 11, name: "Eggs", cost: 5, revenue: 30, time_to_ripe: 70, time_to_death: 14000, image: "livestockPens/eggs.png", harvest: "livestockPens/eggs.png", grow1: "livestockPens/eggs.png", grow2: "livestockPens/eggs.png", grow3: "livestockPens/eggs.png", stored: 0, withered: "tomatoWithered.png" },
-            { index: 12, name: "Grapes", cost: 10, revenue: 18, time_to_ripe: 100, time_to_death: 650, image: "vinyard/grapes_ready.png", harvest: "vinyard/grapes2.png", grow1: "vinyard/grapes_Grow1.png", grow2: "vinyard/grapes_Grow2.png", grow3: "vinyard/grapes_Grow3.png", stored: 0, withered: "vinyard/grapes_withered.png" },
-            { index: 13, name: "Jelly", cost: 30, revenue: 50, time_to_ripe: 75, time_to_death: 14000, image: "vinyard/jelly.png", harvest: "vinyard/jelly.png", grow1: "vinyard/jelly.png", grow2: "vinyard/jelly.png", stored: 0 },
+            { index: 12, name: "Grapes", cost: 10, revenue: 18, time_to_ripe: 240, time_to_death: 650, image: "vinyard/grapes_ready.png", harvest: "vinyard/grapes2.png", grow1: "vinyard/grapes_Grow1.png", grow2: "vinyard/grapes_Grow2.png", grow3: "vinyard/grapes_Grow3.png", stored: 0, withered: "vinyard/grapes_withered.png" },
+            { index: 13, name: "Jelly", cost: 30, revenue: 40, time_to_ripe: 75, time_to_death: 14000, image: "vinyard/jelly.png", harvest: "vinyard/jelly.png", grow1: "vinyard/jelly.png", grow2: "vinyard/jelly.png", stored: 0 },
             { index: 14, name: "Wood", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/logs.png", harvest: "items/logs.png", grow1: "items/logs.png", grow2: "items/logs.png", stored: 0 },
             { index: 15, name: "Iron", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/ironBar.png", harvest: "items/ironBar.png", grow1: "items/ironBar.png", grow2: "items/ironBar.png", stored: 0 },
             { index: 16, name: "Jars", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/jars.png", harvest: "items/jars.png", grow1: "items/jars.png", grow2: "items/jars.png", stored: 0 },
             { index: 17, name: "Barrels", cost: 200, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/barrels.png", harvest: "items/barrels.png", grow1: "items/barrels.png", grow2: "items/barrels.png", stored: 0 },
             { index: 18, name: "Cider", cost: 0, revenue: 40, time_to_ripe: 75, time_to_death: 14000, image: "items/ciderBarrel.png", harvest: "items/ciderBarrel.png", grow1: "items/ciderBarrel.png", grow2: "items/ciderBarrel.png", stored: 0 },
-            { index: 19, name: "Grape Juice", cost: 0, revenue: 40, time_to_ripe: 75, time_to_death: 14000, image: "items/planks.png", harvest: "items/planks.png", grow1: "items/planks.png", grow2: "items/planks.png", stored: 0 },
+            { index: 19, name: "Grape Juice", cost: 0, revenue: 50, time_to_ripe: 75, time_to_death: 14000, image: "items/planks.png", harvest: "items/planks.png", grow1: "items/planks.png", grow2: "items/planks.png", stored: 0 },
             { index: 20, name: "Bottles", cost: 200, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/bottles.png", harvest: "items/bottles.png", grow1: "items/bottles.png", grow2: "items/bottles.png", stored: 0 },
             { index: 21, name: "Planks", cost: 100, revenue: 0, time_to_ripe: 75, time_to_death: 14000, image: "items/planks.png", harvest: "items/planks.png", grow1: "items/planks.png", grow2: "items/planks.png", stored: 0 },
-            { index: 22, name: "Wheat", cost: 4, revenue: 6, time_to_ripe: 110, time_to_death: 650, image: "wheat_ready.png", harvest: "wheatIcon.png", grow1: "wheat_grow0.png", grow2: "wheat_grow1.png", grow3: "wheat_grow2.png", stored: 0, withered: "hayWithered.png" },
-            { index: 23, name: "Flour", cost: 0, revenue: 24, time_to_ripe: 100, time_to_death: 10000, image: "flour.png", harvest: "flour.png", grow1: "flour.png", grow2: "flour.png", grow3: "flour.png", stored: 0, withered: "flour.png" },
-            { index: 24, name: "Bread", cost: 0, revenue: 20, time_to_ripe: 25, time_to_death: 10000, image: "bread.png", harvest: "bread.png", grow1: "bread.png", grow2: "bread.png", grow3: "bread.png", stored: 0, withered: "bread.png" },
-            { index: 25, name: "Mushrooms", cost: 0, revenue: 25, time_to_ripe: 25, time_to_death: 10000, image: "bread.png", harvest: "bread.png", grow1: "bread.png", grow2: "bread.png", grow3: "bread.png", stored: 0, withered: "bread.png" },
-
+            { index: 22, name: "Wheat", cost: 4, revenue: 6, time_to_ripe: 240, time_to_death: 650, image: "wheat_ready.png", harvest: "wheatIcon.png", grow1: "wheat_grow0.png", grow2: "wheat_grow1.png", grow3: "wheat_grow2.png", stored: 0, withered: "hayWithered.png" },
+            { index: 23, name: "Flour", cost: 0, revenue: 8, time_to_ripe: 100, time_to_death: 10000, image: "flour.png", harvest: "flour.png", grow1: "flour.png", grow2: "flour.png", grow3: "flour.png", stored: 0, withered: "flour.png" },
+            { index: 24, name: "Loaf Bread", cost: 0, revenue: 17, time_to_ripe: 25, time_to_death: 10000, image: "bread.png", harvest: "bread.png", grow1: "bread.png", grow2: "bread.png", grow3: "bread.png", stored: 0, withered: "bread.png" },
+            { index: 25, name: "Mushrooms", cost: 0, revenue: 25, time_to_ripe: 25, time_to_death: 10000, image: "Orchard/shrooms.png", harvest: "Orchard/shrooms.png", grow1: "Orchard/shroom1.png", grow2: "Orchard/shroom2.png", grow3: "Orchard/shroom3.png", stored: 0, withered: "Orchard/shrooms.png" },
+            { index: 26, name: "Apple Pie", cost: 0, revenue: 20, time_to_ripe: 50, time_to_death: 10000, image: "items/pie1.png", harvest: "items/pie1.png", grow1: "items/pie1.png", grow2: "items/pie1.png", grow3: "items/pie1.png", stored: 0, withered: "items/pie1.png" },
+            { index: 27, name: "Manchet Loaf", cost: 0, revenue: 23, time_to_ripe: 50, time_to_death: 10000, image: "items/manchetLoaf.png", harvest: "items/manchetLoaf.png", grow1: "items/manchetLoaf.png", grow2: "items/manchetLoaf.png", grow3: "items/manchetLoaf.png", stored: 0, withered: "items/manchetLoaf.png" },
+            { index: 28, name: "Cream Eclair", cost: 0, revenue: 26, time_to_ripe: 50, time_to_death: 10000, image: "items/eclair.png", harvest: "items/eclair.png", grow1: "items/eclair.png", grow2: "items/eclair.png", grow3: "items/eclair.png", stored: 0, withered: "items/eclair.png" },
+            { index: 29, name: "Jelly Donuts", cost: 0, revenue: 30, time_to_ripe: 50, time_to_death: 10000, image: "items/donuts.png", harvest: "items/donuts.png", grow1: "items/donuts.png", grow2: "items/donuts.png", grow3: "items/donuts.png", stored: 0, withered: "items/donuts.png" },
         ];
 
         a.barnyard = [
@@ -3917,6 +4208,7 @@ farming.start = function () {
         ];
         a.orchard = [
             { name: "waterfallMtn", image: "Orchard/OrchardBack4.png" },
+            { name: "waterfallMtn", image: "Orchard/OrchardLandslide.png" },
             { name: "shack", image: "FeedBinsRight.png" }
         ];
 
@@ -3974,9 +4266,9 @@ farming.start = function () {
         acres = JSON.parse(localStorage.getItem('GuiGhostFarms_acres'));
         a.sceneBefore = 1;
 
-
+        var show1toolstoast = 0;
         //////////----------------tooltimer---------------------//////
-        dt = 10000;
+        dt2 = 10000;
         lime.scheduleManager.scheduleWithDelay(function () {
             //check and use iron bars
             if (player.cropsStored[15].stored >= 1) {
@@ -3992,14 +4284,24 @@ farming.start = function () {
             else {
                 ///put anim over blacksmith
                 blacksmithBubble.setHidden(false);
+             if(show1toolstoast == 0){
+                lime.scheduleManager.callAfter(function () { showMFToast("Need Iron",imgArray[19].src,'neediron', 4000); }, this, 3000);
+                
+                show1toolstoast = 1;
+             };
+                
             }
-
-        }, this, dt)
+            
+            
+            
+        }, this, dt2)
 
         //var themeSong = new lime.audio.Audio.addLoadHandler_("audio/farming.mp3");
 
-        var themeSong = new lime.audio.Audio('audio/farming2.mp3');
-        //themeSong.play(true);
+        var themeSongNew = new lime.audio.Audio('audio/farming2.mp3');
+        //var themeSongOld = new lime.audio.Audio('audio/farming2.mp3');
+        //themeSongNew.play(true);
+        
         var smithSound = new lime.audio.Audio('audio/blacksmith2.mp3');
         var cowSound = new lime.audio.Audio('audio/cow1.mp3');
         var waterfallSound = new lime.audio.Audio('audio/waterfallSound.mp3');
@@ -4022,7 +4324,13 @@ farming.start = function () {
         var millerSound = new lime.audio.Audio('audio/Hiyo1.mp3');
         var terricSound = new lime.audio.Audio('audio/Heh3.mp3');
         var evaSound = new lime.audio.Audio('audio/evaSound.mp3');
-    
+        var introSound = new lime.audio.Audio('audio/victory-fanfare.mp3');
+        
+       
+      
+
+
+
         var horizRoad = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 438).setSize(320, 25).setFill(imgArray[77]);
         ////////////////////////////// 
         ////////////////////////////// 
@@ -4039,20 +4347,19 @@ farming.start = function () {
         d.appendChild(e);
         d.appendChild(f);
 
-
-
-        //top bar
-        var gg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-5, 0).setSize(a.controlsLayer_w, a.controlsLayer_h - 22).setFill(imgArray[75]);
+  
+        //top bar home
+        var gg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-5, 0).setSize(a.controlsLayer_w, a.controlsLayer_h - 25).setFill(imgArray[75]);
         f.appendChild(gg);
         //var topLogo = (new lime.Sprite()).setPosition(155, 11).setSize(150, 22).setFill("images/UI/topMenuPlain.png");
         //f.appendChild(topLogo);
-        var h = (new lime.Label()).setText(player.money).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(18).setPosition(235, 24);
+        var h = (new lime.Label()).setText(player.money).setFontColor("#ffffff").setFontFamily("Proxima Nova").setFontSize(18).setPosition(242, 26);
         f.appendChild(h);
 
         var topCoin = (new lime.Sprite()).setPosition(285, 20).setSize(35, 35).setFill(imgArray11[0]);
         f.appendChild(topCoin);
         //expanded top bar home
-        var toInventoryH = (new lime.Sprite()).setPosition((a.controlsLayer_w / 2) - 9, 23).setSize(38, 38).setFill(imgArrayItems[25].src);
+        var toInventoryH = (new lime.Sprite()).setPosition((a.controlsLayer_w / 2) - 5, 23).setSize(51, 40).setFill(imgArrayItems[25].src).setRotation(5);
         f.appendChild(toInventoryH);
 
 
@@ -4060,21 +4367,35 @@ farming.start = function () {
 
         goog.events.listen(toInventoryH, ["mousedown", "touchstart"], function () {
             a.sceneBefore = 1;
-            checkItemsOwned();
+            try{checkItemsOwned();}catch(err){console.log(err)};
             starCashInvCount.setText(starCash);
             hideAndDelayNavIcons();
+            cropsBack.setHidden(false); itemsBack.setHidden(true); itemsStoredBack.setHidden(true); collectBack.setHidden(true);  ///always open to cropsInventory
             c.replaceScene(inventoryScene, lime.transitions.SlideInUp);
+            playerImg.setHidden(false);
             sceneActive = 'Inventory';
-
-            updateInventoryCounts();
+            try{updateInventoryCounts();}catch(err){console.log(err)};
+            
         });
 
 
         var toolCountImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(10, 3).setSize(35, 35).setFill(imgArray[30]);
-        var toolCount = (new lime.Label()).setText(player.tools).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(65, 24).setFontSize(18);
+        var toolCount = (new lime.Label()).setText(player.tools).setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(65, 26).setFontSize(18);
         f.appendChild(toolCountImg);
         f.appendChild(toolCount);
-
+        
+        var firstMapPopup = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 0).setSize(310, 540).setFill("#000000").setHidden(true);
+        f.appendChild(firstMapPopup);
+        var firstMapHeader = (new lime.Label()).setPosition(155, 40).setText("You found your 1st Map Fragment").setSize(275, 40).setFontColor("#ffffff").setFontFamily("Proxima Nova").setFontSize(18);
+        firstMapPopup.appendChild(firstMapHeader);
+        var firstMapPopImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(85, 70).setSize(150, 150).setFill(imgArray[113]);firstMapPopup.appendChild(firstMapPopImg);
+        var firstMapLabel = (new lime.Label()).setPosition(155, 420).setText("Collect 5 Map Fragments to complete a map and locate Heirlooms ").setSize(275, 280).setFontColor("#ffffff").setFontFamily("Proxima Nova").setFontSize(18);
+        firstMapPopup.appendChild(firstMapLabel);
+        var firstMapClose = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(132, 380).setSize(40, 40).setFill(imgArray[21].src);
+        firstMapPopup.appendChild(firstMapClose);
+        goog.events.listen(firstMapClose, ["mousedown", "touchstart"], function () {
+            firstMapPopup.setHidden(true);
+        });
 
 
         a.updateStored = function () {
@@ -4092,6 +4413,10 @@ farming.start = function () {
             count11.setText(player.cropsStored[11].stored);
             count12.setText(player.cropsStored[12].stored);
             count13.setText(player.cropsStored[13].stored);
+            count22.setText(player.cropsStored[22].stored);
+            count23.setText(player.cropsStored[23].stored);
+            count24.setText(player.cropsStored[24].stored);
+            count25.setText(player.cropsStored[25].stored);
             countTools.setText(player.tools);
             updateInventoryCounts()
 
@@ -4113,13 +4438,15 @@ farming.start = function () {
         var achieveBtn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.controlsLayer_w - 47, 467).setSize(36, 36).setFill(imgArray[71]); f.appendChild(achieveBtn);
         var helpBtnH = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.controlsLayer_w - 47, 504).setSize(36, 36).setFill(imgArray[105]); f.appendChild(helpBtnH);
 
-        var fbBtnH = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, a.height - 67).setSize(56, 56).setFill(imgArray[72]); f.appendChild(fbBtnH)
-        var compassH = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(133, 448).setSize(38, 38).setFill(imgArray[73]); f.appendChild(compassH)
+        var fbBtnH = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, a.height - 65).setSize(56, 56).setFill(imgArray[72]); f.appendChild(fbBtnH);
+        var sparkleStarBtn = (new lime.Sprite()).setPosition(75, a.height - 40).setSize(50, 50).setFill('images/stars1.png').setHidden(true);f.appendChild(sparkleStarBtn)
+
+        var compassH = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(133, 448).setSize(38, 38).setFill(imgArray[73]); f.appendChild(compassH);
 
         goog.events.listen(helpBtnH, ["mousedown", "touchstart"], function (e) {
             console.log("tutstep = " + tutStep)
             if (globalModalBlock == 0) {
-
+                
                 helpHSeen = 1;
                 helpBtnH.setOpacity(1.0);
                 var isHidTut = tutModal.getHidden();
@@ -4220,13 +4547,14 @@ farming.start = function () {
                 if (homeCrop > 5 || isNaN(homeCrop) || homeCrop < 0) { homecrop = localStorage.getItem("MedFarms_selectedHomeCrop") };
                 localStorage.setItem("MedFarms_selectedHomeCrop", parseInt(homeCrop));
                 oldCrop = localStorage.getItem("MedFarms_selectedHomeCrop");
-                b.currentCrop = 8;
                 hideAndDelayNavIcons();
+                b.currentCrop = 8;
                 c.replaceScene(orchardScene, lime.transitions.SlideInRight);
-                lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 2000);
+                
                 sceneActive = 'Orchard';
                 globalModalBlock = 0;
                 homeBlock.setHidden(true);
+                lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 2000);
                 e.event.stopPropagation();
 
             }
@@ -4263,9 +4591,9 @@ farming.start = function () {
                 a.sceneBefore = 5;
                 ///from pature to Market
                 hideAndDelayNavIcons();
-                c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
+                c.replaceScene(liveStockScene, lime.transitions.SlideInRight); sceneActive = 'LS';
                 lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
-                sceneActive = 'LS';
+               
                 waterfallSound.stop();
                 chickenSound.play();
                 pig1Sound.play();
@@ -4282,7 +4610,7 @@ farming.start = function () {
         //compas  visiblility function attached to listeners
         function checkAcresNav(e) {
             if (e == 0) { compassVisible = false; }
-            else { compassVisible = true; globalModalBlock = 1; homeBlock.setHidden(false); pastureBlock.setHidden(false); orchardBlock.setHidden(false); vinyardBlock.setHidden(false); };
+            else { compassVisible = true;  homeBlock.setHidden(false); pastureBlock.setHidden(false); orchardBlock.setHidden(false); vinyardBlock.setHidden(false); };
 
             if (acres[1].owned == 0) { pastureNavWM.setFill(imgArray[57]); pastureNavH.setFill(imgArray[57]); pastureNavO.setFill(imgArray[57]); pastureNavP.setFill(imgArray[57]); pastureNavV.setFill(imgArray[57]); pastureNavLS.setFill(imgArray[57]); }
             else if (acres[1].owned == 1) { pastureNavWM.setFill(imgArray[47]); pastureNavH.setFill(imgArray[47]); pastureNavO.setFill(imgArray[47]); pastureNavP.setFill(imgArray[47]); pastureNavV.setFill(imgArray[47]); pastureNavLS.setFill(imgArray[47]); };
@@ -4304,6 +4632,7 @@ farming.start = function () {
             compassHBack.setHidden(false); compassOBack.setHidden(false); compassPBack.setHidden(false); compassVBack.setHidden(false); compassLSBack.setHidden(false); compassWMBack.setHidden(false);
             treesImgV.setHidden(true);
             treesImgV2.setHidden(true);
+            globalModalBlock = 1;
         }
         function closeAcresNav() {
             globalModalBlock = 0; homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); vinyardBlock.setHidden(true); lsBlock.setHidden(true);
@@ -4331,7 +4660,7 @@ farming.start = function () {
             if (globalModalBlock == 0) {
                 var isMuted = lime.audio.getMute();
                 if (isMuted) {
-                    lime.audio.setMute(false); themeSong.play(true); localStorage.setItem('GuiGhostFarms_muted', 0)
+                    lime.audio.setMute(false); themeSongNew.play(true); localStorage.setItem('GuiGhostFarms_muted', 0)
                     setMute(2);
                 } else { lime.audio.setMute(true); setMute(1); localStorage.setItem('GuiGhostFarms_muted', 1) }
             }
@@ -4354,7 +4683,7 @@ farming.start = function () {
             } else {
                 if (playerMuted == 0) {
                     lime.audio.setMute(false);
-                    themeSong.play(true);
+                    themeSongNew.play(true);
                 }
 
             }
@@ -4368,7 +4697,8 @@ farming.start = function () {
         });
         goog.events.listen(fbBtnH, ["mousedown", "touchstart"], function () {
             if (globalModalBlock == 0) {
-                shareFacebook();
+                openStarMenu();
+                if (sparkleStarBtn.getHidden() == false){sparkleStarBtn.setHidden(true);};
 
             }
         });
@@ -4408,7 +4738,7 @@ farming.start = function () {
             dayCount = dayCount + 1;
             if (daysTillHerald >= 1) { daysTillHerald = parseInt(daysTillHerald) - 1; }
             if (daysTillHerald <= 0) {
-                acresOwned4 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+                acresOwned4 = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
                 if (acresOwned4 >= 4) { gideon.setHidden(false); daysTillHerald = 0; } else { gideon.setHidden(true); daysTillHerald = 30; }
 
             }
@@ -4449,8 +4779,8 @@ farming.start = function () {
                 toolUpCount.setPosition(35, 80); toolUpCount.setOpacity(0.8); toolCountImg.setSize(25, 25); toolCountImgP.setSize(25, 25); toolCountImgO.setSize(25, 25); toolCountImgLS.setSize(25, 25); toolCountImgV.setSize(25, 25);
             }, this, 500);
             lime.scheduleManager.callAfter(function () {
-                toolCount.setFontColor("#E8FC08"); toolCountP.setFontColor("#E8FC08"); toolCountO.setFontColor("#E8FC08"); toolCountV.setFontColor("#E8FC08"); toolCountLS.setFontColor("#E8FC08");
-                toolUpCount.setFontColor("#E8FC08"); toolUpCount.setPosition(35, 75); toolUpCount.setOpacity(0.9); toolCountImg.setSize(35, 35); toolCountImgP.setSize(35, 35); toolCountImgO.setSize(35, 35); toolCountImgLS.setSize(35, 35); toolCountImgV.setSize(35, 35);
+                toolCount.setFontColor("#ffffff"); toolCountP.setFontColor("#ffffff"); toolCountO.setFontColor("#ffffff"); toolCountV.setFontColor("#ffffff"); toolCountLS.setFontColor("#ffffff");
+                toolUpCount.setFontColor("#ffffff"); toolUpCount.setPosition(35, 75); toolUpCount.setOpacity(0.9); toolCountImg.setSize(35, 35); toolCountImgP.setSize(35, 35); toolCountImgO.setSize(35, 35); toolCountImgLS.setSize(35, 35); toolCountImgV.setSize(35, 35);
             }, this, 750);
             lime.scheduleManager.callAfter(function () { toolUpCount.setPosition(35, 70); toolUpCount.setOpacity(0.8); }, this, 1000);
             lime.scheduleManager.callAfter(function () { toolUpCount.setPosition(35, 65); toolUpCount.setOpacity(0.7); }, this, 1250);
@@ -4465,7 +4795,7 @@ farming.start = function () {
 
         ////// collectible
         var collectibleBtn = (new lime.GlossyButton()).setColor("#100F13").setText("").setPosition(a.controlsLayer_w / 4 - (15), a.height / 2).setSize(28, 28).setOpacity(0.9);
-        var collectibleImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-15, -15).setFill("images/items/shield1.png").setSize(30, 30);
+        var collectibleImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-15, -15).setFill(imgArrayItems[0].src).setSize(30, 30);
 
         f.appendChild(collectibleBtn);
         collectibleBtn.appendChild(collectibleImg);
@@ -4475,7 +4805,7 @@ farming.start = function () {
 
 
         ////----------------------------------harvest anim-------------------------------------------------------------------------/////
-        var harvest1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.controlsLayer_w / 2 - (15), a.height / 2).setFill("images/" + a.crops[0].harvest).setSize(26, 21);
+        var harvest1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.controlsLayer_w / 2 - (15), a.height / 2).setFill("images/" + a.crops[0].harvest).setSize(30,30);
         f.appendChild(harvest1); harvest1.setHidden(true);
 
         a.updateHarvest = function (x, y, picked) {
@@ -4500,7 +4830,7 @@ farming.start = function () {
                     diffY2 = (diffY2 - diffY);
                 }, this, ((f * 70) + 1));
 
-                if (f > 4) {
+                if (f > 5) {
                     fadeAdj = "0." + (12 - f);
                     harvest1.setOpacity(fadeAdj);
                     harvest2.setOpacity(fadeAdj);
@@ -4549,7 +4879,7 @@ farming.start = function () {
             }
             else { return; }
         }
-
+   
         a.displayCollectible = function (x, y, itemRecieved, collectible) {
             var tempImgSource = '';
             if (collectibleOnScreen == false) {
@@ -4586,13 +4916,13 @@ farming.start = function () {
                 lime.scheduleManager.callAfter(function () { collectibleBtn.setPosition((x + 20), y); }, this, 1200);
                 lime.scheduleManager.callAfter(function () { collectibleBtn.setPosition((x + 20), y - 10); }, this, 1400);
                 lime.scheduleManager.callAfter(function () { collectibleBtn.setPosition((x + 20), y); }, this, 1600);
-
-
+                
+                showMFToast('Found Treasure!', imgArray11[2].src, 'treasure', 3000);
             }
 
         }
         goog.events.listen(collectibleBtn, ["mousedown", "touchstart"], function () {
-
+            successSound.play();
             collectibleBtn.setHidden(true);
             collectibleOnScreen = false;
             //HERE   
@@ -4612,14 +4942,14 @@ farming.start = function () {
         var hh = b.currentCrop;
 
         //console.log("crop " + b.currentCrop);
-        var w = (new lime.Label()).setText("Plant " + a.crops[hh].name).setFontColor("#E8FC08").setFontSize(11).setFontFamily("Comic Sans MS").setPosition(a.controlsLayer_w / 2, a.height - a.controlsLayer_h / 2 - 8);
+        var w = (new lime.Label()).setText("Plant " + a.crops[hh].name).setFontColor("#f0ffff").setFontSize(11).setFontFamily("Proxima Nova").setPosition((a.controlsLayer_w / 2) -2, a.height - a.controlsLayer_h / 2 -12);
         f.appendChild(w);
-        var z = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(133, a.height - a.controlsLayer_h / 2 - 6).setFill("images/" + a.crops[hh].harvest).setSize(a.tile_size * 1.2, a.tile_size * 1.2);
+        var z = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(135, a.height - a.controlsLayer_h / 2 - 6).setFill("images/" + a.crops[hh].harvest).setSize(a.tile_size * 1.2, a.tile_size * 1.2);
         f.appendChild(z);
 
 
         ///market control
-        var market = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(208, a.height - 67).setSize(56, 56).setFill(imgArray[81]);
+        var market = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(208, a.height - 65).setSize(56, 56).setFill(imgArray[81]);
         f.appendChild(market)
         ////inventory
         //var inventoryHome = (new lime.GlossyButton()).setColor("#A0A0A0").setText("").setPosition(a.width - 55, a.height - 40).setSize(40, 40);
@@ -4633,7 +4963,7 @@ farming.start = function () {
             c.replaceScene(marketScene, lime.transitions.SlideInUp);
             lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
             sceneActive = 'Market';
-            acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+            acresOwned3 = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
             if (acresOwned3 >= 4 && daysTillHerald <= 0) { gideon.setHidden(false); } else { gideon.setHidden(true); }
 
             if (showHighLight == 1 || showHighlight2 == 1) {
@@ -4644,7 +4974,7 @@ farming.start = function () {
 
 
             }
-            lime.scheduleManager.callAfter(function () { CheckQuestInvItems(); }, this, 1500);
+            lime.scheduleManager.callAfter(function () { try{CheckQuestInvItems();}catch(err){console.log(err)}; }, this, 1500);
         });
 
         //goog.events.listen(market, ["mousedown", "touchstart"], function () {
@@ -4657,7 +4987,14 @@ farming.start = function () {
         // 
         //    }
         //});
-
+////playerImage
+var playerImgHome = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width - (a.width/2 +2), a.height - 100).setSize(100, 100).setFill(imgArrayPlayer[0]);
+f.appendChild(playerImgHome);
+var plyrBubbleHome = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-85,-85).setSize(156, 105).setFill("images/UI/speechBubble3.png");
+playerImgHome.appendChild(plyrBubbleHome);
+var plyrTextHome = (new lime.Label()).setText("OH WOW... Tremors! This place has Earthquakes?").setPosition(80,70).setSize(150, 100).setFontColor('black').setFontSize(15);
+plyrBubbleHome.appendChild(plyrTextHome);
+playerImgHome.setHidden(true);
 
         //var eggplantCrate = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(283, 78).setSize(20, 27).setFill("images/" + a.barnyard[8].image); e.appendChild(eggplantCrate)
         //var cornCrate = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(283, 95).setSize(20, 27).setFill("images/" + a.barnyard[9].image); e.appendChild(cornCrate)
@@ -4711,7 +5048,7 @@ farming.start = function () {
 
 
 
-        var speedAd = (new lime.GlossyButton()).setColor("#663300").setText("").setPosition(135, 200).setSize(38, 38).setOpacity(0.8);
+        var speedAd = (new lime.GlossyButton()).setColor("#663300").setText("").setPosition(136, 200).setSize(36, 36).setOpacity(0.8);
         speedAd = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(134, 200).setSize(40, 40).setFill(imgArray[92]);
         e.appendChild(speedAd);
 
@@ -4730,16 +5067,20 @@ farming.start = function () {
         e.appendChild(changeSeeds);
         var changeSeedsCrop = (new lime.Sprite()).setPosition(20, 18).setSize(30, 30).setFill("images/tomato2.png");
         changeSeeds.appendChild(changeSeedsCrop);
-        var changeSeedsLabelBack = (new lime.Sprite()).setPosition(19, 43).setSize(30, 12).setFill("#000000").setOpacity(0.7);
+        var changeSeedsLabelBack = (new lime.Sprite()).setPosition(19, 44).setSize(35, 12).setFill("#000000").setOpacity(0.7);
         changeSeeds.appendChild(changeSeedsLabelBack);
         changeSeedsCrop.setFill("images/" + a.crops[b.currentCrop].harvest);
-        var seedLabel = (new lime.Label()).setText("Seeds").setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(11).setPosition(19, 46);
+        var seedLabel = (new lime.Label()).setText("SEEDS").setFontColor("#ffffff").setFontFamily("Proxima Nova").setFontSize(10).setPosition(19, 46).setOpacity(1.0);
         changeSeeds.appendChild(seedLabel);
 
 
-        var barn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(87, 0).setSize(135, 160).setFill(imgArray6[(player.barnLevel - 1)]); e.appendChild(barn);
+        var barn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(86, 3).setSize(135, 160).setFill(imgArray6[(player.barnLevel - 1)]); e.appendChild(barn);
         var houseImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(238, 23).setSize(60, 92).setFill(imgArray[94]); e.appendChild(houseImg);
-        var houseEnterBtn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(251, 115).setSize(30, 30).setFill(imgArray[95]); e.appendChild(houseEnterBtn);
+        var houseEnterBtn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(254, 50).setSize(30, 30).setFill(imgArray[95]); e.appendChild(houseEnterBtn);
+        
+        var getWaterBtn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(248, 130).setSize(28, 28).setFill(imgArray[111]); 
+        e.appendChild(getWaterBtn);
+
 
         var forge = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(5, 35).setSize(95, 120).setFill(imgArray[66]); e.appendChild(forge);
         var anvil1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(59, 102).setSize(20, 20).setFill(imgArray[96]); e.appendChild(anvil1);
@@ -4754,6 +5095,63 @@ farming.start = function () {
             blacksmithQuestPanel.setHidden(false);
         });
 
+   
+        goog.events.listen(getWaterBtn, ["mousedown", "touchstart"], function () {
+            waterStored = parseInt(localStorage.getItem('MedFarms_waterStored'));
+            waterStored = waterStored = parseInt(waterStored + 10);
+            localStorage.setItem("MedFarms_waterStored", waterStored);
+            showMFToast("+ 10",imgArray[110].src,'Home', 2000, 'left');
+            gLabelWater.setText(waterStored);
+        });
+
+
+        var mapLocHome1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(14, 118).setSize(15,20).setFill(imgArrayStore[6]);
+        e.appendChild(mapLocHome1);
+        
+        var mapLocHome2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(231, 117).setSize(15,20).setFill(imgArrayStore[6]);
+        e.appendChild(mapLocHome2);
+        var mapLocHome3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width/2 -70, 430).setSize(18,20).setFill(imgArrayItems[43]);
+        e.appendChild(mapLocHome3);
+        var mapLocHome4 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width/2 + 65, 430).setSize(18,20).setFill(imgArrayItems[43]);
+        e.appendChild(mapLocHome4);
+        if(mapLocations.places[0].found == 1){
+            mapLocHome1.setHidden(true);}
+            else{
+                goog.events.listen(mapLocHome1, ["mousedown", "touchstart"], function (e) {
+                    if(globalModalBlock == 0){  this.setHidden(true); mapLocations.places[0].found = 1; getMapFrag('h1');
+                        e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+                    };
+                });
+            }
+        if(mapLocations.places[1].found == 1){
+                mapLocHome2.setHidden(true);}
+            else{
+                goog.events.listen(mapLocHome2, ["mousedown", "touchstart"], function (e) {
+                    if(globalModalBlock == 0){  this.setHidden(true); mapLocations.places[1].found = 1;getMapFrag('h2');
+                    e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); 
+                    };
+                });
+            }
+        if(mapLocations.places[2].found == 1){
+                mapLocHome3.setHidden(true);}
+            else{
+                goog.events.listen(mapLocHome3, ["mousedown", "touchstart"], function (e) {
+                
+                    if(globalModalBlock == 0){  this.setHidden(true); mapLocations.places[2].found = 1; getMapFrag('h3');
+                        e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); 
+                    };
+                });
+            }
+        if(mapLocations.places[3].found == 1){
+                mapLocHome4.setHidden(true);}
+            else{
+                goog.events.listen(mapLocHome4, ["mousedown", "touchstart"], function (e) {     
+                        if(globalModalBlock == 0){  this.setHidden(true); mapLocations.places[3].found = 1;getMapFrag('h4');
+                            e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); 
+                        };
+                });
+            }    
+
 
 
 
@@ -4761,8 +5159,8 @@ farming.start = function () {
 
         if (player.barnLevel == 2) { barn.setFill(imgArray6[1]).setPosition(110, 35).setSize(85, 107); }
         else if (player.barnLevel == 3) { barn.setSize(135, 160).setFill(imgArray6[2]).setPosition(87, -6); }
-        else if (player.barnLevel == 4) { barn.setSize(135, 161).setFill(imgArray6[3]).setPosition(87, -9);; }
-        else if (player.barnLevel == 5) { barn.setFill(imgArray6[4]).setPosition(80, -18).setSize(149, 174); };
+        else if (player.barnLevel == 4) { barn.setSize(135, 161).setFill(imgArray6[3]).setPosition(85, -9);; }
+        else if (player.barnLevel == 5) { barn.setFill(imgArray6[4]).setPosition(79, -8).setSize(149, 170); };
         ////blacksmith anim
         var flipBlacksmithNotif = 0;
         var flicker = 0;
@@ -4770,6 +5168,7 @@ farming.start = function () {
         var tut6Seen = 0;
         var helpTickH = 0;
         var helpHSeen = 0;
+       var sparkleStarMenu = 0;
         lime.scheduleManager.scheduleWithDelay(function () {
             //add upgrade anim
             if (sceneActive == 'Home') {
@@ -4780,6 +5179,8 @@ farming.start = function () {
                     else if (flicker == 2) { forge.setFill(imgArray[67]); }
                     else if (flicker == 3) { forge.setFill(imgArray[68]); }
                     else if (flicker == 4) { forge.setFill(imgArray[67]); flicker = 0; };
+
+                           
 
                     if (blacksmithI >= 25) { blacksmithI = 1 };
                     //if (blacksmithI < 15) { blacksmith.setFill("images/blacksmith" + blacksmithI + ".png"); };
@@ -4824,17 +5225,35 @@ farming.start = function () {
                     if (tickHighlight == 1) { market.setFill(imgArray[81]); }
                     if (tickHighlight == 2) { market.setFill(imgArray[82]); tickHighlight = 0; }
                 }
-                else { market.setFill(imgArray[81]); }
+                else { market.setFill(imgArray[81]); };
 
                 if (countPlanted == 64 && tutStep >= 6 && helpHSeen == 0) {
 
                     if (helpTickH == 0) { helpTickH = 1; helpBtnH.setOpacity(1.0); }
                     else if (helpTickH == 1) { helpTickH = 0; helpBtnH.setOpacity(0.5); }
-
-
+                    sparkleStarBtn.setHidden(false);
+                
+                  
+                    
+               
+                };
+                sparkleStarMenu++;
+                if (sparkleStarBtn.getHidden() == false && sparkleStarMenu == 1){
+                     
+                    sparkleStarBtn.setRotation(0);
+                    lime.scheduleManager.callAfter( function(){ sparkleStarBtn.setRotation(90);  },this,250);
+                    lime.scheduleManager.callAfter( function(){ sparkleStarBtn.setRotation(180); },this,500);
+                    lime.scheduleManager.callAfter( function(){ sparkleStarBtn.setRotation(270); },this,750);
+           
                 }
-
-
+                if (sparkleStarMenu >= 4){sparkleStarMenu = 0;};
+                if(waterPopNotif == 1 ){
+                   
+                        showMFToast("Out of Water",imgArray[111].src,'home', 2000);
+                        lime.scheduleManager.callAfter( function(){waterPopNotif = 0; }, this, 275);
+                };
+                
+            
 
             }
 
@@ -4929,10 +5348,13 @@ farming.start = function () {
 
         var upgradeCloud = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(90, 0).setSize(120, 200).setFill(imgArray[24].src); e.appendChild(upgradeCloud);
 
-        var toolMoverLabel = (new lime.Label()).setText("60").setPosition(155, 127).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("ComicSans MS").setFill(imgArray[27]);
-        var toolMover = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-22, -50).setSize(50, 50).setFill(imgArray[29]);
-        var barnUnlock = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#E8FC08").setPosition(117, 48).setSize(70, 16).setFontSize(16).setFontWeight(600).setText("Lvl " + player.barnLevel + "/5").setFill(imgArray[28]);
-        e.appendChild(barnUnlock);
+        var toolMoverLabel = (new lime.Label()).setText("60").setPosition(155, 107).setSize(40, 21).setFontFamily("Proxima Nova").setFontColor("#ffffff").setFontWeight(600).setFontSize(20).setFill(imgArray[27]);
+        var toolMover = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-22, -40).setSize(50, 50).setFill(imgArray[29]);
+        // var barnUnlock = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#ffffff").setPosition(117, 48).setSize(40, 16).setFontSize(16).setFontWeight(600).setText( player.barnLevel);
+        var speedBarnAdBtn = (new lime.Sprite).setPosition(0, 25).setSize(75, 34).setFill(imgArray[109]);
+        toolMoverLabel.appendChild(speedBarnAdBtn);
+
+        // e.appendChild(barnUnlock);
         e.appendChild(toolMoverLabel);
         toolMoverLabel.appendChild(toolMover);
         toolMover.setRotation(-10);
@@ -4940,17 +5362,34 @@ farming.start = function () {
         toolMoverLabel.setHidden(true);
         scaffoldH.setHidden(true);
         upgradeCloud.setHidden(true);
+  
 
+       
+        e.appendChild(heirloom1Chest);
+        heirloom1Chest.setHidden(true);    
+        goog.events.listen(heirloom1Chest, ["mousedown", "touchstart"], function (e) {
+            let isvisHeir = heirloom1Chest.getHidden();
+            if(!isvisHeir){
+                console.log('got the click heirloom')
+                successSound.play();
+                loadHeirloom('home');
+                heirloom1Chest.setHidden(true);
+            }
+            e.event.stopPropagation();
+            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+ 
+        });
+    
 
         var clearTrees1 = 0;
-        if (homeTreesLeft == 0 && player.fields < 3) {
+        if (homeTreesLeft == 0 ) {
             e.appendChild(treeUnlockBtn);
             //console.log("hometreesleft = " + homeTreesLeft + " and player.fields = " + player.fields);
             var trees1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(5, 287).setSize(133, 133).setFill(imgArray[62]); e.appendChild(trees1)
-            var treeUnlock1 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(12, 335).setSize(110, 120).setText(""); e.appendChild(treeUnlock1)
+            var treeUnlock1 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(12, 335).setSize(110, 120).setText(""); e.appendChild(treeUnlock1)
 
             var axeHLeft = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(35, 20).setSize(40, 40).setFill(imgArray[61]); trees1.appendChild(axeHLeft);
-            var trees1Img = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(48, 355).setSize(40, 35).setFill(ImgArrayTools[0]); e.appendChild(trees1Img);
+            var trees1Img = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(48, 345).setSize(40, 40).setFill(ImgArrayTools[0]); e.appendChild(trees1Img);
 
             //swallow touches on trees
             goog.events.listen(trees1, ["mousedown", "touchstart"], function (e) {
@@ -5009,7 +5448,7 @@ farming.start = function () {
                                 player.fields = player.fields + 1;
                                 homeTreesLeft = 1;
                                 localStorage.setItem('MedFarms_homeTreesLeft', 1);
-
+                                
                                 lime.scheduleManager.callAfter(function () {
                                     a.updateTools();
                                 }, this, 500);
@@ -5018,7 +5457,7 @@ farming.start = function () {
                                 player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 250;
                                 if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 250; }
                                 localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-
+                                showMFToast("Home Forest Clear",imgArray[61].src,'Home', 3000);
 
 
 
@@ -5038,10 +5477,12 @@ farming.start = function () {
         var clearTrees2 = 0;
         if (homeTreesRight == 0 && player.fields < 4) {
             e.appendChild(treeUnlockBtn2);
+       
+
             var trees2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(171, 287).setSize(132, 133).setFill(imgArray[63]); e.appendChild(trees2)
-            var treeUnlock2 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(182, 335).setSize(120, 120).setText(""); e.appendChild(treeUnlock2)
+            var treeUnlock2 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(182, 335).setSize(120, 120).setText(""); e.appendChild(treeUnlock2)
             var axeHRight = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(35, 20).setSize(40, 40).setFill(imgArray[61]); trees2.appendChild(axeHRight);
-            var trees2Img = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(220, 355).setSize(38, 35).setFill(ImgArrayTools[2]); e.appendChild(trees2Img);
+            var trees2Img = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(218, 345).setSize(40, 40).setFill(ImgArrayTools[2]); e.appendChild(trees2Img);
             goog.events.listen(trees2, ["mousedown", "touchstart"], function (e) {
                 e.event.stopPropagation();
                 e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
@@ -5060,13 +5501,8 @@ farming.start = function () {
                         trees2Img.setHidden(true);
                         upgradeCloudTH2.setHidden(false);
                         axeMoverLabelTH2.setHidden(false);
-                        //right trees axe anim
-                        lime.scheduleManager.scheduleWithDelay(function () {
-                            axerotateH2 = axerotateH2 + 10;
-                            if (axerotateH2 > 35) { axerotateH2 = -10; };
-                            axeHRight.setRotation(axerotateH2);
 
-                        }, this, 200, 300)
+                
 
 
                         //right tress  clearing cloud anim
@@ -5084,7 +5520,10 @@ farming.start = function () {
                             upCloudXTH2 = upCloudXTH2 - 5;
                             upCloudYTH2 = upCloudYTH2 - 5
                             if (upCloudXTH2 < 155) { upCloudXTH2 = 165; upCloudYTH2 = 250; upCloudWTH2 = 250; }
-
+                        //right trees axe anim
+                            axerotateH2 = axerotateH2 + 10;
+                            if (axerotateH2 > 35) { axerotateH2 = -10; };
+                            axeHRight.setRotation(axerotateH2);
 
                         }, this, 250, 240)
 
@@ -5099,11 +5538,16 @@ farming.start = function () {
                                 player.fields = player.fields + 1;
                                 homeTreesRight = 1;
                                 localStorage.setItem('MedFarms_homeTreesRight', 1);
+                                showMFToast("Home Forest Clear",imgArray[61].src,'Home', 3000);
                                 //t.setHidden(false);
                                 lime.scheduleManager.callAfter(function () {
                                     a.updateTools();
                                 }, this, 500);
                                 trees2.setHidden(true); treeUnlock2.setHidden(true); treeUnlockBtn2.setHidden(true); axeHRight.setHidden(true);
+
+                                //heirloom
+                                heirloom1Chest.setHidden(false);
+                                showMFToast("You found a Chest!",imgArrayItems[25],'Home', 3000);
                                 player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 250;
 
                                 if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 250; }
@@ -5111,6 +5555,7 @@ farming.start = function () {
                                 localStorage.setItem('GuiGhostFarms_toolsEver', toolsEver);
                                 localStorage.setItem('GuiGhostFarms_pickedEver', parseInt(pickedEver));
                                 localStorage.setItem('GuiGhostFarms_moneyEver', moneyEver);
+
                             }
 
                         }, this, 1000, 60)
@@ -5126,7 +5571,7 @@ farming.start = function () {
         }
 
         var upgradeCloudTH1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 230).setSize(130, 250).setFill(imgArray[24].src); e.appendChild(upgradeCloudTH1);
-        var axeMoverLabelTH1 = (new lime.Label()).setText("60").setPosition(65, 380).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFill(imgArray[27]);
+        var axeMoverLabelTH1 = (new lime.Label()).setText("60").setPosition(65, 380).setSize(40, 25).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFill(imgArray[27]);
         e.appendChild(axeMoverLabelTH1);
         //var axeMoverTH1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-22, -60).setSize(50, 50).setFill(imgArray[61]);
         //axeMoverLabelTH1.appendChild(axeMoverTH1);
@@ -5135,7 +5580,7 @@ farming.start = function () {
         axeMoverLabelTH1.setHidden(true);
 
         var upgradeCloudTH2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(165, 230).setSize(130, 250).setFill(imgArray[24].src); e.appendChild(upgradeCloudTH2);
-        var axeMoverLabelTH2 = (new lime.Label()).setText("60").setPosition(250, 380).setSize(40, 25).setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("ComicSans MS").setFill(imgArray[27]);
+        var axeMoverLabelTH2 = (new lime.Label()).setText("60").setPosition(250, 380).setSize(40, 25).setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Proxima Nova").setFill(imgArray[27]);
         e.appendChild(axeMoverLabelTH2);
         //var axeMoverTH2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-22, -60).setSize(50, 50).setFill("images/axe.png");
         //axeMoverLabelTH2.appendChild(axeMoverTH2);
@@ -5183,9 +5628,9 @@ farming.start = function () {
         var blacksmithQuestPanel = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 100).setSize(a.width - 30, a.height / 2).setFill(imgArray[78]);
         e.appendChild(blacksmithQuestPanel);
         blacksmithQuestPanel.setHidden(true);
-        var questHeaderBlacksmith = (new lime.Label()).setAnchorPoint(0, 0).setPosition(35, 25).setText("Blacksmith Blacwin").setFontFamily("Comic Sans MS").setFontSize(24);
+        var questHeaderBlacksmith = (new lime.Label()).setAnchorPoint(0, 0).setPosition(35, 25).setText("Blacksmith Blacwin").setFontFamily("Proxima Nova").setFontSize(24);
         blacksmithQuestPanel.appendChild(questHeaderBlacksmith);
-        var questText1Blacksmith = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 150).setText("I need more IRON BARS to make tools. You can buy some at the SHOP in town").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var questText1Blacksmith = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 150).setText("I need more IRON BARS to make tools. You can buy some at the SHOP in town").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         blacksmithQuestPanel.appendChild(questText1Blacksmith);
         var blacksmithQuestPanelAvatar = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(70, 58).setSize(80, 80).setFill(imgArray[4]);
         blacksmithQuestPanel.appendChild(blacksmithQuestPanelAvatar);
@@ -5205,7 +5650,7 @@ farming.start = function () {
         var boostCrops = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(40, 120).setSize(230, 280).setFill("images/UI/cropBoostBack2.png");
         e.appendChild(boostCrops);
         boostCrops.setHidden(true);
-        var starCashCountBoost = (new lime.Label()).setText(starCash).setPosition(121, 31).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#000F00").setFontWeight(600).setFontSize(20).setFontFamily("ComicSans MS");
+        var starCashCountBoost = (new lime.Label()).setText(starCash).setPosition(121, 31).setSize(40, 25).setFontFamily("Proxima Nova").setFontColor("#000F00").setFontWeight(600).setFontSize(20).setFontFamily("Proxima Nova");
         boostCrops.appendChild(starCashCountBoost);
 
 
@@ -5215,10 +5660,10 @@ farming.start = function () {
         var starCashBoost = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-10, -17).setSize(35, 35).setFill(imgArray[37]);
         speedAdConfirmSC.appendChild(starCashBoost);
 
-        var speedAdOr = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-10, 20).setText("or").setFontFamily("Comic Sans MS").setFontSize(18);
+        var speedAdOr = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-10, 20).setText("or").setFontFamily("Proxima Nova").setFontSize(18);
         speedAdConfirmSC.appendChild(speedAdOr);
 
-        var speedAdConfirm = (new lime.GlossyButton()).setColor("#00FF00").setText("View Ad").setPosition(115, 233).setSize(85, 32);
+        var speedAdConfirm = (new lime.Sprite()).setFill(imgArray[108]).setPosition(113, 232).setSize(95, 40);
         boostCrops.appendChild(speedAdConfirm);
         //hide for AdFree
         //if (adFreeVersion == 1) { speedAdConfirm.setHidden(true); speedAdOr.setHidden(true); }
@@ -5234,15 +5679,18 @@ farming.start = function () {
 
             //console.log("visibleLink = " + visibleLink);
             if (visibleLink == false) {
+                adWatched2 = 1;
+                localStorage.setItem('adWatched', 1);
                 localStorage.setItem('MedFarm_LoadAd', 1);
                 localStorage.setItem('MedFarm_StarCashBoost', 0);
                 lime.audio.setMute(true);
                 setTimeout(function () {
+                    changeSeeds.setHidden(false);
                     boostCrops.setHidden(true);
                     homeBlock.setHidden(true);
                     globalModalBlock = 0;
                 }, 500);
-             
+                e.event.stopPropagation();
                 e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
             }
 
@@ -5255,12 +5703,12 @@ farming.start = function () {
                 //console.log("clicked confirm SC");
                 if (starCash >= 3) {
                     adWatched2 = 1;
-                    localStorage.setItem('adWatched', 1)
+                    localStorage.setItem('adWatched', 1);
                     localStorage.setItem('MedFarm_StarCashBoost', 0);
                     starCash = starCash - 3;
                     boostCrops.setHidden(true);
                     homeBlock.setHidden(true);
-
+                    changeSeeds.setHidden(false);
                 }
                 e.event.stopPropagation();
                 e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
@@ -5276,7 +5724,7 @@ farming.start = function () {
                 //console.log("clicked cancel");
                 var isMuted22 = parseInt(localStorage.getItem('GuiGhostFarms_muted'));
                 if (isMuted22 == 1) { lime.audio.setMute(true); setMute(1); }
-                else { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); setMute(2); }
+                else { lime.audio.setMute(false); themeSongNew.play(true); smithSound.play(); setMute(2); }
                 homeBlock.setHidden(true);
                 changeSeeds.setHidden(false);
                 boostCrops.setHidden(true);
@@ -5457,18 +5905,63 @@ farming.start = function () {
         }
 
         lime.scheduleManager.callAfter(function () { a.checkTutSeen(); }, this, 250);
+        var gradient1 = new lime.fill.LinearGradient().
+        setDirection(0,0,1,1). // 45' angle 
+        addColorStop(0,100,0,0,1). // start from red color
+        addColorStop(1,0,0,100,.5); // end with transparent blue
+        
+        
 
         ///Out of Cash modal
-        var outOfCash = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 100).setSize(210, 220).setFill(imgArray[33]);
+        var outOfCash = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(26, 100).setSize(250, 305).setFill(imgArray[33]);
         e.appendChild(outOfCash);
-        var buyStarCash = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(122, 212).setSize(75, 35).setFill("images/UI/buyStarCash.png");
+        var outBack1 = new lime.RoundedRect().setSize(205,50).setRadius(10).setPosition(125, 140).setOpacity(0.9);
+        outBack1.setFill(gradient1);
+        outOfCash.appendChild(outBack1);
+        var outOfCashLbl1 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(45, 30).setText("Not Enough Coins").setFontColor("RED").setFontFamily("Proxima Nova").setFontSize(22);
+        outOfCash.appendChild(outOfCashLbl1);
+        var outOfCashLbl2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(30, 125).setText("Buy Coins with Stars").setFontColor("WHITE").setSize(90, 80).setFontFamily("Proxima Nova").setFontSize(16);
+        outOfCash.appendChild(outOfCashLbl2);
+        var buyStarCash = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(157, 118).setSize(45, 45).setFill(imgArray[72]);
         outOfCash.appendChild(buyStarCash);
-        var marketBtn1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 212).setSize(75, 35).setFill(imgArray[32]);
+        var outBack2 = new lime.RoundedRect().setSize(205,50).setRadius(10).setPosition(125, 195).setOpacity(0.9);
+        outBack2.setFill(gradient1);
+        outOfCash.appendChild(outBack2);
+        var outOfCashLbl3 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(30, 178).setText("Get 200 Coins Free").setFontColor("WHITE").setSize(90, 80).setFontFamily("Proxima Nova").setFontSize(16);
+        outOfCash.appendChild(outOfCashLbl3);
+        var outofCoinViewAdBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(133, 173).setSize(90, 42).setFill(imgArray[108]);
+        outOfCash.appendChild(outofCoinViewAdBtn);
+        var outBack3 = new lime.RoundedRect().setSize(205,50).setRadius(10).setPosition(125, 250).setOpacity(0.9);
+        outBack3.setFill(gradient1);
+        outOfCash.appendChild(outBack3);
+        var outOfCashLbl4 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(30, 235).setText("Sell Crops in Town").setFontColor("WHITE").setSize(90, 80).setFontFamily("Proxima Nova").setFontSize(16);
+        outOfCash.appendChild(outOfCashLbl4);
+        var marketBtn1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(157, 228).setSize(45, 45).setFill(imgArray[81]);
         outOfCash.appendChild(marketBtn1);
-        var cancelBtnCash = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(89, 212).setSize(35, 35).setFill(imgArray[21]);
+        var cancelBtnCash = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(110, 290).setSize(35, 35).setFill(imgArray[21]);
         outOfCash.appendChild(cancelBtnCash);
         outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
 
+        goog.events.listen(outofCoinViewAdBtn, ["mousedown", "touchstart"], function () {            //starCash Button
+            var isHidoCh2 = outOfCash.getHidden();
+            if (isHidoCh2 == false) {
+                outOfCash.setHidden(true); outOfCashV.setHidden(true);outOfCashO.setHidden(true);outOfCashP.setHidden(true);
+                homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
+                
+                warningSeen = 1;
+                localStorage.setItem("acreDiscount1", 0);
+                localStorage.setItem('MedFarm_LoadAd', 0);
+                localStorage.setItem('MedFarm_StarCashBoost', 1);
+                lime.audio.setMute(true);
+                lime.scheduleManager.callAfter(function () { 
+                    player.money = parseInt(player.money) + 200; 
+                    a.updateMoney(); 
+                    globalModalBlock = 0;
+                    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player)); 
+                }, this, 5000);
+              
+            }
+       });
         goog.events.listen(buyStarCash, ["mousedown", "touchstart"], function () {            //starCash Button
             var isHidoCh = outOfCash.getHidden();
             if (isHidoCh == false) {
@@ -5476,14 +5969,20 @@ farming.start = function () {
                 homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
                 warningSeen = 1;
                 document.getElementById("starCashOuterLabel").innerHTML = starCash;
-                shareFacebook();
+                openStarMenu();
+                globalModalBlock = 0;
             }
             //c.replaceScene(menuScene, lime.transitions.SlideInUp);
         });
+
+
+
+
+
         goog.events.listen(marketBtn1, ["mousedown", "touchstart"], function () {            //market Button
             var isHidoCh2 = outOfCash.getHidden();
             if (isHidoCh2 == false) {
-                outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
+                outOfCash.setHidden(true); 
                 homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
                 outOfCashP.setHidden(true); marketBtn1P.setHidden(true); buyStarCashP.setHidden(true);
                 outOfCashO.setHidden(true); marketBtn1O.setHidden(true); buyStarCashO.setHidden(true);
@@ -5497,16 +5996,16 @@ farming.start = function () {
                 sceneActive = 'Market';
 
                 lime.scheduleManager.callAfter(function () { a.updateStored(); }, this, 250);
-                acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+                acresOwned3 = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
                 if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
 
-                lime.scheduleManager.callAfter(function () { CheckQuestInvItems(); }, this, 1500);
+                lime.scheduleManager.callAfter(function () { try{CheckQuestInvItems();}catch(err){console.log(err)}; }, this, 1500);
             }
         });
         goog.events.listen(cancelBtnCash, ["mousedown", "touchstart"], function () {            //cancel Button
             var isHidoCh3 = outOfCash.getHidden();
             if (isHidoCh3 == false) {
-                outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
+                outOfCash.setHidden(true); 
                 homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
                 outOfCashP.setHidden(true); marketBtn1P.setHidden(true); buyStarCashP.setHidden(true);
                 outOfCashO.setHidden(true); marketBtn1O.setHidden(true); buyStarCashO.setHidden(true);
@@ -5522,6 +6021,7 @@ farming.start = function () {
             //orchardBlock.setHidden(false);
             //lsBlock.setHidden(false);
             //vinyardBlock.setHidden(false);
+            incorrectSound.play();
             outOfCash.setHidden(false); marketBtn1.setHidden(false); buyStarCash.setHidden(false);
             //outOfCashP.setHidden(false); marketBtn1P.setHidden(false); buyStarCashP.setHidden(false);
             //outOfCashO.setHidden(false); marketBtn1O.setHidden(false); buyStarCashO.setHidden(false);
@@ -5529,29 +6029,71 @@ farming.start = function () {
             warningSeen = 1;
             globalModalBlock = 1;
         }
-        ///For Sale confirm modal
-        var confirmSale = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 140).setSize(210, 220).setFill("images/UI/saleBack.png");
-        e.appendChild(confirmSale);
-        var confirmText = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000000").setPosition(45, 128).setSize(135, 60).setFontSize(20).setText("Dairy Farm 2500");
-        confirmSale.appendChild(confirmText);
-        var confirmCoin = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(50, 143).setSize(30, 30).setFill(imgArray11[0]);
-        confirmSale.appendChild(confirmCoin);
-        var confirmTextSub = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#FF0000").setPosition(55, 178).setSize(110, 60).setFontSize(12).setText("Earn more Coin to buy");
-        confirmSale.appendChild(confirmTextSub);
-        var confirmBtn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(100, 212).setSize(75, 35).setFill("images/UI/greenBuy.png");
-        confirmSale.appendChild(confirmBtn);
-        var cancelBtn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(50, 212).setSize(35, 35).setFill(imgArray[21]);
-        confirmSale.appendChild(cancelBtn);
-        confirmSale.setHidden(true);
+               ///For Sale confirm modal
+               var confirmSale = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(45, 140).setSize(210, 220).setFill("images/UI/saleBack.png");
+               e.appendChild(confirmSale);
+               var confirmText = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000000").setPosition(45, 60).setSize(135, 60).setFontSize(20).setText("Dairy Farm 2500");
+               confirmSale.appendChild(confirmText);
+               var confirmCoin = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(55, 75).setSize(30, 30).setFill(imgArray11[0]);
+               confirmSale.appendChild(confirmCoin);
+               var confirmTextSub = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#FF0000").setPosition(45, 178).setSize(130, 60).setFontSize(12).setText("You need more Coin");
+               confirmSale.appendChild(confirmTextSub);
+               var confirmBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(100, 200).setSize(75, 40).setFill("images/UI/buyNowBtn.png");
+               confirmSale.appendChild(confirmBtn);
+               var cancelBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(50, 200).setSize(35, 35).setFill(imgArray[21]);
+               confirmSale.appendChild(cancelBtn);
+               confirmSale.setHidden(true);
+           
+               var adDairyBuyText = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000000").setPosition(40, 118).setSize(135, 60).setFontSize(14).setText("Get 10% Off");
+               confirmSale.appendChild(adDairyBuyText);
+               var adDairyViewBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(65, 135).setSize(90, 42).setFill(imgArray[108]);
+               confirmSale.appendChild(adDairyViewBtn);
+
+               goog.events.listen(adDairyViewBtn, ["mousedown", "touchstart"], function () {     
+               //for sale pasture ad discount
+                var salevis2 = confirmSale.getHidden();
+               if (!salevis2) {
+                   console.log("visible detected try show ad")
+                  
+                       localStorage.setItem("acreDiscount1", 1);   //dairyDiscount
+                       localStorage.setItem('MedFarm_LoadAd', 0);
+                       localStorage.setItem('MedFarm_StarCashBoost', 1);
+                       lime.audio.setMute(true);
+                            
+                           lime.scheduleManager.callAfter(function () { 
+                                             if (currentAcre4Sale == 1) {
+                                                 if (player.money >= 2250) {
+                                                     confirmTextSub.setHidden(true);
+                                                     confirmBtn.setHidden(false);
+                                                 }
+       
+                                                 adDairyViewBtn.setHidden(true);
+                                                 adDairyBuyText.setText("Discount Applied!")
+                                                 confirmText.setText("Dairy Farm 2250");
+                                             }
+                                             if (currentAcre4Sale == 2) {
+                                                 if (player.money >= 4500) {
+                                                     confirmTextSub.setHidden(true);
+                                                     confirmBtn.setHidden(false);
+                                                 }
+       
+                                                 adDairyViewBtn.setHidden(true);
+                                                 adDairyBuyText.setText("Discount Applied!");
+                                                 confirmText.setText("Fruit Orchard 4500");
+                                             }
+                           }, this, 2500);
+                   
+               } 
+               });
 
         ////achievement Modal
         var achieveNotif = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 130).setSize(210, 220).setFill(imgArray[91]);
 
-        var achieveText = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(13, 45).setSize(190, 60).setFontSize(16).setText("Blacksmith I");
+        var achieveText = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(13, 45).setSize(190, 60).setFontSize(16).setText("Blacksmith I");
         achieveNotif.appendChild(achieveText);
-        var achieveTextSub = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(30, 123).setSize(150, 60).setFontSize(14).setText("Achieve Text");
+        var achieveTextSub = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(30, 123).setSize(150, 60).setFontSize(14).setText("Achieve Text");
         achieveNotif.appendChild(achieveTextSub);
-        var achieveSC = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ");
+        var achieveSC = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ");
         achieveNotif.appendChild(achieveSC);
         var confirmBtnA = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill(imgArray[21]);
         achieveNotif.appendChild(confirmBtnA);
@@ -5582,9 +6124,9 @@ farming.start = function () {
         /////remove ads modal
         //var removeAdsBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 105).setSize(275, 250).setFill(imgArray[78]);
         //e.appendChild(removeAdsBack);
-        //var removeAdsText = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(20, 15).setSize(230, 60).setFontSize(18).setText("Swipe in from the left opens the Game Menu");
+        //var removeAdsText = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(20, 15).setSize(230, 60).setFontSize(18).setText("Swipe in from the left opens the Game Menu");
         //removeAdsBack.appendChild(removeAdsText);
-        //var removeAdsText2 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(135, 95).setSize(130, 320).setFontSize(18).setText("Here you can SHARE, THEME, RATE, or even REMOVE ADS ");
+        //var removeAdsText2 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(135, 95).setSize(130, 320).setFontSize(18).setText("Here you can SHARE, THEME, RATE, or even REMOVE ADS ");
         //removeAdsBack.appendChild(removeAdsText2);
         //var removeAdsImage = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 55).setSize(120, 185).setFill("images/removeAds.png" );
         //removeAdsBack.appendChild(removeAdsImage);
@@ -5593,26 +6135,26 @@ farming.start = function () {
         ///upgrade notification
         var upgradeNotif = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(20, 50).setSize(270, 390).setFill(imgArray[78]);
         e.appendChild(upgradeNotif);
-        var upgradeNotifText = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(23, 35).setSize(220, 60).setFontSize(18).setText("Medieval Farms v1.5   MARKET TOWN");
+        var upgradeNotifText = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(23, 35).setSize(220, 60).setFontSize(18).setText("Medieval Farms v1.5   MARKET TOWN");
         upgradeNotif.appendChild(upgradeNotifText);
 
-        var upgradeNotifText3 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(20, 80).setSize(220, 20).setFontSize(14).setText("Visit Market Town, but be nice... Rep matters!");
+        var upgradeNotifText3 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(20, 80).setSize(220, 20).setFontSize(14).setText("Visit Market Town, but be nice... Rep matters!");
         upgradeNotif.appendChild(upgradeNotifText3);
-        var upgradeNotifText4 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(20, 120).setSize(220, 20).setFontSize(14).setText("Meet Villagers for quests/rumors");
+        var upgradeNotifText4 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(20, 120).setSize(220, 20).setFontSize(14).setText("Meet Villagers for quests/rumors");
         upgradeNotif.appendChild(upgradeNotifText4);
-        var upgradeNotifText5 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(15, 147).setSize(230, 20).setFontSize(14).setText("Added random LOOT when digging");
+        var upgradeNotifText5 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(15, 147).setSize(230, 20).setFontSize(14).setText("Added random LOOT when digging");
         upgradeNotif.appendChild(upgradeNotifText5);
-        var upgradeNotifText6 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(15, 175).setSize(220, 20).setFontSize(14).setText("New goods IRON, WOOD, BARRELS, and CIDER");
+        var upgradeNotifText6 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(15, 175).setSize(220, 20).setFontSize(14).setText("New goods IRON, WOOD, BARRELS, and CIDER");
         upgradeNotif.appendChild(upgradeNotifText6);
-        var upgradeNotifText7 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(20, 215).setSize(220, 20).setFontSize(14).setText("Added Game SHOP for General and Premium Items");
+        var upgradeNotifText7 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(20, 215).setSize(220, 20).setFontSize(14).setText("Added Game SHOP for General and Premium Items");
         upgradeNotif.appendChild(upgradeNotifText7);
-        var upgradeNotifText8 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(20, 253).setSize(230, 20).setFontSize(14).setText("Added Inventory scene with stats");
+        var upgradeNotifText8 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(20, 253).setSize(230, 20).setFontSize(14).setText("Added Inventory scene with stats");
         upgradeNotif.appendChild(upgradeNotifText8);
-        var upgradeNotifText9 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(20, 280).setSize(220, 20).setFontSize(14).setText("Blacksmith now requires Iron");
+        var upgradeNotifText9 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(20, 280).setSize(220, 20).setFontSize(14).setText("Blacksmith now requires Iron");
         upgradeNotif.appendChild(upgradeNotifText9);
-        var upgradeNotifText10 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(20, 308).setSize(220, 20).setFontSize(14).setText("Added Special Tools in SHOP");
+        var upgradeNotifText10 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(20, 308).setSize(220, 20).setFontSize(14).setText("Added Special Tools in SHOP");
         upgradeNotif.appendChild(upgradeNotifText10);
-        var upgradeNotifText11 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(15, 332).setSize(230, 20).setFontSize(14).setText("Farmers Market is now in town");
+        var upgradeNotifText11 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(15, 332).setSize(230, 20).setFontSize(14).setText("Farmers Market is now in town");
         upgradeNotif.appendChild(upgradeNotifText11);
         //upgradeNotif.setHidden(true);
         var closeUpgradeNotif = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(112, 350).setSize(40, 40).setFill(imgArray[21]);;
@@ -5630,17 +6172,17 @@ farming.start = function () {
         ///Crop Unlock Modal
         var unlockedCropBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(30, 150).setSize(250, 250).setFill(imgArray[78]);
         e.appendChild(unlockedCropBack);
-        var unlockedCropText = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setPosition(10, 35).setSize(230, 60).setFontSize(18).setText("NEW SEEDS TO PLANT!");
+        var unlockedCropText = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setPosition(10, 35).setSize(230, 60).setFontSize(22).setText("NEW SEEDS!");
         unlockedCropBack.appendChild(unlockedCropText);
-        var unlockedCropImage = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(115, 120).setSize(55, 55).setFill("images/" + a.crops[2].harvest);
+        var unlockedCropImage = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(95, 75).setSize(55, 55).setFill("images/" + a.crops[2].harvest);
         unlockedCropBack.appendChild(unlockedCropImage);
-        var unlockedCropText2 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setPosition(0, 190).setSize(200, 50).setFontSize(18).setText("Broccoli ");
+        var unlockedCropText2 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setPosition(26, 155).setSize(200, 50).setFontSize(18).setText("Broccoli ");
         unlockedCropBack.appendChild(unlockedCropText2);
 
         unlockedCropBack.setHidden(true);
-        var upgradeHomeBarnBtn = (new lime.GlossyButton()).setColor("#1ce636").setText("Build").setPosition(125, 200).setSize(45, 30);
+        var upgradeHomeBarnBtn = (new lime.GlossyButton()).setColor("#1ce636").setText("Build").setPosition(125, 200).setSize(45, 28);
         unlockedCropBack.appendChild(upgradeHomeBarnBtn);
-        var upgradeHomeBarnBackBtn = (new lime.GlossyButton()).setColor("#1ce636").setText("").setPosition(125, 265).setSize(40, 40);
+        var upgradeHomeBarnBackBtn = (new lime.GlossyButton()).setColor("#007FFF").setText("").setPosition(125, 265).setSize(40, 40);
         unlockedCropBack.appendChild(upgradeHomeBarnBackBtn);
         var upgradeHomeBarnBackBtnImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-20, -20).setSize(40, 40).setFill(imgArray[21]);
         upgradeHomeBarnBackBtn.appendChild(upgradeHomeBarnBackBtnImg);
@@ -5653,13 +6195,13 @@ farming.start = function () {
 
         var homeBarnCostToolsImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(40, 118).setSize(40, 40).setFill(ImgArrayTools[5]).setHidden(true);
         unlockedCropBack.appendChild(homeBarnCostToolsImg);
-        var homeToolCostLabel = (new lime.Label()).setPosition(60, 175).setSize(25, 25).setText(barnUpgradeCostTools).setFontSize(16).setFontFamily("Comic Sans MS").setFontColor("#000000").setHidden(true);
+        var homeToolCostLabel = (new lime.Label()).setPosition(60, 175).setSize(25, 25).setText(barnUpgradeCostTools).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#000000").setHidden(true);
         unlockedCropBack.appendChild(homeToolCostLabel);
         var homeBarnCostWoodImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(170, 115).setSize(40, 40).setFill("images/" + a.crops[14].harvest).setHidden(true);
         unlockedCropBack.appendChild(homeBarnCostWoodImg);
-        var homeWoodCostLabel = (new lime.Label()).setPosition(190, 175).setSize(25, 25).setText(barnUpgradeCostWood).setFontSize(16).setFontFamily("Comic Sans MS").setFontColor("#000000").setHidden(true);
+        var homeWoodCostLabel = (new lime.Label()).setPosition(190, 175).setSize(25, 25).setText(barnUpgradeCostWood).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#000000").setHidden(true);
         unlockedCropBack.appendChild(homeWoodCostLabel);
-        var homeBarnShortLabel = (new lime.Label()).setPosition(125, 200).setSize(175, 25).setText("You need more Resources").setFontSize(16).setFontFamily("Comic Sans MS").setFontColor("#000000").setHidden(true);
+        var homeBarnShortLabel = (new lime.Label()).setPosition(125, 200).setSize(175, 25).setText("You need more Resources").setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#000000").setHidden(true);
         unlockedCropBack.appendChild(homeBarnShortLabel);
 
         goog.events.listen(confirmBtnA, ["mousedown", "touchstart"], function () {            //for sale pasture
@@ -5696,10 +6238,14 @@ farming.start = function () {
                 homeBlock.setHidden(false); confirmSale.setHidden(false);
 
                 confirmText.setText("Dairy Farm 2500");
-                if (parseInt(player.money) >= 2500) { confirmTextSub.setHidden(true); confirmBtn.setHidden(false); } else { confirmBtn.setHidden(true); }
+                adDairyBuyText.setText("Get 10% off");
+                if (parseInt(player.money) >= 2500 || (parseInt(player.money) >= 2250 && localStorage.getItem("acreDiscount1") == 1)) {
+                    confirmTextSub.setHidden(true); confirmBtn.setHidden(false); 
+                    if (localStorage.getItem("acreDiscount1") == 1) { adDairyBuyText.setText("Discount Applied");  confirmText.setText("Dairy Farm 2250");} else { adDairyBuyText.setText("Get 10% off"); }
+                } else { confirmBtn.setHidden(true); }
             }
         });
-
+        
         goog.events.listen(forSaleO, ["mousedown", "touchstart"], function () {            //for sale orchard
             if (globalModalBlock == 0) {
                 fsClicked = 2;
@@ -5708,9 +6254,17 @@ farming.start = function () {
                     a.updateMoney()
 
                 }, this, 500);
-                homeBlock.setHidden(false); confirmSale.setHidden(false);
-                if (parseInt(player.money) >= 5000) { confirmTextSub.setHidden(true); confirmBtn.setHidden(false); } else { confirmBtn.setHidden(true); };
+                currentAcre4Sale = 2;
                 confirmText.setText("Fruit Orchard 5000");
+                adDairyBuyText.setText("Get 10% off");
+                homeBlock.setHidden(false); confirmSale.setHidden(false);
+                if (parseInt(player.money) >= 5000 || (parseInt(player.money) >= 4500 && localStorage.getItem("acreDiscount1") == 1)) {
+                    confirmTextSub.setHidden(true); confirmBtn.setHidden(false); 
+                    if (localStorage.getItem("acreDiscount1") == 1) { adDairyBuyText.setText("Discount Applied"); confirmText.setText("Fruit Orchard 4500");} else { adDairyBuyText.setText("Get 10% off"); confirmText.setText("Fruit Orchard 5000");}
+                   
+                } else { confirmBtn.setHidden(true); };
+                
+                
             }
         });
 
@@ -5723,9 +6277,12 @@ farming.start = function () {
                 if (confirmIsHid == false) {
                     if (fsClicked == 1) {
                         acres[1].owned = 1;
-                        player.money = player.money - 2500;
+                        var baseprice = 2500;
+                        var discountP = localStorage.getItem("acreDiscount1");
+                        if (discountP) { baseprice = 2250 };
+                        player.money = player.money - baseprice;
                         a.sceneBefore = 2;
-
+                        localStorage.setItem("acreDiscount1", 0);
                         homeCrop = parseInt(b.currentCrop);
                         if (homeCrop > 5 || isNaN(homeCrop) || homeCrop < 0) { homecrop = localStorage.getItem("MedFarms_selectedHomeCrop") };
                         localStorage.setItem("MedFarms_selectedHomeCrop", parseInt(homeCrop));
@@ -5735,26 +6292,31 @@ farming.start = function () {
                         globalModalBlock = 0;
                         homeBlock.setHidden(true);
                         hideAndDelayNavIcons();
-                        c.replaceScene(pastureScene, lime.transitions.SlideInLeft);
-                        sceneActive = 'Pasture';
-                        cowSound.play();
+                    ////go to story scene and then pasture
+                        c.replaceScene(storyScene);
+                        storyChapterText1.setText("The Dairy Pasture").setOpacity(1.0).setHidden(false);
+                        storyChapterText2.setText("This dairy has seen better days, but if we grow hay, the cows will make milk").setOpacity(1.0).setHidden(false);
+                        nextStoryPanel('Pasture');
                         roadLeft.setHidden(false); forSaleP.setHidden(true); confirmSale.setHidden(true);
-
+                        
 
                         lime.scheduleManager.callAfter(function () {
                             a.updateMoney(); checkShortage();
                             globalModalBlock = 0;
-                            try { Enhance.logEvent('level_up'); } catch (err) { console.log("logging failed") };
+                            //try { Enhance.logEvent('level_up'); } catch (err) { console.log("logging failed") };
                         }, this, 2000);
 
 
                     }
                     if (fsClicked == 2) {
                         acres[2].owned = 1;
-                        player.money = player.money - 5000;
+                        var baseprice = 5000;
+                        var discountP = localStorage.getItem("acreDiscount1");
+                        if (discountP) { baseprice = 4500 };
+                        player.money = player.money - baseprice;
                         a.updateMoney();
                         roadRight.setHidden(false); forSaleO.setHidden(true); confirmSale.setHidden(true);
-
+                        localStorage.setItem("acreDiscount1", 0);
                         a.sceneBefore = 3;
                         waterfallSound.play();
                         closeAcresNav();
@@ -5764,9 +6326,12 @@ farming.start = function () {
                         oldCrop = localStorage.getItem("MedFarms_selectedHomeCrop");
                         b.currentCrop = 8;
                         hideAndDelayNavIcons();
-                        c.replaceScene(orchardScene, lime.transitions.SlideInRight);
-                        lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
-                        sceneActive = 'Orchard';
+                             ////go to story scene and then pasture
+                             c.replaceScene(storyScene);
+                             storyChapterText1.setText("The Orchard").setOpacity(1.0).setHidden(false);
+                             storyChapterText2.setText("Tend your fruit trees, they can be useful in lots of ways").setOpacity(1.0).setHidden(false);
+                             nextStoryPanel('Orchard');
+                       
                         globalModalBlock = 0;
                         homeBlock.setHidden(true);
 
@@ -5805,26 +6370,26 @@ farming.start = function () {
         //var toolCostImgToShow = ImgArrayTools[1]
         goog.events.listen(barnUnlock3, ["mousedown", "touchstart"], function () {
 
-            if (player.barnLevel == 1) { barnUpgradeCostTools = 100; barnUpgradeCostWood = 50; secondsToUpgrade = 60; nextBarn = imgArray6[1].src }
-            if (player.barnLevel == 2) { barnUpgradeCostTools = 250; barnUpgradeCostWood = 100; secondsToUpgrade = 120; nextBarn = imgArray6[2].src }
-            else if (player.barnLevel == 3) { barnUpgradeCostTools = 500; barnUpgradeCostWood = 150; secondsToUpgrade = 180; nextBarn = imgArray6[3].src }
+            if (player.barnLevel == 1) { barnUpgradeCostTools = 100; barnUpgradeCostWood = 50; secondsToUpgrade = 90; nextBarn = imgArray6[1].src }
+            if (player.barnLevel == 2) { barnUpgradeCostTools = 250; barnUpgradeCostWood = 100; secondsToUpgrade = 180; nextBarn = imgArray6[2].src }
+            else if (player.barnLevel == 3) { barnUpgradeCostTools = 500; barnUpgradeCostWood = 150; secondsToUpgrade = 240; nextBarn = imgArray6[3].src }
             else if (player.barnLevel == 4) { barnUpgradeCostTools = 1250; barnUpgradeCostWood = 250; secondsToUpgrade = 300; nextBarn = imgArray6[4].src }
             else { barnUpgradeCostTools = 100; }
-            unlockedCropBack.setHidden(false); unlockedCropText.setText("Upgrade Barn to Level " + (player.barnLevel + 1));
-            unlockedCropText2.setText("Unlocks " + a.crops[(player.barnLevel + 1)].name).setPosition(30, 65);
+            unlockedCropBack.setHidden(false); unlockedCropText.setText("Upgrade Barn");
+            unlockedCropText2.setText("Unlocks " + a.crops[(player.barnLevel + 1)].name).setPosition(30, 65).setFontColor("#f0f2f5");
             unlockedCropImage.setFill("images/" + a.crops[(player.barnLevel + 1)].harvest).setPosition(100, 95).setSize(55, 55);
 
             unlockedCropBack.setHidden(false); upgradeHomeBarnBtn.setHidden(false); upgradeHomeBarnBackBtn.setHidden(false); homeBarnCostToolsImg.setHidden(false);
             homeBarnCostWoodImg.setHidden(false); homeWoodCostLabel.setHidden(false); homeToolCostLabel.setHidden(false);
             homeBarnCostToolsImg.setAnchorPoint(0, 0).setPosition(40, 118).setSize(40, 40).setFill(ImgArrayTools[5]).setHidden(false);
             //unlockedCropBack.appendChild(homeBarnCostToolsImg);
-            homeToolCostLabel.setPosition(60, 175).setSize(25, 25).setText(player.tools + "/" + barnUpgradeCostTools).setFontSize(16).setFontFamily("Comic Sans MS").setFontColor("#000000");
+            homeToolCostLabel.setPosition(60, 175).setSize(25, 25).setText(player.tools + "/" + barnUpgradeCostTools).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#000000");
             //unlockedCropBack.appendChild(homeToolCostLabel);
             homeBarnCostWoodImg.setAnchorPoint(0, 0).setPosition(170, 115).setSize(40, 40).setFill("images/" + a.crops[14].harvest);
             //unlockedCropBack.appendChild(homeBarnCostWoodImg);
-            homeWoodCostLabel.setPosition(190, 175).setSize(25, 25).setText(player.cropsStored[14].stored + "/" + barnUpgradeCostWood).setFontSize(16).setFontFamily("Comic Sans MS").setFontColor("#000000");
+            homeWoodCostLabel.setPosition(190, 175).setSize(25, 25).setText(player.cropsStored[14].stored + "/" + barnUpgradeCostWood).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#000000");
             //unlockedCropBack.appendChild(homeWoodCostLabel);
-            homeBarnShortLabel.setPosition(125, 200).setSize(175, 25).setText("You need more Resources").setFontSize(16).setFontFamily("Comic Sans MS").setFontColor("#000000");
+            homeBarnShortLabel.setPosition(125, 200).setSize(175, 25).setText("You need more Resources").setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#000000");
             unlockedCropBack.appendChild(homeBarnShortLabel);
             if (barnUpgradeCostTools > player.tools || barnUpgradeCostWood > parseInt(player.cropsStored[14].stored)) {
                 upgradeHomeBarnBtn.setHidden(true);
@@ -5840,7 +6405,7 @@ farming.start = function () {
             if (upgradeHomeBarnBackBtnHid == false) {
                 unlockedCropBack.setHidden(true); upgradeHomeBarnBtn.setHidden(true); upgradeHomeBarnBackBtn.setHidden(true); homeBarnCostToolsImg.setHidden(true);
                 homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);
-                unlockedCropText.setText("NEW SEEDS TO PLANT!");
+                unlockedCropText.setText("NEW SEEDS!");
             }
 
         });
@@ -5849,9 +6414,9 @@ farming.start = function () {
             //console.log(upgradeHomeBarnBtnHid + " hidden upgradeHomeBarnBtn");
 
             if (upgradeHomeBarnBtnHid == false) {
-                if (player.barnLevel == 1) { barnUpgradeCostTools = 100; barnUpgradeCostWood = 50; secondsToUpgrade = 60; nextBarn = imgArray6[1].src }
-                if (player.barnLevel == 2) { barnUpgradeCostTools = 250; barnUpgradeCostWood = 100; secondsToUpgrade = 120; nextBarn = imgArray6[2].src }
-                else if (player.barnLevel == 3) { barnUpgradeCostTools = 500; barnUpgradeCostWood = 150; secondsToUpgrade = 180; nextBarn = imgArray6[3].src }
+                if (player.barnLevel == 1) { barnUpgradeCostTools = 100; barnUpgradeCostWood = 50; secondsToUpgrade = 90; nextBarn = imgArray6[1].src }
+                if (player.barnLevel == 2) { barnUpgradeCostTools = 250; barnUpgradeCostWood = 100; secondsToUpgrade = 150; nextBarn = imgArray6[2].src }
+                else if (player.barnLevel == 3) { barnUpgradeCostTools = 500; barnUpgradeCostWood = 150; secondsToUpgrade = 210; nextBarn = imgArray6[3].src }
                 else if (player.barnLevel == 4) { barnUpgradeCostTools = 1250; barnUpgradeCostWood = 250; secondsToUpgrade = 300; nextBarn = imgArray6[4].src }
                 else { barnUpgradeCostTools = 100; }
                 unlockedCropBack.setHidden(true);
@@ -5860,24 +6425,36 @@ farming.start = function () {
                 homeBarnCostToolsImg.setHidden(true);
                 homeBarnCostWoodImg.setHidden(true);
                 homeWoodCostLabel.setHidden(true);
-                unlockedCropText.setText("NEW SEEDS TO PLANT!")
+                unlockedCropText.setText("NEW SEEDS!")
                 homeBarnShortLabel.setHidden(true);
                 ///fire home barn upgrade
+                
                 upgradeHomeBarn(barnUpgradeCostTools, barnUpgradeCostWood);
               
             }
         });
 
 
-
+        var adBoostBarn = 0;
+        var adBoostBarnOnce = 0;          
+        goog.events.listen(speedBarnAdBtn, ["mousedown", "touchstart"], function () {
+            var isVisSpeedAd = scaffoldH.getHidden();
+            if (isVisSpeedAd == false){
+                adBoostBarn = 1; speedBarnAdBtn.setHidden(true);
+                localStorage.setItem('MedFarm_LoadAd', 1);
+                localStorage.setItem('MedFarm_StarCashBoost', 0);
+            }
+       
+             });
         function upgradeHomeBarn(barnUpgradeCostTools, barnUpgradeCostWood) {          //barnUpgrades    barn Upgrades
 
             //console.log("fired barn upgrade");
             if (barnUpRunningHome == 0) {
 
-
+               
                 if (player.tools >= barnUpgradeCostTools && parseInt(player.barnLevel) < 5 && globalModalBlock == 0 && parseInt(player.cropsStored[14].stored) >= barnUpgradeCostWood) {
                     toolMoverLabel.setText(secondsToUpgrade);
+                    speedBarnAdBtn.setHidden(false);
                     barnUnlock3.setHidden(true);
                     barnUpRunningHome = 1;
                     player.tools = player.tools - barnUpgradeCostTools;
@@ -5898,32 +6475,45 @@ farming.start = function () {
                     var upCloudW = 100;
                     var upCloudX = 90;
                     var upCloudY = 10;
+                    var tickerBarnUp = 0;
+                    var hammerSound2 = hammerSound;
+      
                     lime.scheduleManager.scheduleWithDelay(function () {
                         //add upgrade anim
-
-                        upgradeCloud.setPosition(upCloudX, upCloudY).setSize(upCloudW, 200)
-                        upCloudW = upCloudW + 10;
-                        upCloudX = upCloudX - 5;
-                        upCloudY = upCloudY - 5
-                        if (upCloudX < 80) { upCloudX = 100; upCloudY = 10; upCloudW = 100; }
-                        currentRotate = currentRotate + 10;
-                        if (currentRotate > 35) { currentRotate = -10; };
-                        toolMover.setRotation(currentRotate);
-
-                    }, this, 250, secondsToUpgrade * 4)
+                        if (secondsToUpgrade > 0){
+                            upgradeCloud.setPosition(upCloudX, upCloudY).setSize(upCloudW, 200)
+                            upCloudW = upCloudW + 8;
+                            upCloudX = upCloudX - 4;
+                            upCloudY = upCloudY - 4
+                            if (upCloudX < 80) { upCloudX = 100; upCloudY = 10; upCloudW = 100; }
+                            currentRotate = currentRotate + 10;
+                            if (currentRotate > 35) { currentRotate = -10; };
+                            toolMover.setRotation(currentRotate);
+                        }
+              
+                    
+                    }, this, 200, secondsToUpgrade * 5)
                     //upgrade countdown timer
 
+                    function homeBarnUpScheduled(){
+                        if(adBoostBarn == 1 && adBoostBarnOnce == 0){
+                            secondsToUpgrade = 15;
+                            if(secondsToUpgrade < 0){secondsToUpgrade = 2;};
+                            adBoostBarnOnce = 1;
 
-                    lime.scheduleManager.scheduleWithDelay(function () {
-                        //add upgrade animim
+                        }
                         secondsToUpgrade = secondsToUpgrade - 1;
+                        tickerBarnUp++;
+                        if (tickerBarnUp > 3){ if (sceneActive == 'Home'){  hammerSound.play(); };};
+                        if (tickerBarnUp > 4){ tickerBarnUp = 0; if (sceneActive == 'Home'){  hammerSound2.play();};};
                         upgradesInProgress.buildings[0].timeLeft = secondsToUpgrade;
                         upgradesInProgress.buildings[0].currentBarnLevel = player.barnLevel;
                         localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
 
                         toolMoverLabel.setText(secondsToUpgrade);
 
-                        if (secondsToUpgrade <= 0) {
+                        if (secondsToUpgrade == 0) {
+                            hammerSound.stop();
                             barnUnlock3.setHidden(true);            //barnUnlockBtn.setHidden(true);
                             player.barnLevel = player.barnLevel + 1;
 
@@ -5939,7 +6529,7 @@ farming.start = function () {
                             localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
                             //console.log("Barn timer expired")
                             localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-
+                            
                             toolMoverLabel.setHidden(true); scaffoldH.setHidden(true); upgradeCloud.setHidden(true); upgradeHomeBarnBtn.setHidden(true);
                             if (player.barnLevel == 2) {
                                 unlockedCropBack.setHidden(false);
@@ -5948,25 +6538,30 @@ farming.start = function () {
                                 unlockedCropImage.setFill("images/" + a.crops[2].harvest).setPosition(100, 95).setSize(55, 55);
 
                                 barnUnlock3.setHidden(false);
-                                homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); homeToolCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);
+                                homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true); 
+                                homeToolCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);
+                                
                             }
                             else if (player.barnLevel == 3) {
-                                barn.setSize(135, 160).setFill(imgArray6[2]).setPosition(85, -6); unlockedCropBack.setHidden(false);
+                                barn.setSize(135, 160).setFill(imgArray6[2]).setPosition(85, -4); unlockedCropBack.setHidden(false);
                                 unlockedCropText2.setText("Eggplant"); unlockedCropImage.setFill("images/" + a.crops[3].harvest).setPosition(100, 95).setSize(55, 55);
                                 barnUnlock3.setHidden(false); homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true);
                                 homeWoodCostLabel.setHidden(true); homeToolCostLabel.setHidden(true); homeBarnShortLabel.setHidden(true);
+                                
                             }
                             else if (player.barnLevel == 4) {
-                                barn.setSize(135, 161).setFill(imgArray6[3]).setPosition(86, -9); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Peppers");
+                                barn.setSize(135, 161).setFill(imgArray6[3]).setPosition(85, -5); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Peppers");
                                 unlockedCropImage.setFill("images/" + a.crops[4].harvest).setPosition(100, 95).setSize(55, 55); barnUnlock3.setHidden(false);
                                 homeBarnCostToolsImg.setHidden(true); homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true);
                                 homeBarnShortLabel.setHidden(true); homeToolCostLabel.setHidden(true);
+                                
                             }
                             else if (player.barnLevel == 5) {
-                                barn.setFill(imgArray6[4]).setPosition(80, -18).setSize(149, 174); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest).setPosition(100, 95).setSize(55, 55);
-                                barnUnlock3.setHidden(true); barn.setPosition(86, 4).setSize(134, 155); homeBarnCostToolsImg.setHidden(true);
+                                barn.setFill(imgArray6[4]).setPosition(79, -8).setSize(149, 170); unlockedCropBack.setHidden(false); unlockedCropText2.setText("Corn"); unlockedCropImage.setFill("images/" + a.crops[5].harvest).setPosition(100, 95).setSize(55, 55);
+                                barnUnlock3.setHidden(true); barn.setPosition(86, 10).setSize(134, 155); homeBarnCostToolsImg.setHidden(true);
                                 homeBarnCostWoodImg.setHidden(true); homeWoodCostLabel.setHidden(true);
                                 homeBarnShortLabel.setHidden(true); homeToolCostLabel.setHidden(true);
+                               
                                 //remove handlers no longer needed        
                                 try {
                                     goog.events.removeAll(upgradeHomeBarnBtn);
@@ -5977,14 +6572,25 @@ farming.start = function () {
 
                             };
                             homeBarnShortLabel.setText("Use Seeds menu to plant").setHidden(false);
-
-                            barnUnlock.setText("Lvl " + player.barnLevel + "/5");
+                            
+                            // barnUnlock.setText( player.barnLevel + "/5");
+                            showMFToast("Barn Upgraded",imgArray[30].src,'Home', 3000);
                             lime.scheduleManager.callAfter(function () {
                                 unlockedCropBack.setHidden(true);
                                 checkAchieves2();
+                                adBoostBarn = 0; adBoostBarnOnce = 0;
                                 homeBarnShortLabel.setText("You need more resources").setHidden(true);
-                            }, this, 2000);
+                            }, this, 2500);
                             barnUpRunningHome = 0;
+                        }
+                   
+                    };
+                    lime.scheduleManager.scheduleWithDelay(function () {
+                        if (secondsToUpgrade >= 0){
+                            homeBarnUpScheduled();
+                        };
+                        if (secondsToUpgrade < 0) {
+                            lime.scheduleManager.unschedule(homeBarnUpScheduled,this);
                         }
 
                     }, this, 1000, secondsToUpgrade)
@@ -6008,12 +6614,11 @@ farming.start = function () {
         };
         //c.replaceScene(d);
         //u.setHidden(false);
-        var costDisplay = (new lime.Label()).setPosition(156, 180).setSize(50, 25).setText("-50").setFontSize(14).setFontFamily("Comic Sans MS").setFontColor("#e1f00e").setFontWeight(600);
+        var costDisplay = (new lime.Label()).setPosition(156, 180).setSize(50, 25).setText("-50").setFontSize(14).setFontFamily("Proxima Nova").setFontColor("#e1f00e").setFontWeight(600);
         e.appendChild(costDisplay);
         var costCoin = (new lime.Sprite()).setPosition(30, -8).setSize(30, 30).setFill(imgArray11[0]); costDisplay.appendChild(costCoin);
         costDisplay.setHidden(true);
-
-
+ 
         ///New tutorial Glass cover
         var cropBoostHint = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(1, -2).setSize(a.width - 2, a.height).setFill("images/UI/boostHint.png");
         e.appendChild(cropBoostHint);
@@ -6022,8 +6627,8 @@ farming.start = function () {
         var dailyRewardLayer = (new lime.Layer).setAnchorPoint(0, 0);
         var dailyRewardBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(5, 45).setSize(a.width - 10, a.height - 135).setFill(imgArray[80]);
         dailyRewardLayer.appendChild(dailyRewardBack);
-        var dailyLoginHeader = (new lime.Label()).setText("Daily Login Bonus ").setFontFamily("ComicSans MS").setFontSize(22).setPosition(160, 23);
-        var dailyLoginHeaderSub = (new lime.Label()).setText("Return each day to earn greater rewards").setFontFamily("ComicSans MS").setFontSize(16).setPosition(150, 53);
+        var dailyLoginHeader = (new lime.Label()).setText("Daily Login Bonus ").setFontFamily("Proxima Nova").setFontSize(22).setPosition(155, 23);
+        var dailyLoginHeaderSub = (new lime.Label()).setText("Return each day for rewards").setFontFamily("Proxima Nova").setFontSize(16).setPosition(150, 53);
         dailyRewardBack.appendChild(dailyLoginHeader);
         dailyRewardBack.appendChild(dailyLoginHeaderSub);
         var day1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 68).setSize(34, 85).setFill("#bfbfbf");
@@ -6040,13 +6645,13 @@ farming.start = function () {
         dailyRewardBack.appendChild(day5);
         dailyRewardBack.appendChild(day6);
         dailyRewardBack.appendChild(day7);
-        var dailyLoginDay1 = (new lime.Label()).setText("1").setFontFamily("ComicSans MS").setFontSize(16).setPosition(17, 14);
-        var dailyLoginDay2 = (new lime.Label()).setText("2").setFontFamily("ComicSans MS").setFontSize(16).setPosition(17, 14);
-        var dailyLoginDay3 = (new lime.Label()).setText("3").setFontFamily("ComicSans MS").setFontSize(16).setPosition(17, 14);
-        var dailyLoginDay4 = (new lime.Label()).setText("4").setFontFamily("ComicSans MS").setFontSize(16).setPosition(17, 14);
-        var dailyLoginDay5 = (new lime.Label()).setText("5").setFontFamily("ComicSans MS").setFontSize(16).setPosition(17, 14);
-        var dailyLoginDay6 = (new lime.Label()).setText("6").setFontFamily("ComicSans MS").setFontSize(16).setPosition(17, 14);
-        var dailyLoginDay7 = (new lime.Label()).setText("7").setFontFamily("ComicSans MS").setFontSize(16).setPosition(17, 14);
+        var dailyLoginDay1 = (new lime.Label()).setText("1").setFontFamily("Proxima Nova").setFontSize(16).setPosition(17, 14);
+        var dailyLoginDay2 = (new lime.Label()).setText("2").setFontFamily("Proxima Nova").setFontSize(16).setPosition(17, 14);
+        var dailyLoginDay3 = (new lime.Label()).setText("3").setFontFamily("Proxima Nova").setFontSize(16).setPosition(17, 14);
+        var dailyLoginDay4 = (new lime.Label()).setText("4").setFontFamily("Proxima Nova").setFontSize(16).setPosition(17, 14);
+        var dailyLoginDay5 = (new lime.Label()).setText("5").setFontFamily("Proxima Nova").setFontSize(16).setPosition(17, 14);
+        var dailyLoginDay6 = (new lime.Label()).setText("6").setFontFamily("Proxima Nova").setFontSize(16).setPosition(17, 14);
+        var dailyLoginDay7 = (new lime.Label()).setText("7").setFontFamily("Proxima Nova").setFontSize(16).setPosition(17, 14);
         day1.appendChild(dailyLoginDay1);
         day2.appendChild(dailyLoginDay2);
         day3.appendChild(dailyLoginDay3);
@@ -6092,37 +6697,69 @@ farming.start = function () {
 
         var rewardLabelBack1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(25, 205).setSize(245, 26).setFill("#8b4513");
         dailyRewardLayer.appendChild(rewardLabelBack1)
-        var rewardLabel1Txt1 = (new lime.Label()).setText("Today's Reward: ").setFontFamily("ComicSans MS").setFontSize(16).setPosition(60, 14).setFontColor("azure");
+        var rewardLabel1Txt1 = (new lime.Label()).setText("Today's Reward: ").setFontFamily("Proxima Nova").setFontSize(16).setPosition(60, 14).setFontColor("azure");
         rewardLabelBack1.appendChild(rewardLabel1Txt1)
-        var rewardLabel1Txt2 = (new lime.Label()).setText(" ").setFontFamily("ComicSans MS").setFontSize(20).setPosition(188, 15).setFontColor("azure");
+        var rewardLabel1Txt2 = (new lime.Label()).setText(" ").setFontFamily("Proxima Nova").setFontSize(20).setPosition(188, 15).setFontColor("azure");
         rewardLabelBack1.appendChild(rewardLabel1Txt2);
 
+        var dailyAdViewBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(80, 275).setSize(135, 63).setFill(imgArray[108]);
+        dailyRewardLayer.appendChild(dailyAdViewBtn);
+        var rewardLabel1Txt3 = (new lime.Label()).setText("Double Your Bonus!").setFontFamily("Proxima Nova").setFontSize(24).setPosition(70, -10).setFontColor("azure");
+        dailyAdViewBtn.appendChild(rewardLabel1Txt3);
+        var dailyDouble = 1;
+        goog.events.listen(dailyAdViewBtn, ["mousedown", "touchstart"], function () {     
+            //for sale pasture ad discount
+             var adVisDaily = dailyRewardLayer.getHidden();
+                if (!adVisDaily) {
+                    console.log("visible detected try show ad")
+               
+                    dailyDouble = 2; 
+                    localStorage.setItem('MedFarm_LoadAd', 0);
+                    localStorage.setItem('MedFarm_StarCashBoost', 1);
+                    lime.audio.setMute(true); 
+                    lime.scheduleManager.callAfter(function () {
+                        
+                   
+                        switch (daysInRow) {
+                            case 0: rewardLabel1Txt2.setText("+200 Coins").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00");
+                                
+                                break;
+                            case 1: rewardLabel1Txt2.setText("+300 Tools").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00");
+                            
+                                break;
+                            case 2: rewardLabel1Txt2.setText("+10 Stars").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00");
+                                rewardCheck2.setHidden(false); day2.setFill("#00ff00"); rewardCheck3.setHidden(false); day3.setFill("#00ff00");
+                                
+                                break;
+                            case 3: rewardLabel1Txt2.setText("+500 Coins").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00");
+                                rewardCheck2.setHidden(false); day2.setFill("#00ff00"); rewardCheck3.setHidden(false); day3.setFill("#00ff00"); rewardCheck4.setHidden(false); day4.setFill("#00ff00");
+                            
+                                break;
+                            case 4: rewardLabel1Txt2.setText("+20 Stars").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00");
+                                rewardCheck3.setHidden(false); day3.setFill("#00ff00"); rewardCheck4.setHidden(false); day4.setFill("#00ff00"); rewardCheck5.setHidden(false); day5.setFill("#00ff00");
+                                
+                                break;
+                            case 5: rewardLabel1Txt2.setText("+300 Wood").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00");
+                                rewardCheck3.setHidden(false); day3.setFill("#00ff00"); rewardCheck4.setHidden(false); day4.setFill("#00ff00"); rewardCheck5.setHidden(false); day5.setFill("#00ff00");
+                                rewardCheck6.setHidden(false); day6.setFill("#00ff00");
+                            
+                                break;
+                            case 6: rewardLabel1Txt2.setText("+2,000 Coins").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00");
+                                rewardCheck3.setHidden(false); day3.setFill("#00ff00"); rewardCheck4.setHidden(false); day4.setFill("#00ff00"); rewardCheck5.setHidden(false); day5.setFill("#00ff00");
+                                rewardCheck6.setHidden(false); day6.setFill("#00ff00"); rewardCheck7.setHidden(false); day7.setFill("#00ff00");
+                            
+                                break;
+                            default: console.log("none");
+
+                        }
+                    }, this, 3000);
+
+                    dailyAdViewBtn.setOpacity(0.3);
+                } 
+        });
 
 
 
-
-        var appSection = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(12, 250).setSize(285, 150).setFill("").setHidden(true);
-        dailyRewardLayer.appendChild(appSection);
-        var rewardLabel1Txt3 = (new lime.Label()).setText("Earn free Stars daily when you have other GuiGhost Games installed").setFontFamily("ComicSans MS").setFontSize(14).setPosition(145, 15).setSize(285, 50);
-        appSection.appendChild(rewardLabel1Txt3);
-
-        var stackerPlayLogo = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 28).setSize(160, 40).setFill(imgArray[54]);
-        appSection.appendChild(stackerPlayLogo);
-        var stackerPlay = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(205, 36).setSize(80, 27).setFill(imgArray[53]);
-        appSection.appendChild(stackerPlay);
-        var stackerStar = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(2, 27).setSize(38, 38).setFill(imgArray[38]);
-        appSection.appendChild(stackerStar);
-        var stackerStarX = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(4, 30).setSize(32, 32).setFill(imgArray[56]);
-        appSection.appendChild(stackerStarX);
-
-        var starMatchPlayLogo = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 75).setSize(160, 40).setFill(imgArray[55]);
-        appSection.appendChild(starMatchPlayLogo);
-        var starMatchPlay = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(205, 81).setSize(80, 27).setFill(imgArray[53]);
-        appSection.appendChild(starMatchPlay);
-        var starMatchStar = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(2, 75).setSize(38, 38).setFill(imgArray[38]);
-        appSection.appendChild(starMatchStar);
-        var starMatchStarX = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(4, 79).setSize(32, 32).setFill(imgArray[56]);
-        appSection.appendChild(starMatchStarX);
 
 
         var collectDaily = (new lime.GlossyButton()).setColor("#00ff00").setText("Collect Rewards").setPosition(150, a.height - 145).setSize(160, 28);
@@ -6172,60 +6809,7 @@ farming.start = function () {
             }
         });
 
-        goog.events.listen(stackerPlay, ["mousedown", "touchstart"], function (e) {
-            var isHidDW3 = dailyRewardLayer.getHidden();
-            if (!isHidDW3) {
-                whichMore = 'stack'; openLink();
-                e.event.stopPropagation();
-                e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-                });
-            }
-        });
-        goog.events.listen(starMatchPlay, ["mousedown", "touchstart"], function (e) {
-            var isHidDW4 = dailyRewardLayer.getHidden();
-            if (!isHidDW4) {
-                whichMore = 'star'; openLink();
-                e.event.stopPropagation();
-                e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
-                });
-            }
-        });
-        // /detect apps////
-        var stackInstalled = false;
-        var stMatchInstalled = false;
-        function checkForApps() {
 
-            var deviceType2 = (navigator.userAgent.match(/iPad/i)) == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i)) == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
-
-            if (deviceType2 == "Android") {
-                appSection.setHidden(false);
-                try {
-                    window.plugins.launcher.canLaunch({ packageName: 'com.GuiGhostGames.StackerBoB' },
-                        function () { stackInstalled = true; },     ///success call
-                        function () { console.log("failed check for stack inside") }      ///fail call
-                    );
-                } catch (err) { console.log("failed stack outside") };
-
-
-
-                try {
-                    window.plugins.launcher.canLaunch({ packageName: 'com.GuiGhostGames.StarMatch2048' },
-                        function () { stMatchInstalled = true; },     ///success call
-                        function () { console.log("stMatch install check from canLaunch failed insisde") }      ///fail call
-                    );
-                } catch (err) { console.log("stMatch install check from canLaunch failed outside") };
-            } else { appSection.setHidden(true); moreGameBtn.setHidden(true); }
-
-
-        };
-
-
-        function removePlayListeners(numb) {
-            if (numb == 1) { try { goog.events.removeAll(stackerPlay); } catch (err) { } }
-
-
-            if (numb == 2) { try { goog.events.removeAll(starMatchPlay); } catch (err) { } }
-        }
 
 
         var dailyStars = 0;
@@ -6239,31 +6823,6 @@ farming.start = function () {
 
 
         function checkDailyLogin() {
-
-            if (stMatchInstalled == true && stackInstalled == true) {
-                dailyStars = 10;
-                stackerStarX.setHidden(true);
-                stackerPlay.setSize(30, 30).setFill(imgArray[35]).setPosition(225, 36); removePlayListeners(1);
-                starMatchStarX.setHidden(true);
-                starMatchPlay.setSize(30, 30).setFill(imgArray[35]).setPosition(225, 81); removePlayListeners(2);
-                try { Enhance.logEvent('achieved_trifecta'); } catch (err) { console.log("logging failed") };
-            }
-            else if (stackInstalled == true) {
-                stackerPlay.setSize(30, 30).setFill(imgArray[35]).setPosition(225, 36); removePlayListeners(1);
-                dailyStars = 5;
-                stackerStarX.setHidden(true);
-                try { Enhance.logEvent('achieved_stacker'); } catch (err) { console.log("logging failed") };
-            }
-            else if (stMatchInstalled == true) {
-
-                dailyStars += 5;
-                starMatchPlay.setSize(30, 30).setFill(imgArray[35]).setPosition(225, 81); removePlayListeners(2);
-                starMatchStarX.setHidden(true);
-                try { Enhance.logEvent('achieved_starMatch'); } catch (err) { console.log("logging failed") };
-            }
-
-
-
             rewardCheck1.setHidden(true);
             rewardCheck2.setHidden(true);
             rewardCheck3.setHidden(true);
@@ -6271,7 +6830,7 @@ farming.start = function () {
             rewardCheck5.setHidden(true);
             rewardCheck6.setHidden(true);
             rewardCheck7.setHidden(true);
-
+            checkLandSlide();
             var now = new Date();
             var start = new Date(now.getFullYear(), 0, 0);
             var diff = now - start;
@@ -6280,17 +6839,20 @@ farming.start = function () {
             //console.log('Day of year: ' + today);
             localStorage.setItem("lastLoginDay", today);
             if (lastLoginDay > 0) {
-                console.log("lastloginday " + lastLoginDay)
-                console.log("today " + today)
+                // console.log("lastloginday " + lastLoginDay)
+                // console.log("today " + today)
                 if (lastLoginDay == today) {
+                    sparkleStarBtn.setHidden(false);
                     collectDaily.setHidden(true);
                     dailyRewardLayer.setHidden(true);
-
-
-                }
-                else if (lastLoginDay < (today - 1)) {
+                    enteredPrizeToday =  localStorage.getItem('enteredPrizeToday');
+                    if(enteredPrizeToday == 1){document.getElementById('weeklyPrize').style.display = 'none';}else {document.getElementById('weeklyPrize').style.display = 'block'; };
+                    
+                }else if (lastLoginDay < (today - 1)) {
                     console.log("more than 1 day ago");
-
+                    sparkleStarBtn.setHidden(false);
+                    enteredPrizeToday = 0;
+                    localStorage.setItem('enteredPrizeToday', 0);
                     //been too long - start over on day 1 reward
                     dailyRewardLayer.setHidden(false);
                     daysInRow = 0;
@@ -6299,9 +6861,9 @@ farming.start = function () {
                     rewardCheck2.setHidden(true); rewardCheck3.setHidden(true); rewardCheck4.setHidden(true);
                     rewardCheck5.setHidden(true); rewardCheck6.setHidden(true); rewardCheck7.setHidden(true);
                     collectDaily.setHidden(false);
-                }
-                else if (lastLoginDay == (today - 1)) {
+                }else if (lastLoginDay == (today - 1)) {
                     ///daily reward condition is met - show the rewards   
+                    sparkleStarBtn.setHidden(false);
                     dailyRewardLayer.setHidden(false);
                     collectDaily.setHidden(false);
                     if (daysInRow > 6) { daysInRow = 0; localStorage.setItem("daysInRow", 0); };
@@ -6330,7 +6892,7 @@ farming.start = function () {
                             rewardCheck6.setHidden(false); day6.setFill("#00ff00");
                             try { Enhance.logEvent('achieved_Daily6'); } catch (err) { console.log("logging failed") };
                             break;
-                        case 6: rewardLabel1Txt2.setText("+10,000 Coins").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00");
+                        case 6: rewardLabel1Txt2.setText("+1,000 Coins").setFontColor("#E8FC08"); rewardCheck1.setHidden(false); day1.setFill("#00ff00"); rewardCheck2.setHidden(false); day2.setFill("#00ff00");
                             rewardCheck3.setHidden(false); day3.setFill("#00ff00"); rewardCheck4.setHidden(false); day4.setFill("#00ff00"); rewardCheck5.setHidden(false); day5.setFill("#00ff00");
                             rewardCheck6.setHidden(false); day6.setFill("#00ff00"); rewardCheck7.setHidden(false); day7.setFill("#00ff00");
                             try { Enhance.logEvent('achieved_Daily7'); } catch (err) { console.log("logging failed") };
@@ -6354,13 +6916,13 @@ farming.start = function () {
             purchaseSound.play();
 
             switch (daysInRow) {
-                case 0: player.money = parseInt(player.money) + 100; a.updateMoney(); break;
-                case 1: player.tools = parseInt(player.tools) + 150; a.updateTools(); break;
-                case 2: starCash = parseInt(starCash) + 5; break;
-                case 3: player.money = parseInt(player.money) + 250; a.updateMoney(); break;
-                case 4: starCash = parseInt(starCash) + 10; break;
-                case 5: player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 150; a.updateStored(); break;
-                case 6: player.money = parseInt(player.money) + 10000; a.updateMoney(); break;
+                case 0: player.money = parseInt(player.money) + (100 * dailyDouble); a.updateMoney(); break;
+                case 1: player.tools = parseInt(player.tools) + (150 * dailyDouble); a.updateTools(); break;
+                case 2: starCash = parseInt(starCash) + (5 * dailyDouble); document.getElementById("starCashOuterLabel").innerHTML = starCash; break;
+                case 3: player.money = parseInt(player.money) + (250 * dailyDouble); a.updateMoney(); break;
+                case 4: starCash = parseInt(starCash) + (10 * dailyDouble); document.getElementById("starCashOuterLabel").innerHTML = starCash; break;
+                case 5: player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + (150 * dailyDouble); a.updateStored(); break;
+                case 6: player.money = parseInt(player.money) + (1000 * dailyDouble); a.updateMoney(); break;
                 default: console.log("none");
 
             }
@@ -6368,13 +6930,15 @@ farming.start = function () {
             localStorage.setItem("daysInRow", daysInRow);
 
             starCash = parseInt(starCash) + dailyStars;
-            document.getElementById("starCashOuterLabel").innerHTML = starCash;
+            
 
             //collectBtnDaily.style.display = 'none';
         }
 
 
 
+
+        
 
 
         //////////seed scene///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -6388,9 +6952,9 @@ farming.start = function () {
         e.appendChild(f);
         seedSceneBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, 40).setFill(imgArray[75]);
         e.appendChild(seedSceneBack);
-        seedSceneLabel = (new lime.Label()).setText("Change Seeds to Plant ").setFontFamily("ComicSans MS").setFontColor("#E8FC08").setFontSize(22).setPosition(155, 23);
+        seedSceneLabel = (new lime.Label()).setText("Change Seeds to Plant ").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setFontSize(22).setPosition(155, 23);
         e.appendChild(seedSceneLabel);
-        //seedSceneLabel2 = (new lime.Label()).setText("Select image to plant that crop ").setFontFamily("ComicSans MS").setFontColor("#E8FC08").setFontSize(12).setPosition(155, 28);
+        //seedSceneLabel2 = (new lime.Label()).setText("Select image to plant that crop ").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setFontSize(12).setPosition(155, 28);
         //e.appendChild(seedSceneLabel2);
         seedSceneSeeds1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(5, 1).setSize(40, 40).setFill("images/grain.png");
         e.appendChild(seedSceneSeeds1);
@@ -6398,6 +6962,7 @@ farming.start = function () {
         e.appendChild(seedSceneSeeds2);
 
         function openSeedScene() {
+            
             if (globalModalBlock == 0) {
                 c.replaceScene(l, lime.transitions.SlideInDown);
                 glassCover.setHidden(true);
@@ -6407,13 +6972,13 @@ farming.start = function () {
                         g = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.shop_margin_x - 21, (a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + (f * 9) - (f * 1) + 24).setFill("images/" + a.crops[f].harvest).setSize(35, 35),
                         e.appendChild(g),
 
-                        i = (new lime.Label()).setText(a.crops[f].name + " (" + a.crops[f].time_to_ripe + " days) ").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontSize(20).setPosition(a.shop_margin_x + 130, (1.4 * a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + (f * 7) - (f * 1) + 20 + (f * 1)),
+                        i = (new lime.Label()).setText(a.crops[f].name + " (" + a.crops[f].time_to_ripe + " days) ").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setFontSize(20).setPosition(a.shop_margin_x + 130, (1.4 * a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + (f * 7) - (f * 1) + 20 + (f * 1)),
                         e.appendChild(i),
-                        i2 = (new lime.Label()).setText("   -" + a.crops[f].cost + " ").setFontFamily("Comic Sans MS").setFontColor("#FFFFFF").setFontSize(18).setPosition(a.shop_margin_x + 79, (2.1 * a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + ((f * 9) - f) + 24),
+                        i2 = (new lime.Label()).setText("   -" + a.crops[f].cost + " ").setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setFontSize(18).setPosition(a.shop_margin_x + 79, (2.1 * a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + ((f * 9) - f) + 24),
                         e.appendChild(i2),
                         i3 = (new lime.Sprite()).setSize(30, 30).setFill(imgArray11[0]).setPosition(a.shop_margin_x + 58, (2.1 * a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + ((f * 9) - f) + 15),
                         e.appendChild(i3),
-                        i4 = (new lime.Label()).setText("   +" + a.crops[f].revenue + " ").setFontFamily("Comic Sans MS").setFontColor("#FFFFFF").setFontSize(18).setPosition(a.shop_margin_x + 190, (2.1 * a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + ((f * 9) - f) + 24),
+                        i4 = (new lime.Label()).setText("   +" + a.crops[f].revenue + " ").setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setFontSize(18).setPosition(a.shop_margin_x + 190, (2.1 * a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + ((f * 9) - f) + 24),
                         e.appendChild(i4),
                         i5 = (new lime.Sprite()).setSize(30, 30).setFill(imgArray11[0]).setPosition(a.shop_margin_x + 170, (2.1 * a.shop_margin_y + (a.shop_margin_y + a.tile_size) * f) + ((f * 9) - f) + 15),
                         e.appendChild(i5),
@@ -6422,7 +6987,7 @@ farming.start = function () {
                             goog.events.listen(y, ["mousedown", "touchstart"],
                                 function () {
                                     //console.log("crop = " + e)
-                                    b.currentCrop = e; c.replaceScene(d);
+                                    b.currentCrop = e; c.replaceScene(d); 
                                     localStorage.setItem("MedFarms_selectedHomeCrop", e);
 
                                     sceneActive = 'Home';
@@ -6467,15 +7032,28 @@ farming.start = function () {
 
             }
         };
-
+        function isHidden(el) {
+            return (el.offsetParent === null)
+        }
         goog.events.listen(changeSeeds, ["mousedown", "touchstart"], function () {
-            openSeedScene();
+           var isVisFB7 =  isHidden('fbshare');
+           let isVisPrizeWheel =  isHidden('wheelDiv');
+            console.log("fb is " + isVisFB7 + " prizewheel is " + isVisPrizeWheel)
+            if (isVisFB7 == false && isVisPrizeWheel == false){
+                openSeedScene();
+            }
+          
 
 
         });
 
         goog.events.listen(z, ["mousedown", "touchstart"], function () {
-            openSeedScene();
+            var isVisFB7 =  isHidden('fbshare');
+            let isVisPrizeWheel =  isHidden('wheelDiv');
+             console.log("fb is " + isVisFB7 + " prizewheel is " + isVisPrizeWheel)
+             if (isVisFB7 == false && isVisPrizeWheel == false){
+                 openSeedScene();
+             }
 
         });
 
@@ -6571,7 +7149,7 @@ farming.start = function () {
         pastureLayer.appendChild(facebookP);
         goog.events.listen(facebookP, ["mousedown", "touchstart"], function () {
             if (globalModalBlock == 0) {
-                shareFacebook();
+                openStarMenu();
 
             }
         });
@@ -6597,7 +7175,7 @@ farming.start = function () {
             if (globalModalBlock == 0) {
                 var isMuted = lime.audio.getMute();
                 if (isMuted) {
-                    lime.audio.setMute(false); themeSong.play(true); localStorage.setItem('GuiGhostFarms_muted', 0)
+                    lime.audio.setMute(false); themeSongNew.play(true); localStorage.setItem('GuiGhostFarms_muted', 0)
                     setMute(2);
                 } else { lime.audio.setMute(true); setMute(1); localStorage.setItem('GuiGhostFarms_muted', 1) }
             }
@@ -6610,19 +7188,19 @@ farming.start = function () {
             }
         });
 
-        var pastureCash = (new lime.Label()).setText(player.money).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(235, 24).setFontSize(18);
+        var pastureCash = (new lime.Label()).setText(player.money).setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(235, 24).setFontSize(18);
         pastureLayer.appendChild(pastureCash);
         var topCoinP = (new lime.Sprite()).setPosition(285, 20).setSize(35, 35).setFill(imgArray11[0]);
         pastureLayer.appendChild(topCoinP);
 
 
         var toolCountImgP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(7, 5).setSize(35, 35).setFill(imgArray[30]);
-        var toolCountP = (new lime.Label()).setText(player.tools).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(60, 24).setFontSize(18);
+        var toolCountP = (new lime.Label()).setText(player.tools).setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(60, 24).setFontSize(18);
         pastureLayer.appendChild(toolCountImgP);
         pastureLayer.appendChild(toolCountP);
 
         var hhP = b.currentCrop;
-        var wP = (new lime.Label()).setText("Plant " + a.crops[6].name).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontSize(12).setPosition(a.controlsLayer_w / 2 - 5, a.height - a.controlsLayer_h / 2 - 12);
+        var wP = (new lime.Label()).setText("Plant " + a.crops[6].name).setFontFamily("Proxima Nova").setFontColor("#ffffff").setFontSize(12).setPosition(a.controlsLayer_w / 2 - 5, a.height - a.controlsLayer_h / 2 - 12);
         pastureLayer.appendChild(wP);
         var zP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.controlsLayer_w / 2 - (32), a.height - a.controlsLayer_h / 2 - 5).setFill("images/" + a.crops[6].harvest).setSize(48, 35);
         pastureLayer.appendChild(zP);
@@ -6647,16 +7225,16 @@ farming.start = function () {
         var pond1P = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(90, 215).setSize(130, 80).setFill(imgArrayPasture[0]); pastureLayer.appendChild(pond1P)
 
 
-        var pasUpLabel2 = (new lime.Label()).setText("Lvl " + player.pastureLevel + "/3 ").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontWeight(600).setPosition(155, 58).setSize(90, 15).setFontSize(16).setFill(imgArray[75]);
+        // var pasUpLabel2 = (new lime.Label()).setText( player.pastureLevel + "/3 ").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setFontWeight(600).setPosition(155, 58).setSize(90, 15).setFontSize(16).setFill(imgArray[75]);
 
-        pastureLayer.appendChild(pasUpLabel2)
+        // pastureLayer.appendChild(pasUpLabel2)
 
 
 
         ///upgrading Dairy barn animation elements
         var scaffoldP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 70).setSize(60, 45).setFill(imgArray[26]); pastureLayer.appendChild(scaffoldP);
         var upgradeCloudP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 10).setSize(70, 140).setFill(imgArray[24].src); pastureLayer.appendChild(upgradeCloudP);
-        var toolMoverLabelP = (new lime.Label()).setText("60").setPosition(35, 80).setSize(40, 25).setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Comic Sans MS").setFill(imgArray[27]);
+        var toolMoverLabelP = (new lime.Label()).setText("60").setPosition(35, 80).setSize(40, 25).setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Proxima Nova").setFill(imgArray[27]);
         var toolMoverP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-22, -50).setSize(50, 50).setFill(imgArray[29]);
 
         pastureLayer.appendChild(toolMoverLabelP);
@@ -6667,7 +7245,7 @@ farming.start = function () {
         scaffoldP.setHidden(true);
         toolMoverLabelP.setHidden(true);
 
-
+ 
 
 
         var vertBridge = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(135, 210).setSize(38, 85).setFill(imgArrayPasture[2]); pastureLayer.appendChild(vertBridge)
@@ -6704,10 +7282,10 @@ farming.start = function () {
         var treeBlockP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(175, 120).setSize(140, 200).setFill(imgArrayPasture[9]); pastureLayer.appendChild(treeBlockP)
         //var treeUnlockBtnP = (new lime.Label()).setText("Clear Forest").setFontColor("#E8FC08").setFontWeight(600).setPosition(250, 285).setSize(90, 130); pastureLayer.appendChild(treeUnlockBtnP)
         var axePRight = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(60, 70).setSize(40, 40).setFill(imgArray[61]); treeBlockP.appendChild(axePRight);
-        var treesImgP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(235, 240).setSize(35, 35).setFill(ImgArrayTools[3]); pastureLayer.appendChild(treesImgP)
+        var treesImgP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(235, 235).setSize(40, 40).setFill(ImgArrayTools[3]); pastureLayer.appendChild(treesImgP)
 
         var upgradeCloudTP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(175, 90).setSize(130, 285).setFill(imgArray[24].src); pastureLayer.appendChild(upgradeCloudTP);
-        var axeMoverLabelTP = (new lime.Label()).setText("60").setPosition(240, 255).setSize(40, 25).setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Comic Sans MS").setFill(imgArray[27]);
+        var axeMoverLabelTP = (new lime.Label()).setText("60").setPosition(240, 255).setSize(40, 25).setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Proxima Nova").setFill(imgArray[27]);
         pastureLayer.appendChild(axeMoverLabelTP);
 
         var axerotateP = 0;
@@ -6751,9 +7329,15 @@ farming.start = function () {
         if (player.treesP == 0) {     ///only show right cows if trees are cleared
             cowEatR.setHidden(true); cowForward1R.setHidden(true); cowLeft1R.setHidden(true); poop4.setHidden(true); poop5.setHidden(true); poop6.setHidden(true);
         }
+       
+        ///found Treasure location Pasture
+        var foundTreasureP = (new lime.Sprite()).setPosition(155, 110).setSize(60, 60).setFill('images/stars1.png').setHidden(true);
+        pastureLayer.appendChild(foundTreasureP);
+
         var cowI2 = 0;
         var josiahStep = 0;
         var needHayStep = 0;
+        var treasureTickP = 0;
         //cow animation timers
         lime.scheduleManager.scheduleWithDelay(function () {
             if (sceneActive == 'Pasture') {
@@ -6972,6 +7556,22 @@ farming.start = function () {
 
 
             };
+            treasureTickP++
+            if (foundTreasureP.getHidden() == false && treasureTickP == 5){
+                treasureTickP = 0;
+                lime.scheduleManager.scheduleWithDelay(function(){
+                    foundTreasureP.setRotation(0);
+                    lime.scheduleManager.callAfter( function(){
+                        foundTreasureP.setRotation(90);
+                    },this,250);
+                    lime.scheduleManager.callAfter( function(){
+                        foundTreasureP.setRotation(180);
+                    },this,500);
+                    lime.scheduleManager.callAfter( function(){
+                        foundTreasureP .setRotation(270);
+                    },this,750);
+                },this, 1000 );
+            }
         }, this, 250);
 
         var barnUnlock3P = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(137, 67).setSize(34, 32).setFill(imgArray[83]);
@@ -6987,7 +7587,8 @@ farming.start = function () {
         }, this, 500)
         pastureLayer.appendChild(barnUnlock3P)
         if (player.pastureLevel >= 3) {
-            barnUnlock3P.setHidden(true); pasUpLabel2.setHidden(true);
+            barnUnlock3P.setHidden(true);
+            //  pasUpLabel2.setHidden(true);
             try { goog.events.removeAll(barnUnlock3P); } catch (err) { console.log('remove failed barnunlock3p') }
         }
         ///speech bubble to collect milk
@@ -6995,7 +7596,7 @@ farming.start = function () {
         pastureLayer.appendChild(collectMilk);
         var collectMilkIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(12, 2).setSize(27, 30).setFill("images/" + a.crops[7].harvest);
         collectMilk.appendChild(collectMilkIcon);
-        var collectMilkLabel = (new lime.Label()).setText("+ 0 ").setFontWeight(500).setFontColor("#E8FC08").setPosition(23, 42).setSize(30, 18).setFontFamily("Comic Sans MS");
+        var collectMilkLabel = (new lime.Label()).setText("+ 0 ").setFontWeight(500).setFontColor("#E8FC08").setPosition(23, 42).setSize(30, 18).setFontFamily("Proxima Nova");
         collectMilk.appendChild(collectMilkLabel);
         collectMilk.setHidden(true);
         var milkWaiting = 0;
@@ -7013,9 +7614,7 @@ farming.start = function () {
 
         });
 
-
-
-
+  
         //Pasture Layer clouds 
 
         //var cloudsP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-400, -100).setSize(a.width, 750).setFill(imgArray[24].src).setOpacity(0.5);
@@ -7109,8 +7708,8 @@ farming.start = function () {
 
 
         //pasture Upgrades
-        var stallLeft = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(5, 55).setSize(59, 83).setFill(imgArray[100]); pastureLayer.appendChild(stallLeft)
-        var stallRight = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(243, 55).setSize(59, 83).setFill(imgArray[101]); pastureLayer.appendChild(stallRight)
+        var stallLeft = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(5, 45).setSize(59, 83).setFill(imgArray[100]); pastureLayer.appendChild(stallLeft)
+        var stallRight = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(243, 45).setSize(59, 83).setFill(imgArray[101]); pastureLayer.appendChild(stallRight)
         stallLeft.setHidden(true); stallRight.setHidden(true);
         if (player.pastureLevel > 1) {
             stallLeft.setHidden(false);
@@ -7118,8 +7717,46 @@ farming.start = function () {
                 stallRight.setHidden(false);
             }
         }
-
-
+        var mapLocP1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(6, 122).setSize(15,20).setFill(imgArrayItems[43]);
+        pastureLayer.appendChild(mapLocP1);
+        if(mapLocations.places[10].found == 1){
+            mapLocP1.setHidden(true);}
+        else{
+                goog.events.listen(mapLocP1, ["mousedown", "touchstart"], function (e) {
+                    
+                    if (globalModalBlock == 0){
+                         this.setHidden(true); mapLocations.places[10].found = 1; getMapFrag('p1');
+                        e.event.stopPropagation();
+                        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+                });
+            };
+        var mapLocP2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width - 50, 116).setSize(15,20).setFill(imgArrayStore[6]);
+        pastureLayer.appendChild(mapLocP2);
+        if(mapLocations.places[11].found == 1){
+            mapLocP2.setHidden(true);}
+        else{
+            goog.events.listen(mapLocP2, ["mousedown", "touchstart"], function (e) {
+                
+                if (globalModalBlock == 0){
+                     this.setHidden(true); mapLocations.places[11].found = 1; getMapFrag('p2');
+                    e.event.stopPropagation();
+                    e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+            });
+        };
+       
+        var mapLocP3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width/2 + 65, 412).setSize(15,20).setFill(imgArrayItems[44]);
+        pastureLayer.appendChild(mapLocP3);
+        if(mapLocations.places[12].found == 1){
+            mapLocP3.setHidden(true);}
+        else{
+            goog.events.listen(mapLocP3, ["mousedown", "touchstart"], function (e) {
+                
+                if (globalModalBlock == 0){
+                    this.setHidden(true); mapLocations.places[12].found = 1;  getMapFrag('p3');
+                    e.event.stopPropagation();
+                    e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+            });
+        };
         //pasture - hayfields
         for (f = 0; f < a.num_tiles_x; f++)
             for (var i = 0; i < 2; i++) {
@@ -7153,12 +7790,10 @@ farming.start = function () {
         var oldCrop = b.currentCrop;
 
         //cost display
-        var costDisplayP = (new lime.Label()).setPosition(156, 180).setSize(50, 25).setText("-50").setFontSize(14).setFontFamily("Comic Sans MS").setFontColor("#e1f00e").setFontWeight(600);
+        var costDisplayP = (new lime.Label()).setPosition(156, 180).setSize(50, 25).setText("-50").setFontSize(14).setFontFamily("Proxima Nova").setFontColor("#e1f00e").setFontWeight(600);
         pastureLayer.appendChild(costDisplayP);
         var costCoinP = (new lime.Sprite()).setPosition(30, -8).setSize(30, 30).setFill(imgArray11[0]); costDisplayP.appendChild(costCoinP);
         costDisplayP.setHidden(true);
-
-
 
 
 
@@ -7186,17 +7821,17 @@ farming.start = function () {
                 hideAndDelayNavIcons();
                 c.replaceScene(marketScene, lime.transitions.SlideInUp);
 
-                acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+                acresOwned3 = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
                 if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
                 sceneActive = 'Market';
-                CheckQuestInvItems();
+                try{CheckQuestInvItems();}catch(err){console.log(err)};
                 outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
                 homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
                 outOfCashP.setHidden(true); marketBtn1P.setHidden(true); buyStarCashP.setHidden(true);
                 outOfCashO.setHidden(true); marketBtn1O.setHidden(true); buyStarCashO.setHidden(true);
                 outOfCashV.setHidden(true); marketBtn1V.setHidden(true); buyStarCashV.setHidden(true);
 
-                lime.scheduleManager.callAfter(function () { CheckQuestInvItems(); }, this, 1500);
+                lime.scheduleManager.callAfter(function () { try{CheckQuestInvItems();}catch(err){console.log(err)}; }, this, 1500);
             }
         });
 
@@ -7205,24 +7840,30 @@ farming.start = function () {
         pastureLayer.appendChild(forSaleV);
 
         //inventory and storage menu 
-        var toInventoryP = (new lime.Sprite()).setPosition((a.controlsLayer_w / 2) - 5, 23).setSize(38, 38).setFill(imgArrayItems[25].src);
+        var toInventoryP = (new lime.Sprite()).setPosition((a.controlsLayer_w / 2) - 5, 23).setSize(51, 40).setFill(imgArrayItems[25].src).setRotation(5);
         pastureLayer.appendChild(toInventoryP);
 
         goog.events.listen(toInventoryP, ["mousedown", "touchstart"], function () {
             a.sceneBefore = 2;
-            checkItemsOwned();
+            try{try{checkItemsOwned();}catch(err){console.log(err)};;}catch(err){console.log(err)};
             starCashInvCount.setText(starCash);
             hideAndDelayNavIcons();
+            cropsBack.setHidden(false); itemsBack.setHidden(true); itemsStoredBack.setHidden(true); collectBack.setHidden(true);  ///always open to cropsInventory
             c.replaceScene(inventoryScene, lime.transitions.SlideInUp);
+            playerImg.setHidden(false);
             lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
-            sceneActive = 'Invntory';
+            sceneActive = 'Inventory';
             outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
             homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
             outOfCashP.setHidden(true); marketBtn1P.setHidden(true); buyStarCashP.setHidden(true);
             outOfCashO.setHidden(true); marketBtn1O.setHidden(true); buyStarCashO.setHidden(true);
             outOfCashV.setHidden(true); marketBtn1V.setHidden(true); buyStarCashV.setHidden(true);
-
-            updateInventoryCounts();
+          
+            starCashInvCount.setText(starCash);
+            hideAndDelayNavIcons();
+            
+            try{try{updateInventoryCounts();}catch(err){console.log(err)};}catch(err){console.log(err)};
+          
         });
 
 
@@ -7236,16 +7877,71 @@ farming.start = function () {
         pastureBlock.setHidden(true);
 
 
-        ///Out of Cash modal- pasture
-        var outOfCashP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 100).setSize(210, 220).setFill(imgArray[33]);
+        // ///Out of Cash modal- pasture
+        // var outOfCashP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 100).setSize(210, 220).setFill(imgArray[33]);
+        // pastureLayer.appendChild(outOfCashP);
+        // var buyStarCashP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(122, 212).setSize(75, 35).setFill("images/UI/buyStarCash.png");
+        // outOfCashP.appendChild(buyStarCashP);
+        // var marketBtn1P = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 212).setSize(75, 35).setFill(imgArray[32]);
+        // outOfCashP.appendChild(marketBtn1P);
+        // var cancelBtnCashP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(89, 212).setSize(35, 35).setFill(imgArray[21]);
+        // outOfCashP.appendChild(cancelBtnCashP);
+        // outOfCashP.setHidden(true); marketBtn1P.setHidden(true); buyStarCashP.setHidden(true);
+
+////new outofcashp
+        ///Out of Cash modal
+        var outOfCashP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(26, 100).setSize(250, 305).setFill(imgArray[33]);
         pastureLayer.appendChild(outOfCashP);
-        var buyStarCashP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(122, 212).setSize(75, 35).setFill("images/UI/buyStarCash.png");
+        var outBack1P = new lime.RoundedRect().setSize(205,50).setRadius(10).setPosition(125, 140).setOpacity(0.9);
+        outBack1P.setFill(gradient1);
+        outOfCashP.appendChild(outBack1P);
+        var outOfCashLbl1P = (new lime.Label()).setAnchorPoint(0, 0).setPosition(45, 30).setText("Not Enough Coins").setFontColor("RED").setFontFamily("Proxima Nova").setFontSize(22);
+        outOfCashP.appendChild(outOfCashLbl1P);
+        var outOfCashLbl2P = (new lime.Label()).setAnchorPoint(0, 0).setPosition(30, 125).setText("Buy Coins with Stars").setFontColor("WHITE").setSize(90, 80).setFontFamily("Proxima Nova").setFontSize(16);
+        outOfCashP.appendChild(outOfCashLbl2P);
+        var buyStarCashP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(157, 118).setSize(45, 45).setFill(imgArray[72]);
         outOfCashP.appendChild(buyStarCashP);
-        var marketBtn1P = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 212).setSize(75, 35).setFill(imgArray[32]);
+        var outBack2P = new lime.RoundedRect().setSize(205,50).setRadius(10).setPosition(125, 195).setOpacity(0.9);
+        outBack2P.setFill(gradient1);
+        outOfCashP.appendChild(outBack2P);
+        var outOfCashLbl3P = (new lime.Label()).setAnchorPoint(0, 0).setPosition(30, 178).setText("Get 200 Coins Free").setFontColor("WHITE").setSize(90, 80).setFontFamily("Proxima Nova").setFontSize(16);
+        outOfCashP.appendChild(outOfCashLbl3P);
+        var outofCoinViewAdBtnP = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(133, 173).setSize(90, 42).setFill(imgArray[108]);
+        outOfCashP.appendChild(outofCoinViewAdBtnP);
+        var outBack3P = new lime.RoundedRect().setSize(205,50).setRadius(10).setPosition(125, 250).setOpacity(0.9);
+        outBack3P.setFill(gradient1);
+        outOfCashP.appendChild(outBack3P);
+        var outOfCashLbl4P = (new lime.Label()).setAnchorPoint(0, 0).setPosition(30, 235).setText("Sell Crops in Town").setFontColor("WHITE").setSize(90, 80).setFontFamily("Proxima Nova").setFontSize(16);
+        outOfCashP.appendChild(outOfCashLbl4P);
+        var marketBtn1P = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(157, 228).setSize(45, 45).setFill(imgArray[81]);
         outOfCashP.appendChild(marketBtn1P);
-        var cancelBtnCashP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(89, 212).setSize(35, 35).setFill(imgArray[21]);
+        var cancelBtnCashP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(110, 290).setSize(35, 35).setFill(imgArray[21]);
         outOfCashP.appendChild(cancelBtnCashP);
         outOfCashP.setHidden(true); marketBtn1P.setHidden(true); buyStarCashP.setHidden(true);
+
+        goog.events.listen(outofCoinViewAdBtnP, ["mousedown", "touchstart"], function () {            //starCash Button
+            var isHidoChP = outOfCashP.getHidden();
+            if (isHidoChP == false) {
+                outOfCashP.setHidden(true); outOfCash.setHidden(true); outOfCashV.setHidden(true); outOfCashO.setHidden(true);
+                homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
+                
+                warningSeen = 1;
+                localStorage.setItem("acreDiscount1", 0);
+                localStorage.setItem('MedFarm_LoadAd', 0);
+                localStorage.setItem('MedFarm_StarCashBoost', 1);
+                lime.audio.setMute(true);
+                lime.scheduleManager.callAfter(function () { 
+                    player.money = parseInt(player.money) + 200; 
+                    a.updateMoney(); 
+                    globalModalBlock = 0;
+                    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player)); 
+                }, this, 5000);
+              
+            }
+       });
+
+
+
 
         goog.events.listen(buyStarCashP, ["mousedown", "touchstart"], function () {            //starCash Button
             warningSeen = 1;
@@ -7254,7 +7950,7 @@ farming.start = function () {
             outOfCashV.setHidden(true); marketBtn1V.setHidden(true); buyStarCashV.setHidden(true);
             outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
             pastureBlock.setHidden(true); homeBlock.setHidden(true); orchardBlock.setHidden(true); vinyardBlock.setHidden(true); lsBlock.setHidden(true);
-            shareFacebook();
+            openStarMenu();
 
         });
         goog.events.listen(marketBtn1P, ["mousedown", "touchstart"], function () {            //market Button
@@ -7271,10 +7967,10 @@ farming.start = function () {
             hideAndDelayNavIcons();
             c.replaceScene(marketScene, lime.transitions.SlideInUp);
 
-            acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+            acresOwned3 = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
             if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
             sceneActive = 'Market';
-            lime.scheduleManager.callAfter(function () { CheckQuestInvItems(); }, this, 1500);
+            lime.scheduleManager.callAfter(function () { try{CheckQuestInvItems();}catch(err){console.log(err)}; }, this, 1500);
         });
         goog.events.listen(cancelBtnCashP, ["mousedown", "touchstart"], function () {            //cancel Button
 
@@ -7301,33 +7997,91 @@ farming.start = function () {
         ///For Sale confirm modal to buy vinyard
         var confirmSaleV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 100).setSize(210, 220).setFill("images/UI/saleBack.png");
         pastureLayer.appendChild(confirmSaleV);
-        var confirmTextV = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000000").setPosition(45, 135).setSize(125, 60).setFontSize(22).setText("Vineyard 12,500");
+        var confirmTextV = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000000").setPosition(45, 65).setSize(125, 60).setFontSize(22).setText("Vineyard 12,500");
         confirmSaleV.appendChild(confirmTextV);
-        var confirmCoinV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(35, 165).setSize(30, 30).setFill(imgArray11[0]);
+        var confirmCoinV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 82).setSize(30, 30).setFill(imgArray11[0]);
         confirmSaleV.appendChild(confirmCoinV);
-        var confirmTextSubV = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#FF0000").setPosition(55, 190).setSize(110, 60).setFontSize(10).setText("Earn more Coin to buy");
+        var confirmTextSubV = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#FF0000").setPosition(50, 185).setSize(120, 60).setFontSize(12).setText("Earn more Coin to buy");
         confirmSaleV.appendChild(confirmTextSubV);
-        var confirmBtnV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(100, 212).setSize(75, 35).setFill("images/UI/greenBuy.png");
+        var confirmBtnV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(100, 212).setSize(75, 35).setFill("images/UI/buyNowBtn.png");
         confirmSaleV.appendChild(confirmBtnV);
         var cancelBtnV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(50, 212).setSize(35, 35).setFill(imgArray[21]);
         confirmSaleV.appendChild(cancelBtnV);
         confirmSaleV.setHidden(true);
+
+        var adVinyardBuyText = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000000").setPosition(40, 122).setSize(135, 60).setFontSize(14).setText("Get 10% Off");
+        confirmSaleV.appendChild(adVinyardBuyText);
+        var adVineyardViewBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(65, 135).setSize(90, 42).setFill(imgArray[108]);
+        confirmSaleV.appendChild(adVineyardViewBtn);
+
+        goog.events.listen(adVineyardViewBtn, ["mousedown", "touchstart"], function () {     
+        //for sale pasture ad discount
+         var salevisV = confirmSaleV.getHidden();
+            if (!salevisV) {
+                console.log("visible detected try show ad")
+           
+                localStorage.setItem("acreDiscount3", 1);
+                localStorage.setItem('MedFarm_LoadAd', 0);
+                localStorage.setItem('MedFarm_StarCashBoost', 1);
+                lime.audio.setMute(true);
+                     
+                    lime.scheduleManager.callAfter(function () { 
+                                      
+                                          if (player.money >= 11250) {
+                                              confirmTextSubV.setHidden(true);
+                                              confirmBtnV.setHidden(false);
+                                          }
+
+                                          adVineyardViewBtn.setHidden(true);
+                                          adVinyardBuyText.setText("Discount Applied!")
+                                          confirmTextV.setText("Vineyard 11,250");
+                                   
+                                      
+                    }, this, 2500);
+            
+        } 
+        });
+
+
+
 
         goog.events.listen(forSaleV, ["mousedown", "touchstart"], function () {            //for sale vinyard
 
             if (globalModalBlock == 0) {
                 globalModalBlock = 1;
                 fsClicked = 3;
-                pastureBlock.setHidden(false); confirmSaleV.setHidden(false);
-                if (player.money >= 12500) { confirmTextSubV.setHidden(true); confirmBtnV.setHidden(false); } else { confirmBtnV.setHidden(true); };
                 confirmTextV.setText("Vineyard 12,500");
+                var isDiscountedV = localStorage.getItem("acreDiscount3") || 0;
+                pastureBlock.setHidden(false); confirmSaleV.setHidden(false);
+                if (player.money >= 12500) { 
+                    confirmTextSubV.setHidden(true); confirmBtnV.setHidden(false);
+                 } else { confirmBtnV.setHidden(true); };
+
+                if (isDiscountedV && player.money >= 11250){ 
+                    confirmTextSubV.setHidden(true); confirmBtnV.setHidden(false);
+                    adVinyardBuyText.setText("Discount Applied!");
+                    confirmTextV.setText("Vineyard 11,250"); 
+                }
+                if(isDiscountedV){   
+                    adVinyardBuyText.setText("Discount Applied!");
+                    confirmTextV.setText("Vineyard 11,250"); adVineyardViewBtn.setHidden(true);
+                } else{
+                    adVinyardBuyText.setText("Get 10% Off");
+                    confirmTextV.setText("Vineyard 12,500"); adVineyardViewBtn.setHidden(false);
+                }
+                
             }
 
         });
 
         goog.events.listen(confirmBtnV, ["mousedown", "touchstart"], function () {            //forsale confirm
-
-            player.money = (player.money - 12500);
+            var basepriceV = 12500;
+            var discountV3 = localStorage.getItem("acreDiscount3") || 0;
+            if (discountV3) {
+                 basepriceV = 11250;
+                 };
+            player.money = (player.money - basepriceV);
+            localStorage.setItem("acreDiscount3",0);
             a.updateMoney();
             acres[3].owned = 1;
             localStorage.setItem('GuiGhostFarms_acres', JSON.stringify(acres));
@@ -7339,9 +8093,13 @@ farming.start = function () {
 
             a.sceneBefore = 4;
             hideAndDelayNavIcons();
-            c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
-            sceneActive = 'Vineyard';
-            acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+        ///go to story
+            c.replaceScene(storyScene);
+            storyChapterText1.setText("The Vineyard").setOpacity(1.0).setHidden(false);
+            storyChapterText2.setText("This overgrown location is a haven for fruit. Let's clean it up").setOpacity(1.0).setHidden(false);
+            nextStoryPanel('Vineyard')
+           
+            acresOwned3 = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
             lime.scheduleManager.callAfter(function () {
                 a.updateStored(); checkShortage();
                 if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
@@ -7380,11 +8138,11 @@ farming.start = function () {
         ////achievement Modal
         var achieveNotifP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 130).setSize(210, 220).setFill(imgArray[91]);
 
-        var achieveTextP = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(13, 45).setSize(190, 60).setFontSize(16).setText("Blacksmith I");
+        var achieveTextP = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(13, 45).setSize(190, 60).setFontSize(16).setText("Blacksmith I");
         achieveNotifP.appendChild(achieveTextP);
-        var achieveTextSubP = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(30, 123).setSize(150, 60).setFontSize(14).setText("Achieve Text");
+        var achieveTextSubP = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(30, 123).setSize(150, 60).setFontSize(14).setText("Achieve Text");
         achieveNotifP.appendChild(achieveTextSubP);
-        var achieveSCP = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ");
+        var achieveSCP = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ");
         achieveNotifP.appendChild(achieveSCP);
         var confirmBtnAP = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill(imgArray[21]);
         achieveNotifP.appendChild(confirmBtnAP);
@@ -7413,7 +8171,7 @@ farming.start = function () {
         pastureLayer.appendChild(milkBlocked);
         var confirmMilkBlocked = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(70, 195).setSize(40, 40).setFill(imgArray[21]);
         milkBlocked.appendChild(confirmMilkBlocked);
-        var blockedTextM = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(5, 120).setSize(170, 40).setFontSize(14).setText("Livestock Hungry!");
+        var blockedTextM = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(5, 120).setSize(170, 40).setFontSize(14).setText("Livestock Hungry!");
         milkBlocked.appendChild(blockedTextM);
         //var blockedSubM = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#FFFFFF").setPosition(2, 140).setSize(175, 40).setFontSize(12).setText("Cows eat HAY to produce MILK. Grow some in the fields below");
         //milkBlocked.appendChild(blockedSubM);
@@ -7422,15 +8180,15 @@ farming.start = function () {
 
         var cowBlocked = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(5, 140).setSize(55, 30).setFill("images/Pasture/cow_eatR1.png");
         milkBlocked.appendChild(cowBlocked);
-        var blockedSubM = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#FFFFFF").setPosition(55, 145).setFontColor("#E8FC08").setSize(24, 140).setFontSize(22).setText("+");
+        var blockedSubM = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(55, 145).setFontColor("#E8FC08").setSize(24, 140).setFontSize(22).setText("+");
         milkBlocked.appendChild(blockedSubM);
         var hayIconTop = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(77, 140).setFill("images/" + a.crops[6].harvest).setSize(30, 30);
         milkBlocked.appendChild(hayIconTop);
-        var blockedSubM2 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#FFFFFF").setPosition(110, 145).setSize(24, 140).setFontColor("#E8FC08").setFontSize(22).setText("=");
+        var blockedSubM2 = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(110, 145).setSize(24, 140).setFontColor("#E8FC08").setFontSize(22).setText("=");
         milkBlocked.appendChild(blockedSubM2);
         var milkIconBlock = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(132, 140).setFill("images/" + a.crops[7].harvest).setSize(35, 35);
         milkBlocked.appendChild(milkIconBlock);
-        var gLabel6Milk = (new lime.Label()).setPosition(90, 186).setSize(20, 16).setText(player.cropsStored[6].stored).setFontFamily("Comic Sans MS").setFontColor("#E8FC08");
+        var gLabel6Milk = (new lime.Label()).setPosition(90, 186).setSize(20, 16).setText(player.cropsStored[6].stored).setFontFamily("Proxima Nova").setFontColor("#E8FC08");
         milkBlocked.appendChild(gLabel6Milk);
 
 
@@ -7558,8 +8316,7 @@ farming.start = function () {
 
 
         ///end compass Pasture
-
-
+      
         ///from home to pasture
         goog.events.listen(roadLeft, ["mousedown", "touchstart"], function () {
             if (globalModalBlock == 0) {
@@ -7653,6 +8410,7 @@ farming.start = function () {
                         localStorage.setItem('GuiGhostFarms_toolsEver', toolsEver);
                         localStorage.setItem('GuiGhostFarms_pickedEver', parseInt(pickedEver));
                         localStorage.setItem('GuiGhostFarms_moneyEver', moneyEver);
+                        showMFToast("Dairy Trees Clear",imgArray[61].src, 'dairy', 3000);
                     }
 
                 }, this, 1000, 60)
@@ -7673,19 +8431,19 @@ farming.start = function () {
             barnUpgradeCostToolsP = 250; barnUpgradeCostWoodP = 100;
             var upgradeBarnConfirmP = (new lime.Sprite()).setPosition(155, 240).setSize(250, 250).setFill(imgArray[79]).setHidden(false)
             pastureLayer.appendChild(upgradeBarnConfirmP);
-            var upgradeBarntextP1 = (new lime.Label()).setPosition(0, -85).setSize(250, 30).setText("Upgrade Dairy Barn").setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(22);
+            var upgradeBarntextP1 = (new lime.Label()).setPosition(0, -85).setSize(250, 30).setText("Upgrade Dairy Barn").setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(22);
             upgradeBarnConfirmP.appendChild(upgradeBarntextP1);
-            var upgradeBarntextP2 = (new lime.Label()).setPosition(0, -50).setSize(250, 30).setText("Increase Milk Produiction").setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(14);
+            var upgradeBarntextP2 = (new lime.Label()).setPosition(0, -50).setSize(250, 30).setText("Increase Milk Produiction").setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(14);
             upgradeBarnConfirmP.appendChild(upgradeBarntextP2);
             var upgradeBarnPTools = (new lime.Sprite()).setPosition(-40, -20).setSize(40, 40).setFill(imgArray[30])
             upgradeBarnConfirmP.appendChild(upgradeBarnPTools);
-            var upgradeBarnPToolsTxt = (new lime.Label()).setPosition(-40, 30).setSize(250, 25).setText(barnUpgradeCostToolsP).setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(22);
+            var upgradeBarnPToolsTxt = (new lime.Label()).setPosition(-40, 30).setSize(250, 25).setText(barnUpgradeCostToolsP).setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(22);
             upgradeBarnConfirmP.appendChild(upgradeBarnPToolsTxt);
             var upgradeBarnPWood = (new lime.Sprite()).setPosition(40, -20).setSize(40, 40).setFill("images/" + a.crops[14].harvest)
             upgradeBarnConfirmP.appendChild(upgradeBarnPWood);
-            var upgradeBarnWoodTxt = (new lime.Label()).setPosition(40, 30).setSize(250, 25).setText(barnUpgradeCostWoodP).setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(22);
+            var upgradeBarnWoodTxt = (new lime.Label()).setPosition(40, 30).setSize(250, 25).setText(barnUpgradeCostWoodP).setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(22);
             upgradeBarnConfirmP.appendChild(upgradeBarnWoodTxt);
-            var upgradeBarnShortText = (new lime.Label()).setPosition(0, 50).setSize(250, 25).setText("You need more resources").setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(14);
+            var upgradeBarnShortText = (new lime.Label()).setPosition(0, 50).setSize(250, 25).setText("You need more resources").setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(14);
             upgradeBarnConfirmP.appendChild(upgradeBarnShortText);
             upgradeBarnShortText.setHidden(true);
             var upgradePastureBarnBtn = (new lime.GlossyButton()).setColor("#1ce636").setText("Upgrade").setPosition(0, 70).setSize(80, 35);
@@ -7735,7 +8493,7 @@ farming.start = function () {
                     player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - parseInt(woodCostP);
                     if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
                     localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-
+                    
                     upgradeCloudP.setHidden(false);
                     scaffoldP.setHidden(false);
                     toolMoverLabelP.setText(secondsToUpgradeP);
@@ -7753,16 +8511,20 @@ farming.start = function () {
                     var upCloudWP = 70;
                     var upCloudXP = 10;
                     var upCloudYP = 5;
+                    var pastureBarnTick = 0;
+                    var hammerSoundP = hammerSound;
                     lime.scheduleManager.scheduleWithDelay(function () {
                         //add upgrade anim
                         secondsToUpgradeP = secondsToUpgradeP - 1;
-
+                        pastureBarnTick++;
+                        if (pastureBarnTick >= 5){
+                            pastureBarnTick = 0; if(sceneActive == 'Pasture'){hammerSoundP.play()};};
                         toolMoverLabelP.setText(secondsToUpgradeP);
                         upgradesInProgress.buildings[1].timeLeft = secondsToUpgradeP;
                         upgradesInProgress.buildings[1].currentBarnLevel = player.pastureLevel;
                         localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
 
-                        if (secondsToUpgradeP <= 0) { toolMoverLabelP.setHidden(true); scaffoldP.setHidden(true); upgradeCloudP.setHidden(true); secondsToUpgradeP = 120; }
+                        if (secondsToUpgradeP <= 0) { toolMoverLabelP.setHidden(true); scaffoldP.setHidden(true); upgradeCloudP.setHidden(true); secondsToUpgradeP = 120; hammerSoundP.stop();}
 
                     }, this, 1000, secondsToUpgradeP)
                     if (player.pastureLevel == 1) {
@@ -7811,12 +8573,15 @@ farming.start = function () {
 
                             localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
 
-                            if (player.pastureLevel == 2) { pasUpLabel2.setText("Lvl 2/3 "); stallLeft.setHidden(false); barnUnlock3P.setHidden(false); };
+                            if (player.pastureLevel == 2) {
+                                //  pasUpLabel2.setText("2/3 ");
+                                  stallLeft.setHidden(false); barnUnlock3P.setHidden(false); };
                             if (player.pastureLevel >= 3) {
                                 stallLeft.setHidden(false); stallRight.setHidden(false);
-                                pasUpLabel2.setHidden(true); barnUnlock3P.setHidden(true);
+                                // pasUpLabel2.setHidden(true);
+                                 barnUnlock3P.setHidden(true);
                                 checkAchieves2();
-                                pasUpLabel2.setText("Lvl 3/3 ");
+                                // pasUpLabel2.setText("3/3 ");
                                 //goog.events.removeAll(closePastureBarnBtn);
                                 //goog.events.removeAll(upgradePastureBarnBtn);
                                 //goog.events.removeAll(barnUnlock3P);
@@ -7829,6 +8594,8 @@ farming.start = function () {
                             upgradesInProgress.buildings[1].currentBarnLevel = player.pastureLevel;
                             localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
                             barnUpInProgressPasture = 0;
+                           
+                            showMFToast("Dairy Upgraded",imgArray[30].src, 'dairy', 3000);
                         }
                         catch (err) { console.log(err) }
                     }, this, secondsToUpgradeP * 1000);
@@ -7842,13 +8609,13 @@ farming.start = function () {
 
 
         var pastureHelpPanel = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 100).setSize(a.width - 30, a.height / 2 + 40).setFill(imgArray[78]).setHidden(true);
-        var helpHeaderpasture = (new lime.Label()).setAnchorPoint(0, 0).setPosition(68, 30).setText("Dairy Pasture").setFontFamily("Comic Sans MS").setFontSize(24);
+        var helpHeaderpasture = (new lime.Label()).setAnchorPoint(0, 0).setPosition(68, 30).setText("Dairy Pasture").setFontFamily("Proxima Nova").setFontSize(24);
         pastureHelpPanel.appendChild(helpHeaderpasture);
-        var helpText1pasture = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 70).setText("These fields are only good for growing HAY which your Cows will eat to produce MILK").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var helpText1pasture = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 70).setText("These fields are only good for growing HAY which your Cows will eat to produce MILK").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         pastureHelpPanel.appendChild(helpText1pasture);
-        var helpText2pasture = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 140).setText("Upgrading the Dairy increases the amount of MILK you get each cycle").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var helpText2pasture = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 140).setText("Upgrading the Dairy increases the amount of MILK you get each cycle").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         pastureHelpPanel.appendChild(helpText2pasture);
-        var helpText3pasture = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 205).setText("Clearing the forest unlocks more pasture to increase production").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var helpText3pasture = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 205).setText("Clearing the forest unlocks more pasture to increase production").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         pastureHelpPanel.appendChild(helpText3pasture);
 
         var pastureHelpPanelCloseBtn = (new lime.GlossyButton()).setColor("#663300").setText("Close").setPosition(140, 292).setSize(100, 20);
@@ -7895,11 +8662,13 @@ farming.start = function () {
         orchardScene.appendChild(orchardFill1);
         orchardScene.appendChild(orchardLayer);
 
+       
+
 
 
         //var horizRoad3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 435).setSize(300, 25).setFill(imgArray[77]);
         //orchardLayer.appendChild(horizRoad3);
-        var midbackO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 40).setSize(a.controlsLayer_w, a.landLayer_h + 37).setFill(imgArray[84]);
+        var midbackO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 45).setSize(a.controlsLayer_w, a.landLayer_h + 37).setFill(imgArray[84]);
         orchardLayer.appendChild(midbackO)
         var waterfallMtn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 44).setSize(310, 420).setFill("images/" + a.orchard[0].image);
         orchardLayer.appendChild(waterfallMtn)
@@ -7948,10 +8717,10 @@ farming.start = function () {
 
         var upgradeCloudO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 90).setSize(120, 150).setFill(imgArray[24].src); orchardLayer.appendChild(upgradeCloudO);
 
-        var toolMoverLabelO = (new lime.Label()).setText("60").setPosition(50, 145).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("ComicSans MS").setFill(imgArray[27]);
+        var toolMoverLabelO = (new lime.Label()).setText("60").setPosition(50, 145).setSize(40, 25).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Proxima Nova").setFill(imgArray[27]);
         var toolMoverO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-22, -50).setSize(50, 50).setFill(imgArray[29]);
-        var barnLevelO = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#E8FC08").setPosition(20, 74).setSize(70, 16).setFontSize(16).setFontWeight(600).setText("Lvl 1/2").setFill(imgArray[28]);
-        orchardLayer.appendChild(barnLevelO);
+        // var barnLevelO = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#E8FC08").setPosition(20, 74).setSize(70, 16).setFontSize(16).setFontWeight(600).setText("1/2").setFill(imgArray[28]);
+        // orchardLayer.appendChild(barnLevelO);
         orchardLayer.appendChild(toolMoverLabelO);
         toolMoverLabelO.appendChild(toolMoverO);
         toolMoverO.setRotation(-10);
@@ -7960,136 +8729,12 @@ farming.start = function () {
         toolMoverLabelO.setHidden(true);
         scaffoldO.setHidden(true);
         upgradeCloudO.setHidden(true);
-
-
-        //var barnUpgradeNotifO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(35, 130).setSize(250, 220).setFill(imgArray[79]);
-        //orchardLayer.appendChild(barnUpgradeNotifO);
-        //var barnUpgradeHeaderO = (new lime.Label()).setAnchorPoint(0, 0).setPosition(23, 25).setText("Upgrade Orchard Barn?").setFontFamily("Comic Sans MS").setFontSize(18);
-        //barnUpgradeNotifO.appendChild(barnUpgradeHeaderO);
-        //var barnUpgradeText1O = (new lime.Label()).setAnchorPoint(0, 0).setPosition(25, 122).setText("Increases Apple and Pear harvests by 100%").setFontFamily("Comic Sans MS").setFontSize(16).setSize(195, a.height / 2 - 50);
-        //barnUpgradeNotifO.appendChild(barnUpgradeText1O);
-        //var barnPanelTools = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(52, 50).setSize(40, 40).setFill(ImgArrayTools[5]);
-        //barnUpgradeNotifO.appendChild(barnPanelTools);
-        //var barnUpgradeTextToolsO = (new lime.Label()).setAnchorPoint(0, 0).setPosition(50, 95).setText("250").setFontFamily("Comic Sans MS").setFontSize(16).setSize(40, 40);
-        //barnUpgradeNotifO.appendChild(barnUpgradeTextToolsO);
-        //var barnPanelWood = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(142, 50).setSize(40, 40).setFill("images/" + a.crops[14].image);
-        //barnUpgradeNotifO.appendChild(barnPanelWood);
-        //var barnUpgradeTextWoodO = (new lime.Label()).setAnchorPoint(0, 0).setPosition(145, 95).setText("200").setFontFamily("Comic Sans MS").setFontSize(16).setSize(40, 40);
-        //barnUpgradeNotifO.appendChild(barnUpgradeTextWoodO);
-        //var barnPanelCloseBtnO = (new lime.GlossyButton()).setColor("#663300").setText("Close").setPosition(125, 208).setSize(100, 20);
-        //barnUpgradeNotifO.appendChild(barnPanelCloseBtnO);
-        //var barnPanelUpgradeBtnO = (new lime.GlossyButton()).setColor("#00ff00").setText("Upgrade").setPosition(125, 175).setSize(100, 20);
-        //barnUpgradeNotifO.appendChild(barnPanelUpgradeBtnO);
-        //barnPanelUpgradeBtnO.setHidden(true);
-        //barnUpgradeNotifO.setHidden(true);
-        ////orchard barn upgrade
-        //goog.events.listen(barnUnlockOBtn, ["mousedown", "touchstart"], function () {
-        //    barnUpgradeNotifO.setHidden(false);
-
-        //    if (parseInt(player.cropsStored[14].stored)  >= 200 && player.tools >= 250) {
-        //        barnPanelUpgradeBtnO.setHidden(false);
-        //        barnUpgradeText1O.setText("Increases Apple and Pear yield by 50%");
-        //    }
-        //    else { barnUpgradeText1O.setText("Need more resources to upgrade"); barnPanelUpgradeBtnO.setHidden(true);}
-
-
-        //    goog.events.listen(questPanelCloseBtnO, ["mousedown", "touchstart"], function () {
-        //        barnUpgradeNotifO.setHidden(true);
-        //    });   
-
-
-        //});
-        //goog.events.listen(barnPanelUpgradeBtnO, ["mousedown", "touchstart"], function () {
-        //    var barnupPHid = barnUpgradeNotifO.getHidden();
-        //    if (barnupPHid == false) {
-        //        upgradeOrchardBarn();
-        //        barnUpgradeNotifO.setHidden(true);
-        //    }
-
-        //});  
-
-        /////upgrade orchard barn
-        //function upgradeOrchardBarn() {
-
-        //    player.tools = player.tools - 250;
-        //    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - 200;
-        //    if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0 };
-        //    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-        //    a.updateTools();
-        //    currentRotateO = currentRotateO - 10;
-        //    if (currentRotateO < -50) { currentRotateO = -10; }
-        //    toolMoverO.setRotation(currentRotateO);
-        //    barnUnlockOBtn.setHidden(true);
-        //    barnUnlockOImg.setHidden(true);
-        //    toolMoverLabelO.setHidden(false);
-        //    scaffoldO.setHidden(false);
-        //    upgradeCloudO.setHidden(false);
-        //    var upCloudWOB = 150;
-        //    var upCloudXOB = 0;
-        //    var upCloudYOB = 90;
-        //    var quarterSecCountO = 0;
-        //    var secondsIntervalOrchard = secondsToUpgradeBarnO * 4;
-        //    lime.scheduleManager.scheduleWithDelay(function () {
-        //        secondsIntervalOrchard = secondsIntervalOrchard - 1;
-        //        quarterSecCountO = quarterSecCountO + 1;
-        //        if (quarterSecCountO == 4) {
-        //            secondsToUpgradeBarnO = secondsToUpgradeBarnO - 1;
-        //            toolMoverLabelO.setText(secondsToUpgradeBarnO);
-        //            quarterSecCountO = 0;
-        //        }
-        //        upgradeCloudO.setPosition(upCloudXOB, upCloudYOB).setSize(upCloudWOB, 200)
-        //        upCloudWOB = upCloudWOB + 10;
-        //        upCloudXOB = upCloudXOB - 5;
-        //        upCloudYOB = upCloudYOB - 5;
-        //        if (upCloudXOB < -20) { upCloudXOB = 0; upCloudYOB = 90; upCloudWOB = 90; }
-        //        currentRotateO = currentRotateO + 10;
-        //        if (currentRotateO > 35) { currentRotateO = -10; };
-        //        toolMoverO.setRotation(currentRotateO);
-
-
-        //        if (secondsIntervalOrchard <= 0) {
-        //            toolMoverLabelO.setHidden(true);
-        //            scaffoldO.setHidden(true);
-        //            upgradeCloudO.setHidden(true);
-        //            orchardBarnLevel = 2;
-        //            localStorage.setItem("MedFarm_orchardBarnLevel", 2);
-        //            barnLevelO.setText("Lvl 2/2");
-        //            player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - 200;
-        //            if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
-        //            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
-
-        //            if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 0) {
-        //                questText1O.setText("If we had a FRUIT PRESS and some BARRELS, we could make CIDER");
-        //                questPanelRocksO.setHidden(false);
-        //                questPanelRocksO.setFill(imgArrayStore[4]);
-        //                questPanelAvatarO.setFill(imgArrayStore[6]);
-        //            }
-        //            if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 1 && player.cropsStored[17].stored < 1) {
-        //                questText1O.setText("We need more BARRELS to keep making CIDER");
-        //                questPanelRocksO.setHidden(false);
-        //                questPanelRocksO.setFill(imgArrayStore[6]);
-        //                questPanelAvatarO.setFill(imgArray4[1]);
-        //            }
-        //            if (orchardBarnLevel == 2 && collectItems.storeItems[6].owned == 1 && player.cropsStored[17].stored > 1) {
-        //                questText1O.setText("I don't need anything at the moment");
-        //                questPanelRocksO.setHidden(true);
-        //                questPanelAvatarO.setFill(imgArray4[1]);
-        //            }
-
-        //        }
-
-
-        //    }, this, 250, 241);
-        //}
-
-
-
-
+      
         var orchardUpgradePickMover = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(98, 135).setSize(38, 43).setFill(imgArrayStore[3].src).setRotation(-45);
         orchardLayer.appendChild(orchardUpgradePickMover);
         var orchardUpgradeRockCloud = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(98, 135).setSize(38, 43).setFill(imgArray[24].src);
         orchardLayer.appendChild(orchardUpgradeRockCloud);
-        var toolMoverLabelOR = (new lime.Label()).setText("60").setPosition(120, 185).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("ComicSans MS").setFill(imgArray[27]);
+        var toolMoverLabelOR = (new lime.Label()).setText("60").setPosition(120, 185).setSize(40, 25).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Proxima Nova").setFill(imgArray[27]);
         orchardLayer.appendChild(toolMoverLabelOR);
         orchardUpgradePickMover.setHidden(true);
         orchardUpgradeRockCloud.setHidden(true);
@@ -8140,7 +8785,7 @@ farming.start = function () {
                         questText1O.setText("If you upgrade the barn, we can increase our harvests");
                         questPanelRocksO.setHidden(true);
                         questPanelAvatarO.setFill(imgArray4[1]);
-
+                        showMFToast("Rocks Clear","images/UI/rockBlock.png",'orchard', 3000);                      
                     }
 
 
@@ -8154,6 +8799,33 @@ farming.start = function () {
         });
 
 
+        var mapLocOrch1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(70, 50).setSize(18,20).setFill(imgArrayStore[6]);
+        orchardLayer.appendChild(mapLocOrch1);
+        var mapLocOrch2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width/2 - 65, 420).setSize(18,20).setFill(imgArrayItems[43]);
+        orchardLayer.appendChild(mapLocOrch2);
+        if(mapLocations.places[13].found == 1){
+            mapLocOrch1.setHidden(true);}
+        else{
+            goog.events.listen(mapLocOrch1, ["mousedown", "touchstart"], function (e) {
+                
+                 this.setHidden(true); mapLocations.places[13].found = 1; getMapFrag('o1');
+                    e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); 
+            });
+        }
+        if(mapLocations.places[14].found == 1){
+            mapLocOrch2.setHidden(true);}
+        else{
+            goog.events.listen(mapLocOrch2, ["mousedown", "touchstart"], function (e) {
+                
+                if(globalModalBlock == 0){ this.setHidden(true); mapLocations.places[14].found = 1; getMapFrag('o2'); 
+                    e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+            });
+        };
+
+
+
+
+
         var ciderWaiting = 0;
 
         var ciderPlace = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(148, 234).setSize(77, 84).setFill(imgArray4[19]);
@@ -8164,10 +8836,10 @@ farming.start = function () {
         ciderPlace.appendChild(ciderPlaceBtn);
 
 
-        var ciderPlaceBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, -60).setSize(45, 66).setFill(imgArray[90]);
+        var ciderPlaceBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-25, -48).setSize(45, 62).setFill(imgArray[115]);
         ciderPlace.appendChild(ciderPlaceBubble);
 
-        var ciderPlaceBubbleText = (new lime.Label()).setAnchorPoint(0, 0).setPosition(0, 5).setSize(40, 25).setText("+ " + ciderWaiting).setFontColor("#E8FC08").setFontSize(14).setFontFamily("ComicSans MS");
+        var ciderPlaceBubbleText = (new lime.Label()).setAnchorPoint(0, 0).setPosition(0, 5).setSize(40, 25).setText("+ " + ciderWaiting).setFontColor("#FFFFFF").setFontSize(14).setFontFamily("Proxima Nova");
         ciderPlaceBubble.appendChild(ciderPlaceBubbleText);
         var ciderPlaceBubbleImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 17).setSize(30, 30).setFill(imgArray4[21]);
         ciderPlaceBubble.appendChild(ciderPlaceBubbleImg);
@@ -8199,7 +8871,7 @@ farming.start = function () {
 
 
 
-        var ciderPlaceNeedBarrels = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(14, -30).setSize(35, 40).setFill("images/UI/needBarrels.png").setHidden(true);
+        var ciderPlaceNeedBarrels = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-14, -30).setSize(35, 40).setFill("images/UI/needBarrels.png").setHidden(true);
         ciderPlace.appendChild(ciderPlaceNeedBarrels);
 
         if (collectItems.storeItems[4].owned == 1 && ciderEnabled == 1) {
@@ -8227,7 +8899,8 @@ farming.start = function () {
         goog.events.listen(ciderPlaceBtn, ["mousedown", "touchstart"], function () {
             var isciderplaceOwned = 0;
             isciderplaceOwned = localStorage.getItem("MedFarm_ciderPlaceOwned")
-            if (collectItems.storeItems[4].owned == 1 && isciderplaceOwned == 0) {
+            orchardTreesHid = localStorage.getItem("GuiGhostFarms_orchardTreeBlock");
+            if (collectItems.storeItems[4].owned == 1 && isciderplaceOwned == 0 && orchardTreesHid ==2) {
                 questPanelO.setHidden(false);
                 questText1O.setText("Put that FRUIT PRESS here. Place it now?");
                 questPanelRocksO.setHidden(false);
@@ -8272,6 +8945,7 @@ farming.start = function () {
         });
         goog.events.listen(ciderPlaceBubble, ["mousedown", "touchstart"], function () {
             player.cropsStored[18].stored = parseInt(player.cropsStored[18].stored) + parseInt(ciderWaiting);
+            showMFToast("+" + ciderWaiting ,imgArray4[21].src,'orchard', 3000);
             gLabel18.setText(player.cropsStored[18].stored);
             lime.scheduleManager.callAfter(function () { a.updateStored(); }, this, 100);
             ciderWaiting = 0;
@@ -8305,7 +8979,7 @@ farming.start = function () {
         //var tree7 = (new farming.Land(a, b, posXO, posYO)).setPosition(2, 340); orchardLayer.appendChild(tree7)
         //var tree8 = (new farming.Land(a, b, posXO, posYO)).setPosition(70, 340); orchardLayer.appendChild(tree8)
 
-        var costDisplayO = (new lime.Label()).setPosition(156, 180).setSize(50, 25).setText("-50").setFontSize(14).setFontFamily("Comic Sans MS").setFontColor("#e1f00e").setFontWeight(600);
+        var costDisplayO = (new lime.Label()).setPosition(156, 180).setSize(50, 25).setText("-50").setFontSize(14).setFontFamily("Proxima Nova").setFontColor("#e1f00e").setFontWeight(600);
         orchardLayer.appendChild(costDisplayO);
         var costCoinO = (new lime.Sprite()).setPosition(30, -8).setSize(30, 30).setFill(imgArray11[0]); costDisplayO.appendChild(costCoinO);
         costDisplayO.setHidden(true);
@@ -8370,7 +9044,7 @@ farming.start = function () {
                         orchardBarn.setFill(imgArray4[18]);
                         orchardRockBlockBtn.setHidden(true); orchardRockBlockBtnImg.setHidden(true);
                         orchardRockBlock11.setHidden(true); orchardRockBlock12.setHidden(true);
-                        barnLevelO.setText("Lvl 2/2");
+                        // barnLevelO.setText("2/2");
                     }
                     ///hide CiderPlace if trees not cleared
                     orchardTreesHid = localStorage.getItem("GuiGhostFarms_orchardTreeBlock");
@@ -8438,11 +9112,11 @@ farming.start = function () {
         //orchardLayer.appendChild(treeUnlockBtnO);
         var upgradeCloudTO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 60).setSize(150, 390).setFill(imgArray[24].src); orchardTreeBlockO.appendChild(upgradeCloudTO);
         var axeORight = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(70, 105).setSize(40, 40).setFill(imgArray[61]); orchardTreeBlockO.appendChild(axeORight);
-        var treesImgO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(225, 290).setSize(35, 35).setFill(ImgArrayTools[3]);
+        var treesImgO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(225, 288).setSize(40, 40).setFill(ImgArrayTools[3]);
         orchardLayer.appendChild(treesImgO);
 
 
-        var axeMoverLabelTO = (new lime.Label()).setText("60").setPosition(75, 200).setSize(40, 25).setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Comic Sans MS").setFill(imgArray[27]);
+        var axeMoverLabelTO = (new lime.Label()).setText("60").setPosition(75, 200).setSize(40, 25).setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Proxima Nova").setFill(imgArray[27]);
         orchardTreeBlockO.appendChild(axeMoverLabelTO);
 
         var axerotateO = 0;
@@ -8508,7 +9182,8 @@ farming.start = function () {
                                 lime.scheduleManager.callAfter(function () { unlockedCropBackO.setHidden(true); }, this, 3000);
                                 localStorage["GuiGhostFarms_orchardTreeBlock"] = 2;
                                 orchardText = "Pears & Apples"; wO.setText(orchardText).setPosition(a.controlsLayer_w / 2 - 5, a.height - a.controlsLayer_h / 2 - 12);
-
+                                showMFToast("Orchard Forest Clear",imgArray[61].src,'orchard', 2000);
+                                showMFToast("Unlocked Pears", 'images/pear.png','orchard', 3000);
                                 try { goog.events.removeAll(treesImgO); } catch (err) { return; }
                             }
 
@@ -8530,8 +9205,16 @@ farming.start = function () {
         ////orchard fishing
         //        var fishingShack= (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(210, 105).setSize(90, 96).setFill("images/Orchard/fishShack2.png");
         //        orchardLayer.appendChild(fishingShack);
-
-
+        ////orchard water button
+        var getWaterBtnO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(170, 180).setSize(28, 28).setFill(imgArray[111]); 
+        orchardLayer.appendChild(getWaterBtnO);
+        goog.events.listen(getWaterBtnO, ["mousedown", "touchstart"], function () {
+            waterStored = parseInt(localStorage.getItem('MedFarms_waterStored')) || 0;
+            waterStored = waterStored = parseInt(waterStored + 25);
+            localStorage.setItem("MedFarms_waterStored", waterStored);
+            showMFToast("+ 25",imgArray[110].src,'orchard', 2000, 'left');
+            gLabelWater.setText(waterStored);
+        });
         ///orchard controls
         var ggO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-5, 0).setSize(a.controlsLayer_w, 46).setFill(imgArray[75]);
         orchardLayer.appendChild(ggO);
@@ -8540,20 +9223,23 @@ farming.start = function () {
 
         var topCoinO = (new lime.Sprite()).setPosition(285, 18).setSize(35, 35).setFill(imgArray11[0]);
         orchardLayer.appendChild(topCoinO);
-        var orchardCash = (new lime.Label()).setText(player.money).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setPosition(235, 24).setFontSize(18);
+        var orchardCash = (new lime.Label()).setText(player.money).setFontColor("#ffffff").setFontFamily("Proxima Nova").setPosition(235, 24).setFontSize(18);
         orchardLayer.appendChild(orchardCash);
         ;
         //storage Menu Orchard
-        var toInventoryO = (new lime.Sprite()).setPosition((a.controlsLayer_w / 2) - 5, 21).setSize(35, 35).setFill(imgArrayItems[25].src);
+        var toInventoryO = (new lime.Sprite()).setPosition((a.controlsLayer_w / 2) - 5, 21).setSize(51, 40).setFill(imgArrayItems[25].src).setRotation(5);
         orchardLayer.appendChild(toInventoryO);
 
 
         goog.events.listen(toInventoryO, ["mousedown", "touchstart"], function () {
             a.sceneBefore = 3;
-            checkItemsOwned();
+          
+            try{try{checkItemsOwned();}catch(err){console.log(err)};}catch(err){console.log(err)};
             starCashInvCount.setText(starCash);
             hideAndDelayNavIcons();
+            cropsBack.setHidden(false); itemsBack.setHidden(true); itemsStoredBack.setHidden(true); collectBack.setHidden(true);  ///always open to cropsInventory
             c.replaceScene(inventoryScene, lime.transitions.SlideInUp);
+            playerImg.setHidden(false);
             lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
             sceneActive = 'Inventory';
             outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
@@ -8561,8 +9247,8 @@ farming.start = function () {
             outOfCashP.setHidden(true); marketBtn1P.setHidden(true); buyStarCashP.setHidden(true);
             outOfCashO.setHidden(true); marketBtn1O.setHidden(true); buyStarCashO.setHidden(true);
             outOfCashV.setHidden(true); marketBtn1V.setHidden(true); buyStarCashV.setHidden(true);
-
-            updateInventoryCounts();
+            try{try{updateInventoryCounts();}catch(err){console.log(err)};}catch(err){console.log(err)};
+            
 
         });
 
@@ -8571,15 +9257,15 @@ farming.start = function () {
         var roadLeftO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(5, 448).setSize(15, 15)
         orchardLayer.appendChild(roadLeftO)
         var toolCountImgO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(5, 7).setSize(35, 35).setFill(imgArray[30]);
-        var toolCountO = (new lime.Label()).setText(player.tools).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setPosition(65, 24).setFontSize(18);
+        var toolCountO = (new lime.Label()).setText(player.tools).setFontColor("#ffffff").setFontFamily("Proxima Nova").setPosition(65, 24).setFontSize(18);
         orchardLayer.appendChild(toolCountImgO);
         orchardLayer.appendChild(toolCountO);
         /// orchard girl anim
         var orchardGirl = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(44, 230).setSize(25, 26).setFill(imgArray4[1]);
         orchardLayer.appendChild(orchardGirl);
-        var IsabelQuestBtn = (new lime.GlossyButton()).setColor("#A0A0A0").setText("").setPosition(15, -8).setSize(25, 23).setOpacity(0.2);
+        var IsabelQuestBtn = (new lime.GlossyButton()).setColor("#A0A0A0").setText("").setPosition(5, -10).setSize(25, 23).setOpacity(0.2);
         orchardGirl.appendChild(IsabelQuestBtn);
-        var IsabelQuestImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(3, -19).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
+        var IsabelQuestImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-6, -22).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
         orchardGirl.appendChild(IsabelQuestImg);
 
         goog.events.listen(IsabelQuestBtn, ["mousedown", "touchstart"], function () {
@@ -8832,7 +9518,7 @@ farming.start = function () {
             if (globalModalBlock == 0) {
                 var isMuted = lime.audio.getMute();
                 if (isMuted) {
-                    lime.audio.setMute(false); themeSong.play(true);
+                    lime.audio.setMute(false); themeSongNew.play(true);
                     waterfallSound.play(true);
                     muteBtnO.setFill(imgArray[15]);
                     setMute(2);
@@ -8851,7 +9537,7 @@ farming.start = function () {
         var hhO = b.currentCrop;
 
         if (orchardTreeBlock == 2) { orchardText = "Pears & Apples" };
-        var wO = (new lime.Label()).setText(orchardText).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(a.controlsLayer_w / 2 - 5, a.height - a.controlsLayer_h / 2 - 12);
+        var wO = (new lime.Label()).setText(orchardText).setFontColor("#ffffff").setFontFamily("Proxima Nova").setFontSize(12).setPosition(a.controlsLayer_w / 2 - 5, a.height - a.controlsLayer_h / 2 - 12);
         orchardLayer.appendChild(wO);
         if (orchardTreeBlock == 2) { orchardText = "Pears & Apples"; wO.setText(orchardText).setPosition(a.controlsLayer_w / 2 - 5, a.height - a.controlsLayer_h / 2 - 12); };
         var zO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.controlsLayer_w / 2 - (25), a.height - a.controlsLayer_h / 2 - 5).setFill("images/" + a.crops[8].harvest).setSize(a.tile_size * 1.2, a.tile_size * 1.2);
@@ -8871,7 +9557,7 @@ farming.start = function () {
         /// Star Menu
         goog.events.listen(fbBtnO, ["mousedown", "touchstart"], function () {
             if (globalModalBlock == 0) {
-                shareFacebook();
+                openStarMenu();
 
             }
         });
@@ -8920,11 +9606,11 @@ farming.start = function () {
 
         var unlockedCropBackO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(30, 150).setSize(250, 250).setFill(imgArray[80]);
         orchardLayer.appendChild(unlockedCropBackO);
-        var unlockedCropTextO = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#000033").setFontFamily("Comic Sans MS").setPosition(10, 45).setSize(230, 60).setFontSize(18).setText("You found some Pear Trees!");
+        var unlockedCropTextO = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#000033").setFontFamily("Proxima Nova").setPosition(10, 45).setSize(230, 60).setFontSize(18).setText("You found some Pear Trees!");
         unlockedCropBackO.appendChild(unlockedCropTextO);
         var unlockedCropImageO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(90, 110).setSize(70, 70).setFill("images/" + a.crops[9].harvest);
         unlockedCropBackO.appendChild(unlockedCropImageO);
-        var unlockedCropText2O = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#000033").setFontFamily("Comic Sans MS").setPosition(50, 185).setSize(150, 50).setFontSize(18).setText("Pears");
+        var unlockedCropText2O = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#000033").setFontFamily("Proxima Nova").setPosition(50, 185).setSize(150, 50).setFontSize(18).setText("Pears");
         unlockedCropBackO.appendChild(unlockedCropText2O);
         unlockedCropBackO.setHidden(true);
 
@@ -8932,17 +9618,17 @@ farming.start = function () {
 
         var barnUpgradeNotifO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(35, 130).setSize(250, 220).setFill(imgArray[79]);
         orchardLayer.appendChild(barnUpgradeNotifO);
-        var barnUpgradeHeaderO = (new lime.Label()).setAnchorPoint(0, 0).setPosition(23, 25).setText("Upgrade Orchard Barn?").setFontFamily("Comic Sans MS").setFontSize(18);
+        var barnUpgradeHeaderO = (new lime.Label()).setAnchorPoint(0, 0).setPosition(23, 25).setText("Upgrade Orchard Barn?").setFontFamily("Proxima Nova").setFontSize(18);
         barnUpgradeNotifO.appendChild(barnUpgradeHeaderO);
-        var barnUpgradeText1O = (new lime.Label()).setAnchorPoint(0, 0).setPosition(25, 122).setText("Increases Apple and Pear harvests by 100%").setFontFamily("Comic Sans MS").setFontSize(16).setSize(195, a.height / 2 - 50);
+        var barnUpgradeText1O = (new lime.Label()).setAnchorPoint(0, 0).setPosition(25, 122).setText("Increases Apple and Pear harvests by 100%").setFontFamily("Proxima Nova").setFontSize(16).setSize(195, a.height / 2 - 50);
         barnUpgradeNotifO.appendChild(barnUpgradeText1O);
         var barnPanelTools = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(52, 50).setSize(40, 40).setFill(ImgArrayTools[5]);
         barnUpgradeNotifO.appendChild(barnPanelTools);
-        var barnUpgradeTextToolsO = (new lime.Label()).setAnchorPoint(0, 0).setPosition(50, 95).setText("250").setFontFamily("Comic Sans MS").setFontSize(16).setSize(40, 40);
+        var barnUpgradeTextToolsO = (new lime.Label()).setAnchorPoint(0, 0).setPosition(50, 95).setText("250").setFontFamily("Proxima Nova").setFontSize(16).setSize(40, 40);
         barnUpgradeNotifO.appendChild(barnUpgradeTextToolsO);
         var barnPanelWood = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(142, 50).setSize(40, 40).setFill("images/" + a.crops[14].image);
         barnUpgradeNotifO.appendChild(barnPanelWood);
-        var barnUpgradeTextWoodO = (new lime.Label()).setAnchorPoint(0, 0).setPosition(145, 95).setText("200").setFontFamily("Comic Sans MS").setFontSize(16).setSize(40, 40);
+        var barnUpgradeTextWoodO = (new lime.Label()).setAnchorPoint(0, 0).setPosition(145, 95).setText("200").setFontFamily("Proxima Nova").setFontSize(16).setSize(40, 40);
         barnUpgradeNotifO.appendChild(barnUpgradeTextWoodO);
         var barnPanelCloseBtnO = (new lime.GlossyButton()).setColor("#663300").setText("Close").setPosition(125, 208).setSize(100, 20);
         barnUpgradeNotifO.appendChild(barnPanelCloseBtnO);
@@ -8986,11 +9672,14 @@ farming.start = function () {
         });
 
         ///upgrade orchard barn
-
+        var barnUpgradeTickO = 0;
+        var hammerSoundO = hammerSound; 
         function upgradeOrchardBarn(free) {
             if (free == 1) { player.tools = player.tools - 250; player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - 200; }
             if (barnUpInProgressO == 0) {
                 barnUpInProgressO = 1;
+                barnUpgradeTickO++;
+                if(barnUpgradeTickO >= 20){barnUpgradeTickO = 0; if(sceneActive == 'Orchard'){hammerSoundO.play();}; };
                 if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0 };
                 localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
                 lime.scheduleManager.callAfter(function () { a.updateTools(); }, this, 100);
@@ -9034,6 +9723,7 @@ farming.start = function () {
 
 
                     if (secondsIntervalOrchard <= 0) {
+                        hammerSoundO.stop();
                         upgradesInProgress.buildings[2].timeLeft = 0;
                         upgradesInProgress.buildings[2].currentBarnLevel = orchardBarnLevel;
                         localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
@@ -9042,8 +9732,10 @@ farming.start = function () {
                         scaffoldO.setHidden(true);
                         upgradeCloudO.setHidden(true);
                         orchardBarnLevel = 2;
+                        checkLandSlide();
                         localStorage.setItem("MedFarm_orchardBarnLevel", 2);
-                        barnLevelO.setText("Lvl 2/2");
+                        // barnLevelO.setText("2/2");
+                        showMFToast("Orchard Upgraded",imgArray[30].src,'orchard', 3000);
                         player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - 200;
                         if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 0; }
                         localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
@@ -9081,74 +9773,112 @@ farming.start = function () {
 
         var confirmSaleLS = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(50, 150).setSize(210, 220).setFill("images/UI/saleBack.png");
         orchardLayer.appendChild(confirmSaleLS);
-        var confirmTextLS = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#000000").setFontFamily("Comic Sans MS").setPosition(50, 125).setSize(115, 60).setFontSize(22).setText("StockPens  10,000");
+        var confirmTextLS = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#000000").setFontFamily("Proxima Nova").setPosition(50, 62).setSize(115, 60).setFontSize(22).setText("StockPens  10,000");
         confirmSaleLS.appendChild(confirmTextLS);
-        var confirmCoinLS = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 144).setSize(30, 30).setFill(imgArray11[0]);
+        var confirmCoinLS = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(52, 82).setSize(25, 25).setFill(imgArray11[0]);
         confirmSaleLS.appendChild(confirmCoinLS);
-        var confirmTextSubLS = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#FF0000").setFontFamily("Comic Sans MS").setPosition(8, 185).setSize(190, 60).setFontSize(12).setText("Earn more Coin to buy");
+        var confirmTextSubLS = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#FF0000").setFontFamily("Proxima Nova").setPosition(8, 185).setSize(190, 60).setFontSize(12).setText("Earn more Coin to buy");
         confirmSaleLS.appendChild(confirmTextSubLS);
-        var confirmBtnLS = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(100, 212).setSize(75, 35).setFill("images/UI/greenBuy.png");
+        var confirmBtnLS = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(100, 212).setSize(75, 35).setFill("images/UI/buyNowBtn.png");
         confirmSaleLS.appendChild(confirmBtnLS);
         var cancelBtnLS = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(50, 212).setSize(35, 35).setFill(imgArray[21]);
         confirmSaleLS.appendChild(cancelBtnLS);
         confirmSaleLS.setHidden(true);
 
+        var adLSBuyText = (new lime.Label).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000000").setPosition(40, 122).setSize(135, 60).setFontSize(14).setText("Get 10% Off");
+        confirmSaleLS.appendChild(adLSBuyText);
+        var adLSViewBtn = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(65, 135).setSize(90, 42).setFill(imgArray[108]);
+        confirmSaleLS.appendChild(adLSViewBtn);
+        var discountLS = localStorage.getItem('acreDiscount2')|| 0;
+        goog.events.listen(adLSViewBtn, ["mousedown", "touchstart"], function (event) {     
+            //for sale pasture ad discount
+             var salevis2 = confirmSaleLS.getHidden();
+            if (!salevis2) {
+                console.log("visible detected try show ad")
+               
+                    localStorage.setItem("acreDiscount2", 1);
+                    localStorage.setItem('MedFarm_LoadAd', 0);
+                    localStorage.setItem('MedFarm_StarCashBoost', 1);
+                    lime.audio.setMute(true);
+                         
+                        lime.scheduleManager.callAfter(function () { 
+                            discountLS = localStorage.getItem('acreDiscount2')|| 0; 
+                                               
+                                              if (player.money >= 9000) {
+                                                   confirmTextSubLS.setHidden(true); confirmBtnLS.setHidden(false); adLSViewBtn.setHidden(true); adLSBuyText.setHidden(false);
+                                                } else { confirmBtnLS.setHidden(true); confirmTextSubLS.setHidden(false);  };
+                                                if(discountLS){adLSViewBtn.setHidden(true); adLSBuyText.setHidden(false);};
+                                              confirmTextLS.setText("StockPens  9,000");
+                                          globalModalBlock = 0;
+                                
+                        }, this, 2500);
+                
+            } 
+            event.stopPropagation();    
+        });
+        
         goog.events.listen(forSaleLS, ["mousedown", "touchstart"], function () {            //for sale vinyard
             if (globalModalBlock == 0) {
                 fsClicked = 4;
                 globalModalBlock = 1;
                 orchardBlock.setHidden(false); confirmSaleLS.setHidden(false);
+               
                 if (player.money >= 10000) { confirmTextSubLS.setHidden(true); confirmBtnLS.setHidden(false); } else { confirmBtnLS.setHidden(true); };
                 confirmTextLS.setText("StockPens  10,000");
+                if (player.money >= 9000 && discountLS) { confirmTextSubLS.setHidden(true); confirmBtnLS.setHidden(false); adLSViewBtn.setHidden(true); adLSBuyText.setHidden(false); adLSBuyText.setText("Discount Applied");} 
+                confirmTextLS.setText("StockPens  9,000");
+                if ( player.money < 9000 && discountLS) { confirmTextSubLS.setHidden(false); confirmBtnLS.setHidden(true); adLSViewBtn.setHidden(true); adLSBuyText.setHidden(false); adLSBuyText.setText("Discount Applied");}; 
+                confirmTextLS.setText("StockPens  9,000");
+                if(!discountLS){adLSViewBtn.setHidden(false); adLSBuyText.setHidden(false); adLSBuyText.setText("Get 10% Off");};
             }
         });
-
-        goog.events.listen(confirmBtnLS, ["mousedown", "touchstart"], function () {            //for sale confirm
-            globalModalBlock = 0;
-
-            player.money = player.money - 10000;
-            a.updateMoney();
-            acres[4].owned = 1;
-            localStorage.setItem('GuiGhostFarms_acres', JSON.stringify(acres));
-            confirmSaleLS.setHidden(true);
-            roadRightO.setHidden(false); forSaleLS.setHidden(true); confirmSaleLS.setHidden(true); orchardBlock.setHidden(true);
-            fsClicked = 0;
-            a.sceneBefore = 5;
-            oldCrop = b.currentCrop; b.currentCrop = 12;
-            hideAndDelayNavIcons();
-            c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
-
-            sceneActive = 'LS';
-            waterfallSound.stop();
-            chickenSound.play();
-            pig1Sound.play();
-
-
-            lime.scheduleManager.callAfter(function () {
-                checkShortage();
-                acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
-                if (acresOwned3 >= 4) { gideon.setHidden(false); }
-                try { Enhance.logEvent('level_up'); }
-                catch (err) { console.log("logging failed") };
-                try {
-                    goog.events.removeAll(forSaleLS);
-                    goog.events.removeAll(confirmBtnLS);
-                    goog.events.removeAll(cancelBtnLS);
-                } catch (err) { console.log("remove failed") }
-            }, this, 1800);
-
-            lime.scheduleManager.callAfter(function () { pig2Sound.play(); }, this, 5000);
+//for sale confirm
+        goog.events.listen(confirmBtnLS, ["mousedown", "touchstart"], function () {    
+            let isvisLSSale = confirmSaleLS.getHidden();
+            if (isvisLSSale == false){
+                globalModalBlock = 0;
+                let adjustPriceLS = 10000;
+                discountLS = localStorage.getItem('acreDiscount2')|| 0;
+                if (discountLS){adjustPriceLS = 9000;};
+                player.money = player.money - adjustPriceLS;
+                a.updateMoney();
+                acres[4].owned = 1;
+                localStorage.setItem('GuiGhostFarms_acres', JSON.stringify(acres));
+                confirmSaleLS.setHidden(true);
+                roadRightO.setHidden(false); forSaleLS.setHidden(true); confirmSaleLS.setHidden(true); orchardBlock.setHidden(true);
+                fsClicked = 0;
+                a.sceneBefore = 5;
+                oldCrop = b.currentCrop; b.currentCrop = 12;
+                ///go to story
+                c.replaceScene(storyScene);
+                storyChapterText1.setText("The Stockpens").setOpacity(1.0).setHidden(false);
+                storyChapterText2.setText("This acre already has chickens and pigs. Make sure they stay fed").setOpacity(1.0).setHidden(false);
+                nextStoryPanel('LiveStock')
+    
+          
+    
+    
+                lime.scheduleManager.callAfter(function () {
+                    checkShortage();
+                    acresOwned3 = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
+                    if (acresOwned3 >= 4) { gideon.setHidden(false); }
+                    try { Enhance.logEvent('level_up'); }
+                    catch (err) { console.log("logging failed") };
+                    try {
+                        goog.events.removeAll(forSaleLS);
+                        goog.events.removeAll(confirmBtnLS);
+                        goog.events.removeAll(cancelBtnLS);
+                    } catch (err) { console.log("remove failed") }
+                }, this, 1800);
+    
+                lime.scheduleManager.callAfter(function () { pig2Sound.play(); }, this, 5000);
+            }        
+         
 
         });
 
         goog.events.listen(cancelBtnLS, ["mousedown", "touchstart"], function () { confirmSaleLS.setHidden(true); orchardBlock.setHidden(true); globalModalBlock = 0; });     //for sale cancel
-        if (acres[4].owned == 1) {
-            try {
-                goog.events.removeAll(forSaleLS);
-                goog.events.removeAll(confirmBtnLS);
-                goog.events.removeAll(cancelBtnLS);
-            } catch (err) { return; }
-        }
+    
 
 
 
@@ -9157,11 +9887,11 @@ farming.start = function () {
         ////achievement Modal from Orchard
         var achieveNotifO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 130).setSize(210, 220).setFill(imgArray[91]);
 
-        var achieveTextO = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#000033").setFontFamily("Comic Sans MS").setPosition(13, 45).setSize(190, 60).setFontSize(16).setText("Blacksmith I");
+        var achieveTextO = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#000033").setFontFamily("Proxima Nova").setPosition(13, 45).setSize(190, 60).setFontSize(16).setText("Blacksmith I");
         achieveNotifO.appendChild(achieveTextO);
-        var achieveTextSubO = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#000033").setFontFamily("Comic Sans MS").setPosition(30, 123).setSize(150, 60).setFontSize(12).setText("Achieve Text");
+        var achieveTextSubO = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#000033").setFontFamily("Proxima Nova").setPosition(30, 123).setSize(150, 60).setFontSize(12).setText("Achieve Text");
         achieveNotifO.appendChild(achieveTextSubO);
-        var achieveSCO = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#000033").setFontFamily("Comic Sans MS").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ");
+        var achieveSCO = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#000033").setFontFamily("Proxima Nova").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ");
         achieveNotifO.appendChild(achieveSCO);
         var confirmBtnAO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill(imgArray[21]);
         achieveNotifO.appendChild(confirmBtnAO);
@@ -9209,10 +9939,10 @@ farming.start = function () {
                 townSceneActive = 1;///from orchard to Market
                 hideAndDelayNavIcons();
                 c.replaceScene(marketScene, lime.transitions.SlideInUp);
-                acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+                acresOwned3 = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
                 if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
                 sceneActive = 'Market';
-                lime.scheduleManager.callAfter(function () { CheckQuestInvItems(); }, this, 1500);
+                lime.scheduleManager.callAfter(function () { try{CheckQuestInvItems();}catch(err){console.log(err)}; }, this, 1500);
                 waterfallSound.stop();
                 outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
                 homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
@@ -9225,15 +9955,65 @@ farming.start = function () {
 
 
         //////Orchard Out of cash Modal
-        var outOfCashO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 100).setSize(210, 220).setFill(imgArray[33]);
+        // var outOfCashO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 100).setSize(210, 220).setFill(imgArray[33]);
+        // orchardLayer.appendChild(outOfCashO);
+        // var buyStarCashO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(122, 212).setSize(75, 35).setFill("images/UI/buyStarCash.png");
+        // outOfCashO.appendChild(buyStarCashO);
+        // var marketBtn1O = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 212).setSize(75, 35).setFill(imgArray[32]);
+        // outOfCashO.appendChild(marketBtn1O);
+        // var cancelBtnCashO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(89, 212).setSize(35, 35).setFill(imgArray[21]);
+        // outOfCashO.appendChild(cancelBtnCashO);
+        // outOfCashO.setHidden(true); marketBtn1O.setHidden(true); buyStarCashO.setHidden(true);
+
+        var outOfCashO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(26, 100).setSize(250, 305).setFill(imgArray[33]);
         orchardLayer.appendChild(outOfCashO);
-        var buyStarCashO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(122, 212).setSize(75, 35).setFill("images/UI/buyStarCash.png");
+        var outBack1O = new lime.RoundedRect().setSize(205,50).setRadius(10).setPosition(125, 140).setOpacity(0.9);
+        outBack1O.setFill(gradient1);
+        outOfCashO.appendChild(outBack1O);
+        var outOfCashLbl1O = (new lime.Label()).setAnchorPoint(0, 0).setPosition(45, 30).setText("Not Enough Coins").setFontColor("RED").setFontFamily("Proxima Nova").setFontSize(22);
+        outOfCashO.appendChild(outOfCashLbl1O);
+        var outOfCashLbl2O = (new lime.Label()).setAnchorPoint(0, 0).setPosition(30, 125).setText("Buy Coins with Stars").setFontColor("WHITE").setSize(90, 80).setFontFamily("Proxima Nova").setFontSize(16);
+        outOfCashO.appendChild(outOfCashLbl2O);
+        var buyStarCashO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(157, 118).setSize(45, 45).setFill(imgArray[72]);
         outOfCashO.appendChild(buyStarCashO);
-        var marketBtn1O = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 212).setSize(75, 35).setFill(imgArray[32]);
+        var outBack2O = new lime.RoundedRect().setSize(205,50).setRadius(10).setPosition(125, 195).setOpacity(0.9);
+        outBack2O.setFill(gradient1);
+        outOfCashO.appendChild(outBack2O);
+        var outOfCashLbl3O = (new lime.Label()).setAnchorPoint(0, 0).setPosition(30, 178).setText("Get 200 Coins Free").setFontColor("WHITE").setSize(90, 80).setFontFamily("Proxima Nova").setFontSize(16);
+        outOfCashO.appendChild(outOfCashLbl3O);
+        var outofCoinViewAdBtnO = (new lime.Sprite).setAnchorPoint(0, 0).setPosition(133, 173).setSize(90, 42).setFill(imgArray[108]);
+        outOfCashO.appendChild(outofCoinViewAdBtnO);
+        var outBack3O = new lime.RoundedRect().setSize(205,50).setRadius(10).setPosition(125, 250).setOpacity(0.9);
+        outBack3O.setFill(gradient1);
+        outOfCashO.appendChild(outBack3O);
+        var outOfCashLbl4O = (new lime.Label()).setAnchorPoint(0, 0).setPosition(30, 235).setText("Sell Crops in Town").setFontColor("WHITE").setSize(90, 80).setFontFamily("Proxima Nova").setFontSize(16);
+        outOfCashO.appendChild(outOfCashLbl4O);
+        var marketBtn1O = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(157, 228).setSize(45, 45).setFill(imgArray[81]);
         outOfCashO.appendChild(marketBtn1O);
-        var cancelBtnCashO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(89, 212).setSize(35, 35).setFill(imgArray[21]);
+        var cancelBtnCashO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(110, 290).setSize(35, 35).setFill(imgArray[21]);
         outOfCashO.appendChild(cancelBtnCashO);
         outOfCashO.setHidden(true); marketBtn1O.setHidden(true); buyStarCashO.setHidden(true);
+
+        goog.events.listen(outofCoinViewAdBtnO, ["mousedown", "touchstart"], function () {            //starCash Button
+            var isHidoCh2 = outOfCash.getHidden();
+            if (isHidoCh2 == false) {
+                outOfCashO.setHidden(true); outOfCash.setHidden(true); outOfCashP.setHidden(true); outOfCashV.setHidden(true); 
+                homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
+                
+                warningSeen = 1;
+                localStorage.setItem("acreDiscount1", 0);
+                localStorage.setItem('MedFarm_LoadAd', 0);
+                localStorage.setItem('MedFarm_StarCashBoost', 1);
+                lime.audio.setMute(true);
+                lime.scheduleManager.callAfter(function () { 
+                    player.money = parseInt(player.money) + 200; 
+                    a.updateMoney(); 
+                    globalModalBlock = 0;
+                    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player)); 
+                }, this, 5000);
+              
+            }
+       });
         //handle orchard out of cash clicks
         goog.events.listen(buyStarCashO, ["mousedown", "touchstart"], function () {            //starCash Button
             var isHidOC1 = outOfCashO.getHidden();
@@ -9242,7 +10022,7 @@ farming.start = function () {
                 outOfCashV.setHidden(true); marketBtn1V.setHidden(true); buyStarCashV.setHidden(true);
                 outOfCashO.setHidden(true); marketBtn1O.setHidden(true); buyStarCashO.setHidden(true);
                 outOfCashP.setHidden(true); outOfCashO.setHidden(true); marketBtn1P.setHidden(true); buyStarCashP.setHidden(true);
-                shareFacebook();
+                openStarMenu();
 
                 //c.replaceScene(menuScene, lime.transitions.SlideInUp);
                 warningSeen = 1;
@@ -9259,11 +10039,11 @@ farming.start = function () {
                 townSceneActive = 1;
                 hideAndDelayNavIcons();
                 c.replaceScene(marketScene, lime.transitions.SlideInUp);
-                acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+                acresOwned3 = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
                 if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
                 sceneActive = 'Market';
 
-                lime.scheduleManager.callAfter(function () { CheckQuestInvItems(); }, this, 1500);
+                lime.scheduleManager.callAfter(function () { try{CheckQuestInvItems();}catch(err){console.log(err)}; }, this, 1500);
                 warningSeen = 1;
                 globalModalBlock = 0;
             }
@@ -9295,9 +10075,9 @@ farming.start = function () {
 
         var questPanelO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(35, 130).setSize(250, 220).setFill(imgArray[79]);
         orchardLayer.appendChild(questPanelO);
-        var questHeaderO = (new lime.Label()).setAnchorPoint(0, 0).setPosition(23, 25).setText("Cultivator Isabel").setFontFamily("Comic Sans MS").setFontSize(24);
+        var questHeaderO = (new lime.Label()).setAnchorPoint(0, 0).setPosition(28, 25).setText("Cultivator Isabel").setFontFamily("Proxima Nova").setFontSize(24);
         questPanelO.appendChild(questHeaderO);
-        var questText1O = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 130).setText("If you had a STEEL PICK to clear rocks, we could upgrade this barn").setFontFamily("Comic Sans MS").setFontSize(16).setSize(200, a.height / 2 - 50);
+        var questText1O = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 130).setText("If you had a STEEL PICK to clear rocks, we could upgrade this barn").setFontFamily("Proxima Nova").setFontSize(16).setSize(200, a.height / 2 - 50);
         questPanelO.appendChild(questText1O);
         var questPanelAvatarO = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(62, 50).setSize(64, 70).setFill(imgArray4[1]);
         questPanelO.appendChild(questPanelAvatarO);
@@ -9356,13 +10136,13 @@ farming.start = function () {
         }
 
         var orchardHelpPanel = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 100).setSize(a.width - 30, a.height / 2).setFill(imgArray[78]).setHidden(true);
-        var helpHeaderorchard = (new lime.Label()).setAnchorPoint(0, 0).setPosition(68, 30).setText("The Orchard").setFontFamily("Comic Sans MS").setFontSize(24);
+        var helpHeaderorchard = (new lime.Label()).setAnchorPoint(0, 0).setPosition(68, 30).setText("The Orchard").setFontFamily("Proxima Nova").setFontSize(24);
         orchardHelpPanel.appendChild(helpHeaderorchard);
-        var helpText1orchard = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 80).setText("Tap the trees to prune old growth, again to fertilize.").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var helpText1orchard = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 80).setText("Tap the trees to prune old growth, again to fertilize.").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         orchardHelpPanel.appendChild(helpText1orchard);
-        var helpText2orchard = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 130).setText("Upgrading the barn increases your harvest. ").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var helpText2orchard = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 130).setText("Upgrading the barn increases your harvest. ").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         orchardHelpPanel.appendChild(helpText2orchard);
-        var helpText3orchard = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 175).setText("Clearing the forest unlocks PEARS and more").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var helpText3orchard = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 175).setText("Clearing the forest unlocks PEARS and more").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         orchardHelpPanel.appendChild(helpText3orchard);
 
         var orchardHelpPanelCloseBtn = (new lime.GlossyButton()).setColor("#663300").setText("Close").setPosition(140, 235).setSize(100, 20);
@@ -9381,10 +10161,646 @@ farming.start = function () {
                 e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
             }
         });
+    
+ //////cave layer
+        var caveLayer1 = (new lime.Layer).setAnchorPoint(0, 0).setSize(a.width, 0 - (a.height * 3)).setPosition(-2, (0- a.height * 3));
+        orchardScene.appendChild(caveLayer1);
+        var caveFill1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width * 3 +8, a.height * 3 ).setFill('images/Orchard/theCaves.png');
+        caveLayer1.appendChild(caveFill1);
 
 
+        var caveSecret1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(50, 82).setSize(22,25).setFill(imgArrayItems[43]);
+        caveFill1.appendChild(caveSecret1);
 
-        ///////end ordchard////
+        var caveSecret2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(115, 305).setSize(25,25).setFill(imgArrayStore[6]);
+        caveFill1.appendChild(caveSecret2);
+
+        var caveSecret3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(775, a.height * 2 + 250).setSize(22,25).setFill(imgArrayItems[44]);
+        caveFill1.appendChild(caveSecret3);
+
+        var caveSecret4 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(460, a.height * 2 + 325).setSize(25,25).setFill(imgArrayItems[43]);
+        caveFill1.appendChild(caveSecret4);
+        var caveSecret5 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width - 59, 665).setSize(25,25).setFill(imgArrayStore[6]);
+        caveFill1.appendChild(caveSecret5);
+        var caveSecret6 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width - 210, 660).setSize(22,25).setFill(imgArrayItems[44]);
+        caveFill1.appendChild(caveSecret6);
+        if(mapLocations.places[4].found == 1){
+            caveSecret1.setHidden(true);}
+        else{
+            goog.events.listen(caveSecret1, ["mousedown", "touchstart"], function (e) {
+                let caveVis = caveFill1.getHidden();
+                if (caveVis == false){
+                     mapLocations.places[4].found = 1; getMapFrag('c1');
+                    this.setHidden(true);
+                    e.event.stopPropagation();
+                    e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+            });
+        }
+        if(mapLocations.places[5].found == 1){
+            caveSecret2.setHidden(true);}
+        else{
+            goog.events.listen(caveSecret2, ["mousedown", "touchstart"], function (e) {
+                let caveVis = caveFill1.getHidden();
+                if (caveVis == false){
+                     mapLocations.places[5].found = 1; getMapFrag('c2');
+                    this.setHidden(true);
+                    e.event.stopPropagation();
+                    e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+            });
+        }
+        if(mapLocations.places[6].found == 1){
+            caveSecret3.setHidden(true);}
+        else{
+            goog.events.listen(caveSecret3, ["mousedown", "touchstart"], function (e) {
+                let caveVis = caveFill1.getHidden();
+                if (caveVis == false){
+                    mapLocations.places[6].found = 1; getMapFrag('c3');
+                    this.setHidden(true);
+                    e.event.stopPropagation();
+                    e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+            });
+        };
+        if(mapLocations.places[7].found == 1){
+            caveSecret4.setHidden(true);}
+        else{
+                goog.events.listen(caveSecret4, ["mousedown", "touchstart"], function (e) {
+                    let caveVis = caveFill1.getHidden();
+                    if (caveVis == false){
+                       mapLocations.places[7].found = 1;  getMapFrag('c4');
+                        this.setHidden(true);
+                        e.event.stopPropagation();
+                        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+                });
+        };
+        if(mapLocations.places[8].found == 1){
+            caveSecret5.setHidden(true);}
+        else{
+            goog.events.listen(caveSecret5, ["mousedown", "touchstart"], function (e) {
+                let caveVis = caveFill1.getHidden();
+                if (caveVis == false){
+                  mapLocations.places[8].found = 1;   getMapFrag('c5');
+                    this.setHidden(true);
+                    e.event.stopPropagation();
+                    e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+            });
+        };
+        if(mapLocations.places[9].found == 1){
+            caveSecret6.setHidden(true);}
+        else{
+            goog.events.listen(caveSecret6, ["mousedown", "touchstart"], function (e) {
+                let caveVis = caveFill1.getHidden();
+                if (caveVis == false){
+                    mapLocations.places[9].found = 1; getMapFrag('c6');
+                    this.setHidden(true);
+                    e.event.stopPropagation();
+                    e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+            });
+        };
+        var shroom1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(500, a.height * 2 + 270).setSize(30,30).setFill(imgArrayCave[0]);
+        caveFill1.appendChild(shroom1);
+        var shroom2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(50, a.height * 2 + 250).setSize(30,30).setFill(imgArrayCave[1]);
+        caveFill1.appendChild(shroom2);
+        var shroom3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(150, a.height * 2 + 175).setSize(30,30).setFill(imgArrayCave[2]);
+        caveFill1.appendChild(shroom3);
+        var shroom4 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(385, a.height * 2 + 255).setSize(30,30).setFill(imgArrayCave[3]);
+        caveFill1.appendChild(shroom4);
+        var shroom5 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(250, a.height * 2 + 280).setSize(30,30).setFill(imgArrayCave[4]);
+        caveFill1.appendChild(shroom5);
+        var shroom6 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(84, a.height  + 315).setSize(30,30).setFill(imgArrayCave[1]);
+        caveFill1.appendChild(shroom6);
+        var shroom62 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(230, a.height  + 315).setSize(30,30).setFill(imgArrayCave[2]);
+        caveFill1.appendChild(shroom62);
+        var shroom7 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(738, a.height * 2 + 255).setSize(30,30).setFill(imgArrayCave[2]);
+        caveFill1.appendChild(shroom7);
+        var shroom8 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(800, a.height * 2 + 410).setSize(30,30).setFill(imgArrayCave[4]);
+        caveFill1.appendChild(shroom8);
+        var shroom9 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(760, a.height * 2 + 410).setSize(30,30).setFill(imgArrayCave[0]);
+        caveFill1.appendChild(shroom9);
+        var shroom10 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(810, a.height * 2 + 255).setSize(30,30).setFill(imgArrayCave[1]);
+        caveFill1.appendChild(shroom10);
+        goog.events.listen(shroom1, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveFill1.getHidden();
+            if (caveVis == false){player.cropsStored[25].stored = player.cropsStored[25].stored + 3; showMFToast(+2,imgArrayCave[0].src, 'cave', 2000); shroom1.setHidden(true);  e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+        });
+        goog.events.listen(shroom2, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveFill1.getHidden();
+            if (caveVis == false){player.cropsStored[25].stored = player.cropsStored[25].stored + 2; showMFToast(+2,imgArrayCave[0].src, 'cave', 2000);  shroom2.setHidden(true); e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+        });
+        goog.events.listen(shroom3, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveFill1.getHidden();
+            if (caveVis == false){player.cropsStored[25].stored = player.cropsStored[25].stored + 2; showMFToast(+2,imgArrayCave[0].src, 'cave', 2000); shroom3.setHidden(true);  e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+        });
+        goog.events.listen(shroom4, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveFill1.getHidden();
+            if (caveVis == false){player.cropsStored[25].stored = player.cropsStored[25].stored + 2; showMFToast(+2,imgArrayCave[0].src, 'cave', 2000); shroom4.setHidden(true);  e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+        });
+        goog.events.listen(shroom5, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveFill1.getHidden();
+            if (caveVis == false){player.cropsStored[25].stored = player.cropsStored[25].stored + 2; showMFToast(+2,imgArrayCave[0].src, 'cave', 2000); shroom5.setHidden(true);  e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+        });
+        goog.events.listen(shroom6, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveFill1.getHidden();
+            if (caveVis == false){player.cropsStored[25].stored = player.cropsStored[25].stored + 2; showMFToast(+2,imgArrayCave[0].src, 'cave', 2000); shroom6.setHidden(true);  e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+        });
+        goog.events.listen(shroom62, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveFill1.getHidden();
+            if (caveVis == false){player.cropsStored[25].stored = player.cropsStored[25].stored + 2; showMFToast(+2,imgArrayCave[0].src, 'cave', 2000); shroom62.setHidden(true);  e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+        });
+        goog.events.listen(shroom7, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveFill1.getHidden();
+            if (caveVis == false){player.cropsStored[25].stored = player.cropsStored[25].stored + 2; showMFToast(+2,imgArrayCave[0].src, 'cave', 2000);  shroom7.setHidden(true); e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+        });
+        goog.events.listen(shroom8, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveFill1.getHidden();
+            if (caveVis == false){player.cropsStored[25].stored = player.cropsStored[25].stored + 2; showMFToast(+2,imgArrayCave[0].src, 'cave', 2000);   shroom8.setHidden(true); e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+        });
+        goog.events.listen(shroom9, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveFill1.getHidden();
+            if (caveVis == false){player.cropsStored[25].stored = player.cropsStored[25].stored + 2; showMFToast(+2,imgArrayCave[0].src, 'cave', 2000); shroom9.setHidden(true);  e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+        });
+        goog.events.listen(shroom10, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveFill1.getHidden();
+            if (caveVis == false){player.cropsStored[25].stored = player.cropsStored[25].stored + 2; showMFToast(+2,imgArrayCave[0].src, 'cave', 2000); shroom10.setHidden(true);  e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+        });
+        var heirloomChestCave = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(810, 120).setSize(30,30).setFill(imgArrayItems[25]);
+        caveFill1.appendChild(heirloomChestCave);
+
+     
+        goog.events.listen(heirloomChestCave, ["mousedown", "touchstart"], function (e) {
+            let isvisHeir = heirloomChestCave.getHidden();
+            if(!isvisHeir && correctPath == 1){
+                // console.log('got the click heirloom')
+               
+                successSound.play();
+                loadHeirloom('orchard');
+            }
+            else if (correctPath == 0){ incorrectSound.play();  }
+            e.event.stopPropagation();
+            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+ 
+        });
+
+      ///found Treasure location Cave
+        var foundTreasureC = (new lime.Sprite()).setPosition(410, 430).setSize(60, 60).setFill('images/stars4.png').setHidden(true);
+        caveFill1.appendChild(foundTreasureC);
+        goog.events.listen(foundTreasureC, ["mousedown", "touchstart"], function (e) {
+            if (foundTreasureC.getHidden() == false){  loadHeirloom('cavern'); successSound.play();      };
+            e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+        }, false);
+
+        var puzzleTile1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(402, a.height  + 67).setSize(20,20).setFill("images/Orchard/tileSmile.png");
+        caveFill1.appendChild(puzzleTile1);
+        var puzzleTile2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(420, a.height  + 67).setSize(20,20).setFill("images/Orchard/tileGrin.png");
+        caveFill1.appendChild(puzzleTile2);
+        var puzzleTile3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(420, a.height  + 47).setSize(20,20).setFill("images/Orchard/tileMad.png");
+        caveFill1.appendChild(puzzleTile3);
+
+        var puzzleTile4 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(502, a.height  + 47).setSize(20,20).setFill("images/Orchard/tileSmile.png");
+        caveFill1.appendChild(puzzleTile4);
+        var puzzleTile5 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(502, a.height  + 67).setSize(20,20).setFill("images/Orchard/tileGrin.png");
+        caveFill1.appendChild(puzzleTile5);
+        var puzzleTile6 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(522, a.height  + 67).setSize(20,20).setFill("images/Orchard/tileMad.png");
+        caveFill1.appendChild(puzzleTile6);
+        var puzzleGate= (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(460, a.height  + 50).setSize(20,40).setFill("images/Orchard/caveGate.png");
+        caveFill1.appendChild(puzzleGate);
+        var caveUnlocked = 0;
+
+        if(caveUnlocked != 1){
+            puzzleTile1.setFill("");puzzleTile2.setFill("");puzzleTile3.setFill("");puzzleTile4.setFill("");puzzleTile5.setFill("");puzzleTile6.setFill("");
+        }
+        var tilesClicked = 0;
+        goog.events.listen(puzzleTile1, ["mousedown", "touchstart"], function (e) {
+            
+            if (caveFill1.getHidden() == false && correctPath == 1){
+                puzzleTile1.setFill("images/Orchard/tileSmile.png"); tilesClicked++; checkTileSolve();
+                  e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+                }
+                
+        });
+
+        goog.events.listen(puzzleTile2, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveFill1.getHidden();
+            if (caveVis == false && correctPath == 1){
+                puzzleTile2.setFill("images/Orchard/tileGrin.png");  tilesClicked++;checkTileSolve();
+                  e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+                }
+               
+        });
+        goog.events.listen(puzzleTile3, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveFill1.getHidden();
+            if (caveVis == false && correctPath == 1){
+                puzzleTile3.setFill("images/Orchard/tileMad.png");
+                resetTiles();
+                  e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+                }
+        });
+        goog.events.listen(puzzleTile4, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveFill1.getHidden();
+            if (caveVis == false && correctPath == 1){
+                puzzleTile4.setFill("images/Orchard/tileSmile.png");  tilesClicked++; checkTileSolve();
+                  e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+                }
+              
+        });
+
+        goog.events.listen(puzzleTile5, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveFill1.getHidden();
+            if (caveVis == false && correctPath == 1){
+                puzzleTile5.setFill("images/Orchard/tileGrin.png"); tilesClicked++; checkTileSolve();
+                  e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+                }
+        });
+        goog.events.listen(puzzleTile6, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveFill1.getHidden();
+            if (caveVis == false && correctPath == 1){
+                puzzleTile6.setFill("images/Orchard/tileMad.png");
+                resetTiles();
+                  e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+                }
+        });
+        function resetTiles(){
+            lime.scheduleManager.callAfter(function(){
+                incorrectSound.play();
+                tilesClicked = 0;
+                puzzleTile1.setFill("");puzzleTile2.setFill("");puzzleTile3.setFill("");puzzleTile4.setFill("");puzzleTile5.setFill("");puzzleTile6.setFill("");
+            }, this , 1250)
+        }
+        function checkTileSolve(){
+            console.log("tilesclicked = " + tilesClicked);
+            if(tilesClicked >= 4){
+            successSound.play();
+            puzzleGate.setHidden(true);
+            caveGoUp.setHidden(false);
+            caveUnlocked = 1;
+            lime.scheduleManager.callAfter(function(){
+                
+                tilesClicked = 0;
+              
+            }, this , 1250)
+            }
+      
+        }
+        var caveLayer2 = (new lime.Layer).setAnchorPoint(0, 0).setSize(a.width, (a.height -50)).setPosition(0, 0);
+        orchardScene.appendChild(caveLayer2);
+        var caveFill2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height);
+        caveLayer2.appendChild(caveFill2);
+        caveLayer2.setHidden(true); 
+      
+        var caveGoUp = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(134, 50 ).setSize(30, 42).setFill(imgArrayCave[6]);
+        caveFill2.appendChild(caveGoUp);
+        var caveGoLeft = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(10, (a.height /2) + 15).setSize(30, 30).setFill(imgArrayCave[6]).setRotation(90);
+        caveFill2.appendChild(caveGoLeft);
+        caveGoLeft2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(10, 100 ).setSize(30, 30).setFill(imgArrayCave[6]).setRotation(90);
+        caveFill2.appendChild(caveGoLeft2);
+        
+        var caveGoRight = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width , (a.height /2) -18 ).setSize(30, 30).setFill(imgArrayCave[6]).setRotation(270);
+        caveFill2.appendChild(caveGoRight);
+        var caveGoRight2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width , 70 ).setSize(30, 30).setFill(imgArrayCave[6]).setRotation(270);
+        caveFill2.appendChild(caveGoRight2);
+        var caveGoDown = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition((a.width/2) + 10, (a.height - 30)).setSize(30, 42).setFill(imgArrayCave[6]).setRotation(180);
+        caveFill2.appendChild(caveGoDown);
+        var playerImgCave = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width - 80, a.height - 100).setSize(100, 100).setFill(imgArrayPlayer[0]);
+        caveFill2.appendChild(playerImgCave);
+        var cavePlyrBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-85,-85).setSize(156, 105).setFill("images/UI/speechBubble3.png");
+        playerImgCave.appendChild(cavePlyrBubble);
+        var cavePlyrText = (new lime.Label()).setText("The path is blocked. There must be another way").setPosition(80,70).setSize(150, 100).setFontColor('black').setFontSize(15);
+        cavePlyrBubble.appendChild(cavePlyrText);
+
+        var caveBlackOut = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0 , 0).setSize(a.width , a.height  ).setFill(imgArrayCave[5]);
+        caveFill2.appendChild(caveBlackOut);
+       
+
+        var correctPath = 0;
+        goog.events.listen(caveGoUp, ["mousedown", "touchstart"], function (e) {
+          console.log("clicked Go Up")
+            let caveVis = caveLayer2.getHidden();
+            if (caveVis == false){
+                caveShift('up');
+                e.event.stopPropagation();
+            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+            }                   
+        });
+        goog.events.listen(caveGoLeft, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveLayer2.getHidden();
+            if (caveVis == false){
+                caveShift('left');
+            
+            e.event.stopPropagation();
+            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+            }
+        });
+        goog.events.listen(caveGoLeft2, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveLayer2.getHidden();
+            if (caveVis == false){
+                
+            correctPath = 1;
+            caveShift('left');
+            caveGoRight2.setHidden(false);
+           
+            caveGoRight.setHidden(true);
+            e.event.stopPropagation();
+            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+            }
+        });
+        goog.events.listen(caveGoRight, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveLayer2.getHidden();
+            if (caveVis == false){
+                caveShift('right');
+         
+            e.event.stopPropagation();
+            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+            }
+        });
+        goog.events.listen(caveGoRight2, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveGoRight2.getHidden();
+            if (caveVis == false){
+                caveShift('right');
+            correctPath = 0;
+            e.event.stopPropagation();
+            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+            }
+        });
+        goog.events.listen(caveGoDown, ["mousedown", "touchstart"], function (e) {
+            let caveVis = caveLayer2.getHidden();
+            if (caveVis == false){
+                caveShift('down');
+            
+            e.event.stopPropagation();
+            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+            }
+        });
+        const caveYBase = 528;
+       
+        var caveVars = {
+            positions: [
+                { index: 0, name: "Hidden", x: -2, y: ( (1- a.height * 3) ) , special: 0 },
+                { index: 1, name: "LeftB", x: -2, y: ( (1- a.height * 2) ), special: 0 },
+                { index: 2, name: "LeftM", x: -2, y: ( (1- a.height) -10), special: 0 },
+                { index: 3, name: "LeftT", x: -2, y: (  -35), special: 0 },
+                { index: 4, name: "CenterB", x: 1 - a.width -10, y: ((1- a.height * 2) -2) , special: 0 },
+                { index: 5, name: "CenterM", x: 1 - a.width-10, y: ((1- a.height) -10), special: 0 },
+                { index: 6, name: "CenterT", x: 1 - a.width, y: -20, special: 0 },
+                { index: 7, name: "RightB", x: 1- (a.width * 2), y: ((1- a.height * 2) ) , special: 0 },
+                { index: 8, name: "RightM", x: 1- (a.width * 2)-5, y: (1 - a.height) -15, special: 0 },
+                { index: 9, name: "RightT", x: 1- (a.width * 2), y: -25, special: 0 },
+            ],
+            treasures: [
+                { index: 0, name: "Mushhrooms", x: 0, y: 0, special: 0 },
+                { index: 1, name: "Gold", x: 0, y: 0, special: 0 },
+                { index: 2, name: "Ore", x: 0, y: 0, special: 0 },
+                { index: 3, name: "Heirloom", x: 0, y: 0, special: 0 },
+            ]
+        }
+        var caveActive = "Hidden";
+        let caveNum = 0;
+    function caveShift(where){
+        playerImgCave.setHidden(true);
+            // console.log("in cave shift from " + caveActive + " to direction " + where);
+            cavePlyrText.setText("The path is blocked. There must be another way");
+            var origPos = caveFill1.getPosition();
+            switch(where){
+                case 'up':{  
+                    switch(caveActive){
+                        case "Hidden" : {caveActive = "LeftB"; showPlayerCave();cavePlyrText.setText("Nice, there are Mushrooms here! Let's pick some");caveNum = 1;caveGoUp.setHidden(false); caveGoLeft.setHidden(true);caveGoRight.setHidden(false); caveGoDown.setHidden(false); caveLayer2.setHidden(false);} break;
+                        case "LeftB" : {caveActive = "LeftM"; caveNum = 2; caveGoUp.setHidden(false); caveGoLeft.setHidden(true);caveGoRight.setHidden(false); caveGoDown.setHidden(false);} break;
+                        case "LeftM" : {caveActive = "LeftT"; caveNum = 3; caveGoUp.setHidden(true); caveGoLeft.setHidden(true);caveGoRight.setHidden(true); caveGoDown.setHidden(false);} break;
+                        case "LeftT" : {caveActive = "LeftT"; caveNum = 3; caveGoUp.setHidden(true); caveGoLeft.setHidden(true);caveGoRight.setHidden(true); caveGoDown.setHidden(false);}break;
+                        case "CenterB" : {caveActive = "CenterM";showPlayerCave(); cavePlyrText.setText("We need to find a way around this lava"); caveNum = 5;caveGoUp.setHidden(true); caveGoLeft.setHidden(true);caveGoRight.setHidden(true); caveGoDown.setHidden(false);} break;
+                        case "CenterM" : {caveActive = "CenterT"; 
+                            lime.scheduleManager.callAfter(function(){
+                                caveFill1.setScale(1.0).setPosition(0 ,0);
+                            }, this, 1000); caveNum = 6;caveGoUp.setHidden(true); caveGoLeft.setHidden(true);caveGoRight.setHidden(false); caveGoDown.setHidden(false);
+                        } break;
+                        case "CenterT" : { caveActive = "CenterT"; 
+                            lime.scheduleManager.callAfter(function(){
+                                caveFill1.setScale(1.0).setPosition(0 ,0);
+                            }, this, 1000);    
+                            caveNum = 6; caveGoUp.setHidden(true); caveGoLeft.setHidden(true);caveGoRight.setHidden(true); caveGoDown.setHidden(false);
+                        } break;
+                        case "RightB" : {caveActive = "RightM"; caveNum = 8;caveGoUp.setHidden(false); caveGoLeft.setHidden(false);caveGoRight.setHidden(true); caveGoDown.setHidden(false);}break;
+                        case "RightM" : {caveActive = "RightT"; showPlayerCave();cavePlyrText.setText("Look Treasure! We need to find a way around to get it"); caveNum = 9; caveGoUp.setHidden(true); caveGoLeft.setHidden(true);caveGoRight.setHidden(true); caveGoDown.setHidden(false);}break;
+                        case "RightT" : {caveActive = "RightT"; caveNum = 9; caveGoUp.setHidden(true); caveGoLeft.setHidden(false);caveGoRight.setHidden(true); caveGoDown.setHidden(false);} break;
+                        default: {break;}
+                    }
+                
+                    break;
+                }
+                case 'left':{   
+                    switch(caveActive){
+                        case "LeftB" : {caveGoLeft.setHidden(true);}break;
+                        case "LeftM" : break;
+                        case "LeftT" : break;
+                        case "CenterB" : {caveActive = "LeftB"; caveNum = 1; caveGoUp.setHidden(false); caveGoLeft.setHidden(true);caveGoRight.setHidden(false); caveGoDown.setHidden(false); }break;
+                        case "CenterM" : {caveActive = "LeftM"; playerImgCave.setHidden(true); caveNum = 2; caveGoUp.setHidden(false); caveGoLeft.setHidden(true);caveGoRight.setHidden(false); caveGoDown.setHidden(false);} break;
+                        case "CenterT" : break;
+                        case "RightB" : {caveActive = "CenterB"; caveNum = 4; caveGoUp.setHidden(false); caveGoLeft.setHidden(false);caveGoRight.setHidden(true); caveGoDown.setHidden(true);}break;
+                        case "RightM" : {
+                                caveActive = "CenterM"; 
+                                if(correctPath != 1){showPlayerCave(); cavePlyrText.setText("There is a gate over there. Find a way around"); 
+                                }else{
+                                    if(caveUnlocked == 1){playerImgCave.setHidden(true);
+                                    }else{
+                                        showPlayerCave(); 
+                                        cavePlyrText.setText("There must be some way to unlock this door. Touch stuff!");
+                                        
+                                        origPos = caveFill1.getPosition();
+                                        console.log("origPos = " + origPos.y + " " + origPos.x)
+                                        lime.scheduleManager.callAfter(function(){
+                                            caveFill1.setScale(1.5).setPosition(-240 ,-250);
+                                        }, this, 1000)
+                                      
+                                    }; caveGoUp.setHidden(true);
+                                }; caveNum = 5; caveGoUp.setHidden(true); caveGoLeft.setHidden(true);caveGoRight.setHidden(false); caveGoDown.setHidden(true);
+                            }break;
+                        case "RightT" : {caveActive = "CenterT"; caveNum = 6; caveGoUp.setHidden(true); caveGoLeft.setHidden(true);caveGoRight.setHidden(false);caveGoRight.setHidden(false); caveGoDown.setHidden(false);}break;
+                        default: break;
+                }
+                    break;
+                }
+                case 'right':{  
+                    switch(caveActive){
+                        case "LeftB" : {caveActive = "CenterB"; caveNum = 4; caveGoUp.setHidden(false);caveGoLeft.setHidden(false);caveGoRight.setHidden(false);caveGoDown.setHidden(true);}break;
+                        case "LeftM" : {caveActive = "CenterM"; showPlayerCave(); caveNum = 5; caveGoUp.setHidden(true);caveGoLeft.setHidden(false);caveGoRight.setHidden(true);caveGoDown.setHidden(true);}break;
+                        case "LeftT" : {caveGoUp.setHidden(false);caveGoLeft.setHidden(false);caveGoRight.setHidden(true);caveGoDown.setHidden(true);}break;
+                        case "CenterB" : {caveActive = "RightB"; caveNum = 7; caveGoUp.setHidden(false);caveGoLeft.setHidden(false);caveGoRight.setHidden(true);caveGoDown.setHidden(true);}break;
+                        case "CenterM" : {
+                            caveActive = "RightM";
+                            lime.scheduleManager.callAfter(function(){
+                                caveFill1.setScale(1.0).setPosition(0 ,0);
+                            }, this, 1000);                    
+                            playerImgCave.setHidden(true); caveNum = 8; caveGoUp.setHidden(false);
+                            caveGoLeft.setHidden(false);caveGoRight.setHidden(true);caveGoDown.setHidden(false);
+                        }break;
+                        case "CenterT" : {caveActive = "RightT"; caveNum = 9; caveGoUp.setHidden(true);caveGoLeft.setHidden(false);caveGoRight.setHidden(true);caveGoDown.setHidden(false);}break;
+                        case "RightB" : break;
+                        case "RightM" : break;
+                        case "RightT" : break;
+                        default: break;
+                    }
+                    break;
+                }
+                case 'down':{  
+                    switch(caveActive){
+                        case "LeftB" : {caveActive = "Hidden"; caveNum = 0; caveLoop.stop(); themeSongNew.play(true);   waterfallSound.play(true); orchardLayer.setPosition(0,0);  lime.scheduleManager.callAfter( function(){  caveLayer2.setHidden(true); caveFill1.setHidden(true); caveLayer1.setHidden(true);   }, this, 2600) ;}break;
+                        case "LeftM" : {caveActive = "LeftB"; caveNum = 1; caveGoUp.setHidden(false);caveGoLeft.setHidden(true);caveGoRight.setHidden(false);caveGoDown.setHidden(false);} break;
+                        case "LeftT" : {caveActive = "LeftM"; caveNum = 2;  caveGoUp.setHidden(false);caveGoLeft.setHidden(true);caveGoRight.setHidden(false);caveGoDown.setHidden(false);} break;
+                        case "CenterB" :  break;
+                        case "CenterM" : {caveActive = "CenterB"; playerImgCave.setHidden(true); caveNum = 4;   caveGoUp.setHidden(false);caveGoLeft.setHidden(false);caveGoRight.setHidden(false);caveGoDown.setHidden(true); }break;
+                        case "CenterT" : {caveActive = "CenterM"; caveNum = 5;  caveGoUp.setHidden(false);caveGoLeft.setHidden(true);caveGoRight.setHidden(true);caveGoRight.setHidden(false);caveGoDown.setHidden(true);}break;
+                        case "RightB" :  break;
+                        case "RightM" : {caveActive = "RightB"; caveNum = 7;  caveGoUp.setHidden(false);caveGoLeft.setHidden(false);caveGoRight.setHidden(true);caveGoDown.setHidden(true);}break;
+                        case "RightT" : {caveActive = "RightM"; caveNum = 8; caveGoUp.setHidden(false);caveGoLeft.setHidden(false);caveGoRight.setHidden(true);caveGoDown.setHidden(false);}  break;
+                        default: {break;}
+                    };
+                    break;
+                }
+                default:{  break; }
+            };
+            // console.log("cavenum is " + caveNum)
+            function showPlayerCave(){
+                lime.scheduleManager.callAfter(function(){
+                    playerImgCave.setHidden(false);
+                    lime.scheduleManager.callAfter(function(){
+                        playerImgCave.setHidden(true);
+                    }, this, 4000)
+                }, this, 3000)
+                
+            }
+            
+        let baseOpac = 0.0;
+        caveGoDown.setOpacity(0.1);caveGoUp.setOpacity(0.1);caveGoLeft.setOpacity(0.1);caveGoLeft2.setOpacity(0.1);caveGoRight.setOpacity(0.1);caveGoRight2.setOpacity(0.1);
+         caveBlackOut.setHidden(false).setOpacity(baseOpac);
+         caveLayer1.setHidden(false);
+         lime.scheduleManager.scheduleWithDelay(function(){
+            baseOpac = baseOpac + 0.1;
+            caveBlackOut.setOpacity(baseOpac);
+         }, this, 100, 10)
+
+            lime.scheduleManager.callAfter( function(){
+                lime.scheduleManager.scheduleWithDelay(function(){
+                    baseOpac = baseOpac - 0.1;
+                    caveBlackOut.setOpacity(baseOpac);
+                 }, this, 100, 10)
+                 caveLayer1.setPosition(caveVars.positions[caveNum].x, caveVars.positions[caveNum].y);
+            }, this, 1500)
+            lime.scheduleManager.callAfter( function(){
+               caveGoDown.setOpacity(1.0);caveGoUp.setOpacity(1.0);caveGoLeft.setOpacity(1.0);caveGoLeft2.setOpacity(1.0);caveGoRight.setOpacity(1.0);caveGoRight2.setOpacity(1.0);
+              
+            }, this, 2900)
+
+            if (caveActive == "RightM"){caveGoLeft2.setHidden(false);}else{caveGoLeft2.setHidden(true);};
+            if (caveActive == "CenterM" && where == 'down'){caveGoRight2.setHidden(false);}else{caveGoRight2.setHidden(true);};
+            if (caveActive == "CenterM" && where == 'left' && correctPath == 1){
+                caveGoRight2.setHidden(false);caveGoUp.setHidden(true); caveGoRight.setHidden(true);
+                if(caveUnlocked == 1 ){caveGoUp.setHidden(false); }
+                if(caveUnlocked != 1){ showPlayerCave(); cavePlyrText.setText("There must be some way to unlock this gate. Touch stuff!");caveGoUp.setHidden(true); };
+            }else{caveGoRight2.setHidden(true);};
+            
+    }    
+    /////////end of function caveShift
+    lime.scheduleManager.scheduleWithDelay(function(){
+       
+        if (foundTreasureC.getHidden() == false){ 
+                foundTreasureC.setRotation(0);
+                lime.scheduleManager.callAfter( function(){ foundTreasureC.setRotation(90);  },this,250);
+                lime.scheduleManager.callAfter( function(){ foundTreasureC.setRotation(180); },this,500);
+                lime.scheduleManager.callAfter( function(){ foundTreasureC.setRotation(270); },this,750);
+       
+        }
+    },this, 1000);
+
+
+    ///unhide all shrooms every 3 minutes
+    lime.scheduleManager.scheduleWithDelay(function(){
+        shroom1.setHidden(false);shroom2.setHidden(false);shroom3.setHidden(false);shroom4.setHidden(false);shroom5.setHidden(false);shroom6.setHidden(false);shroom62.setHidden(false);shroom7.setHidden(false);shroom8.setHidden(false);shroom9.setHidden(false);shroom10.setHidden(false);
+    }, this, 240000);
+    var enterCaveBtn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width - 40, 115).setSize(20, 25).setFill('#000000').setOpacity(0.2);
+    orchardLayer.appendChild(enterCaveBtn);
+    goog.events.listen(enterCaveBtn, ["mousedown", "touchstart"], function (e) {
+        if (caveActive == "Hidden" && landSlideDone == 1){
+        console.log("caveShiftclicked " + caveActive)
+            caveActive = "Hidden"
+            caveShift('up');
+            caveFill1.setHidden(false);
+            caveLayer1.setHidden(false);
+            caveLayer2.setHidden(false);
+            playerImgCave.setHidden(true);
+            lime.scheduleManager.callAfter(function(){orchardLayer.setPosition(-600,0);}, this, 1050)
+
+             
+            themeSongNew.stop();
+            waterfallSound.stop();
+            caveLoop.play(true);
+        }
+        e.event.stopPropagation();
+        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+    });
+
+function checkLandSlide(){ 
+    if (landSlideDone == 1){
+        
+        waterfallMtn.setFill("images/" + a.orchard[1].image);
+    }
+    else{waterfallMtn.setFill("images/" + a.orchard[0].image);};
+
+    lime.scheduleManager.callAfter(function(){
+        // console.log("landslide function hit");
+        //check for landslide event
+        try{
+            console.log("inside try landslide");
+            orchardBarnLevel = localStorage.getItem("MedFarm_orchardBarnLevel") || 0;
+            vinyardHouseLevel = localStorage.getItem("GuiGhostFarms_vinyardHouseLevel") || 1;
+            // console.log("inside landslideDone = " + landSlideDone + " and orchard is " + orchardBarnLevel + " and vinyard is " + vinyardHouseLevel);
+            if(landSlideDone == 0 && orchardBarnLevel == 2 && vinyardHouseLevel >= 2){
+                lime.scheduleManager.callAfter(function(){
+                    landSlideDone = 1;
+                    localStorage.setItem('landSlideDone', 1);
+                    waterfallMtn.setFill("images/" + a.orchard[1].image);
+                    playerImgHome.setHidden(false);
+                    let tickerQuake = 0;
+                    let directorThis = c.getPosition();
+                    directorY = directorThis.y;
+                    console.log("y is " + directorY);
+                   
+                    try{hapticsVibrate();}catch(err){console.log(err);}
+
+                    lime.scheduleManager.scheduleWithDelay(function(){
+                        console.log("in ticker landslide")
+                        if(tickerQuake == 0){
+                            c.setPosition(-5,directorY);
+                            tickerQuake = 1;
+                        }else if (tickerQuake == 1){
+                            c.setPosition(0,directorY); tickerQuake = 2;
+                        }
+                        else if (tickerQuake == 2){
+                            c.setPosition(5,directorY); tickerQuake = 0;
+                        }
+                    },this, 100, 20);
+                    lime.scheduleManager.callAfter(function(){
+                        c.setPosition(directorThis.x, directorThis.y); 
+                    },this, 2000);
+                    lime.scheduleManager.callAfter(function(){
+                        // playerImgHome.setHidden(true);
+                        orchardLayer.appendChild(playerImgHome);
+                        plyrTextHome.setText("Look... a landsize from the quake opened a Cave!");
+                        goog.events.listen(playerImgHome, ["mousedown", "touchstart"], function (e) { playerImgHome.setHidden(true); });
+
+                    },this, 8000);
+          
+                },this, 5000);
+            }    
+
+        }catch(err){ console.log(err)};    
+
+     },this, 4000);
+  
+
+} 
+
+
+    
+
+        ///////end ordchard and cave///////////end ordchard///////////end ordchard///////////end ordchard///////////end ordchard///////////end ordchard///////////end ordchard///////////end ordchard////
 
 
         //////Menu Scene//////////////////////////////////////////////////////////////////////////////////////////////////Menu Scene/////////////////////////////////////////////////////////////////////
@@ -9395,21 +10811,24 @@ farming.start = function () {
             menuFill1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#0D0D0D");
         menuScene.appendChild(menuFill1);
         menuScene.appendChild(menuLayer);
-        var menuBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 10).setSize(300, 520).setFill(imgArray[14]);
+        var menuBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, -50).setSize(300, 520).setFill(imgArray[14]);
         menuLayer.appendChild(menuBack);
-        var saveQuit = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(150, 175).setSize(a.width / 2 + 40, 40).setFill("#663300");
+        var saveQuit = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(150, 220).setSize(a.width / 2 + 40, 40).setFill("#663300");
         saveQuit = (new lime.GlossyButton()).setColor("#4dff4d").setText("Save & Quit").setPosition(150, 175).setSize(a.width / 2 + 40, 40);
         menuLayer.appendChild(saveQuit);
 
 
 
-        var clearData = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width / 4 - 20, 250).setSize(a.width / 2 + 40, 40).setFill("#663300");
+        var clearData = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width / 4 - 20, 265).setSize(a.width / 2 + 40, 40).setFill("#663300");
         clearData = (new lime.GlossyButton()).setColor("#ff0000").setText("Clear Data (Start Over)").setPosition(150, 250).setSize(a.width / 2 + 40, 40);
         menuLayer.appendChild(clearData);
 
-        var aboutBtn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width / 4 - 20, 325).setSize(a.width / 2 + 40, 40).setFill("#663300");
-        aboutBtn = (new lime.GlossyButton()).setColor("#6600ff").setText("About").setPosition(150, 325).setSize(a.width / 2 + 50, 40);
+        var aboutBtn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width / 4 - 20, 330).setSize(a.width / 2 + 40, 40).setFill("#663300");
+        aboutBtn = (new lime.GlossyButton()).setColor("#6600ff").setText("About").setPosition(150, 315).setSize(a.width / 2 + 50, 40);
         menuLayer.appendChild(aboutBtn);
+        var storyBtn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width / 4 - 20, 395).setSize(a.width / 2 + 40, 40).setFill("#663300");
+        storyBtn = (new lime.GlossyButton()).setColor("#a83299").setText("Story").setPosition(150, 380).setSize(a.width / 2 + 50, 40);
+        menuLayer.appendChild(storyBtn);
 
         goog.events.listen(aboutBtn, ["mousedown", "touchstart"], function (e) {
             hideAndDelayNavIcons();
@@ -9417,10 +10836,68 @@ farming.start = function () {
             lime.scheduleManager.callAfter(function () { openCodes(); getLocalStorage(); }, this, 300);
 
         });
+        goog.events.listen(storyBtn, ["mousedown", "touchstart"], function (e) {
+            c.replaceScene(storyScene, lime.transitions.SlideInUp);
+            storyChapterText1.setText("Chapter 1").setHidden(false).setOpacity(1.0);
+            storyChapterText2.setText("Our Story Begins").setHidden(false).setOpacity(1.0);
+            
+            storyLayer0.setOpacity(1.0).setHidden(false);
+            lime.scheduleManager.callAfter( function(){ fadeChapterLayer(); nextStoryPanel('menuStory');}, this, 1500);
+           
+            
+        });
+
+        function fadeChapterLayer(){
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(0.9);}, this, 150);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(0.8);}, this, 300);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(0.7);}, this, 450);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(0.6);}, this, 600);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(0.5);}, this, 750);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(0.4);}, this, 900);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(0.3);}, this, 1050);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(0.2);}, this, 1200);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(0.1);}, this, 1350);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setHidden(true);}, this, 1500);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(1.0);}, this, 2000);
+        }
+        function fadeinChapter1(){
+            storyChapterText1.setText("");storyChapterText2.setText("");
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(0.1); storyLayer0.setHidden(false);}, this, 150);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(0.2);}, this, 300);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(0.3);}, this, 450);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(0.4);}, this, 600);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(0.5);}, this, 750);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(0.6);}, this, 900);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(0.7);}, this, 1050);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(0.8); storyChapterText1.setText("The Journey");}, this, 1200);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(0.9);}, this, 1350);
+            lime.scheduleManager.callAfter( function(){storyChapterText2.setText("Fordwin and Denise .").setHidden(false);storyChapterText1.setText("The Journey").setHidden(false);}, this, 400);
+            lime.scheduleManager.callAfter( function(){storyChapterText2.setText("Fordwin and Denise packed all their belongings ");}, this, 800);
+            lime.scheduleManager.callAfter( function(){storyChapterText2.setText("Fordwin and Denise packed all their belongings and left that very night,");}, this, 1200);
+            lime.scheduleManager.callAfter( function(){storyChapterText2.setText("Fordwin and Denise packed all their belongings and left that very night, eager for a new life.");}, this, 1600);
+            lime.scheduleManager.callAfter( function(){storyChapterText2.setText("Fordwin and Denise packed all their belongings and left that very night, eager for a new life.");}, this, 2000);
+            lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(1.0);
+                themeSongNew.stop();
+                introSound.play();
+                var posIntroGraphic = (0 - a.height) ;
+                storyChapterText2.setHidden(true); storyChapterText1.setHidden(true);
+                lime.scheduleManager.scheduleWithDelay(function runIntro(){
+                  
+                    if (posIntroGraphic < 0 ){ posIntroGraphic += 3;} else{ lime.scheduleManager.unschedule(runIntro,this);};
+                    // console.log(posIntroGraphic + " = posIntroGraphic")
+                    storyFillChapter1.setPosition(0,posIntroGraphic);  
+                }, this, 25, 1000);
+                
+                lime.scheduleManager.callAfter( function(){storyChapterText2.setText("Click Continue to Proceed").setHidden(false);;   }, this, 4000);      
+                lime.scheduleManager.callAfter( function(){ introSound.stop(); }, this, 9000);
+            
+            }, this, 5000);
+            // lime.scheduleManager.callAfter( function(){storyLayer0.setOpacity(1.0);}, this, 2000);
 
 
-        var backBtnMenu = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width / 4 - 20, 400).setSize(a.width / 2 + 40, 40).setFill("#663300");
-        backBtnMenu = (new lime.GlossyButton()).setColor("#1ce636").setText("Back to Game").setPosition(150, 400).setSize(a.width / 2 + 40, 40);
+        }
+        var backBtnMenu = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width / 4 - 20, 480).setSize(a.width / 2 + 40, 40).setFill("#663300");
+        backBtnMenu = (new lime.GlossyButton()).setColor("#1ce636").setText("Back to Game").setPosition(150, 480).setSize(a.width / 2 + 40, 40);
         menuLayer.appendChild(backBtnMenu);
         //var successDiv = (new lime.Label()).setText("+500 = $" + player.money).setFontColor("#E8FC08").setPosition(150, 125).setFontSize(30);
         //menuLayer.appendChild(successDiv);
@@ -9428,7 +10905,8 @@ farming.start = function () {
 
         //event handling
         goog.events.listen(menu, ["mousedown", "touchstart"], function () {
-            if (globalModalBlock == 0) { c.replaceScene(menuScene, lime.transitions.SlideInUp); sceneActive = 'Menu'; a.sceneBefore = 1; }
+            c.replaceScene(menuScene, lime.transitions.SlideInUp); 
+            sceneActive = 'Menu'; a.sceneBefore = 1; globalModalBlock = 0;
         });  ////menu btn
 
         //to  orchard from home
@@ -9478,7 +10956,7 @@ farming.start = function () {
             localStorage.setItem('GuiGhostFarms_moneyEver', moneyEver);
             // window.open("../", "_self");
             
-            c.replaceScene(introScene, lime.transitions.SlideInUp)
+            c.replaceScene(startScene, lime.transitions.SlideInUp)
             lime.audio.setMute(true);
             lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
 
@@ -9489,7 +10967,10 @@ farming.start = function () {
         goog.events.listen(clearData, ["mousedown", "touchstart"], function () {
             var r = confirm("Danger! Are you sure you want to clear data?\nThis will erase all progress and you will start over.\nClick Ok to proceed or Cancel now while you still can!");
             if (r == true) {
-
+                try{c.setPaused(true);}catch(err){console.log(err);}
+                c.setPaused(true);
+                mapsComplete = 0; localStorage.setItem("mapsComplete", 0); mapPieces = 0; localStorage.setItem("mapPieces", 0);
+             chests_Complete = 0; localStorage.setItem("chests_Complete", 0); showStory = 1;
                 player.barnLevel = 1; player.pastureLevel = 1; player.treesP = 0; player.tools = 50; player.fields = 1; player.money = 500;
                 player.cropsStored[0].stored = 0; player.cropsStored[1].stored = 0; player.cropsStored[2].stored = 0; player.cropsStored[3].stored = 0;
                 player.cropsStored[4].stored = 0; player.cropsStored[5].stored = 0; player.cropsStored[6].stored = 0; player.cropsStored[7].stored = 0;
@@ -9536,8 +11017,7 @@ farming.start = function () {
                 localStorage.removeItem('MedFarm_LoadAd');
                 localStorage.removeItem('adWatched');       
                 localStorage.removeItem('MedFarm_orchardBarnLevel');  
-                localStorage.removeItem('GuiGhostFarms_playerItems');
-                localStorage.removeItem('MedFarm_StarCashBoost');       
+                localStorage.removeItem('GuiGhostFarms_playerItems');    
                 localStorage.removeItem('MedFarm_ciderPlaceOwned');     
                 localStorage.removeItem('MedFarms_townRep');
                 localStorage.removeItem('MedFarms_seenPremiumPromo'); 
@@ -9549,10 +11029,14 @@ farming.start = function () {
                 localStorage.removeItem('MedFarms_heraldOrdersFilled')
                 ////clear all local storage
                 localStorage.clear();
-                lime.scheduleManager.callAfter(function () { localStorage.removeItem('landStates');  location.reload(); }, this, 1750);
+                lime.scheduleManager.callAfter(function () { 
+                    localStorage.removeItem('landStates');  
+                    try{c.setPaused(false);}catch(err){console.log(err);}
+                    window.location.reload();
+                }, this, 1750);
             } else {
                 alert("Whew! That was close!\n Your Farm is safe");
-            }
+            };
 
         });
         //star cash convert
@@ -9608,7 +11092,7 @@ farming.start = function () {
 
 
         });
-        var sucessText = document.getElementById("waitText");
+        var sucessText = document.getElementById("sucessbuyTxt");
         ////// Handle the external modal for starcash clicks 
         ///// buyWithStarCash Money
         document.getElementById("buyWithStarCash").addEventListener("touchstart", function (event) {
@@ -9624,6 +11108,7 @@ farming.start = function () {
                     sucessText.style.display = 'block';
                     lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 1000);
                     checkAchieves2();
+                    showMFToast('+ 500', imgArray11[0].src, "stars",2000, 'left');
 
                 }
                 event.stopPropagation();
@@ -9643,6 +11128,7 @@ farming.start = function () {
                     sucessText.innerHTML = '+ 500 Coins';
                     sucessText.style.display = 'block';
                     lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 750);
+                    showMFToast('+ 500', imgArray11[0].src, "stars",2000, 'left');
                 }
                 event.stopPropagation();
             }
@@ -9650,7 +11136,7 @@ farming.start = function () {
         }, false);
 
         ///// buyWithStarCashTools
-        document.getElementById("buyWithStarCashTools").addEventListener("touchstart", function (event) {
+        document.getElementById("buyWithStarCashTools").addEventListener("touchstart", function (e) {
             var isVisFBc = document.getElementById("fbshare").style.display;
             if (isVisFBc == 'block') {
                 if (starCash >= 10) {
@@ -9665,9 +11151,10 @@ farming.start = function () {
                     sucessText.style.display = 'block';
                     lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 1000);
                     purchaseSound.play();
+                    showMFToast('+ 500', imgArray[30].src, "stars2",2000, 'left');
 
                 }
-                event.stopPropagation();
+                e.stopPropagation();
             }
 
 
@@ -9687,6 +11174,7 @@ farming.start = function () {
                     sucessText.style.display = 'block';
                     lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 1000);
                     purchaseSound.play();
+                    showMFToast('+ 500', imgArray[30].src, "stars",2000, 'left');
 
                 }
                 event.stopPropagation();
@@ -9726,11 +11214,13 @@ farming.start = function () {
 
             lime.scheduleManager.callAfter(function () {
                 //document.getElementById("sucessbuyTxt").style.display = 'block';
-                starCash = localStorage.getItem('starCash');
-                document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                let starCash2 = parseInt(localStorage.getItem('starCash')) || 0;
+                starCash2 = parseInt(starCash + 3);
+                localStorage.setItem('starCash', starCash2);
+                document.getElementById("starCashOuterLabel").innerHTML = starCash2;
                 //document.getElementById("sucessbuyTxt").innerHTML = '+ 3 Stars';
 
-                document.getElementById("starCashOuterLabel").innerHTML = starCash;
+            
             }, this, 1500);
 
             lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 33000);
@@ -9756,7 +11246,7 @@ farming.start = function () {
                 showingStarCash = 0;
                 var mutedAtStart3 = localStorage.getItem('GuiGhostFarms_muted');
                 //console.log("3 = " + mutedAtStart3)
-                if (mutedAtStart3 == 0) { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); }
+                if (mutedAtStart3 == 0) { lime.audio.setMute(false); themeSongNew.play(true); smithSound.play(); }
                 else { lime.audio.setMute(true); setMute(1) }
                 event.stopPropagation();
             }
@@ -9771,7 +11261,7 @@ farming.start = function () {
                 showingStarCash = 0;
                 var mutedAtStart4 = localStorage.getItem('GuiGhostFarms_muted');
                 //console.log(mutedAtStart4)
-                if (mutedAtStart4 == 0) { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); }
+                if (mutedAtStart4 == 0) { lime.audio.setMute(false); themeSongNew.play(true); smithSound.play(); }
                 else { lime.audio.setMute(true); setMute(1) }
                 event.stopPropagation();
             }
@@ -9862,23 +11352,23 @@ farming.start = function () {
         var statsBack2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, 55).setFill(imgArray[75]);
         statsLayer.appendChild(statsBack2);
         var toolCountImgInv = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(10, 3).setSize(35, 35).setFill(imgArray[30]);
-        var toolCountInv = (new lime.Label()).setText(player.tools).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(65, 24).setFontSize(18);
+        var toolCountInv = (new lime.Label()).setText(player.tools).setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(65, 24).setFontSize(18);
         statsLayer.appendChild(toolCountImgInv);
         statsLayer.appendChild(toolCountInv);
-        var farmerName = (new lime.Label()).setText("Fordwin").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(150, 18).setFontSize(18);
+        var farmerName = (new lime.Label()).setText("Fordwin").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(150, 18).setFontSize(18);
         statsLayer.appendChild(farmerName);
-        var farmerTitle = (new lime.Label()).setText("Peasant Farmer").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(150, 40).setFontSize(14);
+        var farmerTitle = (new lime.Label()).setText("Peasant Farmer").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(150, 40).setFontSize(12);
         statsLayer.appendChild(farmerTitle);
         var topCoinInventory = (new lime.Sprite()).setPosition(285, 20).setSize(35, 35).setFill(imgArray11[0]);
         statsLayer.appendChild(topCoinInventory);
-        var inventoryCash = (new lime.Label()).setText(player.money).setFontColor("#E8FC08").setPosition(235, 24).setFontSize(18).setFontFamily("Comic Sans MS");
+        var inventoryCash = (new lime.Label()).setText(player.money).setFontColor("#ffffff").setPosition(235, 24).setFontSize(18).setFontFamily("Proxima Nova");
         statsLayer.appendChild(inventoryCash);
 
 
         farmerTitle.setText("Peasant Farmer");
 
 
-        var playerImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(2, 74).setSize(100, 100).setFill(imgArrayPlayer[0]);
+        var playerImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-7, 74).setSize(100, 100).setFill(imgArrayPlayer[0]);
         inventoryScene.appendChild(playerImg);
         var swapItPlayer = 0;
         var looperPlayer = lime.scheduleManager.scheduleWithDelay(function () {
@@ -9938,10 +11428,10 @@ farming.start = function () {
                 townSceneActive = 1;
                 sceneActive = 'Town';
                 c.replaceScene(marketScene, lime.transitions.SlideInDown);
-                acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+                acresOwned3 = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
                 if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
                 sceneActive = 'Market';
-                lime.scheduleManager.callAfter(function () { CheckQuestInvItems(); }, this, 1500);
+                lime.scheduleManager.callAfter(function () { try{CheckQuestInvItems();}catch(err){console.log(err)}; }, this, 1500);
             }
             if (a.sceneBefore == 9) {
                 c.replaceScene(storeScene, lime.transitions.SlideInDown);
@@ -9954,16 +11444,16 @@ farming.start = function () {
         });
 
 
-        var cropBtn = (new lime.GlossyButton()).setColor("#8B4513").setText("Goods").setPosition((a.width / 3) - 50, 70).setSize((a.width / 3) - 10, 23);
-        statsLayer.appendChild(cropBtn);
+        var cropInvBtn = (new lime.GlossyButton()).setColor("#8B4513").setText("Goods").setPosition((a.width / 3) - 50, 70).setSize((a.width / 3) - 10, 23);
+        statsLayer.appendChild(cropInvBtn);
         var itemsBtn = (new lime.GlossyButton()).setColor("#F4A460").setText("Items").setPosition(((a.width / 3) * 2) - 50, 70).setSize((a.width / 3) - 10, 23);
         statsLayer.appendChild(itemsBtn);
-        var collectBtn = (new lime.GlossyButton()).setColor("#7B68EE").setText("Heirlooms").setPosition(a.width - (a.width / 3) + 55, 70).setSize((a.width / 3) - 10, 23);
+        var collectBtn = (new lime.GlossyButton()).setColor("#604187").setText("Heirlooms").setPosition(a.width - (a.width / 3) + 55, 70).setSize((a.width / 3) - 10, 23);
         statsLayer.appendChild(collectBtn);
         ///// day/year count Label on expanded
-        var dayLabel = (new lime.Label()).setFontSize(10).setPosition(40, 45).setSize(60, 15).setFill("images/UI/purpleButtonLg.png").setText("Day " + dayCount).setFontFamily("Comic Sans MS").setFontColor("#ffffff").setFontSize(14);
+        var dayLabel = (new lime.Label()).setFontSize(10).setPosition(40, 46).setSize(60, 15).setText("Day " + dayCount).setFontFamily("Proxima Nova").setFontColor("#ffffff").setFontSize(14);
         statsLayer.appendChild(dayLabel);
-        var yearLabel = (new lime.Label()).setFontSize(10).setPosition(a.width - 40, 45).setSize(60, 15).setFill("images/UI/purpleButtonLg.png").setText("Year " + yearCount).setFontFamily("Comic Sans MS").setFontColor("#ffffff").setFontSize(14);
+        var yearLabel = (new lime.Label()).setFontSize(10).setPosition(a.width - 40, 46).setSize(60, 15).setText("Year " + yearCount).setFontFamily("Proxima Nova").setFontColor("#ffffff").setFontSize(14);
         statsLayer.appendChild(yearLabel);
 
         //crops layer definition
@@ -9972,9 +11462,9 @@ farming.start = function () {
         //var playerToolImgs = (new lime.Sprite()).setPosition(50, 310).setSize(90, 250).setFill("#000000");
         //cropsLayer.appendChild(playerToolImgs);
 
-        var supplyBox = (new lime.RoundedRect()).setPosition(52, 380).setSize(99, 272).setFill("#00ff00");
+        var supplyBox = (new lime.RoundedRect()).setPosition(43, 380).setSize(76, 272).setFill("#00ff00");
         cropsLayer.appendChild(supplyBox);
-        var stockLabel = (new lime.Label()).setPosition(51, 271).setSize(71, 50).setText("Consumables").setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(16);
+        var stockLabel = (new lime.Label()).setPosition(42, 271).setSize(72, 50).setText("Consumables").setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(12);
         cropsLayer.appendChild(stockLabel);
 
 
@@ -9982,61 +11472,94 @@ farming.start = function () {
 
         //inventory Icons HEREEREERE
 
-        for (x = 0; x < (10); x++) storedBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(105, 88 + (x * 42) + 6).setFill(imgArrayTown[18]).setSize(95, 40), cropsLayer.appendChild(storedBack);
-        for (x = 0; x < (7); x++) storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(115, 90 + (x * 42) + 7).setFill("images/" + a.crops[x].harvest).setSize(33, 33), cropsLayer.appendChild(storedIcon);
+        for (x = 0; x < (10); x++) storedBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(88, 88 + (x * 42) + 6).setFill(imgArrayTown[18]).setSize(70, 40),
+         cropsLayer.appendChild(storedBack);
+        for (x = 0; x < (7); x++) storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(96, 90 + (x * 42) + 9).setFill("images/" + a.crops[x].harvest).setSize(28, 28),
+         cropsLayer.appendChild(storedIcon);
 
-        for (x = 9; x < (19); x++) storedBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(210, 88 + ((x - 9) * 42) + 6).setFill(imgArrayTown[18]).setSize(95, 40), cropsLayer.appendChild(storedBack);
-        for (x = 7; x < (14); x++) storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(220, 90 + ((x - 7) * 42) + 7).setFill("images/" + a.crops[x].harvest).setSize(33, 33), cropsLayer.appendChild(storedIcon);
-        storedBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(4, 262).setFill(imgArrayTown[18]).setSize(95, 40), cropsLayer.appendChild(storedBack);
-        storedBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(4, 304).setFill(imgArrayTown[18]).setSize(95, 40), cropsLayer.appendChild(storedBack);
-        storedBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(4, 346).setFill(imgArrayTown[18]).setSize(95, 40), cropsLayer.appendChild(storedBack);
-        storedBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(4, 388).setFill(imgArrayTown[18]).setSize(95, 40), cropsLayer.appendChild(storedBack);
-        storedBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(4, 430).setFill(imgArrayTown[18]).setSize(95, 40), cropsLayer.appendChild(storedBack);
-        storedBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(4, 472).setFill(imgArrayTown[18]).setSize(95, 40), cropsLayer.appendChild(storedBack);
-        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(13, 265).setFill("images/" + a.crops[14].harvest).setSize(33, 33), cropsLayer.appendChild(storedIcon);
-        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(13, 308).setFill("images/" + a.crops[15].harvest).setSize(33, 33), cropsLayer.appendChild(storedIcon);
-        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(13, 348).setFill("images/" + a.crops[16].harvest).setSize(33, 33), cropsLayer.appendChild(storedIcon);
-        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(13, 393).setFill("images/" + a.crops[17].harvest).setSize(33, 33), cropsLayer.appendChild(storedIcon);
-        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(114, 393).setFill(imgArray4[21]).setSize(33, 33), cropsLayer.appendChild(storedIcon);
-        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(220, 393).setFill("images/" + a.crops[22].harvest).setSize(31, 31), cropsLayer.appendChild(storedIcon);
-        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(114, 435).setFill("images/" + a.crops[23].harvest).setSize(33, 33), cropsLayer.appendChild(storedIcon);
-        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(220, 435).setFill("images/" + a.crops[24].harvest).setSize(33, 33), cropsLayer.appendChild(storedIcon);
-        var gLabel0 = (new lime.Label()).setPosition(170, 118).setSize(26, 20).setText(player.cropsStored[0].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel0);
-        var gLabel1 = (new lime.Label()).setPosition(170, 159).setSize(26, 20).setText(player.cropsStored[1].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel1);
-        var gLabel2 = (new lime.Label()).setPosition(170, 203).setSize(26, 20).setText(player.cropsStored[2].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel2);
-        var gLabel3 = (new lime.Label()).setPosition(170, 246).setSize(26, 20).setText(player.cropsStored[3].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel3);
-        var gLabel4 = (new lime.Label()).setPosition(170, 290).setSize(26, 20).setText(player.cropsStored[4].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel4);
-        var gLabel5 = (new lime.Label()).setPosition(170, 330).setSize(26, 20).setText(player.cropsStored[5].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel5);
-        var gLabel6 = (new lime.Label()).setPosition(170, 370).setSize(26, 12).setText(player.cropsStored[6].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel6);
-        var gLabel7 = (new lime.Label()).setPosition(272, 112).setSize(26, 12).setText(player.cropsStored[7].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel7);
-        var gLabel8 = (new lime.Label()).setPosition(272, 157).setSize(26, 12).setText(player.cropsStored[8].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel8);
-        var gLabel9 = (new lime.Label()).setPosition(272, 200).setSize(26, 12).setText(player.cropsStored[9].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel9);
-        var gLabel10 = (new lime.Label()).setPosition(272, 240).setSize(26, 12).setText(player.cropsStored[10].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel10);
-        var gLabel11 = (new lime.Label()).setPosition(272, 283).setSize(26, 12).setText(player.cropsStored[11].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel11);
-        var gLabel12 = (new lime.Label()).setPosition(272, 330).setSize(26, 18).setText(player.cropsStored[12].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel12);
-        var gLabel13 = (new lime.Label()).setPosition(272, 370).setSize(26, 18).setText(player.cropsStored[13].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel13);
+        for (x = 9; x < (19); x++) storedBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(163, 88 + ((x - 9) * 42) + 6).setFill(imgArrayTown[18]).setSize(70, 40),
+         cropsLayer.appendChild(storedBack);
+        for (x = 7; x < (14); x++) storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(168, 90 + ((x - 7) * 42) + 9).setFill("images/" + a.crops[x].harvest).setSize(28, 28), 
+        cropsLayer.appendChild(storedIcon);
+
+        for (x = 19; x < (29); x++) storedBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(238,  88 + ((x - 19) * 42) + 6).setFill(imgArrayTown[18]).setSize(70, 40),
+        cropsLayer.appendChild(storedBack);
+
+
+        storedBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 262).setFill(imgArrayTown[18]).setSize(70, 40), cropsLayer.appendChild(storedBack);
+        storedBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 304).setFill(imgArrayTown[18]).setSize(70, 40), cropsLayer.appendChild(storedBack);
+        storedBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 346).setFill(imgArrayTown[18]).setSize(70, 40), cropsLayer.appendChild(storedBack);
+        storedBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 388).setFill(imgArrayTown[18]).setSize(70, 40), cropsLayer.appendChild(storedBack);
+        storedBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 430).setFill(imgArrayTown[18]).setSize(70, 40), cropsLayer.appendChild(storedBack);
+        storedBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 472).setFill(imgArrayTown[18]).setSize(70, 40), cropsLayer.appendChild(storedBack);
+        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(16,265 ).setFill(imgArray[110]).setSize(21, 32), cropsLayer.appendChild(storedIcon);   //water
+        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 308).setFill("images/" + a.crops[14].harvest).setSize(28, 28), cropsLayer.appendChild(storedIcon); //wood
+        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 350).setFill("images/" + a.crops[15].harvest).setSize(28, 28), cropsLayer.appendChild(storedIcon); //iron
+        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 393).setFill("images/" + a.crops[16].harvest).setSize(28, 28), cropsLayer.appendChild(storedIcon); //jars
+        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 434).setFill("images/" + a.crops[17].harvest).setSize(28, 28), cropsLayer.appendChild(storedIcon); //barrels
+        // storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 478).setFill("images/" + a.crops[20].harvest).setSize(28, 28), cropsLayer.appendChild(storedIcon); //bottles
+        
+        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(96, 393).setFill(imgArray4[21]).setSize(28, 28), cropsLayer.appendChild(storedIcon);   //cider
+        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(246, 100).setFill("images/" + a.crops[22].harvest).setSize(28, 28), cropsLayer.appendChild(storedIcon);
+
+        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(246, 141).setFill("images/" + a.crops[23].harvest).setSize(28, 28), cropsLayer.appendChild(storedIcon); //flour
+        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(244, 182).setFill("images/" + a.crops[24].harvest).setSize(28, 28), cropsLayer.appendChild(storedIcon);  //loaf bread
+        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(245, 227).setFill("images/" + a.crops[26].harvest).setSize(28, 28), cropsLayer.appendChild(storedIcon);  //apple pie
+        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(245, 267).setFill("images/" + a.crops[27].harvest).setSize(28, 28), cropsLayer.appendChild(storedIcon); //manchet
+        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(245, 308).setFill("images/" + a.crops[28].harvest).setSize(28, 28), cropsLayer.appendChild(storedIcon);  //eclairs
+        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(245, 350).setFill("images/" + a.crops[29].harvest).setSize(28, 28), cropsLayer.appendChild(storedIcon);  //donuts
+        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(245, 390).setFill("").setSize(28, 28), cropsLayer.appendChild(storedIcon);  //unused
+        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(245, 430).setFill("").setSize(28, 28), cropsLayer.appendChild(storedIcon);  //unused
+
+        storedIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(170, 392).setFill("images/" + a.crops[25].harvest).setSize(28, 28), cropsLayer.appendChild(storedIcon);
+
+        var gLabel0 = (new lime.Label()).setPosition(141, 115).setSize(16, 20).setText(player.cropsStored[0].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel0);
+        var gLabel1 = (new lime.Label()).setPosition(141, 159).setSize(16, 20).setText(player.cropsStored[1].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel1);
+        var gLabel2 = (new lime.Label()).setPosition(141, 203).setSize(16, 20).setText(player.cropsStored[2].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel2);
+        var gLabel3 = (new lime.Label()).setPosition(141, 246).setSize(16, 20).setText(player.cropsStored[3].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel3);
+        var gLabel4 = (new lime.Label()).setPosition(141, 290).setSize(16, 20).setText(player.cropsStored[4].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel4);
+        var gLabel5 = (new lime.Label()).setPosition(141, 330).setSize(16, 20).setText(player.cropsStored[5].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel5);
+        var gLabel6 = (new lime.Label()).setPosition(141, 370).setSize(16, 12).setText(player.cropsStored[6].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel6);
+        var gLabel7 = (new lime.Label()).setPosition(214, 115).setSize(16, 12).setText(player.cropsStored[7].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel7);
+        var gLabel8 = (new lime.Label()).setPosition(214, 157).setSize(16, 12).setText(player.cropsStored[8].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel8);
+        var gLabel9 = (new lime.Label()).setPosition(214, 200).setSize(16, 12).setText(player.cropsStored[9].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel9);
+        var gLabel10 = (new lime.Label()).setPosition(214, 240).setSize(16, 12).setText(player.cropsStored[10].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel10);
+        var gLabel11 = (new lime.Label()).setPosition(214, 283).setSize(16, 12).setText(player.cropsStored[11].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel11);
+        var gLabel12 = (new lime.Label()).setPosition(214, 330).setSize(16, 18).setText(player.cropsStored[12].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel12);
+        var gLabel13 = (new lime.Label()).setPosition(214, 370).setSize(16, 18).setText(player.cropsStored[13].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel13);
         //wood and Iron and jars to the lower left side
-        var gLabel14 = (new lime.Label()).setPosition(67, 284).setSize(26, 12).setText(player.cropsStored[14].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel14);
-        var gLabel15 = (new lime.Label()).setPosition(67, 326).setSize(26, 12).setText(player.cropsStored[15].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel15);
-        var gLabel16 = (new lime.Label()).setPosition(67, 367).setSize(26, 12).setText(player.cropsStored[16].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel16);
-        var gLabel17 = (new lime.Label()).setPosition(67, 410).setSize(26, 12).setText(player.cropsStored[17].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel17);
-        var gLabel18 = (new lime.Label()).setPosition(170, 410).setSize(26, 12).setText(player.cropsStored[18].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel18);
-        var gLabel19 = (new lime.Label()).setPosition(67, 492).setSize(26, 12).setText("?").setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel19);
-        var gLabel20 = (new lime.Label()).setPosition(170, 492).setSize(26, 12).setText("?").setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel20);
-        var gLabel21 = (new lime.Label()).setPosition(272, 492).setSize(26, 12).setText("?").setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel21);
-        var gLabel22 = (new lime.Label()).setPosition(272, 410).setSize(26, 12).setText(player.cropsStored[22].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel22);
-        var gLabel23 = (new lime.Label()).setPosition(170, 450).setSize(26, 12).setText(player.cropsStored[23].stored).setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel23);
-        var gLabel24 = (new lime.Label()).setPosition(272, 450).setSize(26, 12).setText(player.cropsStored[24].stored).setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel24);
-        var gLabel25 = (new lime.Label()).setPosition(67, 450).setSize(26, 12).setText("?").setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#E8FC08"); cropsLayer.appendChild(gLabel25);
+        var gLabelWater = (new lime.Label()).setPosition(57, 284).setSize(26, 12).setText(waterStored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabelWater);
+        var gLabel14 = (new lime.Label()).setPosition(57, 326).setSize(26, 12).setText(player.cropsStored[14].stored ).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel14);
+        var gLabel15 = (new lime.Label()).setPosition(57, 367).setSize(26, 12).setText(player.cropsStored[15].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel15);
+        var gLabel16 = (new lime.Label()).setPosition(57, 410).setSize(26, 12).setText(player.cropsStored[16].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel16);
+        var gLabel17 = (new lime.Label()).setPosition(57, 450).setSize(26, 12).setText(player.cropsStored[17].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel17);
+        var gLabel18 = (new lime.Label()).setPosition(141, 410).setSize(26, 12).setText(player.cropsStored[18].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel18);
+   
+        var gLabel20 = (new lime.Label()).setPosition(57, 492).setSize(26, 12).setText('?').setFontSize(22).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel20);
+        var gLabel21 = (new lime.Label()).setPosition(141, 492).setSize(26, 12).setText("?").setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel21);
+        var gLabel22 = (new lime.Label()).setPosition(289, 115).setSize(26, 12).setText(player.cropsStored[22].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel22);
+        var gLabel23 = (new lime.Label()).setPosition(289, 159).setSize(26, 12).setText(player.cropsStored[23].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel23);
+        var gLabel24 = (new lime.Label()).setPosition(289, 203).setSize(26, 12).setText(player.cropsStored[24].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel24);
+        var gLabel25 = (new lime.Label()).setPosition(214, 410).setSize(26, 12).setText(player.cropsStored[25].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel25);
+        var gLabel26 = (new lime.Label()).setPosition(289, 246).setSize(26, 12).setText(player.cropsStored[26].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel26);
+        var gLabel27 = (new lime.Label()).setPosition(289, 290).setSize(26, 12).setText(player.cropsStored[27].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel27);
+        var gLabel28 = (new lime.Label()).setPosition(289, 330).setSize(26, 12).setText(player.cropsStored[28].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel28);
+        var gLabel29 = (new lime.Label()).setPosition(289, 370).setSize(26, 12).setText(player.cropsStored[29].stored).setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel29);
+        var gLabel30 = (new lime.Label()).setPosition(289, 410).setSize(26, 12).setText("?").setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel30);
+        var gLabel31 = (new lime.Label()).setPosition(141, 450).setSize(26, 12).setText("?").setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel31);
+        var gLabel32 = (new lime.Label()).setPosition(214, 450).setSize(26, 12).setText("?").setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel32);
+        var gLabel33 = (new lime.Label()).setPosition(214, 492).setSize(26, 12).setText("?").setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel33);
+        var gLabel34 = (new lime.Label()).setPosition(289, 450).setSize(26, 12).setText("?").setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel34);
+        var gLabel35 = (new lime.Label()).setPosition(289, 492).setSize(26, 12).setText("?").setFontSize(16).setFontFamily("Proxima Nova").setFontColor("#FFFFFF"); cropsLayer.appendChild(gLabel35);
 
-        var starCashInvImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(11, 168).setSize(80, 35).setFill(imgArray[25].src);
+        var starCashInvImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(6, 168).setSize(72, 35).setFill(imgArray[25].src);
         cropsLayer.appendChild(starCashInvImg);
-        var starCashInvCount = (new lime.Label()).setText(starCash).setFontFamily("Comic Sans MS").setFontColor("#000000").setPosition(60, 188).setFontSize(16);
+        var starCashInvCount = (new lime.Label()).setText(starCash).setFontFamily("Proxima Nova").setFontColor("#000000").setPosition(50, 188).setFontSize(16);
         cropsLayer.appendChild(starCashInvCount);
         starCashInvCount.setText(starCash);
-        var tokenInvImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(11, 202).setSize(80, 35).setFill(imgArray[52]);
+        var tokenInvImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(6, 202).setSize(72, 35).setFill(imgArray[52]);
         cropsLayer.appendChild(tokenInvImg);
-        var tokenInvCount = (new lime.Label()).setText(heraldOrderTop).setFontFamily("Comic Sans MS").setFontColor("#000000").setPosition(60, 223).setFontSize(16);
+        var tokenInvCount = (new lime.Label()).setText(heraldOrderTop).setFontFamily("Proxima Nova").setFontColor("#000000").setPosition(50, 223).setFontSize(16);
         cropsLayer.appendChild(tokenInvCount);
 
 
@@ -10048,23 +11571,23 @@ farming.start = function () {
 
         var itemInfoPanel = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(48, 85).setSize(a.width - 85, 110).setFill(imgArray[79]);
         itemsBack.appendChild(itemInfoPanel);
-        var itemInfoHeader = (new lime.Label()).setPosition(110, 25).setText('Item Information').setFontSize(22).setFontFamily("Comic Sans MS").setFontColor("#000000"); itemInfoPanel.appendChild(itemInfoHeader);
-        var itemInfoDetails1 = (new lime.Label()).setPosition(110, 65).setText('Hit an item to').setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#000000"); itemInfoPanel.appendChild(itemInfoDetails1);
-        var itemInfoDetails2 = (new lime.Label()).setPosition(110, 90).setText('see the details').setFontSize(18).setFontFamily("Comic Sans MS").setFontColor("#000000"); itemInfoPanel.appendChild(itemInfoDetails2);
+        var itemInfoHeader = (new lime.Label()).setPosition(110, 25).setText('Item Information').setFontSize(22).setFontFamily("Proxima Nova").setFontColor("#000000"); itemInfoPanel.appendChild(itemInfoHeader);
+        var itemInfoDetails1 = (new lime.Label()).setPosition(110, 65).setText('Hit an item to').setFontSize(18).setFontFamily("Proxima Nova").setFontColor("#000000"); itemInfoPanel.appendChild(itemInfoDetails1);
+        var itemInfoDetails2 = (new lime.Label()).setPosition(110, 90).setText('see the details').setFontSize(18).setFontFamily("Proxima Nova").setFontColor("#000000"); itemInfoPanel.appendChild(itemInfoDetails2);
 
         var shovelImg = (new lime.Sprite()).setPosition(150, 30).setSize(50, 50).setFill(imgArrayItems[18].src);
         itemsBack.appendChild(shovelImg);
-        var shovelLabel = (new lime.Label()).setFontSize(12).setPosition(3, 45).setSize(70, 18).setText("IRON SHOVEL").setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(10);
+        var shovelLabel = (new lime.Label()).setFontSize(12).setPosition(3, 45).setSize(70, 18).setText("IRON SHOVEL").setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(10);
         shovelImg.appendChild(shovelLabel);
 
         if (collectItems.storeItems[2].owned == 1) {
             shovelImg.setFill(imgArrayStore[2].src);
-            shovelLabel.setFontSize(10).setPosition(3, 45).setSize(70, 18).setText("BLESSED SHOVEL").setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(10);
+            shovelLabel.setFontSize(10).setPosition(3, 45).setSize(70, 18).setText("BLESSED SHOVEL").setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(10);
         }
 
         var pickImg = (new lime.Sprite()).setPosition(240, 33).setSize(50, 50).setFill(imgArray[20].src);
         itemsBack.appendChild(pickImg);
-        var pickLabel = (new lime.Label()).setPosition(3, 45).setSize(70, 18).setText("????").setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(12);
+        var pickLabel = (new lime.Label()).setPosition(3, 45).setSize(70, 18).setText("????").setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(12);
         pickImg.appendChild(pickLabel);
         if (collectItems.storeItems[3].owned == 1) {
             pickImg.setFill(imgArrayStore[3].src)
@@ -10302,28 +11825,145 @@ farming.start = function () {
 
         }
 
-        //collect layer definition
-        var collectBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 81).setSize(a.width, a.height - 81).setFill("#7B68EE");
-        collectLayer.appendChild(collectBack);
-        var collectInfoText = (new lime.Label()).setPosition(160, 225).setText('Coming Soon').setFontSize(24).setFontFamily("Comic Sans MS").setFontColor("#000000"); collectBack.appendChild(collectInfoText);
+        ////////////////////////collect layer definition///////////////////////////////////
 
+        var collectBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 81).setSize(a.width, a.height - 81).setFill("#604187");
+        collectLayer.appendChild(collectBack);
+        var collectLabel1 = (new lime.Label()).setText("Collect all items to unlock your destiny").setFontColor("#ffffff").setFontFamily("Proxima Nova").setPosition(a.width /2, 15).setFontSize(16);
+        collectBack.appendChild(collectLabel1);
+        var amuletImgInv = (new lime.Sprite()).setPosition(65, 75).setSize(80, 80).setFill(imgArrayItems[40]);
+        collectBack.appendChild(amuletImgInv);
+        var helmImgInv = (new lime.Sprite()).setPosition(160, 75).setSize(80, 80).setFill(imgArrayItems[30]);
+        collectBack.appendChild(helmImgInv);
+        var mailImgInv = (new lime.Sprite()).setPosition(160, 170).setSize(95, 90).setFill(imgArrayItems[34]);
+        collectBack.appendChild(mailImgInv);
+        var shieldImgInv = (new lime.Sprite()).setPosition(65, 175).setSize(130, 130).setFill(imgArrayItems[28]);
+        collectBack.appendChild(shieldImgInv);
+        var swordImgInv = (new lime.Sprite()).setPosition(258, 175).setSize(70, 140).setFill(imgArrayItems[33]).setRotation(-30);
+        collectBack.appendChild(swordImgInv);
+        var journalImgInv = (new lime.Sprite()).setPosition(258, 72).setSize(65, 65).setFill(imgArrayItems[35]);
+        collectBack.appendChild(journalImgInv);
+        var greavesImgInv = (new lime.Sprite()).setPosition(160, 285).setSize(90, 90).setFill(imgArrayItems[32]);
+        collectBack.appendChild(greavesImgInv);
+        // var crestImgInv = (new lime.Sprite()).setPosition(65, 295).setSize(60, 60).setFill(imgArrayItems[23]);
+        // collectBack.appendChild(crestImgInv );
+        var bootsImgInv = (new lime.Sprite()).setPosition(65, 290).setSize(80, 80).setFill(imgArrayItems[38]);
+        collectBack.appendChild(bootsImgInv );
+        var glovesImgInv = (new lime.Sprite()).setPosition(250, 290).setSize(80, 80).setFill(imgArrayItems[36]);
+        collectBack.appendChild(glovesImgInv );
+
+
+        var heirMapBack = (new lime.Sprite()).setPosition(a.width /4 -20, 380).setSize(a.width /3 -15,90).setFill(imgArrayTown[18]);
+        collectBack.appendChild(heirMapBack);
+        var heirMapBack2 = (new lime.Sprite()).setPosition(a.width/2, 380).setSize(a.width/3 -15 ,90).setFill(imgArrayTown[18]);
+        collectBack.appendChild(heirMapBack2);
+        var heirMapBack3 = (new lime.Sprite()).setPosition(a.width/2 + (a.width/3 -7) , 380).setSize(a.width/3 -15 ,90).setFill(imgArrayTown[18]);
+        collectBack.appendChild(heirMapBack3);
+
+        var heirMap1 = (new lime.Sprite()).setPosition(0, 0).setSize(40, 40).setFill(imgArray[113]);
+        heirMapBack.appendChild(heirMap1);
+    
+        
+        var mapLabelTop = (new lime.Label()).setText("Fragments").setFontColor("#ffffff").setFontFamily("Proxima Nova").setPosition(0, - 28).setFontSize(16);
+        heirMapBack.appendChild(mapLabelTop);
+        mapPieces = localStorage.getItem('mapPieces') || 0; 
+        var mapLabel1 = (new lime.Label()).setText( mapPieces + "/5").setFontColor("#ffffff").setFontFamily("Proxima Nova").setPosition(0, 30).setFontSize(12);
+        heirMapBack.appendChild(mapLabel1);
+    
+      
+        var mapLabelTop2 = (new lime.Label()).setText("Maps").setFontColor("#ffffff").setFontFamily("Proxima Nova").setPosition(0, - 28).setFontSize(16);
+        heirMapBack2.appendChild(mapLabelTop2);
+        var completeMap1 = (new lime.Sprite()).setPosition(0, 0).setSize(50, 40).setFill(imgArray[118]);
+        heirMapBack2.appendChild(completeMap1);
+        var mapLabel2 = (new lime.Label()).setText( mapsComplete + "/6").setFontColor("#ffffff").setFontFamily("Proxima Nova").setPosition(0, 30).setFontSize(12);
+        heirMapBack2.appendChild(mapLabel2);
+
+        var mapLabelTop3 = (new lime.Label()).setText("Chests").setFontColor("#ffffff").setFontFamily("Proxima Nova").setPosition(0, - 28).setFontSize(16);
+        heirMapBack3.appendChild(mapLabelTop3);
+        var completeMap3 = (new lime.Sprite()).setPosition(0, 0).setSize(50, 40).setFill(imgArrayItems[42]);
+        heirMapBack3.appendChild(completeMap3);
+        chests_Complete =  localStorage.getItem('chests_Complete')
+        var mapLabel3 = (new lime.Label()).setText( chests_Complete + "/8").setFontColor("#ffffff").setFontFamily("Proxima Nova").setPosition(0, 30).setFontSize(12);
+        heirMapBack3.appendChild(mapLabel3);
+    
         itemsBack.setHidden(true);
         collectBack.setHidden(true);
 
-        goog.events.listen(cropBtn, ["mousedown", "touchstart"], function () {
+    function checkHeirloomsOwned(){
+        if(collectItems.digUpCollect[0].owned == 1 ) {journalImgInv.setFill(imgArrayItems[27]);};
+        if(collectItems.digUpCollect[1].owned == 1 ) {shieldImgInv.setFill(imgArrayItems[2]);}
+        if(collectItems.digUpCollect[2].owned == 1 ) {swordImgInv.setFill(imgArrayItems[21]);}
+        if(collectItems.digUpCollect[3].owned == 1 ) {mailImgInv.setFill(imgArrayItems[6]);}
+        if(collectItems.digUpCollect[4].owned == 1 ) {helmImgInv.setFill(imgArrayItems[29]);}
+        if(collectItems.digUpCollect[5].owned == 1 ) {bootsImgInv.setFill(imgArrayItems[39]);}
+        if(collectItems.digUpCollect[6].owned == 1 ) {greavesImgInv.setFill(imgArrayItems[31]);}
+        if(collectItems.digUpCollect[7].owned == 1 ) {glovesImgInv.setFill(imgArrayItems[37]);}
+        if(collectItems.digUpCollect[8].owned == 1 ) {amuletImgInv.setFill(imgArrayItems[40]);}
+        checkMaps();
+    }
+    function checkMaps(){
+        mapPieces = localStorage.getItem('mapPieces') || 0; 
+        mapsComplete = parseInt(localStorage.getItem("mapsComplete")) || 0;
+     
+        if (mapPieces >= 5){
+            // TODO normal map anim and storage
+            console.log("map 1 complete with pieces = " + mapPieces);
+            showMapComplete(mapsComplete);
+            mapPieces = 0;
+            localStorage.setItem('mapPieces', 0);
+            mapLabel1.setText(mapPieces + "/5");
+            
+            mapsComplete = mapsComplete + 1;
+            if (mapsComplete > 6){mapsComplete = 6};
+            localStorage.setItem("mapsComplete", mapsComplete);
+            mapLabel2.setText(mapsComplete + "/6");
+         
+        };
+    
+        mapLabel1.setText( mapPieces + "/5");
+        mapLabel2.setText( mapsComplete + "/6");
+        mapLabel3.setText( chests_Complete +"/8");
+        
+    }
+
+    var heirloomFromMap = 0;
+    function showMapComplete(mapType){
+        var results = [];
+        mapsComplete =  localStorage.getItem('mapsComplete') || 0;
+        var toSearch = "0";
+
+      
+        if (mapType == 0){ mapStars.setPosition(245, 157); mapX.setPosition(246, 160); treasurePendingLocation = "StockPens";foundTreasureLS.setHidden(false);}
+        else if (mapType == 1){ mapStars.setPosition(110, 154); mapX.setPosition(111, 157); treasurePendingLocation = "Dairy"; foundTreasureP.setHidden(false);}
+        else if (mapType == 2){ mapStars.setPosition(46, 164); mapX.setPosition(47, 167); treasurePendingLocation = "Vineyard"; foundTreasureV.setHidden(false);}
+        else if (mapType == 3){ mapStars.setPosition(170, 220); mapX.setPosition(171, 223); treasurePendingLocation = "Market Town"; foundTreasureT.setHidden(false);}
+        else if (mapType == 4){ mapStars.setPosition(215, 95); mapX.setPosition(216, 98); treasurePendingLocation = "Caverns";  foundTreasureC.setHidden(false); }
+        else if (mapType == 5){ mapStars.setPosition(40, 60); mapX.setPosition(41, 63); treasurePendingLocation = "Windmill" ; foundTreasureW.setHidden(false);};  
+        
+        successSound.play();
+        
+        mapText3.setText('Head to the '+ treasurePendingLocation + ' to find it!');
+        c.replaceScene(mapScene);
+
+        treasureStars();
+    }
+
+    
+
+        goog.events.listen(cropInvBtn, ["mousedown", "touchstart"], function () {
 
             cropsBack.setHidden(false);
             itemsBack.setHidden(true);
             itemsStoredBack.setHidden(true);
             collectBack.setHidden(true);
-
+            playerImg.setHidden(false);
         });
         goog.events.listen(itemsBtn, ["mousedown", "touchstart"], function () {
             cropsBack.setHidden(true);
             itemsBack.setHidden(false);
             itemsStoredBack.setHidden(false);
             collectBack.setHidden(true);
-
+            playerImg.setHidden(false);
 
         });
         goog.events.listen(collectBtn, ["mousedown", "touchstart"], function () {
@@ -10331,7 +11971,8 @@ farming.start = function () {
             itemsBack.setHidden(true);
             itemsStoredBack.setHidden(true);
             collectBack.setHidden(false);
-
+            playerImg.setHidden(true);
+            checkHeirloomsOwned();
         });
 
 
@@ -10360,7 +12001,7 @@ farming.start = function () {
 
         var storeAnimItemMover = (new lime.Sprite()).setSize(42, 40).setPosition(65, -250).setFill(imgArrayStore[0].src);
         buyGeneralContainer.appendChild(storeAnimItemMover);
-        var storeCountBought = (new lime.Label()).setText("+ 50").setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setPosition(30, 15).setFontSize(18);
+        var storeCountBought = (new lime.Label()).setText("+ 50").setFontColor("#E8FC08").setFontFamily("Proxima Nova").setPosition(30, 15).setFontSize(18);
         storeAnimItemMover.appendChild(storeCountBought);
         storeAnimItemMover.setHidden(true);
 
@@ -10370,9 +12011,9 @@ farming.start = function () {
         buyGeneralItem0.price = collectItems.storeItems[0].value; buyGeneralItem0.stars = 3;
         var generalItem0Img = (new lime.Sprite()).setSize(40, 40).setPosition(-68, -7).setFill(imgArrayStore[0].src);
         buyGeneralItem0.appendChild(generalItem0Img);
-        var buyGeneralLabel0 = (new lime.Label()).setPosition(10, -15).setFontFamily("Comic Sans MS").setFontSize(16).setText(collectItems.storeItems[0].name).setFontColor("#E8FC08");
+        var buyGeneralLabel0 = (new lime.Label()).setPosition(10, -15).setFontFamily("Proxima Nova").setFontSize(16).setText(collectItems.storeItems[0].name).setFontColor("#E8FC08");
         buyGeneralItem0.appendChild(buyGeneralLabel0);
-        var buyGeneralSubLabel0 = (new lime.Label()).setPosition(13, 12).setFontFamily("Comic Sans MS").setFontSize(14).setText("Keep the smith busy").setFontColor("#f0ffff");
+        var buyGeneralSubLabel0 = (new lime.Label()).setPosition(13, 12).setFontFamily("Proxima Nova").setFontSize(14).setText("Keep the smith busy").setFontColor("#f0ffff");
         buyGeneralItem0.appendChild(buyGeneralSubLabel0);
         var buyGeneralBtn0 = (new lime.GlossyButton()).setColor("#008000").setText(collectItems.storeItems[0].value).setPosition(110, 0).setSize(45, 40).setHidden(false);
         buyGeneralItem0.appendChild(buyGeneralBtn0);
@@ -10432,9 +12073,9 @@ farming.start = function () {
         buyGeneralItem1.price = collectItems.storeItems[1].value; buyGeneralItem1.stars = 3;
         var generalItem1Img = (new lime.Sprite()).setSize(40, 40).setPosition(-69, -5).setFill(imgArrayStore[1].src);
         buyGeneralItem1.appendChild(generalItem1Img);
-        var buyGeneralLabel1 = (new lime.Label()).setPosition(12, -13).setFontFamily("Comic Sans MS").setFontSize(16).setText(collectItems.storeItems[1].name).setFontColor("#E8FC08");
+        var buyGeneralLabel1 = (new lime.Label()).setPosition(12, -13).setFontFamily("Proxima Nova").setFontSize(16).setText(collectItems.storeItems[1].name).setFontColor("#E8FC08");
         buyGeneralItem1.appendChild(buyGeneralLabel1);
-        var buyGeneralSubLabel1 = (new lime.Label()).setPosition(13, 12).setFontFamily("Comic Sans MS").setFontSize(14).setText("Store Jelly in these").setFontColor("#f0ffff");
+        var buyGeneralSubLabel1 = (new lime.Label()).setPosition(13, 12).setFontFamily("Proxima Nova").setFontSize(14).setText("Store Jelly in these").setFontColor("#f0ffff");
         buyGeneralItem1.appendChild(buyGeneralSubLabel1);
         var buyGeneralBtn1 = (new lime.GlossyButton()).setColor("#008000").setText(collectItems.storeItems[1].value).setPosition(110, 0).setSize(46, 40).setHidden(false);
         buyGeneralItem1.appendChild(buyGeneralBtn1);
@@ -10492,9 +12133,9 @@ farming.start = function () {
         buyGeneralItem2.price = collectItems.storeItems[2].value; buyGeneralItem2.stars = 25;
         var generalItem2Img = (new lime.Sprite()).setSize(40, 40).setPosition(-68, 0).setFill(imgArrayStore[2].src);
         buyGeneralItem2.appendChild(generalItem2Img);
-        var buyGeneralLabel2 = (new lime.Label()).setPosition(12, -13).setFontFamily("Comic Sans MS").setFontSize(16).setText(collectItems.storeItems[2].name).setFontColor("#E8FC08");
+        var buyGeneralLabel2 = (new lime.Label()).setPosition(12, -13).setFontFamily("Proxima Nova").setFontSize(16).setText(collectItems.storeItems[2].name).setFontColor("#E8FC08");
         buyGeneralItem2.appendChild(buyGeneralLabel2);
-        var buyGeneralSubLabel2 = (new lime.Label()).setPosition(13, 12).setFontFamily("Comic Sans MS").setFontSize(14).setText("+ 10% Item Find").setFontColor("#f0ffff");
+        var buyGeneralSubLabel2 = (new lime.Label()).setPosition(13, 12).setFontFamily("Proxima Nova").setFontSize(14).setText("+ 10% Item Find").setFontColor("#f0ffff");
         buyGeneralItem2.appendChild(buyGeneralSubLabel2);
         var buyGeneralBtn2 = (new lime.GlossyButton()).setColor("#008000").setText(collectItems.storeItems[2].value).setPosition(110, 0).setSize(46, 40).setHidden(false);
         buyGeneralItem2.appendChild(buyGeneralBtn2);
@@ -10579,9 +12220,9 @@ farming.start = function () {
         buyGeneralItem3.price = collectItems.storeItems[3].value; buyGeneralItem3.stars = 50;
         var generalItem3Img = (new lime.Sprite()).setSize(40, 40).setPosition(-75, 0).setFill(imgArrayStore[3].src);
         buyGeneralItem3.appendChild(generalItem3Img);
-        var buyGeneralLabel3 = (new lime.Label()).setPosition(12, -12).setFontFamily("Comic Sans MS").setFontSize(16).setText(collectItems.storeItems[3].name).setFontColor("#E8FC08");
+        var buyGeneralLabel3 = (new lime.Label()).setPosition(12, -12).setFontFamily("Proxima Nova").setFontSize(16).setText(collectItems.storeItems[3].name).setFontColor("#E8FC08");
         buyGeneralItem3.appendChild(buyGeneralLabel3);
-        var buyGeneralSubLabel3 = (new lime.Label()).setPosition(11, 12).setFontFamily("Comic Sans MS").setFontSize(14).setText("Break rocks in the way").setFontColor("#f0ffff");
+        var buyGeneralSubLabel3 = (new lime.Label()).setPosition(11, 12).setFontFamily("Proxima Nova").setFontSize(14).setText("Break rocks in the way").setFontColor("#f0ffff");
         buyGeneralItem3.appendChild(buyGeneralSubLabel3);
         var buyGeneralBtn3 = (new lime.GlossyButton()).setColor("#008000").setText(collectItems.storeItems[3].value).setPosition(110, 0).setSize(46, 40).setHidden(false);
         buyGeneralItem3.appendChild(buyGeneralBtn3);
@@ -10671,9 +12312,9 @@ farming.start = function () {
         buyGeneralItem4.price = collectItems.storeItems[4].value; buyGeneralItem4.stars = 75;
         var generalItem4Img = (new lime.Sprite()).setSize(42, 40).setPosition(-70, 0).setFill(imgArrayStore[4].src);
         buyGeneralItem4.appendChild(generalItem4Img);
-        var buyGeneralLabel4 = (new lime.Label()).setPosition(12, -12).setFontFamily("Comic Sans MS").setFontSize(16).setText(collectItems.storeItems[4].name).setFontColor("#E8FC08");
+        var buyGeneralLabel4 = (new lime.Label()).setPosition(12, -12).setFontFamily("Proxima Nova").setFontSize(16).setText(collectItems.storeItems[4].name).setFontColor("#E8FC08");
         buyGeneralItem4.appendChild(buyGeneralLabel4);
-        var buyGeneralSubLabel4 = (new lime.Label()).setPosition(15, 12).setFontFamily("Comic Sans MS").setFontSize(14).setText("Make Fruit Cider").setFontColor("#f0ffff");
+        var buyGeneralSubLabel4 = (new lime.Label()).setPosition(15, 12).setFontFamily("Proxima Nova").setFontSize(14).setText("Make Fruit Cider").setFontColor("#f0ffff");
         buyGeneralItem4.appendChild(buyGeneralSubLabel4)
         var buyGeneralBtn4 = (new lime.GlossyButton()).setColor("#008000").setText(collectItems.storeItems[4].value).setPosition(110, 0).setSize(46, 40).setHidden(false);
         buyGeneralItem4.appendChild(buyGeneralBtn4);
@@ -10765,9 +12406,9 @@ farming.start = function () {
         buyGeneralItem5.stars = 5;
         var generalItem5Img = (new lime.Sprite()).setSize(42, 40).setPosition(-70, 0).setFill(imgArrayStore[5].src);
         buyGeneralItem5.appendChild(generalItem5Img);
-        var buyGeneralLabel5 = (new lime.Label()).setPosition(12, -12).setFontFamily("Comic Sans MS").setFontSize(16).setText(collectItems.storeItems[5].name).setFontColor("#E8FC08");
+        var buyGeneralLabel5 = (new lime.Label()).setPosition(12, -12).setFontFamily("Proxima Nova").setFontSize(16).setText(collectItems.storeItems[5].name).setFontColor("#E8FC08");
         buyGeneralItem5.appendChild(buyGeneralLabel5);
-        var buyGeneralSubLabel5 = (new lime.Label()).setPosition(15, 12).setFontFamily("Comic Sans MS").setFontSize(14).setText("Store Grape Juice").setFontColor("#f0ffff");
+        var buyGeneralSubLabel5 = (new lime.Label()).setPosition(15, 12).setFontFamily("Proxima Nova").setFontSize(14).setText("Store Grape Juice").setFontColor("#f0ffff");
         buyGeneralItem5.appendChild(buyGeneralSubLabel5)
         var buyGeneralBtn5 = (new lime.GlossyButton()).setColor("#008000").setText(collectItems.storeItems[5].value).setPosition(110, 0).setSize(46, 40).setHidden(false);
         buyGeneralItem5.appendChild(buyGeneralBtn5);
@@ -10823,9 +12464,9 @@ farming.start = function () {
         buyGeneralItem6.stars = 5;
         var generalItem6Img = (new lime.Sprite()).setSize(42, 40).setPosition(-70, 0).setFill(imgArrayStore[6].src);
         buyGeneralItem6.appendChild(generalItem6Img);
-        var buyGeneralLabel6 = (new lime.Label()).setPosition(12, -12).setFontFamily("Comic Sans MS").setFontSize(16).setText(collectItems.storeItems[6].name).setFontColor("#E8FC08");
+        var buyGeneralLabel6 = (new lime.Label()).setPosition(12, -12).setFontFamily("Proxima Nova").setFontSize(16).setText(collectItems.storeItems[6].name).setFontColor("#E8FC08");
         buyGeneralItem6.appendChild(buyGeneralLabel6);
-        var buyGeneralSubLabel6 = (new lime.Label()).setPosition(15, 12).setFontFamily("Comic Sans MS").setFontSize(14).setText("Store Fruit Cider").setFontColor("#f0ffff");
+        var buyGeneralSubLabel6 = (new lime.Label()).setPosition(15, 12).setFontFamily("Proxima Nova").setFontSize(14).setText("Store Fruit Cider").setFontColor("#f0ffff");
         buyGeneralItem6.appendChild(buyGeneralSubLabel6)
         var buyGeneralBtn6 = (new lime.GlossyButton()).setColor("#008000").setText(collectItems.storeItems[6].value).setPosition(110, 0).setSize(46, 40).setHidden(false);
         buyGeneralItem6.appendChild(buyGeneralBtn6);
@@ -10873,7 +12514,7 @@ farming.start = function () {
                 collectItems.storeItems[6].owned = 1;
                 player.cropsStored[17].stored = parseInt(player.cropsStored[17].stored) + 50;
                 townRep = townRep + 1;
-                checkItemsOwned();
+                try{checkItemsOwned();}catch(err){console.log(err)};
 
                 lime.scheduleManager.callAfter(function () { a.updateMoney; a.updateStored(); checkTownRep(); }, this, 100);
                 localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
@@ -10963,16 +12604,16 @@ farming.start = function () {
         if (buySmallStars.owned == null) { buySmallStars.owned = 0; }
 
 
-        var buyPremiumLabel2 = (new lime.Label()).setPosition(0, -10).setFontFamily("Comic Sans MS").setFontSize(16).setText("Star Pack I").setFontColor("#E8FC08");
+        var buyPremiumLabel2 = (new lime.Label()).setPosition(0, -10).setFontFamily("Proxima Nova").setFontSize(16).setText("Star Pack I").setFontColor("#E8FC08");
         buySmallStars.appendChild(buyPremiumLabel2);
-        var buyPremiumSubText2 = (new lime.Label()).setPosition(0, 59).setSize(185, 100).setFontFamily("Comic Sans MS").setFontSize(14).setText("50 Stars - Boost away").setFontColor("#f0ffff");
+        var buyPremiumSubText2 = (new lime.Label()).setPosition(0, 59).setSize(185, 100).setFontFamily("Proxima Nova").setFontSize(14).setText("50 Stars - Boost away").setFontColor("#f0ffff");
         buySmallStars.appendChild(buyPremiumSubText2)
         var buySmallStarsBtn = (new lime.GlossyButton()).setColor("#008000").setText("").setPosition(115, 0).setSize(50, 30).setHidden(false);
         buySmallStars.appendChild(buySmallStarsBtn);
-        var smallstarsBuyLabel = (new lime.Label()).setPosition(0, 4).setFontFamily("Comic Sans MS").setFontSize(12).setText("Buy now $0.99").setFontColor("#f0ffff").setSize(50, 30);
+        var smallstarsBuyLabel = (new lime.Label()).setPosition(0, 4).setFontFamily("Proxima Nova").setFontSize(12).setText("Buy now $0.99").setFontColor("#f0ffff").setSize(50, 30);
         buySmallStarsBtn.appendChild(smallstarsBuyLabel);
 
-        if (buySmallStars.owned == 1) { buySmallStars.setOpacity(0.2); buySmallStarsBtn.setHidden(true); }
+        //if (buySmallStars.owned == 1) { buySmallStars.setOpacity(0.2); buySmallStarsBtn.setHidden(true); }
 
 
             goog.events.listen(buySmallStarsBtn, ["mousedown", "touchstart"], function () {
@@ -11002,13 +12643,13 @@ farming.start = function () {
         buyLargeStars.owned = localStorage.getItem("MedFarms_boughtLargeStars");
         if (buyLargeStars.owned == null) { buyLargeStars.owned = 0; }
 
-        var buyPremiumLabel3 = (new lime.Label()).setPosition(0, -10).setFontFamily("Comic Sans MS").setFontSize(16).setText("Star Pack II").setFontColor("#E8FC08");
+        var buyPremiumLabel3 = (new lime.Label()).setPosition(0, -10).setFontFamily("Proxima Nova").setFontSize(16).setText("Star Pack II").setFontColor("#E8FC08");
         buyLargeStars.appendChild(buyPremiumLabel3);
-        var buyPremiumSubText3 = (new lime.Label()).setPosition(0, 59).setSize(185, 100).setFontFamily("Comic Sans MS").setFontSize(14).setText("300 Stars - Ton's o' Boost").setFontColor("#f0ffff");
+        var buyPremiumSubText3 = (new lime.Label()).setPosition(0, 59).setSize(185, 100).setFontFamily("Proxima Nova").setFontSize(14).setText("300 Stars - Ton's o' Boost").setFontColor("#f0ffff");
         buyLargeStars.appendChild(buyPremiumSubText3)
         var buyLargeStarsBtn = (new lime.GlossyButton()).setColor("#008000").setText("").setPosition(115, 0).setSize(46, 30).setHidden(false);
         buyLargeStars.appendChild(buyLargeStarsBtn);
-        var largeStarsBuyLabel = (new lime.Label()).setPosition(0, 4).setFontFamily("Comic Sans MS").setFontSize(12).setText("Buy now $4.99").setFontColor("#f0ffff").setSize(50, 30);
+        var largeStarsBuyLabel = (new lime.Label()).setPosition(0, 4).setFontFamily("Proxima Nova").setFontSize(12).setText("Buy now $4.99").setFontColor("#f0ffff").setSize(50, 30);
         buyLargeStarsBtn.appendChild(largeStarsBuyLabel);
 
 
@@ -11038,17 +12679,16 @@ farming.start = function () {
         buyStarterPack.appendChild(buyPremiumItem0Img2);
         var buyPremiumItem0Img3 = (new lime.Sprite()).setSize(30, 30).setPosition(60, -8).setFill(imgArray[30]);
         buyStarterPack.appendChild(buyPremiumItem0Img3);
-        var buyPremiumLabel0 = (new lime.Label()).setPosition(0, -31).setFontFamily("Comic Sans MS").setFontSize(16).setText("Starter Pack").setFontColor("#E8FC08");
+        var buyPremiumLabel0 = (new lime.Label()).setPosition(0, -31).setFontFamily("Proxima Nova").setFontSize(16).setText("Starter Pack").setFontColor("#E8FC08");
         buyStarterPack.appendChild(buyPremiumLabel0);
-        var buyPremiumSubText0 = (new lime.Label()).setPosition(0, 68).setSize(185, 100).setFontFamily("Comic Sans MS").setFontSize(14).setText("250 Iron, Wood, and Tools").setFontColor("#f0ffff");
+        var buyPremiumSubText0 = (new lime.Label()).setPosition(0, 68).setSize(185, 100).setFontFamily("Proxima Nova").setFontSize(14).setText("250 Iron, Wood, and Tools").setFontColor("#f0ffff");
         buyStarterPack.appendChild(buyPremiumSubText0)
         var buyStarterPackBtn = (new lime.GlossyButton()).setColor("#008000").setText("").setPosition(115, 0).setSize(46, 40).setHidden(false);
         buyStarterPack.appendChild(buyStarterPackBtn);
-        var starterBuyLabel = (new lime.Label()).setPosition(0, 4).setFontFamily("Comic Sans MS").setFontSize(12).setText("Buy now $0.99").setFontColor("#f0ffff").setSize(50, 30);
+        var starterBuyLabel = (new lime.Label()).setPosition(0, 4).setFontFamily("Proxima Nova").setFontSize(12).setText("Buy now $0.99").setFontColor("#f0ffff").setSize(50, 30);
         buyStarterPackBtn.appendChild(starterBuyLabel);
 
-        if (buyStarterPack.owned == 1) { buyStarterPack.setOpacity(0.2); buyStarterPackBtn.setHidden(true); }
-        else {
+        
             goog.events.listen(buyStarterPackBtn, ["mousedown", "touchstart"], function () {
                 var isHidPreLayer3 = storeBuyPremiumLayer.getHidden();
                 var isHidStarterBtn = buyStarterPackBtn.getHidden();
@@ -11058,10 +12698,50 @@ farming.start = function () {
                     buyStarterPack.setOpacity(0.2);
                     buyStarterPackBtn.setHidden(true);
 
-                    storeStars.setText(starCash);
+                    
+                    var applyTriesSm = 0;
+                    applyStarterPurch();
+                    function applyStarterPurch(){
+                        applyTriesSm++;
+                         if (localStorage.getItem("MedFarms_boughtStarterPack") == 1) { 
+                             ///purchase complete - apply updates
+                                   
+                                    player = JSON.parse(localStorage.getItem('GuiGhostFarms_player'));
+                                    player.tools = parseInt(player.tools) + 250;
+                                    
+                                    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 250;
+                                    if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 250; }
+                                    player.cropsStored[15].stored = parseInt(player.cropsStored[15].stored) + 250;
+                                    if (player.cropsStored[15].stored < 0) { player.cropsStored[15].stored = 250; }
+                                    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                                    buyStarterPack.owned = 1;
+
+                                    storeStars.setText(starCash); 
+                                    storeCash.setText(player.money);
+                                    purchaseSound.play();
+                                    showMFToast("+ 250",imgArrayStore[0].src, 'iron');
+                                    purchaseSound.play();
+                                    showMFToast("+ 250",imgArray[58].src, 'wood');
+                                    purchaseSound.play();
+                                    showMFToast("+ 250",imgArray[30].src, 'tools');
+                                    applyTriesSm = 61;
+                                    try{updateInventoryCounts();}catch(err){console.log(err)};
+                                    a.updateTools();
+                                    return;
+                        }else{
+                                if (applyTriesSm < 60){
+                                    lime.scheduleManager.callAfter(function () { 
+                                        applyStarterPurch();                                            
+                                    }, this, 1000);
+                                }else if (applyTriesSm >= 60){
+                                    return;
+                                }
+                                
+                        }
+                    }
                 }
             });
-        }
+        
         // master pack
 
         var buyMasterPack = (new lime.Sprite()).setSize(220, 100).setPosition(0, 115).setFill(imgArray[18].src);
@@ -11079,16 +12759,15 @@ farming.start = function () {
         buyMasterPack.appendChild(buyPremiumItem1Img4);
         var buyPremiumItem1Img5 = (new lime.Sprite()).setSize(30, 30).setPosition(64, -10).setFill(imgArray[41]);
         buyMasterPack.appendChild(buyPremiumItem1Img5);
-        var buyPremiumLabel1 = (new lime.Label()).setPosition(0, -32).setFontFamily("Comic Sans MS").setFontSize(16).setText("Masters Pack").setFontColor("#E8FC08");
+        var buyPremiumLabel1 = (new lime.Label()).setPosition(0, -32).setFontFamily("Proxima Nova").setFontSize(16).setText("Masters Pack").setFontColor("#E8FC08");
         buyMasterPack.appendChild(buyPremiumLabel1);
-        var buyPremiumSubText1 = (new lime.Label()).setPosition(0, 61).setSize(185, 100).setFontFamily("Comic Sans MS").setFontSize(14).setText("750 Iron, Wood, and Tools + 2500 Coins and 50 Stars").setFontColor("#f0ffff");
+        var buyPremiumSubText1 = (new lime.Label()).setPosition(0, 61).setSize(185, 100).setFontFamily("Proxima Nova").setFontSize(14).setText("750 Iron, Wood, and Tools + 2500 Coins and 50 Stars").setFontColor("#f0ffff");
         buyMasterPack.appendChild(buyPremiumSubText1)
         var buyMasterPackBtn1 = (new lime.GlossyButton()).setColor("#008000").setText("").setPosition(115, 0).setSize(46, 40).setHidden(false);
         buyMasterPack.appendChild(buyMasterPackBtn1);
-        var masterBuyLabel = (new lime.Label()).setPosition(0, 4).setFontFamily("Comic Sans MS").setFontSize(12).setText("Buy now $4.99").setFontColor("#f0ffff").setSize(50, 30);
+        var masterBuyLabel = (new lime.Label()).setPosition(0, 4).setFontFamily("Proxima Nova").setFontSize(12).setText("Buy now $4.99").setFontColor("#f0ffff").setSize(50, 30);
         buyMasterPackBtn1.appendChild(masterBuyLabel);
-        if (buyMasterPack.owned == 1) { buyMasterPack.setOpacity(0.2); buyMasterPackBtn1.setHidden(true); }
-        else {
+       
             goog.events.listen(buyMasterPackBtn1, ["mousedown", "touchstart"], function () {
                 var isHidPreLayer4 = storeBuyPremiumLayer.getHidden();
                 var isHidMasterBtn = buyMasterPackBtn1.getHidden();
@@ -11099,13 +12778,60 @@ farming.start = function () {
                     buyMasterPackBtn1.setHidden(true);
                     storeStars.setText(starCash);
                     storeCash.setText(player.money);
-                    lime.scheduleManager.callAfter(function () { storeStars.setText(starCash); storeCash.setText(player.money); }, this, 3000)
-
+                   
+                    var applyTriesMP = 0;
+                    applyMasterPurch();
+                    function applyMasterPurch(){
+                        applyTriesMP++;
+                         if (localStorage.getItem("MedFarms_boughtMasterPack") == 1) { 
+                             ///purchase complete - apply updates
+                                    player = JSON.parse(localStorage.getItem('GuiGhostFarms_player'));
+                                    player.tools = parseInt(player.tools) + 750;
+                                    player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 750;
+                                    if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 750; }
+                                    player.cropsStored[15].stored = parseInt(player.cropsStored[15].stored) + 750;
+                                    if (player.cropsStored[15].stored < 0) { player.cropsStored[15].stored = 750; }
+                    
+                                    player.money = parseInt(player.money) + 2500;
+                                    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                                    starCash = parseInt(localStorage.getItem('starCash'));
+                                    starCash = parseInt(starCash) + 50;
+                                    localStorage.setItem('starCash', starCash);
+                                    document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                                    buyMasterPack.owned = 1;
+                                    storeStars.setText(starCash); 
+                                    storeCash.setText(player.money);
+                                    purchaseSound.play();
+                                    showMFToast("+ 2500",imgArray11[0].src, 'coin');
+                                    purchaseSound.play();
+                                    showMFToast("+ 50",imgArray[36].src, 'stars');
+                                    purchaseSound.play();
+                                    showMFToast("+ 750",imgArrayStore[0].src, 'iron');
+                                    purchaseSound.play();
+                                    showMFToast("+ 750",imgArray[58].src, 'wood');
+                                    purchaseSound.play();
+                                    showMFToast("+ 750",imgArray[30].src, 'tools');
+                                    applyTriesMP = 61;
+                                    try{updateInventoryCounts();}catch(err){console.log(err)};
+                                    a.updateTools();
+                                    a.updateMoney();
+                                    return;
+                        }else{
+                                if (applyTriesMP < 60){
+                                    lime.scheduleManager.callAfter(function () { 
+                                        applyMasterPurch();                                            
+                                    }, this, 1000);
+                                }else if (applyTriesMP >= 60){
+                                    return;
+                                }
+                                
+                        }
+                    }
                 }
             });
-        }
+        
 
-        if (buyMasterPack.owned == 1) { buyMasterPack.setOpacity(0.2); buyMasterPackBtn1.setHidden(true); }
+        // if (buyMasterPack.owned == 1) { buyMasterPack.setOpacity(0.2); buyMasterPackBtn1.setHidden(true); }
 
 
         ///store close button
@@ -11117,7 +12843,7 @@ farming.start = function () {
             hideAndDelayNavIcons();
             c.replaceScene(marketScene, lime.transitions.SlideInDown);
 
-            acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+            acresOwned3 = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
             if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
             sceneActive = 'Market';
         });
@@ -11130,29 +12856,31 @@ farming.start = function () {
         storeScene.appendChild(topShadowStore);
         var storeCoinTop = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.controlsLayer_w - 100, 5).setSize(25, 25).setFill(imgArray11[0]);
         storeScene.appendChild(storeCoinTop);
-        var storeCash = (new lime.Label()).setText(player.money).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setPosition(a.controlsLayer_w - 43, 18).setFontSize(18);
+        var storeCash = (new lime.Label()).setText(player.money).setFontColor("#E8FC08").setFontFamily("Proxima Nova").setPosition(a.controlsLayer_w - 43, 18).setFontSize(18);
         storeScene.appendChild(storeCash);
         var storeStarTop = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(10, 2).setSize(30, 30).setFill(imgArray[36]);
         storeScene.appendChild(storeStarTop);
-        var storeStars = (new lime.Label()).setText(starCash).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setPosition(55, 18).setFontSize(18);
+        var storeStars = (new lime.Label()).setText(starCash).setFontColor("#E8FC08").setFontFamily("Proxima Nova").setPosition(55, 18).setFontSize(18);
         storeScene.appendChild(storeStars);
 
-        var inventoryStore = (new lime.GlossyButton()).setColor("#ffc266").setText("").setPosition(a.width / 2 + 5, 17).setSize(35, 35);
-        storeScene.appendChild(inventoryStore);
-        var InventoryStoreImage = (new lime.Sprite()).setFill(imgArrayItems[25].src).setPosition(0, 0).setSize(32, 32);
-        inventoryStore.appendChild(InventoryStoreImage);
+        // var inventoryStore = (new lime.GlossyButton()).setColor("#ffc266").setText("").setPosition(a.width / 2 + 5, 17).setSize(35, 35);
+        // storeScene.appendChild(inventoryStore);
+        var InventoryStoreImage = (new lime.Sprite()).setFill(imgArrayItems[25].src).setPosition(a.width / 2 + 5, 17).setSize(51, 40).setRotation(5);
+        storeScene.appendChild(InventoryStoreImage);
 
-        goog.events.listen(inventoryStore, ["mousedown", "touchstart"], function () {
+        goog.events.listen(InventoryStoreImage, ["mousedown", "touchstart"], function () {
 
             starCashInvCount.setText(starCash);
-            checkItemsOwned();
+            try{checkItemsOwned();}catch(err){console.log(err)};
             townSceneActive = 0;
             hideAndDelayNavIcons();
+            cropsBack.setHidden(false); itemsBack.setHidden(true); itemsStoredBack.setHidden(true); collectBack.setHidden(true);  ///always open to cropsInventory
             c.replaceScene(inventoryScene, lime.transitions.SlideInUp);
+            playerImg.setHidden(false);
             sceneActive = 'Inventory';
             starCashInvCount.setText(starCash);
             a.sceneBefore = 9;
-            updateInventoryCounts();
+            try{updateInventoryCounts();}catch(err){console.log(err)};
 
 
 
@@ -11210,13 +12938,13 @@ farming.start = function () {
         townFill1.appendChild(topShadowMarket);
         var menuCashCoin = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.controlsLayer_w - 108, 5).setSize(25, 25).setFill(imgArray11[0]);
         marketScene.appendChild(menuCashCoin);
-        var marketCash = (new lime.Label()).setText(player.money).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setPosition(a.controlsLayer_w - 53, 18).setFontSize(18);
+        var marketCash = (new lime.Label()).setText(player.money).setFontColor("#ffffff").setFontFamily("Proxima Nova").setPosition(a.controlsLayer_w - 53, 18).setFontSize(18);
         marketScene.appendChild(marketCash);
-        var townRepText = (new lime.Label()).setText("Reputation:").setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setPosition(46, 12).setFontSize(12);
+        var townRepText = (new lime.Label()).setText("Reputation:").setFontColor("#E8FC08").setFontFamily("Proxima Nova").setPosition(46, 12).setFontSize(12);
         townFill1.appendChild(townRepText);
-        var townRepScore = (new lime.Label()).setText(townRep).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setPosition(94, 12).setFontSize(12);
+        var townRepScore = (new lime.Label()).setText(townRep).setFontColor("#E8FC08").setFontFamily("Proxima Nova").setPosition(94, 12).setFontSize(12);
         townFill1.appendChild(townRepScore);
-        var townRepTitle = (new lime.Label()).setText("New in Town").setFontColor("#00FF00").setFontFamily("Comic Sans MS").setPosition(70, 26).setFontSize(12);
+        var townRepTitle = (new lime.Label()).setText("New in Town").setFontColor("#00FF00").setFontFamily("Proxima Nova").setPosition(70, 26).setFontSize(12);
         townFill1.appendChild(townRepTitle);
 
 
@@ -11225,21 +12953,27 @@ farming.start = function () {
         if (townRep >= 30) { townRepTitle.setText("Local Leader") };
 
         ////inventory icon town
-        var inventoryTown = (new lime.GlossyButton()).setColor("#ffc266").setText("").setPosition(a.width / 2, 17).setSize(35, 35);
-        townFill1.appendChild(inventoryTown);
-        var InventoryTownImage = (new lime.Sprite()).setFill(imgArrayItems[25].src).setPosition(0, 0).setSize(32, 32);
-        inventoryTown.appendChild(InventoryTownImage);
+        // var inventoryTown = (new lime.GlossyButton()).setText("").setPosition(a.width / 2, 17).setSize(35, 35);
+        // townFill1.appendChild(inventoryTown);
+        var InventoryTownImage = (new lime.Sprite()).setFill(imgArrayItems[25].src).setPosition(a.width / 2, 19).setSize(51, 40).setRotation(5);
+        townFill1.appendChild(InventoryTownImage);
 
-        goog.events.listen(inventoryTown, ["mousedown", "touchstart"], function () {
+        goog.events.listen(InventoryTownImage, ["mousedown", "touchstart"], function () {
             starCashInvCount.setText(starCash);
             questPanel.setHidden(true);
-            checkItemsOwned();
+            try{checkItemsOwned();}catch(err){console.log(err)};
             townSceneActive = 0;
             hideAndDelayNavIcons();
+            cropsBack.setHidden(false); itemsBack.setHidden(true); itemsStoredBack.setHidden(true); collectBack.setHidden(true);  ///always open to cropsInventory
             c.replaceScene(inventoryScene, lime.transitions.SlideInUp);
+            playerImg.setHidden(false);
+            cropsBack.setHidden(false);
+            itemsBack.setHidden(true);
+            itemsStoredBack.setHidden(true);
+            collectBack.setHidden(true);
             sceneActive = 'Inventory';
             a.sceneBefore = 8;
-            updateInventoryCounts();
+            try{updateInventoryCounts();}catch(err){console.log(err)};
 
         
         });
@@ -11326,10 +13060,64 @@ farming.start = function () {
         var gideonQuest = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(13, -19).setSize(25, 25).setFill(imgArrayTown[15].src).setOpacity(0.8);;
         gideon.appendChild(gideonQuest);
 
-        var acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
-        if (acresOwned3 >= 4) { gideon.setHidden(false); farmerTitle.setText("Expert Farmer"); }
+        var acresOwned3z = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
+        if (acresOwned3z >= 4) { gideon.setHidden(false); farmerTitle.setText("Expert Farmer"); }
 
-
+        var mapLocT1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(109, 107).setSize(18,18).setFill(imgArrayStore[6]);
+        townFill1.appendChild(mapLocT1);
+        
+        var mapLocT2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(224, 65).setSize(18,20).setFill(imgArrayStore[6]);
+        townFill1.appendChild(mapLocT2);
+        var mapLocT3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(10, 487).setSize(18,20).setFill(imgArrayStore[6]);
+        townFill1.appendChild(mapLocT3);
+        var mapLocT4 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width - 39, 487).setSize(18,20).setFill(imgArrayStore[6]);
+        townFill1.appendChild(mapLocT4);
+        if(mapLocations.places[26].found == 1){
+            mapLocT1.setHidden(true);
+        }
+            else{
+                goog.events.listen(mapLocT1, ["mousedown", "touchstart"], function (e) {
+                    if(globalModalBlock == 0){  this.setHidden(true); mapLocations.places[26].found = 1; getMapFrag('t1');
+                        e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+                    };
+                });
+            }
+        if(mapLocations.places[27].found == 1){
+            // mapLocT2.setHidden(true);
+        }
+            else{
+                goog.events.listen(mapLocT2, ["mousedown", "touchstart"], function (e) {
+                    if(globalModalBlock == 0){  this.setHidden(true); mapLocations.places[27].found = 1;getMapFrag('t2');
+                    e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); 
+                    };
+                });
+            }
+        if(mapLocations.places[28].found == 1){
+            mapLocT3.setHidden(true);}
+            else{
+                goog.events.listen(mapLocT3, ["mousedown", "touchstart"], function (e) {
+                
+                    if(globalModalBlock == 0){  this.setHidden(true); mapLocations.places[28].found = 1; getMapFrag('t3');
+                        e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); 
+                    };
+                });
+            }
+        if(mapLocations.places[29].found == 1){
+            mapLocT4.setHidden(true);}
+            else{
+                goog.events.listen(mapLocT4, ["mousedown", "touchstart"], function (e) {     
+                        if(globalModalBlock == 0){  this.setHidden(true); mapLocations.places[29].found = 1;getMapFrag('t4');
+                            e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); 
+                        };
+                });
+            }    
+        ///found Treasure location Town
+        var foundTreasureT = (new lime.Sprite()).setPosition(30, 344).setSize(60, 60).setFill('images/stars4.png').setHidden(true);
+        townFill1.appendChild(foundTreasureT);
+        goog.events.listen(foundTreasureT, ["mousedown", "touchstart"], function (e) {           
+            if (foundTreasureT.getHidden() == false){  loadHeirloom('town'); successSound.play(); };
+            e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+      }, false);
 
         var marketTrigger = (new lime.GlossyButton()).setColor("#008000").setText("").setPosition(217, 295).setSize(32, 30).setHidden(false);
         townLayer.appendChild(marketTrigger);
@@ -11338,13 +13126,13 @@ farming.start = function () {
         marketTrigger.appendChild(coinButtonTown);
         var marketLabelBack = (new lime.Sprite()).setPosition(0, 23).setSize(60, 15).setFill("#000000").setOpacity(0.7);
         marketTrigger.appendChild(marketLabelBack);
-        var marketTriggerLabel = (new lime.Label()).setText("Market").setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(14).setPosition(0, 25);
+        var marketTriggerLabel = (new lime.Label()).setText("Market").setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(14).setPosition(0, 25);
         marketTrigger.appendChild(marketTriggerLabel);
 
         var backBtnTown = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width / 2 - 20, 500).setSize(40, 40).setFill(imgArray[50]);
         townLayer.appendChild(backBtnTown);
 
-
+        var treasureTickT = 0;    
         var monkAnimCount = 1;
         monkAnimCount = parseInt(monkAnimCount);
         var marketTrigFlipper = 0;
@@ -11422,13 +13210,17 @@ farming.start = function () {
                 }
 
             }
-        }, this, 250)
-
-
-
-
-
-
+            treasureTickT++;
+            if (foundTreasureT.getHidden() == false && treasureTickT >= 5){
+                treasureTickT = 0;
+                lime.scheduleManager.scheduleWithDelay(function(){
+                    foundTreasureT.setRotation(0);
+                    lime.scheduleManager.callAfter( function(){foundTreasureT.setRotation(90); },this,250);
+                    lime.scheduleManager.callAfter( function(){foundTreasureT.setRotation(180); },this,500);
+                    lime.scheduleManager.callAfter( function(){foundTreasureT.setRotation(270); },this,750);
+                },this, 1000 );
+            }
+        }, this, 250);
 
 
 
@@ -11436,17 +13228,17 @@ farming.start = function () {
         townLayer.appendChild(questPanel);
         questPanel.setHidden(true);
         questPanel.who = '';
-        var questHeader = (new lime.Label()).setAnchorPoint(0, 0).setPosition(80, 25).setText("").setFontFamily("Comic Sans MS").setFontSize(22);
+        var questHeader = (new lime.Label()).setAnchorPoint(0, 0).setPosition(80, 20).setText("").setFontFamily("Proxima Nova").setFontSize(22);
         questPanel.appendChild(questHeader);
-        var questText1 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 150).setText("").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var questText1 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 145).setText("").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         questPanel.appendChild(questText1);
-        var questPanelAvatar = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(90, 38).setSize(100, 100).setFill(imgArrayMayor[0].src);
+        var questPanelAvatar = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(90, 36).setSize(100, 100).setFill(imgArrayMayor[0].src);
         questPanel.appendChild(questPanelAvatar);
-        var questPanelItemImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(165, 74).setSize(50, 50).setFill(imgArray4[21]);
+        var questPanelItemImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(165, 64).setSize(50, 50).setFill(imgArray4[21]);
         questPanel.appendChild(questPanelItemImg);
-        var itemCountText = (new lime.Label()).setAnchorPoint(0, 0).setPosition(170, 130).setText(player.cropsStored[18].stored).setFontFamily("Comic Sans MS").setFontSize(16).setSize(40, 40);
+        var itemCountText = (new lime.Label()).setAnchorPoint(0, 0).setPosition(168, 84).setText(player.cropsStored[18].stored).setFontFamily("Proxima Nova").setFontSize(30).setFontColor("#FFFFFF").setSize(40, 40);
         questPanel.appendChild(itemCountText);
-        var ciderSellBtn = (new lime.GlossyButton()).setPosition(200, 235).setText("Sell for " + (a.crops[18].revenue * player.cropsStored[18].stored)).setSize(100, 20).setColor("#00ff00").setHidden(false);
+        var ciderSellBtn = (new lime.GlossyButton()).setPosition(142, 215).setText("Sell for " + (a.crops[18].revenue * player.cropsStored[18].stored)).setSize(100, 20).setColor("#00ff00").setHidden(false);
         questPanel.appendChild(ciderSellBtn);
         questPanelItemImg.setHidden(true);
         itemCountText.setHidden(true);
@@ -11454,7 +13246,7 @@ farming.start = function () {
         var giveBtn = (new lime.GlossyButton()).setColor("#008000").setText("Give").setPosition(190, 235).setSize(90, 20);
         questPanel.appendChild(giveBtn);
         giveBtn.setHidden(true);
-        var questPanelCloseBtn = (new lime.GlossyButton()).setColor("#663300").setText("Close").setPosition(75, 235).setSize(100, 20).setHidden(false);;
+        var questPanelCloseBtn = (new lime.GlossyButton()).setColor("#663300").setText("Close").setPosition(75, 255).setSize(100, 20).setHidden(false);;
         questPanel.appendChild(questPanelCloseBtn);
 
 
@@ -11502,6 +13294,11 @@ farming.start = function () {
             count22.setText(player.cropsStored[22].stored);
             count23.setText(player.cropsStored[23].stored);
             count24.setText(player.cropsStored[24].stored);
+            count25.setText(player.cropsStored[25].stored);
+            count26.setText(player.cropsStored[26].stored);
+            count27.setText(player.cropsStored[27].stored);
+            count28.setText(player.cropsStored[28].stored);
+            count29.setText(player.cropsStored[29].stored);
             if (player.cropsStored[0].stored <= 0) { rowBack.setOpacity(0.6); g0.setOpacity(0.6); } else { rowBack.setOpacity(1.0); g0.setOpacity(1.0); };
             if (player.cropsStored[1].stored <= 0) { rowBack2.setOpacity(0.6); g1.setOpacity(0.6); } else { rowBack2.setOpacity(1.0); g1.setOpacity(1.0); };
             if (player.cropsStored[2].stored <= 0) { rowBack3.setOpacity(0.6); g3.setOpacity(0.6); } else { rowBack3.setOpacity(1.0); g3.setOpacity(1.0); };
@@ -11519,12 +13316,17 @@ farming.start = function () {
             if (player.cropsStored[22].stored <= 0) { rowBack22.setOpacity(0.6); g22.setOpacity(0.6); } else { rowBack22.setOpacity(1.0); g22.setOpacity(1.0); };
             if (player.cropsStored[23].stored <= 0) { rowBack23.setOpacity(0.6); g23.setOpacity(0.6); } else { rowBack23.setOpacity(1.0); g23.setOpacity(1.0); };
             if (player.cropsStored[24].stored <= 0) { rowBack24.setOpacity(0.6); g24.setOpacity(0.6); } else { rowBack24.setOpacity(1.0); g24.setOpacity(1.0); };
+            if (player.cropsStored[25].stored <= 0) { rowBack25.setOpacity(0.6); g25.setOpacity(0.6); } else { rowBack25.setOpacity(1.0); g25.setOpacity(1.0); };
+            if (player.cropsStored[26].stored <= 0) { rowBack26a.setOpacity(0.6); g26.setOpacity(0.6); } else { rowBack26a.setOpacity(1.0); g26.setOpacity(1.0); };
+            if (player.cropsStored[27].stored <= 0) { rowBack27.setOpacity(0.6); g27.setOpacity(0.6); } else { rowBack27.setOpacity(1.0); g27.setOpacity(1.0); };
+            if (player.cropsStored[28].stored <= 0) { rowBack28.setOpacity(0.6); g28.setOpacity(0.6); } else { rowBack28.setOpacity(1.0); g28.setOpacity(1.0); };
+            if (player.cropsStored[29].stored <= 0) { rowBack29.setOpacity(0.6); g29.setOpacity(0.6); } else { rowBack29.setOpacity(1.0); g29.setOpacity(1.0); };
             if (player.tools <= 0) { rowBack15.setOpacity(0.6); } else { rowBack15.setOpacity(1.0); };
             countTools.setText(player.tools);
         };
         //var itemToSell = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(135, 80).setSize(64, 64).setFill(imgArrayItems[8].src);
         //questPanel.appendChild(itemToSell);
-        //var itemToSellText = (new lime.Label()).setAnchorPoint(0, 0).setPosition(105, 60).setText("Item Title").setFontFamily("Comic Sans MS").setFontColor("#0101DF").setFontSize(16);
+        //var itemToSellText = (new lime.Label()).setAnchorPoint(0, 0).setPosition(105, 60).setText("Item Title").setFontFamily("Proxima Nova").setFontColor("#0101DF").setFontSize(16);
         //questPanel.appendChild(itemToSellText);
         var sellItemsBtn = (new lime.GlossyButton()).setColor("#008000").setText("Check Items").setPosition(205, 235).setSize(100, 20).setHidden(false);
         questPanel.appendChild(sellItemsBtn);
@@ -11554,11 +13356,12 @@ farming.start = function () {
             var isHid2 = ciderSellBtn.getHidden();
             if (isHid2 == false) {
                 townRep = townRep + 1;
-
-                player.money = player.money + (a.crops[18].revenue * player.cropsStored[18].stored);
+                let thisTrans = a.crops[18].revenue * player.cropsStored[18].stored;
+                player.money = player.money + (thisTrans);
                 player.cropsStored[18].stored = 0;
                 itemCountText.setText("0");
                 ciderSellBtn.setHidden(true);
+                showMFToast('+ ' + thisTrans, imgArray11[0].src, "stars",2000, 'left');
                 lime.scheduleManager.callAfter(function () { a.updateMoney; a.updateStored(); checkTownRep(); }, this, 100);
 
                 saraQuest.setHidden(true); saraQuestBtn.setHidden(true);
@@ -11576,7 +13379,7 @@ farming.start = function () {
             questPanel.setHidden(true);
             questPanelAvatar.setPosition(90, 38)
             if (questPanel.who == 'sara') { saraQuest.setHidden(true); saraQuestBtn.setHidden(true); }
-            CheckQuestInvItems();
+            try{CheckQuestInvItems();}catch(err){console.log(err)};
             e.event.stopPropagation();
             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
 
@@ -11589,19 +13392,19 @@ farming.start = function () {
         var panelGideon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 45).setSize(a.width - 30, 370).setFill(imgArray[78]).setHidden(true);
         townLayer.appendChild(panelGideon);
 
-        var gideonHeader = (new lime.Label()).setAnchorPoint(0, 0).setPosition(70, 35).setText("King's Herald").setFontFamily("Comic Sans MS").setFontSize(22);
+        var gideonHeader = (new lime.Label()).setAnchorPoint(0, 0).setPosition(58, 35).setText("Herald of the King").setFontFamily("Proxima Nova").setFontSize(22);
         panelGideon.appendChild(gideonHeader);
-        var gideonText1 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 150).setText("The King needs food to feed the people in Castle Town.        Loyal subjects who tribute gain TOKENS of Royal Favor").setFontFamily("Comic Sans MS").setFontSize(16).setSize(240, 200);
+        var gideonText1 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 150).setText("The King needs food to feed the people in Castle Town.        Loyal subjects who tribute gain TOKENS of Royal Favor").setFontFamily("Proxima Nova").setFontSize(16).setSize(240, 200);
         panelGideon.appendChild(gideonText1);
         var gideonPanelAvatar = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(88, 38).setSize(100, 100).setFill(imgArrayGideon[0].src);
         panelGideon.appendChild(gideonPanelAvatar);
         var gideonPanelItemImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(70, 225).setSize(50, 50).setFill("images/" + a.crops[0].harvest);
         panelGideon.appendChild(gideonPanelItemImg);
-        var countTextGideon = (new lime.Label()).setAnchorPoint(0, 0).setPosition(75, 280).setText("0/50").setFontFamily("Comic Sans MS").setFontSize(16).setSize(40, 40);
+        var countTextGideon = (new lime.Label()).setAnchorPoint(0, 0).setPosition(75, 280).setText("0/50").setFontFamily("Proxima Nova").setFontSize(16).setSize(40, 40);
         panelGideon.appendChild(countTextGideon);
         var gideonPanelItemImg2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(160, 225).setSize(50, 50).setFill("images/" + a.crops[1].harvest);
         panelGideon.appendChild(gideonPanelItemImg2);
-        var countTextGideon2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(165, 280).setText("0/50").setFontFamily("Comic Sans MS").setFontSize(16).setSize(40, 40);
+        var countTextGideon2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(165, 280).setText("0/50").setFontFamily("Proxima Nova").setFontSize(16).setSize(40, 40);
         panelGideon.appendChild(countTextGideon2);
         var gideonPanelTokenImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(115, 225).setSize(50, 50).setFill(imgArray[51]).setHidden(true);
         panelGideon.appendChild(gideonPanelTokenImg);
@@ -11741,29 +13544,24 @@ farming.start = function () {
                 var adjustedWant = 0;
 
                 if (heraldOrderTop == 18) {
-                    heraldOrder1 = 22;
-                    heraldOrder2 = 23;
+                    heraldOrder1 = 22; heraldOrder2 = 23;
                 }
                 else if (heraldOrderTop == 19) {
-                    heraldOrder1 = 24;
-                    heraldOrder2 = 23;
+                    heraldOrder1 = 24; heraldOrder2 = 23;
                 }
                 else if (heraldOrderTop > questParamsHerald.crops.length) {
                     adjustedWant = (heraldOrderTop % 10);
-                    //console.log("adjusted want " + adjustedWant);
                     heraldOrder1 = questParamsHerald.crops[adjustedWant].crop1;
                     heraldOrder2 = questParamsHerald.crops[adjustedWant].crop2;
                 };
                 if (heraldOrderTop == 18) {
-                    heraldOrder1 = 22;
-                    heraldOrder2 = 23;
+                    heraldOrder1 = 22; heraldOrder2 = 23;
                 }
                 
                 player.cropsStored[heraldOrder1].stored = Math.abs(parseInt(parseInt(player.cropsStored[heraldOrder1].stored) - crop1amount));
                 player.cropsStored[heraldOrder2].stored = Math.abs(parseInt(parseInt(player.cropsStored[heraldOrder2].stored) - crop2amount));
 
                 lime.scheduleManager.callAfter(function () { a.updateStored(); }, this, 50);
-
 
                 gideonPanelItemImg.setHidden(true); countTextGideon.setHidden(true);
                 gideonPanelItemImg2.setHidden(true); countTextGideon2.setHidden(true);
@@ -11774,20 +13572,19 @@ farming.start = function () {
                 heraldOrderTop = Math.abs(heraldOrderTop);
                 tokenInvCount.setText(heraldOrderTop);
                 localStorage.setItem("MedFarms_heraldOrdersFilled", heraldOrderTop);
-
+                showMFToast("+1 King's Token",imgArray[51].src,'token', 2500); 
+                successSound.play();
                 //check if should reward farm next time
                 if (heraldOrderTop == questParamsHerald.crops.length) {
                     gideonText1.setText("Here's another token. You have quite a few tokens now. I will inform the King you have been a loyal subject");
                 };
                 daysTillHerald = 30;
                 gideon.setHidden(true);
-
-
-                e.event.stopPropagation();
-                e.swallow(['mouseup', 'touchend', 'touchcancel'], function (e) { });
+                e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function (e) { });
             }
 
         });
+        try{CheckQuestInvItems();}catch(err){console.log(err)};
         ////loop inventory for quest items and update town people handlers to reflect if quest items in place
         function CheckQuestInvItems() {
             ////get dynamic amount of objects
@@ -11801,11 +13598,11 @@ farming.start = function () {
             for (var i = 0; i < countDigUpSells; i++) {
                 if (collectItems.digUpSells[i].owned == 1) {
 
-                    if (collectItems.digUpSells[i].who == 'Mayor') { mayorReady = 1; }
-                    if (collectItems.digUpSells[i].who == 'Friar') { friarReady = 1; console.log("monk has item " + collectItems.digUpSells[i].name) }
-                    if (collectItems.digUpSells[i].who == 'Sara') { saraReady = 1; }
-                    if (collectItems.digUpSells[i].who == 'Felicia' && questParams.felicia[2].completed == 0) { feliciaReady = 1; }
-                }
+                    if (collectItems.digUpSells[i].who == 'Mayor') { mayorReady = 1; };
+                    if (collectItems.digUpSells[i].who == 'Friar') { friarReady = 1; console.log("monk has item " + collectItems.digUpSells[i].name); }
+                    if (collectItems.digUpSells[i].who == 'Sara') { saraReady = 1; };
+                    if (collectItems.digUpSells[i].who == 'Felicia' && questParams.felicia[2].completed == 0) { feliciaReady = 1; };
+                };
             }
             //console.log("mayorReady =    " + mayorReady + "friarReady =    " + friarReady + " feliciaready =  " + feliciaReady + " sara ready = " + saraReady)
 
@@ -12013,9 +13810,9 @@ farming.start = function () {
                         feliciaSound.play();
                     }
                     if (who == "sara") {
-                        questHeader.setText("InnKeeper Sara").setPosition(65, 24);
+                        questHeader.setText("InnKeeper Sara").setPosition(69, 24);
                         questPanelAvatar.setFill(imgArrayTown2[0].src)
-                        questPanelCloseBtn.setPosition(75, 235);
+                        questPanelCloseBtn.setPosition(75, 255);
                         swapIt = 0;
                         //var looperSara = setInterval(function () {
                         //    swapIt++
@@ -12033,7 +13830,7 @@ farming.start = function () {
                         else {
                             questText1.setText("My patrons are asking for CIDER.");
                             questPanel.setHidden(false);
-                            questPanelCloseBtn.setPosition(140, 235);
+                            questPanelCloseBtn.setPosition(140, 255);
                         }
 
                         ///cider////
@@ -12046,6 +13843,7 @@ farming.start = function () {
                             questPanel.setHidden(false);
                             ciderSellBtn.setText("Sell for " + (a.crops[18].revenue * player.cropsStored[18].stored))
                             ciderSellBtn.setHidden(false);
+                            questPanelCloseBtn.setPosition(140, 255);
                         }
                         else { questPanelItemImg.setHidden(true); itemCountText.setHidden(true); questPanelAvatar.setPosition(90, 38); }
                         ///end cider///
@@ -12054,7 +13852,7 @@ farming.start = function () {
                     }
                 }
 
-                if (complete = 1) {
+            if (complete = 1) {
                     sellItemsBtn.setHidden(false);
                     if (who == "mayor") {
                         ciderSellBtn.setHidden(true);
@@ -12080,11 +13878,10 @@ farming.start = function () {
                         questPanelAvatar.setFill(imgArrayTown[1].src);
                         questText1.setText("You found something interesting to me");
                         sellAvatar.setFill(imgArrayTown[1].src);
-                        checkSellItems('monk');
                         sellItemsBtn.setHidden(false);
                         questPanel.setHidden(false);
-                        checkSellItems("monk");
-
+                        try{checkSellItems("monk");}catch(err){console.log(err)}
+                        
                         monkSound.play();
                     }
                     if (who == "felicia") {
@@ -12102,7 +13899,7 @@ farming.start = function () {
                             questPanelAvatar.setFill(imgArrayFelicia[0].src).setPosition(40, 38);
 
                             questPanelItemImg.setHidden(false).setFill(collectItems.digUpSells[3].src);
-                            questText1.setText("You found my LOCKET! Can I have it back?");
+                            questText1.setText("You found my Broach! Can I have it back?");
                             sellItemsBtn.setHidden(true);
                             giveBtn.setHidden(false);
                             questPanelCloseBtn.setPosition(75, 235);
@@ -12110,6 +13907,7 @@ farming.start = function () {
                             goog.events.listen(giveBtn, ["mousedown", "touchstart"], function () {
 
                                 questPanel.setHidden(true);
+                                questPanelItemImg.setHidden(true);
                                 questParams.felicia[2].completed = 1, questParams.felicia[0].highestCompleted = 2;
                                 collectItems.digUpSells[3].owned = 0; collectItems.digUpSells[3].onlyOnce = 1;
                                 townRep = townRep + 1;
@@ -12121,11 +13919,12 @@ farming.start = function () {
                                 questPanelAvatar.setPosition(90, 38);
                                 questPanelItemImg.setHidden(true);
                                 questText1.setText("Thanks, but I do not need anything right now. Try me later.");
-                                CheckQuestInvItems();
+                                try{CheckQuestInvItems();}catch(err){console.log(err)};
                                 marketTrigger.setHidden(false);
                                 storeOpenBtn.setHidden(false);
                                 feliciaQuestBtn.setHidden(true);
                                 feliciaQuest.setHidden(true);
+                                localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
 
 
 
@@ -12171,10 +13970,10 @@ farming.start = function () {
                         feliciaSound.play();
                     }
                     if (who == "sara") {
-                        questPanelCloseBtn.setPosition(140, 235);
-                        questHeader.setText("InnKeeper Sara").setPosition(65, 24);;
+                        questPanelCloseBtn.setPosition(140, 255);
+                        questHeader.setText("InnKeeper Sara").setPosition(65, 24);
                         questPanelAvatar.setFill(imgArrayTown2[0].src)
-                        questText1.setText("My patrons want CIDER. If you can make some, I will buy it from you");
+                        questText1.setText("My patrons want CIDER.  If you can make some, I will buy it.");
                         sellAvatar.setFill(imgArrayTown[1].src);
                         sellItemsBtn.setHidden(true);
                         checkSellItems('sara');
@@ -12193,11 +13992,11 @@ farming.start = function () {
         sellLayer.setHidden(true);
         var sellAvatar = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(25, 40).setSize(128, 128).setFill(imgArrayMayor[0].src);
         sellLayerFill1.appendChild(sellAvatar);
-        var sellText1 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(130, 80).setText("I will buy these items from you").setFontFamily("Comic Sans MS").setFontSize(16).setSize(150, 50);
+        var sellText1 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(130, 80).setText("I will buy these items from you").setFontFamily("Proxima Nova").setFontSize(16).setSize(150, 50);
         sellLayerFill1.appendChild(sellText1);
         var sellLayerCloseBtn = (new lime.GlossyButton()).setColor("#008000").setText("Close").setPosition(155, 420).setSize(52, 30);
         sellLayerFill1.appendChild(sellLayerCloseBtn);
-        var sellItemSuccessText = (new lime.Label()).setAnchorPoint(0, 0).setPosition(90, 175).setText("+").setFontFamily("Comic Sans MS").setFontSize(16).setSize(150, 50);
+        var sellItemSuccessText = (new lime.Label()).setAnchorPoint(0, 0).setPosition(90, 175).setText("+").setFontFamily("Proxima Nova").setFontSize(16).setSize(150, 50);
         sellLayerFill1.appendChild(sellItemSuccessText);
         var coinOnSuccessItemText = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(108, 0).setSize(20, 20).setFill(imgArray11[0].src);
         sellItemSuccessText.appendChild(coinOnSuccessItemText);
@@ -12206,7 +14005,7 @@ farming.start = function () {
         goog.events.listen(sellLayerCloseBtn, ["mousedown", "touchstart"], function () {
             sellLayerFill1.setHidden(true);
             sellLayer.setHidden(true);
-            CheckQuestInvItems();
+            try{CheckQuestInvItems();}catch(err){console.log(err)};
             marketTrigger.setHidden(false);
             storeOpenBtn.setHidden(false);
             questPanel.setHidden(true);
@@ -12214,8 +14013,8 @@ farming.start = function () {
 
         var sellItem1 = (new lime.Sprite()).setPosition(70, 260).setSize(60, 60).setFill("#008000"); sellLayerFill1.appendChild(sellItem1).setHidden(false);
         sellItem1 = (new lime.GlossyButton()).setPosition(70, 260).setSize(55, 55).setColor("#000000").setText(""); sellLayerFill1.appendChild(sellItem1);
-        var sellItem1Img = (new lime.Sprite()).setPosition(70, 260).setSize(50, 50).setFill(collectItems.digUpSells[0].src); sellLayerFill1.appendChild(sellItem1Img);
-        var sellItem1Label = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-20, 32).setText("100").setFontFamily("Comic Sans MS").setFontColor("#0000ff").setFontSize(16); sellItem1Img.appendChild(sellItem1Label);
+        var sellItem1Img = (new lime.Sprite()).setPosition(70, 260).setSize(50, 50).setFill(imgArrayItems[0].src); sellLayerFill1.appendChild(sellItem1Img);
+        var sellItem1Label = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-20, 32).setText("100").setFontFamily("Proxima Nova").setFontColor("#0000ff").setFontSize(16); sellItem1Img.appendChild(sellItem1Label);
         var coinOnsellItem1Label = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(10, 27).setSize(20, 20).setFill(imgArray11[0].src);
         sellItem1Img.appendChild(coinOnsellItem1Label);
         sellItem1.empty = true; sellItem1.value = 0; sellItem1.collectNumber = -1;
@@ -12223,40 +14022,40 @@ farming.start = function () {
         var sellItem2 = (new lime.Sprite()).setPosition(150, 260).setSize(60, 60).setFill("#008000"); sellLayerFill1.appendChild(sellItem2).setHidden(false);
         sellItem2 = (new lime.GlossyButton()).setPosition(150, 260).setSize(55, 55).setColor("#000000").setText(""); sellLayerFill1.appendChild(sellItem2);
 
-        var sellItem2Img = (new lime.Sprite()).setPosition(150, 260).setSize(50, 50).setFill(collectItems.digUpSells[1].src); sellLayerFill1.appendChild(sellItem2Img);
-        var sellItem2Label = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-20, 32).setText("100").setFontFamily("Comic Sans MS").setFontColor("#0000ff").setFontSize(16); sellItem2Img.appendChild(sellItem2Label);
+        var sellItem2Img = (new lime.Sprite()).setPosition(150, 260).setSize(50, 50).setFill(imgArrayItems[1].src); sellLayerFill1.appendChild(sellItem2Img);
+        var sellItem2Label = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-20, 32).setText("100").setFontFamily("Proxima Nova").setFontColor("#0000ff").setFontSize(16); sellItem2Img.appendChild(sellItem2Label);
         var coinOnsellItem2Label = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(10, 27).setSize(20, 20).setFill(imgArray11[0].src);
         sellItem2Img.appendChild(coinOnsellItem2Label);
         sellItem2.empty = true; sellItem2.value = 0; sellItem2.collectNumber = -1;
 
         var sellItem3 = (new lime.Sprite()).setPosition(230, 260).setSize(60, 60).setFill("#008000"); sellLayerFill1.appendChild(sellItem3).setHidden(false);
         sellItem3 = (new lime.GlossyButton()).setPosition(230, 260).setSize(55, 55).setColor("#000000").setText(""); sellLayerFill1.appendChild(sellItem3);
-        var sellItem3Img = (new lime.Sprite()).setPosition(230, 260).setSize(50, 50).setFill(collectItems.digUpSells[2].src); sellLayerFill1.appendChild(sellItem3Img);
-        var sellItem3Label = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-20, 32).setText("100").setFontFamily("Comic Sans MS").setFontColor("#0000ff").setFontSize(16); sellItem3Img.appendChild(sellItem3Label);
+        var sellItem3Img = (new lime.Sprite()).setPosition(230, 260).setSize(50, 50).setFill(imgArrayItems[3].src); sellLayerFill1.appendChild(sellItem3Img);
+        var sellItem3Label = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-20, 32).setText("100").setFontFamily("Proxima Nova").setFontColor("#0000ff").setFontSize(16); sellItem3Img.appendChild(sellItem3Label);
         var coinOnsellItem3Label = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(10, 27).setSize(20, 20).setFill(imgArray11[0].src);
         sellItem3Img.appendChild(coinOnsellItem3Label);
         sellItem3.empty = true; sellItem3.value = 0; sellItem3.collectNumber = -1;
 
         var sellItem4 = (new lime.Sprite()).setPosition(70, 350).setSize(60, 60).setFill("#008000"); sellLayerFill1.appendChild(sellItem4).setHidden(false);
         sellItem4 = (new lime.GlossyButton()).setPosition(70, 350).setSize(55, 55).setColor("#000000").setText(""); sellLayerFill1.appendChild(sellItem4);
-        var sellItem4Img = (new lime.Sprite()).setPosition(70, 350).setSize(50, 50).setFill(collectItems.digUpSells[3].src); sellLayerFill1.appendChild(sellItem4Img);
-        var sellItem4Label = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-20, 32).setText("100").setFontFamily("Comic Sans MS").setFontColor("#0000ff").setFontSize(16); sellItem4Img.appendChild(sellItem4Label);
+        var sellItem4Img = (new lime.Sprite()).setPosition(70, 350).setSize(50, 50).setFill(imgArrayItems[4].src); sellLayerFill1.appendChild(sellItem4Img);
+        var sellItem4Label = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-20, 32).setText("100").setFontFamily("Proxima Nova").setFontColor("#0000ff").setFontSize(16); sellItem4Img.appendChild(sellItem4Label);
         var coinOnsellItem4Label = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(10, 27).setSize(20, 20).setFill(imgArray11[0].src);
         sellItem4Img.appendChild(coinOnsellItem4Label);
         sellItem4.empty = true; sellItem4.value = 0; sellItem4.collectNumber = -1;
 
         var sellItem5 = (new lime.Sprite()).setPosition(150, 350).setSize(60, 60).setFill("#008000"); sellLayerFill1.appendChild(sellItem5).setHidden(false);
         sellItem5 = (new lime.GlossyButton()).setPosition(150, 350).setSize(55, 55).setColor("#000000").setText(""); sellLayerFill1.appendChild(sellItem5);
-        var sellItem5Img = (new lime.Sprite()).setPosition(150, 350).setSize(50, 50).setFill(collectItems.digUpSells[4].src); sellLayerFill1.appendChild(sellItem5Img);
-        var sellItem5Label = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-20, 32).setText("100").setFontFamily("Comic Sans MS").setFontColor("#0000ff").setFontSize(16); sellItem5Img.appendChild(sellItem5Label);
+        var sellItem5Img = (new lime.Sprite()).setPosition(150, 350).setSize(50, 50).setFill(imgArrayItems[5].src); sellLayerFill1.appendChild(sellItem5Img);
+        var sellItem5Label = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-20, 32).setText("100").setFontFamily("Proxima Nova").setFontColor("#0000ff").setFontSize(16); sellItem5Img.appendChild(sellItem5Label);
         var coinOnsellItem5Label = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(10, 27).setSize(20, 20).setFill(imgArray11[0].src);
         sellItem5Img.appendChild(coinOnsellItem5Label);
         sellItem5.empty = true; sellItem5.value = 0; sellItem5.collectNumber = -1;
 
         var sellItem6 = (new lime.Sprite()).setPosition(230, 350).setSize(60, 60).setFill("#008000"); sellLayerFill1.appendChild(sellItem6).setHidden(false);
         sellItem6 = (new lime.GlossyButton()).setPosition(230, 350).setSize(55, 55).setColor("#000000").setText(""); sellLayerFill1.appendChild(sellItem6);
-        var sellItem6Img = (new lime.Sprite()).setPosition(230, 350).setSize(50, 50).setFill(collectItems.digUpSells[5].src); sellLayerFill1.appendChild(sellItem6Img);
-        var sellItem6Label = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-20, 32).setText("100").setFontFamily("Comic Sans MS").setFontColor("#0000ff").setFontSize(16); sellItem6Img.appendChild(sellItem6Label);
+        var sellItem6Img = (new lime.Sprite()).setPosition(230, 350).setSize(50, 50).setFill(imgArrayItems[6].src); sellLayerFill1.appendChild(sellItem6Img);
+        var sellItem6Label = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-20, 32).setText("100").setFontFamily("Proxima Nova").setFontColor("#0000ff").setFontSize(16); sellItem6Img.appendChild(sellItem6Label);
         var coinOnsellItem6Label = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(10, 27).setSize(20, 20).setFill(imgArray11[0].src);
         sellItem6Img.appendChild(coinOnsellItem6Label);
         sellItem6.empty = true; sellItem6.value = 0; sellItem6.collectNumber = -1;
@@ -12289,27 +14088,28 @@ farming.start = function () {
                 }
             }
             if (who == 'monk') {
-                for (var i = 0; i < countDigUpSells3; i++) {
-                    if (collectItems.digUpSells[i].owned > 0) {
-                        sellText1.setText("I will buy these Artifacts from you. Bring me all you can find");
-                        if (collectItems.digUpSells[i].who == 'Friar') {
-                            //console.log("monk has item " + i + " with value " + collectItems.digUpSells[i].value)
-                            if (sellItem1.empty == true) { sellItem1Img.setFill(collectItems.digUpSells[i].src); sellItem1.setHidden(false); sellItem1.empty = false; sellItem1.value = collectItems.digUpSells[i].value; sellItem1Label.setText(collectItems.digUpSells[i].value); sellItem1Img.setHidden(false); sellItem1.collectNumber = i; }
-                            else if (sellItem2.empty == true) { sellItem2Img.setFill(collectItems.digUpSells[i].src); sellItem2.setHidden(false); sellItem2.empty = false; sellItem2.value = collectItems.digUpSells[i].value; sellItem2Label.setText(collectItems.digUpSells[i].value); sellItem2Img.setHidden(false); sellItem2.collectNumber = i; }
-                            else if (sellItem3.empty == true) { sellItem3Img.setFill(collectItems.digUpSells[i].src); sellItem3.setHidden(false); sellItem3.empty = false; sellItem3.value = collectItems.digUpSells[i].value; sellItem3Label.setText(collectItems.digUpSells[i].value); sellItem3Img.setHidden(false); sellItem3.collectNumber = i; }
-                            else if (sellItem4.empty == true) { sellItem4Img.setFill(collectItems.digUpSells[i].src); sellItem4.setHidden(false); sellItem4.empty = false; sellItem4.value = collectItems.digUpSells[i].value; sellItem4Label.setText(collectItems.digUpSells[i].value); sellItem4Img.setHidden(false); sellItem4.collectNumber = i; }
-                            else if (sellItem5.empty == true) { sellItem5Img.setFill(collectItems.digUpSells[i].src); sellItem5.setHidden(false); sellItem5.empty = false; sellItem5.value = collectItems.digUpSells[i].value; sellItem5Label.setText(collectItems.digUpSells[i].value); sellItem5Img.setHidden(false); sellItem5.collectNumber = i; }
-                            else if (sellItem6.empty == true) { sellItem6Img.setFill(collectItems.digUpSells[i].src); sellItem6.setHidden(false); sellItem6.empty = false; sellItem6.value = collectItems.digUpSells[i].value; sellItem6Label.setText(collectItems.digUpSells[i].value); sellItem6Img.setHidden(false); sellItem6.collectNumber = i; }
-                            else { console.log("monk hit else- all full") }
-                        }
+                try{    
+                    for (var i = 0; i < countDigUpSells3; i++) {
+                        if (collectItems.digUpSells[i].owned > 0) {
+                            sellText1.setText("I will buy these Artifacts from you. Bring me all you can find");
+                            if (collectItems.digUpSells[i].who == 'Friar') {
+                                //console.log("monk has item " + i + " with value " + collectItems.digUpSells[i].value)
+                                if (sellItem1.empty == true) { sellItem1Img.setFill(collectItems.digUpSells[i].src); sellItem1.setHidden(false); sellItem1.empty = false; sellItem1.value = collectItems.digUpSells[i].value; sellItem1Label.setText(collectItems.digUpSells[i].value); sellItem1Img.setHidden(false); sellItem1.collectNumber = i; }
+                                else if (sellItem2.empty == true) { sellItem2Img.setFill(collectItems.digUpSells[i].src); sellItem2.setHidden(false); sellItem2.empty = false; sellItem2.value = collectItems.digUpSells[i].value; sellItem2Label.setText(collectItems.digUpSells[i].value); sellItem2Img.setHidden(false); sellItem2.collectNumber = i; }
+                                else if (sellItem3.empty == true) { sellItem3Img.setFill(collectItems.digUpSells[i].src); sellItem3.setHidden(false); sellItem3.empty = false; sellItem3.value = collectItems.digUpSells[i].value; sellItem3Label.setText(collectItems.digUpSells[i].value); sellItem3Img.setHidden(false); sellItem3.collectNumber = i; }
+                                else if (sellItem4.empty == true) { sellItem4Img.setFill(collectItems.digUpSells[i].src); sellItem4.setHidden(false); sellItem4.empty = false; sellItem4.value = collectItems.digUpSells[i].value; sellItem4Label.setText(collectItems.digUpSells[i].value); sellItem4Img.setHidden(false); sellItem4.collectNumber = i; }
+                                else if (sellItem5.empty == true) { sellItem5Img.setFill(collectItems.digUpSells[i].src); sellItem5.setHidden(false); sellItem5.empty = false; sellItem5.value = collectItems.digUpSells[i].value; sellItem5Label.setText(collectItems.digUpSells[i].value); sellItem5Img.setHidden(false); sellItem5.collectNumber = i; }
+                                else if (sellItem6.empty == true) { sellItem6Img.setFill(collectItems.digUpSells[i].src); sellItem6.setHidden(false); sellItem6.empty = false; sellItem6.value = collectItems.digUpSells[i].value; sellItem6Label.setText(collectItems.digUpSells[i].value); sellItem6Img.setHidden(false); sellItem6.collectNumber = i; }
+                                else { console.log("monk hit else- all full") };
+                            };
 
 
-                    }
-                }
+                        };
+                    };
+                }catch(err){console.log(err);};
+            };
 
-            }
-
-        }
+        };
 
         goog.events.listen(sellItem1, ["mousedown", "touchstart"], function () {
             var itemHidden = sellItem1Img.getHidden();
@@ -12320,6 +14120,7 @@ farming.start = function () {
                 sellItem1Img.setHidden(true);
                 //console.log("sellItem1 touched- player.money before = " + player.money);
                 player.money = parseInt(player.money) + sellItem1.value;
+                toastOnSaleTown(sellItem1.value);
                 townRep = townRep + 1;
                 lime.scheduleManager.callAfter(function () { checkTownRep(); }, this, 50);
 
@@ -12338,8 +14139,8 @@ farming.start = function () {
                 sellItem1.collectNumber = -1;
                 sellItem1Img.setFill(imgArray[17].src)
                 a.updateMoney();
-                ////checkItemsOwned();
-                ////CheckQuestInvItems();
+                ////try{checkItemsOwned();}catch(err){console.log(err)};
+                ////try{CheckQuestInvItems();}catch(err){console.log(err)};
             }
 
         });
@@ -12355,6 +14156,7 @@ farming.start = function () {
                 sellItem2Img.setHidden(true);
                 //console.log("sellItem2 touched- player.money before = " + player.money);
                 player.money = parseInt(player.money) + sellItem2.value;
+                toastOnSaleTown(sellItem2.value);
                 townRep = townRep + 1;
                 lime.scheduleManager.callAfter(function () { checkTownRep(); }, this, 50);
 
@@ -12374,8 +14176,8 @@ farming.start = function () {
 
 
                 a.updateMoney();
-                //checkItemsOwned();
-                //CheckQuestInvItems();
+                //try{checkItemsOwned();}catch(err){console.log(err)};
+                //try{CheckQuestInvItems();}catch(err){console.log(err)};
             }
 
         });
@@ -12390,6 +14192,7 @@ farming.start = function () {
                 sellItem3Img.setHidden(true);
                 //console.log("sellItem3 touched- player.money before = " + player.money);
                 player.money = parseInt(player.money) + sellItem3.value;
+                toastOnSaleTown(sellItem3.value);
                 townRep = townRep + 1;
 
 
@@ -12408,8 +14211,8 @@ farming.start = function () {
                 sellItem3Img.setFill(imgArray[17].src)
                 lime.scheduleManager.callAfter(function () { checkTownRep(); a.updateMoney(); }, this, 100);
 
-                //checkItemsOwned();
-                //CheckQuestInvItems();
+                //try{checkItemsOwned();}catch(err){console.log(err)};
+                //try{CheckQuestInvItems();}catch(err){console.log(err)};
             }
 
         });
@@ -12422,6 +14225,7 @@ farming.start = function () {
                 sellItem4Img.setHidden(true);
                 //console.log("sellItem4 touched- player.money before = " + player.money);
                 player.money = parseInt(player.money) + sellItem4.value;
+                toastOnSaleTown(sellItem4.value);
                 townRep = townRep + 1;
 
                 sellItemSuccessText.setText("+ " + sellItem4.value);
@@ -12439,8 +14243,8 @@ farming.start = function () {
                 sellItem4Img.setFill(imgArray[17].src)
 
                 lime.scheduleManager.callAfter(function () { checkTownRep(); a.updateMoney(); }, this, 100);
-                //checkItemsOwned();
-                //CheckQuestInvItems();
+                //try{checkItemsOwned();}catch(err){console.log(err)};
+                //try{CheckQuestInvItems();}catch(err){console.log(err)};
             }
 
         });
@@ -12453,6 +14257,7 @@ farming.start = function () {
                 sellItem5Img.setHidden(true);
                 //console.log("sellItem5 touched- player.money before = " + player.money);
                 player.money = parseInt(player.money) + sellItem5.value;
+                toastOnSaleTown(sellItem5.value);
                 townRep = townRep + 1;
 
 
@@ -12470,8 +14275,8 @@ farming.start = function () {
                 sellItem5.collectNumber = -1;
                 sellItem5Img.setFill(imgArray[17].src)
                 lime.scheduleManager.callAfter(function () { checkTownRep(); a.updateMoney(); }, this, 100);
-                //checkItemsOwned();
-                //CheckQuestInvItems();
+                //try{checkItemsOwned();}catch(err){console.log(err)};
+                //try{CheckQuestInvItems();}catch(err){console.log(err)};
             }
 
         });
@@ -12484,6 +14289,7 @@ farming.start = function () {
                 sellItem6Img.setHidden(true);
                 //console.log("sellItem6 touched- player.money before = " + player.money);
                 player.money = parseInt(player.money) + sellItem6.value;
+                toastOnSaleTown(sellItem6.value);
                 townRep = townRep + 1;
 
 
@@ -12502,11 +14308,15 @@ farming.start = function () {
                 sellItem6Img.setFill(imgArray[17].src)
 
                 lime.scheduleManager.callAfter(function () { checkTownRep(); a.updateMoney(); }, this, 100);
-                //checkItemsOwned();
-                //CheckQuestInvItems();
+                //try{checkItemsOwned();}catch(err){console.log(err)};
+                //try{CheckQuestInvItems();}catch(err){console.log(err)};
             }
 
         });
+        function toastOnSaleTown(priceSold){
+            showMFToast("+ " + priceSold + " ",imgArray11[0].src, 1);
+
+        };
         function animSellSuccessText() {
             purchaseSound.play();
             lime.scheduleManager.callAfter(function () { sellItemSuccessText.setPosition(90, 184).setHidden(false); }, this, 75)
@@ -12515,14 +14325,8 @@ farming.start = function () {
             lime.scheduleManager.callAfter(function () { sellItemSuccessText.setPosition(90, 173) }, this, 300)
             lime.scheduleManager.callAfter(function () { sellItemSuccessText.setPosition(90, 170) }, this, 350)
             lime.scheduleManager.callAfter(function () { sellItemSuccessText.setHidden(true).setText("+ ").setPosition(90, 175).setOpacity(1.0); }, this, 450)
-            //setTimeout(function () { sellItemSuccessText.setPosition(90, 184).setHidden(false); }, 75);
-            //setTimeout(function () { sellItemSuccessText.setPosition(90, 180).setHidden(false); }, 150);
-            //setTimeout(function () { sellItemSuccessText.setPosition(90, 177).setHidden(false); }, 225);
-            //setTimeout(function () { sellItemSuccessText.setPosition(90, 173).setHidden(false); }, 300);
-            //setTimeout(function () { sellItemSuccessText.setPosition(90, 170).setHidden(false); }, 350);
-            //  setTimeout(function () { sellItemSuccessText.setHidden(true).setText("+ ").setPosition(90, 175).setOpacity(1.0); }, 450);
-
-        }
+  
+        };
 
 
 
@@ -12545,6 +14349,7 @@ farming.start = function () {
         if (seenPremiumPromo == 1) { goPremiumBack.setHidden(true); }
         else {
             /////only add listeners to the promo if they have not seen it before
+            goPremiumBack.setHidden(true);
             goog.events.listen(goPremiumBtn, ["mousedown", "touchstart"], function (event) {
                 goPremiumBack.setHidden(true);
                 hideAndDelayNavIcons();
@@ -12587,26 +14392,55 @@ farming.start = function () {
 
         var menuBackMarket = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("images/UI/farmersMarket3.png");
         marketLayer.appendChild(menuBackMarket);
-        var backBtnMarket = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width / 2 - 20, 480).setSize(40, 40).setFill(imgArray[21]);
+        var backBtnMarket = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width / 2 - 20, 490).setSize(40, 40).setFill(imgArray[21]);
         marketLayer.appendChild(backBtnMarket);
 
 
-        var topMarketyLabel = (new lime.Label()).setText("Hit a tile to sell crop ").setFontSize(18).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setPosition(145, 135).setSize(200, 80);
-        marketLayer.appendChild(topMarketyLabel);
-        var topCoinMarketSell = (new lime.Sprite()).setPosition(285, 20).setSize(35, 35).setFill(imgArray11[0]);
+
+        var topCoinMarketSell = (new lime.Sprite()).setPosition(285, 75).setSize(35, 35).setFill(imgArray11[0]);
         marketLayer.appendChild(topCoinMarketSell);
-        var marketSellCash = (new lime.Label()).setText(player.money).setFontColor("#E8FC08").setPosition(235, 24).setFontSize(18).setFontFamily("Comic Sans MS");
+        var marketSellCash = (new lime.Label()).setText(player.money).setFontColor("#FFFFFF").setPosition(247, 78).setFontSize(18).setFontFamily("Proxima Nova");
         marketLayer.appendChild(marketSellCash);
         // market Tiles
-        var marketX = 70, marketY = 135, colXoff = 72, rowYoff = 50, index = 0;
+        var marketFelicia = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(4, 62).setSize(65, 65).setFill(imgArrayFelicia[0]);
+        marketLayer.appendChild(marketFelicia);
+        var feliciaBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(4, -35).setSize(150, 65).setFill("images/UI/speechBubble2.png");
+        marketFelicia.appendChild(feliciaBubble);
+        var feliciaBubbleTxt = (new lime.Label()).setAnchorPoint(0, 0).setText("Hit a tile to sell a crop").setFontSize(16).setFontColor("#000000").setFontFamily("Proxima Nova").setPosition(5, 10).setSize(140, 80);
+        feliciaBubble.appendChild(feliciaBubbleTxt);
+
+
+
+        var feliciaTick = 0;
+        var feliciaBubbleTick = 0;
+        var timeSeenBubbleF = 0;
+        lime.scheduleManager.scheduleWithDelay( function(){
+
+            let marketLoaded = marketLayer.getHidden();
+            if(marketLoaded == false){
+                feliciaBubbleTick++;
+                if (feliciaTick  == 1){marketFelicia.setFill(imgArrayFelicia[15]);};
+                if (feliciaTick  == 2){marketFelicia.setFill(imgArrayFelicia[0]);};
+                if (feliciaTick  == 3){marketFelicia.setFill(imgArrayFelicia[15]);};
+                if (feliciaTick  == 4){marketFelicia.setFill(imgArrayFelicia[1]);};
+                feliciaTick += 1;
+                if (feliciaTick > 4){feliciaTick = 0; marketFelicia.setFill(imgArrayFelicia[1]);};
+                if (feliciaBubbleTick >= 5){ feliciaBubble.setHidden(true);};
+                if (feliciaBubbleTick >= 6 && timeSeenBubbleF == 0){ feliciaBubble.setHidden(false); feliciaBubbleTxt.setText('I am always looking for new foods');timeSeenBubbleF = 1;}
+                if (feliciaBubbleTick >= 12){feliciaBubbleTick = 0; feliciaBubble.setHidden(true);}
+            };
+
+         }, this, 800)
+
+        var marketX = 70, marketY = 85, colXoff = 72, rowYoff = 50, index = 0;
         //row 1
         var rowBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(80, 44).setFill(imgArray[18].src);
         marketLayer.appendChild(rowBack);
-        count0 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(90, marketY + 15);
+        count0 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(90, marketY + 15);
         marketLayer.appendChild(count0);
-        g0 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(112, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //tomatoes
+        g0 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(112, marketY + 5).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //tomatoes
         marketLayer.appendChild(g0);
-        i0 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(98, marketY + 36);
+        i0 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(98, marketY + 36);
         marketLayer.appendChild(i0);
         g0I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(72, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);     //tomatoes
         marketLayer.appendChild(g0I);
@@ -12614,11 +14448,11 @@ farming.start = function () {
         index = 1;
         var rowBack2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(marketX + 90, marketY).setSize(80, 44).setFill(imgArray[18].src);
         marketLayer.appendChild(rowBack2);
-        count1 = (new lime.Label()).setText(player.cropsStored[1].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(185, marketY + 15);
+        count1 = (new lime.Label()).setText(player.cropsStored[1].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(185, marketY + 15);
         marketLayer.appendChild(count1);
-        g1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(200, marketY).setFill("images/" + a.crops[1].harvest).setSize(30, 30);      //carrots
+        g1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(200, marketY + 5).setFill("images/" + a.crops[1].harvest).setSize(30, 30);      //carrots
         marketLayer.appendChild(g1);
-        i1 = (new lime.Label()).setText(" +" + a.crops[1].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(188, marketY + 36);
+        i1 = (new lime.Label()).setText(" +" + a.crops[1].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(188, marketY + 36);
         marketLayer.appendChild(i1);
         i0I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(162, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
         marketLayer.appendChild(i0I);
@@ -12627,11 +14461,11 @@ farming.start = function () {
         marketY = marketY + (rowYoff); index = 2;
         var rowBack3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(80, 44).setFill(imgArray[18].src);
         marketLayer.appendChild(rowBack3);
-        count2 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(90, marketY + 15);
+        count2 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(90, marketY + 15);
         marketLayer.appendChild(count2);
-        g3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(112, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //Broccoli s
+        g3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(112, marketY + 5).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //Broccoli s
         marketLayer.appendChild(g3);
-        i3 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(97, marketY + 36);
+        i3 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(97, marketY + 36);
         marketLayer.appendChild(i3);
         i3I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(72, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
         marketLayer.appendChild(i3I);
@@ -12640,11 +14474,11 @@ farming.start = function () {
         index = 3;
         var rowBack4 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(marketX + 90, marketY).setSize(80, 44).setFill(imgArray[18].src);
         marketLayer.appendChild(rowBack4);
-        count3 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(185, marketY + 15);
+        count3 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(185, marketY + 15);
         marketLayer.appendChild(count3);
-        g4 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(200, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //eggplants
+        g4 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(200, marketY + 5).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //eggplants
         marketLayer.appendChild(g4);
-        i4 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(186, marketY + 36);
+        i4 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(186, marketY + 36);
         marketLayer.appendChild(i4);
         i4I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(162, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
         marketLayer.appendChild(i4I);
@@ -12655,11 +14489,11 @@ farming.start = function () {
         marketY = marketY + (rowYoff); index = 4;
         var rowBack5 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(80, 44).setFill(imgArray[18].src);
         marketLayer.appendChild(rowBack5);
-        count4 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(90, marketY + 15);
+        count4 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(90, marketY + 15);
         marketLayer.appendChild(count4);
-        g5 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(112, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //peppers
+        g5 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(112, marketY + 5).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //peppers
         marketLayer.appendChild(g5);
-        i5 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(97, marketY + 36);
+        i5 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(97, marketY + 36);
         marketLayer.appendChild(i5);
         i5I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(72, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
         marketLayer.appendChild(i5I);
@@ -12667,11 +14501,11 @@ farming.start = function () {
         index = 5;
         var rowBack6 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(marketX + 90, marketY).setSize(80, 44).setFill(imgArray[18].src);
         marketLayer.appendChild(rowBack6);
-        count5 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(185, marketY + 15);
+        count5 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(185, marketY + 15);
         marketLayer.appendChild(count5);
-        g6 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(200, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //corn
+        g6 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(200, marketY + 5).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //corn
         marketLayer.appendChild(g6);
-        i6 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(188, marketY + 36);
+        i6 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(188, marketY + 36);
         marketLayer.appendChild(i6);
         i6I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(162, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
         marketLayer.appendChild(i6I);
@@ -12680,11 +14514,11 @@ farming.start = function () {
         marketY = marketY + (rowYoff); index = 6;
         var rowBack7 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(80, 44).setFill(imgArray[18].src);
         marketLayer.appendChild(rowBack7);
-        count6 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(90, marketY + 15);
+        count6 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(90, marketY + 15);
         marketLayer.appendChild(count6);
-        g7 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(112, marketY).setFill("images/" + a.crops[index].harvest).setSize(40, 30);      //hay
+        g7 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(112, marketY + 5).setFill("images/" + a.crops[index].harvest).setSize(40, 30);      //hay
         marketLayer.appendChild(g7);
-        i7 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(98, marketY + 36);
+        i7 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(98, marketY + 36);
         marketLayer.appendChild(i7);
         i7I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(72, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);      //tomatoes
         marketLayer.appendChild(i7I);
@@ -12693,11 +14527,11 @@ farming.start = function () {
         index = 7;
         var rowBack8 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(marketX + 90, marketY).setSize(80, 44).setFill(imgArray[18].src);
         marketLayer.appendChild(rowBack8);
-        count7 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(185, marketY + 15);
+        count7 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(185, marketY + 15);
         marketLayer.appendChild(count7);
-        g8 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(200, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //milk
+        g8 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(200, marketY + 5).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //milk
         marketLayer.appendChild(g8);
-        i8 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(188, marketY + 36);
+        i8 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(188, marketY + 36);
         marketLayer.appendChild(i8);
         i8I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(162, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
         marketLayer.appendChild(i8I);
@@ -12705,11 +14539,11 @@ farming.start = function () {
         marketY = marketY + (rowYoff); index = 8;
         var rowBack9 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(80, 44).setFill(imgArray[18].src);
         marketLayer.appendChild(rowBack9);
-        count8 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(90, marketY + 15);
+        count8 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(90, marketY + 15);
         marketLayer.appendChild(count8);
-        g9 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(115, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //apples
+        g9 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(115, marketY + 5).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //apples
         marketLayer.appendChild(g9);
-        i9 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(98, marketY + 36);
+        i9 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(98, marketY + 36);
         marketLayer.appendChild(i9);
         i9I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(72, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);    //tomatoes
         marketLayer.appendChild(i9I);
@@ -12717,11 +14551,11 @@ farming.start = function () {
         index = 9;
         var rowBack10 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(marketX + 90, marketY).setSize(80, 44).setFill(imgArray[18].src);
         marketLayer.appendChild(rowBack10);
-        count9 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(185, marketY + 15);
+        count9 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(185, marketY + 15);
         marketLayer.appendChild(count9);
-        g10 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(200, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //pears
+        g10 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(200, marketY + 5).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //pears
         marketLayer.appendChild(g10);
-        i10 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(188, marketY + 38);
+        i10 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(188, marketY + 38);
         marketLayer.appendChild(i10);
         i10I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(162, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
         marketLayer.appendChild(i10I);
@@ -12731,11 +14565,11 @@ farming.start = function () {
         var rowBack11 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(80, 44).setFill(imgArray[18].src);
         marketLayer.appendChild(rowBack11);
 
-        count10 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(90, marketY + 15);
+        count10 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(90, marketY + 15);
         marketLayer.appendChild(count10);
-        g11 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(115, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //hams
+        g11 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(115, marketY + 5).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //hams
         marketLayer.appendChild(g11);
-        i11 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(98, marketY + 36);
+        i11 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(98, marketY + 36);
         marketLayer.appendChild(i11);
         i11I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(72, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
         marketLayer.appendChild(i11I);
@@ -12744,11 +14578,11 @@ farming.start = function () {
         var rowBack12 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(marketX + 90, marketY).setSize(80, 44).setFill(imgArray[18].src);
         marketLayer.appendChild(rowBack12);
 
-        count11 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(185, marketY + 15);
+        count11 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(185, marketY + 15);
         marketLayer.appendChild(count11);
-        g12 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(200, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //eggs
+        g12 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(200, marketY + 5).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //eggs
         marketLayer.appendChild(g12);
-        i12 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(188, marketY + 36);
+        i12 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(188, marketY + 36);
         marketLayer.appendChild(i12);
         i12I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(162, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
         marketLayer.appendChild(i12I);
@@ -12759,11 +14593,11 @@ farming.start = function () {
         var rowBack13 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(marketX, marketY).setSize(80, 44).setFill(imgArray[18].src);
         marketLayer.appendChild(rowBack13);
 
-        count12 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(90, marketY + 15);
+        count12 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(90, marketY + 15);
         marketLayer.appendChild(count12);
-        g13 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(115, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //grapes
+        g13 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(115, marketY + 5).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //grapes
         marketLayer.appendChild(g13);
-        i13 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(98, marketY + 36);
+        i13 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(98, marketY + 36);
         marketLayer.appendChild(i13);
         i13I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(72, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
         marketLayer.appendChild(i13I);
@@ -12773,70 +14607,151 @@ farming.start = function () {
         var rowBack14 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(marketX + 90, marketY).setSize(80, 44).setFill(imgArray[18].src);
         marketLayer.appendChild(rowBack14);
 
-        count13 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(185, marketY + 15);
+        count13 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(185, marketY + 15);
         marketLayer.appendChild(count13);
-        g14 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(200, marketY).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //jelly
+        g14 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(200, marketY + 5).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //jelly
         marketLayer.appendChild(g14);
-        i14 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(188, marketY + 36);
+        i14 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(188, marketY + 36);
         marketLayer.appendChild(i14);
         i14I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(162, marketY + 25).setFill(imgArray11[0]).setSize(18, 18);
         marketLayer.appendChild(i14I);
 
+    
+
+
+
+
+
         //Selling Tools tile
-        var rowBack15 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(250, 240).setSize(54, 70).setFill(imgArray[18].src);
+        var rowBack15 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(250, 135).setSize(54, 70).setFill(imgArray[18].src);
         marketLayer.appendChild(rowBack15);
 
-        countTools = (new lime.Label()).setText(player.tools).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(276, 255);
-        marketLayer.appendChild(countTools);
-        g15 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(260, 260).setFill(imgArray[30]).setSize(30, 30);      //tools
-        marketLayer.appendChild(g15);
-        i15 = (new lime.Label()).setText("+5").setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(285, 303);
-        marketLayer.appendChild(i15);
-        i15I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(255, 290).setFill(imgArray11[0]).setSize(20, 20);
-        marketLayer.appendChild(i15I);
+        countTools = (new lime.Label()).setText(player.tools).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(26, 15);
+        rowBack15.appendChild(countTools);
+        g15 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(12, 17).setFill(imgArray[30]).setSize(30, 30);      //tools
+        rowBack15.appendChild(g15);
+        i15 = (new lime.Label()).setText("+5").setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(35, 58);
+        rowBack15.appendChild(i15);
+        i15I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 45).setFill(imgArray11[0]).setSize(20, 20);
+        rowBack15.appendChild(i15I);
 
 
 
 
-        //Selling Flour tile
-        var rowBack22 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(6, 240).setSize(54, 70).setFill(imgArray[18].src);
+        //Selling Wheat tile
+        var rowBack22 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(6, 135).setSize(54, 70).setFill(imgArray[18].src);
         marketLayer.appendChild(rowBack22);
 
-        count22 = (new lime.Label()).setText(player.cropsStored[22].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(30, 255);
-        marketLayer.appendChild(count22);
-        g22 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(22, 260).setFill("images/" + a.crops[22].harvest).setSize(30, 30);      //tools
-        marketLayer.appendChild(g22);
-        i22 = (new lime.Label()).setText(" +" + a.crops[22].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(37, 303);
-        marketLayer.appendChild(i22);
-        i22I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 290).setFill(imgArray11[0]).setSize(20, 20);
-        marketLayer.appendChild(i22I);
+        count22 = (new lime.Label()).setText(player.cropsStored[22].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(12, 18);
+        rowBack22.appendChild(count22);
+        g22 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 15).setFill("images/" + a.crops[22].harvest).setSize(30, 30);      //tools
+        rowBack22.appendChild(g22);
+        i22 = (new lime.Label()).setText(" +" + a.crops[22].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(35, 58);
+        rowBack22.appendChild(i22);
+        i22I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 45).setFill(imgArray11[0]).setSize(20, 20);
+        rowBack22.appendChild(i22I);
 
         //Selling Flour tile
-        var rowBack23 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(6, 330).setSize(54, 70).setFill(imgArray[18].src);
+        var rowBack23 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(6, 213).setSize(54, 70).setFill(imgArray[18].src);
         marketLayer.appendChild(rowBack23);
 
-        count23 = (new lime.Label()).setText(player.cropsStored[23].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(30, 345);
-        marketLayer.appendChild(count23);
-        g23 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(22, 350).setFill("images/" + a.crops[23].harvest).setSize(30, 30);      //tools
-        marketLayer.appendChild(g23);
-        i23 = (new lime.Label()).setText(" +" + a.crops[23].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(37, 393);
-        marketLayer.appendChild(i23);
-        i23I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 380).setFill(imgArray11[0]).setSize(20, 20);
-        marketLayer.appendChild(i23I);
+        count23 = (new lime.Label()).setText(player.cropsStored[23].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(12, 18);
+        rowBack23.appendChild(count23);
+        g23 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15,15).setFill("images/" + a.crops[23].harvest).setSize(30, 30);      //tools
+        rowBack23.appendChild(g23);
+        i23 = (new lime.Label()).setText(" +" + a.crops[23].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(35, 58);
+        rowBack23.appendChild(i23);
+        i23I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 45).setFill(imgArray11[0]).setSize(20, 20);
+        rowBack23.appendChild(i23I);
 
         //Selling Bread tile
-        var rowBack24 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(250, 330).setSize(54, 70).setFill(imgArray[18].src);
+        var rowBack24 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(6, 290).setSize(54, 70).setFill(imgArray[18].src);
         marketLayer.appendChild(rowBack24);
 
-        count24 = (new lime.Label()).setText(player.cropsStored[23].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Comic Sans MS").setPosition(276, 345);
-        marketLayer.appendChild(count24);
-        g24 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(260, 350).setFill("images/" + a.crops[24].harvest).setSize(30, 30);      //tools
-        marketLayer.appendChild(g24);
-        i24 = (new lime.Label()).setText(" +" + a.crops[24].revenue).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(12).setPosition(285, 393);
-        marketLayer.appendChild(i24);
-        i24I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(255, 380).setFill(imgArray11[0]).setSize(20, 20);
-        marketLayer.appendChild(i24I);
+        count24 = (new lime.Label()).setText(player.cropsStored[24].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(12, 18);
+        rowBack24.appendChild(count24);
+        g24 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 15).setFill("images/" + a.crops[24].harvest).setSize(30, 30);      //tools
+        rowBack24.appendChild(g24);
+        i24 = (new lime.Label()).setText(" +" + a.crops[24].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(35, 58);
+        rowBack24.appendChild(i24);
+        i24I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 45).setFill(imgArray11[0]).setSize(20, 20);
+        rowBack24.appendChild(i24I);
 
+
+        
+
+     ////Selling Mushrooms tile
+
+     marketY = marketY + (rowYoff); index = 25;
+     var rowBack25 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(118, marketY).setSize(80, 44).setFill(imgArray[18].src);
+     marketLayer.appendChild(rowBack25);
+
+     count25 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(21,17);
+     rowBack25.appendChild(count25);
+     g25 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(43,5).setFill("images/" + a.crops[25].harvest).setSize(30, 30);      //mushrooms
+     rowBack25.appendChild(g25);
+     i25 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(30,35);
+     rowBack25.appendChild(i25);
+     i25I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(4,25).setFill(imgArray11[0]).setSize(18, 18);
+     rowBack25.appendChild(i25I);
+
+     index = 26;    ////empty
+    //  var rowBack26 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(marketX + 90, marketY).setSize(80, 44).setFill(imgArray[18].src);
+    //  marketLayer.appendChild(rowBack26);
+
+    //pies Sidebar
+    var rowBack26a = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(250, 213).setSize(54, 70).setFill(imgArray[18].src);
+    marketLayer.appendChild(rowBack26a);
+    count26 = (new lime.Label()).setText(player.cropsStored[index].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(12,18);
+    rowBack26a.appendChild(count26);
+    g26 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15,15).setFill("images/" + a.crops[index].harvest).setSize(30, 30);      //pie
+    rowBack26a.appendChild(g26);
+    i26 = (new lime.Label()).setText(" +" + a.crops[index].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(35,58);
+    rowBack26a.appendChild(i26);
+    i26I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8,45).setFill(imgArray11[0]).setSize(20, 20);
+    rowBack26a.appendChild(i26I);
+ 
+
+        //Selling manchet loaf
+        var rowBack27 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(6, 365).setSize(54, 70).setFill(imgArray[18].src);
+        marketLayer.appendChild(rowBack27);
+
+        count27 = (new lime.Label()).setText(player.cropsStored[27].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(12, 18);
+        rowBack27.appendChild(count27);
+        g27 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 15).setFill("images/" + a.crops[27].harvest).setSize(30, 30);      //tools
+        rowBack27.appendChild(g27);
+        i27 = (new lime.Label()).setText(" +" + a.crops[27].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(35, 58);
+        rowBack27.appendChild(i27);
+        i27I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 45).setFill(imgArray11[0]).setSize(20, 20);
+        rowBack27.appendChild(i27I);
+
+
+
+      //Selling eclairs
+      var rowBack28 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(250, 293).setSize(54, 70).setFill(imgArray[18].src);
+      marketLayer.appendChild(rowBack28);
+
+      count28 = (new lime.Label()).setText(player.cropsStored[28].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(12, 18);
+      rowBack28.appendChild(count28);
+      g28 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 15).setFill("images/" + a.crops[28].harvest).setSize(30, 30);      //tools
+      rowBack28.appendChild(g28);
+      i28 = (new lime.Label()).setText(" +" + a.crops[28].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(35, 58);
+      rowBack28.appendChild(i28);
+      i28I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 45).setFill(imgArray11[0]).setSize(20, 20);
+      rowBack28.appendChild(i28I);
+
+    //Selling donuts
+    var rowBack29 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(250,368 ).setSize(54, 70).setFill(imgArray[18].src);
+    marketLayer.appendChild(rowBack29);
+
+    count29 = (new lime.Label()).setText(player.cropsStored[29].stored).setFontSize(16).setFontColor("#1aff1a").setFontFamily("Proxima Nova").setPosition(12, 18);
+    rowBack29.appendChild(count29);
+    g29 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 15).setFill("images/" + a.crops[29].harvest).setSize(30, 30);      //tools
+    rowBack29.appendChild(g29);
+    i29 = (new lime.Label()).setText(" +" + a.crops[29].revenue).setFontColor("#FFFFFF").setFontFamily("Proxima Nova").setFontSize(12).setPosition(35, 58);
+    rowBack29.appendChild(i29);
+    i29I = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 45).setFill(imgArray11[0]).setSize(20, 20);
+    rowBack29.appendChild(i29I);
 
 
 
@@ -12850,15 +14765,15 @@ farming.start = function () {
         marketLayer.appendChild(howManyBack);
         var howMany = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(30, 150).setSize(250, 250).setFill(imgArray[78]);
         howManyBack.appendChild(howMany);
-        var howManyLabel1 = (new lime.Label()).setText("Sell " + a.crops[index].name).setFontColor("#00004d").setFontFamily("Comic Sans MS").setFontSize(26).setPosition(125, 60);
+        var howManyLabel1 = (new lime.Label()).setText(a.crops[index].name).setFontColor("#00004d").setFontFamily("Proxima Nova").setFontSize(26).setPosition(125, 60);
         howMany.appendChild(howManyLabel1);
-        var howManyLabel2 = (new lime.Label()).setText(cropSaleCurrent + "/" + cropSaleTotal).setFontColor("#00004d").setFontFamily("Comic Sans MS").setFontSize(20).setPosition(55, 140);
+        var howManyLabel2 = (new lime.Label()).setText(cropSaleCurrent + "/" + cropSaleTotal).setFontColor("#00004d").setFontFamily("Proxima Nova").setFontSize(20).setPosition(55, 140);
         howMany.appendChild(howManyLabel2);
-        var howManyLabel3 = (new lime.Label()).setText(" 0 ").setFontColor("#00004d").setFontFamily("Comic Sans MS").setFontSize(20).setPosition(190, 140);
+        var howManyLabel3 = (new lime.Label()).setText(" 0 ").setFontColor("#00004d").setFontFamily("Proxima Nova").setFontSize(20).setPosition(190, 140);
         howMany.appendChild(howManyLabel3);
-        var howManyLabel4 = (new lime.Label()).setText("Sell For").setFontColor("#004d00").setFontFamily("Comic Sans MS").setFontSize(18).setPosition(181, 110);
+        var howManyLabel4 = (new lime.Label()).setText("Sell For").setFontColor("#004d00").setFontFamily("Proxima Nova").setFontSize(18).setPosition(190, 110);
         howMany.appendChild(howManyLabel4);
-        var howManyLabel5 = (new lime.Label()).setText("Stock").setFontColor("#004d00").setFontFamily("Comic Sans MS").setFontSize(18).setPosition(53, 110);
+        var howManyLabel5 = (new lime.Label()).setText("Stock").setFontColor("#004d00").setFontFamily("Proxima Nova").setFontSize(18).setPosition(53, 110);
         howMany.appendChild(howManyLabel5);
         var howManyImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(100, 80).setFill("images/" + a.crops[index].harvest).setSize(40, 40);      //carrots
         howMany.appendChild(howManyImg);
@@ -12905,7 +14820,7 @@ farming.start = function () {
         //marketLayer.appendChild(count0);
         //g = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(115, 120).setFill("images/" + a.crops[0].harvest).setSize(30, 30);
         //marketLayer.appendChild(g);
-        //i = (new lime.Label()).setText("Sell $" + a.crops[0].revenue + " ").setFontColor("#E8FC08").setFontSize(12).setPosition(120, 155);
+        //i = (new lime.Label()).setText("Sell $" + a.crops[0].revenue + " ").setFontColor("#FFFFFF").setFontSize(12).setPosition(120, 155);
         //marketLayer.appendChild(i);
 
 
@@ -12963,7 +14878,7 @@ farming.start = function () {
             townSceneActive = 1;
             hideAndDelayNavIcons();
             c.replaceScene(marketScene, lime.transitions.SlideInUp);
-            acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+            acresOwned3 = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
             if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
             sceneActive = 'Market';
             townLayer.setHidden(false);
@@ -12971,7 +14886,8 @@ farming.start = function () {
             backBtnTown.setHidden(false);
             storeOpenBtn.setHidden(false);
             questPanel.setHidden(true);
-            lime.scheduleManager.callAfter(function () { updateInventoryCounts(); }, this, 1500);
+            if (seenPremiumPromo == 1) { goPremiumBack.setHidden(true); }else{ goPremiumBack.setHidden(false);}
+            lime.scheduleManager.callAfter(function () { try{updateInventoryCounts();}catch(err){console.log(err)}; }, this, 1500);
 
         });
 
@@ -12995,6 +14911,14 @@ farming.start = function () {
         goog.events.listen(rowBack15, ["mousedown", "touchstart"], function () { a.updateCropsandCash(14); });
         goog.events.listen(rowBack22, ["mousedown", "touchstart"], function () { a.updateCropsandCash(22); });
         goog.events.listen(rowBack23, ["mousedown", "touchstart"], function () { a.updateCropsandCash(23); });
+        goog.events.listen(rowBack24, ["mousedown", "touchstart"], function () { a.updateCropsandCash(24); });
+        goog.events.listen(rowBack25, ["mousedown", "touchstart"], function () { a.updateCropsandCash(25); });
+        goog.events.listen(rowBack26a, ["mousedown", "touchstart"], function () { a.updateCropsandCash(26); });
+        goog.events.listen(rowBack27, ["mousedown", "touchstart"], function () { a.updateCropsandCash(27); });
+        goog.events.listen(rowBack28, ["mousedown", "touchstart"], function () { a.updateCropsandCash(28); });
+        goog.events.listen(rowBack29, ["mousedown", "touchstart"], function () { a.updateCropsandCash(29); });
+
+
 
         ////market Updates
         a.updateCropsandCash = function (crop) {
@@ -13100,34 +15024,51 @@ farming.start = function () {
             };
             updateMarketCropVals();
             howManyBack.setHidden(true);
-
+            showMFToast("+ " +cropSaleCurrentPrice + " ",imgArray11[0].src, 1);
              a.updateMoney();
             howManySellBtn.removeEventListener('mousedown', function () { console.log("howmanysellBtn removed listener") });
         }
 
-        //////////////////////////////////Intro Scene///////////////////////////////////////////  //////////////////////////////////Intro Scene///////////////////////////////////////////
+        //////////////////////////////////Start Scene///////////////////////////////////////////  //////////////////////////////////Intro Scene///////////////////////////////////////////
 
 
-        var introScene = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
+        var startScene = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
             introLayer = (new lime.Layer).setAnchorPoint(0, 0)
         introFill1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height);
-        introScene.appendChild(introLayer);
+        startScene.appendChild(introLayer);
         introLayer.appendChild(introFill1);
 
 
         //var playGameBtn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width / 2 - 50, 510).setSize(50, 50).setFill("#663300");
-        playGameBtn = (new lime.GlossyButton()).setColor("#663300").setText("").setPosition(150, 290).setSize(a.width / 2 + 10, 70);
+        playGameBtn = (new lime.GlossyButton()).setColor("#126423").setText("").setPosition(155, 340).setSize(a.width / 2 -35, 45);
         introLayer.appendChild(playGameBtn);
-        var playButtonLabel = (new lime.Label()).setText("PLAY").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(150, 295).setFontSize(36);
+        var playButtonLabel = (new lime.Label()).setText("PLAY").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(155, 346).setFontSize(36);
         introLayer.appendChild(playButtonLabel);
         var moreGameBtn = (new lime.GlossyButton()).setColor("#663300").setText("").setPosition(150, 340).setSize(a.width / 2 - 5, 50);
         introLayer.appendChild(moreGameBtn);
-        var moreGameBtnLabel = (new lime.Label()).setText("MORE GAMES").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(150, 346).setFontSize(20);
+        var moreGameBtnLabel = (new lime.Label()).setText("MORE GAMES").setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(150, 346).setFontSize(20);
         introLayer.appendChild(moreGameBtnLabel);
 
         moreGameBtn.setHidden(true); moreGameBtnLabel.setHidden(true); 
-        var introFill2 = (new lime.Sprite()).setPosition(157, 260).setSize(300, 490).setFill(imgArray[14]);
-        introScene.appendChild(introFill2);
+        // var introFill2 = (new lime.Sprite()).setPosition(157, 260).setSize(300, 490).setFill(imgArray[14]);
+        // startScene.appendChild(introFill2);
+
+        playGameBtn.setHidden(true); 
+        var textload = 'Loading.'
+        var tickLoad = 0;
+        lime.scheduleManager.scheduleWithDelay(function () {
+            tickLoad++;
+            textload = '.' + textload + '.';
+            playButtonLabel.setText(textload).setFontSize(24);
+            //e.appendChild(toolMover);
+            if (tickLoad == 12){ playButtonLabel.setText("PLAY").setFontSize(36);
+            playGameBtn.setHidden(false); }
+        }, this,300, 12);
+        // lime.scheduleManager.callAfter(function () {
+        //     playButtonLabel.setText("PLAY").setFontSize(36);
+        //     playGameBtn.setHidden(false); 
+        // }, this, 4100);
+
 
         //var timerDaily = setTimeout(function () {
         //    if (deviceType == 'Android') {
@@ -13151,43 +15092,156 @@ farming.start = function () {
             homeCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop"));
 
             var mutedAtStart = localStorage.getItem('GuiGhostFarms_muted')
-            if (mutedAtStart == 0) { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); }
+            if (mutedAtStart == 0) { lime.audio.setMute(false); themeSongNew.play(true); smithSound.play(); }
             else { lime.audio.setMute(true); setMute(1) }
-            hideAndDelayNavIcons();
-            c.replaceScene(d, lime.transitions.SlideInUp);
-            sceneActive = 'Home'; sceneBefore = 1;
+            var checkStory = localStorage.getItem('showStory');
+            if (checkStory == 1){
+                 c.replaceScene(storyScene, lime.transitions.SlideInUp);
+                sceneActive == 'Story'; checkStory = 0;
+                tapToCont.setHidden(false); storyMeBubble.setHidden(false);
+               
+                lime.scheduleManager.callAfter(function () {
+                    fadeChapterLayer();
+                    nextStoryPanel('intro');
+                }, this, 2000);
+            }
+            else{
+                hideAndDelayNavIcons();
+                c.replaceScene(d, lime.transitions.SlideInUp);
+                sceneActive = 'Home'; sceneBefore = 1;
+                lime.scheduleManager.callAfter(function () {
+                    checkDailyLogin(); validCropsStored();
+                }, this, 3000);
+            }
 
-            //check for daily bonus
-            //check apps
-            lime.scheduleManager.callAfter(function () {
-                var deviceType3 = (navigator.userAgent.match(/iPad/i)) == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i)) == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
 
-                if (deviceType3 == 'Android') {
-                    appSection.setHidden(false);
-                    try { console.log("trying check"); checkForApps(); }
-                    catch (err) { console.log("check apps failed " + err) };
+        
 
-                } else {
-                    //hide app bonus items
-                    appSection.setHidden(true);
+
+        });
+        var storyPanel = 0;
+        function nextStoryPanel(from){
+         if(from == 'menuStory'){   storyPanel = 0; storyWife.setHidden(true);storyWifeBubble.setHidden(true); from = 'intro';    };
+            if(from == 'intro'){
+                storySceneCloseBtn.setHidden(false);
+                storyWife.setHidden(true);
+                storyDad.setHidden(true);
+                storyText1.setText("Hi - I am Fordwin and I am 18 years old").setFontSize(15).setPosition(100,75).setHidden(false);
+                storyMeBubble.setPosition(-12,-15).setSize(200, 75);
+                
+                switch(storyPanel) {
+                
+                    case 0: { storyText1.setText("Hi - I am Fordwin and it is my 18th birthday").setFontSize(15).setPosition(100,60).setHidden(false);
+                    storyMeBubble.setPosition(-12,-65).setSize(200, 75); storyWife.setHidden(true); storyWifeBubble.setHidden(true);
+                    storySceneCloseBtn.setText("Skip").setPosition(a.width/2, a.height - 27);
+                    break;}
+                    case 1: {storyText1.setText("I just inherited a farm that used to belong to some far off great great uncle I have never seen or heard of.").setPosition(100,80);
+                    storyMeBubble.setPosition(-12,-154).setSize(200, 165); break;}
+                    case 2: {storyText1.setText("I am scared to leave my home and start a new life, yet excited too.").setPosition(100,75); storyMeBubble.setPosition(-12,-134).setSize(200, 125); break;}
+                    case 3: {storyText1.setText("The farm is far away, and I have never been there.").setPosition(100,67); storyMeBubble.setPosition(-12,-79).setSize(200, 85); break;}
+                    case 4: {storyText1.setText("I have always lived in this shack with my parents and will need your help").setPosition(100,67); storyMeBubble.setPosition(-12,-124).setSize(200, 120); break;}
+                    case 5: {storyText1.setText("Hopefully the local townspeople will buy my crops at the market").setPosition(100,70); storyMeBubble.setPosition(-12,-134).setSize(200, 115); break;}
+                    case 6: {storyText1.setText("It will be scary to go alone, but can't miss this opportunity to be a landowner").setPosition(100,67); storyMeBubble.setPosition(-12,-134).setSize(200, 135); break;}
+                    case 7: { storyMeBubble.setHidden(true); storyWife.setHidden(false); storyTextWife.setText("Fordwin.... WAIT!").setPosition(87,75).setSize(180, 115);storyWifeBubble.setHidden(false);
+                        break;}
+                    case 8: { storyWifeBubble.setHidden(true); storyMeBubble.setHidden(false); storyWife.setHidden(false);
+                        storyText1.setText("Huh? Denise, my love, I did not assume you would want to leave with me").setPosition(100,75);
+                        storyMeBubble.setPosition(-12,-134).setSize(200, 125);
+                        break;}
+                    case 9: {   storyWifeBubble.setHidden(false); storyMeBubble.setHidden(true); storyWife.setHidden(false);
+                            storyTextWife.setText("You're not getting away from me that easy!"); storyWifeBubble.setPosition(-125,-125).setSize(175, 125);
+                            break; }    
+                    case 10: {  storyWifeBubble.setHidden(false); storyMeBubble.setHidden(true); storyWife.setHidden(false);
+                                storyTextWife.setText("I'm coming with you!"); storyWifeBubble.setPosition(-130,-95).setSize(180, 105);
+                            break;}
+                    case 11: { storyMeBubble.setHidden(true); storyDad.setHidden(false); storyDadBubble.setHidden(false); storyTextDad.setText("Son - take these supplies to help you get started");
+                            storyWifeBubble.setHidden(true); 
+                            storyWife.setHidden(false); 
+                            break;}
+                    case 12: { storyMeBubble.setHidden(true); storyDad.setHidden(false); storyTextDad.setText("Take this Family Heirloom Amulet and some gold");
+                                storyWifeBubble.setHidden(true); 
+                                storyWife.setHidden(false); 
+                                successSound.play();
+                                showMFToast('+ 500', imgArray11[0].src, "intro",3000, 'left');
+                                showMFToast('+ 50', imgArray[30].src, "intro",3000, 'left');
+                                showMFToast('Recieved Family Heirloom', imgArrayItems[40].src, "intro",4000, 'left');
+                                foundHeir.style.display = 'block';
+                                foundHeirSubText.innerHTML = "See the Inventory Heirloom tab for your set"
+                                heirImgParent.style.display = 'none';
+                                foundHeirClose.style.display = 'block';
+                                itemReceivedHeir = collectItems.digUpCollect[8].name;
+                                        collectItems.digUpCollect[8].owned = 1;
+                                        foundHeirTitle.innerHTML = itemReceivedHeir;
+                                        foundHeirImage.style.backgroundImage = "url('" + imgArrayItems[40].src + "')";
+                                
+                                localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
+                                
+                                break;}
+                    case 13: {
+                        storyDadBubble.setHidden(true);storyText1.setText("Thank's Dad, Now let's go!").setFontSize(18).setPosition(100,60); storyMeBubble.setPosition(-12,-74).setHidden(false);
+                            storyWifeBubble.setHidden(true); storySceneCloseBtn.setText("Continue").setSize(100, 22); 
+                            storyWife.setHidden(false); 
+                            
+                            break;}
+                    case 14: {storyText1.setHidden(true);
+                            storyWife.setHidden(false); 
+                            storyPanel = 0;
+                            storyMeBubble.setHidden(true);
+                            fadeinChapter1();
+                            localStorage.setItem('showStory', 0);
+                            break;}
+                    default:  {storyText1.setText("Hi - I am Fordwin and I am 18 years old").setFontSize(15).setPosition(100,75); storyMeBubble.setPosition(-12,-60).setSize(200, 75);storyWife.setHidden(true); break;}
+
                 }
-            }, this, 2000);
-            //check days logged in
-            lime.scheduleManager.callAfter(function () {
-                checkDailyLogin(); validCropsStored();
-            }, this, 3000);
+                storyPanel ++;            
+            }
+            if(from == 'Pasture'){
+                successSound.play();
+                lime.scheduleManager.callAfter(function () {
+                    c.replaceScene(pastureScene, lime.transitions.SlideInLeft);
+                    storyHeadText2.setHidden(true);
+                    sceneActive = 'Pasture';
+                    cowSound.play();
+                }, this, 4000);
+                storySceneCloseBtn.setHidden(true);
+            };
+            if (from == 'Orchard'){
+                successSound.play();
+                lime.scheduleManager.callAfter(function () {
+                    c.replaceScene(orchardScene, lime.transitions.SlideInRight);
+                    lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
+                    sceneActive = 'Orchard';
+                    waterfallSound.play(true);
+                }, this, 4000);
+                storySceneCloseBtn.setHidden(true);
+            }
+            if (from == 'Vineyard'){
+                successSound.play();
+                lime.scheduleManager.callAfter(function () {
+                    c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
+                    sceneActive = 'Vineyard';
+                }, this, 4000);
+                storySceneCloseBtn.setHidden(true);
+            }
+            if (from == 'LiveStock'){
+                lime.scheduleManager.callAfter(function () {
+                    hideAndDelayNavIcons();
+                    successSound.play();
+                    c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
+                    sceneActive = 'LS'; waterfallSound.stop(); chickenSound.play(); pig1Sound.play();
+                }, this, 4000);
+                storySceneCloseBtn.setHidden(true);
+           
+            }
+        };
 
 
-        });
-
-        goog.events.listen(moreGameBtn, ["mousedown", "touchstart"], function () {
-            localStorage.setItem("moreGamesClicked", 1);
-
-        });
-
-        c.replaceScene(introScene);
-        var hideloading = document.getElementById("loadingGG");
-        hideloading.style.display = 'none';
+        c.replaceScene(startScene);
+        lime.scheduleManager.callAfter(function () {
+            var hideloading = document.getElementById("loadingGG");
+            hideloading.style.display = 'none';
+        }, this, 3000);
+      
 
 
         /////LiveStockPens Scene/////////////////////////////LiveStockPens/////////////////////////////////////////// livestock scene //////////////////////////////////LiveStockPens Scene///////////////////////////////////////////
@@ -13210,7 +15264,7 @@ farming.start = function () {
         //liveStockLayer.appendChild(topLogoLS);
         var topCoinLS = (new lime.Sprite()).setPosition(285, 20).setSize(35, 35).setFill(imgArray11[0]);
         liveStockLayer.appendChild(topCoinLS);
-        var liveStockCash = (new lime.Label()).setText(player.money).setFontColor("#E8FC08").setPosition(235, 24).setFontSize(18).setFontFamily("Comic Sans MS");
+        var liveStockCash = (new lime.Label()).setText(player.money).setFontColor("#ffffff").setPosition(235, 24).setFontSize(18).setFontFamily("Proxima Nova");
         liveStockLayer.appendChild(liveStockCash);
 
 
@@ -13236,7 +15290,7 @@ farming.start = function () {
         //coop upgrade anim elements
         var scaffoldLS = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(65, 240).setSize(110, 80).setFill(imgArray[26]); liveStockLayer.appendChild(scaffoldLS);
         var upgradeCloudLS = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(55, 185).setSize(120, 200).setFill(imgArray[24].src); liveStockLayer.appendChild(upgradeCloudLS);
-        var toolMoverLabelLS = (new lime.Label()).setText("60").setPosition(118, 275).setSize(40, 25).setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Comic Sans MS").setFill(imgArray[27]);
+        var toolMoverLabelLS = (new lime.Label()).setText("60").setPosition(118, 275).setSize(40, 25).setFontColor("#FFFFFF").setFontWeight(600).setFontSize(28).setFontFamily("Proxima Nova").setFill(imgArray[27]);
         var toolMoverLS = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-22, -50).setSize(50, 50).setFill(imgArray[29]);
 
         liveStockLayer.appendChild(toolMoverLabelLS);
@@ -13275,7 +15329,8 @@ farming.start = function () {
                 goog.events.removeAll(chickenCoopUp);
             } catch (err) { return; }
         }
-
+    var coopTicker = 0;
+    var hammerSoundC = hammerSound; 
         function upgradeCoop(isFree) {
             if (globalModalBlock == 0 && barnUpInProgressLS == 0) {
                 if (player.tools > 500 || isFree == 1) {
@@ -13283,6 +15338,7 @@ farming.start = function () {
                     barnUpInProgressLS = 1;
                     chickenCoopUp.setHidden(true);
                     //setup upgrade 
+                    
 
                     upgradeCloudLS.setHidden(false);
                     scaffoldLS.setHidden(false);
@@ -13321,8 +15377,12 @@ farming.start = function () {
                                 goog.events.removeAll(chickenCoopUp);
                             } catch (err) { return; }
                             barnUpInProgressLS = 0;
+                            
+                            showMFToast("Coop Upgraded",imgArray[30].src,'livestock', 3000);
+                            hammerSoundC.stop();
                         }
-
+                        coopTicker++;
+                        if(coopTicker >=5){hammerSoundC.play();coopTicker = 0;};
                     }, this, 1000, 60);
                     lime.scheduleManager.scheduleWithDelay(function () {
                         upgradeCloudLS.setPosition(upCloudXLS, upCloudYLS).setSize(upCloudWLS, 200)
@@ -13356,8 +15416,8 @@ farming.start = function () {
 
 
 
-
-
+        var foundTreasureLS = (new lime.Sprite()).setPosition(180, 70).setSize(60, 60).setFill('images/stars1.png').setHidden(true);
+        liveStockLayer.appendChild(foundTreasureLS);
 
         var controlsBackLS = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-5, a.height - a.controlsLayer_h - 5).setSize(a.controlsLayer_w, a.controlsLayer_h + 5).setFill(imgArray[69]);
         liveStockLayer.appendChild(controlsBackLS);
@@ -13397,7 +15457,7 @@ farming.start = function () {
         liveStockLayer.appendChild(collectEggs);
         var collectEggsIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 5).setSize(35, 24).setFill("images/" + a.crops[11].harvest);
         collectEggs.appendChild(collectEggsIcon);
-        var collectEggsLabel = (new lime.Label()).setText("+ 0 ").setFontWeight(500).setFontColor("#E8FC08").setPosition(23, 37).setSize(30, 18).setFontFamily("Comic Sans MS");
+        var collectEggsLabel = (new lime.Label()).setText("+ 0 ").setFontWeight(500).setFontColor("#E8FC08").setPosition(23, 37).setSize(30, 18).setFontFamily("Proxima Nova");
         collectEggs.appendChild(collectEggsLabel);
         collectEggs.setHidden(true);
         var eggWaiting = 0;
@@ -13422,7 +15482,7 @@ farming.start = function () {
                     }
                     if (lsHarvest > 5) { lsHarvest = 0; }
                     gLabel5Pork.setText(player.cropsStored[5].stored);
-                    gLabel8Pork.setText(player.cropsStored[8].stored);
+                    gLabel8Pork.setText(player.cropsStored[1].stored);
                 }
                 else if (player.cropsStored[5].stored <= 1 && eggWaiting <= 0) {
                     collectEggs.setHidden(false); egg1.setHidden(true); egg2.setHidden(true); egg3.setHidden(true);
@@ -13447,7 +15507,7 @@ farming.start = function () {
                 }
                 collectEggs.setHidden(true); eggWaiting = 0;
 
-            } else { porkBlocked.setHidden(false); gLabel5Pork.setText(player.cropsStored[5].stored); gLabel8Pork.setText(player.cropsStored[8].stored) }
+            } else { porkBlocked.setHidden(false); gLabel5Pork.setText(player.cropsStored[5].stored); gLabel8Pork.setText(player.cropsStored[1].stored) }
         });
 
 
@@ -13574,7 +15634,7 @@ farming.start = function () {
         var chicken3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(156, 309).setSize(23, 22).setFill(imgArray3[3]);
         liveStockLayer.appendChild(chicken3);
 
-        var pig1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(170, 180).setSize(37, 25).setFill(imgArray3[21]);
+        var pig1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(118, 168).setSize(50, 26).setFill(imgArray3[27]);
         liveStockLayer.appendChild(pig1);
         var pig2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(150, 100).setSize(22, 33).setFill(imgArray3[24]);
         liveStockLayer.appendChild(pig2);
@@ -13590,83 +15650,141 @@ farming.start = function () {
         goog.events.listen(pig3, ["mousedown", "touchstart"], function () {
             pig3Sound.play();
         });
+
+        var soldierBlock = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(262, 421).setSize(38, 38).setFill(imgArray3[34]);
+        liveStockLayer.appendChild(soldierBlock);
+        var soldierBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-109,-105).setSize(156, 105).setFill("images/UI/speechBubble3.png").setHidden(true);
+        soldierBlock.appendChild(soldierBubble);
+        var soldierText = (new lime.Label()).setText("Coming soon, those with enough Royal Favor can enter the next zone").setPosition(80,60).setSize(145, 100).setFontColor('black').setFontSize(15);
+        soldierBubble.appendChild(soldierText);
+
+        goog.events.listen(soldierBlock, ["mousedown", "touchstart"], function (e) {
+            if (globalModalBlock == 0) {
+                soldierBubble.setHidden(false);
+                lime.scheduleManager.callAfter(function(){
+                    soldierBubble.setHidden(true);
+                },this, 5500);             
+            }
+        });
+
         var chicken1Timer = 0;
         var evaTimer = 0;
-        a.movechicken = function () {
+        var starTimerLS = 0
+        a.moveAnimals = function () {
             lime.scheduleManager.scheduleWithDelay(function () {
                 if (sceneActive == 'LS') {
                     chicken1Timer++;
                     evaTimer++;
+                    starTimerLS++;
+                    if(starTimerLS == 4){
+                        starTimerLS = 0;
+                        if (foundTreasureLS.getHidden() == false){
+                            lime.scheduleManager.scheduleWithDelay(function(){
+                                foundTreasureLS.setRotation(0);
+                                lime.scheduleManager.callAfter( function(){
+                                    foundTreasureLS.setRotation(90);
+                                },this,250);
+                                lime.scheduleManager.callAfter( function(){
+                                    foundTreasureLS.setRotation(180);
+                                },this,500);
+                                lime.scheduleManager.callAfter( function(){
+                                    foundTreasureLS.setRotation(270);
+                                },this,750);
+                            },this, 1000 );
+                        }
+                    }
                     if (chicken1Timer > 30) { chicken1Timer = 1; };
 
                     switch (chicken1Timer) {
-                        case 1: chicken1.setFill(imgArray3[3]); chicken2.setFill(imgArray3[4]); chicken2.setPosition(100, 315); chicken3.setFill(imgArray3[4]); pig2.setSize(20, 33);
+                        case 1: chicken1.setFill(imgArray3[3]); chicken2.setFill(imgArray3[4]); chicken2.setPosition(100, 315); chicken3.setFill(imgArray3[4]);
+                            pig2.setSize(21, 33).setFill(imgArray3[25]).setPosition(160, 110);;  pig1.setFill(imgArray3[27]); soldierBlock.setFill(imgArray3[34]);
                             break;
-                        case 2: chicken1.setFill(imgArray3[4]); chicken2.setFill(imgArray3[5]); chicken2.setPosition(100, 315); chicken3.setFill(imgArray3[5]); pig1.setFill(imgArray3[27]); pig2.setFill(imgArray3[25]);
-                            pig2.setPosition(160, 115); pig3.setFill(imgArray3[25]); break;
+                        case 2: chicken1.setFill(imgArray3[4]); chicken2.setFill(imgArray3[5]); chicken2.setPosition(100, 315); chicken3.setFill(imgArray3[5]); soldierBlock.setFill(imgArray3[36]);
+                            pig1.setFill(imgArray3[28]); pig2.setFill(imgArray3[25]).setPosition(160, 115); pig3.setFill(imgArray3[25]); break;
 
                         case 3: chicken1.setFill(imgArray3[5]); chicken2.setFill(imgArray3[4]); chicken2.setPosition(100, 315); chicken3.setFill(imgArray3[4]);
                             break;
-                        case 4: chicken1.setFill(imgArray3[4]); chicken2.setFill(imgArray3[4]); chicken2.setPosition(100, 315); chicken3.setFill(imgArray3[5]); pig1.setFill(imgArray3[28]).setPosition(160, 180); pig3.setFill(imgArray3[26]);
+                        case 4: chicken1.setFill(imgArray3[4]); chicken2.setFill(imgArray3[4]); chicken2.setPosition(100, 315); chicken3.setFill(imgArray3[5]);
+                        pig1.setFill(imgArray3[29]); pig3.setFill(imgArray3[26]);
                             break;
-                        case 5: chicken1.setFill(imgArray3[5]); chicken2.setFill(imgArray3[12]); chicken2.setPosition(95, 315); chicken3.setFill(imgArray3[4]);
+                        case 5: chicken1.setFill(imgArray3[5]); chicken2.setFill(imgArray3[12]); chicken2.setPosition(95, 315); chicken3.setFill(imgArray3[4]); soldierBlock.setFill(imgArray3[35]);
                             break;
-                        case 6: chicken1.setFill(imgArray3[6]); chicken2.setFill(imgArray3[13]); chicken2.setPosition(90, 315); chicken3.setFill(imgArray3[5]); pig1.setFill(imgArray3[29]).setPosition(150, 180);
+                        case 6: chicken1.setFill(imgArray3[6]); chicken2.setFill(imgArray3[13]); chicken2.setPosition(90, 315); chicken3.setFill(imgArray3[5]);
+                        pig1.setFill(imgArray3[28]);
                             break;
                         case 7: chicken1.setFill(imgArray3[3]); chicken2.setFill(imgArray3[14]); chicken2.setPosition(85, 315); chicken3.setFill(imgArray3[4]);
                             break;
                         case 8: chicken1.setFill(imgArray3[12]); chicken1.setPosition(170, 350); chicken2.setFill(imgArray3[13]); chicken2.setPosition(80, 315); chicken3.setFill(imgArray3[4]);
-                            pig2.setFill(imgArray3[26]).setPosition(160, 120); pig3.setFill(imgArray3[25]); pig1.setFill(imgArray3[27]).setPosition(145, 180);
+                            pig2.setFill(imgArray3[26]).setPosition(160, 120); pig3.setFill(imgArray3[25]); 
+                            pig1.setFill(imgArray3[27]);
                             break;
                         case 9: chicken1.setFill(imgArray3[13]); chicken1.setPosition(165, 350); chicken2.setFill(imgArray3[12]); chicken2.setPosition(75, 315); chicken3.setFill(imgArray3[5]);
-                            pig1.setFill(imgArray3[28]).setPosition(140, 180);
+                        pig1.setFill(imgArray3[27]);
                             break;
-                        case 10: chicken1.setFill(imgArray3[14]); chicken1.setPosition(160, 350); chicken2.setFill(imgArray3[13]); chicken2.setPosition(70, 315);
-                            chicken3.setFill(imgArray3[4]); pig2.setPosition(160, 125); pig2.setFill(imgArray3[25]);
+                        case 10: chicken1.setFill(imgArray3[14]); chicken1.setPosition(160, 350); chicken2.setFill(imgArray3[13]); chicken2.setPosition(70, 315); chicken3.setFill(imgArray3[4]);
+                        pig1.setFill(imgArray3[28]); pig2.setPosition(160, 125).setFill(imgArray3[25]); soldierBlock.setFill(imgArray3[36]);
                             break;
-                        case 11: chicken1.setFill(imgArray3[12]); chicken1.setPosition(155, 350); chicken2.setFill(imgArray3[9]); chicken2.setPosition(70, 315); chicken3.setFill(imgArray3[3]); pig1.setFill(imgArray3[23]);
+                        case 11: chicken1.setFill(imgArray3[12]); chicken1.setPosition(155, 350); chicken2.setFill(imgArray3[9]); chicken2.setPosition(70, 315); chicken3.setFill(imgArray3[3]);
+                        pig1.setFill(imgArray3[29]);
                             break;
-                        case 12: chicken1.setFill(imgArray3[13]); chicken1.setPosition(150, 350); chicken2.setFill(imgArray3[10]).setPosition(70, 310); chicken3.setFill(imgArray3[3]); pig2.setPosition(160, 130).setFill(imgArray3[24]); pig3.setFill(imgArray3[24]);
+                        case 12: chicken1.setFill(imgArray3[13]); chicken1.setPosition(150, 350); chicken2.setFill(imgArray3[10]).setPosition(70, 310); chicken3.setFill(imgArray3[3]);
+                             pig2.setPosition(160, 130).setFill(imgArray3[24]); pig3.setFill(imgArray3[24]);
                             break;
                         case 13: chicken1.setFill(imgArray3[14]).setPosition(145, 350); chicken2.setFill(imgArray3[11]).setPosition(70, 305); chicken3.setFill(imgArray3[3]);
                             break;
-                        case 14: chicken1.setFill(imgArray3[4]); chicken2.setFill(imgArray3[15]).setPosition(70, 300); chicken3.setFill(imgArray3[3]); pig2.setFill(imgArray3[25]).setPosition(160, 135);
+                        case 14: chicken1.setFill(imgArray3[4]); chicken2.setFill(imgArray3[15]).setPosition(70, 300); chicken3.setFill(imgArray3[3]); 
+                            pig2.setFill(imgArray3[25]).setPosition(160, 135);
                             break;
-                        case 15: chicken1.setFill(imgArray3[5]); chicken2.setFill(imgArray3[16]).setPosition(75, 300); chicken3.setFill(imgArray3[3]);
+                        case 15: chicken1.setFill(imgArray3[5]); chicken2.setFill(imgArray3[16]).setPosition(75, 300); chicken3.setFill(imgArray3[3]); soldierBlock.setFill(imgArray3[37]);
                             break;
                         case 16: chicken1.setFill(imgArray3[4]); chicken2.setFill(imgArray3[17]).setPosition(80, 300); chicken3.setFill(imgArray3[3]);
                             break;
-                        case 17: chicken1.setFill(imgArray3[5]); chicken2.setFill(imgArray3[17]).setPosition(80, 300); chicken3.setFill(imgArray3[3]); pig1.setFill(imgArray3[22]); pig2.setSize(39, 21).setPosition(150, 147).setFill(imgArray3[22]); pig3.setFill(imgArray3[25]);
+                        case 17: chicken1.setFill(imgArray3[5]); chicken2.setFill(imgArray3[17]).setPosition(80, 300); chicken3.setFill(imgArray3[3]); 
+                        pig1.setFill(imgArray3[28]); pig2.setSize(39, 21).setPosition(150, 147).setFill(imgArray3[22]); pig3.setFill(imgArray3[25]);
                             break;
-                        case 18: chicken1.setFill(imgArray3[2]); chicken2.setFill(imgArray3[15]); chicken2.setPosition(85, 300); chicken3.setFill(imgArray3[3]); pig2.setSize(20, 33).setFill(imgArray3[31]).setPosition(150, 130); pig3.setFill(imgArray3[26]);
+                        case 18: chicken1.setFill(imgArray3[2]); chicken2.setFill(imgArray3[15]); chicken2.setPosition(85, 300); chicken3.setFill(imgArray3[3]);
+                           pig2.setSize(20, 33).setFill(imgArray3[31]).setPosition(150, 130); pig3.setFill(imgArray3[26]);
                             break;
-                        case 19: chicken1.setFill(imgArray3[15]).setPosition(145, 350); chicken2.setFill(imgArray3[16]).setPosition(90, 300); chicken3.setFill(imgArray3[3]); pig3.setFill(imgArray3[25]);
+                        case 19: chicken1.setFill(imgArray3[15]).setPosition(145, 350); chicken2.setFill(imgArray3[16]).setPosition(90, 300); chicken3.setFill(imgArray3[3]); 
+                             pig3.setFill(imgArray3[25]);
                             break;
-                        case 20: chicken1.setFill(imgArray3[16]).setPosition(150, 350); chicken2.setFill(imgArray3[17]).setPosition(95, 300); chicken3.setFill(imgArray3[3]); pig2.setSize(20, 33).setFill(imgArray3[30]).setPosition(150, 120); pig3.setFill(imgArray3[26]);
+                        case 20: chicken1.setFill(imgArray3[16]).setPosition(150, 350); chicken2.setFill(imgArray3[17]).setPosition(95, 300); chicken3.setFill(imgArray3[3]); 
+                            pig2.setSize(20, 33).setFill(imgArray3[30]).setPosition(150, 120); pig3.setFill(imgArray3[26]);soldierBlock.setFill(imgArray3[34]);
                             break;
                         case 21: chicken1.setFill(imgArray3[17]).setPosition(155, 350); chicken2.setFill(imgArray3[16]).setPosition(100, 300); chicken3.setFill(imgArray3[3]);
                             break;
-                        case 22: chicken1.setFill(imgArray3[15]).setPosition(160, 350); chicken2.setFill(imgArray3[7]).setPosition(100, 300); chicken3.setFill(imgArray3[3]); pig1.setFill(imgArray3[21]); pig3.setFill(imgArray3[25]);
+                        case 22: chicken1.setFill(imgArray3[15]).setPosition(160, 350); chicken2.setFill(imgArray3[7]).setPosition(100, 300); chicken3.setFill(imgArray3[3]); 
+                        pig1.setFill(imgArray3[27]); pig3.setFill(imgArray3[25]);
                             break;
                         case 23: chicken1.setFill(imgArray3[16]).setPosition(165, 350); chicken2.setFill(imgArray3[8]).setPosition(100, 300); chicken3.setFill(imgArray3[3]);
                             break;
-                        case 24: chicken1.setFill(imgArray3[17]).setPosition(170, 350); chicken2.setFill(imgArray3[7]).setPosition(100, 300); chicken3.setFill(imgArray3[4]); pig2.setFill(imgArray3[31]).setPosition(150, 117); pig3.setFill(imgArray3[26]);
+                        case 24: chicken1.setFill(imgArray3[17]).setPosition(170, 350); chicken2.setFill(imgArray3[7]).setPosition(100, 300); chicken3.setFill(imgArray3[4]); 
+                           pig2.setFill(imgArray3[31]).setPosition(150, 117); pig3.setFill(imgArray3[26]);
                             break;
-                        case 25: chicken1.setFill(imgArray3[7]).setPosition(175, 350); chicken2.setFill(imgArray3[1]).setPosition(100, 300); chicken3.setFill(imgArray3[5]);
+                        case 25: chicken1.setFill(imgArray3[7]).setPosition(175, 350); chicken2.setFill(imgArray3[1]).setPosition(100, 300); chicken3.setFill(imgArray3[5]);soldierBlock.setFill(imgArray3[35]);
                             break;
-                        case 26: chicken1.setFill(imgArray3[8]).setPosition(175, 350); chicken2.setFill(imgArray3[0]).setPosition(100, 305); chicken3.setFill(imgArray3[4]); pig2.setFill(imgArray3[32]).setPosition(150, 115);
+                        case 26: chicken1.setFill(imgArray3[8]).setPosition(175, 350); chicken2.setFill(imgArray3[0]).setPosition(100, 305); chicken3.setFill(imgArray3[4]);
+                           pig2.setFill(imgArray3[32]).setPosition(150, 115);
                             break;
-                        case 27: chicken1.setFill(imgArray3[7]).setPosition(175, 350); chicken2.setFill(imgArray3[1]).setPosition(100, 310); chicken3.setFill(imgArray3[5]); pig1.setFill(imgArray3[22]).setPosition(150, 180); pig2.setFill(imgArray3[30]).setPosition(150, 110);
+                        case 27: chicken1.setFill(imgArray3[7]).setPosition(175, 350); chicken2.setFill(imgArray3[1]).setPosition(100, 310); chicken3.setFill(imgArray3[5]);
+                        pig1.setFill(imgArray3[28]); pig2.setFill(imgArray3[30]).setPosition(150, 110);
                             break;
                         case 28: chicken1.setFill(imgArray3[8]).setPosition(175, 350); chicken2.setFill(imgArray3[3]).setPosition(100, 315); chicken3.setFill(imgArray3[4]);
+                        pig2.setFill(imgArray3[31]).setPosition(150, 105);
                             break;
-                        case 29: chicken1.setFill(imgArray3[0]); chicken2.setFill(imgArray3[4]); pig1.setFill(imgArray3[23]).setPosition(160, 180); chicken3.setFill(imgArray3[4]); pig2.setFill(imgArray3[31]).setPosition(150, 105);
+                        case 29: chicken1.setFill(imgArray3[0]); chicken2.setFill(imgArray3[4]);  chicken3.setFill(imgArray3[4]);
+                        pig1.setFill(imgArray3[29]); pig2.setSize(39, 21).setPosition(150, 105).setFill(imgArray3[21]);
                             break;
-                        case 30: chicken1.setFill(imgArray3[0]); chicken2.setFill(imgArray3[5]); chicken3.setFill(imgArray3[3]); pig2.setSize(39, 21).setPosition(150, 105).setFill(imgArray3[21]);
+                        case 30: chicken1.setFill(imgArray3[0]); chicken2.setFill(imgArray3[5]); chicken3.setFill(imgArray3[3]);  soldierBlock.setFill(imgArray3[36]);
+                            
+                            pig1.setFill(imgArray3[28]);
                             break;
-                        default: chicken1.setFill(imgArray3[3]); chicken2.setFill(imgArray3[4]).setPosition(100, 315); chicken3.setFill(imgArray3[4]); pig2.setSize(20, 33);
+                        default: chicken1.setFill(imgArray3[3]); chicken2.setFill(imgArray3[4]).setPosition(100, 315); chicken3.setFill(imgArray3[4]);
+                             pig2.setSize(20, 33).setFill(imgArray3[24]);;
+                             
                             break;
                     }
+                   
                     if (evaTimer >= 105) { evaTimer = 1; }
                     switch (evaTimer) {
                         case 1: eva.setPosition(16, 145).setFill(imgArrayEva[0].src); break;
@@ -13773,7 +15891,7 @@ farming.start = function () {
             }, this, 250)
 
         }
-        a.movechicken();
+        a.moveAnimals();
 
 
         ///livestock Troughs
@@ -13782,7 +15900,7 @@ farming.start = function () {
 
         /// livestock pork Pork harvest mechanics
 
-        var porkUpCount = (new lime.Label()).setText("+ 2 Ham").setFontWeight(600).setFontColor("#E8FC08").setPosition(155, 110).setOpacity(0.9).setSize(200, 20).setFontFamily("Comic Sans MS");
+        var porkUpCount = (new lime.Label()).setText("+ 2 Ham").setFontWeight(600).setFontColor("#E8FC08").setPosition(155, 110).setOpacity(0.9).setSize(200, 20).setFontFamily("Proxima Nova");
         liveStockLayer.appendChild(porkUpCount);
         var porkUpIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(95, 95).setSize(35, 24).setFill("images/" + a.crops[10].harvest);
         liveStockLayer.appendChild(porkUpIcon);
@@ -13794,14 +15912,14 @@ farming.start = function () {
         liveStockLayer.appendChild(collectPork);
         var collectPorkIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 2).setSize(35, 24).setFill("images/" + a.crops[10].harvest);
         collectPork.appendChild(collectPorkIcon);
-        var collectPorkLabel = (new lime.Label()).setText("+ 0 ").setFontWeight(500).setFontColor("#E8FC08").setPosition(23, 37).setSize(30, 18).setFontFamily("Comic Sans MS");
+        var collectPorkLabel = (new lime.Label()).setText("+ 0 ").setFontWeight(500).setFontColor("#E8FC08").setPosition(23, 37).setSize(30, 18).setFontFamily("Proxima Nova");
         collectPork.appendChild(collectPorkLabel);
         collectPork.setHidden(true);
         var porkWaiting = 0;
         var porkTimer = 0;
         var porkOnce = 0;
 
-        var acresOwned2 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+        var acresOwned2 = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
         lime.scheduleManager.scheduleWithDelay(function () {
             //add upgrade anim
 
@@ -13809,7 +15927,7 @@ farming.start = function () {
             var porkPos = porkUpCount.getPosition();
             var porkPosY = porkPos.y - 5;
             if (porkPosY < 70) { porkPosY = 110 };
-            if (porkTimer > 240 && player.cropsStored[8].stored >= 1 && acres[4].owned == 1) {
+            if (porkTimer > 240 && player.cropsStored[1].stored >= 1 && acres[4].owned == 1) {
                 collectPorkLabel.setHidden(false);
                 porkUpCount.setHidden(false);
 
@@ -13823,17 +15941,17 @@ farming.start = function () {
                     porkWaiting = parseInt(porkWaiting) + 2;
 
                     collectPorkLabel.setText("+ " + porkWaiting);
-                    player.cropsStored[8].stored = parseInt(player.cropsStored[8].stored) - 1;
-                    count8.setText(player.cropsStored[8].stored);
-                    gLabel8.setText(player.cropsStored[8].stored);
-                    //gLabel8LS.setText(player.cropsStored[8].stored);
-                    //gLabel8Pork.setText(player.cropsStored[8].stored);
+                    player.cropsStored[1].stored = parseInt(player.cropsStored[1].stored) - 1;
+                    count8.setText(player.cropsStored[1].stored);
+                    gLabel8.setText(player.cropsStored[1].stored);
+                    //gLabel8LS.setText(player.cropsStored[1].stored);
+                    //gLabel8Pork.setText(player.cropsStored[1].stored);
                     localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
 
                 }
 
             }
-            else if (player.cropsStored[8].stored <= 0 && acres[4].owned == 1 && porkWaiting <= 0) {
+            else if (player.cropsStored[1].stored <= 0 && acres[4].owned == 1 && porkWaiting <= 0) {
                 collectPork.setHidden(false).setFill(imgArray[23]).setPosition(45, 50).setSize(40, 45); collectPorkIcon.setHidden(true); collectPorkLabel.setHidden(true);
             }
             if (porkTimer > 248) { porkTimer = 0; porkUpCount.setHidden(true); porkOnce = 0; porkUpIcon.setHidden(true); }
@@ -13851,10 +15969,57 @@ farming.start = function () {
                 collectPork.setHidden(true);
                 purchaseSound.play();
             }
-            else if (porkWaiting <= 0 && player.cropsStored[8].stored <= 0 && acres[4].owned == 1) {
-                porkBlocked.setHidden(false); collectPork.setHidden(true); gLabel5Pork.setText(player.cropsStored[5].stored); gLabel8Pork.setText(player.cropsStored[8].stored)
+            else if (porkWaiting <= 0 && player.cropsStored[1].stored <= 0 && acres[4].owned == 1) {
+                porkBlocked.setHidden(false); collectPork.setHidden(true); gLabel5Pork.setText(player.cropsStored[5].stored); gLabel8Pork.setText(player.cropsStored[1].stored)
             }
         });
+        mapLocations = JSON.parse(localStorage.getItem('mapLocations'));
+        var mapLocLS1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(7, 252).setSize(16,20).setFill(imgArrayStore[6]);
+        liveStockLayer.appendChild(mapLocLS1);
+        if(mapLocations.places[15].found == 1){
+            mapLocLS1.setHidden(true);}
+            else{
+                goog.events.listen(mapLocLS1, ["mousedown", "touchstart"], function (e) {
+               if (globalModalBlock == 0){
+                   this.setHidden(true); mapLocations.places[15].found = 1;   getMapFrag('ls1');
+                      e.event.stopPropagation();
+                       e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+                });
+            }
+     
+        var mapLocLS2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width - 75, 118).setSize(16,20).setFill(imgArrayStore[6]);
+        liveStockLayer.appendChild(mapLocLS2);
+        if(mapLocations.places[16].found == 1){
+            mapLocLS2.setHidden(true);
+            }else{
+                goog.events.listen(mapLocLS2, ["mousedown", "touchstart"], function (e) {
+                    if (globalModalBlock == 0){
+                        this.setHidden(true); mapLocations.places[16].found = 1;  getMapFrag('ls2');
+                        e.event.stopPropagation();
+                        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+                    }  
+                });
+            }
+        var mapLocLS3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width/2 + 15, 412).setSize(16,20).setFill(imgArrayStore[6]);
+        liveStockLayer.appendChild(mapLocLS3);
+        if(mapLocations.places[17].found == 1){
+            mapLocLS3.setHidden(true);
+            }else{
+            goog.events.listen(mapLocLS3, ["mousedown", "touchstart"], function (e) {
+                if (globalModalBlock == 0){
+                     this.setHidden(true); mapLocations.places[17].found = 1; getMapFrag('ls3');
+                    e.event.stopPropagation();
+                    e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+                 }
+            });
+        }   
+
+
+
+
+
+
+
         ///livestock layer menu
 
 
@@ -13868,10 +16033,10 @@ farming.start = function () {
                 townSceneActive = 1;
                 hideAndDelayNavIcons();
                 c.replaceScene(marketScene, lime.transitions.SlideInUp);
-                acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+                acresOwned3 = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
                 if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
                 sceneActive = 'Market';
-                lime.scheduleManager.callAfter(function () { CheckQuestInvItems(); }, this, 1500);
+                lime.scheduleManager.callAfter(function () { try{CheckQuestInvItems();}catch(err){console.log(err)}; }, this, 1500);
             }
         });
         var menuLS = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(2, 504).setSize(36, 36).setFill(imgArray[70]);
@@ -13906,14 +16071,14 @@ farming.start = function () {
             if (globalModalBlock == 0) {
                 var isMuted = lime.audio.getMute();
                 if (isMuted) {
-                    lime.audio.setMute(false); themeSong.play(true); localStorage.setItem('GuiGhostFarms_muted', 0)
+                    lime.audio.setMute(false); themeSongNew.play(true); localStorage.setItem('GuiGhostFarms_muted', 0)
                     setMute(2);
                 } else { lime.audio.setMute(true); setMute(1); localStorage.setItem('GuiGhostFarms_muted', 1) }
             }
         });
         goog.events.listen(fbBtnLS, ["mousedown", "touchstart"], function () {
             if (globalModalBlock == 0) {
-                shareFacebook();
+                openStarMenu();
 
             }
         });
@@ -13923,7 +16088,7 @@ farming.start = function () {
                 achieve(sceneBefore);
             }
         });
-        var raising = (new lime.Label()).setText("Raising Chickens & Pigs").setFontColor("#E8FC08").setPosition(155, 525).setSize(100, 75).setFontFamily("Comic Sans MS");
+        var raising = (new lime.Label()).setText("Raising Pigs & Chickens").setFontColor("#FFFFFF").setPosition(155, 525).setSize(100, 75).setFontFamily("Proxima Nova");
         liveStockLayer.appendChild(raising);
 
         ////back to Orchard from pens
@@ -13960,25 +16125,27 @@ farming.start = function () {
 
         ///livestock storage menu
         var toolCountImgLS = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(5, 7).setSize(35, 35).setFill(imgArray[30]);
-        var toolCountLS = (new lime.Label()).setText(player.tools).setFontColor("#E8FC08").setPosition(65, 24).setFontSize(18).setFontFamily("Comic Sans MS");
+        var toolCountLS = (new lime.Label()).setText(player.tools).setFontColor("#ffffff").setPosition(65, 24).setFontSize(18).setFontFamily("Proxima Nova");
         liveStockLayer.appendChild(toolCountImgLS);
         liveStockLayer.appendChild(toolCountLS);
-        var toInventoryLS = (new lime.Sprite()).setPosition((a.controlsLayer_w / 2) - 5, 22).setSize(38, 38).setFill(imgArrayItems[25].src);
+        var toInventoryLS = (new lime.Sprite()).setPosition((a.controlsLayer_w / 2) - 5, 22).setSize(51, 40).setFill(imgArrayItems[25].src).setRotation(5);
         liveStockLayer.appendChild(toInventoryLS);
 
         goog.events.listen(toInventoryLS, ["mousedown", "touchstart"], function () {
             a.sceneBefore = 5;
-            checkItemsOwned();
+            
+            try{try{checkItemsOwned();}catch(err){console.log(err)};}catch(err){console.log(err)};
             starCashInvCount.setText(starCash);
             hideAndDelayNavIcons();
+            cropsBack.setHidden(false); itemsBack.setHidden(true); itemsStoredBack.setHidden(true); collectBack.setHidden(true);  ///always open to cropsInventory
             c.replaceScene(inventoryScene, lime.Transition.SlideInUp);
+            playerImg.setHidden(false);
             sceneActive = 'Inventory';
-
-            updateInventoryCounts();
+            try{try{updateInventoryCounts();}catch(err){console.log(err)};}catch(err){console.log(err)};
+            
         });
 
-
-
+     
 
         ///livestockpens block
         var lsBlock = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#000F00").setOpacity(0.75);
@@ -13992,12 +16159,12 @@ farming.start = function () {
 
         ////achievement Modal
         var achieveNotifLS = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 130).setSize(210, 220).setFill(imgArray[91]);
-        var achieveTextLS = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#000033").setPosition(13, 45).setSize(190, 60).setFontSize(16).setText("Blacksmith I").setFontFamily("Comic Sans MS");
+        var achieveTextLS = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#000033").setPosition(13, 45).setSize(190, 60).setFontSize(16).setText("Blacksmith I").setFontFamily("Proxima Nova");
         achieveNotifLS.appendChild(achieveTextLS);
-        var achieveTextSubLS = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#000033").setPosition(30, 123).setSize(150, 35).setFontSize(12).setText("Achieve Text").setFontFamily("Comic Sans MS");
+        var achieveTextSubLS = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#000033").setPosition(30, 123).setSize(150, 35).setFontSize(12).setText("Achieve Text").setFontFamily("Proxima Nova");
         achieveNotifLS.appendChild(achieveTextSubLS);
 
-        var achieveSCLS = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#000033").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ").setFontFamily("Comic Sans MS");
+        var achieveSCLS = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#000033").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ").setFontFamily("Proxima Nova");
         achieveNotifLS.appendChild(achieveSCLS);
         var confirmBtnALS = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill(imgArray[21]);
         achieveNotifLS.appendChild(confirmBtnALS);
@@ -14143,33 +16310,33 @@ farming.start = function () {
 
 
         ////livestock SHORTAGE block modal
-        var porkBlocked = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(60, 145).setSize(180, 200).setFill(imgArray[80]);
+        var porkBlocked = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(60, 145).setSize(185, 200).setFill(imgArray[80]);
         liveStockLayer.appendChild(porkBlocked);
-        var blockedHeader = (new lime.Label()).setAnchorPoint(0, 0).setPosition(5, 19).setSize(170, 40).setFontSize(18).setFontFamily("Comic Sans MS").setText("Farmhand Eva");
+        var blockedHeader = (new lime.Label()).setAnchorPoint(0, 0).setPosition(5, 19).setSize(170, 40).setFontSize(18).setFontFamily("Proxima Nova").setText("Farmhand Eva");
         porkBlocked.appendChild(blockedHeader);
 
         var evaBlockImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(60, 26).setSize(60, 60).setFill(imgArrayEva[0].src);
         porkBlocked.appendChild(evaBlockImg)
         var confirmPorkBlocked = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(70, 195).setSize(40, 40).setFill(imgArray[21]);
         porkBlocked.appendChild(confirmPorkBlocked);
-        var blockedText = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#E8FC08").setPosition(5, 85).setSize(170, 40).setFontSize(14).setFontFamily("Comic Sans MS").setText("Livestock Hungry!");
+        var blockedText = (new lime.Label()).setAnchorPoint(0, 0).setFontColor("#FFFFFF").setPosition(5, 85).setSize(170, 40).setFontSize(14).setFontFamily("Proxima Nova").setText("Livestock Hungry!");
         porkBlocked.appendChild(blockedText);
-        var blockedSub = (new lime.Label()).setAnchorPoint(0, 0).setPosition(2, 105).setSize(175, 40).setFontSize(10).setFontFamily("Comic Sans MS").setText("CHICKENS eat CORN to lay EGGS");
+        var blockedSub = (new lime.Label()).setAnchorPoint(0, 0).setPosition(2, 105).setSize(175, 40).setFontSize(10).setFontFamily("Proxima Nova").setText("CHICKENS eat CORN to lay EGGS");
         porkBlocked.appendChild(blockedSub);
-        var blockedSub2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(2, 120).setSize(175, 40).setFontSize(10).setFontFamily("Comic Sans MS").setText("PIGS eat APPLES to yield HAM");
+        var blockedSub2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(2, 120).setSize(175, 40).setFontSize(10).setFontFamily("Proxima Nova").setText("PIGS eat CARROTS to yield HAM");
         porkBlocked.appendChild(blockedSub2);
 
 
         var cornIcon2 = (new lime.Sprite()).setPosition(50, 145).setFill("images/" + a.crops[5].harvest).setSize(25, 25);
         porkBlocked.appendChild(cornIcon2);
-        var appleIcon2 = (new lime.Sprite()).setPosition(120, 145).setFill("images/" + a.crops[8].harvest).setSize(25, 25);
-        porkBlocked.appendChild(appleIcon2);
+        var carrotIcon2 = (new lime.Sprite()).setPosition(120, 145).setFill("images/" + a.crops[1].harvest).setSize(25, 25);
+        porkBlocked.appendChild(carrotIcon2);
 
-        var gLabel5Pork = (new lime.Label()).setPosition(70, 141).setSize(20, 16).setText(player.cropsStored[5].stored).setFontFamily("Comic Sans MS").setFontColor("#E8FC08");
+        var gLabel5Pork = (new lime.Label()).setPosition(70, 141).setSize(20, 16).setText(player.cropsStored[5].stored).setFontFamily("Proxima Nova").setFontColor("#E8FC08");
         porkBlocked.appendChild(gLabel5Pork);
-        var gLabel8Pork = (new lime.Label()).setPosition(140, 141).setSize(20, 16).setText(player.cropsStored[8].stored).setFontFamily("Comic Sans MS").setFontColor("#E8FC08");
+        var gLabel8Pork = (new lime.Label()).setPosition(140, 141).setSize(20, 16).setText(player.cropsStored[1].stored).setFontFamily("Proxima Nova").setFontColor("#E8FC08");
         porkBlocked.appendChild(gLabel8Pork);
-        var blockedSub3 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(2, 165).setSize(175, 40).setFontSize(10).setFontFamily("Comic Sans MS").setText("Upgrade Home Barn to Level 5 to unlock Corn");
+        var blockedSub3 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(2, 165).setSize(175, 40).setFontSize(10).setFontFamily("Proxima Nova").setText("Upgrade Home Barn to Level 5 to unlock Corn");
         porkBlocked.appendChild(blockedSub3);
         porkBlocked.setHidden(true);
 
@@ -14180,16 +16347,16 @@ farming.start = function () {
         });
 
         var livestockHelpPanel = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 100).setSize(a.width - 30, a.height / 2 + 40).setFill(imgArray[78]).setHidden(true);
-        var helpHeaderlivestock = (new lime.Label()).setAnchorPoint(0, 0).setPosition(62, 28).setText("LiveStock Pens").setFontFamily("Comic Sans MS").setFontSize(24);
+        var helpHeaderlivestock = (new lime.Label()).setAnchorPoint(0, 0).setPosition(62, 28).setText("LiveStock Pens").setFontFamily("Proxima Nova").setFontSize(24);
         livestockHelpPanel.appendChild(helpHeaderlivestock);
-        var helpText1livestock = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 70).setText("The goal here is to feed the animals and collect goods.").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var helpText1livestock = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 70).setText("The goal here is to feed the animals and collect goods.").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         livestockHelpPanel.appendChild(helpText1livestock);
-        var helpText2livestock = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 115).setText("Pigs eat APPLES to produce HAM on a regular basis. ").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var helpText2livestock = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 115).setText("Pigs eat APPLES to produce HAM on a regular basis. ").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         livestockHelpPanel.appendChild(helpText2livestock);
-        var helpText3livestock = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 165).setText("Chickens eat CORN to yield EGGS. Upgrade your home barn to grow CORN").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var helpText3livestock = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 165).setText("Chickens eat CORN to yield EGGS. Upgrade your home barn to grow CORN").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         livestockHelpPanel.appendChild(helpText3livestock);
 
-        var helpText4livestock = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 230).setText("You can collect Ham and Eggs once per minute").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var helpText4livestock = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 230).setText("You can collect Ham and Eggs once per minute").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         livestockHelpPanel.appendChild(helpText4livestock);
 
         var livestockHelpPanelCloseBtn = (new lime.GlossyButton()).setColor("#663300").setText("Close").setPosition(140, 296).setSize(100, 20);
@@ -14214,9 +16381,9 @@ farming.start = function () {
 
         var questPanelLS = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 115).setSize(a.width - 30, a.height / 2).setFill(imgArray[78]).setHidden(true);
         liveStockLayer.appendChild(questPanelLS);
-        var questHeaderLS = (new lime.Label()).setAnchorPoint(0, 0).setPosition(55, 25).setText("Farmhand Eva").setFontFamily("Comic Sans MS").setFontSize(24);
+        var questHeaderLS = (new lime.Label()).setAnchorPoint(0, 0).setPosition(55, 25).setText("Farmhand Eva").setFontFamily("Proxima Nova").setFontSize(24);
         questPanelLS.appendChild(questHeaderLS);
-        var questText1LS = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 145).setText(questParamsEva.speech[0].text).setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var questText1LS = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 145).setText(questParamsEva.speech[0].text).setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         questPanelLS.appendChild(questText1LS);
         var questPanelAvatarLS = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(90, 40).setSize(100, 100).setFill(imgArrayEva[0]);
         questPanelLS.appendChild(questPanelAvatarLS);
@@ -14254,7 +16421,7 @@ farming.start = function () {
         //vinyardLayer.appendChild(topLogoV);
         var topCoinV = (new lime.Sprite()).setPosition(285, 20).setSize(35, 35).setFill(imgArray11[0]);
         vinyardLayer.appendChild(topCoinV);
-        var vinyardCash = (new lime.Label()).setText(player.money).setFontColor("#E8FC08").setPosition(235, 24).setFontFamily("Comic Sans MS").setFontSize(18);
+        var vinyardCash = (new lime.Label()).setText(player.money).setFontColor("#ffffff").setPosition(235, 24).setFontFamily("Proxima Nova").setFontSize(18);
         vinyardLayer.appendChild(vinyardCash);
 
         var vinyardBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 45).setSize(a.controlsLayer_w, 423).setFill(imgArrayVin[0]);
@@ -14265,7 +16432,7 @@ farming.start = function () {
         horizRoadV.appendChild(roadRightV)
 
         var toolCountImgV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(5, 7).setSize(35, 35).setFill(imgArray[30]);
-        var toolCountV = (new lime.Label()).setText(player.tools).setFontColor("#E8FC08").setPosition(65, 24).setFontFamily("Comic Sans MS").setFontSize(18);
+        var toolCountV = (new lime.Label()).setText(player.tools).setFontColor("#ffffff").setPosition(65, 24).setFontFamily("Proxima Nova").setFontSize(18);
         vinyardLayer.appendChild(toolCountImgV);
         vinyardLayer.appendChild(toolCountV);
         isblocked1 = localStorage.getItem("GuiGhostFarms_vinyardBlocks");
@@ -14319,11 +16486,11 @@ farming.start = function () {
         var vinyardTreeBlock1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(55, 195).setSize(240, 105).setFill(imgArrayVin[1]);
         vinyardLayer.appendChild(vinyardTreeBlock1);
         var upgradeCloudTV1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(55, -60).setSize(190, 250).setFill(imgArray[24].src).setOpacity(0.3); vinyardTreeBlock1.appendChild(upgradeCloudTV1);
-        var treeUnlockBtnV = (new lime.Label()).setText("").setAnchorPoint(0, 0).setFontColor("#4CFF33").setFontWeight(600).setPosition(170, 280).setFontFamily("Comic Sans MS").setSize(90, 130); vinyardLayer.appendChild(treeUnlockBtnV);
+        var treeUnlockBtnV = (new lime.Label()).setText("").setAnchorPoint(0, 0).setFontColor("#4CFF33").setFontWeight(600).setPosition(170, 280).setFontFamily("Proxima Nova").setSize(90, 130); vinyardLayer.appendChild(treeUnlockBtnV);
         var axeVLower = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(170, 15).setSize(40, 40).setFill(imgArray[61]); vinyardTreeBlock1.appendChild(axeVLower);
-        var treesImgV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(140, 0).setSize(35, 35).setFill(ImgArrayTools[3]); vinyardTreeBlock1.appendChild(treesImgV);
+        var treesImgV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(140, -3).setSize(40, 40).setFill(ImgArrayTools[3]); vinyardTreeBlock1.appendChild(treesImgV);
 
-        var axeMoverLabelTV1 = (new lime.Label()).setText("60").setPosition(170, 70).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("ComicSans MS").setFill(imgArray[27]);
+        var axeMoverLabelTV1 = (new lime.Label()).setText("60").setPosition(170, 70).setSize(40, 25).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Proxima Nova").setFill(imgArray[27]);
         vinyardTreeBlock1.appendChild(axeMoverLabelTV1);
 
         var axerotateV1 = 0;
@@ -14388,7 +16555,7 @@ farming.start = function () {
                         isblocked1 = 2;
                         treeUnlockBtnV.setHidden(true);
                         localStorage["GuiGhostFarms_vinyardBlocks"] = isblocked1;
-
+                        showMFToast("Vineyard Trees Clear",imgArray[61].src,'vineyard', 3000);
                         try {
                             goog.events.removeAll(treesImgV);
                         } catch (err) { return; }
@@ -14416,12 +16583,12 @@ farming.start = function () {
         }
         var vinyardTreeBlock2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(72, 78).setSize(235, 100).setFill(imgArrayVin[2]);
         vinyardLayer.appendChild(vinyardTreeBlock2);
-        var treeUnlockBtnV2 = (new lime.Label()).setText("").setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontWeight(600).setPosition(170, 165).setSize(90, 130); vinyardLayer.appendChild(treeUnlockBtnV2);
+        var treeUnlockBtnV2 = (new lime.Label()).setText("").setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setFontWeight(600).setPosition(170, 165).setSize(90, 130); vinyardLayer.appendChild(treeUnlockBtnV2);
         var upgradeCloudTV2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, -60).setSize(190, 250).setFill(imgArray[24].src).setOpacity(0.3); vinyardTreeBlock2.appendChild(upgradeCloudTV2);
-        var axeMoverLabelTV2 = (new lime.Label()).setText("60").setPosition(150, 75).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("ComicSans MS").setFill(imgArray[27]);
+        var axeMoverLabelTV2 = (new lime.Label()).setText("60").setPosition(150, 75).setSize(40, 25).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Proxima Nova").setFill(imgArray[27]);
         vinyardTreeBlock2.appendChild(axeMoverLabelTV2);
         var axeVUpper = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(150, 20).setSize(40, 40).setFill(imgArray[61]); vinyardTreeBlock2.appendChild(axeVUpper);
-        var treesImgV2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(130, 0).setSize(35, 35).setFill(ImgArrayTools[3]); vinyardTreeBlock2.appendChild(treesImgV2);
+        var treesImgV2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(130, -3).setSize(40, 40).setFill(ImgArrayTools[3]); vinyardTreeBlock2.appendChild(treesImgV2);
         var axerotateV2 = 0;
         upgradeCloudTV2.setHidden(true);
         axeMoverLabelTV2.setHidden(true);
@@ -14433,6 +16600,10 @@ farming.start = function () {
             vinyardTreeBlock2.setHidden(false);
             treeUnlockBtnV2.setHidden(false);
             treesImgV2.setHidden(false);
+        }else if(isblocked2 == 2){
+            vinyardTreeBlock2.setHidden(true);
+            treeUnlockBtnV2.setHidden(true);
+            treesImgV2.setHidden(true);
         }
         isblocked2 = localStorage.getItem("GuiGhostFarms_vinyardBlocks2");
         goog.events.listen(treesImgV2, ["mousedown", "touchstart"], function () {
@@ -14486,6 +16657,7 @@ farming.start = function () {
                         player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + 500;
                         if (player.cropsStored[14].stored < 0) { player.cropsStored[14].stored = 500; }
                         localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                        showMFToast("Vineyard Trees Clear",imgArray[61].src,'vineyard', 3000);
                         try {
                             goog.events.removeAll(treesImgV2);
                         } catch (err) { return; }
@@ -14529,7 +16701,7 @@ farming.start = function () {
         var HouseVUnlock3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(78, 275).setSize(39, 42).setFill(imgArray[83]);
         vinyardLayer.appendChild(HouseVUnlock3);
 
-
+       
         ///rocks Blocker for future path from Vinyard
 
         var roadToWMfromVin = (new lime.Sprite()).setFill(imgArray[59]).setPosition(36, 63).setSize(35, 35);
@@ -14584,21 +16756,63 @@ farming.start = function () {
             roadToWMfromVin.setHidden(true);
         }
 
-        //var comingSoonVBtn = (new lime.GlossyButton()).setColor("#1ce636").setText("").setPosition(30, 60).setSize(25, 25);
-        //vinyardLayer.appendChild(comingSoonVBtn);
-        //var vinyardNorthImg = (new lime.Sprite()).setFill(imgArray[57]).setPosition(0, 0).setSize(25, 25);
-        //comingSoonVBtn.appendChild(vinyardNorthImg);
-        //var comingSoonVLabel = (new lime.Label()).setText("Coming Soon").setPosition(20, 70).setSize(0, 65).setFontColor("#E8FC08").setFontWeight(600).setFontSize(18).setFontFamily("Comic Sans MS").setFill(imgArray[27]);
-        //comingSoonVBtn.appendChild(comingSoonVLabel)
-        //comingSoonVLabel.setHidden(true);
-        //goog.events.listen(comingSoonVBtn, ["mousedown", "touchstart"], function () {
-        //    comingSoonVLabel.setHidden(false);
-        //    setTimeout(function () { comingSoonVLabel.setHidden(true);}, 3000);
-        //});
+        mapLocations = JSON.parse(localStorage.getItem('mapLocations'));
+        var mapLocV1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(7, 232).setSize(16,20).setFill(imgArrayStore[6]);
+        vinyardLayer.appendChild(mapLocV1);
+        if(mapLocations.places[18].found == 1){
+            mapLocV1.setHidden(true);}
+            else{
+                goog.events.listen(mapLocV1, ["mousedown", "touchstart"], function (e) {
+               if (globalModalBlock == 0){
+                   this.setHidden(true); mapLocations.places[18].found = 1;   getMapFrag('v1');
+                      e.event.stopPropagation();
+                       e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); }
+                });
+            }
+     
+        var mapLocV2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width - 22, 143).setSize(16,20).setFill(imgArrayStore[6]);
+        vinyardLayer.appendChild(mapLocV2);
+        if(mapLocations.places[19].found == 1){
+            mapLocV2.setHidden(true);
+            }else{
+                goog.events.listen(mapLocV2, ["mousedown", "touchstart"], function (e) {
+                    if (globalModalBlock == 0){
+                        this.setHidden(true); mapLocations.places[19].found = 1;  getMapFrag('v2');
+                        e.event.stopPropagation();
+                        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+                    }  
+                });
+            }
+        var mapLocV3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(55, 422).setSize(16,20).setFill(imgArrayStore[6]);
+        vinyardLayer.appendChild(mapLocV3);
+        if(mapLocations.places[20].found == 1){
+            mapLocV3.setHidden(true);
+            }else{
+            goog.events.listen(mapLocV3, ["mousedown", "touchstart"], function (e) {
+                if (globalModalBlock == 0){
+                     this.setHidden(true); mapLocations.places[20].found = 1; getMapFrag('v3');
+                    e.event.stopPropagation();
+                    e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+                 }
+            });
+        }   
+
+
+        var foundTreasureV = (new lime.Sprite()).setPosition(22, 285).setSize(50, 50).setFill('images/stars1.png').setHidden(true);
+        vinyardLayer.appendChild(foundTreasureV);
+        var treasureTickV = 0;
+        if (collectItems.digUpCollect[4].owned == 0 && mapsComplete >= 2){foundTreasureV.setHidden(false);
+        
+        }
+        goog.events.listen(foundTreasureV, ["mousedown", "touchstart"], function (e) {           
+            if (foundTreasureV.getHidden() == false){  loadHeirloom('vineyard'); successSound.play(); };
+            e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+      }, false);
+
         ///vinyard house upgrades
         var scaffoldV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(55, 280).setSize(80, 70).setFill(imgArray[26]); vinyardLayer.appendChild(scaffoldV);
         var upgradeCloudV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 220).setSize(100, 150).setFill(imgArray[24].src); vinyardLayer.appendChild(upgradeCloudV);
-        var toolMoverLabelV = (new lime.Label()).setText("120").setPosition(95, 310).setSize(40, 25).setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Comic Sans MS").setFill(imgArray[27]);
+        var toolMoverLabelV = (new lime.Label()).setText("120").setPosition(95, 310).setSize(40, 25).setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Proxima Nova").setFill(imgArray[27]);
         var toolMoverV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-22, -50).setSize(50, 50).setFill(imgArray[29]);
         vinyardLayer.appendChild(toolMoverLabelV);
         toolMoverLabelV.appendChild(toolMoverV);
@@ -14612,7 +16826,7 @@ farming.start = function () {
         vinyardLayer.appendChild(vineyardUpgradePickMover);
         var vineyardUpgradeRockCloud = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-40, 0).setSize(60, 70).setFill(imgArray[24].src);
         vinyardLayer.appendChild(vineyardUpgradeRockCloud);
-        var toolMoverLabelV2 = (new lime.Label()).setText("60").setPosition(46, 108).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("ComicSans MS").setFill(imgArray[27]);
+        var toolMoverLabelV2 = (new lime.Label()).setText("60").setPosition(46, 108).setSize(40, 25).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Proxima Nova").setFill(imgArray[27]);
         vinyardLayer.appendChild(toolMoverLabelV2);
         vineyardUpgradePickMover.setHidden(true);
         vineyardUpgradeRockCloud.setHidden(true);
@@ -14661,19 +16875,19 @@ farming.start = function () {
         var barnUpgradeCostWoodV = 100;
         var upgradeBarnConfirmV = (new lime.Sprite()).setPosition(155, 250).setSize(250, 250).setFill(imgArray[79])
         vinyardLayer.appendChild(upgradeBarnConfirmV);
-        var upgradeBarntextV1 = (new lime.Label()).setPosition(0, -85).setSize(250, 30).setText("Upgrade Vineyard Barn").setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(20);
+        var upgradeBarntextV1 = (new lime.Label()).setPosition(0, -85).setSize(250, 30).setText("Upgrade Vineyard Barn").setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(20);
         upgradeBarnConfirmV.appendChild(upgradeBarntextV1);
-        var upgradeBarntextV2 = (new lime.Label()).setPosition(0, -50).setSize(250, 30).setText("Unlocks Jelly Making").setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(18);
+        var upgradeBarntextV2 = (new lime.Label()).setPosition(0, -50).setSize(250, 30).setText("Unlocks Jelly Making").setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(18);
         upgradeBarnConfirmV.appendChild(upgradeBarntextV2);
         var upgradeBarnVTools = (new lime.Sprite()).setPosition(-40, -20).setSize(40, 40).setFill(imgArray[30])
         upgradeBarnConfirmV.appendChild(upgradeBarnVTools);
-        var upgradeBarnVToolsTxt = (new lime.Label()).setPosition(-40, 30).setSize(250, 25).setText(barnUpgradeCostToolsV).setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(22);
+        var upgradeBarnVToolsTxt = (new lime.Label()).setPosition(-40, 30).setSize(250, 25).setText(barnUpgradeCostToolsV).setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(22);
         upgradeBarnConfirmV.appendChild(upgradeBarnVToolsTxt);
         var upgradeBarnVWood = (new lime.Sprite()).setPosition(40, -20).setSize(40, 40).setFill("images/" + a.crops[14].harvest)
         upgradeBarnConfirmV.appendChild(upgradeBarnVWood);
-        var upgradeBarnVWoodTxt = (new lime.Label()).setPosition(40, 30).setSize(250, 25).setText(barnUpgradeCostWoodV).setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(22);
+        var upgradeBarnVWoodTxt = (new lime.Label()).setPosition(40, 30).setSize(250, 25).setText(barnUpgradeCostWoodV).setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(22);
         upgradeBarnConfirmV.appendChild(upgradeBarnVWoodTxt);
-        var upgradeBarnVShortText = (new lime.Label()).setPosition(0, 60).setSize(250, 25).setText("You need more resources").setFontFamily("Comic Sans MS").setFontColor("#000000").setFontSize(14);
+        var upgradeBarnVShortText = (new lime.Label()).setPosition(0, 60).setSize(250, 25).setText("You need more resources").setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(14);
         upgradeBarnConfirmV.appendChild(upgradeBarnVShortText);
         upgradeBarnVShortText.setHidden(true);
         var upgradeVinyardBarnBtn = (new lime.GlossyButton()).setColor("#1ce636").setText("Upgrade").setPosition(0, 70).setSize(80, 35);
@@ -14720,14 +16934,16 @@ farming.start = function () {
 
             });
         }
-        var secondsToUpgradeV = 120;
-
+        var secondsToUpgradeV = 150;
+        var hammerTickerV = 0;
+        var hammerSoundV = hammerSound; 
         function vinyardBarnUpgrade(costTools, costWood) {
             if (barnUpInProgressV == 0) {
                 if (globalModalBlock == 0) {
                     vinFarmerQuest.setHidden(true);
                     vinFarmerQuestBtn.setHidden(true);
                     if (player.tools >= costTools && parseInt(player.cropsStored[14].stored)) {
+                        
                         barnUpInProgressV = 1;
                         HouseVUnlock3.setHidden(true);
                         player.tools = player.tools - costTools;
@@ -14739,27 +16955,30 @@ farming.start = function () {
                         scaffoldV.setHidden(false);
                         toolMoverLabelV.setHidden(false);
 
-                        lime.scheduleManager.scheduleWithDelay(function () {
-                            //add upgrade anim
-                            secondsToUpgradeV = secondsToUpgradeV - 1;
-                            upgradesInProgress.buildings[3].timeLeft = secondsToUpgradeV;
-                            upgradesInProgress.buildings[3].currentBarnLevel = 1;
-                            localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
-
-                            toolMoverLabelV.setText(secondsToUpgradeV);
-
-                            if (secondsToUpgradeV <= 0) { toolMoverLabelV.setHidden(true); scaffoldV.setHidden(true); upgradeCloudV.setHidden(true); secondsToUpgradeV = 60; }
-
-                        }, this, 1000, secondsToUpgradeV)
                         //upgrade countdown timer
 
                         var upCloudWV = 100;
                         var upCloudXV = 45;
                         var upCloudYV = 220;
+                        var vinBarnTicker = 0;
+
                         ///upgrade cloud vinyard
                         lime.scheduleManager.scheduleWithDelay(function () {
                             //add upgrade anim
-
+                            vinBarnTicker++;
+                            if (vinBarnTicker == 4){
+                                secondsToUpgradeV = secondsToUpgradeV - 1;
+                                vinBarnTicker = 0;
+                                upgradesInProgress.buildings[3].timeLeft = secondsToUpgradeV;
+                                upgradesInProgress.buildings[3].currentBarnLevel = 1;
+                                localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
+    
+                                toolMoverLabelV.setText(secondsToUpgradeV);
+    
+                                if (secondsToUpgradeV <= 0) { toolMoverLabelV.setHidden(true); scaffoldV.setHidden(true); upgradeCloudV.setHidden(true); secondsToUpgradeV = 60; }
+                                hammerTickerV++;
+                                if(hammerTickerV >= 5){if(sceneActive == 'Vineyard') {hammerSoundV.play();}; vinyardTicker = 0;};
+                            }
                             upgradeCloudV.setPosition(upCloudXV, upCloudYV).setSize(upCloudWV, 200)
                             upCloudWV = upCloudWV + 10;
                             upCloudXV = upCloudXV - 5;
@@ -14780,6 +16999,7 @@ farming.start = function () {
                             vinyardBarn.setFill(imgArrayVin[6]);
                             HouseVUnlock3.setHidden(true);
                             vinyardHouseLevel = 2;
+                            checkLandSlide();
                             questParams.terric[0].highestCompleted = 1;
                             questParams.terric[1].completed = 1;
                             //questText1V.setText(questParams.terric[2].text);
@@ -14787,6 +17007,8 @@ farming.start = function () {
                             else { questText1V.setText("Now we are making Jelly! Keeps the grapes coming"); }
                             vinFarmerQuest.setHidden(false);
                             vinFarmerQuestBtn.setHidden(false);
+                            showMFToast("Vineyard Upgraded",imgArray[30].src,'vineyard', 3000);
+
                             //start making jelly
 
                             lime.scheduleManager.callAfter(function () { a.makeJelly(); }, this, 200);
@@ -14806,6 +17028,8 @@ farming.start = function () {
                             } catch (err) { return; }
                             //goog.events.removeAll(closeVinyardBarnBtn);
                             barnUpInProgressV = 0;
+                            hammerSoundV.stop();
+                            showMFToast("Unlocked Jelly","images/vinyard/jelly.png",'vineyard', 3000);
                         }, this, secondsToUpgradeV * 1000);
                         //    
 
@@ -14826,11 +17050,11 @@ farming.start = function () {
         vinyardLayer.appendChild(collectJelly);
         var collectJellyIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(8, 2).setSize(30, 31).setFill("images/" + a.crops[13].harvest);
         collectJelly.appendChild(collectJellyIcon);
-        var collectJellyLabel = (new lime.Label()).setText("+ 0 ").setFontWeight(500).setFontColor("#E8FC08").setPosition(23, 44).setSize(30, 18).setFontFamily("Comic Sans MS");
+        var collectJellyLabel = (new lime.Label()).setText("+ 0 ").setFontWeight(500).setFontColor("#E8FC08").setPosition(23, 44).setSize(30, 18).setFontFamily("Proxima Nova");
         collectJelly.appendChild(collectJellyLabel);
         collectJelly.setHidden(true);
         var jellyWaiting = 0;
-        var jellyUpCount = (new lime.Label()).setText("+ 1 Jelly").setFontWeight(600).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setPosition(145, 335).setOpacity(0.4);
+        var jellyUpCount = (new lime.Label()).setText("+ 1 Jelly").setFontWeight(600).setFontColor("#E8FC08").setFontFamily("Proxima Nova").setPosition(145, 335).setOpacity(0.4);
         vinyardLayer.appendChild(jellyUpCount);
         jellyUpCount.setHidden(true);
 
@@ -14844,7 +17068,7 @@ farming.start = function () {
             purchaseSound.play();
         });
         //cost display
-        var costDisplayV = (new lime.Label()).setPosition(156, 180).setSize(50, 25).setText("50").setFontSize(14).setFontFamily("Comic Sans MS").setFontColor("#e1f00e").setFontWeight(600);
+        var costDisplayV = (new lime.Label()).setPosition(156, 180).setSize(50, 25).setText("50").setFontSize(14).setFontFamily("Proxima Nova").setFontColor("#e1f00e").setFontWeight(600);
         vinyardLayer.appendChild(costDisplayV);
         var costCoinV = (new lime.Sprite()).setPosition(30, -8).setSize(30, 30).setFill(imgArray11[0]); costDisplayV.appendChild(costCoinV);
         costDisplayV.setHidden(true);
@@ -14854,7 +17078,7 @@ farming.start = function () {
         vinyardLayer.appendChild(controlsBackVin);
         //vinyard growing set
         var hhV = b.currentCrop;
-        var wV = (new lime.Label()).setText("Growing " + a.crops[12].name).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontSize(12).setPosition(a.controlsLayer_w / 2 - 7, a.height - a.controlsLayer_h / 2 - 11);
+        var wV = (new lime.Label()).setText("Growing " + a.crops[12].name).setFontFamily("Proxima Nova").setFontColor("#ffffff").setFontSize(12).setPosition(a.controlsLayer_w / 2 - 7, a.height - a.controlsLayer_h / 2 - 11);
         vinyardLayer.appendChild(wV);
         var zV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.controlsLayer_w / 2 - 28, a.height - a.controlsLayer_h / 2 - 10).setFill("images/" + a.crops[12].harvest).setSize(30, 38);
         vinyardLayer.appendChild(zV);
@@ -14922,7 +17146,7 @@ farming.start = function () {
 
         goog.events.listen(fbBtnV, ["mousedown", "touchstart"], function () {
             if (globalModalBlock == 0) {
-                shareFacebook();
+                openStarMenu();
 
             }
         });
@@ -14930,7 +17154,7 @@ farming.start = function () {
             if (globalModalBlock == 0) {
                 var isMuted = lime.audio.getMute();
                 if (isMuted) {
-                    lime.audio.setMute(false); themeSong.play(true); localStorage.setItem('GuiGhostFarms_muted', 0)
+                    lime.audio.setMute(false); themeSongNew.play(true); localStorage.setItem('GuiGhostFarms_muted', 0)
                     setMute(2);
                 } else { lime.audio.setMute(true); setMute(1); localStorage.setItem('GuiGhostFarms_muted', 1) }
             }
@@ -14960,9 +17184,9 @@ farming.start = function () {
                 hideAndDelayNavIcons();
                 c.replaceScene(marketScene, lime.transitions.SlideInUp);
                 sceneActive = 'Market';
-                acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+                acresOwned3 = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
                 if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
-                lime.scheduleManager.callAfter(function () { CheckQuestInvItems(); }, this, 1500);
+                lime.scheduleManager.callAfter(function () { try{CheckQuestInvItems();}catch(err){console.log(err)}; }, this, 1500);
             }
         });
 
@@ -14999,17 +17223,19 @@ farming.start = function () {
 
         ///storage menu vinyard
         //vinyard inventory icons
-        var toInventoryV = (new lime.Sprite()).setPosition((a.controlsLayer_w / 2) - 5, 22).setSize(38, 38).setFill(imgArrayItems[25].src);
+        var toInventoryV = (new lime.Sprite()).setPosition((a.controlsLayer_w / 2) - 5, 22).setSize(51, 40).setFill(imgArrayItems[25].src).setRotation(5);
         vinyardLayer.appendChild(toInventoryV);
 
         goog.events.listen(toInventoryV, ["mousedown", "touchstart"], function () {
             a.sceneBefore = 4;
-            checkItemsOwned();
+            try{checkItemsOwned();}catch(err){console.log(err)};
             starCashInvCount.setText(starCash);
             hideAndDelayNavIcons();
+            cropsBack.setHidden(false); itemsBack.setHidden(true); itemsStoredBack.setHidden(true); collectBack.setHidden(true);  ///always open to cropsInventory
             c.replaceScene(inventoryScene, lime.transitions.SlideInUp); sceneActive = 'Inventory';
+            playerImg.setHidden(false);
             //setTimeout(function () { validCropsStored(); }, 0);
-            updateInventoryCounts();
+            try{updateInventoryCounts();}catch(err){console.log(err)};
         });
 
         var compassV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(130, 449).setSize(35, 35).setFill(imgArray[73]); vinyardLayer.appendChild(compassV);
@@ -15021,16 +17247,66 @@ farming.start = function () {
         //});
         vinyardBlock.setHidden(true);
 
-        ///Out of Cash modal- vinyard
-        var outOfCashV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 100).setSize(210, 220).setFill(imgArray[33]);
+        // ///Out of Cash modal- vinyard
+        // var outOfCashV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 100).setSize(210, 220).setFill(imgArray[33]);
+        // vinyardLayer.appendChild(outOfCashV);
+        // var buyStarCashV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(122, 212).setSize(75, 35).setFill("images/UI/buyStarCash.png");
+        // outOfCashV.appendChild(buyStarCashV);
+        // var marketBtn1V = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 212).setSize(75, 35).setFill(imgArray[32]);
+        // outOfCashV.appendChild(marketBtn1V);
+        // var cancelBtnCashV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(89, 212).setSize(35, 35).setFill(imgArray[21]);
+        // outOfCashV.appendChild(cancelBtnCashV);
+        // outOfCashV.setHidden(true); marketBtn1V.setHidden(true); buyStarCashV.setHidden(true);
+
+        var outOfCashV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(26, 100).setSize(250, 305).setFill(imgArray[33]);
         vinyardLayer.appendChild(outOfCashV);
-        var buyStarCashV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(122, 212).setSize(75, 35).setFill("images/UI/buyStarCash.png");
+        var outBack1V = new lime.RoundedRect().setSize(205,50).setRadius(10).setPosition(125, 140).setOpacity(0.9);
+        outBack1V.setFill(gradient1);
+        outOfCashV.appendChild(outBack1V);
+        var outOfCashLbl1V = (new lime.Label()).setAnchorPoint(0, 0).setPosition(45, 30).setText("Not Enough Coins").setFontColor("RED").setFontFamily("Proxima Nova").setFontSize(22);
+        outOfCashV.appendChild(outOfCashLbl1V);
+        var outOfCashLbl2V= (new lime.Label()).setAnchorPoint(0, 0).setPosition(30, 125).setText("Buy Coins with Stars").setFontColor("WHITE").setSize(90, 80).setFontFamily("Proxima Nova").setFontSize(16);
+        outOfCashV.appendChild(outOfCashLbl2V);
+        var buyStarCashV= (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(157, 118).setSize(45, 45).setFill(imgArray[72]);
         outOfCashV.appendChild(buyStarCashV);
-        var marketBtn1V = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 212).setSize(75, 35).setFill(imgArray[32]);
+        var outBack2V= new lime.RoundedRect().setSize(205,50).setRadius(10).setPosition(125, 195).setOpacity(0.9);
+        outBack2V.setFill(gradient1);
+        outOfCashV.appendChild(outBack2V);
+        var outOfCashLbl3V= (new lime.Label()).setAnchorPoint(0, 0).setPosition(30, 178).setText("Get 200 Coins Free").setFontColor("WHITE").setSize(90, 80).setFontFamily("Proxima Nova").setFontSize(16);
+        outOfCashV.appendChild(outOfCashLbl3V);
+        var outofCoinViewAdBtnV= (new lime.Sprite).setAnchorPoint(0, 0).setPosition(133, 173).setSize(90, 42).setFill(imgArray[108]);
+        outOfCashV.appendChild(outofCoinViewAdBtnV);
+        var outBack3V= new lime.RoundedRect().setSize(205,50).setRadius(10).setPosition(125, 250).setOpacity(0.9);
+        outBack3V.setFill(gradient1);
+        outOfCashV.appendChild(outBack3V);
+        var outOfCashLbl4V= (new lime.Label()).setAnchorPoint(0, 0).setPosition(30, 235).setText("Sell Crops in Town").setFontColor("WHITE").setSize(90, 80).setFontFamily("Proxima Nova").setFontSize(16);
+        outOfCashV.appendChild(outOfCashLbl4V);
+        var marketBtn1V= (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(157, 228).setSize(45, 45).setFill(imgArray[81]);
         outOfCashV.appendChild(marketBtn1V);
-        var cancelBtnCashV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(89, 212).setSize(35, 35).setFill(imgArray[21]);
+        var cancelBtnCashV= (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(110, 290).setSize(35, 35).setFill(imgArray[21]);
         outOfCashV.appendChild(cancelBtnCashV);
-        outOfCashV.setHidden(true); marketBtn1V.setHidden(true); buyStarCashV.setHidden(true);
+        outOfCashV.setHidden(true); marketBtn1P.setHidden(true); buyStarCashP.setHidden(true);
+
+        goog.events.listen(outofCoinViewAdBtnV, ["mousedown", "touchstart"], function () {            //starCash Button
+            var isHidoChV = outOfCashV.getHidden();
+            if (isHidoChV == false) {
+                outOfCashV.setHidden(true); outOfCash.setHidden(true); outOfCashP.setHidden(true); 
+                homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
+                
+                warningSeen = 1;
+                localStorage.setItem("acreDiscount1", 0);
+                localStorage.setItem('MedFarm_LoadAd', 0);
+                localStorage.setItem('MedFarm_StarCashBoost', 1);
+                lime.audio.setMute(true);
+                lime.scheduleManager.callAfter(function () { 
+                    player.money = parseInt(player.money) + 200; 
+                    a.updateMoney(); 
+                    globalModalBlock = 0;
+                    localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player)); 
+                }, this, 5000);
+              
+            }
+       });
 
         goog.events.listen(buyStarCashV, ["mousedown", "touchstart"], function () {            //starCash Button
             if (globalModalBlock == 0) {
@@ -15040,7 +17316,7 @@ farming.start = function () {
                 outOfCashV.setHidden(true); marketBtn1V.setHidden(true); buyStarCashV.setHidden(true);
                 outOfCash.setHidden(true); marketBtn1.setHidden(true); buyStarCash.setHidden(true);
                 pastureBlock.setHidden(true); homeBlock.setHidden(true); orchardBlock.setHidden(true); vinyardBlock.setHidden(true); lsBlock.setHidden(true);
-                shareFacebook();
+                openStarMenu();
 
             }
         });
@@ -15059,9 +17335,9 @@ farming.start = function () {
             sceneActive = 'Market';
 
 
-            acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+            acresOwned3 = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
             if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
-            lime.scheduleManager.callAfter(function () { CheckQuestInvItems(); validCropsStored(); a.updateStored(); }, this, 1500);
+            lime.scheduleManager.callAfter(function () { try{CheckQuestInvItems();}catch(err){console.log(err)}; validCropsStored(); a.updateStored(); }, this, 1500);
             globalModalBlock = 0;
         });
         goog.events.listen(cancelBtnCashV, ["mousedown", "touchstart"], function () {            //cancel Button
@@ -15086,11 +17362,11 @@ farming.start = function () {
 
         ////achievement Modal
         var achieveNotifV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 130).setSize(210, 220).setFill(imgArray[91]);
-        var achieveTextV = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(13, 45).setSize(190, 60).setFontSize(16).setText("Blacksmith I");
+        var achieveTextV = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(13, 45).setSize(190, 60).setFontSize(16).setText("Blacksmith I");
         achieveNotifV.appendChild(achieveTextV);
-        var achieveTextSubV = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(30, 123).setSize(150, 60).setFontSize(12).setText("Achieve Text");
+        var achieveTextSubV = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(30, 123).setSize(150, 60).setFontSize(12).setText("Achieve Text");
         achieveNotifV.appendChild(achieveTextSubV);
-        var achieveSCV = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#000033").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ");
+        var achieveSCV = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#000033").setPosition(21, 182).setSize(190, 60).setFontSize(18).setText(" + ");
         achieveNotifV.appendChild(achieveSCV);
         var confirmBtnAV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(90, 211).setSize(40, 40).setFill(imgArray[21]);
         achieveNotifV.appendChild(confirmBtnAV);
@@ -15222,7 +17498,6 @@ farming.start = function () {
                 ///from pature to Market
                 c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
                 sceneActive = 'LS';
-                checkShortage();
                 chickenSound.play();
                 pig1Sound.play();
                 lime.scheduleManager.callAfter(function () { pig2Sound.play(); }, this, 5000);
@@ -15239,20 +17514,21 @@ farming.start = function () {
         vinyardLayer.appendChild(jellyBlocked);
         var confirmjellyBlocked = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(70, 195).setSize(40, 40).setFill(imgArray[21]);
         jellyBlocked.appendChild(confirmjellyBlocked);
-        var blockedTextJ = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(5, 120).setSize(170, 40).setFontSize(14).setText("Jelly Making Halted!");
+        var blockedTextJ = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(5, 120).setSize(170, 40).setFontSize(14).setText("Jelly Making Halted!");
         jellyBlocked.appendChild(blockedTextJ);
-        var blockedSubJ = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Comic Sans MS").setFontColor("#FFFFFF").setPosition(2, 140).setSize(175, 40).setFontSize(10).setText("You need to grow more GRAPES to make JELLY");
+        var blockedSubJ = (new lime.Label()).setAnchorPoint(0, 0).setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(2, 140).setSize(175, 40).setFontSize(10).setText("You need to grow more GRAPES to make JELLY");
         jellyBlocked.appendChild(blockedSubJ);
         var grapesIcon2 = (new lime.Sprite()).setPosition(85, 180).setFill("images/" + a.crops[12].harvest).setSize(20, 25);
         jellyBlocked.appendChild(grapesIcon2);
-        var gLabel5Jelly = (new lime.Label()).setPosition(105, 186).setSize(20, 16).setText(player.cropsStored[12].stored).setFontFamily("Comic Sans MS").setFontColor("#E8FC08");
+        var gLabel5Jelly = (new lime.Label()).setPosition(105, 186).setSize(20, 16).setText(player.cropsStored[12].stored).setFontFamily("Proxima Nova").setFontColor("#E8FC08");
         jellyBlocked.appendChild(gLabel5Jelly);
 
         jellyBlocked.setHidden(true);
 
         goog.events.listen(confirmjellyBlocked, ["mousedown", "touchstart"], function () {
             jellyBlocked.setHidden(true);
-            if (isblocked1 == 2) { treeUnlockBtnV2.setHidden(true); }
+            if (isblocked1 == 2) { treeUnlockBtnV.setHidden(true); treesImgV.setHidden(true); } else { treeUnlockBtnV.setHidden(false);  treesImgV.setHidden(false);}
+                if (isblocked2 == 2) { treeUnlockBtnV2.setHidden(true); treesImgV2.setHidden(true);} else { treeUnlockBtnV2.setHidden(false); treesImgV2.setHidden(false); }
             vinyardBlock.setHidden(true); pastureBlock.setHidden(true); homeBlock.setHidden(true); orchardBlock.setHidden(true);
         });
         var jellyBonus = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(30, 130).setSize(250, 250).setFill(imgArrayVin[7]);
@@ -15264,9 +17540,9 @@ farming.start = function () {
         var questPanelV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 115).setSize(a.width - 30, a.height / 2).setFill(imgArray[78]);
         vinyardLayer.appendChild(questPanelV);
         questPanel.setHidden(true);
-        var questHeaderV = (new lime.Label()).setAnchorPoint(0, 0).setPosition(40, 25).setText("Vinemaster Terric").setFontFamily("Comic Sans MS").setFontSize(24);
+        var questHeaderV = (new lime.Label()).setAnchorPoint(0, 0).setPosition(40, 25).setText("Vinemaster Terric").setFontFamily("Proxima Nova").setFontSize(24);
         questPanelV.appendChild(questHeaderV);
-        var questText1V = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 155).setText(questParams.terric[1].text).setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var questText1V = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 155).setText(questParams.terric[1].text).setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         questPanelV.appendChild(questText1V);
         var questPanelAvatarV = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(90, 45).setSize(100, 100).setFill(imgArrayVin[12]);
         questPanelV.appendChild(questPanelAvatarV);
@@ -15281,8 +17557,10 @@ farming.start = function () {
                 vinFarmerQuestBtn.setHidden(true);
                 questPanelV.setHidden(true);
                 vinyardBlock.setHidden(true);
-                if (isblocked1 == 2) { treeUnlockBtnV2.setHidden(true); } else { treeUnlockBtnV2.setHidden(false); }
-                if (isblocked2 == 2) { treeUnlockBtnV.setHidden(true); } else { treeUnlockBtnV.setHidden(false); }
+               
+               
+                if (isblocked1 == 2) { treeUnlockBtnV2.setHidden(true); } else { treeUnlockBtnV2.setHidden(false);  treesImgV.setHidden(false);}
+                if (isblocked2 == 2) { treeUnlockBtnV.setHidden(true); } else { treeUnlockBtnV.setHidden(false); treesImgV2.setHidden(false); }
                 vinyardBlock.setHidden(true); pastureBlock.setHidden(true); homeBlock.setHidden(true); orchardBlock.setHidden(true);
                 e.event.stopPropagation();
                 e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
@@ -15386,6 +17664,22 @@ farming.start = function () {
 
 
             };
+            treasureTickV++;
+            if (foundTreasureV.getHidden() == false && treasureTickV >= 4){
+                treasureTickV = 0;
+                lime.scheduleManager.scheduleWithDelay(function(){
+                    foundTreasureV.setRotation(0);
+                    lime.scheduleManager.callAfter( function(){
+                        foundTreasureV.setRotation(90);
+                    },this,250);
+                    lime.scheduleManager.callAfter( function(){
+                        foundTreasureV.setRotation(180);
+                    },this,500);
+                    lime.scheduleManager.callAfter( function(){
+                        foundTreasureV.setRotation(270);
+                    },this,750);
+                },this, 1000 );
+            }
         }, this, 250)
 
 
@@ -15393,9 +17687,9 @@ farming.start = function () {
         var questPanelV2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 115).setSize(a.width - 30, a.height / 2).setFill(imgArray[78]);
         vinyardLayer.appendChild(questPanelV2);
         questPanelV2.setHidden(true);
-        var questHeaderV2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(40, 25).setText("Vinemaster Terric").setFontFamily("Comic Sans MS").setFontSize(24);
+        var questHeaderV2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(40, 25).setText("Vinemaster Terric").setFontFamily("Proxima Nova").setFontSize(24);
         questPanelV2.appendChild(questHeaderV2);
-        var questText1V2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(15, 150).setText("This old path used to lead to the WINDMILL before the landslide").setFontFamily("Comic Sans MS").setFontSize(15).setSize(a.width - 70, a.height / 2 - 50);
+        var questText1V2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(15, 150).setText("This old path used to lead to the WINDMILL before the landslide").setFontFamily("Proxima Nova").setFontSize(15).setSize(a.width - 70, a.height / 2 - 50);
         questPanelV2.appendChild(questText1V2);
         var questPanelAvatarV2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(105, 50).setSize(80, 80).setFill(imgArrayVin[12]);
         questPanelV2.appendChild(questPanelAvatarV2);
@@ -15490,13 +17784,13 @@ farming.start = function () {
 
 
         var vinyardHelpPanel = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 100).setSize(a.width - 30, a.height / 2 + 40).setFill(imgArray[78]).setHidden(true);
-        var helpHeadervinyard = (new lime.Label()).setAnchorPoint(0, 0).setPosition(68, 30).setText("The Vineyard").setFontFamily("Comic Sans MS").setFontSize(24);
+        var helpHeadervinyard = (new lime.Label()).setAnchorPoint(0, 0).setPosition(68, 30).setText("The Vineyard").setFontFamily("Proxima Nova").setFontSize(24);
         vinyardHelpPanel.appendChild(helpHeadervinyard);
-        var helpText1vinyard = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 80).setText("These hills are best suited to growing GRAPES").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var helpText1vinyard = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 80).setText("These hills are best suited to growing GRAPES").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         vinyardHelpPanel.appendChild(helpText1vinyard);
-        var helpText2vinyard = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 140).setText("Upgrade the Vineyard and buy JARS in town to unlock JELLY").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var helpText2vinyard = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 140).setText("Upgrade the Vineyard and buy JARS in town to unlock JELLY").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         vinyardHelpPanel.appendChild(helpText2vinyard);
-        var helpText3vinyard = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 205).setText("As long as you have GRAPES and JARS, you can collect JELLY regularly").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var helpText3vinyard = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 205).setText("As long as you have GRAPES and JARS, you can collect JELLY regularly").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         vinyardHelpPanel.appendChild(helpText3vinyard);
 
         var vinyardHelpPanelCloseBtn = (new lime.GlossyButton()).setColor("#663300").setText("Close").setPosition(140, 292).setSize(100, 20);
@@ -15547,105 +17841,105 @@ farming.start = function () {
         achieveLayer.appendChild(backBtnAchieve);
 
         var achieve1 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(9, 80).setFill(imgArray[18].src).setSize(142, 40); achieveLayer.appendChild(achieve1);
-        var achieve1Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(75, 85).setText("Harvester I").setSize(152, 40); achieveLayer.appendChild(achieve1Label);
-        var achieve1Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setFontSize(11).setPosition(80, 108).setText("Harvest 500 crops").setSize(152, 40); achieveLayer.appendChild(achieve1Label2);
+        var achieve1Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(75, 85).setText("Harvester I").setSize(152, 40); achieveLayer.appendChild(achieve1Label);
+        var achieve1Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#ffffff").setFontSize(11).setPosition(80, 108).setText("Harvest 500 crops").setSize(152, 40); achieveLayer.appendChild(achieve1Label2);
         var achieve1Star = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(120, 80).setFill(imgArray[37]).setSize(30, 29.5); achieveLayer.appendChild(achieve1Star);
         var achieve1Check = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(10, 85).setFill(imgArray[35]).setSize(16, 16); achieveLayer.appendChild(achieve1Check);
 
         var achieve2 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(9, 125).setFill(imgArray[18].src).setSize(142, 40); achieveLayer.appendChild(achieve2);
-        var achieve2Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(75, 130).setText("Harvester II").setSize(152, 40); achieveLayer.appendChild(achieve2Label);
-        var achieve2Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(80, 153).setFontSize(11).setText("Harvest 5000 crops").setSize(152, 40); achieveLayer.appendChild(achieve2Label2);
+        var achieve2Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(75, 130).setText("Harvester II").setSize(152, 40); achieveLayer.appendChild(achieve2Label);
+        var achieve2Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(80, 153).setFontSize(11).setText("Harvest 5000 crops").setSize(152, 40); achieveLayer.appendChild(achieve2Label2);
         var achieve2Star = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(120, 125).setFill(imgArray[38]).setSize(30, 29.5); achieveLayer.appendChild(achieve2Star);
         var achieve2Check = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(10, 130).setFill(imgArray[35]).setSize(16, 16); achieveLayer.appendChild(achieve2Check);
 
         var achieve3 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(9, 170).setFill(imgArray[18].src).setSize(142, 40); achieveLayer.appendChild(achieve3);
-        var achieve3Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(75, 175).setText("Expansion").setSize(152, 40); achieveLayer.appendChild(achieve3Label);
-        var achieve3Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(80, 198).setFontSize(11).setText("Purchase another Acre").setSize(152, 40); achieveLayer.appendChild(achieve3Label2);
+        var achieve3Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(75, 175).setText("Expansion").setSize(152, 40); achieveLayer.appendChild(achieve3Label);
+        var achieve3Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(80, 198).setFontSize(11).setText("Purchase another Acre").setSize(152, 40); achieveLayer.appendChild(achieve3Label2);
         var achieve3Star = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(120, 170).setFill(imgArray[37]).setSize(30, 29.5); achieveLayer.appendChild(achieve3Star);
         var achieve3Check = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(10, 175).setFill(imgArray[35]).setSize(16, 16); achieveLayer.appendChild(achieve3Check);
 
         var achieve4 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(9, 215).setFill(imgArray[18].src).setSize(142, 40); achieveLayer.appendChild(achieve4);
-        var achieve4Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(75, 220).setText("Carpenter").setSize(152, 40); achieveLayer.appendChild(achieve4Label);
-        var achieve4Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(80, 243).setFontSize(11).setText("Upgrade Barn to Max").setSize(152, 40); achieveLayer.appendChild(achieve4Label2);
+        var achieve4Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(75, 220).setText("Carpenter").setSize(152, 40); achieveLayer.appendChild(achieve4Label);
+        var achieve4Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(80, 243).setFontSize(11).setText("Upgrade Barn to Max").setSize(152, 40); achieveLayer.appendChild(achieve4Label2);
         var achieve4Star = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(120, 215).setFill(imgArray[38]).setSize(30, 29.5); achieveLayer.appendChild(achieve4Star);
         var achieve4Check = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(10, 220).setFill(imgArray[35]).setSize(16, 16); achieveLayer.appendChild(achieve4Check);
 
 
         var achieve5 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(157, 80).setFill(imgArray[18].src).setSize(142, 40); achieveLayer.appendChild(achieve5);
-        var achieve5Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(220, 85).setText("Blacksmith I").setSize(152, 40); achieveLayer.appendChild(achieve5Label);
-        var achieve5Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(226, 108).setFontSize(11).setText("Collect 500 Tools").setSize(152, 40); achieveLayer.appendChild(achieve5Label2);
+        var achieve5Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(220, 85).setText("Blacksmith I").setSize(152, 40); achieveLayer.appendChild(achieve5Label);
+        var achieve5Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(226, 108).setFontSize(11).setText("Collect 500 Tools").setSize(152, 40); achieveLayer.appendChild(achieve5Label2);
         var achieve5Star = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(266, 80).setFill(imgArray[37]).setSize(30, 29.5); achieveLayer.appendChild(achieve5Star);
         var achieve5Check = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(158, 85).setFill(imgArray[35]).setSize(16, 16); achieveLayer.appendChild(achieve5Check);
 
         var achieve6 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(157, 125).setFill(imgArray[18].src).setSize(142, 40); achieveLayer.appendChild(achieve6);
-        var achieve6Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(220, 130).setText("Blacksmith II").setSize(152, 40); achieveLayer.appendChild(achieve6Label);
-        var achieve6Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(226, 153).setFontSize(11).setText("Collect 5000 Tools").setSize(152, 40); achieveLayer.appendChild(achieve6Label2);
+        var achieve6Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(220, 130).setText("Blacksmith II").setSize(152, 40); achieveLayer.appendChild(achieve6Label);
+        var achieve6Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(226, 153).setFontSize(11).setText("Collect 5000 Tools").setSize(152, 40); achieveLayer.appendChild(achieve6Label2);
         var achieve6Star = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(266, 125).setFill(imgArray[38]).setSize(30, 29.5); achieveLayer.appendChild(achieve6Star);
         var achieve6Check = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(158, 130).setFill(imgArray[35]).setSize(16, 16); achieveLayer.appendChild(achieve6Check);
 
         var achieve7 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(157, 170).setFill(imgArray[18].src).setSize(142, 40); achieveLayer.appendChild(achieve7);
-        var achieve7Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(220, 175).setText("Patience").setSize(152, 40); achieveLayer.appendChild(achieve7Label);
-        var achieve7Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(226, 198).setFontSize(11).setText("Play for 1 Farm Year").setSize(152, 40); achieveLayer.appendChild(achieve7Label2);
+        var achieve7Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(220, 175).setText("Patience").setSize(152, 40); achieveLayer.appendChild(achieve7Label);
+        var achieve7Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(226, 198).setFontSize(11).setText("Play for 1 Farm Year").setSize(152, 40); achieveLayer.appendChild(achieve7Label2);
         var achieve7Star = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(266, 170).setFill(imgArray[38]).setSize(30, 29.5); achieveLayer.appendChild(achieve7Star);
         var achieve7Check = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(158, 175).setFill(imgArray[35]).setSize(16, 16); achieveLayer.appendChild(achieve7Check);
 
         var achieve8 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(157, 215).setFill(imgArray[18].src).setSize(142, 40); achieveLayer.appendChild(achieve8);
-        var achieve8Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(220, 220).setText("Acreage").setSize(152, 40); achieveLayer.appendChild(achieve8Label);
-        var achieve8Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(226, 243).setFontSize(11).setText("Own 5 Acres").setSize(152, 40); achieveLayer.appendChild(achieve8Label2);
+        var achieve8Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(220, 220).setText("Acreage").setSize(152, 40); achieveLayer.appendChild(achieve8Label);
+        var achieve8Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(226, 243).setFontSize(11).setText("Own 5 Acres").setSize(152, 40); achieveLayer.appendChild(achieve8Label2);
         var achieve8Star = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(266, 215).setFill(imgArray[39]).setSize(30, 29.5); achieveLayer.appendChild(achieve8Star);
         var achieve8Check = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(158, 220).setFill(imgArray[35]).setSize(16, 16); achieveLayer.appendChild(achieve8Check);
 
         var achieve9 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(9, 260).setFill(imgArray[18].src).setSize(142, 40); achieveLayer.appendChild(achieve9);
-        var achieve9Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(75, 265).setText("Jelly Making").setSize(152, 40); achieveLayer.appendChild(achieve9Label);
-        var achieve9Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(80, 288).setFontSize(11).setText("Unlock Jelly Making").setSize(152, 40); achieveLayer.appendChild(achieve9Label2);
+        var achieve9Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(75, 265).setText("Jelly Making").setSize(152, 40); achieveLayer.appendChild(achieve9Label);
+        var achieve9Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(80, 288).setFontSize(11).setText("Unlock Jelly Making").setSize(152, 40); achieveLayer.appendChild(achieve9Label2);
         var achieve9Star = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(120, 260).setFill(imgArray[38]).setSize(30, 29.5); achieveLayer.appendChild(achieve9Star);
         var achieve9Check = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(10, 265).setFill(imgArray[35]).setSize(16, 16); achieveLayer.appendChild(achieve9Check);
 
         var achieve10 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(9, 305).setFill(imgArray[18].src).setSize(142, 40); achieveLayer.appendChild(achieve10);
-        var achieve10Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(75, 310).setText("Lumberjack").setSize(152, 40); achieveLayer.appendChild(achieve10Label);
-        var achieve10Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(75, 332).setFontSize(11).setText("Clear all Forests").setSize(152, 40); achieveLayer.appendChild(achieve10Label2);
+        var achieve10Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(75, 310).setText("Lumberjack").setSize(152, 40); achieveLayer.appendChild(achieve10Label);
+        var achieve10Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(75, 332).setFontSize(11).setText("Clear all Forests").setSize(152, 40); achieveLayer.appendChild(achieve10Label2);
         var achieve10Star = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(120, 305).setFill(imgArray[39]).setSize(30, 29.5); achieveLayer.appendChild(achieve10Star);
         var achieve10Check = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(10, 310).setFill(imgArray[35]).setSize(16, 16); achieveLayer.appendChild(achieve10Check);
 
         var achieve11 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(9, 350).setFill(imgArray[18].src).setSize(142, 40); achieveLayer.appendChild(achieve11);
-        var achieve11Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(67, 355).setText("Breakfast Time").setSize(152, 40); achieveLayer.appendChild(achieve11Label);
-        var achieve11Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(80, 378).setFontSize(11).setText("Obtain 100 Ham and Eggs").setSize(152, 40); achieveLayer.appendChild(achieve11Label2);
+        var achieve11Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(67, 355).setText("Breakfast Time").setSize(152, 40); achieveLayer.appendChild(achieve11Label);
+        var achieve11Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(80, 378).setFontSize(11).setText("Obtain 100 Ham and Eggs").setSize(152, 40); achieveLayer.appendChild(achieve11Label2);
         var achieve11Star = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(120, 350).setFill(imgArray[38]).setSize(30, 29.5); achieveLayer.appendChild(achieve11Star);
         var achieve11Check = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(10, 355).setFill(imgArray[35]).setSize(16, 16); achieveLayer.appendChild(achieve11Check);
 
         var achieve12 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(9, 395).setFill(imgArray[18].src).setSize(142, 40); achieveLayer.appendChild(achieve12);
-        var achieve12Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFill("#663300").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(72, 400).setText("Balanced Diet").setSize(152, 40); achieveLayer.appendChild(achieve12Label);
-        var achieve12Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(75, 423).setFontSize(11).setText("Own 10 of each Crop").setSize(152, 40); achieveLayer.appendChild(achieve12Label2);
+        var achieve12Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFill("#663300").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(72, 400).setText("Balanced Diet").setSize(152, 40); achieveLayer.appendChild(achieve12Label);
+        var achieve12Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(75, 423).setFontSize(11).setText("Own 10 of each Crop").setSize(152, 40); achieveLayer.appendChild(achieve12Label2);
         var achieve12Star = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(120, 395).setFill(imgArray[38]).setSize(30, 29.5); achieveLayer.appendChild(achieve12Star);
         var achieve12Check = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(10, 400).setFill(imgArray[35]).setSize(16, 16); achieveLayer.appendChild(achieve12Check);
 
 
         var achieve13 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(157, 260).setFill(imgArray[18].src).setSize(142, 40); achieveLayer.appendChild(achieve13);
-        var achieve13Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(224, 265).setText("Milk Master").setSize(152, 40); achieveLayer.appendChild(achieve13Label);
-        var achieve13Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(226, 287).setFontSize(11).setText("Upgrade Dairy to Max").setSize(152, 40); achieveLayer.appendChild(achieve13Label2);
+        var achieve13Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(224, 265).setText("Milk Master").setSize(152, 40); achieveLayer.appendChild(achieve13Label);
+        var achieve13Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(226, 287).setFontSize(11).setText("Upgrade Dairy to Max").setSize(152, 40); achieveLayer.appendChild(achieve13Label2);
         var achieve13Star = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(266, 260).setFill(imgArray[38]).setSize(30, 29.5); achieveLayer.appendChild(achieve13Star);
         var achieve13Check = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(158, 265).setFill(imgArray[35]).setSize(16, 16); achieveLayer.appendChild(achieve13Check);
 
         var achieve14 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(157, 305).setFill(imgArray[18].src).setSize(142, 40); achieveLayer.appendChild(achieve14);
-        var achieve14Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(220, 310).setText("Merchant").setSize(152, 40); achieveLayer.appendChild(achieve14Label);
-        var achieve14Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(226, 332).setFontSize(11).setText("Earn $5000 at Market").setSize(152, 40); achieveLayer.appendChild(achieve14Label2);
+        var achieve14Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(220, 310).setText("Merchant").setSize(152, 40); achieveLayer.appendChild(achieve14Label);
+        var achieve14Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(226, 332).setFontSize(11).setText("Earn $5000 at Market").setSize(152, 40); achieveLayer.appendChild(achieve14Label2);
         var achieve14Star = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(266, 305).setFill(imgArray[38]).setSize(30, 29.5); achieveLayer.appendChild(achieve14Star);
         var achieve14Check = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(158, 310).setFill(imgArray[35]).setSize(16, 16); achieveLayer.appendChild(achieve14Check);
 
         var achieve15 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(157, 350).setFill(imgArray[18].src).setSize(142, 40); achieveLayer.appendChild(achieve15);
-        var achieve15Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(220, 355).setText("Cross-Over").setSize(152, 40); achieveLayer.appendChild(achieve15Label);
-        var achieve15Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(226, 378).setFontSize(11).setText("Convert Stars to Coins").setSize(152, 40); achieveLayer.appendChild(achieve15Label2);
+        var achieve15Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(220, 355).setText("Cross-Over").setSize(152, 40); achieveLayer.appendChild(achieve15Label);
+        var achieve15Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(226, 378).setFontSize(11).setText("Convert Stars to Coins").setSize(152, 40); achieveLayer.appendChild(achieve15Label2);
         var achieve15Star = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(266, 350).setFill(imgArray[37]).setSize(30, 29.5); achieveLayer.appendChild(achieve15Star);
         var achieve15Check = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(158, 355).setFill(imgArray[35]).setSize(16, 16); achieveLayer.appendChild(achieve15Check);
 
         var achieve16 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(157, 395).setFill(imgArray[18].src).setSize(142, 40); achieveLayer.appendChild(achieve16);
-        var achieve16Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(219, 400).setText("Back for More").setSize(152, 40); achieveLayer.appendChild(achieve16Label);
-        var achieve16Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#ffffff").setPosition(226, 423).setFontSize(11).setText("Play for 10 Farm Years").setSize(152, 40); achieveLayer.appendChild(achieve16Label2);
+        var achieve16Label = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(219, 400).setText("Back for More").setSize(152, 40); achieveLayer.appendChild(achieve16Label);
+        var achieve16Label2 = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(226, 423).setFontSize(11).setText("Play for 10 Farm Years").setSize(152, 40); achieveLayer.appendChild(achieve16Label2);
         var achieve16Star = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(266, 395).setFill(imgArray[40]).setSize(30, 29.5); achieveLayer.appendChild(achieve16Star);
         var achieve16Check = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(158, 400).setFill(imgArray[35]).setSize(16, 16); achieveLayer.appendChild(achieve16Check);
 
 
-        var starCashLabelA = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Comic Sans MS").setFontColor("#5c00e6").setFontSize(18).setPosition(160, 472).setText(starCash).setSize(152, 40); achieveLayer.appendChild(starCashLabelA);
+        var starCashLabelA = (new lime.Label()).setAnchorPoint(0.0).setFill("#C14825").setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(18).setPosition(160, 472).setText(starCash).setSize(152, 40); achieveLayer.appendChild(starCashLabelA);
 
         ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///
         ////house scene
@@ -15885,112 +18179,7 @@ farming.start = function () {
 
                     }
                     if (deniseCount >= 100) { deniseCount = 0; };
-                    //if (deniseCount <= 25) {
-                    //    if (deniseCount == 1) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
-                    //    else if (deniseCount == 2) { denise.setPosition(190, 360).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 150).setFill(imgArrayPatricia[1].src); }
-                    //    else if (deniseCount == 3) { denise.setPosition(185, 360).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 155).setFill(imgArrayPatricia[2].src); }
-                    //    else if (deniseCount == 4) { denise.setPosition(180, 360).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 160).setFill(imgArrayPatricia[3].src); }
-                    //    else if (deniseCount == 5) { denise.setPosition(175, 360).setFill(imgArrayDenise[10].src); patricia.setPosition(202, 165).setFill(imgArrayPatricia[0].src); }
-                    //    else if (deniseCount == 6) { denise.setPosition(170, 360).setFill(imgArrayDenise[11].src); patricia.setPosition(202, 170).setFill(imgArrayPatricia[1].src); }
-                    //    else if (deniseCount == 7) { denise.setPosition(165, 360).setFill(imgArrayDenise[10].src); patricia.setPosition(202, 175).setFill(imgArrayPatricia[2].src); }
-                    //    else if (deniseCount == 8) { denise.setPosition(160, 360).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 180).setFill(imgArrayPatricia[3].src); }
-                    //    else if (deniseCount == 9) { denise.setPosition(155, 360).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 185).setFill(imgArrayPatricia[0].src); }
-                    //    else if (deniseCount == 10) { denise.setPosition(150, 360).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 190).setFill(imgArrayPatricia[1].src); }
-                    //    else if (deniseCount == 11) { denise.setPosition(145, 360).setFill(imgArrayDenise[10].src); patricia.setPosition(202, 195).setFill(imgArrayPatricia[2].src); }
-                    //    else if (deniseCount == 12) { denise.setPosition(140, 360).setFill(imgArrayDenise[11].src); patricia.setPosition(202, 200).setFill(imgArrayPatricia[3].src); }
-                    //    else if (deniseCount == 12) { denise.setPosition(135, 355).setFill(imgArrayDenise[8].src); patricia.setPosition(202, 205).setFill(imgArrayPatricia[0].src); }
-                    //    else if (deniseCount == 12) { denise.setPosition(130, 355).setFill(imgArrayDenise[9].src); patricia.setPosition(202, 205).setFill(imgArrayPatricia[4].src); }
-                    //    else if (deniseCount == 12) { denise.setPosition(125, 350).setFill(imgArrayDenise[10].src); patricia.setPosition(195, 205).setFill(imgArrayPatricia[5].src); }
-                    //    else if (deniseCount == 13) { denise.setPosition(120, 350).setFill(imgArrayDenise[11].src); patricia.setPosition(190, 205).setFill(imgArrayPatricia[6].src); }
-                    //    else if (deniseCount == 14) { denise.setPosition(115, 350).setFill(imgArrayDenise[10].src); patricia.setPosition(185, 205).setFill(imgArrayPatricia[7].src); }
-                    //    else if (deniseCount == 15) { denise.setPosition(110, 350).setFill(imgArrayDenise[9].src); patricia.setPosition(180, 205).setFill(imgArrayPatricia[4].src); }
-                    //    else if (deniseCount == 16) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(175, 205).setFill(imgArrayPatricia[5].src); }
-                    //    else if (deniseCount == 17) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(170, 205).setFill(imgArrayPatricia[6].src); }
-                    //    else if (deniseCount == 18) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(165, 205).setFill(imgArrayPatricia[7].src); }
-                    //    else if (deniseCount == 19) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(160, 205).setFill(imgArrayPatricia[6].src); }
-                    //    else if (deniseCount == 20) { denise.setPosition(110, 350).setFill(imgArrayDenise[13].src); patricia.setPosition(155, 205).setFill(imgArrayPatricia[5].src); }
-                    //    else if (deniseCount == 21) { denise.setPosition(110, 350).setFill(imgArrayDenise[14].src); patricia.setPosition(150, 205).setFill(imgArrayPatricia[4].src); }
-                    //    else if (deniseCount == 22) { denise.setPosition(110, 350).setFill(imgArrayDenise[8].src); patricia.setPosition(145, 205).setFill(imgArrayPatricia[5].src); }
-                    //    else if (deniseCount == 23) { denise.setPosition(110, 350).setFill(imgArrayDenise[1].src); patricia.setPosition(140, 205).setFill(imgArrayPatricia[6].src); }
-                    //    else if (deniseCount == 24) { denise.setPosition(110, 355).setFill(imgArrayDenise[0].src); patricia.setPosition(135, 205).setFill(imgArrayPatricia[7].src); }
-                    //    else if (deniseCount == 25) { denise.setPosition(110, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(130, 205).setFill(imgArrayPatricia[6].src); };
-                    //}
-                    //else if (deniseCount > 25 && deniseCount <= 50) {
-                    //    if (deniseCount == 26) { denise.setPosition(110, 365).setFill(imgArrayDenise[2].src); patricia.setPosition(125, 205).setFill(imgArrayPatricia[5].src); }
-                    //    else if (deniseCount == 27) { denise.setPosition(110, 370).setFill(imgArrayDenise[3].src); patricia.setPosition(120, 205).setFill(imgArrayPatricia[4].src); }
-                    //    else if (deniseCount == 28) { denise.setPosition(110, 375).setFill(imgArrayDenise[0].src); patricia.setPosition(115, 205).setFill(imgArrayPatricia[7].src); }
-                    //    else if (deniseCount == 29) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(110, 205).setFill(imgArrayPatricia[6].src); }
-                    //    else if (deniseCount == 30) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(105, 205).setFill(imgArrayPatricia[5].src); }
-                    //    else if (deniseCount == 31) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(100, 205).setFill(imgArrayPatricia[4].src); }
-                    //    else if (deniseCount == 32) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(95, 205).setFill(imgArrayPatricia[5].src); }
-                    //    else if (deniseCount == 33) { denise.setPosition(110, 380).setFill(imgArrayDenise[1].src); patricia.setPosition(90, 205).setFill(imgArrayPatricia[6].src); }
-                    //    else if (deniseCount == 34) { denise.setPosition(110, 375).setFill(imgArrayDenise[4].src); patricia.setPosition(85, 205).setFill(imgArrayPatricia[7].src); }
-                    //    else if (deniseCount == 35) { denise.setPosition(115, 370).setFill(imgArrayDenise[5].src); patricia.setPosition(80, 205).setFill(imgArrayPatricia[6].src); }
-                    //    else if (deniseCount == 36) { denise.setPosition(120, 365).setFill(imgArrayDenise[6].src); patricia.setPosition(75, 205).setFill(imgArrayPatricia[5].src); }
-                    //    else if (deniseCount == 37) { denise.setPosition(125, 360).setFill(imgArrayDenise[7].src); patricia.setPosition(70, 205).setFill(imgArrayPatricia[4].src); }
-                    //    else if (deniseCount == 38) { denise.setPosition(130, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 205).setFill(imgArrayPatricia[12].src); }
-                    //    else if (deniseCount == 39) { denise.setPosition(135, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 200).setFill(imgArrayPatricia[13].src); }
-                    //    else if (deniseCount == 40) { denise.setPosition(140, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 195).setFill(imgArrayPatricia[14].src); }
-                    //    else if (deniseCount == 41) { denise.setPosition(145, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 190).setFill(imgArrayPatricia[15].src); }
-                    //    else if (deniseCount == 42) { denise.setPosition(150, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 185).setFill(imgArrayPatricia[12].src); }
-                    //    else if (deniseCount == 43) { denise.setPosition(155, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 180).setFill(imgArrayPatricia[13].src); }
-                    //    else if (deniseCount == 44) { denise.setPosition(160, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 175).setFill(imgArrayPatricia[14].src); }
-                    //    else if (deniseCount == 45) { denise.setPosition(175, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 170).setFill(imgArrayPatricia[15].src); }
-                    //    else if (deniseCount == 46) { denise.setPosition(180, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 165).setFill(imgArrayPatricia[12].src); }
-                    //    else if (deniseCount == 47) { denise.setPosition(185, 360).setFill(imgArrayDenise[5].src); patricia.setPosition(70, 160).setFill(imgArrayPatricia[13].src); }
-                    //    else if (deniseCount == 48) { denise.setPosition(190, 360).setFill(imgArrayDenise[6].src); patricia.setPosition(70, 155).setFill(imgArrayPatricia[14].src); }
-                    //    else if (deniseCount == 49) { denise.setPosition(190, 360).setFill(imgArrayDenise[0].src); patricia.setPosition(70, 150).setFill(imgArrayPatricia[15].src); }
-                    //    else if (deniseCount == 50) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[4].src); };
-                    //}
-                    //else if (deniseCount > 50 && deniseCount <= 75) {
-                    //    if (deniseCount == 51) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[0].src); }
-                    //    else if (deniseCount == 52) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[8].src); }
-                    //    else if (deniseCount == 53) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[0].src); }
-                    //    else if (deniseCount == 54) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[4].src); }
-                    //    else if (deniseCount == 55) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[0].src); }
-                    //    else if (deniseCount == 58) { patricia.setPosition(70, 150).setFill(imgArrayPatricia[12].src); }
-                    //    else if (deniseCount == 59) { denise.setPosition(190, 360).setFill(imgArrayDenise[4].src); patricia.setPosition(70, 145).setFill(imgArrayPatricia[12].src); }
-                    //    else if (deniseCount == 60) { patricia.setPosition(70, 145).setFill(imgArrayPatricia[8].src); }
-                    //    else if (deniseCount == 61) { patricia.setPosition(75, 145).setFill(imgArrayPatricia[9].src); }
-                    //    else if (deniseCount == 62) { patricia.setPosition(80, 145).setFill(imgArrayPatricia[10].src); }
-                    //    else if (deniseCount == 63) { patricia.setPosition(85, 145).setFill(imgArrayPatricia[11].src); }
-                    //    else if (deniseCount == 64) { patricia.setPosition(90, 145).setFill(imgArrayPatricia[8].src); }
-                    //    else if (deniseCount == 65) { patricia.setPosition(95, 145).setFill(imgArrayPatricia[9].src); }
-                    //    else if (deniseCount == 66) { patricia.setPosition(100, 145).setFill(imgArrayPatricia[10].src); }
-                    //    else if (deniseCount == 67) { patricia.setPosition(105, 145).setFill(imgArrayPatricia[11].src); }
-                    //    else if (deniseCount == 68) { patricia.setPosition(110, 145).setFill(imgArrayPatricia[8].src); }
-                    //    else if (deniseCount == 69) { denise.setPosition(190, 360).setFill(imgArrayDenise[0].src); patricia.setPosition(115, 145).setFill(imgArrayPatricia[9].src); }
-                    //    else if (deniseCount == 70) { patricia.setPosition(120, 145).setFill(imgArrayPatricia[10].src); }
-                    //    else if (deniseCount == 71) { patricia.setPosition(125, 145).setFill(imgArrayPatricia[11].src); }
-                    //    else if (deniseCount == 72) { patricia.setPosition(130, 145).setFill(imgArrayPatricia[8].src); }
-                    //    else if (deniseCount == 73) { patricia.setPosition(135, 145).setFill(imgArrayPatricia[9].src); }
-                    //    else if (deniseCount == 74) { patricia.setPosition(140, 145).setFill(imgArrayPatricia[11].src); }
-                    //    else if (deniseCount == 75) { patricia.setPosition(145, 145).setFill(imgArrayPatricia[8].src); };
-                    //}
-                    //else if (deniseCount > 75 && deniseCount < 100) {
-                    //    if (deniseCount == 76) { patricia.setPosition(150, 145).setFill(imgArrayPatricia[9].src); }
-                    //    else if (deniseCount == 77) { patricia.setPosition(155, 145).setFill(imgArrayPatricia[10].src); }
-                    //    else if (deniseCount == 78) { patricia.setPosition(160, 145).setFill(imgArrayPatricia[11].src); }
-                    //    else if (deniseCount == 79) { denise.setPosition(190, 360).setFill(imgArrayDenise[15].src); patricia.setPosition(165, 145).setFill(imgArrayPatricia[9].src); }
-                    //    else if (deniseCount == 80) { patricia.setPosition(170, 145).setFill(imgArrayPatricia[10].src); }
-                    //    else if (deniseCount == 81) { patricia.setPosition(175, 145).setFill(imgArrayPatricia[11].src); }
-                    //    else if (deniseCount == 82) { patricia.setPosition(180, 145).setFill(imgArrayPatricia[8].src); }
-                    //    else if (deniseCount == 83) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(185, 145).setFill(imgArrayPatricia[9].src); }
-                    //    else if (deniseCount == 84) { patricia.setPosition(190, 145).setFill(imgArrayPatricia[10].src); }
-                    //    else if (deniseCount == 85) { patricia.setPosition(195, 145).setFill(imgArrayPatricia[11].src); }
-                    //    else if (deniseCount == 86) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[8].src); }
-                    //    else if (deniseCount == 89) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[4].src); }
-                    //    else if (deniseCount == 90) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
-                    //    else if (deniseCount == 91) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[8].src); }
-                    //    else if (deniseCount == 92) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
-                    //    else if (deniseCount == 93) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[4].src); }
-                    //    else if (deniseCount == 94) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
-                    //    else if (deniseCount == 95) { denise.setPosition(190, 360).setFill(imgArrayDenise[15].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[8].src); }
-                    //    else if (deniseCount == 96) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
-                    //    else if (deniseCount == 97) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[4].src); }
-                    //    else if (deniseCount == 98) { patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); }
-                    //    else if (deniseCount == 99) { denise.setPosition(190, 360).setFill(imgArrayDenise[1].src); patricia.setPosition(202, 145).setFill(imgArrayPatricia[0].src); };
-                    //}
+                   
                     
                 } catch (err) { alert("Oh Snap! There is an error opening the house on your device. Please screenshot this and contact info@guighost.com for support " + err); };
             };
@@ -16013,6 +18202,34 @@ farming.start = function () {
             patriciaLaugh.play();
 
         }
+
+        var mapLocHouse1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(13, 460).setSize(20,20).setFill(imgArrayItems[44]);
+        houseLayer.appendChild(mapLocHouse1);
+        var mapLocHouse2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width -36, 254).setSize(20,20).setFill(imgArrayItems[43]);
+        houseLayer.appendChild(mapLocHouse2);
+        if(mapLocations.places[24].found == 1){
+            mapLocHouse1.setHidden(true);}
+            else{
+                goog.events.listen(mapLocHouse1, ["mousedown", "touchstart"], function (e) {
+                    if(globalModalBlock == 0){  this.setHidden(true); mapLocations.places[24].found = 1; getMapFrag('w1');
+                        e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+                    };
+                });
+            }
+        if(mapLocations.places[25].found == 1){
+            mapLocHouse2.setHidden(true);}
+            else{
+                goog.events.listen(mapLocHouse2, ["mousedown", "touchstart"], function (e) {
+                    if(globalModalBlock == 0){  this.setHidden(true); mapLocations.places[25].found = 1; getMapFrag('w2');
+                    e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); 
+                    };
+                });
+            }
+
+
+
+
+
         // room 2 block house upgrades
 
         var houseExpandCover = (new lime.Sprite()).setPosition(155, 217).setSize(a.width - 15, 180).setFill("#000000").setHidden(false);
@@ -16030,7 +18247,7 @@ farming.start = function () {
 
         var upgradeCloudHo = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-130, -100).setSize(300, 200).setFill(imgArray[24].src); houseExpandCover.appendChild(upgradeCloudHo);
 
-        var toolMoverLabelHo = (new lime.Label()).setText("90").setPosition(5, 27).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("ComicSans MS").setFill(imgArray[27]);
+        var toolMoverLabelHo = (new lime.Label()).setText("90").setPosition(5, 27).setSize(40, 25).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Proxima Nova").setFill(imgArray[27]);
         var toolMoverHo = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-22, -50).setSize(50, 50).setFill(imgArray[29]); houseExpandCover.appendChild(toolMoverLabelHo);
         toolMoverLabelHo.appendChild(toolMoverHo);
         toolMoverHo.setRotation(-10);
@@ -16047,17 +18264,17 @@ farming.start = function () {
         houseLayer.appendChild(houseMenuBack);
 
         var toolCountImgHouse = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(10, 3).setSize(35, 35).setFill(imgArray[30]);
-        var toolCountHouse = (new lime.Label()).setText(player.tools).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(69, 24).setFontSize(18);
+        var toolCountHouse = (new lime.Label()).setText(player.tools).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(69, 24).setFontSize(18);
         houseLayer.appendChild(toolCountImgHouse);
         houseLayer.appendChild(toolCountHouse);
-        var houseMoney = (new lime.Label()).setText(player.money).setFontColor("#E8FC08").setFontFamily("Comic Sans MS").setFontSize(18).setPosition(235, 24);
+        var houseMoney = (new lime.Label()).setText(player.money).setFontColor("#E8FC08").setFontFamily("Proxima Nova").setFontSize(18).setPosition(235, 24);
         houseLayer.appendChild(houseMoney);
         var topCoinHouse = (new lime.Sprite()).setPosition(285, 20).setSize(35, 35).setFill(imgArray11[0]);
         houseLayer.appendChild(topCoinHouse);
 
         ////house upgrades
 
-        var housePurchaseLabel1 = (new lime.Label()).setText("Home Store").setPosition(a.width / 2, 109).setSize(250, 18).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var housePurchaseLabel1 = (new lime.Label()).setText("Home Store").setPosition(a.width / 2, 109).setSize(250, 18).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseLayer.appendChild(housePurchaseLabel1);
 
         var optionsHomeContainer = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(0, 42).setSize(a.width, 100).setFill('#E8FC08');
@@ -16071,7 +18288,7 @@ farming.start = function () {
         var houseOption1Img = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -25).setFill(imgArray11[1]).setSize(25, 44);
         houseOptions1.appendChild(houseOption1Img);
 
-        var houseOptions1Cost = (new lime.Label()).setText(houseUpgrades.upgrades[1].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions1Cost = (new lime.Label()).setText(houseUpgrades.upgrades[1].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions1.appendChild(houseOptions1Cost);
         var houseOptions1Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions1.appendChild(houseOptions1Coin);
@@ -16091,7 +18308,7 @@ farming.start = function () {
         var houseOption2Img = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -25).setFill(imgArray11[2]).setSize(25, 40);
         houseOptions2.appendChild(houseOption2Img);
 
-        var houseOptions2Cost = (new lime.Label()).setText(houseUpgrades.upgrades[2].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions2Cost = (new lime.Label()).setText(houseUpgrades.upgrades[2].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions2.appendChild(houseOptions2Cost);
         var houseOptions2Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions2.appendChild(houseOptions2Coin);
@@ -16108,7 +18325,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions3);
         var houseBookCase = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -25).setFill(imgArray11[3]).setSize(25, 45);
         houseOptions3.appendChild(houseBookCase);
-        var houseOptions3Cost = (new lime.Label()).setText(houseUpgrades.upgrades[3].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions3Cost = (new lime.Label()).setText(houseUpgrades.upgrades[3].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions3.appendChild(houseOptions3Cost);
         var houseOptions3Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions3.appendChild(houseOptions3Coin);
@@ -16127,7 +18344,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions4);
         var houseClock = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -25).setFill(imgArray11[4]).setSize(25, 40);
         houseOptions4.appendChild(houseClock);
-        var houseOptions4Cost = (new lime.Label()).setText(houseUpgrades.upgrades[4].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions4Cost = (new lime.Label()).setText(houseUpgrades.upgrades[4].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions4.appendChild(houseOptions4Cost);
         var houseOptions4Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions4.appendChild(houseOptions4Coin);
@@ -16148,7 +18365,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions5);
         var houseWardrobe = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -25).setFill(imgArray11[5]).setSize(24, 44);
         houseOptions5.appendChild(houseWardrobe);
-        var houseOptions5Cost = (new lime.Label()).setText(houseUpgrades.upgrades[5].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions5Cost = (new lime.Label()).setText(houseUpgrades.upgrades[5].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions5.appendChild(houseOptions5Cost);
         var houseOptions5Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions5.appendChild(houseOptions5Coin);
@@ -16163,7 +18380,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions6);
         var woodChairL = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -25).setFill(imgArray11[6]).setSize(24, 44);
         houseOptions6.appendChild(woodChairL);
-        var houseOptions6Cost = (new lime.Label()).setText(houseUpgrades.upgrades[6].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions6Cost = (new lime.Label()).setText(houseUpgrades.upgrades[6].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions6.appendChild(houseOptions6Cost);
         var houseOptions6Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions6.appendChild(houseOptions6Coin);
@@ -16180,7 +18397,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions7);
         var optionImg7 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -15).setFill(imgArray11[7]).setSize(22, 20);
         houseOptions7.appendChild(optionImg7);
-        var houseOptions7Cost = (new lime.Label()).setText(houseUpgrades.upgrades[7].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions7Cost = (new lime.Label()).setText(houseUpgrades.upgrades[7].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions7.appendChild(houseOptions7Cost);
         var houseOptions7Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions7.appendChild(houseOptions7Coin);
@@ -16197,7 +18414,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions8);
         var optionImg8 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -15).setFill(imgArray11[8]).setSize(22, 34);
         houseOptions8.appendChild(optionImg8);
-        var houseOptions8Cost = (new lime.Label()).setText(houseUpgrades.upgrades[8].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions8Cost = (new lime.Label()).setText(houseUpgrades.upgrades[8].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions8.appendChild(houseOptions8Cost);
         var houseOptions8Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions8.appendChild(houseOptions8Coin);
@@ -16213,7 +18430,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions9);
         var optionImg9 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -15).setFill(imgArray11[9]).setSize(22, 34);
         houseOptions9.appendChild(optionImg9);
-        var houseOptions9Cost = (new lime.Label()).setText(houseUpgrades.upgrades[9].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions9Cost = (new lime.Label()).setText(houseUpgrades.upgrades[9].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions9.appendChild(houseOptions9Cost);
         var houseOptions9Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions9.appendChild(houseOptions9Coin);
@@ -16229,7 +18446,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions10);
         var optionImg10 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -15).setFill(imgArray11[10]).setSize(22, 34);
         houseOptions10.appendChild(optionImg10);
-        var houseOptions10Cost = (new lime.Label()).setText(houseUpgrades.upgrades[10].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions10Cost = (new lime.Label()).setText(houseUpgrades.upgrades[10].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions10.appendChild(houseOptions10Cost);
         var houseOptions10Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions10.appendChild(houseOptions10Coin);
@@ -16249,7 +18466,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions11);
         var optionImg11 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -15).setFill(imgArray11[11]).setSize(22, 34);
         houseOptions11.appendChild(optionImg11);
-        var houseOptions11Cost = (new lime.Label()).setText(houseUpgrades.upgrades[11].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions11Cost = (new lime.Label()).setText(houseUpgrades.upgrades[11].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions11.appendChild(houseOptions11Cost);
         var houseOptions11Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions11.appendChild(houseOptions11Coin);
@@ -16264,7 +18481,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions12);
         var optionImg12 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -15).setFill(imgArray11[12]).setSize(22, 34);
         houseOptions12.appendChild(optionImg12);
-        var houseOptions12Cost = (new lime.Label()).setText(houseUpgrades.upgrades[12].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions12Cost = (new lime.Label()).setText(houseUpgrades.upgrades[12].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions12.appendChild(houseOptions12Cost);
         var houseOptions12Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions12.appendChild(houseOptions12Coin);
@@ -16280,7 +18497,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions13);
         var optionImg13 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -15).setFill(imgArray11[13]).setSize(22, 34);
         houseOptions13.appendChild(optionImg13);
-        var houseOptions13Cost = (new lime.Label()).setText(houseUpgrades.upgrades[13].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions13Cost = (new lime.Label()).setText(houseUpgrades.upgrades[13].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions13.appendChild(houseOptions13Cost);
         var houseOptions13Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions13.appendChild(houseOptions13Coin);
@@ -16299,7 +18516,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions14);
         var optionImg14 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-24, -18).setFill(imgArray11[14]).setSize(40, 24);
         houseOptions14.appendChild(optionImg14);
-        var houseOptions14Cost = (new lime.Label()).setText(houseUpgrades.upgrades[14].cost).setPosition(-12, 18).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions14Cost = (new lime.Label()).setText(houseUpgrades.upgrades[14].cost).setPosition(-12, 18).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions14.appendChild(houseOptions14Cost);
         var houseOptions14Coin = (new lime.Sprite()).setPosition(15, 14).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions14.appendChild(houseOptions14Coin);
@@ -16315,7 +18532,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions15);
         var optionImg15 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -18).setFill(imgArray11[15]).setSize(22, 37);
         houseOptions15.appendChild(optionImg15);
-        var houseOptions15Cost = (new lime.Label()).setText(houseUpgrades.upgrades[15].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions15Cost = (new lime.Label()).setText(houseUpgrades.upgrades[15].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions15.appendChild(houseOptions15Cost);
         var houseOptions15Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions15.appendChild(houseOptions15Coin);
@@ -16333,7 +18550,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions16);
         var optionImg16 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -18).setFill(imgArray11[16]).setSize(22, 37);
         houseOptions16.appendChild(optionImg16);
-        var houseOptions16Cost = (new lime.Label()).setText(houseUpgrades.upgrades[16].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions16Cost = (new lime.Label()).setText(houseUpgrades.upgrades[16].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions16.appendChild(houseOptions16Cost);
         var houseOptions16Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions16.appendChild(houseOptions16Coin);
@@ -16348,7 +18565,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions17);
         var optionImg17 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -18).setFill(imgArray11[17]).setSize(22, 37);
         houseOptions17.appendChild(optionImg17);
-        var houseOptions17Cost = (new lime.Label()).setText(houseUpgrades.upgrades[17].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions17Cost = (new lime.Label()).setText(houseUpgrades.upgrades[17].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions17.appendChild(houseOptions17Cost);
         var houseOptions17Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions17.appendChild(houseOptions17Coin);
@@ -16363,7 +18580,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions18);
         var optionImg18 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -18).setFill(imgArray11[18]).setSize(22, 37);
         houseOptions18.appendChild(optionImg18);
-        var houseOptions18Cost = (new lime.Label()).setText(houseUpgrades.upgrades[18].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions18Cost = (new lime.Label()).setText(houseUpgrades.upgrades[18].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions18.appendChild(houseOptions18Cost);
         var houseOptions18Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions18.appendChild(houseOptions18Coin);
@@ -16380,7 +18597,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions19);
         var optionImg19 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-20, -18).setFill(imgArray11[19]).setSize(36, 21);
         houseOptions19.appendChild(optionImg19);
-        var houseOptions19Cost = (new lime.Label()).setText(houseUpgrades.upgrades[19].cost).setPosition(-10, 17).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions19Cost = (new lime.Label()).setText(houseUpgrades.upgrades[19].cost).setPosition(-10, 17).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions19.appendChild(houseOptions19Cost);
         var houseOptions19Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions19.appendChild(houseOptions19Coin);
@@ -16396,7 +18613,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions20);
         var optionImg20 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -18).setFill(imgArray11[20]).setSize(22, 37);
         houseOptions20.appendChild(optionImg20);
-        var houseOptions20Cost = (new lime.Label()).setText(houseUpgrades.upgrades[20].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions20Cost = (new lime.Label()).setText(houseUpgrades.upgrades[20].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions20.appendChild(houseOptions20Cost);
         var houseOptions20Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions20.appendChild(houseOptions20Coin);
@@ -16411,7 +18628,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions21);
         var optionImg21 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-26, 0).setFill(imgArray11[21]).setSize(26, 18);
         houseOptions21.appendChild(optionImg21);
-        var houseOptions21Cost = (new lime.Label()).setText(houseUpgrades.upgrades[21].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions21Cost = (new lime.Label()).setText(houseUpgrades.upgrades[21].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions21.appendChild(houseOptions21Cost);
         var houseOptions21Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions21.appendChild(houseOptions21Coin);
@@ -16427,7 +18644,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions22);
         var optionImg22 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -18).setFill(imgArray11[22]).setSize(22, 37);
         houseOptions22.appendChild(optionImg22);
-        var houseOptions22Cost = (new lime.Label()).setText(houseUpgrades.upgrades[22].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions22Cost = (new lime.Label()).setText(houseUpgrades.upgrades[22].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions22.appendChild(houseOptions22Cost);
 
         var houseOptions22Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
@@ -16440,7 +18657,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions23);
         var optionImg23 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -18).setFill(imgArray11[23]).setSize(22, 37);
         houseOptions23.appendChild(optionImg23);
-        var houseOptions23Cost = (new lime.Label()).setText(houseUpgrades.upgrades[23].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions23Cost = (new lime.Label()).setText(houseUpgrades.upgrades[23].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions23.appendChild(houseOptions23Cost);
         var houseOptions23Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions23.appendChild(houseOptions23Coin);
@@ -16453,7 +18670,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions24);
         var optionImg24 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -18).setFill(imgArray11[24]).setSize(22, 37);
         houseOptions24.appendChild(optionImg24);
-        var houseOptions24Cost = (new lime.Label()).setText(houseUpgrades.upgrades[24].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions24Cost = (new lime.Label()).setText(houseUpgrades.upgrades[24].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions24.appendChild(houseOptions24Cost);
         var houseOptions24Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions24.appendChild(houseOptions24Coin);
@@ -16464,7 +18681,7 @@ farming.start = function () {
         optionsHomeContainer.appendChild(houseOptions25);
         var optionImg25 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(-25, -18).setFill(imgArray11[25]).setSize(22, 37);
         houseOptions25.appendChild(optionImg25);
-        var houseOptions25Cost = (new lime.Label()).setText(houseUpgrades.upgrades[25].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var houseOptions25Cost = (new lime.Label()).setText(houseUpgrades.upgrades[25].cost).setPosition(14, 0).setSize(25, 22).setFontColor("#E8FC08").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         houseOptions25.appendChild(houseOptions25Cost);
         var houseOptions25Coin = (new lime.Sprite()).setPosition(15, 12).setSize(20, 20).setFill(imgArray11[0]);
         houseOptions25.appendChild(houseOptions25Coin);
@@ -16655,7 +18872,7 @@ farming.start = function () {
 
         goog.events.listen(starCashMenuHouse, ["mousedown", "touchstart"], function () {
             if (globalModalBlock == 0) {
-                shareFacebook();
+                openStarMenu();
             };
         });
 
@@ -16670,10 +18887,10 @@ farming.start = function () {
                 hideAndDelayNavIcons();
                 c.replaceScene(marketScene, lime.transitions.SlideInUp);
                 sceneActive = 'Market';
-                acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+                acresOwned3 = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
                 if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); };
 
-                lime.scheduleManager.callAfter(function () { CheckQuestInvItems(); }, this, 1500);
+                lime.scheduleManager.callAfter(function () { try{CheckQuestInvItems();}catch(err){console.log(err)}; }, this, 1500);
             };
         });
         //MUTE From House
@@ -16685,7 +18902,7 @@ farming.start = function () {
             if (globalModalBlock == 0) {
                 var isMuted = lime.audio.getMute();
                 if (isMuted) {
-                    lime.audio.setMute(false); themeSong.play(true); localStorage.setItem('GuiGhostFarms_muted', 0);
+                    lime.audio.setMute(false); themeSongNew.play(true); localStorage.setItem('GuiGhostFarms_muted', 0);
                     setMute(2);
                 } else { lime.audio.setMute(true); setMute(1); localStorage.setItem('GuiGhostFarms_muted', 1) };
             };
@@ -16697,9 +18914,9 @@ farming.start = function () {
         houseLayer.appendChild(confirmSaleHouse);
 
         confirmSaleHouse.setHidden(true);
-        var confirmSaleHouseNameLabel = (new lime.Label()).setText("Name of item").setPosition(70, 35).setSize(130, 50).setFontColor("#000000").setFontWeight(600).setFontSize(16).setFontFamily("ComicSans MS");
+        var confirmSaleHouseNameLabel = (new lime.Label()).setText("Name of item").setPosition(70, 35).setSize(130, 50).setFontColor("#000000").setFontWeight(600).setFontSize(16).setFontFamily("Proxima Nova");
         confirmSaleHouse.appendChild(confirmSaleHouseNameLabel);
-        var confirmSaleHousePriceLabel = (new lime.Label()).setText(" - 150").setPosition(75, 53).setSize(130, 50).setFontColor("#000000").setFontWeight(600).setFontSize(18).setFontFamily("ComicSans MS");
+        var confirmSaleHousePriceLabel = (new lime.Label()).setText(" - 150").setPosition(75, 53).setSize(130, 50).setFontColor("#000000").setFontWeight(600).setFontSize(18).setFontFamily("Proxima Nova");
         confirmSaleHouse.appendChild(confirmSaleHousePriceLabel);
         var confirmSaleHouseImg = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(50, 45).setSize(34, 55).setFill(imgArray11[1]);
         confirmSaleHouse.appendChild(confirmSaleHouseImg);
@@ -16760,6 +18977,7 @@ farming.start = function () {
                         default: houseOptionNumber = 0; break;
                     }
                     confirmSaleHouse.setHidden(true);
+                    purchaseSound.play();
                 }
                 else {
                     confirmSaleHouseNameLabel.setText("Needs Room 2");
@@ -16780,9 +18998,9 @@ farming.start = function () {
         // house quest panel for denise quests
         var questPanelHouse = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(35, 125).setSize(250, 220).setFill(imgArray[79]);
         houseLayer.appendChild(questPanelHouse);
-        var questHeaderHouse = (new lime.Label()).setAnchorPoint(0, 0).setPosition(90, 19).setText("Denise").setFontFamily("Comic Sans MS").setFontSize(24);
+        var questHeaderHouse = (new lime.Label()).setAnchorPoint(0, 0).setPosition(90, 19).setText("Denise").setFontFamily("Proxima Nova").setFontSize(24);
         questPanelHouse.appendChild(questHeaderHouse);
-        var questText1House = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 135).setText("We need some more furniture if you expect me to live here").setFontFamily("Comic Sans MS").setFontSize(16).setSize(200, a.height / 2 - 50);
+        var questText1House = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 135).setText("We need some more furniture if you expect me to live here").setFontFamily("Proxima Nova").setFontSize(16).setSize(200, a.height / 2 - 50);
         questPanelHouse.appendChild(questText1House);
         var questPanelAvatarHouse = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(75, 26).setSize(100, 100).setFill(imgArrayDenise[0].src);
         questPanelHouse.appendChild(questPanelAvatarHouse);
@@ -16793,9 +19011,9 @@ farming.start = function () {
 
         var questPanelHouse2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(25, 125).setSize(260, 220).setFill(imgArray[79]).setHidden(true);
         houseLayer.appendChild(questPanelHouse2);
-        var questHeaderHouse2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(95, 19).setText("Patricia").setFontFamily("Comic Sans MS").setFontSize(24);
+        var questHeaderHouse2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(95, 19).setText("Patricia").setFontFamily("Proxima Nova").setFontSize(24);
         questPanelHouse2.appendChild(questHeaderHouse2);
-        var questText1House2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(17, 115).setText("Dibba Dabba....Dibba Dabba........waaaaaahhhhh").setFontFamily("Comic Sans MS").setFontSize(16).setSize(225, a.height / 2 - 50);
+        var questText1House2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(17, 115).setText("Dibba Dabba....Dibba Dabba........waaaaaahhhhh").setFontFamily("Proxima Nova").setFontSize(16).setSize(225, a.height / 2 - 50);
         questPanelHouse2.appendChild(questText1House2);
         var questPanelAvatarHouse2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(80, 12).setSize(100, 100).setFill(imgArrayPatricia[0].src);
         questPanelHouse2.appendChild(questPanelAvatarHouse2);
@@ -16826,19 +19044,19 @@ farming.start = function () {
         //house expand modal
         var upgradePanelHouse = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(35, 90).setSize(250, 220).setFill(imgArray[79]);
         houseLayer.appendChild(upgradePanelHouse);
-        var upgradeHeaderHouse = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 25).setText("Expand your house?").setFontFamily("Comic Sans MS").setFontSize(22);
+        var upgradeHeaderHouse = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 25).setText("Expand your house?").setFontFamily("Proxima Nova").setFontSize(22);
         upgradePanelHouse.appendChild(upgradeHeaderHouse);
         var toolsImgHouseUp = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, 75).setSize(64, 64).setFill(imgArray[30]);
         upgradePanelHouse.appendChild(toolsImgHouseUp);
-        var toolCostHouse = (new lime.Label()).setAnchorPoint(0, 0).setPosition(5, 70).setText("1000").setFontFamily("Comic Sans MS").setFontSize(18).setSize(50, 50);
+        var toolCostHouse = (new lime.Label()).setAnchorPoint(0, 0).setPosition(5, 70).setText("1000").setFontFamily("Proxima Nova").setFontSize(18).setSize(50, 50);
         toolsImgHouseUp.appendChild(toolCostHouse);
         var woodImgHouseUp = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(140, 75).setSize(64, 64).setFill(imgArray[58]);
         upgradePanelHouse.appendChild(woodImgHouseUp);
-        var woodCostHouse = (new lime.Label()).setAnchorPoint(0, 0).setPosition(5, 70).setText("200").setFontFamily("Comic Sans MS").setFontSize(18).setSize(50, 50);
+        var woodCostHouse = (new lime.Label()).setAnchorPoint(0, 0).setPosition(5, 70).setText("200").setFontFamily("Proxima Nova").setFontSize(18).setSize(50, 50);
         woodImgHouseUp.appendChild(woodCostHouse);
         var upPanelConfirmBtnHouse = (new lime.GlossyButton()).setColor("#00ff00").setText("Build").setPosition(125, 175).setSize(100, 20);
         upgradePanelHouse.appendChild(upPanelConfirmBtnHouse);
-        var shortCostHouse = (new lime.Label()).setAnchorPoint(0, 0).setPosition(8, 175).setText("You need more resources").setFontFamily("Comic Sans MS").setFontSize(18).setSize(230, 50);
+        var shortCostHouse = (new lime.Label()).setAnchorPoint(0, 0).setPosition(8, 175).setText("You need more resources").setFontFamily("Proxima Nova").setFontSize(18).setSize(230, 50);
         upgradePanelHouse.appendChild(shortCostHouse);
         upPanelConfirmBtnHouse.setHidden(true);
         shortCostHouse.setHidden(false);
@@ -16938,9 +19156,11 @@ farming.start = function () {
                         houseExpandCover.setHidden(true);
                         houseUpgrades.upgrades[0].owned = 1;
                         localStorage.setItem('GuiGhostFarms_houseUpgrades', JSON.stringify(houseUpgrades))
+                        
                         houseImg.setFill(imgArray[98]).setSize(71, 91).setPosition(232, 23)
                         upgradesInProgress.buildings[5].timeLeft = 0;
                         upgradesInProgress.buildings[5].currentBarnLevel = 2;
+                        showMFToast("House Upgraded",imgArray[30].src,'Home', 3000);
                     }
 
                 }, this, 1000, 90);
@@ -16990,7 +19210,7 @@ farming.start = function () {
             if (a.achievements[16] == false) { achieve16Check.setHidden(true); }
         }
 
-        lime.scheduleManager.callAfter(function () { checkAchieves(); }, this, 200)
+        lime.scheduleManager.callAfter(function () { checkAchieves(); }, this, 2000)
 
 
         goog.events.listen(backBtnAchieve, ["mousedown", "touchstart"], function (e) {
@@ -17021,7 +19241,7 @@ farming.start = function () {
 
         ////achievement checks
         function checkAchieves2() {
-            var acresOwned = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+            var acresOwned = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
             starCash = parseInt(starCash);
             if (acresOwned == 2) { farmerTitle.setText("Land Owner"); }
             if (acresOwned == 3) { farmerTitle.setText("Master Farmer"); }
@@ -17033,7 +19253,7 @@ farming.start = function () {
             if (a.achievements[5] == false && toolsEver >= 500) { a.achievements[5] = true; achieve5Check.setHidden(false); starCash = parseInt(starCash) + 3; displayAchieve(5); };
             if (a.achievements[6] == false && toolsEver >= 5000) { a.achievements[6] = true; achieve6Check.setHidden(false); starCash = parseInt(starCash) + 5; displayAchieve(6); };
             if (a.achievements[7] == false && yearCount >= 2) { a.achievements[7] = true; achieve7Check.setHidden(false); starCash = parseInt(starCash) + 5; displayAchieve(7); };
-            if (a.achievements[8] == false && acresOwned >= 4) { a.achievements[8] = true; achieve8Check.setHidden(false); starCash = parseInt(starCash) + 10; displayAchieve(8); };
+            if (a.achievements[8] == false && acresOwned >= 4) { a.achievements[8] = true; achieve8Check.setHidden(false); starCash = parseInt(starCash) + 10; displayAchieve(8);};
             if (a.achievements[9] == false && vinyardHouseLevel > 1) { a.achievements[9] = true; achieve9Check.setHidden(false); starCash = parseInt(starCash) + 5; displayAchieve(9); };
             if (a.achievements[10] == false && orchardTreeBlock > 1 && vinyardBlocks > 1 && vinyardBlocks2 > 1 && player.fields >= 3) { a.achievements[10] = true; achieve10Check.setHidden(false); starCash = parseInt(starCash) + 10; displayAchieve(10); };
             if (a.achievements[11] == false && player.cropsStored[10].stored >= 100 && player.cropsStored[11].stored >= 100) { a.achievements[11] = true; achieve11Check.setHidden(false); starCash = parseInt(starCash) + 5; displayAchieve(11); };
@@ -17109,17 +19329,17 @@ farming.start = function () {
         }
         lime.scheduleManager.callAfter(function () { checkAcres(); }, this, 100);
         //setTimeout(function () { checkAcres(); }, 0);
-
+        var cowNotifAck = 0;
 
         function checkShortage() {
             collectPork.setHidden(true);
             collectEggs.setHidden(true);
             if (player.barnLevel == 5) { blockedSub3.setHidden(true); }
             if (porkWaiting <= 0) {
-                if (player.cropsStored[8].stored <= 0) {
+                if (player.cropsStored[1].stored <= 0) {
                     collectPork.setHidden(false).setFill(imgArray[23]).setPosition(45, 50); collectPorkIcon.setHidden(true); collectPorkLabel.setHidden(true);
                 }
-                else if (player.cropsStored[8].stored >= 1) {
+                else if (player.cropsStored[1].stored >= 1) {
                     collectPork.setHidden(true);
                 }
             }
@@ -17127,10 +19347,10 @@ farming.start = function () {
                 collectPork.setHidden(false).setFill(imgArray[90]).setPosition(10, 60); collectPorkIcon.setHidden(false); collectPorkLabel.setHidden(false);
             }
             if (eggWaiting <= 0) {
-                if (player.cropsStored[5].stored <= 0) { collectEggs.setHidden(false).setFill("images/UI/needCorn.png"); collectEggsIcon.setHidden(true); collectEggsLabel.setHidden(true); }
+                if (player.cropsStored[5].stored <= 0) { collectEggs.setHidden(false).setFill("images/UI/needCorn.png"); collectEggsIcon.setHidden(true); collectEggsLabel.setHidden(true);  }
                 else if (player.cropsStored[5].stored >= 0) { collectEggs.setHidden(true); };
             }
-            else if (eggWaiting >= 1) { collectEggs.setHidden(false).setFill(imgArray[90]); collectEggsIcon.setHidden(false); collectEggsLabel.setHidden(false); collectEggsLabel.setText("+ " + (eggWaiting * 3)); }
+            else if (eggWaiting >= 1) { collectEggs.setHidden(false).setFill(imgArray[90]); collectEggsIcon.setHidden(false); collectEggsLabel.setHidden(false); collectEggsLabel.setText("+ " + (eggWaiting * 3)); };
 
             vinyardBlock.setHidden(true);
             globalModalBlock = 0;
@@ -17141,20 +19361,27 @@ farming.start = function () {
                 if (vinyardHouseLevel > 1) {
                     jellyBlocked.setHidden(false); treesImgV.setHidden(true); treesImgV2.setHidden(true);
                     vinyardBlock.setHidden(false);
-                }
-            }
+                    showMFToast("Jelly Making Halted","images/vinyard/jelly.png",'vineyard', 2500);
+                };
+            };
 
-            if (player.cropsStored[6].stored < 3) {
+            if (player.cropsStored[6].stored < 3 && acres[1].owned == 1) {
                 needHay.setHidden(false);
-
-            } else { needHay.setHidden(true); }
+                if (cowNotifAck == 0){
+                    showMFToast("Cows are Hungry",imgArray[60].src, 'pasture', 2500); cowNotifAck = 1;
+                }
+                
+            } else { needHay.setHidden(true); };
+          
+             
+            
         }
 
 
 
         var showingStarCash = 0;
-        /////note this is the starcash buy menu but used to be facebook modal, hence the function name
-        function shareFacebook() {
+        /////open Star Menu
+        function openStarMenu() {
             document.getElementById("starCashOuterLabel").innerHTML = starCash;
             if (showingStarCash == 1) {
 
@@ -17187,7 +19414,7 @@ farming.start = function () {
                 homeBlock.setHidden(true);
             }
             else if (starCashIsUp == 'block') { globalModalBlock = 1; homeBlock.setHidden(false); };
-
+            starCash = parseInt(localStorage.getItem("starCash"));
             document.getElementById("starCashOuterLabel").innerHTML = starCash;
 
 
@@ -17266,41 +19493,44 @@ farming.start = function () {
             aboutFill1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("#0D0D0D");
         aboutScene.appendChild(aboutFill1);
         aboutScene.appendChild(aboutLayer);
-        var aboutBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, -30).setSize(300, 515).setFill(imgArray[14]);
+        var aboutBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, -45).setSize(300, 515).setFill(imgArray[14]);
         aboutLayer.appendChild(aboutBack);
-        var aboutLabel_6 = (new lime.Label()).setFontColor("#E8FC08").setFontSize(16).setPosition(150, 203).setSize(a.width - 30, 200).setText("Support Inquiries & Feedback");
+        var aboutLabel_6 = (new lime.Label()).setFontColor("#E8FC08").setFontSize(15).setPosition(150, 255).setSize(a.width - 30, 200).setText("Support Inquiries & Feedback");
         aboutLayer.appendChild(aboutLabel_6);
-        var aboutLabel_7 = (new lime.Label()).setFontColor("#E8FC08").setFontSize(12).setPosition(150, 223).setSize(a.width - 30, 200).setText("Email us at info@guighost.com");
+        var aboutLabel_7 = (new lime.Label()).setFontColor("#E8FC08").setFontSize(12).setPosition(150, 275).setSize(a.width - 30, 200).setText("Email us at info@guighost.com");
         aboutLayer.appendChild(aboutLabel_7);
 
-        var aboutLabel_1 = (new lime.Label()).setFontColor("#E8FC08").setFontSize(18).setPosition(150, 250).setSize(a.width - 40, 200).setText("Art Assets by"); aboutLayer.appendChild(aboutLabel_1);
+        var aboutLabel_1 = (new lime.Label()).setFontColor("#E8FC08").setFontSize(14).setPosition(150, 295).setSize(a.width - 40, 200).setText("Art Assets by"); aboutLayer.appendChild(aboutLabel_1);
         aboutLayer.appendChild(aboutLabel_1);
-        var aboutLabel_2 = (new lime.Label()).setFontColor("#E8FC08").setFontSize(10).setPosition(150, 270).setSize(a.width - 30, 200).setText("Tiles by Daneeklu  http://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements ");
+        var aboutLabel_2 = (new lime.Label()).setFontColor("#E8FC08").setFontSize(9).setPosition(150, 315).setSize(a.width - 30, 200).setText("Tiles by Daneeklu  http://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements ");
         aboutLayer.appendChild(aboutLabel_2);
-        var aboutLabel_3 = (new lime.Label()).setFontColor("#E8FC08").setFontSize(10).setPosition(150, 300).setSize(a.width - 30, 200).setText("Buildings by Cilanna  https://pixanna.nl/");
+        var aboutLabel_3 = (new lime.Label()).setFontColor("#E8FC08").setFontSize(9).setPosition(150, 338).setSize(a.width - 30, 200).setText("Buildings by Cilanna  https://pixanna.nl/");
         aboutLayer.appendChild(aboutLabel_3);
-        var aboutLabel_4 = (new lime.Label()).setFontColor("#E8FC08").setFontSize(10).setPosition(150, 320).setSize(a.width - 30, 200).setText("Various CCO assets from OpenGameArt.org");
+        var aboutLabel_4 = (new lime.Label()).setFontColor("#E8FC08").setFontSize(9).setPosition(150, 358).setSize(a.width - 30, 200).setText("Various CCO assets from http://OpenGameArt.org");
         aboutLayer.appendChild(aboutLabel_4);
-        var aboutLabel_5 = (new lime.Label()).setFontColor("#E8FC08").setFontSize(10).setPosition(150, 340).setSize(a.width - 30, 200).setText("Music by Estudio Cafofo http://estudiocafofo.com");
+        var aboutLabel_5 = (new lime.Label()).setFontColor("#E8FC08").setFontSize(9).setPosition(150, 378).setSize(a.width - 30, 200).setText("Music by Estudio Cafofo http://estudiocafofo.com");
         aboutLayer.appendChild(aboutLabel_5);
+        var aboutLabel_6 = (new lime.Label()).setFontColor("#E8FC08").setFontSize(9).setPosition(150, 394).setSize(a.width - 30, 200).setText("Creative Commons License https://creativecommons.org/licenses/by/3.0/legalcode");
+        aboutLayer.appendChild(aboutLabel_6);
+        
 
 
-
-        var rewardButton = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(150, 310).setSize(a.width / 2 + 40, 30).setFill("#663300");
-        rewardButton = (new lime.GlossyButton()).setColor("#6600ff").setText("Enter Reward Code").setPosition(150, 310).setSize(a.width / 2, 30);
+        var rewardButton = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(150, 340).setSize(a.width / 2 + 40, 30).setFill("#663300");
+        rewardButton = (new lime.GlossyButton()).setColor("#6600ff").setText("Enter Reward Code").setPosition(150, 340).setSize(a.width / 2, 30);
         aboutLayer.appendChild(rewardButton);
-        var aboutLabel_8 = (new lime.Label()).setFontColor("#E8FC08").setFontSize(10).setPosition(150, 430).setSize(a.width - 30, 200).setText("Reward codes are for special circumstances only");
+        var aboutLabel_8 = (new lime.Label()).setFontColor("#E8FC08").setFontSize(10).setPosition(150, 465).setSize(a.width - 30, 200).setText("Reward codes are for special circumstances only");
         aboutLayer.appendChild(aboutLabel_8);
         //rewardButton.setHidden(true);
         //aboutLabel_8.setHidden(true);
 
 
-        var aboutLabelLogo = (new lime.Label()).setFontColor("#E8FC08").setFontSize(18).setPosition(150, 470).setSize(a.width - 40, 200).setText("");
+        var aboutLabelLogo = (new lime.Label()).setFontColor("#E8FC08").setFontSize(14).setPosition(154, 510).setSize(a.width - 40, 200).setText("");
         aboutLabelLogo.setText("Developed and Published by");
         aboutLayer.appendChild(aboutLabelLogo);
+        var aboutLogoImg = (new lime.Sprite()).setPosition(160, 450).setSize(150, 59).setFill("images/UI/footerImg.png");
+        aboutLayer.appendChild(aboutLogoImg);
 
-
-        var backBtnAbout = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width / 4 - 20, 400).setSize(a.width / 2 + 10, 40).setFill("#663300");
+        var backBtnAbout = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width / 4 - 23, 400).setSize(a.width / 2 + 10, 40).setFill("#663300");
         backBtnAbout = (new lime.GlossyButton()).setColor("#1ce636").setText("Back").setPosition(155, a.height - 30).setSize(a.width / 2 + 10, 40);
         aboutLayer.appendChild(backBtnAbout);
 
@@ -17308,9 +19538,10 @@ farming.start = function () {
             try {
                 var storedDataToSend = getLocalStorage();
                 var versionOf = '';
-                versionOf = device.version.toString();
+                try{versionOf = device.version.toString() || ' unknown';}catch(err){console.log(err);};
+                
                 window.plugins.socialsharing.shareViaEmail(
-                    'Stored Data to Send to GuiGhost                                   DeviceAndroidVersion: ' + versionOf + '                                                    SavedDataArray = BEGIN'
+                    'Stored Data to Send to GuiGhost                                   DeviceAndroidVersion: ' + versionOf + '                                                    SavedDataArray = BEGIN: '
                     + storedDataToSend + ' END', // text  
                     'Support Request for Medieval Farms',
                     ['info@guighost.com'], // TO: must be null or an array
@@ -17405,32 +19636,34 @@ farming.start = function () {
         //var topLogo = (new lime.Sprite()).setPosition(155, 11).setSize(150, 22).setFill("images/UI/topMenuPlain.png");
         //f.appendChild(topLogo);
 
-        var toInventoryWM = (new lime.Sprite()).setPosition((a.controlsLayer_w / 2) - 5, 36).setSize(38, 38).setFill(imgArrayItems[25].src);
+        var toInventoryWM = (new lime.Sprite()).setPosition((a.controlsLayer_w / 2) - 5, 39).setSize(40, 33).setFill(imgArrayItems[25].src).setRotation(5);
         windmillFill1.appendChild(toInventoryWM);
 
 
 
         goog.events.listen(toInventoryWM, ["mousedown", "touchstart"], function (e) {
             a.sceneBefore = 10;
-            checkItemsOwned();
+            try{checkItemsOwned();}catch(err){console.log(err)};
             starCashInvCount.setText(starCash);
             hideAndDelayNavIcons();
+            cropsBack.setHidden(false); itemsBack.setHidden(true); itemsStoredBack.setHidden(true); collectBack.setHidden(true);  ///always open to cropsInventory
             c.replaceScene(inventoryScene, lime.transitions.SlideInUp); sceneActive = 'Inventory';
+            playerImg.setHidden(false);
 
-            updateInventoryCounts();
+            try{updateInventoryCounts();}catch(err){console.log(err)};
 
             e.event.stopPropagation();
             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
         });
 
-        var wmCash = (new lime.Label()).setText(player.money).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(230, 44).setFontSize(18);
+        var wmCash = (new lime.Label()).setText(player.money).setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(230, 44).setFontSize(18);
         windmillFill1.appendChild(wmCash);
-        var topCoinWM = (new lime.Sprite()).setPosition(285, 40).setSize(35, 35).setFill(imgArray11[0]);
+        var topCoinWM = (new lime.Sprite()).setPosition(285, 45).setSize(30, 30).setFill(imgArray11[0]);
         windmillFill1.appendChild(topCoinWM);
 
 
         var toolCountImgWM = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(7, 22).setSize(35, 35).setFill(imgArray[30]);
-        var toolCountWM = (new lime.Label()).setText(player.tools).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(60, 44).setFontSize(18);
+        var toolCountWM = (new lime.Label()).setText(player.tools).setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(60, 44).setFontSize(18);
         windmillFill1.appendChild(toolCountImgWM);
         windmillFill1.appendChild(toolCountWM);
 
@@ -17485,7 +19718,7 @@ farming.start = function () {
         windMillBldg.appendChild(collectFlour);
         var collectFlourIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(12, 2).setSize(27, 30).setFill("images/" + a.crops[23].harvest);
         collectFlour.appendChild(collectFlourIcon);
-        var collectFlourLabel = (new lime.Label()).setText("+ 0 ").setFontWeight(500).setFontColor("#E8FC08").setPosition(23, 42).setSize(30, 18).setFontFamily("Comic Sans MS");
+        var collectFlourLabel = (new lime.Label()).setText("+ 0 ").setFontWeight(500).setFontColor("#E8FC08").setPosition(23, 42).setSize(30, 18).setFontFamily("Proxima Nova");
         collectFlour.appendChild(collectFlourLabel);
         collectFlour.setHidden(true);
 
@@ -17533,7 +19766,7 @@ farming.start = function () {
                         gLabel22.setText(player.cropsStored[22].stored);
                         collectFlour.setHidden(false);
                         collectFlourLabel.setText("+ " + flourWaiting);
-                        lime.scheduleManager.callAfter(function () { updateInventoryCounts(); }, this, 1000);
+                        lime.scheduleManager.callAfter(function () { try{updateInventoryCounts();}catch(err){console.log(err)}; }, this, 1000);
                     } else if (player.cropsStored[22].stored < 3) { needWheatBubble.setHidden(false); };
                 }, this, 50);
 
@@ -17581,6 +19814,17 @@ farming.start = function () {
         var storeHouseSmoke2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(223, 127).setSize(30, 30).setFill(imgArray[24]);
         windmillLayer.appendChild(storeHouseSmoke2);
 
+        var enterBakery = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(30, 50).setSize(32, 32).setFill(imgArrayWindmill[8]);
+        storeHouseWM.appendChild(enterBakery);
+
+
+
+        goog.events.listen(enterBakery, ["mousedown", "touchstart"], function (e) {
+            // globalModalBlock = 1;
+            sceneActive = 'Bakery';
+            c.replaceScene(bakeryScene);
+        });
+
         var needFlourBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(200, 157).setSize(40, 40).setFill(imgArray[106]).setHidden(true);
         windmillLayer.appendChild(needFlourBubble);
         var breadWaiting = 0;
@@ -17588,14 +19832,16 @@ farming.start = function () {
         windmillLayer.appendChild(collectBreadBubble);
         var collectBreadIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(12, 2).setSize(27, 30).setFill("images/" + a.crops[24].harvest);
         collectBreadBubble.appendChild(collectBreadIcon);
-        var collectBreadLabel = (new lime.Label()).setText("+ " + breadWaiting).setFontWeight(500).setFontColor("#E8FC08").setPosition(23, 42).setSize(30, 18).setFontFamily("Comic Sans MS");
+        var collectBreadLabel = (new lime.Label()).setText("+ " + breadWaiting).setFontWeight(500).setFontColor("#E8FC08").setPosition(23, 42).setSize(30, 18).setFontFamily("Proxima Nova");
         collectBreadBubble.appendChild(collectBreadLabel);
+
 
         lime.scheduleManager.scheduleWithDelay(function () {
             //add upgrade anim
             collectBreadBubble.setHidden(true);
             needFlourBubble.setHidden(true);
             if (acres[5].owned == 1 && storeHouseUpgraded == 1) {
+                enterBakery.setHidden(false);
                 if (player.cropsStored[23].stored >= 1) {
                     player.cropsStored[23].stored = parseInt(player.cropsStored[23].stored) - 1;
                     breadWaiting = breadWaiting + 2;
@@ -17609,7 +19855,7 @@ farming.start = function () {
                 }
 
             }
-            else { needFlourBubble.setHidden(true); collectBreadBubble.setHidden(true);}
+            else { needFlourBubble.setHidden(true); collectBreadBubble.setHidden(true); enterBakery.setHidden(true);}
 
         }, this, 60000)
 
@@ -17628,7 +19874,7 @@ farming.start = function () {
         function checkStoreHouseUpgrade() {
 
             if (storeHouseUpgraded == 1) {
-                storeHouseWM.setFill(imgArrayWindmill[6]); storeHouseWMUpBtn.setHidden(true);
+                storeHouseWM.setFill(imgArrayWindmill[6]); storeHouseWMUpBtn.setHidden(true); enterBakery.setHidden(false);
                 var opacitySmoke = 1.0;
                 lime.scheduleManager.scheduleWithDelay(function () {
                     //add upgrade anim
@@ -17708,26 +19954,24 @@ farming.start = function () {
         var lowerWheatBlock = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(72, 295).setFill(imgArrayWindmill[7]).setSize(216, 160).setHidden(false);
         windmillLayer.appendChild(lowerWheatBlock);
 
-        var lowerWheatBlockBtn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(85, 90).setFill(ImgArrayTools[3]).setSize(35, 35);
+        var lowerWheatBlockBtn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(85, 87).setFill(ImgArrayTools[3]).setSize(40, 40);
         lowerWheatBlock.appendChild(lowerWheatBlockBtn);
 
-        goog.events.listen(lowerWheatBlockBtn, ["mousedown", "touchstart"], function () {
+        goog.events.listen(lowerWheatBlockBtn, ["mousedown", "touchstart"], function (e) {
             if (player.tools < 500) { windmillQuestPanelConfirmBtn.setHidden(true); questText1windmillShort11.setHidden(false); }
             windmillQuestPanel.setHidden(false);
-
+            e.event.stopPropagation();
+            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
         });
         goog.events.listen(lowerWheatBlock, ["mousedown", "touchstart"], function (e) {
 
             e.event.stopPropagation();
             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
-
-
-
         });
         if (localStorage.getItem("wmFieldCleared") == 1) {
             lowerWheatBlock.setHidden(true); lowerWheatBlockBtn.setHidden(true);
         } 
-        var costDisplayWM = (new lime.Label()).setPosition(75, 180).setSize(50, 25).setText("-50").setFontSize(14).setFontFamily("Comic Sans MS").setFontColor("#e1f00e").setFontWeight(600);
+        var costDisplayWM = (new lime.Label()).setPosition(75, 180).setSize(50, 25).setText("-50").setFontSize(14).setFontFamily("Proxima Nova").setFontColor("#e1f00e").setFontWeight(600);
         windmillLayer.appendChild(costDisplayWM);
         var costCoinWM = (new lime.Sprite()).setPosition(30, -8).setSize(30, 30).setFill(imgArray11[0]);
         costDisplayWM.appendChild(costCoinWM);
@@ -17735,7 +19979,7 @@ farming.start = function () {
         var upgradeCloudWMField = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-30, -50).setSize(270, 250).setFill(imgArray[24].src);
         lowerWheatBlock.appendChild(upgradeCloudWMField);
 
-        var toolMoverLabelWM3 = (new lime.Label()).setText("90").setPosition(105, 75).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("ComicSans MS").setFill(imgArray[27]);
+        var toolMoverLabelWM3 = (new lime.Label()).setText("90").setPosition(105, 75).setSize(40, 25).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Proxima Nova").setFill(imgArray[27]);
         lowerWheatBlock.appendChild(toolMoverLabelWM3);
 
         var toolMoverWM3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(65, 0).setSize(50, 50).setFill(imgArray[61]);
@@ -17748,7 +19992,7 @@ farming.start = function () {
         windmillLayer.appendChild(controlsBackWM);
         //vinyard growing set
         var hhWM = b.currentCrop;
-        var growingLabelWM = (new lime.Label()).setText("Growing Wheat ").setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontSize(12).setPosition(a.controlsLayer_w / 2 - 5, a.height - a.controlsLayer_h / 2 - 12);
+        var growingLabelWM = (new lime.Label()).setText("Growing Wheat ").setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setFontSize(12).setPosition(a.controlsLayer_w / 2 - 5, a.height - a.controlsLayer_h / 2 - 12);
         windmillLayer.appendChild(growingLabelWM);
         var growingImageWM = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.controlsLayer_w / 2 - 22, a.height - a.controlsLayer_h / 2 - 5).setFill("images/" + a.crops[22].harvest).setSize(30, 30);
         windmillLayer.appendChild(growingImageWM);
@@ -17774,7 +20018,7 @@ farming.start = function () {
         var upgradeCloudWM = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, -70).setSize(120, 200).setFill(imgArray[24].src);
         scaffoldWM.appendChild(upgradeCloudWM);
 
-        var toolMoverLabelWM = (new lime.Label()).setText("90").setPosition(50, 60).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("ComicSans MS").setFill(imgArray[27]);
+        var toolMoverLabelWM = (new lime.Label()).setText("90").setPosition(50, 60).setSize(40, 25).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Proxima Nova").setFill(imgArray[27]);
         scaffoldWM.appendChild(toolMoverLabelWM);
 
         var toolMoverWM = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(20, 0).setSize(50, 50).setFill(imgArray[29]);
@@ -17789,19 +20033,50 @@ farming.start = function () {
         var upgradeCloudWM2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-20, -50).setSize(120, 200).setFill(imgArray[24].src);
         scaffoldWM2.appendChild(upgradeCloudWM2);
 
-        var toolMoverLabelWM2 = (new lime.Label()).setText("90").setPosition(45, 60).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("ComicSans MS").setFill(imgArray[27]);
+        var toolMoverLabelWM2 = (new lime.Label()).setText("90").setPosition(45, 60).setSize(40, 25).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setFontWeight(600).setFontSize(28).setFontFamily("Proxima Nova").setFill(imgArray[27]);
         scaffoldWM2.appendChild(toolMoverLabelWM2);
 
         var toolMoverWM2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(20, 0).setSize(50, 50).setFill(imgArray[29]);
         scaffoldWM2.appendChild(toolMoverWM2);
         scaffoldWM2.setHidden(true);
 
-        var cropBoostBtnWM = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(153, 175).setSize(36, 36).setFill(imgArray[92]);
+        var cropBoostBtnWM = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(153, 185).setSize(36, 36).setFill(imgArray[92]);
         windmillLayer.appendChild(cropBoostBtnWM);
 
-   
-
-
+   //////////HERE
+   var mapLocWM1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(10, 260).setSize(18,20).setFill(imgArrayItems[43]);
+   windmillLayer.appendChild(mapLocWM1);
+   var mapLocWM2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width -40, 83).setSize(18,20).setFill(imgArrayItems[44]);
+   windmillLayer.appendChild(mapLocWM2);
+   var mapLocWM3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width -23, 435).setSize(18,20).setFill(imgArrayItems[43]);
+   windmillLayer.appendChild(mapLocWM3);
+   if(mapLocations.places[21].found == 1){
+       mapLocWM1.setHidden(true);}
+       else{
+           goog.events.listen(mapLocWM1, ["mousedown", "touchstart"], function (e) {
+               if(globalModalBlock == 0){  this.setHidden(true); mapLocations.places[21].found = 1; getMapFrag('w1');
+                   e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+               };
+           });
+       }
+   if(mapLocations.places[22].found == 1){
+        mapLocWM2.setHidden(true);}
+       else{
+           goog.events.listen(mapLocWM2, ["mousedown", "touchstart"], function (e) {
+               if(globalModalBlock == 0){  this.setHidden(true); mapLocations.places[22].found = 1; getMapFrag('w2');
+               e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); 
+               };
+           });
+       }
+    if(mapLocations.places[23].found == 1){
+        mapLocWM3.setHidden(true);}
+       else{
+           goog.events.listen(mapLocWM3, ["mousedown", "touchstart"], function (e) {
+               if(globalModalBlock == 0){  this.setHidden(true); mapLocations.places[23].found = 1; getMapFrag('w3');
+               e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); 
+               };
+           });
+       }
 
         //begin miller
 
@@ -17881,7 +20156,7 @@ farming.start = function () {
         });
         goog.events.listen(fbBtnWM, ["mousedown", "touchstart"], function (e) {
             if (globalModalBlock == 0) {
-                shareFacebook();
+                openStarMenu();
             }
             e.event.stopPropagation();
             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
@@ -17908,9 +20183,9 @@ farming.start = function () {
                 hideAndDelayNavIcons();
                 c.replaceScene(marketScene, lime.transitions.SlideInUp);
                 sceneActive = 'Market';
-                acresOwned3 = acres[1].owned + acres[2].owned + acres[3].owned + acres[4].owned;
+                acresOwned3 = parseInt(acres[1].owned) + parseInt(acres[2].owned) + parseInt(acres[3].owned) + parseInt(acres[4].owned);
                 if (acresOwned3 >= 4) { gideon.setHidden(false); } else { gideon.setHidden(true); }
-                lime.scheduleManager.callAfter(function () { CheckQuestInvItems(); }, this, 2000);
+                lime.scheduleManager.callAfter(function () { try{CheckQuestInvItems();}catch(err){console.log(err)}; }, this, 2000);
 
             }
             e.event.stopPropagation();
@@ -17924,7 +20199,7 @@ farming.start = function () {
             if (globalModalBlock == 0) {
                 var isMuted = lime.audio.getMute();
                 if (isMuted) {
-                    lime.audio.setMute(false); themeSong.play(true); localStorage.setItem('GuiGhostFarms_muted', 0)
+                    lime.audio.setMute(false); themeSongNew.play(true); localStorage.setItem('GuiGhostFarms_muted', 0)
                     setMute(2);
                 } else { lime.audio.setMute(true); setMute(1); localStorage.setItem('GuiGhostFarms_muted', 1) }
             }
@@ -18025,7 +20300,7 @@ farming.start = function () {
 
                 oldCrop = localStorage.getItem("MedFarms_selectedHomeCrop");
                 b.currentCrop = 12;
-                lime.scheduleManager.callAfter(function () { checkShortage(); }, this, 100);
+                lime.scheduleManager.callAfter(function () { checkShortage(); }, this, 500);
                 //setTimeout(function () {  checkShortage(); }, 0);
                 globalModalBlock = 0;
                 homeBlock.setHidden(true);
@@ -18065,7 +20340,7 @@ farming.start = function () {
 
         });
 
-
+        var hammerSoundWM = hammerSound;
         function fnUpgradeWindMillBldg(timeLeft, costWoodWM, costToolsWM) {
             scaffoldWM.setHidden(false);
             var currentRotateWM = -10;
@@ -18077,7 +20352,7 @@ farming.start = function () {
             var tickerSecondsWM = timeLeft;
             var tickerForTimerWM = tickerSecondsWM * 4;
             windmillBldgUpgradeBtn.setHidden(true);
-
+            
             //cost section
             player.tools = player.tools - costToolsWM;
             player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - costWoodWM;
@@ -18096,6 +20371,7 @@ farming.start = function () {
                 ticker4Seconds = ticker4Seconds + 1;
                 if (ticker4Seconds >= 4) {
                     ticker4Seconds = 0;
+                    if(sceneActive == 'Windmill') {hammerSoundWM.play();};
                     tickerSecondsWM = tickerSecondsWM - 1;
                     toolMoverLabelWM.setText(tickerSecondsWM);
                     upgradesInProgress.buildings[6].timeLeft = tickerSecondsWM;
@@ -18117,7 +20393,8 @@ farming.start = function () {
                     //times up hide upgrade stuff
                     scaffoldWM.setHidden(true);
                     windmillUpgraded = 1;
-
+                    showMFToast("WindMill Upgraded",imgArray[30].src,'windmill', 3000);
+                    hammerSoundWM.stop();
 
                     localStorage.setItem("wmUpgraded", 1);
                     windMillBldg.setFill(imgArrayWindmill[2]); windMillSail.setHidden(false);
@@ -18158,9 +20435,12 @@ farming.start = function () {
             //--cost
 
 
-
+            var hammertickST = 0;
+            var hammerSoundSt = hammerSound;
             lime.scheduleManager.scheduleWithDelay(function () {
                 //add upgrade anim
+                hammertickST++;
+                if(hammertickST >= 20){   if (sceneActive == 'Windmill'){ hammerSoundSt.play(); }   };
                 tickerwm3 = tickerwm3 + 1;
                 ticker4Seconds3 = ticker4Seconds3 + 1;
                 if (ticker4Seconds3 >= 4) {
@@ -18170,7 +20450,7 @@ farming.start = function () {
                     upgradesInProgress.buildings[7].timeLeft = tickerSecondsWM3;
                     upgradesInProgress.buildings[7].currentBarnLevel = 1;
                     localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
-
+                  
                 }
                 upgradeCloudWM2.setPosition(upCloudXm3, upCloudYm3).setSize(upCloudWm3, 200);
 
@@ -18185,17 +20465,19 @@ farming.start = function () {
                 if (tickerSecondsWM3 <= 0) {
                     //times up hide upgrade stuff
                     scaffoldWM2.setHidden(true);
-                    storehouseUpgraded = 1;
+                    enterBakery.setHidden(false);
+                    storeHouseUpgraded = 1;
                     localStorage.setItem("storeHouseUpgraded", 1);
+                    
                     storeHouseWM.setFill(imgArrayWindmill[6]);
                     storeHouseWMUpBtn.setHidden(true);
                     try { goog.events.removeAll(windmillQuestPanelConfirmBtn3); } catch (err) { console.log("failed remove") };
 
-
+                    hammerSoundSt.stop();
                     upgradesInProgress.buildings[6].timeLeft = 0;
                     upgradesInProgress.buildings[6].currentBarnLevel = 2;
                     localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
-
+                    showMFToast("Unlocked Bakery",imgArray[30].src, 'bakery', 3000);
                 }
 
             }, this, 250, tickerForTimerWM3)
@@ -18205,16 +20487,21 @@ farming.start = function () {
         }
 
 
+        var foundTreasureW = (new lime.Sprite()).setPosition(a.width/2 + 10, 160).setSize(60, 60).setFill('images/stars4.png').setHidden(true);
+        windmillLayer.appendChild(foundTreasureW);
+        goog.events.listen(foundTreasureW, ["mousedown", "touchstart"], function (e) {           
+            if (foundTreasureW.getHidden() == false){  loadHeirloom('windmill'); successSound.play(); };
+            e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+        }, false);
 
-
-
+    
 
         var millerAnimCount = 0;
-
+        var treasureTickW = 0;
         ////miller anim
         lime.scheduleManager.scheduleWithDelay(function () {
             if (sceneActive == "Windmill" && windmillUpgraded == 1) {
-                millerSprite.setHidden(false); connieSprite.setHidden(false);
+                millerSprite.setHidden(false); connieSprite.setHidden(false); 
                 if (millerAnimCount > 66) {
                     millerAnimCount = 0
                 };
@@ -18300,6 +20587,22 @@ farming.start = function () {
 
 
             }
+            treasureTickW++;
+            if (foundTreasureW.getHidden() == false && treasureTickW >= 5){
+                treasureTickW = 0;
+                lime.scheduleManager.scheduleWithDelay(function(){
+                    foundTreasureW.setRotation(0);
+                    lime.scheduleManager.callAfter( function(){
+                        foundTreasureW.setRotation(90);
+                    },this,250);
+                    lime.scheduleManager.callAfter( function(){
+                        foundTreasureW.setRotation(180);
+                    },this,500);
+                    lime.scheduleManager.callAfter( function(){
+                        foundTreasureW .setRotation(270);
+                    },this,750);
+                },this, 1000 );
+            }
         }, this, 200)
 
         goog.events.listen(millerQuestBtn, ["mousedown", "touchstart"], function (e) {
@@ -18320,14 +20623,14 @@ farming.start = function () {
         });
 
         var millerQuestPanel = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 100).setSize(a.width - 30, a.height / 2).setFill(imgArray[78]).setHidden(true);
-        var questHeadermiller = (new lime.Label()).setAnchorPoint(0, 0).setPosition(75, 25).setText("Miller Ulric").setFontFamily("Comic Sans MS").setFontSize(24);
+        var questHeadermiller = (new lime.Label()).setAnchorPoint(0, 0).setPosition(75, 25).setText("Miller Ulric").setFontFamily("Proxima Nova").setFontSize(24);
         millerQuestPanel.appendChild(questHeadermiller);
 
         var millerQuestPanelAvatar = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(100, 38).setSize(75, 75).setFill(imgArrayMiller[0]);
         millerQuestPanel.appendChild(millerQuestPanelAvatar);
-        var questText1miller = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 135).setText("As we we have wheat, I can make flour").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var questText1miller = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 135).setText("As we we have wheat, I can make flour").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         millerQuestPanel.appendChild(questText1miller);
-        var questText1millerShort11 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(25, 205).setText("").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50).setFontColor("#FF0000");
+        var questText1millerShort11 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(25, 205).setText("").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50).setFontColor("#FF0000");
         millerQuestPanel.appendChild(questText1millerShort11)
         questText1millerShort11.setHidden(true);
         var millerQuestPanelCloseBtn = (new lime.GlossyButton()).setColor("#663300").setText("Close").setPosition(140, 235).setSize(100, 20);
@@ -18362,14 +20665,14 @@ farming.start = function () {
 
         /// end miller
         var connieQuestPanel = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 100).setSize(a.width - 30, a.height / 2).setFill(imgArray[78]).setHidden(true);
-        var questHeaderConnie = (new lime.Label()).setAnchorPoint(0, 0).setPosition(105, 25).setText("Connie").setFontFamily("Comic Sans MS").setFontSize(24);
+        var questHeaderConnie = (new lime.Label()).setAnchorPoint(0, 0).setPosition(105, 25).setText("Connie").setFontFamily("Proxima Nova").setFontSize(24);
         connieQuestPanel.appendChild(questHeaderConnie);
 
         var connieQuestPanelAvatar = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(100, 38).setSize(75, 75).setFill(imgArrayConnie[0]);
         connieQuestPanel.appendChild(connieQuestPanelAvatar);
-        var questText1Connie = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 135).setText("With Floud I can make bread").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var questText1Connie = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 135).setText("With Floud I can make bread").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         connieQuestPanel.appendChild(questText1Connie);
-        var questText1ConnieShort11 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(25, 205).setText("").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50).setFontColor("#FF0000");
+        var questText1ConnieShort11 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(25, 205).setText("").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50).setFontColor("#FF0000");
         connieQuestPanel.appendChild(questText1ConnieShort11)
         questText1ConnieShort11.setHidden(true);
         var connieQuestPanelCloseBtn = (new lime.GlossyButton()).setColor("#663300").setText("Close").setPosition(140, 235).setSize(100, 20);
@@ -18402,15 +20705,15 @@ farming.start = function () {
             }
         });
         var windmillQuestPanel = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 100).setSize(a.width - 30, a.height / 2).setFill(imgArray[78]).setHidden(true);
-        var questHeaderwindmill = (new lime.Label()).setAnchorPoint(0, 0).setPosition(45, 25).setText("Overgrown Field").setFontFamily("Comic Sans MS").setFontSize(24);
+        var questHeaderwindmill = (new lime.Label()).setAnchorPoint(0, 0).setPosition(45, 25).setText("Overgrown Field").setFontFamily("Proxima Nova").setFontSize(24);
         windmillQuestPanel.appendChild(questHeaderwindmill);
-        var questText1windmill = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 135).setText("This overgrown field needs lots of work to grow crops again. Shall we clear it?").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var questText1windmill = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 135).setText("This overgrown field needs lots of work to grow crops again. Shall we clear it?").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         windmillQuestPanel.appendChild(questText1windmill);
         var windmillQuestPanelCost = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(110, 68).setSize(50, 50).setFill(ImgArrayTools[3]);
         windmillQuestPanel.appendChild(windmillQuestPanelCost);
         var windmillQuestPanelConfirmBtn = (new lime.GlossyButton()).setColor("#00ff00").setText("Clear It!").setPosition(140, 205).setSize(100, 20);
         windmillQuestPanel.appendChild(windmillQuestPanelConfirmBtn);
-        var questText1windmillShort11 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(25, 205).setText("Need More Resources").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50).setFontColor("#FF0000");
+        var questText1windmillShort11 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(25, 205).setText("Need More Resources").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50).setFontColor("#FF0000");
         windmillQuestPanel.appendChild(questText1windmillShort11)
         questText1windmillShort11.setHidden(true);
         var windmillQuestPanelCloseBtn = (new lime.GlossyButton()).setColor("#663300").setText("Close").setPosition(140, 235).setSize(100, 20);
@@ -18439,6 +20742,7 @@ farming.start = function () {
         function clearWheatField() {
             windmillQuestPanel.setHidden(true);
             //todo cloud and tools
+            lowerWheatBlockBtn.setHidden(true);
             upgradeCloudWMField.setHidden(false);
             toolMoverLabelWM3.setHidden(false);
             toolMoverWM3.setHidden(false);
@@ -18479,7 +20783,7 @@ farming.start = function () {
                 localStorage.setItem("wmFieldCleared", 1);
                 player.cropsStored[14].stored = player.cropsStored[14].stored + 500; localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
                 lime.scheduleManager.callAfter(function () {
-                    updateInventoryCounts();
+                    try{updateInventoryCounts();}catch(err){console.log(err)};
                 }, this, 1000)
                 try { goog.events.removeAll(lowerWheatBlock); } catch (err) { console.log(err) }
 
@@ -18488,21 +20792,21 @@ farming.start = function () {
         }
 
         var windmillQuestPanel2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 100).setSize(a.width - 30, a.height / 2).setFill(imgArray[78]);
-        var questHeaderwindmill2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(25, 25).setText("Overgrown Windmill").setFontFamily("Comic Sans MS").setFontSize(24);
+        var questHeaderwindmill2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(25, 25).setText("Overgrown Windmill").setFontFamily("Proxima Nova").setFontSize(24);
         windmillQuestPanel2.appendChild(questHeaderwindmill2);
-        var questText1windmill2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 135).setText("This old Windmill needs work. Repair it to unlock FLOUR").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var questText1windmill2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 135).setText("This old Windmill needs work. Repair it to unlock FLOUR").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         windmillQuestPanel2.appendChild(questText1windmill2);
         var windmillQuestPanelCost2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(50, 48).setSize(50, 50).setFill(imgArray[30]);
         windmillQuestPanel2.appendChild(windmillQuestPanelCost2);
         var windmillQuestPanelCost21 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(160, 48).setSize(50, 50).setFill(imgArray[58]);
         windmillQuestPanel2.appendChild(windmillQuestPanelCost21);
-        var questText1windmill2CostTools = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-40, 110).setText(player.tools + "/2500").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var questText1windmill2CostTools = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-40, 110).setText(player.tools + "/2500").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         windmillQuestPanel2.appendChild(questText1windmill2CostTools)
-        var questText1windmill2CostWood = (new lime.Label()).setAnchorPoint(0, 0).setPosition(75, 110).setText(player.cropsStored[14].stored + "/250").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var questText1windmill2CostWood = (new lime.Label()).setAnchorPoint(0, 0).setPosition(75, 110).setText(player.cropsStored[14].stored + "/250").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         windmillQuestPanel2.appendChild(questText1windmill2CostWood)
         var windmillQuestPanelConfirmBtn2 = (new lime.GlossyButton()).setColor("#00ff00").setText("Repair It!").setPosition(140, 205).setSize(100, 20);
         windmillQuestPanel2.appendChild(windmillQuestPanelConfirmBtn2);
-        var questText1windmill2Short = (new lime.Label()).setAnchorPoint(0, 0).setPosition(25, 205).setText("Need More Resources").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50).setFontColor("#FF0000");
+        var questText1windmill2Short = (new lime.Label()).setAnchorPoint(0, 0).setPosition(25, 205).setText("Need More Resources").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50).setFontColor("#FF0000");
         windmillQuestPanel2.appendChild(questText1windmill2Short)
 
         var windmillQuestPanelCloseBtn2 = (new lime.GlossyButton()).setColor("#663300").setText("Close").setPosition(140, 240).setSize(100, 20);
@@ -18513,21 +20817,21 @@ farming.start = function () {
 
 
         var windmillQuestPanel3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 100).setSize(a.width - 30, a.height / 2).setFill(imgArray[78]);
-        var questHeaderwindmill3 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(25, 25).setText("Run Down StoreHouse").setFontFamily("Comic Sans MS").setFontSize(24);
+        var questHeaderwindmill3 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(25, 25).setText("Run Down StoreHouse").setFontFamily("Proxima Nova").setFontSize(24);
         windmillQuestPanel3.appendChild(questHeaderwindmill3);
-        var questText1windmill3 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 135).setText("This old Storehouse is in dire need of repair before we can store more Wheat & Flour").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var questText1windmill3 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 135).setText("This old Storehouse is in dire need of repair before we can store more Wheat & Flour").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         windmillQuestPanel3.appendChild(questText1windmill3);
         var windmillQuestPanelCost3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(50, 48).setSize(50, 50).setFill(imgArray[30]);
         windmillQuestPanel3.appendChild(windmillQuestPanelCost3);
         var windmillQuestPanelCost31 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(160, 48).setSize(50, 50).setFill(imgArray[58]);
         windmillQuestPanel3.appendChild(windmillQuestPanelCost31);
-        var questText1windmill3CostTools = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-40, 110).setText(player.tools + "/2000").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var questText1windmill3CostTools = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-40, 110).setText(player.tools + "/2000").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         windmillQuestPanel3.appendChild(questText1windmill3CostTools)
-        var questText1windmill3CostWood = (new lime.Label()).setAnchorPoint(0, 0).setPosition(75, 110).setText(player.cropsStored[14].stored + "/250").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var questText1windmill3CostWood = (new lime.Label()).setAnchorPoint(0, 0).setPosition(75, 110).setText(player.cropsStored[14].stored + "/250").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         windmillQuestPanel3.appendChild(questText1windmill3CostWood)
         var windmillQuestPanelConfirmBtn3 = (new lime.GlossyButton()).setColor("#00ff00").setText("Repair It!").setPosition(140, 205).setSize(100, 20);
         windmillQuestPanel3.appendChild(windmillQuestPanelConfirmBtn3);
-        var questText1windmill3Short = (new lime.Label()).setAnchorPoint(0, 0).setPosition(25, 205).setText("Need More Resources").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50).setFontColor("#FF0000");
+        var questText1windmill3Short = (new lime.Label()).setAnchorPoint(0, 0).setPosition(25, 205).setText("Need More Resources").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50).setFontColor("#FF0000");
         windmillQuestPanel3.appendChild(questText1windmill3Short)
 
         var windmillQuestPanelCloseBtn3 = (new lime.GlossyButton()).setColor("#663300").setText("Close").setPosition(140, 240).setSize(100, 20);
@@ -18599,13 +20903,13 @@ farming.start = function () {
 
 
         var windmillHelpPanel = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(15, 100).setSize(a.width - 30, a.height / 2).setFill(imgArray[78]).setHidden(true);
-        var helpHeaderwindmill = (new lime.Label()).setAnchorPoint(0, 0).setPosition(75, 25).setText("Grain Fields").setFontFamily("Comic Sans MS").setFontSize(24);
+        var helpHeaderwindmill = (new lime.Label()).setAnchorPoint(0, 0).setPosition(75, 25).setText("Grain Fields").setFontFamily("Proxima Nova").setFontSize(24);
         windmillHelpPanel.appendChild(helpHeaderwindmill);
-        var helpText1windmill = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 65).setText("This farm has soil best suited to WHEAT").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var helpText1windmill = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 65).setText("This farm has soil best suited to WHEAT").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         windmillHelpPanel.appendChild(helpText1windmill);
-        var helpText1windmill2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 110).setText("Repair the windmill to unlock the ability to make FLOUR ").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var helpText1windmill2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 110).setText("Repair the windmill to unlock the ability to make FLOUR ").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         windmillHelpPanel.appendChild(helpText1windmill2);
-        var helpText1windmill3 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 160).setText("Repairing the Storehouse will convert it to a Bakery where you can make BREAD").setFontFamily("Comic Sans MS").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
+        var helpText1windmill3 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(20, 160).setText("Repairing the Storehouse will convert it to a Bakery where you can make BREAD").setFontFamily("Proxima Nova").setFontSize(16).setSize(a.width - 80, a.height / 2 - 50);
         windmillHelpPanel.appendChild(helpText1windmill3);
 
         var windmillHelpPanelCloseBtn = (new lime.GlossyButton()).setColor("#663300").setText("Close").setPosition(140, 235).setSize(100, 20);
@@ -18630,9 +20934,10 @@ farming.start = function () {
         var boostCropsWM = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(40, 120).setSize(230, 280).setFill("images/UI/cropBoostBack2.png");
         windmillLayer.appendChild(boostCropsWM);
         boostCropsWM.setHidden(true);
-        var starCashCountBoostWM = (new lime.Label()).setText(starCash).setPosition(121, 31).setSize(40, 25).setFontFamily("Comic Sans MS").setFontColor("#000F00").setFontWeight(600).setFontSize(20).setFontFamily("ComicSans MS");
+        var starCashCountBoostWM = (new lime.Label()).setText(starCash).setPosition(121, 31).setSize(40, 25).setFontFamily("Proxima Nova").setFontColor("#000F00").setFontWeight(600).setFontSize(20).setFontFamily("Proxima Nova");
         boostCropsWM.appendChild(starCashCountBoostWM);
 
+    
 
         //end ad free hide
         var speedAdConfirmSCWM = (new lime.GlossyButton()).setColor("#00FF00").setText("-       ").setPosition(115, 180).setSize(50, 32);
@@ -18640,10 +20945,10 @@ farming.start = function () {
         var starCashBoostWM = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-10, -17).setSize(35, 35).setFill(imgArray[37]);
         speedAdConfirmSCWM.appendChild(starCashBoostWM);
 
-        var speedAdOrWM = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-10, 20).setText("or").setFontFamily("Comic Sans MS").setFontSize(18);
+        var speedAdOrWM = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-10, 20).setText("or").setFontFamily("Proxima Nova").setFontSize(18);
         speedAdConfirmSC.appendChild(speedAdOrWM);
 
-        var speedAdConfirmWM = (new lime.GlossyButton()).setColor("#00FF00").setText("View Ad").setPosition(115, 233).setSize(85, 32);
+        var speedAdConfirmWM =  (new lime.Sprite()).setFill(imgArray[108]).setPosition(113, 232).setSize(90, 38);       
         boostCropsWM.appendChild(speedAdConfirmWM);
         //hide for AdFree
         //if (adFreeVersion == 1) { speedAdConfirmWM.setHidden(true); speedAdOrWM.setHidden(true); }
@@ -18662,7 +20967,7 @@ farming.start = function () {
                 localStorage.setItem('MedFarm_LoadAd', 1);
                 localStorage.setItem('MedFarm_StarCashBoost', 0);
                 lime.audio.setMute(true);
-
+                    lime.scheduleManager.callAfter(function(){  localStorage.setItem('adWatched', 1); }, this, 5000);
                 e.event.stopPropagation();
                 e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
             }
@@ -18697,7 +21002,7 @@ farming.start = function () {
                 //console.log("clicked cancel");
                 var isMuted22 = parseInt(localStorage.getItem('GuiGhostFarms_muted'));
                 if (isMuted22 == 1) { lime.audio.setMute(true); setMute(1); }
-                else { lime.audio.setMute(false); themeSong.play(true); smithSound.play(); setMute(2); }
+                else { lime.audio.setMute(false); themeSongNew.play(true); smithSound.play(); setMute(2); }
 
 
                 boostCropsWM.setHidden(true);
@@ -18726,6 +21031,284 @@ farming.start = function () {
 
         ////////////End of windmill scene///////
 
+        ////////////////////////BakeryScene////////////////////////
+        var bakeryScene = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
+        bakeryLayer = (new lime.Layer).setAnchorPoint(0, 0),
+        bakeryFill1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height ).setFill(imgArrayWindmill[9]).setHidden(false);
+        bakeryScene.appendChild(bakeryLayer);
+        bakeryScene.appendChild(bakeryFill1);
+
+
+        var fireInBakery1 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(49, 55).setFill(imgArray12[4]).setSize(16, 12);
+        bakeryFill1.appendChild(fireInBakery1);
+
+        var fireInBakery2 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(91, 55).setFill(imgArray12[5]).setSize(16, 12);
+        bakeryFill1.appendChild(fireInBakery2);
+
+        var fireInBakery3 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(204, 55).setFill(imgArray12[6]).setSize(16, 12);
+        bakeryFill1.appendChild(fireInBakery3);
+
+        var fireInBakery4 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(245, 55).setFill(imgArray12[4]).setSize(16, 12);
+        bakeryFill1.appendChild(fireInBakery4);
+        var bakeryFireState = 4;
+        lime.scheduleManager.scheduleWithDelay(function(){
+            fireInBakery1.setFill(imgArray12[bakeryFireState]);
+            fireInBakery2.setFill(imgArray12[bakeryFireState]);
+            fireInBakery3.setFill(imgArray12[bakeryFireState]);
+            fireInBakery4.setFill(imgArray12[bakeryFireState]);
+            bakeryFireState++;
+            if (bakeryFireState > 6) { bakeryFireState = 4; };
+        }, this, 250)
+        
+
+        var bakeryChoiceParent = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(26, 260).setSize(260, 230).setFill('#000000');
+        bakeryFill1.appendChild(bakeryChoiceParent);
+
+
+         var bakeryHeader = (new lime.Label()).setText('Making Simple Bread').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(130, 18).setFontSize(14);
+         bakeryChoiceParent.appendChild(bakeryHeader);
+         
+         var bakeryLeft = (new lime.Sprite()).setPosition(0, 105).setSize(30, 30).setFill(imgArray[83]).setRotation(90);
+         bakeryChoiceParent.appendChild(bakeryLeft);
+
+         var bakeryRight = (new lime.Sprite()).setPosition(259, 105).setSize(30, 30).setFill(imgArray[83]).setRotation(270);
+         bakeryChoiceParent.appendChild(bakeryRight);
+
+         var bakerySelectedCheck = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(175, 35).setSize(18, 18).setFill(imgArray[35]);
+
+         var bakeryTimeText = (new lime.Label()).setText('Time: 1 minute').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(120, 210).setFontSize(16);
+         bakeryChoiceParent.appendChild(bakeryTimeText);
+        
+         var bakeryChoiceChild1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(18, 32).setSize(220, 160).setFill(imgArrayTown[18]);
+         bakeryChoiceParent.appendChild(bakeryChoiceChild1);
+         var bakeryChild1Txt = (new lime.Label()).setText('Simple Bread').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(110, 26).setFontSize(22);
+         bakeryChoiceChild1.appendChild(bakeryChild1Txt);
+         var bakeryBread = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(80, 45).setSize(55, 55).setFill('images/bread.png');
+         bakeryChoiceChild1.appendChild(bakeryBread);
+
+         var bakeryChild1reqText = (new lime.Label()).setText('Requires').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(55, 127).setFontSize(16);
+         bakeryChoiceChild1.appendChild(bakeryChild1reqText);
+
+         var bread1req1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(98, 110).setSize(25, 25).setFill('images/flour.png');
+         bakeryChoiceChild1.appendChild(bread1req1);
+         var bread1req1Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(130, 135).setFontSize(16);
+         bakeryChoiceChild1.appendChild(bread1req1Txt);
+         var bread1req2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(143, 110).setSize(18, 25).setFill(imgArray[110]);
+         bakeryChoiceChild1.appendChild(bread1req2);
+         var bread1req2Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(168, 135).setFontSize(16);
+         bakeryChoiceChild1.appendChild(bread1req2Txt);
+        
+
+
+ 
+         var bakeryChoiceChild2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition( a.width + 18, 32).setSize(220, 160).setFill(imgArrayTown[18]);
+         bakeryChoiceParent.appendChild(bakeryChoiceChild2);
+         var bakeryChild2Txt = (new lime.Label()).setText('Apple Pie').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(110, 26).setFontSize(22);
+         bakeryChoiceChild2.appendChild(bakeryChild2Txt);
+         var bakeryPie = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(80, 45).setSize(55, 55).setFill('images/items/pie1.png');
+         bakeryChoiceChild2.appendChild(bakeryPie);
+
+         var bakeryChild2reqText = (new lime.Label()).setText('Requires').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(55, 127).setFontSize(16);
+         bakeryChoiceChild2.appendChild(bakeryChild2reqText);
+
+         var pie1req1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(95, 108).setSize(25, 25).setFill('images/flour.png');
+         bakeryChoiceChild2.appendChild(pie1req1);
+         var pie1req1Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(120, 135).setFontSize(16);
+         bakeryChoiceChild2.appendChild(pie1req1Txt);
+         var pie1req2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(130, 108).setSize(25, 25).setFill('images/apple.png');
+         bakeryChoiceChild2.appendChild(pie1req2);
+         var pie1req2Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(153, 135).setFontSize(16);
+         bakeryChoiceChild2.appendChild(pie1req2Txt);
+         var pie1req3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(170, 108).setSize(18, 25).setFill(imgArray[110]);
+         bakeryChoiceChild2.appendChild(pie1req3);
+         var pie1req3Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(192, 135).setFontSize(16);
+         bakeryChoiceChild2.appendChild(pie1req3Txt);
+
+
+
+         var bakeryChoiceChild3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition( a.width * 2 + 18, 32).setSize(220, 160).setFill(imgArrayTown[18]);
+         bakeryChoiceParent.appendChild(bakeryChoiceChild3);
+         var bakeryChild3Txt = (new lime.Label()).setText('Manchet Loaf').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(110, 26).setFontSize(22);
+         bakeryChoiceChild3.appendChild(bakeryChild3Txt);
+         var bakeryManchet = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(80, 45).setSize(55, 55).setFill('images/items/manchetLoaf.png');
+         bakeryChoiceChild3.appendChild(bakeryManchet);
+         
+         var bakeryChild3reqText = (new lime.Label()).setText('Requires').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(55, 127).setFontSize(16);
+         bakeryChoiceChild3.appendChild(bakeryChild3reqText);
+         var bunsReq1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(95, 108).setSize(25, 25).setFill('images/flour.png');
+         bakeryChoiceChild3.appendChild(bunsReq1);
+         var bunsReq1Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(120, 135).setFontSize(16);
+         bakeryChoiceChild3.appendChild(bunsReq1Txt);
+         var bunsReq2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(170, 108).setSize(18, 25).setFill(imgArray[110]);
+         bakeryChoiceChild3.appendChild(bunsReq2);
+         var bunsReq2Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(192, 135).setFontSize(16);
+         bakeryChoiceChild3.appendChild(bunsReq2Txt); 
+    
+   
+         var bakeryChoiceChild4 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition( a.width * 3 + 18, 32).setSize(220, 160).setFill(imgArrayTown[18]);
+         bakeryChoiceParent.appendChild(bakeryChoiceChild4);
+         var bakeryChild4Txt = (new lime.Label()).setText('Cream Filled Eclair').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(110, 26).setFontSize(22);
+         bakeryChoiceChild4.appendChild(bakeryChild4Txt);
+         var bakeryEclair = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(80, 45).setSize(55, 55).setFill('images/items/eclair.png');
+         bakeryChoiceChild4.appendChild(bakeryEclair);
+         
+         var bakeryChild4reqText = (new lime.Label()).setText('Requires').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(55, 127).setFontSize(16);
+         bakeryChoiceChild4.appendChild(bakeryChild4reqText);
+         var eclairReq1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(95, 108).setSize(25, 25).setFill('images/flour.png');
+         bakeryChoiceChild4.appendChild(eclairReq1);
+         var eclairReq1Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(120, 135).setFontSize(16);
+         bakeryChoiceChild4.appendChild(eclairReq1Txt);
+         var eclairReq2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(130, 108).setSize(25, 25).setFill('images/pasture/bucket.png');
+         bakeryChoiceChild4.appendChild(eclairReq2);
+         var eclairReq2Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(153, 135).setFontSize(16);
+         bakeryChoiceChild4.appendChild(eclairReq2Txt);
+         var eclairReq3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(170, 108).setSize(18, 25).setFill(imgArray[110]);
+         bakeryChoiceChild4.appendChild(eclairReq3);
+         var eclairReq3Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(192, 135).setFontSize(16);
+         bakeryChoiceChild4.appendChild(eclairReq3Txt);
+
+
+
+         var bakeryChoiceChild5 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition( a.width * 4 + 18, 32).setSize(220, 160).setFill(imgArrayTown[18]);
+         bakeryChoiceParent.appendChild(bakeryChoiceChild5);
+         var bakeryChild5Txt = (new lime.Label()).setText('Jelly Donuts').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(110, 26).setFontSize(22);
+         bakeryChoiceChild5.appendChild(bakeryChild5Txt);
+         var bakeryDonuts = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(80, 45).setSize(55, 55).setFill('images/items/donuts.png');
+         bakeryChoiceChild5.appendChild(bakeryDonuts);
+         
+         var bakeryChild5reqText = (new lime.Label()).setText('Requires').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(55, 127).setFontSize(16);
+         bakeryChoiceChild5.appendChild(bakeryChild5reqText);
+         var donutReq1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(95, 108).setSize(25, 25).setFill('images/flour.png');
+         bakeryChoiceChild5.appendChild(donutReq1);
+         var donutReq1Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(120, 135).setFontSize(16);
+         bakeryChoiceChild5.appendChild(donutReq1Txt);
+         var donutReq2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(130, 108).setSize(25, 25).setFill('images/vinyard/jelly.png');
+         bakeryChoiceChild5.appendChild(donutReq2);
+         var donutReq2Txt = (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(153, 135).setFontSize(16);
+         bakeryChoiceChild5.appendChild(donutReq2Txt);
+         var donutReq3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(170, 108).setSize(18, 25).setFill(imgArray[110]);
+         bakeryChoiceChild5.appendChild(donutReq3);
+         var donutReq3Txt = (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(192, 135).setFontSize(16);
+         bakeryChoiceChild5.appendChild(donutReq3Txt);
+
+
+         bakeryOptionSelected = localStorage.getItem('bakeryOptionSelected');
+         bakeryChoiceChild1.appendChild(bakerySelectedCheck);
+
+         goog.events.listen(bakeryChoiceChild1, ["mousedown", "touchstart"], function () {   
+            bakeryOptionSelected = 0;
+            bakeryTimeText.setText('Time: 1 minute per');
+           try{bakeryChoiceChild2.removeChild(bakerySelectedCheck);bakeryChoiceChild3.removeChild(bakerySelectedCheck);bakeryChoiceChild4.removeChild(bakerySelectedCheck);
+            bakeryChoiceChild5.removeChild(bakerySelectedCheck);
+           }catch(err){console.log(err);}
+            bakeryChoiceChild1.appendChild(bakerySelectedCheck);bakeryHeader.setText('Making Simple Bread');
+        });
+         goog.events.listen(bakeryChoiceChild2, ["mousedown", "touchstart"], function () {
+            bakeryOptionSelected = 1;
+            bakeryTimeText.setText('Time: 1.5 minutes per');
+            try{bakeryChoiceChild1.removeChild(bakerySelectedCheck);bakeryChoiceChild3.removeChild(bakerySelectedCheck);bakeryChoiceChild4.removeChild(bakerySelectedCheck);
+                bakeryChoiceChild5.removeChild(bakerySelectedCheck);
+            }catch(err){console.log(err);}   
+            bakeryChoiceChild2.appendChild(bakerySelectedCheck);bakeryHeader.setText('Making Apple Pie');
+        });
+        goog.events.listen(bakeryChoiceChild3, ["mousedown", "touchstart"], function () {
+            bakeryOptionSelected = 2;
+            bakeryTimeText.setText('Time: 1.5 minutes per');
+            try{bakeryChoiceChild1.removeChild(bakerySelectedCheck);bakeryChoiceChild2.removeChild(bakerySelectedCheck);bakeryChoiceChild4.removeChild(bakerySelectedCheck);
+                bakeryChoiceChild5.removeChild(bakerySelectedCheck);
+            }catch(err){console.log(err);}   
+            bakeryChoiceChild3.appendChild(bakerySelectedCheck);bakeryHeader.setText('Making Manchet Loaf');
+        });
+
+        goog.events.listen(bakeryChoiceChild4, ["mousedown", "touchstart"], function () {
+            bakeryOptionSelected = 3;
+            bakeryTimeText.setText('Time: 2 minutes per');
+            try{bakeryChoiceChild1.removeChild(bakerySelectedCheck);bakeryChoiceChild2.removeChild(bakerySelectedCheck);bakeryChoiceChild3.removeChild(bakerySelectedCheck);
+                bakeryChoiceChild5.removeChild(bakerySelectedCheck);
+            }catch(err){console.log(err);}   
+            bakeryChoiceChild4.appendChild(bakerySelectedCheck);bakeryHeader.setText('Making Cream Eclair');
+        }); 
+          goog.events.listen(bakeryChoiceChild5, ["mousedown", "touchstart"], function () {
+            bakeryOptionSelected = 4;
+            bakeryTimeText.setText('Time: 2 minutes per batch');
+            try{bakeryChoiceChild1.removeChild(bakerySelectedCheck);bakeryChoiceChild2.removeChild(bakerySelectedCheck);bakeryChoiceChild3.removeChild(bakerySelectedCheck);
+                bakeryChoiceChild4.removeChild(bakerySelectedCheck);
+            }catch(err){console.log(err);}   
+            bakeryChoiceChild5.appendChild(bakerySelectedCheck);bakeryHeader.setText('Making Jelly Donuts');
+        });
+       
+        goog.events.listen(bakeryRight, ["mousedown", "touchstart"], function () { moveBakeryR(); });
+        goog.events.listen(bakeryLeft, ["mousedown", "touchstart"], function () {  moveBakeryL(); });
+
+function moveBakeryL(){
+    let posbak1 = bakeryChoiceChild1.getPosition(); 
+    let posbak2 = bakeryChoiceChild2.getPosition();
+    let posbak3 = bakeryChoiceChild3.getPosition();
+    let posbak4 = bakeryChoiceChild4.getPosition();
+    let posbak5 = bakeryChoiceChild5.getPosition();
+
+  if(bakeryOptionVisible <= 0){ 
+        bakeryChoiceChild1.setPosition(18, 32);
+        bakeryChoiceChild2.setPosition( a.width + 18, 32);
+        bakeryChoiceChild3.setPosition( a.width * 2  + 18, 32);
+        bakeryChoiceChild4.setPosition( a.width * 3 + 18, 32);
+        bakeryChoiceChild5.setPosition( a.width * 4 + 18, 32);
+      
+        bakeryOptionVisible = 0;
+   };
+   if(bakeryOptionVisible > 0){ 
+    bakeryChoiceChild1.setPosition( posbak1.x + a.width , 32);
+    bakeryChoiceChild2.setPosition( posbak2.x + a.width , 32);
+    bakeryChoiceChild3.setPosition(  posbak3.x + a.width , 32);
+    bakeryChoiceChild4.setPosition(  posbak4.x + a.width , 32);
+    bakeryChoiceChild5.setPosition(  posbak5.x + a.width , 32);
+
+    bakeryOptionVisible =  bakeryOptionVisible - 1;
+};
+console.log(bakeryOptionVisible)
+};
+function moveBakeryR(){
+    let posbak1 = bakeryChoiceChild1.getPosition(); 
+    let posbak2 = bakeryChoiceChild2.getPosition();
+    let posbak3 = bakeryChoiceChild3.getPosition();
+    let posbak4 = bakeryChoiceChild4.getPosition();
+    let posbak5 = bakeryChoiceChild5.getPosition();
+   
+   
+
+
+   if(bakeryOptionVisible >= 0 && bakeryOptionVisible < 4){ 
+    bakeryChoiceChild1.setPosition( posbak1.x - a.width, 32);
+    bakeryChoiceChild2.setPosition( posbak2.x  - a.width, 32);
+    bakeryChoiceChild3.setPosition(  posbak3.x  - a.width, 32);
+    bakeryChoiceChild4.setPosition(  posbak4.x  - a.width, 32);
+    bakeryChoiceChild5.setPosition(  posbak5.x   - a.width, 32);
+ 
+    bakeryOptionVisible =  bakeryOptionVisible + 1;
+};
+console.log(bakeryOptionVisible)
+
+}
+
+        var bakeryClose = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(134, 490).setSize(40, 40).setFill(imgArray[21].src);
+        bakeryFill1.appendChild(bakeryClose);
+        goog.events.listen(bakeryClose, ["mousedown", "touchstart"], function () {
+            sceneActive = 'Windmill'
+            c.replaceScene(windmillScene);
+
+        });
+
+
+        // c.replaceScene(bakeryScene);
+
+
+
+
+
+
+
+        ///////////////end of Bakery scene
+
 
         /////////////////////////////////////stable Scene////////// //////////stable scene//////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -18748,23 +21331,24 @@ farming.start = function () {
 
         //goog.events.listen(toInventoryST, ["mousedown", "touchstart"], function (e) {
         //    a.sceneBefore = 11;
-        //    checkItemsOwned();
+        //    try{checkItemsOwned();}catch(err){console.log(err)};
         //    hideAndDelayNavIcons();
+        //    cropsBack.setHidden(false); itemsBack.setHidden(true); itemsStoredBack.setHidden(true); collectBack.setHidden(true);  ///always open to cropsInventory
         //    c.replaceScene(inventoryScene, lime.transitions.SlideInUp); sceneActive = 'Inventory';
-        //    updateInventoryCounts();
+        //    try{updateInventoryCounts();}catch(err){console.log(err)};
 
         //    e.event.stopPropagation();
         //    e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
         //});
 
-        //var stCash = (new lime.Label()).setText(player.money).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(230, 24).setFontSize(18);
+        //var stCash = (new lime.Label()).setText(player.money).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(230, 24).setFontSize(18);
         //stableFill.appendChild(stCash);
         //var topCoinST = (new lime.Sprite()).setPosition(285, 20).setSize(35, 35).setFill(imgArray11[0]);
         //stableFill.appendChild(topCoinST);
 
 
         //var toolCountImgST = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(7, 5).setSize(35, 35).setFill(imgArray[30]);
-        //var toolCountST = (new lime.Label()).setText(player.tools).setFontFamily("Comic Sans MS").setFontColor("#E8FC08").setPosition(60, 24).setFontSize(18);
+        //var toolCountST = (new lime.Label()).setText(player.tools).setFontFamily("Proxima Nova").setFontColor("#E8FC08").setPosition(60, 24).setFontSize(18);
         //stableFill.appendChild(toolCountImgST);
         //stableFill.appendChild(toolCountST);
 
@@ -18780,7 +21364,7 @@ farming.start = function () {
         function upsInProgressAtLoad() {
             if (parseInt(upgradesInProgress.buildings[0].timeLeft) > 0) {
                 barnUpgradeCostWood = 0; barnUpgradeCostTools = 0;
-                secondsToUpgrade = parseInt(upgradesInProgress.buildings[0].timeLeft);
+                secondsToUpgrade = 10;
                 lime.scheduleManager.callAfter(function () { upgradeHomeBarn(barnUpgradeCostTools, barnUpgradeCostWood); }, this, 100);
                 //setTimeout(function () { upgradeHomeBarn(barnUpgradeCostTools, barnUpgradeCostWood); }, 0);
             }
@@ -18792,7 +21376,7 @@ farming.start = function () {
 
             }
             if (parseInt(upgradesInProgress.buildings[2].timeLeft) > 0) {
-                secondsToUpgradeBarnO = parseInt(upgradesInProgress.buildings[2].timeLeft);
+                secondsToUpgradeBarnO = 10;
                 //setTimeout(function () { upgradeOrchardBarn(0); }, 0);
                 lime.scheduleManager.callAfter(function () { upgradeOrchardBarn(0); }, this, 200);
             }
@@ -18829,7 +21413,7 @@ farming.start = function () {
                 }
             }
             if (parseInt(upgradesInProgress.buildings[4].timeLeft) > 0) {
-                secondsToUpgradeLS = parseInt(upgradesInProgress.buildings[4].timeLeft);
+                secondsToUpgradeLS = 10;
                 //setTimeout(function () { upgradeCoop(1); }, 0);
                 lime.scheduleManager.callAfter(function () { upgradeCoop(1); }, this, 700);
             }
@@ -18843,13 +21427,13 @@ farming.start = function () {
                 localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
             }
             if (parseInt(upgradesInProgress.buildings[6].timeLeft) > 0) {    ///windmill upgrade
-                var wmTimeLeft = parseInt(upgradesInProgress.buildings[6].timeLeft);
+                var wmTimeLeft = 10;
                 //setTimeout(function () { fnUpgradeWindMillBldg(wmTimeLeft, 0, 0); }, 0);
                 lime.scheduleManager.callAfter(function () { fnUpgradeWindMillBldg(wmTimeLeft, 0, 0); }, this, 900);
 
             }
             if (parseInt(upgradesInProgress.buildings[7].timeLeft) > 0) {    ////storehouse Upgrade
-                var wmTimeLeft2 = parseInt(upgradesInProgress.buildings[7].timeLeft);
+                var wmTimeLeft2 = 10;
                 //setTimeout(function () { fnUpgradeStoreHouse(wmTimeLeft2, 0, 0); }, 0);
                 lime.scheduleManager.callAfter(function () { fnUpgradeStoreHouse(wmTimeLeft2, 0, 0); }, this, 1200);
             }
@@ -18878,12 +21462,20 @@ farming.start = function () {
             gLabel16.setText(player.cropsStored[16].stored);
             gLabel17.setText(player.cropsStored[17].stored);
             gLabel18.setText(player.cropsStored[18].stored);
+            gLabelWater.setText(waterStored);
             gLabel22.setText(player.cropsStored[22].stored);
             gLabel23.setText(player.cropsStored[23].stored);
+            gLabel24.setText(player.cropsStored[24].stored);
+            gLabel25.setText(player.cropsStored[25].stored);
+            gLabel26.setText(player.cropsStored[26].stored);
+            gLabel27.setText(player.cropsStored[27].stored);
+            gLabel28.setText(player.cropsStored[28].stored);
+            gLabel29.setText(player.cropsStored[29].stored);
+        
             lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 100);
         }
 
-        //////end of farming.start
+      
 
 
         function hideAndDelayNavIcons() {
@@ -18930,9 +21522,24 @@ farming.start = function () {
         function checkRewardCode(code) {
             var starValTxt = "YOU GET + 100 STARS!";
             console.log("code tried is " + code);
-
-
-
+            if(code.toString() == 'resetQuake'){localStorage.setItem('landSlideDone', 0); landSlideDone = 1;};
+            if(code.toString() == 'resetStory'){localStorage.setItem('showStory', 1); showStory = 1;};
+            if(code.toString() == 'resetMaps'){mapsComplete = 0; localStorage.setItem("mapsComplete", 0); mapPieces = 0; localStorage.setItem("mapPieces", 0);
+             chests_Complete = 0; localStorage.setItem("chests_Complete", 0); showStory = 1;
+             for(k = 0; k < 31; k++){
+                mapLocations.places[k].found = 0;
+             };
+             localStorage.setItem('mapLocations', JSON.stringify(mapLocations));
+             for(l = 0; l < 8; l++){
+                collectItems.digUpCollect[l].owned = 0;
+             };
+             localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
+            };
+            if(code.toString() == 'resetPrize'){
+                document.getElementById('weeklyPrize').style.display = 'block'; 
+                var adjustMe = localStorage.getItem("lastLoginDay"); adjustMe = adjustMe - 1;
+                localStorage.setItem("lastLoginDay", adjustMe);
+            };
             if (myRewards.indexOf(code.toString()) !== -1) {
                 if (usedCodesArray.indexOf(code.toString()) == -1) {
                     if (code.toString() == 'StarBoost') {
@@ -19030,17 +21637,663 @@ farming.start = function () {
 
                 starValTxt = "Testing Daily";
                 codeField.value = starValTxt;
-                lime.scheduleManager.callAfter(function () { location.reload(); }, this, 1550);
+                lime.scheduleManager.callAfter(function () { window.location.reload(); }, this, 1550);
             }
-            else { codeField.value = "Invalid Code"; codeField.style.color = 'RED'; lime.scheduleManager.callAfter(function () { codeField.value = " "; codeField.style.color = 'Black'; }, this, 1000); }
+            else { codeField.value = "Invalid Code"; codeField.style.color = 'RED'; lime.scheduleManager.callAfter(function () { codeField.value = " "; codeField.style.color = 'Black';  }, this, 1000); }
         }
 
+        window.onload = loadWinWheel;
+        function loadWinWheel() {
+            
+            setTimeout(function () {
+                
+                    
+        //////WinWheel of Fortune//////
+                    let theWheel = new Winwheel({
+                        'canvasId'          : 'canvasWheel',
+                        'numSegments'       : 9,                // Specify number of segments.
+                        'outerRadius'       : 150,              // Set outer radius so wheel fits inside the background.
+                        'drawText'          : false,             // Code drawn text can be used with segment images.
+                        'textFontSize'      : 16,               // Set text options as desired.
+                        'textOrientation'   : 'curved',
+                        'textAlignment'     : 'inner',
+                        'textMargin'        : 10,
+                        'textFontFamily'    : 'monospace',
+                        'textStrokeStyle'   : 'black',
+                        'textLineWidth'     : 3,
+                        'textFillStyle'     : 'white',
+                        'drawMode'          : 'segmentImage',    // Must be segmentImage to draw wheel using one image per segemnt.
+                        'segments'          :                    // Define segments including image and text.
+                        [
+                        {'image' :  imgArrayWheel[0].src,  'text' : 'Nothing!'},
+                        {'image' :  imgArrayWheel[1].src ,   'text' : '5 Stars'},
+                        {'image' :  imgArrayWheel[2].src ,  'text' : '50 Tools'},
+                        {'image' :  imgArrayWheel[3].src ,  'text' : '50 Coins'},
+                        {'image' :  imgArrayWheel[4].src , 'text' : '25 Stars'},
+                        {'image' :  imgArrayWheel[0].src,  'text' : 'Nothing!'},
+                        {'image' :  imgArrayWheel[5].src , 'text' : '250 Coins'},
+                        {'image' :  imgArrayWheel[6].src ,  'text' : '100 Tools'},
+                        {'image' :  imgArrayWheel[7].src , 'text' : '100 Coins'}
+                        
+                        ],
+                        'animation' :           // Specify the animation to use.
+                        {
+                            'type'     : 'spinToStop',
+                            'duration' : 5,
+                            'spins'    : 8,
+                            'callbackSound' : playWheelSound, 
+                            'callbackFinished' : alertPrize
+                        }
+                    });
+                    let wheelPower    = 2;
+                    let wheelSpinning = false;
+                    let audioWheel = new Audio('audio/tick.mp3');  // Create audio object and load desired file.
+ 
+                    function playWheelSound()
+                    {
+                        // Stop and rewind the sound (stops it if already playing).
+                        audioWheel.pause();
+                        audioWheel.currentTime = 0;
 
+                        // Play the sound.
+                        audioWheel.play();
+                    }
+                    function powerSelected(powerLevel)
+                    {
+                        // Ensure that power can't be changed while wheel is spinning.
+                        if (wheelSpinning == false) {
+                    
+                            // Set wheelPower var used when spin button is clicked.
+                            wheelPower = powerLevel;
+            
+                            // Light up the spin button by changing it's source image and adding a clickable class to it.
+                            document.getElementById('spin_button').src = "spin_on.png";
+                            document.getElementById('spin_button').className = "clickable";
+                        }
+                    }
+                    document.getElementById("rewardAdHider").addEventListener("click", function(event) {
+                       
+                        event.stopPropagation();    
+                      });
+                      document.getElementById("rewardAdHider").addEventListener("touchend", function(event) {
+                        
+                        event.stopPropagation();    
+                      });
+                      document.getElementById("wheelDiv").addEventListener("click", function(event) {
+                       
+                        event.stopPropagation();    
+                      });
+                      document.getElementById("wheelDiv").addEventListener("touchend", function(event) {
+                        
+                        event.stopPropagation();    
+                      });
+                      document.getElementById("viewAdWheel").addEventListener("click", function(event) {
+                         event.stopPropagation(); 
+                          resetWheel();    return false;
+                      });
+                      document.getElementById("viewAdWheel").addEventListener("touchend", function(event) {
+                          event.stopPropagation(); 
+                           resetWheel();   return false;
+                      });
+                    // -------------------------------------------------------
+                    // Click handler for spin button.
+                    // -------------------------------------------------------
+                    document.getElementById("spin_button").addEventListener("click", function(event) {
+                        
+                        event.stopPropagation();    
+                        startSpin(); 
+                        document.getElementById("spin_button").style.display= 'none';
+                      });
+                      document.getElementById("spin_button").addEventListener("touchend", function(event) {
+                        
+                        event.stopPropagation();    
+                        startSpin();
+                       
+                    });
+
+                    function startSpin()
+                    {
+                        // let stopAt = (01 + Math.floor((Math.random() * 43)))
+                          
+                        // // Important thing is to set the stopAngle of the animation before stating the spin.
+                        // theWheel.animation.stopAngle = stopAt;
+                        // Ensure that spinning can't be clicked again while already running.
+                        if (wheelSpinning == false) {
+                            // Based on the power level selected adjust the number of spins for the wheel, the more times is has
+                            // to rotate with the duration of the animation the quicker the wheel spins.
+                            if (wheelPower == 1) {
+                                theWheel.animation.spins = 3;
+                            } else if (wheelPower == 2) {
+                                theWheel.animation.spins = 8;
+                            } else if (wheelPower == 3) {
+                                theWheel.animation.spins = 15;
+                            }
+            
+                            // Disable the spin button so can't click again while wheel is spinning.
+                            document.getElementById('spin_button').src= "images/spin_off.png";
+                            document.getElementById('spin_button').className = "";
+                            document.getElementById("spin_button").style.display= 'none';
+            
+                            // Begin the spin animation by calling startAnimation on the wheel object.
+                            theWheel.startAnimation();
+            
+                            // Set to true so that power can't be changed and spin button re-enabled during
+                            // the current animation. The user will have to reset before spinning again.
+                            wheelSpinning = true;
+                        }
+                    }
+                    document.getElementById("wheelReward").style.display = 'none';
+                    document.getElementById('rewardAdHider').style.display = 'none';
+                    // -------------------------------------------------------
+                    // Function for reset button.
+                    // -------------------------------------------------------
+                    function resetWheel()
+                    {
+                        theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
+                        theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
+                        theWheel.draw();                // Call draw to render changes to the wheel.
+                        localStorage.setItem('MedFarm_StarCashBoost', 1);
+                        lime.audio.setMute(true);
+                        lime.scheduleManager.callAfter(function () { 
+                            document.getElementById('spin_button').src= "images/spin_on.png";
+                            document.getElementById('spin_button').style ='width: 300px; height: 130px; margin-left: 50%; margin-top:-65px; transform:translateX(-135px);' 
+                            document.getElementById('spin_button').className = "clickable";
+                            document.getElementById('rewardAdHider').style.display = 'none';
+                            document.getElementById('canvasWheel').style.opacity = 1.0;
+                           
+                         }, this, 5000);
+                        
+                                               // document.getElementById('pw1').className = "";  // Remove all colours from the power level indicators.
+                        // document.getElementById('pw2').className = "";
+                        // document.getElementById('pw3').className = "";
+                        
+                        wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
+                    }
+                                      
+                    // Called when the animation as finished.
+                    function alertPrize(indicatedSegment)
+                    {
+                        console.log(indicatedSegment.text)
+                        if(indicatedSegment.text == "Nothing!") { document.getElementById("rays").style.display = 'none';  incorrectSound.play();}
+                        else{document.getElementById("rays").style.display = 'block'; successSound.play();}
+                        
+                        
+                        document.getElementById("wheelReward").style.display = 'block';
+                        document.getElementById("wheelRewardImg").src = indicatedSegment.image;
+                        document.getElementById("wheelRewardTxt2").innerHTML = indicatedSegment.text;
+                        grantAwardFromWheel(indicatedSegment.text);
+                        a.updateMoney();
+                        a.updateTools();
+                        localStorage.setItem('starCash', starCash);
+                        localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+                        
+                       
+                      
+                    }
+                }, 600);
+                document.getElementById("wheelRewardImg").addEventListener("click", function(event) {
+                    document.getElementById("wheelReward").style.display = 'none';
+                    document.getElementById("anotherSpin").style.display = 'block';
+                    document.getElementById("viewAdWheel").style.display = 'block';
+                    document.getElementById('rewardAdHider').style.display = 'block';
+                    document.getElementById('canvasWheel').style.opacity = 0.3;
+                    
+                    event.stopPropagation();     
+                  
+                  });
+                document.getElementById("wheelRewardImg").addEventListener("touchend", function(event) {
+                    document.getElementById("wheelReward").style.display = 'none';
+                    document.getElementById("anotherSpin").style.display = 'block';
+                    document.getElementById("viewAdWheel").style.display = 'block';
+                    document.getElementById('rewardAdHider').style.display = 'block';
+                    document.getElementById('canvasWheel').style.opacity = 0.3;
+                    event.stopPropagation();
+                  
+                  });
+                  document.getElementById("rewardCloseBtn").addEventListener("click", function(event) {
+                    document.getElementById("wheelDiv").style.display = 'none';
+                    event.stopPropagation();
+                        lime.scheduleManager.callAfter(function () {  globalModalBlock = 0; }, this, 500);
+                        lime.scheduleManager.callAfter(function () { showMFToast("Get Loot!",imgArrayItems[25].src, 'luckyWheel', 20000); }, this, 300000);
+                                                     
+                  });
+                document.getElementById("rewardCloseBtn").addEventListener("touchend", function(event) {
+                    document.getElementById("wheelDiv").style.display = 'none';
+                    event.stopPropagation();
+                        lime.scheduleManager.callAfter(function () {  globalModalBlock = 0; }, this, 500);
+                        lime.scheduleManager.callAfter(function () { showMFToast("Get Loot!",imgArrayItems[25].src, 'luckyWheel', 20000); }, this, 300000);
+                  });
+                  
+              
+        }
+       function  grantAwardFromWheel(which1){
+           console.log("which1 reward= " + which1);
+            starCash = localStorage.getItem("starCash");
+           player = JSON.parse(localStorage.getItem('GuiGhostFarms_player'));
+            switch(which1){
+                case "5 Stars": {
+                    starCash = parseInt(starCash) + 5;
+                    localStorage.setItem('starCash', starCash);
+                    document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                    purchaseSound.play();
+                    return;
+                }
+                case "50 Tools": {
+                    player.tools = parseInt(player.tools) + 50;
+                    purchaseSound.play();
+                    return;
+                }
+                case "50 Coins": {
+                    player.money = parseInt(player.money) + 50;
+                    h.setText( player.money);
+                    a.updateMoney();
+                    purchaseSound.play();
+
+                    return;
+                }
+                case "25 Stars": {
+                    starCash = parseInt(starCash) + 25;
+                    localStorage.setItem('starCash', starCash);
+                    document.getElementById("starCashOuterLabel").innerHTML = starCash;
+                    purchaseSound.play();
+                    return;
+                }
+                case "250 Coins": {
+                    player.money = parseInt(player.money) + 250;
+                    h.setText( player.money);
+                    a.updateMoney();
+                    purchaseSound.play();
+                    return;
+                }
+                case "100 Tools": {
+                    player.tools = parseInt(player.tools) + 100;
+                    purchaseSound.play();
+                    return;
+                }
+                case "100 Coins": {
+                     player.money = parseInt(player.money) + 100;
+                     h.setText( player.money);
+                     a.updateMoney();
+                     purchaseSound.play();
+                    return;
+                }
+                case "Nothing":{
+                    return;
+                }
+                default: {return;}
+            }
+            localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
+       };
+
+        function showMFToast(tmessage, imagePassed, exDetail, dur1, position) {
+            
+            try{
+                if(exDetail != 'neediron'){
+                purchaseSound.play();
+                }
+                let customDur = dur1 || 4000;
+               let positionThis = position || 'right'
+            Toastify({
+                text: tmessage,
+                avatar: imagePassed,
+                duration: customDur,
+                close: false,
+                gravity: "top", // `top` or `bottom`
+                position: positionThis, // `left`, `center` or `right`
+                style: {background: 'linear-gradient(to right, #00b06d, #1f2c07, #86ef6f)'},
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+               
+                onClick: function(){ toastClicked(exDetail); } // Callback after click
+              }).showToast();
+              document.getElementsByClassName('toastify')[0].classList.add('blazingStar');
+            }catch(err){console.log(err)};
+        }
+        function toastClicked(exDetail2){
+            console.log("toast clicked with exDetail " + exDetail2)
+            waterfallSound.stop(); 
+            if (exDetail2 == 'luckyWheel'){
+                globalModalBlock = 1;
+                document.getElementById("wheelDiv").style.display = 'block';
+                globalModalBlock = 1;                
+            }else if(exDetail2 == 'neediron'){
+                if(sceneActive != 'Home') {c.replaceScene(d); sceneActive = 'Home'; homeCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop")); b.currentCrop = homeCrop;
+                }else{blacksmithQuestPanel.setHidden(false); };   
+            }else if(exDetail2 == 'cows'){
+                if(sceneActive != 'Pasture'){c.replaceScene(pastureScene, lime.transitions.SlideInRight); sceneActive = 'Pasture'; cowSound.play(); b.currentCrop = 6;}; 
+            }else if(exDetail2 == 'bakery' || exDetail2 =='windmill'){
+                if(sceneActive != 'windmill') {c.replaceScene(windmillScene, lime.transitions.SlideInRight); sceneActive = 'Windmill'; b.currentCrop = 22;};
+            }else if(exDetail2 == 'vineyard'){
+                if(sceneActive != 'Vineyard') {c.replaceScene(vinyardScene, lime.transitions.SlideInRight); sceneActive = 'Vineyard'; b.currentCrop = 12;};
+            }else if(exDetail2 == 'orchard'){
+                if(sceneActive != 'Orchard') { c.replaceScene(orchardScene, lime.transitions.SlideInRight); sceneActive = 'Orchard';  b.currentCrop = 8;};                 
+            }else if(exDetail2 == 'livestock'){
+                if(sceneActive != 'LS') {  c.replaceScene(liveStockScene, lime.transitions.SlideInRight); sceneActive = 'LS'; pig1Sound.play(); chickenSound.play();};                              
+            }
+            else{console.log('no action on toast click')};
+
+        }
+        lime.scheduleManager.callAfter(function () { showMFToast("Get Loot!",imgArrayItems[25].src, 'luckyWheel', 10000); }, this, 150000);
+
+
+     //////////////////////////////////Story Scene///////////////////////////////////////////  //////////////////////////////////Story Scene///////////////////////////////////////////
+
+
+    var storyScene = (new lime.Scene).setRenderer(lime.Renderer.DOM);
+    
+    var storyHeader = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, 30).setFill(imgArray[75]).setOpacity(0.8);
+    storyScene.appendChild(storyHeader);
+    var storyHeadText = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-5, 9).setSize(a.width, 25).setText('Our Story Begins').setFontFamily("Proxima Nova").setFontColor("#ffffff").setFontSize(16);
+    storyScene.appendChild(storyHeadText);
+    var storyHeadText2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-5, 5).setSize(a.width, 25).setText('').setFontFamily("Proxima Nova").setFontColor("#ffffff").setFontSize(16);
+    
+    var storyLayer1 = (new lime.Layer).setAnchorPoint(0, 0).setPosition(0, 30).setSize(a.width, a.height -30);
+    var storyFill1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0,0).setSize(a.width, a.height -30).setFill("#000000");
+    storyScene.appendChild(storyLayer1);
+    storyLayer1.appendChild(storyFill1);
+    var storyGround1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0,0).setSize(a.width, a.height -80).setFill("#1E90FF");
+    storyFill1.appendChild(storyGround1);
+    var storyGround2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0,0).setSize(a.width, a.height -80).setFill(imgArray[84]);
+    storyGround1.appendChild(storyGround2);
+    var storyHouse = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(1,10).setSize(308, 374).setFill("images/storyScene/homePlace.png");
+    storyGround1.appendChild(storyHouse);
+    var storyRocks = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(20, 350).setSize(64, 32).setFill(imgArrayPasture[8]);
+    storyGround1.appendChild(storyRocks);
+    var storyPine = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(250, 10).setSize(57, 76).setFill(imgArrayPasture[3]);
+    storyGround1.appendChild(storyPine);
+
+    var tapToCont= (new lime.Label()).setText("Tap to Continue").setPosition(a.width /2 - 10, a.height -90).setSize(180, 115).setFontColor('azure').setFontSize(15).setOpacity(0.8);
+    storyFill1.appendChild(tapToCont);
+    storyGround2.appendChild(storyHeadText2);
+    
+    var storyMe = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(100, 240).setSize(65, 65).setFill(imgArrayPlayer[0]);
+    storyGround1.appendChild(storyMe);
+    
+    var storyMeBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-12,-15).setSize(200, 75).setFill("images/UI/speechBubble2.png");
+    storyMe.appendChild(storyMeBubble);
+    var storyText1 = (new lime.Label()).setText("Hi - I am Fordwin and I am 18 years old").setPosition(100,0).setSize(180, 115).setFontColor('black').setFontSize(15);
+    storyMeBubble.appendChild(storyText1);
+
+    var swapItPlayer2 = 0;
+    var looperPlayer2 = lime.scheduleManager.scheduleWithDelay(function () {
+        swapItPlayer2++
+        if (swapItPlayer2 == 5) { storyMe.setFill(imgArrayPlayer[1].src); }
+        if (swapItPlayer2 == 6) { storyMe.setFill(imgArrayPlayer[2].src); }
+        if (swapItPlayer2 == 7) { storyMe.setFill(imgArrayPlayer[0].src); }
+        if (swapItPlayer2 == 8) { storyMe.setFill(imgArrayPlayer[1].src); }
+        if (swapItPlayer2 == 10) { storyMe.setFill(imgArrayPlayer[0].src); }
+        if (swapItPlayer2 == 19) { storyMe.setFill(imgArrayPlayer[2].src); }
+        if (swapItPlayer2 == 20) { storyMe.setFill(imgArrayPlayer[0].src); }
+        if (swapItPlayer2 == 25) { swapItPlayer2 = 0; }
+    }, this, 200, 1000);
+    var storyWife = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(260, 380).setSize(65, 65).setFill(imgArrayDenise[8]);
+    storyGround1.appendChild(storyWife);
+    var storyWifeBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-125,-75).setSize(175, 75).setFill("images/UI/speechBubble3.png");
+    storyWife.appendChild(storyWifeBubble);
+    var storyTextWife = (new lime.Label()).setText("Fordwin.... WAIT!").setPosition(87,75).setSize(180, 100).setFontColor('black').setFontSize(18);
+    storyWifeBubble.appendChild(storyTextWife);
+
+    var storyDad = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(140, 80).setSize(36, 48).setFill("images/UI/oldMan.png");
+    storyGround1.appendChild(storyDad);
+    var storyDadBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-9,-75).setSize(175, 85).setFill("images/UI/speechBubble2.png");
+    storyDad.appendChild(storyDadBubble);
+    var storyTextDad = (new lime.Label()).setText("Son - take these supplies to help you get started").setPosition(87,52).setSize(160, 100).setFontColor('black').setFontSize(16);
+    storyDadBubble.appendChild(storyTextDad);
+    storyDad.setHidden(true);
+///Chapter visual
+    var storyLayer0 = (new lime.Layer).setAnchorPoint(0, 0).setPosition(0, 30).setSize(a.width, a.height -30);
+    var storyFillChapter = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0,0).setSize(a.width, a.height -30).setFill("#000000");
+    storyScene.appendChild(storyLayer0);
+    storyLayer0.appendChild(storyFillChapter);
+ 
+    var storyChapterText1 = (new lime.Label()).setText("CHAPTER 1").setPosition(a.width /2, a.height/2 -140).setSize(180, 215).setFontFamily("Proxima Nova").setFontColor("#ffffff").setFontSize(30);
+    storyFillChapter.appendChild(storyChapterText1);
+    var storyChapterText2 = (new lime.Label()).setText("Our Story Begins").setPosition(a.width /2, a.height/2 + 30).setSize(200, 315).setFontFamily("Proxima Nova").setFontColor("#ffffff").setFontSize(24);
+    storyFillChapter.appendChild(storyChapterText2);
+
+    var storyFillChapter1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-960,0).setSize(a.width, a.height -30).setFill("images/UI/introBackNew2.png");
+    storyLayer0.appendChild(storyFillChapter1);
+    
+    var storySceneCloseBtn = (new lime.Label()).setFill("#1E90FF").setText("Skip").setPosition(a.width/2, a.height - 27).setSize(100, 22).setFontColor('azure').setFontSize(21);
+    storyScene.appendChild(storySceneCloseBtn);
+    
+    goog.events.listen(storySceneCloseBtn, ["mousedown", "touchstart"], function (e) {
+      
+        //console.log("visibleLink = " + visibleLink);
+      localStorage.setItem('seenIntroStory', 1);
+      c.replaceScene(d, lime.transitions.SlideInUp); 
+      sceneActive = 'Home'; sceneBefore = 1;
+      themeSongNew.play(true);
+      e.event.stopPropagation();
+      e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+    }, false);
+   
+    // goog.events.listen(tapToCont, ["mousedown", "touchstart"], function (e) {
+      
+    //     nextStoryPanel('intro');
+
+    // }, false);
+    goog.events.listen(storyMeBubble, ["mousedown", "touchstart"], function (e) {
+      
+        nextStoryPanel('intro');
+        e.event.stopPropagation();
+        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+    }, false);
+    goog.events.listen(storyGround1, ["mousedown", "touchstart"], function (e) {
+      
+        nextStoryPanel('intro');
+        e.event.stopPropagation();
+        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+    }, false);
+/////////END Story Scene////////////////////////////////////////////////////////////////////////////////////////
+
+/////////start Mapscene
+var mapScene = (new lime.Scene).setRenderer(lime.Renderer.DOM);
+    
+var storyHeader = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, 30).setFill(imgArray[75]).setOpacity(0.8);
+mapScene.appendChild(storyHeader);
+
+
+var mapLayer1 = (new lime.Layer).setAnchorPoint(0, 0).setPosition(0, 30).setSize(a.width, a.height -30);
+var mapFill1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0,0).setSize(a.width, a.height -30).setFill("#000000");
+mapScene.appendChild(mapLayer1);
+mapLayer1.appendChild(mapFill1);
+var mapHeadText = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-5, 9).setSize(a.width, 25).setText('Treasure Map Complete!').setFontFamily("Proxima Nova").setFontColor("#ffffff").setFontSize(20);
+mapLayer1.appendChild(mapHeadText);
+var mapText2 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-5, 45).setSize(a.width, 25).setText('X marks the ACRE to locate the treasure.').setFontFamily("Proxima Nova").setFontColor("#ffffff").setFontSize(12);
+mapLayer1.appendChild(mapText2);
+var mapSceneImage = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width/2 -145,a.height/2 - 180).setSize(300, 250).setFill("images/UI/map1_treasureText.png").setQuality(0.5);
+mapLayer1.appendChild(mapSceneImage);
+
+var mapStars = (new lime.Sprite()).setPosition(245, 157).setSize(45, 45).setFill('images/stars1.png');
+mapSceneImage.appendChild(mapStars);
+var mapX = (new lime.Label()).setPosition(246, 160).setSize(a.width, 25).setText('X').setFontFamily("Proxima Nova").setFontColor("#ffffff").setFontSize(16);
+mapSceneImage.appendChild(mapX);
+var mapText3 = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-5, 385).setSize(a.width, 25).setText('Head to the '+ treasurePendingLocation + ' to find it!').setFontFamily("Proxima Nova").setFontColor("#ffffff").setFontSize(12);
+mapLayer1.appendChild(mapText3);
+
+
+
+var mapSceneClose = (new lime.Sprite()).setPosition(a.width/2 ,a.height - 100).setSize(40,40).setFill(imgArray[21]);
+mapLayer1.appendChild(mapSceneClose);
+function treasureStars(){
+    lime.scheduleManager.scheduleWithDelay(function(){
+        mapStars.setRotation(0);
+        lime.scheduleManager.callAfter( function(){
+            mapStars.setRotation(90);
+        },this,250);
+        lime.scheduleManager.callAfter( function(){
+            mapStars.setRotation(180);
+        },this,500);
+        lime.scheduleManager.callAfter( function(){
+            mapStars.setRotation(270);
+        },this,750);
+    },this, 1000,10 );
+    
 };
+
+goog.events.listen(mapSceneClose, ["mousedown", "touchstart"], function (e) {
+  
+     switch(sceneActive){
+         case 'Home' : {c.replaceScene(d); }break;
+         case 'Pasture' : {c.replaceScene(pastureScene);;}break;
+         case 'LS' : {c.replaceScene(liveStockScene);      }break;
+         case 'Vineyard' : {c.replaceScene(vinyardScene); }break;
+         case 'Orchard' : {c.replaceScene(orchardScene); 
+            // foundTreasureLS.setHidden(false);
+            //  locateTreasureOnMap(foundTreasureLS); 
+        }break;
+         case 'Windmill' : {c.replaceScene(windmillScene);}break;
+         case 'Market' : {c.replaceScene(marketScene);  }break;
+         case 'Inventory' : {c.replaceScene(inventoryScene);  }break;
+         default : {c.replaceScene(d); }break;
+     }      
+    //  locateTreasureOnMap();      
+    e.event.stopPropagation();
+    e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });          
+}, false);
+
+/////end Map Scene
+function locateTreasureOnMap(whichSpot){
+    whichSpot.setHidden(false);
+    let thisPosT = whichSpot.getPosition()
+    let parentElem = whichSpot.getParent()
+console.log("in locate with " + thisPosT.x + " and " + thisPosT.y + " parent is " + parentElem);
+    lime.scheduleManager.scheduleWithDelay(function(){
+        whichSpot.setRotation(0);
+        lime.scheduleManager.callAfter( function(){
+            whichSpot.setRotation(90);
+        },this,250);
+        lime.scheduleManager.callAfter( function(){
+            whichSpot.setRotation(180);
+        },this,500);
+        lime.scheduleManager.callAfter( function(){
+            whichSpot.setRotation(270);
+        },this,750);
+    },this, 1000,60 );
+};
+goog.events.listen(foundTreasureLS, ["mousedown", "touchstart"], function (e) {
+      let isVisNow = foundTreasureLS.getHidden();
+      if (isVisNow == false){  loadHeirloom('stockpens'); successSound.play();      };
+      e.event.stopPropagation();
+      e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+
+}, false);
+
+
+
+
+    function loadHeirloom(where){
+   
+        console.log("run heirloom hit with where = " + where); 
+        foundHeir.style.display = 'block';
+        foundHeirImage.style.backgroundImage = "url('" + imgArrayItems[42].src + "')";
+        heirImgParent.style.display = 'block';
+        heirStars.style.display = 'block';
+        viewAdImgHeir.style.display = 'block';
+        foundHeirSubText.innerHTML = 'Open it now?';
+        foundHeirTitle.innerHTML  = 'Heirloom Chest' ;
+        heirChestDelayText.style.display = 'block'
+        goog.events.listen(heirStars, ["mousedown", "touchstart"], function (e) {
+            if (starCash > 5) { openHeirloom(where);                
+                if(where == 'orchard'){ heirloomChestCave.setHidden(true);} 
+            }
+            
+            e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });          
+        }, false);
+        goog.events.listen(viewAdImgHeir, ["mousedown", "touchstart"], function (e) {
+           
+            localStorage.setItem('MedFarm_StarCashBoost', 1);
+           lime.scheduleManager.callAfter( function (){openHeirloom(where);
+            if(where == 'orchard'){ heirloomChestCave.setHidden(true);};
+         }, this, 5000)               
+           
+           
+           e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });  
+        }, false);
+        
+    }
+    function openHeirloom(where2){
+
+        console.log("openHeirloom = " + where2); 
+        foundHeirSubText.innerHTML = "See the Inventory Heirloom tab for your set"
+        heirChestDelayText.style.display = 'none'
+        heirImgParent.style.display = 'none';
+        foundHeirClose.style.display = 'block';
+        chests_Complete = parseInt(localStorage.getItem("chests_Complete")) + 1;
+        if (chests_Complete > 8){chests_Complete = 8;}
+        localStorage.setItem("chests_Complete", chests_Complete);
+        mapLabel3.setText( chests_Complete + "/8");
+        let trackNum =0; 
+        switch(where2){
+            case 'home': { trackNum = 1; shieldImgInv.setFill(collectItems.digUpCollect[1].src);   //shield
+                break;}
+            case 'pasture': {trackNum = 2; foundTreasureP.setHidden(true); swordImgInv.setFill(collectItems.digUpCollect[2].src);  //sword
+                break;}
+            case 'orchard': {trackNum = 6; greavesImgInv.setFill(collectItems.digUpCollect[6].src);         //greaves
+                break;}
+            case 'vineyard': {trackNum = 4;foundTreasureV.setHidden(true); helmImgInv.setFill(collectItems.digUpCollect[4].src);           //helm
+                break;}
+            case 'stockpens': {trackNum = 5;foundTreasureLS.setHidden(true); bootsImgInv.setFill(collectItems.digUpCollect[5].src)         //boots
+                break;}
+            case 'cavern': {trackNum = 0; foundTreasureC.setHidden(true); journalImgInv.setFill(collectItems.digUpCollect[0].src);           //Journal
+                break;}
+            case 'windmill': {trackNum = 3; foundTreasureW.setHidden(true); mailImgInv.setFill(collectItems.digUpCollect[3].src);           //mail
+                break;}
+            case 'town': {trackNum = 7; foundTreasureT.setHidden(true); glovesImgInv.setFill(collectItems.digUpCollect[7].src);         //gauntlets
+                break;}
+            default:{ break;}    
+        }
+        itemReceivedHeir = collectItems.digUpCollect[trackNum].name; collectItems.digUpCollect[trackNum].owned = 1; foundHeirTitle.innerHTML = itemReceivedHeir;
+        foundHeirImage.style.backgroundImage = "url('" + collectItems.digUpCollect[trackNum].src + "')"; 
+        console.log("heirloom recvieved = " + itemReceivedHeir); 
+        localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
+        checkHeirloomsOwned();
+    }
+    goog.events.listen(foundHeirClose, ["mousedown", "touchstart"], function (e) {
+      
+        foundHeir.style.display = 'none';
+        
+        var isMuted22 = parseInt(localStorage.getItem('GuiGhostFarms_muted'));
+        if (isMuted22 == 1) { lime.audio.setMute(true); setMute(1); }
+        else { lime.audio.setMute(false); 
+            if(caveActive != "Hidden") {caveLoop.play(true);}else{ themeSongNew.play(true); setMute(2)};
+         }
+        e.event.stopPropagation();
+        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+    }, false);
+  
+    function getMapFrag(which){
+      
+        localStorage.setItem('mapLocations', JSON.stringify(mapLocations));
+        showMFToast("+ 1 Map Fragment",imgArray[114].src, 'cave', 2000);
+        mapPieces = localStorage.getItem('mapPieces') || 0; 
+        mapPieces = parseInt(mapPieces) + 1;
+        localStorage.setItem('mapPieces', mapPieces);
+      
+        if(mapPieces < 5){successSound2.play();   mapLabel1.setText( mapPieces + "/5");
+        if (mapPieces == 1 && mapsComplete == 0){
+            ////show explainer for maps
+         if(which == 'h1'||which == 'h2'||which == 'h3'||which == 'h4' )
+         
+         
+         firstMapPopup.setHidden(false)
+        }
+        let sceneThis = c.getScene();
+        console.log( "scene is " + sceneThis);
+        }else{checkMaps();}
+            
+       
+    }
+
+
+    // c.replaceScene(mapScene);
+/////////////////////
+};
+///end of farming.start
 
 //code functions
 
-
+ 
 
 
 function openCodes() {
@@ -19055,6 +22308,179 @@ function openCodes() {
     xmlhttp.open("GET", "json_code_array.txt", true);
     xmlhttp.send();
 }
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+ 
+function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+          }
+
+///prize
+//prize divs
+var prizeCodeDiv = document.getElementById("prizeCodeThisTime");
+// var openPrizeAutoDiv = document.getElementById("OpenPrizeBtnAuto");
+var openSitePrizeDiv = document.getElementById("OpenPrizeBtn");
+var weeklyPrizeDiv = document.getElementById("weeklyPrize");
+ var prizeCodeNow = '';
+ weeklyPrizeDiv.addEventListener("touchstart", function (event) {
+    var isVisFBe = document.getElementById("fbshare").style.display;
+    if (isVisFBe == 'block') {
+        prizeCodeDiv.style.display = 'block';
+        // openPrizeAutoDiv.style.display = 'none';
+        openSitePrizeDiv.style.display = 'none';
+            event.stopPropagation();
+    };
+
+}, false);
+weeklyPrizeDiv.addEventListener("touchstart", function (event) {
+        var isVisFBe = document.getElementById("fbshare").style.display;
+        if (isVisFBe == 'block') {
+            prizeCodeDiv.style.display = 'block';
+            // openPrizeAutoDiv.style.display = 'none';
+            openSitePrizeDiv.style.display = 'none';                
+            event.stopPropagation();
+        };
+
+}, false);
+
+function populatePrizeCode(){
+    openCodes();
+    lime.scheduleManager.callAfter( function(){
+        var prizeNumThis = getRandomInt(250);
+        var prizeCodeBlob =  myRewards.toString();
+        var prizeCodeSplit =  prizeCodeBlob.split(','); 
+        var NumforThis = getRandomInt(2400);
+        // prizeCodeFinal.split(',');
+        prizeCodeNow = prizeCodeSplit[NumforThis] || 'none';
+        prizeCodeDiv.innerText= prizeCodeSplit[NumforThis];
+        prizeCodeDiv.style.backgroundImage = 'none';
+        prizeCodeDiv.style.fontSize = '32px';
+    },this, 800);
+
+};
+function getPrizeClick(event) {
+    console.log('in getPrizeClick ');
+    var isVisPrize = document.getElementById("prizeMe").style.display;
+    if (isVisPrize == 'block') {
+        console.log('in getPrizeClick Inner');
+        localStorage.setItem('MedFarm_StarCashBoost', 1);
+
+        lime.scheduleManager.callAfter(function(){
+            populatePrizeCode();
+            prizeCodeDiv.style.backgroundImage = 'none';
+            // openPrizeAutoDiv.style.display = 'block';
+            openSitePrizeDiv.style.display = 'block';  
+        }, this, 5000);
+        
+        prizeCodeDiv.removeEventListener("click", getPrizeClick, false);
+        prizeCodeDiv.removeEventListener("touchstart", getPrizeClick, false);
+        event.stopPropagation();
+    }
+}
+prizeCodeDiv.addEventListener("touchstart",  function (event){
+    getPrizeClick(event);
+    prizeCodeDiv.style.backgroundImage = 'none';
+    console.log('touchstart getPrizeClick ');
+}, false);     
+prizeCodeDiv.addEventListener("click",  function (event){
+    getPrizeClick(event);
+    prizeCodeDiv.style.backgroundImage = 'none';
+    console.log('click getPrizeClick ');
+}, false);     
+
+
+
+// openPrizeAutoDiv.addEventListener("touchstart", function (event) {
+//     var isVisPrize = document.getElementById("prizeMe").style.display;
+//     if (isVisPrize == 'block') {
+//         enterWeekly(prizeCodeNow); localStorage.setItem('enteredPrizeToday', 1);  
+//         event.stopPropagation();
+//     }
+// }, false);     
+// openPrizeAutoDiv.addEventListener("click", function (event) {
+//     var isVisPrize = document.getElementById("prizeMe").style.display;
+//     if (isVisPrize == 'block') {
+//         enterWeekly(prizeCodeNow); localStorage.setItem('enteredPrizeToday', 1);      
+//         event.stopPropagation();
+//     }
+// }, false);   
+
+function enterWeekly(codeSent){
+   
+    
+    try {
+        var versionOf = '';
+        try{versionOf = device.version.toString() || ' unknown';}catch(err){console.log(err);};
+        window.plugins.socialsharing.shareViaEmail(
+            'Hi GuiGhost - This is my entry for the $20 amazon Gift card            Sent from Android ' + versionOf, // text  
+            'Medieval farms weekly code ' + codeSent,
+            ['info@guighost.com'], // TO: must be null or an array
+            null, // CC: must be null or an array
+            null, // BCC: must be null or an array
+            null, // FILES: can be null, a string, or an array
+            function () { return }, // called when sharing worked
+            function () { alert("Entry failed to open email - Please enter via the site"); } // called when sh*t hits the fan
+        );
+    } catch (err) { console.log("email failed with " + err); };
+}
+document.getElementById("copyBtn").addEventListener("touchstart", function (event) {
+    var isVisFBe = document.getElementById("fbshare").style.display;
+    if (isVisFBe == 'block') {
+        copyToClipboard();
+        event.stopPropagation();
+    }
+
+}, false);
+function copyToClipboard() {
+    console.log("in copy func")
+    var copyText = document.getElementById("prizeCodeThisTime");
+    console.log("copyText is "  + copyText.innerHTML)
+    /* Select the text field */
+    copyText.select();
+    var range = document.createRange();
+    range.selectNode(copyText);
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+    // window.getSelection().addRange(range);
+    /* Copy the text inside the text field */
+    try {
+        var successful = document.execCommand('copy');
+        var msg = successful ? 'successful' : 'unsuccessful';
+        console.log('Copying text command was ' + msg);
+    } catch (err) {
+        console.log('Oops, unable to copy');
+    }
+
+    /* Alert the copied text */
+    alert("Copied the text: " + copyText.value);
+    }
+
+function copyToClipboard() {
+    console.log("in copy func")
+    var copyText = document.getElementById("prizeCodeThisTime");
+    console.log("copyText is "  + copyText.innerHTML)
+    /* Select the text field */
+    copyText.select();
+    var range = document.createRange();
+    range.selectNode(copyText);
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+    // window.getSelection().addRange(range);
+    /* Copy the text inside the text field */
+    try {
+        var successful = document.execCommand('copy');
+        var msg = successful ? 'successful' : 'unsuccessful';
+        console.log('Copying text command was ' + msg);
+    } catch (err) {
+        console.log('Oops, unable to copy');
+    }
+
+    /* Alert the copied text */
+    alert("Copied the text: " + copyText.value);
+    }
+
+
+
+
 
 function getLocalStorage() {
     //console.log(JSON.stringify(localStorage));

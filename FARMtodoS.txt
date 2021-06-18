@@ -1,0 +1,38 @@
+BUGS
+	
+
+
+Move lvl5 house down -DONE
+Sound on treasure chest in cave -DONE
+Swallow of heirloom close and music play after -DONE
+TreasurefoundV if not picked up -DONE
+Sound on home chest -DONE
+Ad and star image on 2nd heirloom -DONE
+Seed icon size -DONE
+Sparkle on star menu   -DONE
+1st map fragments popup explain -DONE
+Dig sound -DONE
+Map count when home or cave chest  -DONE
+Increase hay harvest	 -DONE
+Pear sparkles move right 5px   -DONE
+If compass open can still click Livestock to orchard    -DONE
+
+
+
+Monk sell broke again -DONE
+May not pass soldier -DONE
+Empty cave, add mushrooms and art -DONE
+
+
+
+Lair purpose and interaction
+Windmill, jelly, and bread stopper
+
+
+Farther out
+	recipes
+	toys in store
+	candy in store
+	patricia quests
+
+	wife food quests

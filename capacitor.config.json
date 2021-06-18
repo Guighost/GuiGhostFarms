@@ -1,21 +1,28 @@
 {
   "appId": "com.wMedievalFarms_GuiGhostGames",
-  "appName": "Medieval Farms",
-  "bundledWebRuntime": false,
+  "appName": "Medieval-Farms",
+  "bundledWebRuntime": true,
   "npmClient": "npm",
   "webDir": "www",
   "plugins": {
     "SplashScreen": {
-      "splashImmersive": true
+      "launchShowDuration": 4000,
+      "splashFullScreen": true,
+      "androidSpinnerStyle": "large",
+      "spinnerColor": "#999999",
+      "showSpinner": true,
+      "launchAutoHide": true
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_launcher_foreground",
+      "iconColor": "#38a327",
+      "sound": "nice.mp3"
     }
   },
   "cordova": {
     "preferences": {
       "ScrollEnabled": "false",
-      "BackupWebStorage": "none",
-      "SplashMaintainAspectRatio": "true",
-      "SplashShowOnlyFirstTime": "false",
-      "SplashScreen": "screen"
+      "BackupWebStorage": "none"
     }
   }
 }
