@@ -710,6 +710,14 @@ imgArrayGround[2] = new Image(); imgArrayGround[2].src = "images/bare_land_tl.pn
 imgArrayGround[3] = new Image(); imgArrayGround[3].src = "images/bare_land_lr.png";
 imgArrayGround[4] = new Image(); imgArrayGround[4].src = "images/bare_land_ll.png";
 
+var imgArrayBakery = [];
+imgArrayBakery[0] = new Image(); imgArrayBakery[0].src = 'images/bread.png';  
+imgArrayBakery[1] = new Image(); imgArrayBakery[1].src = 'images/items/pie1.png';
+imgArrayBakery[2] = new Image(); imgArrayBakery[2].src = 'images/items/manchetLoaf.png'; 
+imgArrayBakery[3] = new Image(); imgArrayBakery[3].src = 'images/items/eclair.png'; 
+imgArrayBakery[4] = new Image(); imgArrayBakery[4].src = 'images/items/donuts.png';
+imgArrayBakery[5] = new Image(); imgArrayBakery[5].src = 'images/items/itemFrame.png'
+ 
 //goog.require('lime.parser.JSON');
 //blacksmith images
 var imgArray = [];
@@ -834,7 +842,7 @@ imgArray[115] = new Image(); imgArray[115].src = "images/UI/speechBubbleR.png";
 imgArray[116] = new Image(); imgArray[116].src = "images/UI/speechBubble2.png";
 imgArray[117] = new Image(); imgArray[117].src = "images/UI/speechBubble3.png";
 imgArray[118] = new Image(); imgArray[118].src = "images/UI/map1_treasureText.png";
-
+imgArray[119] = new Image(); imgArray[119].src = 'images/stars4.png';
 
 
 var imgArrayVin = [];
@@ -1349,7 +1357,8 @@ imgArrayStore[3] = new Image(); imgArrayStore[3].src = "images/items/pick1.png";
 imgArrayStore[4] = new Image(); imgArrayStore[4].src = "images/items/ciderPress.png";
 imgArrayStore[5] = new Image(); imgArrayStore[5].src = "images/items/bottles.png";
 imgArrayStore[6] = new Image(); imgArrayStore[6].src = "images/items/barrels.png";
-
+imgArrayStore[7] = new Image(); imgArrayStore[7].src = "images/items/lantern.png";
+imgArrayStore[8] = new Image(); imgArrayStore[8].src = "images/items/toy.png";
 
 var imgArrayPasture = [];
 imgArrayPasture[0] = new Image(); imgArrayPasture[0].src = "images/Pasture/water.png";
@@ -1443,6 +1452,8 @@ var collectItems = {
         { name: "Fruit Press", value: 7500, owned: 0, onlyOnce: 1, src: imgArrayStore[4].src },
         { name: "50 Bottles", value: 200, owned: 0, onlyOnce: 0, src: imgArrayStore[5].src },
         { name: "50 Barrels", value: 200, owned: 0, onlyOnce: 0, src: imgArrayStore[6].src },
+        { name: "Lantern", value: 5000, owned: 0, onlyOnce: 1, src: imgArrayStore[7].src },
+        { name: "Toys", value: 500, owned: 0, onlyOnce: 0, src: imgArrayStore[8].src },
 
     ]
 
@@ -1460,6 +1471,8 @@ if (typeof collectItems.digUpCollect[6] === "undefined") {    collectItems.digUp
 if (typeof collectItems.digUpCollect[7] === "undefined") {     collectItems.digUpCollect.push({ name: "Forefather's Gauntlets", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[37].src });
 };
 if (typeof collectItems.digUpCollect[8] === "undefined") {     collectItems.digUpCollect.push({ name: "Forefather's Amulet ", value: 0, owned: 0, onlyOnce: 1, src: imgArrayItems[40].src });
+};
+if (typeof collectItems.storeItems[7] === "undefined") {     collectItems.storeItems.push({ name: "Lantern", value: 5000, owned: 0, onlyOnce: 0, src: imgArrayStore[6].src });
 };
 collectItems.digUpCollect[0].name = "Forefather's Journal ";
 collectItems.digUpCollect[1].name = "Forefather's Shield";
@@ -1668,9 +1681,9 @@ var questParamsConnie = {
         { highestCompleted: 0, available: true },
         { name: 1, Text: "If we cleared out this old storehouse, we could convert it to a BAKERY" },
         { name: 2, Text: "Thanks for giving my husband something to do, he was driving me crazy at home since he retired." },
-        { name: 3, Text: "While I am good at making BREAD, I also like to learn about herbs and medicines" },
+        { name: 3, Text: "While I am good at baking, I also like to learn about herbs and medicines" },
         { name: 4, Text: "We always said that someday we would retire to a farm. Well here we are, thanks to you!" },
-        { name: 5, Text: "Maybe someday we could make more than just bread, but not yet." },
+        { name: 5, Text: "It's so good to have different recipes to bake besides just bread." },
 
     ],
 }
@@ -1684,7 +1697,7 @@ var questParams = {
         { highestCompleted: 0, available: true },
         { name: "Necklackes", text: "Many things have been found on your farm. If you DIG UP any JEWELRY, let me know", completed: 0, rewardType: 0, rewardAmount: 100, rewardItem: 0, requiredItem: "none", successText: "Ill buy that jewelery  " },
         { name: "Rings", text: "Come back to me time to time. I may have things to do. Got any Jewels?", completed: 0, rewardType: 0, rewardAmount: 150, rewardItem: 0, requiredItem: "none", successText: " " },
-        { name: "Gems", text: "The King sends hearlds sometimes. Please them and you may gain royal favor", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
+        { name: "Gems", text: "The King sends Heralds sometimes. Please them and you may gain royal favor", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Felicia", text: "My wife Felicia runs the market, and is always looking for new foods to sell", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Felicia2", text: "If you find map fragments, the Friar and assemble them", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
         { name: "Land", text: "If you gain enough royal favor, the king may grant you additional lands", completed: 0, rewardType: 0, rewardAmount: 200, rewardItem: 0, requiredItem: "none", successText: " " },
@@ -2200,7 +2213,7 @@ var farming = {
         var fromSCBoost = 0;
         var timerDisplayCrop = (new lime.Label()).setAnchorPoint(0, 0).setPosition(-5, 21).setSize(25, 25).setText('6').setFontColor('azure').setFontSize(8).setOpacity(0.5);
         var waterDrop = (new lime.Sprite()).setPosition(23, 16).setSize(12, 16).setFill(imgArray[110]);
-        var readyCropIcon = (new lime.Sprite()).setPosition(20, 16).setSize(25, 25).setFill('images/stars4.png');
+        var readyCropIcon = (new lime.Sprite()).setPosition(20, 16).setSize(25, 25).setFill(imgArray[119]);
         lime.scheduleManager.scheduleWithDelay(function () {
             adWatched2 = localStorage.getItem('adWatched');
             fromSCBoost = localStorage.getItem('MedFarm_StarCashBoost');
@@ -3893,8 +3906,23 @@ var waterStored = 0;
 if (typeof localStorage["MedFarms_waterStored"] === "undefined") { localStorage.setItem('MedFarms_waterStored', 100); };
 waterStored = parseInt(localStorage.getItem('MedFarms_waterStored'));
 
-
-
+var ovenState =
+{   ovens:[
+        {index: 0, content: -1, time: 60, filled: 0},
+        {index: 1, content: -1, time: 60, filled: 0},
+        {index: 2, content: -1, time: 60, filled: 0},
+        {index: 3, content: -1, time: 60, filled: 0}
+    ]
+    
+}
+console.log(ovenState.ovens[0].filled + " is oven1state")
+if (typeof localStorage["ovenState"] === "undefined") { localStorage.setItem('ovenState', JSON.stringify(ovenState)); };
+ovenState = JSON.parse(localStorage.getItem('ovenState'));
+console.log(ovenState.ovens[0].filled + " is oven1state")
+if(ovenState.ovens[0].filled == 0){ovenState.ovens[0].time = 60;};
+if(ovenState.ovens[1].filled == 0){ovenState.ovens[0].time = 60;};
+if(ovenState.ovens[2].filled == 0){ovenState.ovens[0].time = 60;};
+if(ovenState.ovens[3].filled == 0){ovenState.ovens[0].time = 60;};
 
 
 var enteredPrizeToday = 0;
@@ -4990,7 +5018,7 @@ farming.start = function () {
 ////playerImage
 var playerImgHome = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width - (a.width/2 +2), a.height - 100).setSize(100, 100).setFill(imgArrayPlayer[0]);
 f.appendChild(playerImgHome);
-var plyrBubbleHome = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-85,-85).setSize(156, 105).setFill("images/UI/speechBubble3.png");
+var plyrBubbleHome = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-85,-85).setSize(156, 105).setFill(imgArray[117]);
 playerImgHome.appendChild(plyrBubbleHome);
 var plyrTextHome = (new lime.Label()).setText("OH WOW... Tremors! This place has Earthquakes?").setPosition(80,70).setSize(150, 100).setFontColor('black').setFontSize(15);
 plyrBubbleHome.appendChild(plyrTextHome);
@@ -5184,32 +5212,36 @@ playerImgHome.setHidden(true);
 
                     if (blacksmithI >= 25) { blacksmithI = 1 };
                     //if (blacksmithI < 15) { blacksmith.setFill("images/blacksmith" + blacksmithI + ".png"); };
-
-                    if (blacksmithI == 1) { blacksmith.setPosition(42, 89); }
-                    else if (blacksmithI == 2) { blacksmith.setPosition(42, 89); blacksmith.setFill(imgArray[0]); }
-                    else if (blacksmithI == 3) { blacksmith.setPosition(42, 89); blacksmith.setFill(imgArray[1]); }
-                    else if (blacksmithI == 4) { blacksmith.setPosition(42, 89); blacksmith.setFill(imgArray[2]); }
-                    else if (blacksmithI == 5) { blacksmith.setPosition(42, 85); blacksmith.setFill(imgArray[6]); }
-                    else if (blacksmithI == 6) { blacksmith.setPosition(38, 85); blacksmith.setFill(imgArray[7]); }
-                    else if (blacksmithI == 7) { blacksmith.setPosition(33, 85); blacksmith.setFill(imgArray[8]); }
-                    else if (blacksmithI == 8) { blacksmith.setPosition(28, 85); blacksmith.setFill(imgArray[6]); }
-                    else if (blacksmithI == 9) { blacksmith.setPosition(23, 85); blacksmith.setFill(imgArray[7]); }
-                    else if (blacksmithI == 10) { blacksmith.setPosition(18, 85); blacksmith.setFill(imgArray[8]); }
-                    else if (blacksmithI == 11) { blacksmith.setPosition(18, 85); blacksmith.setFill(imgArray[11]); }
-                    else if (blacksmithI == 12) { blacksmith.setPosition(18, 85); blacksmith.setFill(imgArray[11]); }
-                    else if (blacksmithI == 13) { blacksmith.setPosition(18, 85); blacksmith.setFill(imgArray[11]); }
-                    else if (blacksmithI == 14) { blacksmith.setPosition(18, 85); blacksmith.setFill(imgArray[11]); }
-                    else if (blacksmithI == 15) { blacksmith.setPosition(23, 85); blacksmith.setFill(imgArray[9]); }
-                    else if (blacksmithI == 16) { blacksmith.setPosition(28, 85); blacksmith.setFill(imgArray[10]); }
-                    else if (blacksmithI == 17) { blacksmith.setPosition(33, 85); blacksmith.setFill(imgArray[9]); }
-                    else if (blacksmithI == 18) { blacksmith.setPosition(38, 85); blacksmith.setFill(imgArray[10]); if (sceneBefore == 1) { smithSound.play(); } }
-                    else if (blacksmithI == 19) { blacksmith.setPosition(42, 85); blacksmith.setFill(imgArray[9]); }
-                    else if (blacksmithI == 20) { blacksmith.setPosition(42, 89); blacksmith.setFill(imgArray[10]) }
-                    else if (blacksmithI == 21) { blacksmith.setPosition(42, 89); blacksmith.setFill(imgArray[0]); }
-                    else if (blacksmithI == 22) { blacksmith.setPosition(42, 89); blacksmith.setFill(imgArray[1]); }
-                    else if (blacksmithI == 23) { blacksmith.setPosition(42, 89); blacksmith.setFill(imgArray[0]); }
-                    else if (blacksmithI == 24) { blacksmith.setPosition(42, 89); blacksmith.setFill(imgArray[1]); }
-                    else if (blacksmithI == 25) { blacksmith.setPosition(42, 89); blacksmith.setFill(imgArray[0]); checkAchieves2(); };
+                    switch(blacksmithI){
+                        case 1: { blacksmith.setPosition(42, 89); break;}
+                        case 2: { blacksmith.setPosition(42, 89).setFill(imgArray[0]); break;}
+                        case 3: { blacksmith.setPosition(42, 89).setFill(imgArray[1]); break;}
+                        case  4: { blacksmith.setPosition(42, 89).setFill(imgArray[2]); break;}
+                        case  5: { blacksmith.setPosition(42, 85).setFill(imgArray[6]); break;}
+                        case 6: { blacksmith.setPosition(38, 85).setFill(imgArray[7]); break;}
+                        case  7: { blacksmith.setPosition(33, 85).setFill(imgArray[8]); break;}
+                        case  8: { blacksmith.setPosition(28, 85).setFill(imgArray[6]); break;}
+                        case  9: { blacksmith.setPosition(23, 85).setFill(imgArray[7]); break;}
+                        case 10: { blacksmith.setPosition(18, 85).setFill(imgArray[8]); break;}
+                        case  11: { blacksmith.setPosition(18, 85).setFill(imgArray[11]); break;}
+                        case  12: { blacksmith.setPosition(18, 85).setFill(imgArray[11]); break;}
+                        case  13: { blacksmith.setPosition(18, 85).setFill(imgArray[11]); break;}
+                        case  14: { blacksmith.setPosition(18, 85).setFill(imgArray[11]); break;}
+                        case 15: { blacksmith.setPosition(23, 85).setFill(imgArray[9]); break;}
+                        case  16: { blacksmith.setPosition(28, 85).setFill(imgArray[10]); break;}
+                        case 17: { blacksmith.setPosition(33, 85).setFill(imgArray[9]); break;}
+                        case 18: { blacksmith.setPosition(38, 85).setFill(imgArray[10]); if (sceneBefore == 1) { smithSound.play(); } break;}
+                        case  19: { blacksmith.setPosition(42, 85).setFill(imgArray[9]); break;}
+                        case  20: { blacksmith.setPosition(42, 89).setFill(imgArray[10]); break;}
+                        case  21: { blacksmith.setPosition(42, 89).setFill(imgArray[0]); break;}
+                        case  22: { blacksmith.setPosition(42, 89).setFill(imgArray[1]); break;}
+                        case  23: { blacksmith.setPosition(42, 89).setFill(imgArray[0]); break;}
+                        case 24: { blacksmith.setPosition(42, 89).setFill(imgArray[1]); break;}
+                        case  25: { blacksmith.setPosition(42, 89).setFill(imgArray[0]); checkAchieves2(); break;}
+                        default : {break;}
+                    }
+                   
+         
                 }
                 else {
                     ///set anim needing iron
@@ -7334,7 +7366,7 @@ playerImgHome.setHidden(true);
         var foundTreasureP = (new lime.Sprite()).setPosition(155, 110).setSize(60, 60).setFill('images/stars1.png').setHidden(true);
         pastureLayer.appendChild(foundTreasureP);
 
-        var cowI2 = 0;
+       
         var josiahStep = 0;
         var needHayStep = 0;
         var treasureTickP = 0;
@@ -7347,138 +7379,103 @@ playerImgHome.setHidden(true);
                 if (player.treesP == 1) {     ///only show right cows if trees are cleared
                     cowEatR.setHidden(false); cowForward1R.setHidden(false); cowLeft1R.setHidden(false);
                 };
-                if (cowI == 1) {
-                    cowEatL.setFill(imgArrayPasture[12]);
-                    cowLeft1.setFill(imgArrayPasture[12]);
-                    cowForward1.setFill(imgArrayPasture[13]);
-                    if (player.treesP == 1) {
-                        cowEatR.setFill(imgArrayPasture[10]);
-                        cowLeft1R.setFill(imgArrayPasture[10]);
+                
 
-                        cowForward1R.setFill(imgArrayPasture[13]);
-                        poop4.setHidden(false); poop5.setHidden(false); poop6.setHidden(false);
-                    }
+                switch(cowI){
+                    case 1: { cowEatL.setFill(imgArrayPasture[12]); cowLeft1.setFill(imgArrayPasture[12]);  cowForward1.setFill(imgArrayPasture[13]);
+                        if (player.treesP == 1) {
+                            cowEatR.setFill(imgArrayPasture[10]);  cowLeft1R.setFill(imgArrayPasture[10]); 
+                            cowForward1R.setFill(imgArrayPasture[13]);  poop4.setHidden(false); poop5.setHidden(false); poop6.setHidden(false);
+                        };
+                    break;}
+                    case 2 : { cowEatL.setFill(imgArrayPasture[10]);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[11]); }
+                     break;}
+                    case 3: { cowEatL.setFill(imgArrayPasture[11]);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[12]); cowLeft1R.setFill(imgArrayPasture[10]); }
+                    break;}
+                    case  4: {   cowEatL.setFill(imgArrayPasture[12]);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[12]); cowLeft1R.setFill(imgArrayPasture[10]); cowForward1R.setFill(imgArrayPasture[14]); }
+                        break;}
+                    case  5: { cowEatL.setFill(imgArrayPasture[11]);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[10]); cowLeft1R.setFill(imgArrayPasture[10]); cowForward1R.setFill(imgArrayPasture[15]); }
+                        break;}
+                    case  6: { cowEatL.setFill(imgArrayPasture[10]);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[10]); cowLeft1R.setFill(imgArrayPasture[10]); }
+                        break;}
+                    case  7: { cowEatL.setFill(imgArrayPasture[11]);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[10]); cowLeft1R.setFill(imgArrayPasture[11]); cowForward1R.setFill(imgArrayPasture[14]); }
+                        break;}
+    
+                    case  8: {  cowLeft1.setFill(imgArrayPasture[10]).setPosition(28, 193);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[12]); }
+                        break;}
+                    case  9: { cowEatL.setFill(imgArrayPasture[11]); cowLeft1.setFill(imgArrayPasture[12]).setPosition(28, 193);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[12]); }
+                        break;}
+                    case 10: {   cowLeft1.setFill(imgArrayPasture[12]).setPosition(28, 193);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[11]); }
+                        break;}
+                    case 11: {  cowEatL.setFill(imgArrayPasture[12]);  cowLeft1.setFill(imgArrayPasture[11]).setPosition(28, 193);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[10]); cowLeft1R.setFill(imgArrayPasture[10]); }
+                        break;}
+                    case 12: {    cowLeft1.setFill(imgArrayPasture[11]).setPosition(28, 193);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[10]); }
+                        break;}
+                    case 13: {   cowLeft1.setFill(imgArrayPasture[12]).setPosition(28, 193);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[10]); cowLeft1R.setFill(imgArrayPasture[10]); cowForward1R.setFill(imgArrayPasture[13]); }
+                        break;}
+
+                    case 14: { cowLeft1.setFill(imgArrayPasture[12]).setPosition(28, 193);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[10]); cowLeft1R.setFill(imgArrayPasture[10]); cowForward1R.setFill(imgArrayPasture[13]); }
+                        break;}
+                    case 15: {
+                        cowForward1.setFill(imgArrayPasture[15]); cowForward1R.setFill(imgArrayPasture[15])
+                        cowLeft1.setFill(imgArrayPasture[11]).setPosition(28, 193);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[10]); cowLeft1R.setFill(imgArrayPasture[11]); cowForward1R.setFill(imgArrayPasture[13]); }
+                        break;}
+    
+                    case 16: {    
+                        cowForward1.setFill(imgArrayPasture[14]); cowForward1R.setFill(imgArrayPasture[14]);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[12]); }
+                        break;}
+                    case 17: {
+                        cowLeft1.setFill(imgArrayPasture[10]).setPosition(28, 193);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[12]); }
+                        break;}
+                    case 18: {
+                        cowLeft1.setFill(imgArrayPasture[11]).setPosition(28, 193);
+                        cowForward1.setFill(imgArrayPasture[14]); cowForward1R.setFill(imgArrayPasture[15]);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[12]); }
+                        break;}
+                    case 19: {
+                        cowLeft1.setFill(imgArrayPasture[12]).setPosition(28, 193);
+                        cowForward1.setFill(imgArrayPasture[13]); cowForward1R.setFill(imgArrayPasture[13]);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[11]); }
+                        break;}
+                    case 20: {
+    
+                        cowForward1.setFill(imgArrayPasture[14]); cowForward1R.setFill(imgArrayPasture[14]);
+                        if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[10]); }
+                        break;}
+                    case 21: {
+                        cowLeft1.setFill(imgArrayPasture[11]).setPosition(28, 193);
+                        if (player.treesP == 1) {
+                            cowEatR.setFill(imgArrayPasture[10]); cowLeft1R.setFill(imgArrayPasture[11]);
+                            cowForward1R.setFill(imgArrayPasture[13]);
+                        }
+                        break;}
+    
+                    case 22: {
+                        cowForward1.setFill(imgArrayPasture[15]); cowForward1R.setFill(imgArrayPasture[15]);
+                        cowLeft1.setFill(imgArrayPasture[12]).setPosition(28, 193);
+                        if (player.treesP == 1) {
+                            cowEatR.setFill(imgArrayPasture[10]); cowLeft1R.setFill(imgArrayPasture[12]);
+                            cowForward1R.setFill(imgArrayPasture[13]);
+                        }
+                        break;};
+                    default: {break;}
                 }
-
-                else if (cowI == 2) {
-                    cowEatL.setFill(imgArrayPasture[10]);
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[11]); }
-                }
-                else if (cowI == 3) {
-                    cowEatL.setFill(imgArrayPasture[11]);
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[12]); cowLeft1R.setFill(imgArrayPasture[10]); }
-                }
-                else if (cowI == 4) {
-                    cowEatL.setFill(imgArrayPasture[12]);
-
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[12]); cowLeft1R.setFill(imgArrayPasture[10]); cowForward1R.setFill(imgArrayPasture[14]); }
-                }
-                else if (cowI == 5) {
-                    cowEatL.setFill(imgArrayPasture[11]);
-
-
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[10]); cowLeft1R.setFill(imgArrayPasture[10]); cowForward1R.setFill(imgArrayPasture[15]); }
-                }
-                else if (cowI == 6) {
-                    cowEatL.setFill(imgArrayPasture[10]);
-
-
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[10]); cowLeft1R.setFill(imgArrayPasture[10]); }
-                }
-                else if (cowI == 7) {
-                    cowEatL.setFill(imgArrayPasture[11]);
-
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[10]); cowLeft1R.setFill(imgArrayPasture[11]); cowForward1R.setFill(imgArrayPasture[14]); }
-                }
-
-                else if (cowI == 8) {
-
-                    cowLeft1.setFill(imgArrayPasture[10]).setPosition(28, 193);
-
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[12]); }
-                }
-                else if (cowI == 9) {
-                    cowEatL.setFill(imgArrayPasture[11]);
-                    cowLeft1.setFill(imgArrayPasture[12]).setPosition(28, 193);
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[12]); }
-                }
-                else if (cowI == 10) {
-
-                    cowLeft1.setFill(imgArrayPasture[12]).setPosition(28, 193);
-
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[11]); }
-                }
-                else if (cowI == 11) {
-                    cowEatL.setFill(imgArrayPasture[12]);
-                    cowLeft1.setFill(imgArrayPasture[11]).setPosition(28, 193);
-
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[10]); cowLeft1R.setFill(imgArrayPasture[10]); }
-                }
-                else if (cowI == 12) {
-
-                    cowLeft1.setFill(imgArrayPasture[11]).setPosition(28, 193);
-
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[10]); }
-                }
-                else if (cowI == 13) {
-
-                    cowLeft1.setFill(imgArrayPasture[12]).setPosition(28, 193);
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[10]); cowLeft1R.setFill(imgArrayPasture[10]); cowForward1R.setFill(imgArrayPasture[13]); }
-                }
-
-                else if (cowI == 14) {
-
-                    cowLeft1.setFill(imgArrayPasture[12]).setPosition(28, 193);
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[10]); cowLeft1R.setFill(imgArrayPasture[10]); cowForward1R.setFill(imgArrayPasture[13]); }
-                }
-                else if (cowI == 15) {
-                    cowForward1.setFill(imgArrayPasture[15]); cowForward1R.setFill(imgArrayPasture[15])
-                    cowLeft1.setFill(imgArrayPasture[11]).setPosition(28, 193);
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[10]); cowLeft1R.setFill(imgArrayPasture[11]); cowForward1R.setFill(imgArrayPasture[13]); }
-                }
-
-                else if (cowI == 16) {
-
-                    cowForward1.setFill(imgArrayPasture[14]); cowForward1R.setFill(imgArrayPasture[14]);
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[12]); }
-                }
-                else if (cowI == 17) {
-                    cowLeft1.setFill(imgArrayPasture[10]).setPosition(28, 193);
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[12]); }
-                }
-                else if (cowI == 18) {
-                    cowLeft1.setFill(imgArrayPasture[11]).setPosition(28, 193);
-                    cowForward1.setFill(imgArrayPasture[14]); cowForward1R.setFill(imgArrayPasture[15]);
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[12]); }
-                }
-                else if (cowI == 19) {
-                    cowLeft1.setFill(imgArrayPasture[12]).setPosition(28, 193);
-                    cowForward1.setFill(imgArrayPasture[13]); cowForward1R.setFill(imgArrayPasture[13]);
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[11]); }
-                }
-                else if (cowI == 20) {
-
-                    cowForward1.setFill(imgArrayPasture[14]); cowForward1R.setFill(imgArrayPasture[14]);
-                    if (player.treesP == 1) { cowEatR.setFill(imgArrayPasture[11]); cowLeft1R.setFill(imgArrayPasture[10]); }
-                }
-                else if (cowI == 21) {
-                    cowLeft1.setFill(imgArrayPasture[11]).setPosition(28, 193);
-                    if (player.treesP == 1) {
-                        cowEatR.setFill(imgArrayPasture[10]); cowLeft1R.setFill(imgArrayPasture[11]);
-                        cowForward1R.setFill(imgArrayPasture[13]);
-                    }
-                }
-
-                else if (cowI == 22) {
-                    cowForward1.setFill(imgArrayPasture[15]); cowForward1R.setFill(imgArrayPasture[15]);
-                    cowLeft1.setFill(imgArrayPasture[12]).setPosition(28, 193);
-                    if (player.treesP == 1) {
-                        cowEatR.setFill(imgArrayPasture[10]); cowLeft1R.setFill(imgArrayPasture[12]);
-                        cowForward1R.setFill(imgArrayPasture[13]);
-                    }
-                };
-
-
 
 
 
@@ -7493,66 +7490,65 @@ playerImgHome.setHidden(true);
 
 
 
-                if (josiahStep < 32) {
-                    if (josiahStep == 1) { dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[1].src); }
-                    else if (josiahStep == 2) { dairyFarmer.setPosition(140, 95).setFill(imgArrayJosiah[2].src); }
-                    else if (josiahStep == 3) { dairyFarmer.setPosition(140, 100).setFill(imgArrayJosiah[3].src); }
-                    else if (josiahStep == 4) { dairyFarmer.setPosition(140, 105).setFill(imgArrayJosiah[0].src); }
-                    else if (josiahStep == 5) { dairyFarmer.setPosition(140, 110).setFill(imgArrayJosiah[1].src); }
-                    else if (josiahStep == 6) { dairyFarmer.setPosition(140, 115).setFill(imgArrayJosiah[2].src); }
-                    else if (josiahStep == 7) { dairyFarmer.setPosition(140, 120).setFill(imgArrayJosiah[3].src); }
-                    else if (josiahStep == 8) { dairyFarmer.setPosition(140, 123).setFill(imgArrayJosiah[0].src); }
-                    else if (josiahStep == 9) { dairyFarmer.setPosition(140, 123).setFill(imgArrayJosiah[4].src); }
-                    else if (josiahStep == 10) { dairyFarmer.setPosition(135, 123).setFill(imgArrayJosiah[5].src); }
-                    else if (josiahStep == 11) { dairyFarmer.setPosition(130, 123).setFill(imgArrayJosiah[6].src); }
-                    else if (josiahStep == 12) { dairyFarmer.setPosition(125, 123).setFill(imgArrayJosiah[7].src); }
-                    else if (josiahStep == 13) { dairyFarmer.setPosition(120, 123).setFill(imgArrayJosiah[4].src); }
-                    else if (josiahStep == 14) { dairyFarmer.setPosition(115, 123).setFill(imgArrayJosiah[5].src); }
-                    else if (josiahStep == 15) { dairyFarmer.setPosition(110, 123).setFill(imgArrayJosiah[6].src); }
-                    else if (josiahStep == 16) { dairyFarmer.setPosition(105, 123).setFill(imgArrayJosiah[7].src); }
-                    else if (josiahStep == 17) { dairyFarmer.setPosition(105, 123).setFill(imgArrayJosiah[4].src); }
-                    else if (josiahStep == 18) { dairyFarmer.setPosition(105, 123).setFill(imgArrayJosiah[12].src); }
-                    else if (josiahStep == 19) { dairyFarmer.setPosition(105, 120).setFill(imgArrayJosiah[15].src); }
-                    else if (josiahStep == 20) { dairyFarmer.setPosition(105, 115).setFill(imgArrayJosiah[14].src); }
-                    else if (josiahStep == 21) { dairyFarmer.setPosition(100, 110).setFill(imgArrayJosiah[6].src); }
-                    else if (josiahStep == 22) { dairyFarmer.setPosition(100, 105).setFill(imgArrayJosiah[15].src); }
-                    else if (josiahStep == 23) { dairyFarmer.setPosition(100, 105).setFill(imgArrayJosiah[8].src); }
-                    else if (josiahStep == 24) { dairyFarmer.setPosition(105, 100).setFill(imgArrayJosiah[9].src); }
-                    else if (josiahStep == 25) { dairyFarmer.setPosition(110, 105).setFill(imgArrayJosiah[10].src); }
-                    else if (josiahStep == 26) { dairyFarmer.setPosition(115, 105).setFill(imgArrayJosiah[11].src); }
-                    else if (josiahStep == 27) { dairyFarmer.setPosition(120, 105).setFill(imgArrayJosiah[8].src); }
-                    else if (josiahStep == 28) { dairyFarmer.setPosition(125, 100).setFill(imgArrayJosiah[9].src); }
-                    else if (josiahStep == 29) { dairyFarmer.setPosition(130, 100).setFill(imgArrayJosiah[10].src); }
-                    else if (josiahStep == 30) { dairyFarmer.setPosition(135, 95).setFill(imgArrayJosiah[11].src); }
-                    else if (josiahStep == 31) { dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[13].src); };
+                switch(josiahStep){
+	
+                    case 1:{ dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[1].src); break; }
+                    case  2:{ dairyFarmer.setPosition(140, 95).setFill(imgArrayJosiah[2].src); break; }
+                    case  3:{ dairyFarmer.setPosition(140, 100).setFill(imgArrayJosiah[3].src); break; }
+                    case  4:{ dairyFarmer.setPosition(140, 105).setFill(imgArrayJosiah[0].src); break; }
+                    case  5:{ dairyFarmer.setPosition(140, 110).setFill(imgArrayJosiah[1].src); break; }
+                    case  6:{ dairyFarmer.setPosition(140, 115).setFill(imgArrayJosiah[2].src); break; }
+                    case  7:{ dairyFarmer.setPosition(140, 120).setFill(imgArrayJosiah[3].src); break; }
+                    case  8:{ dairyFarmer.setPosition(140, 123).setFill(imgArrayJosiah[0].src); break; }
+                    case  9:{ dairyFarmer.setPosition(140, 123).setFill(imgArrayJosiah[4].src); break; }
+                    case  10:{ dairyFarmer.setPosition(135, 123).setFill(imgArrayJosiah[5].src); break; }
+                    case  11:{ dairyFarmer.setPosition(130, 123).setFill(imgArrayJosiah[6].src); break; }
+                    case  12:{ dairyFarmer.setPosition(125, 123).setFill(imgArrayJosiah[7].src); break; }
+                    case  13:{ dairyFarmer.setPosition(120, 123).setFill(imgArrayJosiah[4].src); break; }
+                    case  14:{ dairyFarmer.setPosition(115, 123).setFill(imgArrayJosiah[5].src); break; }
+                    case  15:{ dairyFarmer.setPosition(110, 123).setFill(imgArrayJosiah[6].src); break; }
+                    case  16:{ dairyFarmer.setPosition(105, 123).setFill(imgArrayJosiah[7].src); break; }
+                    case  17:{ dairyFarmer.setPosition(105, 123).setFill(imgArrayJosiah[4].src); break; }
+                    case  18:{ dairyFarmer.setPosition(105, 123).setFill(imgArrayJosiah[12].src); break; }
+                    case  19:{ dairyFarmer.setPosition(105, 120).setFill(imgArrayJosiah[15].src); break; }
+                    case  20:{ dairyFarmer.setPosition(105, 115).setFill(imgArrayJosiah[14].src); break; }
+                    case  21:{ dairyFarmer.setPosition(100, 110).setFill(imgArrayJosiah[6].src); break; }
+                    case  22:{ dairyFarmer.setPosition(100, 105).setFill(imgArrayJosiah[15].src); break; }
+                    case  23:{ dairyFarmer.setPosition(100, 105).setFill(imgArrayJosiah[8].src); break; }
+                    case  24:{ dairyFarmer.setPosition(105, 100).setFill(imgArrayJosiah[9].src); break; }
+                    case  25:{ dairyFarmer.setPosition(110, 105).setFill(imgArrayJosiah[10].src); break; }
+                    case  26:{ dairyFarmer.setPosition(115, 105).setFill(imgArrayJosiah[11].src); break; }
+                    case  27:{ dairyFarmer.setPosition(120, 105).setFill(imgArrayJosiah[8].src); break; }
+                    case  28:{ dairyFarmer.setPosition(125, 100).setFill(imgArrayJosiah[9].src); break; }
+                    case  29:{ dairyFarmer.setPosition(130, 100).setFill(imgArrayJosiah[10].src); break; }
+                    case  30:{ dairyFarmer.setPosition(135, 95).setFill(imgArrayJosiah[11].src); break; }
+                    case  31:{ dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[13].src); break; };
+                    case 32:{ dairyFarmer.setPosition(140, 85).setFill(imgArrayJosiah[15].src); break; }
+                    case  33:{ dairyFarmer.setPosition(140, 85).setFill(imgArrayJosiah[8].src); break; }
+                    case  34:{ dairyFarmer.setPosition(140, 85).setFill(imgArrayJosiah[0].src); break; }
+                    case  35:{ dairyFarmer.setPosition(140, 85).setFill(imgArrayJosiah[0].src); break; }
+                    case  36:{ dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[1].src); break; }
+                    case  37:{ dairyFarmer.setPosition(140, 95).setFill(imgArrayJosiah[2].src); break; }
+                    case  38:{ dairyFarmer.setPosition(145, 95).setFill(imgArrayJosiah[8].src); break; }
+                    case  39:{ dairyFarmer.setPosition(150, 95).setFill(imgArrayJosiah[9].src); break; }
+                    case  40:{ dairyFarmer.setPosition(155, 95).setFill(imgArrayJosiah[10].src); break; }
+                    case  41:{ dairyFarmer.setPosition(160, 100).setFill(imgArrayJosiah[11].src); break; }
+                    case  42:{ dairyFarmer.setPosition(165, 105).setFill(imgArrayJosiah[8].src); break; }
+                    case  43:{ dairyFarmer.setPosition(170, 110).setFill(imgArrayJosiah[9].src); break; }
+                    case  44:{ dairyFarmer.setPosition(170, 110).setFill(imgArrayJosiah[12].src); break; }
+                    case  45:{ dairyFarmer.setPosition(170, 110).setFill(imgArrayJosiah[12].src); break; }
+                    case  56:{ dairyFarmer.setPosition(170, 110).setFill(imgArrayJosiah[4].src); break; }
+                    case  57:{ dairyFarmer.setPosition(165, 105).setFill(imgArrayJosiah[5].src); break; }
+                    case  58:{ dairyFarmer.setPosition(160, 105).setFill(imgArrayJosiah[6].src); break; }
+                    case  59:{ dairyFarmer.setPosition(155, 100).setFill(imgArrayJosiah[7].src); break; }
+                    case  60:{ dairyFarmer.setPosition(150, 100).setFill(imgArrayJosiah[5].src); break; }
+                    case  61:{ dairyFarmer.setPosition(145, 95).setFill(imgArrayJosiah[6].src); break; }
+                    case  62:{ dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[7].src); break; }
+                    case  63:{ dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[1].src); break; }
+                     case  75:{ josiahStep = 0; break; };
+					default: {break;}
 
-                }
-                else if (josiahStep >= 32) {
-                    if (josiahStep == 32) { dairyFarmer.setPosition(140, 85).setFill(imgArrayJosiah[15].src); }
-                    else if (josiahStep == 33) { dairyFarmer.setPosition(140, 85).setFill(imgArrayJosiah[8].src); }
-                    else if (josiahStep == 34) { dairyFarmer.setPosition(140, 85).setFill(imgArrayJosiah[0].src); }
-                    else if (josiahStep == 35) { dairyFarmer.setPosition(140, 85).setFill(imgArrayJosiah[0].src); }
-                    else if (josiahStep == 36) { dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[1].src); }
-                    else if (josiahStep == 37) { dairyFarmer.setPosition(140, 95).setFill(imgArrayJosiah[2].src); }
-                    else if (josiahStep == 38) { dairyFarmer.setPosition(145, 95).setFill(imgArrayJosiah[8].src); }
-                    else if (josiahStep == 39) { dairyFarmer.setPosition(150, 95).setFill(imgArrayJosiah[9].src); }
-                    else if (josiahStep == 40) { dairyFarmer.setPosition(155, 95).setFill(imgArrayJosiah[10].src); }
-                    else if (josiahStep == 41) { dairyFarmer.setPosition(160, 100).setFill(imgArrayJosiah[11].src); }
-                    else if (josiahStep == 42) { dairyFarmer.setPosition(165, 105).setFill(imgArrayJosiah[8].src); }
-                    else if (josiahStep == 43) { dairyFarmer.setPosition(170, 110).setFill(imgArrayJosiah[9].src); }
-                    else if (josiahStep == 44) { dairyFarmer.setPosition(170, 110).setFill(imgArrayJosiah[12].src); }
-                    else if (josiahStep == 45) { dairyFarmer.setPosition(170, 110).setFill(imgArrayJosiah[12].src); }
-                    else if (josiahStep == 56) { dairyFarmer.setPosition(170, 110).setFill(imgArrayJosiah[4].src); }
-                    else if (josiahStep == 57) { dairyFarmer.setPosition(165, 105).setFill(imgArrayJosiah[5].src); }
-                    else if (josiahStep == 58) { dairyFarmer.setPosition(160, 105).setFill(imgArrayJosiah[6].src); }
-                    else if (josiahStep == 59) { dairyFarmer.setPosition(155, 100).setFill(imgArrayJosiah[7].src); }
-                    else if (josiahStep == 60) { dairyFarmer.setPosition(150, 100).setFill(imgArrayJosiah[5].src); }
-                    else if (josiahStep == 61) { dairyFarmer.setPosition(145, 95).setFill(imgArrayJosiah[6].src); }
-                    else if (josiahStep == 62) { dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[7].src); }
-                    else if (josiahStep == 63) { dairyFarmer.setPosition(140, 90).setFill(imgArrayJosiah[1].src); }
-                    else if (josiahStep > 75) { josiahStep = 0 };
-
-                };
+          }
 
 
             };
@@ -9309,64 +9305,69 @@ playerImgHome.setHidden(true);
         var girlMove = 1;
         a.moveGirl = function () {
             girlMove = girlMove + 1;
-            if (girlMove > 53) { girlMove = 1 };
-            if (girlMove < 26) {
-                if (girlMove == 2) { orchardGirl.setPosition(44, 235); orchardGirl.setFill(imgArray4[1]); }
-                else if (girlMove == 3) { orchardGirl.setPosition(44, 240); orchardGirl.setFill(imgArray4[2]); }
-                else if (girlMove == 4) { orchardGirl.setPosition(44, 245); orchardGirl.setFill(imgArray4[1]); }
-                else if (girlMove == 5) { orchardGirl.setPosition(44, 250); orchardGirl.setFill(imgArray4[0]); }
-                else if (girlMove == 6) { orchardGirl.setPosition(44, 255); orchardGirl.setFill(imgArray4[1]); }
-                else if (girlMove == 7) { orchardGirl.setPosition(44, 260); orchardGirl.setFill(imgArray4[2]); }
-                else if (girlMove == 8) { orchardGirl.setPosition(44, 265); orchardGirl.setFill(imgArray4[1]); }
-                else if (girlMove == 9) { orchardGirl.setPosition(44, 270); orchardGirl.setFill(imgArray4[0]); }
-                else if (girlMove == 10) { orchardGirl.setPosition(44, 275); orchardGirl.setFill(imgArray4[1]); }
-                else if (girlMove == 11) { orchardGirl.setPosition(44, 280); orchardGirl.setFill(imgArray4[2]); }
-                else if (girlMove == 12) { orchardGirl.setPosition(44, 285); orchardGirl.setFill(imgArray4[1]); }
-                else if (girlMove == 13) { orchardGirl.setPosition(44, 290); orchardGirl.setFill(imgArray4[2]); }
-                else if (girlMove == 14) { orchardGirl.setPosition(44, 295); orchardGirl.setFill(imgArray4[1]); }
-                else if (girlMove == 15) { orchardGirl.setPosition(44, 300); orchardGirl.setFill(imgArray4[2]); }
-                else if (girlMove == 16) { orchardGirl.setPosition(44, 305); orchardGirl.setFill(imgArray4[1]); }
-                else if (girlMove == 17) { orchardGirl.setPosition(44, 310); orchardGirl.setFill(imgArray4[0]); }
-                else if (girlMove == 18) { orchardGirl.setPosition(44, 315); orchardGirl.setFill(imgArray4[1]); }
-                else if (girlMove == 19) { orchardGirl.setPosition(44, 320); orchardGirl.setFill(imgArray4[2]); }
-                else if (girlMove == 20) { orchardGirl.setPosition(44, 325); orchardGirl.setFill(imgArray4[1]); }
-                else if (girlMove == 21) { orchardGirl.setPosition(44, 330); orchardGirl.setFill(imgArray4[0]); }
-                else if (girlMove == 22) { orchardGirl.setPosition(44, 335); orchardGirl.setFill(imgArray4[1]); }
-                else if (girlMove == 23) { orchardGirl.setPosition(44, 340); orchardGirl.setFill(imgArray4[2]); }
-                else if (girlMove == 24) { orchardGirl.setPosition(44, 345); orchardGirl.setFill(imgArray4[1]); }
-                else if (girlMove == 25) { orchardGirl.setPosition(44, 350); orchardGirl.setFill(imgArray4[0]); }
+            if (girlMove > 53) { girlMove = 1; };
+            switch(girlmove){
+                case  1: { orchardGirl.setPosition(44, 230).setFill(imgArray4[6]); break;}
+                case 2:{ orchardGirl.setPosition(44, 235).setFill(imgArray4[1]); break;}
+                case 3: { orchardGirl.setPosition(44, 240).setFill(imgArray4[2]); break;}
+                case  4: { orchardGirl.setPosition(44, 245).setFill(imgArray4[1]); break;}
+                case 5: { orchardGirl.setPosition(44, 250).setFill(imgArray4[0]); break;}
+                case  6: { orchardGirl.setPosition(44, 255).setFill(imgArray4[1]); break;}
+                case 7: { orchardGirl.setPosition(44, 260).setFill(imgArray4[2]); break;}
+                case  8: { orchardGirl.setPosition(44, 265).setFill(imgArray4[1]); break;}
+                case 9: { orchardGirl.setPosition(44, 270).setFill(imgArray4[0]); break;}
+                case  10: { orchardGirl.setPosition(44, 275).setFill(imgArray4[1]); break;}
+                case  11: { orchardGirl.setPosition(44, 280).setFill(imgArray4[2]); break;}
+                case 12: { orchardGirl.setPosition(44, 285).setFill(imgArray4[1]); break;}
+                case  13: { orchardGirl.setPosition(44, 290).setFill(imgArray4[2]); break;}
+                case 14: { orchardGirl.setPosition(44, 295).setFill(imgArray4[1]); break;}
+                case  15: { orchardGirl.setPosition(44, 300).setFill(imgArray4[2]); break;}
+                case  16: { orchardGirl.setPosition(44, 305).setFill(imgArray4[1]); break;}
+                case  17: { orchardGirl.setPosition(44, 310).setFill(imgArray4[0]); break;}
+                case 18: { orchardGirl.setPosition(44, 315).setFill(imgArray4[1]); break;}
+                case  19: { orchardGirl.setPosition(44, 320).setFill(imgArray4[2]); break;}
+                case  20: { orchardGirl.setPosition(44, 325).setFill(imgArray4[1]); break;}
+                case 21: { orchardGirl.setPosition(44, 330).setFill(imgArray4[0]); break;}
+                case  22: { orchardGirl.setPosition(44, 335).setFill(imgArray4[1]); break;}
+                case 23: { orchardGirl.setPosition(44, 340).setFill(imgArray4[2]); break;}
+                case 24: { orchardGirl.setPosition(44, 345).setFill(imgArray4[1]); break;}
+                case 25: { orchardGirl.setPosition(44, 350).setFill(imgArray4[0]); break;}
+                case 26: { orchardGirl.setPosition(44, 350).setFill(imgArray4[7]);  break;}
+                case 27: { orchardGirl.setPosition(44, 350).setFill(imgArray4[0]); break;}
+                case 28: { orchardGirl.setPosition(44, 350).setFill(imgArray4[6]); break;}
+                case 29: { orchardGirl.setPosition(44, 345).setFill(imgArray4[3]); break;}
+                case 30: { orchardGirl.setPosition(44, 345).setFill(imgArray4[4]); break;}
+                case 31: { orchardGirl.setPosition(44, 340).setFill(imgArray4[5]); break;}
+                case 32: { orchardGirl.setPosition(44, 335).setFill(imgArray4[4]); break;}
+                case 33: { orchardGirl.setPosition(44, 330).setFill(imgArray4[3]); break;}
+                case 34: { orchardGirl.setPosition(44, 325).setFill(imgArray4[4]); break;}
+                case 35: { orchardGirl.setPosition(44, 320).setFill(imgArray4[5]); break;}
+                case 36: { orchardGirl.setPosition(44, 315).setFill(imgArray4[4]); break;}
+                case 37: { orchardGirl.setPosition(44, 310).setFill(imgArray4[3]); break;}
+                case 38: { orchardGirl.setPosition(44, 305).setFill(imgArray4[4]); break;}
+                case 39: { orchardGirl.setPosition(44, 300).setFill(imgArray4[5]); break;}
+                case 40: { orchardGirl.setPosition(44, 295).setFill(imgArray4[4]); break;}
+                case 41: { orchardGirl.setPosition(44, 290).setFill(imgArray4[5]); break;}
+                case 42: { orchardGirl.setPosition(44, 285).setFill(imgArray4[4]); break;}
+                case 43: { orchardGirl.setPosition(44, 280).setFill(imgArray4[3]); break;}
+                case 44: { orchardGirl.setPosition(44, 275).setFill(imgArray4[4]); break;}
+                case 45: { orchardGirl.setPosition(44, 270).setFill(imgArray4[5]); break;}
+                case  46: { orchardGirl.setPosition(44, 265).setFill(imgArray4[4]); break;}
+                case 47: { orchardGirl.setPosition(44, 260).setFill(imgArray4[3]); break;}
+                case 48: { orchardGirl.setPosition(44, 255).setFill(imgArray4[4]); break;}
+                case  49: { orchardGirl.setPosition(44, 250).setFill(imgArray4[5]); break;}
+                case 50: { orchardGirl.setPosition(44, 245).setFill(imgArray4[4]); break;}
+                case  51: { orchardGirl.setPosition(44, 240).setFill(imgArray4[3]); break;}
+                case 52: { orchardGirl.setPosition(44, 235).setFill(imgArray4[4]); break;}
+                case  53: { orchardGirl.setPosition(44, 230).setFill(imgArray4[6]); break;}
+                default: { break;}
             }
-            else {
+      
+            
+           
 
-                if (girlMove == 26) { orchardGirl.setPosition(44, 350); orchardGirl.setFill(imgArray4[7]); }
-                else if (girlMove == 27) { orchardGirl.setPosition(44, 350); orchardGirl.setFill(imgArray4[0]); }
-                else if (girlMove == 28) { orchardGirl.setPosition(44, 350); orchardGirl.setFill(imgArray4[6]); }
-                else if (girlMove == 29) { orchardGirl.setPosition(44, 345); orchardGirl.setFill(imgArray4[3]); }
-                else if (girlMove == 30) { orchardGirl.setPosition(44, 345); orchardGirl.setFill(imgArray4[4]); }
-                else if (girlMove == 31) { orchardGirl.setPosition(44, 340); orchardGirl.setFill(imgArray4[5]); }
-                else if (girlMove == 32) { orchardGirl.setPosition(44, 335); orchardGirl.setFill(imgArray4[4]); }
-                else if (girlMove == 33) { orchardGirl.setPosition(44, 330); orchardGirl.setFill(imgArray4[3]); }
-                else if (girlMove == 34) { orchardGirl.setPosition(44, 325); orchardGirl.setFill(imgArray4[4]); }
-                else if (girlMove == 35) { orchardGirl.setPosition(44, 320); orchardGirl.setFill(imgArray4[5]); }
-                else if (girlMove == 36) { orchardGirl.setPosition(44, 315); orchardGirl.setFill(imgArray4[4]); }
-                else if (girlMove == 37) { orchardGirl.setPosition(44, 310); orchardGirl.setFill(imgArray4[3]); }
-                else if (girlMove == 38) { orchardGirl.setPosition(44, 305); orchardGirl.setFill(imgArray4[4]); }
-                else if (girlMove == 39) { orchardGirl.setPosition(44, 300); orchardGirl.setFill(imgArray4[5]); }
-                else if (girlMove == 40) { orchardGirl.setPosition(44, 295); orchardGirl.setFill(imgArray4[4]); }
-                else if (girlMove == 41) { orchardGirl.setPosition(44, 290); orchardGirl.setFill(imgArray4[5]); }
-                else if (girlMove == 42) { orchardGirl.setPosition(44, 285); orchardGirl.setFill(imgArray4[4]); }
-                else if (girlMove == 43) { orchardGirl.setPosition(44, 280); orchardGirl.setFill(imgArray4[3]); }
-                else if (girlMove == 44) { orchardGirl.setPosition(44, 275); orchardGirl.setFill(imgArray4[4]); }
-                else if (girlMove == 45) { orchardGirl.setPosition(44, 270); orchardGirl.setFill(imgArray4[5]); }
-                else if (girlMove == 46) { orchardGirl.setPosition(44, 265); orchardGirl.setFill(imgArray4[4]); }
-                else if (girlMove == 47) { orchardGirl.setPosition(44, 260); orchardGirl.setFill(imgArray4[3]); }
-                else if (girlMove == 48) { orchardGirl.setPosition(44, 255); orchardGirl.setFill(imgArray4[4]); }
-                else if (girlMove == 49) { orchardGirl.setPosition(44, 250); orchardGirl.setFill(imgArray4[5]); }
-                else if (girlMove == 50) { orchardGirl.setPosition(44, 245); orchardGirl.setFill(imgArray4[4]); }
-                else if (girlMove == 51) { orchardGirl.setPosition(44, 240); orchardGirl.setFill(imgArray4[3]); }
-                else if (girlMove == 52) { orchardGirl.setPosition(44, 235); orchardGirl.setFill(imgArray4[4]); }
-                else if (girlMove == 53) { orchardGirl.setPosition(44, 230); orchardGirl.setFill(imgArray4[6]); }
-            }
+    
+            
         };
         lime.scheduleManager.scheduleWithDelay(function () {
             if (sceneActive == 'Orchard') { a.moveGirl(); }
@@ -10341,7 +10342,7 @@ playerImgHome.setHidden(true);
         });
 
       ///found Treasure location Cave
-        var foundTreasureC = (new lime.Sprite()).setPosition(410, 430).setSize(60, 60).setFill('images/stars4.png').setHidden(true);
+        var foundTreasureC = (new lime.Sprite()).setPosition(410, 430).setSize(60, 60).setFill(imgArray[119]).setHidden(true);
         caveFill1.appendChild(foundTreasureC);
         goog.events.listen(foundTreasureC, ["mousedown", "touchstart"], function (e) {
             if (foundTreasureC.getHidden() == false){  loadHeirloom('cavern'); successSound.play();      };
@@ -10461,7 +10462,7 @@ playerImgHome.setHidden(true);
         caveFill2.appendChild(caveGoDown);
         var playerImgCave = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width - 80, a.height - 100).setSize(100, 100).setFill(imgArrayPlayer[0]);
         caveFill2.appendChild(playerImgCave);
-        var cavePlyrBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-85,-85).setSize(156, 105).setFill("images/UI/speechBubble3.png");
+        var cavePlyrBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-85,-85).setSize(156, 105).setFill(imgArray[117]);
         playerImgCave.appendChild(cavePlyrBubble);
         var cavePlyrText = (new lime.Label()).setText("The path is blocked. There must be another way").setPosition(80,70).setSize(150, 100).setFontColor('black').setFontSize(15);
         cavePlyrBubble.appendChild(cavePlyrText);
@@ -10717,7 +10718,14 @@ playerImgHome.setHidden(true);
     var enterCaveBtn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width - 40, 115).setSize(20, 25).setFill('#000000').setOpacity(0.2);
     orchardLayer.appendChild(enterCaveBtn);
     goog.events.listen(enterCaveBtn, ["mousedown", "touchstart"], function (e) {
-        if (caveActive == "Hidden" && landSlideDone == 1){
+        if (collectItems.storeItems[7].owned == 0){
+            orchardLayer.appendChild(playerImgHome);
+            playerImgHome.setHidden(false);
+            plyrTextHome.setText("It's Too Dark! We need to buy a LANTERN")
+            goog.events.listen(playerImgHome, ["mousedown", "touchstart"], function (e) { playerImgHome.setHidden(true); goog.events.removeAll(plyrTextHome);});
+            goog.events.listen(plyrBubbleHome, ["mousedown", "touchstart"], function (e) { playerImgHome.setHidden(true); goog.events.removeAll(plyrBubbleHome);});
+        }
+        else if (caveActive == "Hidden" && landSlideDone == 1){
         console.log("caveShiftclicked " + caveActive)
             caveActive = "Hidden"
             caveShift('up');
@@ -11571,23 +11579,31 @@ function checkLandSlide(){
 
         var itemInfoPanel = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(48, 85).setSize(a.width - 85, 110).setFill(imgArray[79]);
         itemsBack.appendChild(itemInfoPanel);
-        var itemInfoHeader = (new lime.Label()).setPosition(110, 25).setText('Item Information').setFontSize(22).setFontFamily("Proxima Nova").setFontColor("#000000"); itemInfoPanel.appendChild(itemInfoHeader);
-        var itemInfoDetails1 = (new lime.Label()).setPosition(110, 65).setText('Hit an item to').setFontSize(18).setFontFamily("Proxima Nova").setFontColor("#000000"); itemInfoPanel.appendChild(itemInfoDetails1);
-        var itemInfoDetails2 = (new lime.Label()).setPosition(110, 90).setText('see the details').setFontSize(18).setFontFamily("Proxima Nova").setFontColor("#000000"); itemInfoPanel.appendChild(itemInfoDetails2);
+        var itemInfoHeader = (new lime.Label()).setPosition(110, 28).setText('Item Information').setFontSize(22).setFontFamily("Proxima Nova").setFontColor("#000000"); itemInfoPanel.appendChild(itemInfoHeader);
+        var itemInfoDetails1 = (new lime.Label()).setPosition(110, 68).setText('Hit an item to').setFontSize(18).setFontFamily("Proxima Nova").setFontColor("#000000"); itemInfoPanel.appendChild(itemInfoDetails1);
+        var itemInfoDetails2 = (new lime.Label()).setPosition(110, 93).setText('see the details').setFontSize(18).setFontFamily("Proxima Nova").setFontColor("#000000"); itemInfoPanel.appendChild(itemInfoDetails2);
 
-        var shovelImg = (new lime.Sprite()).setPosition(150, 30).setSize(50, 50).setFill(imgArrayItems[18].src);
+     
+        var shovelImg = (new lime.Sprite()).setPosition(120, 30).setSize(50, 50).setFill(imgArrayItems[18].src);
         itemsBack.appendChild(shovelImg);
-        var shovelLabel = (new lime.Label()).setFontSize(12).setPosition(3, 45).setSize(70, 18).setText("IRON SHOVEL").setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(10);
+        var shovelLabel = (new lime.Label()).setFontSize(12).setPosition(3, 43).setSize(70, 18).setText("IRON SHOVEL").setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(10);
         shovelImg.appendChild(shovelLabel);
 
         if (collectItems.storeItems[2].owned == 1) {
             shovelImg.setFill(imgArrayStore[2].src);
-            shovelLabel.setFontSize(10).setPosition(3, 45).setSize(70, 18).setText("BLESSED SHOVEL").setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(10);
+            shovelLabel.setFontSize(10).setPosition(3, 42).setSize(70, 18).setText("BLESSED SHOVEL").setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(11);
         }
-
-        var pickImg = (new lime.Sprite()).setPosition(240, 33).setSize(50, 50).setFill(imgArray[20].src);
+        var lanternImg = (new lime.Sprite()).setPosition(190, 32).setSize(30, 50).setFill('images/items/lantern_No.png');
+        itemsBack.appendChild(lanternImg);
+        var lanternLabel = (new lime.Label()).setFontSize(12).setPosition(0, 45).setSize(70, 18).setText("????").setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(11);
+        lanternImg.appendChild(lanternLabel);
+        if (collectItems.storeItems[7].owned == 1) {
+            lanternImg.setFill(imgArrayStore[7].src);
+            lanternLabel.setText("LANTERN")
+        }
+        var pickImg = (new lime.Sprite()).setPosition(267, 33).setSize(50, 50).setFill(imgArray[20].src);
         itemsBack.appendChild(pickImg);
-        var pickLabel = (new lime.Label()).setPosition(3, 45).setSize(70, 18).setText("????").setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(12);
+        var pickLabel = (new lime.Label()).setPosition(3, 45).setSize(70, 18).setText("????").setFontFamily("Proxima Nova").setFontColor("#000000").setFontSize(11);
         pickImg.appendChild(pickLabel);
         if (collectItems.storeItems[3].owned == 1) {
             pickImg.setFill(imgArrayStore[3].src)
@@ -11595,21 +11611,18 @@ function checkLandSlide(){
         }
         goog.events.listen(shovelImg, ["click", "touchstart"], function () {
             //console.log("clicked shovel btn  and " + collectItems.storeItems[2].owned );
-            if (collectItems.storeItems[2].owned == 0) {
-                itemInfoHeader.setText("IRON SHOVEL"); itemInfoDetails1.setText("Gives 1% luck to "); itemInfoDetails2.setText("find items when digging");
-            }
-            if (collectItems.storeItems[2].owned == 1) {
-                itemInfoHeader.setText("Blessed Shovel"); itemInfoDetails1.setText("Gives 10% luck to"); itemInfoDetails2.setText("find items when digging");
-            }
+            if (collectItems.storeItems[2].owned == 0) {itemInfoHeader.setText("IRON SHOVEL"); itemInfoDetails1.setText("Gives 1% luck to "); itemInfoDetails2.setText("find items when digging");}
+            if (collectItems.storeItems[2].owned == 1) {itemInfoHeader.setText("Blessed Shovel"); itemInfoDetails1.setText("Gives 10% luck to"); itemInfoDetails2.setText("find items when digging"); }
+        });
+        goog.events.listen(lanternImg, ["click", "touchstart"], function () {
+            //console.log("clicked shovel btn  and " + collectItems.storeItems[2].owned );
+            if (collectItems.storeItems[7].owned == 0) {itemInfoHeader.setText("???  HMMMM  ???"); itemInfoDetails1.setText("I wonder what is "); itemInfoDetails2.setText(" going to go here?"); };
+            if (collectItems.storeItems[7].owned == 1) {itemInfoHeader.setText("LANTERN"); itemInfoDetails1.setText("Lights the dark "); itemInfoDetails2.setText("in caverns and lairs"); };
         });
         goog.events.listen(pickImg, ["click", "touchstart"], function () {
             //console.log("clicked shovel btn");
-            if (collectItems.storeItems[3].owned == 0) {
-                itemInfoHeader.setText("???  HMMMM  ???"); itemInfoDetails1.setText("I wonder what is "); itemInfoDetails2.setText(" going to go here?");
-            }
-            if (collectItems.storeItems[3].owned == 1) {
-                itemInfoHeader.setText("Steel Pick"); itemInfoDetails1.setText("Breaks rocks that"); itemInfoDetails2.setText("are in the way");
-            }
+            if (collectItems.storeItems[3].owned == 0) {itemInfoHeader.setText("???  HMMMM  ???"); itemInfoDetails1.setText("I wonder what is "); itemInfoDetails2.setText(" going to go here?");}
+            if (collectItems.storeItems[3].owned == 1) {itemInfoHeader.setText("Steel Pick"); itemInfoDetails1.setText("Breaks rocks that"); itemInfoDetails2.setText("are in the way");}
 
         });
 
@@ -11619,28 +11632,11 @@ function checkLandSlide(){
                 itemsStoredBack = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(20 + (i * 70), 195 + (x * 62) + 6).setFill(imgArrayTown[18]).setSize(60, 52), itemsBack.appendChild(itemsStoredBack);
         }
         itemsStoredBack.setHidden(true);
-        var itemInvBtn1 = (new lime.GlossyButton()).setPosition(50, 228).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn1);
-        var itemInvBtn2 = (new lime.GlossyButton()).setPosition(120, 228).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn2);
-        var itemInvBtn3 = (new lime.GlossyButton()).setPosition(190, 228).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn3);
-        var itemInvBtn4 = (new lime.GlossyButton()).setPosition(260, 228).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn4);
-        var itemInvBtn5 = (new lime.GlossyButton()).setPosition(50, 292).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn5);
-        var itemInvBtn6 = (new lime.GlossyButton()).setPosition(120, 291).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn6);
-        var itemInvBtn7 = (new lime.GlossyButton()).setPosition(190, 291).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn7);
-        var itemInvBtn8 = (new lime.GlossyButton()).setPosition(260, 291).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn8);
-        var itemInvBtn9 = (new lime.GlossyButton()).setPosition(50, 353).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn9);
-        var itemInvBtn10 = (new lime.GlossyButton()).setPosition(120, 353).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn10);
-        var itemInvBtn11 = (new lime.GlossyButton()).setPosition(190, 353).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn11);
-        var itemInvBtn12 = (new lime.GlossyButton()).setPosition(260, 353).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn12);
-        //var itemInvBtn13 = (new lime.GlossyButton()).setPosition(50, 338).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn13);
-        //var itemInvBtn14 = (new lime.GlossyButton()).setPosition(120, 338).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn14);
-        //var itemInvBtn15 = (new lime.GlossyButton()).setPosition(190, 338).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn15);
-        //var itemInvBtn16 = (new lime.GlossyButton()).setPosition(260, 338).setSize(40, 40).setColor("#000000").setText(""); itemsBack.appendChild(itemInvBtn16);
 
-
-        var itemInvImg1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(25, 200).setSize(48, 48).setFill(imgArray[17].src); itemsBack.appendChild(itemInvImg1); itemInvImg1.filled = 0; itemInvImg1.heading = ''; itemInvImg1.subtext1 = ''; itemInvImg1.subtext2 = '';
-        var itemInvImg2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(95, 200).setSize(48, 48).setFill(imgArray[17].src); itemsBack.appendChild(itemInvImg2); itemInvImg2.filled = 0; itemInvImg2.heading = ''; itemInvImg2.subtext1 = ''; itemInvImg2.subtext2 = '';
-        var itemInvImg3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(165, 200).setSize(48, 48).setFill(imgArray[17].src); itemsBack.appendChild(itemInvImg3); itemInvImg3.filled = 0; itemInvImg3.heading = ''; itemInvImg3.subtext1 = ''; itemInvImg3.subtext2 = '';
-        var itemInvImg4 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(235, 200).setSize(48, 48).setFill(imgArray[17].src); itemsBack.appendChild(itemInvImg4); itemInvImg4.filled = 0; itemInvImg4.heading = ''; itemInvImg4.subtext1 = ''; itemInvImg4.subtext2 = '';
+        var itemInvImg1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(25, 202).setSize(48, 48).setFill(imgArray[17].src); itemsBack.appendChild(itemInvImg1); itemInvImg1.filled = 0; itemInvImg1.heading = ''; itemInvImg1.subtext1 = ''; itemInvImg1.subtext2 = '';
+        var itemInvImg2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(95, 202).setSize(48, 48).setFill(imgArray[17].src); itemsBack.appendChild(itemInvImg2); itemInvImg2.filled = 0; itemInvImg2.heading = ''; itemInvImg2.subtext1 = ''; itemInvImg2.subtext2 = '';
+        var itemInvImg3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(165, 202).setSize(48, 48).setFill(imgArray[17].src); itemsBack.appendChild(itemInvImg3); itemInvImg3.filled = 0; itemInvImg3.heading = ''; itemInvImg3.subtext1 = ''; itemInvImg3.subtext2 = '';
+        var itemInvImg4 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(235, 202).setSize(48, 48).setFill(imgArray[17].src); itemsBack.appendChild(itemInvImg4); itemInvImg4.filled = 0; itemInvImg4.heading = ''; itemInvImg4.subtext1 = ''; itemInvImg4.subtext2 = '';
         var itemInvImg5 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(25, 265).setSize(48, 48).setFill(imgArray[17].src); itemsBack.appendChild(itemInvImg5); itemInvImg5.filled = 0; itemInvImg5.heading = ''; itemInvImg5.subtext1 = ''; itemInvImg5.subtext2 = '';
         var itemInvImg6 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(95, 265).setSize(48, 48).setFill(imgArray[17].src); itemsBack.appendChild(itemInvImg6); itemInvImg6.filled = 0; itemInvImg6.heading = ''; itemInvImg6.subtext1 = ''; itemInvImg6.subtext2 = '';
         var itemInvImg7 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(165, 265).setSize(48, 48).setFill(imgArray[17].src); itemsBack.appendChild(itemInvImg7); itemInvImg7.filled = 0; itemInvImg7.heading = ''; itemInvImg7.subtext1 = ''; itemInvImg7.subtext2 = '';
@@ -11649,32 +11645,9 @@ function checkLandSlide(){
         var itemInvImg10 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(95, 325).setSize(48, 48).setFill(imgArray[17].src); itemsBack.appendChild(itemInvImg10); itemInvImg10.filled = 0; itemInvImg10.heading = ''; itemInvImg10.subtext1 = ''; itemInvImg10.subtext2 = '';
         var itemInvImg11 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(165, 325).setSize(48, 48).setFill(imgArray[17].src); itemsBack.appendChild(itemInvImg11); itemInvImg11.filled = 0; itemInvImg11.heading = ''; itemInvImg11.subtext1 = ''; itemInvImg11.subtext2 = '';
         var itemInvImg12 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(235, 325).setSize(48, 48).setFill(imgArray[17].src); itemsBack.appendChild(itemInvImg12); itemInvImg12.filled = 0; itemInvImg12.heading = ''; itemInvImg12.subtext1 = ''; itemInvImg12.subtext2 = '';
-        //var itemInvImg13 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(25, 310).setSize(48, 48).setFill(imgArray[17].src); itemsBack.appendChild(itemInvImg13); itemInvImg13.filled = 0; itemInvImg13.heading = ''; itemInvImg13.subtext1 = ''; itemInvImg13.subtext2 = '';
-        //var itemInvImg14 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(95, 310).setSize(48, 48).setFill(imgArray[17].src); itemsBack.appendChild(itemInvImg14); itemInvImg14.filled = 0; itemInvImg14.heading = ''; itemInvImg14.subtext1 = ''; itemInvImg14.subtext2 = '';
-        //var itemInvImg15 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(165, 310).setSize(48, 48).setFill(imgArray[17].src); itemsBack.appendChild(itemInvImg15); itemInvImg15.filled = 0; itemInvImg15.heading = ''; itemInvImg15.subtext1 = ''; itemInvImg15.subtext2 = '';
-        //var itemInvImg16 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(235, 310).setSize(48, 48).setFill(imgArray[17].src); itemsBack.appendChild(itemInvImg16); itemInvImg16.filled = 0; itemInvImg16.heading = ''; itemInvImg16.subtext1 = ''; itemInvImg16.subtext2 = '';
 
 
-
-        goog.events.listen(itemInvBtn1, ["click", "touchstart"], function () { if (itemInvImg1.filled == 1) { itemInfoHeader.setText(itemInvImg1.heading); itemInfoDetails1.setText(itemInvImg1.subtext1); itemInfoDetails2.setText(itemInvImg1.subtext2); } });
-        goog.events.listen(itemInvBtn2, ["click", "touchstart"], function () { if (itemInvImg2.filled == 1) { itemInfoHeader.setText(itemInvImg2.heading); itemInfoDetails1.setText(itemInvImg2.subtext1); itemInfoDetails2.setText(itemInvImg2.subtext2); } });
-        goog.events.listen(itemInvBtn3, ["click", "touchstart"], function () { if (itemInvImg3.filled == 1) { itemInfoHeader.setText(itemInvImg3.heading); itemInfoDetails1.setText(itemInvImg3.subtext1); itemInfoDetails2.setText(itemInvImg3.subtext2); } });
-        goog.events.listen(itemInvBtn4, ["click", "touchstart"], function () { if (itemInvImg4.filled == 1) { itemInfoHeader.setText(itemInvImg4.heading); itemInfoDetails1.setText(itemInvImg4.subtext1); itemInfoDetails2.setText(itemInvImg4.subtext2); } });
-        goog.events.listen(itemInvBtn5, ["click", "touchstart"], function () { if (itemInvImg5.filled == 1) { itemInfoHeader.setText(itemInvImg5.heading); itemInfoDetails1.setText(itemInvImg5.subtext1); itemInfoDetails2.setText(itemInvImg5.subtext2); } });
-        goog.events.listen(itemInvBtn6, ["click", "touchstart"], function () { if (itemInvImg6.filled == 1) { itemInfoHeader.setText(itemInvImg6.heading); itemInfoDetails1.setText(itemInvImg6.subtext1); itemInfoDetails2.setText(itemInvImg6.subtext2); } });
-        goog.events.listen(itemInvBtn7, ["click", "touchstart"], function () { if (itemInvImg7.filled == 1) { itemInfoHeader.setText(itemInvImg7.heading); itemInfoDetails1.setText(itemInvImg7.subtext1); itemInfoDetails2.setText(itemInvImg7.subtext2); } });
-        goog.events.listen(itemInvBtn8, ["click", "touchstart"], function () { if (itemInvImg8.filled == 1) { itemInfoHeader.setText(itemInvImg8.heading); itemInfoDetails1.setText(itemInvImg8.subtext1); itemInfoDetails2.setText(itemInvImg8.subtext2); } });
-        goog.events.listen(itemInvBtn9, ["click", "touchstart"], function () { if (itemInvImg9.filled == 1) { itemInfoHeader.setText(itemInvImg9.heading); itemInfoDetails1.setText(itemInvImg9.subtext1); itemInfoDetails2.setText(itemInvImg9.subtext2); } });
-        goog.events.listen(itemInvBtn10, ["click", "touchstart"], function () { if (itemInvImg10.filled == 1) { itemInfoHeader.setText(itemInvImg10.heading); itemInfoDetails1.setText(itemInvImg10.subtext1); itemInfoDetails2.setText(itemInvImg10.subtext2); } });
-        goog.events.listen(itemInvBtn11, ["click", "touchstart"], function () { if (itemInvImg11.filled == 1) { itemInfoHeader.setText(itemInvImg11.heading); itemInfoDetails1.setText(itemInvImg11.subtext1); itemInfoDetails2.setText(itemInvImg11.subtext2); } });
-        goog.events.listen(itemInvBtn12, ["click", "touchstart"], function () { if (itemInvImg12.filled == 1) { itemInfoHeader.setText(itemInvImg12.heading); itemInfoDetails1.setText(itemInvImg12.subtext1); itemInfoDetails2.setText(itemInvImg12.subtext2); } });
-        //goog.events.listen(itemInvBtn13, ["click", "touchstart"], function () { console.log("clicked Inv btn"); if (itemInvImg13.filled == 1) { itemInfoHeader.setText(itemInvImg13.heading); itemInfoDetails1.setText(itemInvImg13.subtext1); itemInfoDetails2.setText(itemInvImg13.subtext2); } });
-        //goog.events.listen(itemInvBtn14, ["click", "touchstart"], function () { console.log("clicked Inv btn"); if (itemInvImg14.filled == 1) { itemInfoHeader.setText(itemInvImg14.heading); itemInfoDetails1.setText(itemInvImg14.subtext1); itemInfoDetails2.setText(itemInvImg14.subtext2); } });
-        //goog.events.listen(itemInvBtn15, ["click", "touchstart"], function () { console.log("clicked Inv btn"); if (itemInvImg15.filled == 1) { itemInfoHeader.setText(itemInvImg15.heading); itemInfoDetails1.setText(itemInvImg15.subtext1); itemInfoDetails2.setText(itemInvImg15.subtext2); } });
-        //goog.events.listen(itemInvBtn16, ["click", "touchstart"], function () { console.log("clicked Inv btn"); if (itemInvImg16.filled == 1) { itemInfoHeader.setText(itemInvImg16.heading); itemInfoDetails1.setText(itemInvImg16.subtext1); itemInfoDetails2.setText(itemInvImg16.subtext2); } });
-
-
-
+  
 
         var openSlot = '';
         function checkItemsOwned() {
@@ -11713,6 +11686,8 @@ function checkLandSlide(){
                         itemInvImg1.heading = currentImgName;
                         itemInvImg1.subtext1 = currentImgSub1;
                         itemInvImg1.subtext2 = currentImgSub2;
+                        goog.events.listen(itemInvImg1, ["click", "touchstart"], function () { if (itemInvImg1.filled == 1) { itemInfoHeader.setText(itemInvImg1.heading); itemInfoDetails1.setText(itemInvImg1.subtext1); itemInfoDetails2.setText(itemInvImg1.subtext2); } });
+
                     }
                     else if (itemInvImg2.filled == 0) {
                         itemInvImg2.filled = 1;
@@ -11720,6 +11695,8 @@ function checkLandSlide(){
                         itemInvImg2.heading = currentImgName;
                         itemInvImg2.subtext1 = currentImgSub1;
                         itemInvImg2.subtext2 = currentImgSub2;
+                        goog.events.listen(itemInvImg2, ["click", "touchstart"], function () { if (itemInvImg2.filled == 1) { itemInfoHeader.setText(itemInvImg2.heading); itemInfoDetails1.setText(itemInvImg2.subtext1); itemInfoDetails2.setText(itemInvImg2.subtext2); } });
+
                     }
                     else if (itemInvImg3.filled == 0) {
                         itemInvImg3.filled = 1;
@@ -11727,6 +11704,8 @@ function checkLandSlide(){
                         itemInvImg3.heading = currentImgName;
                         itemInvImg3.subtext1 = currentImgSub1;
                         itemInvImg3.subtext2 = currentImgSub2;
+                        goog.events.listen(itemInvImg3, ["click", "touchstart"], function () { if (itemInvImg3.filled == 1) { itemInfoHeader.setText(itemInvImg3.heading); itemInfoDetails1.setText(itemInvImg3.subtext1); itemInfoDetails2.setText(itemInvImg3.subtext2); } });
+
                     }
                     else if (itemInvImg4.filled == 0) {
                         itemInvImg4.filled = 1;
@@ -11734,6 +11713,8 @@ function checkLandSlide(){
                         itemInvImg4.heading = currentImgName;
                         itemInvImg4.subtext1 = currentImgSub1;
                         itemInvImg4.subtext2 = currentImgSub2;
+                        goog.events.listen(itemInvImg4, ["click", "touchstart"], function () { if (itemInvImg4.filled == 1) { itemInfoHeader.setText(itemInvImg4.heading); itemInfoDetails1.setText(itemInvImg4.subtext1); itemInfoDetails2.setText(itemInvImg4.subtext2); } });
+
                     }
                     else if (itemInvImg5.filled == 0) {
                         itemInvImg5.filled = 1;
@@ -11741,6 +11722,8 @@ function checkLandSlide(){
                         itemInvImg5.heading = currentImgName;
                         itemInvImg5.subtext1 = currentImgSub1;
                         itemInvImg5.subtext2 = currentImgSub2;
+                        goog.events.listen(itemInvImg5, ["click", "touchstart"], function () { if (itemInvImg5.filled == 1) { itemInfoHeader.setText(itemInvImg5.heading); itemInfoDetails1.setText(itemInvImg5.subtext1); itemInfoDetails2.setText(itemInvImg5.subtext2); } });
+
                     }
                     else if (itemInvImg6.filled == 0) {
                         itemInvImg6.filled = 1;
@@ -11748,6 +11731,8 @@ function checkLandSlide(){
                         itemInvImg6.heading = currentImgName;
                         itemInvImg6.subtext1 = currentImgSub1;
                         itemInvImg6.subtext2 = currentImgSub2;
+                        goog.events.listen(itemInvImg6, ["click", "touchstart"], function () { if (itemInvImg6.filled == 1) { itemInfoHeader.setText(itemInvImg6.heading); itemInfoDetails1.setText(itemInvImg6.subtext1); itemInfoDetails2.setText(itemInvImg6.subtext2); } });
+
                     }
                     else if (itemInvImg7.filled == 0) {
                         itemInvImg7.filled = 1;
@@ -11755,6 +11740,9 @@ function checkLandSlide(){
                         itemInvImg7.heading = currentImgName;
                         itemInvImg7.subtext1 = currentImgSub1;
                         itemInvImg7.subtext2 = currentImgSub2;
+                        goog.events.listen(itemInvImg7, ["click", "touchstart"], function () { if (itemInvImg7.filled == 1) { itemInfoHeader.setText(itemInvImg7.heading); itemInfoDetails1.setText(itemInvImg7.subtext1); itemInfoDetails2.setText(itemInvImg7.subtext2); } });
+        
+                
                     }
                     else if (itemInvImg8.filled == 0) {
                         itemInvImg8.filled = 1;
@@ -11762,6 +11750,8 @@ function checkLandSlide(){
                         itemInvImg8.heading = currentImgName;
                         itemInvImg8.subtext1 = currentImgSub1;
                         itemInvImg8.subtext2 = currentImgSub2;
+                        goog.events.listen(itemInvImg8, ["click", "touchstart"], function () { if (itemInvImg8.filled == 1) { itemInfoHeader.setText(itemInvImg8.heading); itemInfoDetails1.setText(itemInvImg8.subtext1); itemInfoDetails2.setText(itemInvImg8.subtext2); } });
+        
                     }
                     else if (itemInvImg9.filled == 0) {
                         itemInvImg9.filled = 1;
@@ -11769,6 +11759,8 @@ function checkLandSlide(){
                         itemInvImg9.heading = currentImgName;
                         itemInvImg9.subtext1 = currentImgSub1;
                         itemInvImg9.subtext2 = currentImgSub2;
+                        goog.events.listen(itemInvImg9, ["click", "touchstart"], function () { if (itemInvImg9.filled == 1) { itemInfoHeader.setText(itemInvImg9.heading); itemInfoDetails1.setText(itemInvImg9.subtext1); itemInfoDetails2.setText(itemInvImg9.subtext2); } });
+           
                     }
                     else if (itemInvImg10.filled == 0) {
                         itemInvImg10.filled = 1;
@@ -11776,6 +11768,8 @@ function checkLandSlide(){
                         itemInvImg10.heading = currentImgName;
                         itemInvImg10.subtext1 = currentImgSub1;
                         itemInvImg10.subtext2 = currentImgSub2;
+                        goog.events.listen(itemInvImg10, ["click", "touchstart"], function () { if (itemInvImg10.filled == 1) { itemInfoHeader.setText(itemInvImg10.heading); itemInfoDetails1.setText(itemInvImg10.subtext1); itemInfoDetails2.setText(itemInvImg10.subtext2); } });
+         
                     }
                     else if (itemInvImg11.filled == 0) {
                         itemInvImg11.filled = 1;
@@ -11783,6 +11777,8 @@ function checkLandSlide(){
                         itemInvImg11.heading = currentImgName;
                         itemInvImg11.subtext1 = currentImgSub1;
                         itemInvImg11.subtext2 = currentImgSub2;
+                        goog.events.listen(itemInvImg11, ["click", "touchstart"], function () { if (itemInvImg11.filled == 1) { itemInfoHeader.setText(itemInvImg11.heading); itemInfoDetails1.setText(itemInvImg11.subtext1); itemInfoDetails2.setText(itemInvImg11.subtext2); } });
+         
                     }
                     else if (itemInvImg12.filled == 0) {
                         itemInvImg12.filled = 1;
@@ -11790,35 +11786,10 @@ function checkLandSlide(){
                         itemInvImg12.heading = currentImgName;
                         itemInvImg12.subtext1 = currentImgSub1;
                         itemInvImg12.subtext2 = currentImgSub2;
+                        goog.events.listen(itemInvImg12, ["click", "touchstart"], function () { if (itemInvImg12.filled == 1) { itemInfoHeader.setText(itemInvImg12.heading); itemInfoDetails1.setText(itemInvImg12.subtext1); itemInfoDetails2.setText(itemInvImg12.subtext2); } });
+                
                     }
-                    //else if (itemInvImg13.filled == 0) {
-                    //    itemInvImg13.filled = 1;
-                    //    itemInvImg13.setFill(currentImgSrc);
-                    //    itemInvImg13.heading = currentImgName;
-                    //    itemInvImg13.subtext1 = currentImgSub1;
-                    //    itemInvImg13.subtext2 = currentImgSub2;
-                    //}
-                    //else if (itemInvImg14.filled == 0) {
-                    //    itemInvImg14.filled = 1;
-                    //    itemInvImg14.setFill(currentImgSrc);
-                    //    itemInvImg14.heading = currentImgName;
-                    //    itemInvImg14.subtext1 = currentImgSub1;
-                    //    itemInvImg14.subtext2 = currentImgSub2;
-                    //}
-                    //else if (itemInvImg15.filled == 0) {
-                    //    itemInvImg15.filled = 1;
-                    //    itemInvImg15.setFill(currentImgSrc);
-                    //    itemInvImg15.heading = currentImgName;
-                    //    itemInvImg15.subtext1 = currentImgSub1;
-                    //    itemInvImg15.subtext2 = currentImgSub2;
-                    //}
-                    //else if (itemInvImg16.filled == 0) {
-                    //    itemInvImg16.filled = 1;
-                    //    itemInvImg16.setFill(currentImgSrc);
-                    //    itemInvImg16.heading = currentImgName;
-                    //    itemInvImg16.subtext1 = currentImgSub1;
-                    //    itemInvImg16.subtext2 = currentImgSub2;
-                    //}
+   
 
                 }
             }
@@ -11964,7 +11935,9 @@ function checkLandSlide(){
             itemsStoredBack.setHidden(false);
             collectBack.setHidden(true);
             playerImg.setHidden(false);
-
+            if (collectItems.storeItems[7].owned == 1) { lanternImg.setFill(imgArrayStore[7].src); lanternLabel.setText("LANTERN"); };
+            if (collectItems.storeItems[2].owned == 1) { shovelImg.setFill(imgArrayStore[2].src); shovelLabel.setFontSize(10).setPosition(3, 42).setSize(70, 18).setText("BLESSED SHOVEL"); };
+            if (collectItems.storeItems[3].owned == 1) {  pickImg.setFill(imgArrayStore[3].src); pickLabel.setText("STEEL PICK"); };
         });
         goog.events.listen(collectBtn, ["mousedown", "touchstart"], function () {
             cropsBack.setHidden(true);
@@ -12001,8 +11974,8 @@ function checkLandSlide(){
 
         var storeAnimItemMover = (new lime.Sprite()).setSize(42, 40).setPosition(65, -250).setFill(imgArrayStore[0].src);
         buyGeneralContainer.appendChild(storeAnimItemMover);
-        var storeCountBought = (new lime.Label()).setText("+ 50").setFontColor("#E8FC08").setFontFamily("Proxima Nova").setPosition(30, 15).setFontSize(18);
-        storeAnimItemMover.appendChild(storeCountBought);
+        // var storeCountBought = (new lime.Label()).setText("+ 50").setFontColor("#E8FC08").setFontFamily("Proxima Nova").setPosition(30, 15).setFontSize(18);
+        // storeAnimItemMover.appendChild(storeCountBought);
         storeAnimItemMover.setHidden(true);
 
         ///iron
@@ -12029,6 +12002,7 @@ function checkLandSlide(){
         var item4y = 130;
         var item5y = 195;
         var item6y = 260;
+        var item7y = 315;
 
         goog.events.listen(buyGeneralBtn0, ["mousedown", "touchstart"], function () {
             var isHidG0 = storeBuyGeneralLayer.getHidden();
@@ -12043,7 +12017,7 @@ function checkLandSlide(){
                 blacksmithBubble.setHidden(true);
                 townRep = townRep + 1;
 
-
+                showMFToast("+ 50",imgArrayStore[0].src, 'iron', 2000, 'right','bottom');
                 lime.scheduleManager.callAfter(function () { a.updateStored(); checkTownRep(); }, this, 100);
 
             }
@@ -12062,7 +12036,7 @@ function checkLandSlide(){
                 blacksmithBubble.setHidden(true);
                 townRep = townRep + 1;
 
-
+                showMFToast("+ 50",imgArrayStore[0].src, 'iron', 2000,'right','bottom');
                 lime.scheduleManager.callAfter(function () { a.updateStored(); checkTownRep(); }, this, 100);
 
             }
@@ -12097,7 +12071,7 @@ function checkLandSlide(){
                 player.cropsStored[16].stored = player.cropsStored[16].stored + 50;
                 gLabel16.setText(player.cropsStored[16].stored)
                 townRep = townRep + 1;
-
+                showMFToast("+ 50",imgArrayStore[1].src, 'jars', 2000,'right','bottom');
                 lime.scheduleManager.callAfter(function () { a.updateStored(); checkTownRep(); }, this, 100);
                 animateBuyItemNormal(1);
             }
@@ -12117,7 +12091,7 @@ function checkLandSlide(){
                 player.cropsStored[16].stored = player.cropsStored[16].stored + 50;
                 gLabel16.setText(player.cropsStored[16].stored)
                 townRep = townRep + 1;
-
+                showMFToast("+ 50",imgArrayStore[1].src, 'jars', 2000,'right','bottom');
                 lime.scheduleManager.callAfter(function () { a.updateStored(); checkTownRep(); }, this, 100);
                 animateBuyItemNormal(1);
             }
@@ -12159,7 +12133,7 @@ function checkLandSlide(){
                 shovelLabel.setText("Blessed Shovel + 10% find")
                 shovelImg.setFill(imgArrayStore[2].src);
                 townRep = townRep + 1;
-
+                showMFToast("Obtained Blessed Shovel",imgArrayStore[2].src, 'shovel', 2000,'right','bottom');
                 lime.scheduleManager.callAfter(function () { a.updateMoney; a.updateStored(); checkTownRep(); }, this, 100);
                 buyGeneralItem2.setHidden(true);
                 localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
@@ -12188,7 +12162,7 @@ function checkLandSlide(){
                 shovelLabel.setText("Blessed Shovel + 10% find")
                 shovelImg.setFill(imgArrayStore[2].src);
                 townRep = townRep + 1;
-
+                showMFToast("Obtained Blessed Shovel",imgArrayStore[2].src, 'shovel', 2000,'right','bottom');
                 lime.scheduleManager.callAfter(function () { a.updateStored(); checkTownRep(); }, this, 100);
                 buyGeneralItem2.setHidden(true);
                 localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
@@ -12248,7 +12222,7 @@ function checkLandSlide(){
                 townRep = townRep + 1;
 
 
-
+                showMFToast("Obtained Pick",imgArrayStore[3].src, 'pick', 2000,'right','bottom');
                 lime.scheduleManager.callAfter(function () { a.updateMoney; a.updateStored(); checkTownRep(); }, this, 100);
                 buyGeneralItem3.setHidden(true);
                 localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
@@ -12277,7 +12251,7 @@ function checkLandSlide(){
                 pickImg.setFill(imgArrayStore[3].src);
                 townRep = townRep + 1;
 
-
+                showMFToast("Obtained Pick",imgArrayStore[3].src, 'pick', 2000,'right','bottom');
                 lime.scheduleManager.callAfter(function () { a.updateStored(); checkTownRep(); }, this, 100);
                 buyGeneralItem2.setHidden(true);
                 localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
@@ -12337,7 +12311,7 @@ function checkLandSlide(){
                 collectItems.storeItems[4].owned = 1;
                 townRep = townRep + 1;
                 storeStars.setText(starCash);
-
+                showMFToast("Obtained Fruit Press",imgArrayStore[4].src, 'press', 2000,'right','bottom');
                 lime.scheduleManager.callAfter(function () { a.updateMoney; a.updateStored(); checkTownRep(); }, this, 100);
                 buyGeneralItem4.setHidden(true);
                 buyGeneralItem6.setHidden(false);
@@ -12367,7 +12341,7 @@ function checkLandSlide(){
                 collectItems.storeItems[4].owned = 1;
                 townRep = townRep + 1;
                 storeStars.setText(starCash);
-
+                showMFToast("Obtained Fruit Press",imgArrayStore[4].src, 'press', 2000,'right','bottom');
                 lime.scheduleManager.callAfter(function () { a.updateStored(); checkTownRep(); }, this, 100);
                 buyGeneralItem4.setHidden(true);;
                 localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
@@ -12400,7 +12374,7 @@ function checkLandSlide(){
         else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item5y = 130; }
 
         ////bottles
-        var buyGeneralItem5 = (new lime.Sprite()).setSize(220, 55).setPosition(0, item5y).setFill(imgArray[18].src);
+        var buyGeneralItem5 = (new lime.Sprite()).setSize(220, 55).setPosition(0, item5y).setFill(imgArray[18].src).setHidden(true);
         buyGeneralContainer.appendChild(buyGeneralItem5);
         buyGeneralItem5.price = collectItems.storeItems[5].value;
         buyGeneralItem5.stars = 5;
@@ -12455,7 +12429,7 @@ function checkLandSlide(){
         //});
 
         ///hide Bottles for 1.5
-        buyGeneralItem5.setHidden(true);
+        // buyGeneralItem5.setHidden(true);
 
         ///barrels- are set as [psotion of item 5 until after 1.5]
         var buyGeneralItem6 = (new lime.Sprite()).setSize(220, 55).setPosition(0, 350).setFill(imgArray[18].src).setHidden(false);
@@ -12489,7 +12463,7 @@ function checkLandSlide(){
                 player.cropsStored[17].stored = parseInt(player.cropsStored[17].stored) + 50;
                 townRep = townRep + 1;
                 checkItemsOwned()
-
+                showMFToast("+ 50",imgArrayStore[6].src, 'barrels', 2000,'right','bottom');
                 lime.scheduleManager.callAfter(function () { a.updateMoney; a.updateStored(); checkTownRep(); }, this, 100);
                 localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
                 animateBuyItemNormal(6);
@@ -12513,6 +12487,7 @@ function checkLandSlide(){
                 storeCash.setText(player.money);
                 collectItems.storeItems[6].owned = 1;
                 player.cropsStored[17].stored = parseInt(player.cropsStored[17].stored) + 50;
+                showMFToast("+ 50",imgArrayStore[6].src, 'barrels', 2000,'right','bottom');
                 townRep = townRep + 1;
                 try{checkItemsOwned();}catch(err){console.log(err)};
 
@@ -12521,20 +12496,92 @@ function checkLandSlide(){
                 animateBuyItemNormal(6);
                 storeStars.setText(starCash);
                 e.event.stopPropagation();
-
+                localStorage.setItem('starCash',starCash);
                 e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
                 });
             }
         });
+
+
+///// lantern
+        var buyGeneralItem7 = (new lime.Sprite()).setSize(220, 55).setPosition(0, 250).setFill(imgArray[18].src).setHidden(false);
+        buyGeneralContainer.appendChild(buyGeneralItem7);
+        buyGeneralItem7.price = collectItems.storeItems[7].value;
+        buyGeneralItem7.stars = 50;
+        var generalItem7Img = (new lime.Sprite()).setSize(26, 40).setPosition(-70, 0).setFill(imgArrayStore[7].src);
+        buyGeneralItem7.appendChild(generalItem7Img);
+        var buyGeneralLabel7 = (new lime.Label()).setPosition(12, -12).setFontFamily("Proxima Nova").setFontSize(16).setText(collectItems.storeItems[7].name).setFontColor("#E8FC08");
+        buyGeneralItem7.appendChild(buyGeneralLabel7);
+        var buyGeneralSubLabel7 = (new lime.Label()).setPosition(15, 12).setFontFamily("Proxima Nova").setFontSize(14).setText("Light up the dark!").setFontColor("#f0ffff");
+        buyGeneralItem7.appendChild(buyGeneralSubLabel7)
+        var buyGeneralBtn7 = (new lime.GlossyButton()).setColor("#008000").setText(collectItems.storeItems[7].value).setPosition(110, 0).setSize(46, 40).setHidden(false);
+        buyGeneralItem7.appendChild(buyGeneralBtn7);
+        var coinOnGeneral7 = (new lime.Sprite()).setSize(30, 30).setPosition(0, 18).setFill(imgArray11[0].src);
+        buyGeneralBtn7.appendChild(coinOnGeneral7);
+        var buyGeneralStars7 = (new lime.GlossyButton()).setColor("#008000").setText("").setPosition(-115, 0).setSize(40, 40).setHidden(false);
+        buyGeneralItem7.appendChild(buyGeneralStars7);
+        var starOnGeneral7 = (new lime.Sprite()).setSize(36, 36).setPosition(0, 0).setFill(imgArray[41]);
+        buyGeneralStars7.appendChild(starOnGeneral7);
+
+
+        goog.events.listen(buyGeneralBtn7, ["mousedown", "touchstart"], function (e) {
+            //console.log("6 clicked")
+            var isHid7 = storeBuyGeneralLayer.getHidden();
+            var isHidGenBtn7 = buyGeneralBtn7.getHidden();
+            if (player.money >= buyGeneralItem7.price && isHid7 == false && isHidGenBtn7 == false) {
+
+                purchaseSound.play();
+                player.money = player.money - buyGeneralItem7.price;
+                storeCash.setText(player.money);
+                collectItems.storeItems[7].owned = 1;
+                townRep = townRep + 1;
+                try{checkItemsOwned();}catch(err){console.log(err)};
+                buyGeneralItem7.setHidden(true);
+                lime.scheduleManager.callAfter(function () { a.updateMoney; a.updateStored(); checkTownRep(); }, this, 100);
+                localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
+                animateBuyItemNormal(7);
+                storeStars.setText(starCash);
+                showMFToast("Obtained Lantern",imgArrayStore[7].src, 'lantern', 2000,'right','bottom');
+                e.event.stopPropagation();
+                e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+                });
+
+
+            }
+        });
+        goog.events.listen(buyGeneralStars7, ["mousedown", "touchstart"], function (e) {
+            var isHidGenBtn7s = buyGeneralStars7.getHidden();
+            var isHid7s = storeBuyGeneralLayer.getHidden();
+            if (starCash >= buyGeneralItem7.stars && isHid7s == false && isHidGenBtn7s == false) {
+
+                purchaseSound.play();
+                starCash = parseInt(starCash) - buyGeneralItem7.stars;
+                storeStars.setText(starCash);
+                storeCash.setText(player.money);
+                collectItems.storeItems[7].owned = 1;
+                townRep = townRep + 1;
+                try{checkItemsOwned();}catch(err){console.log(err)};
+                buyGeneralItem7.setHidden(true);
+                lime.scheduleManager.callAfter(function () { a.updateMoney; a.updateStored(); checkTownRep(); }, this, 100);
+                localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
+                animateBuyItemNormal(7);
+                localStorage.setItem('starCash',starCash);
+                showMFToast("Obtained Lantern",imgArrayStore[7].src, 'lantern', 2000,'right','bottom');
+                e.event.stopPropagation();
+                e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
+                });
+            }
+        });
+
         collectItems = JSON.parse(localStorage.getItem('GuiGhostFarms_playerItems'));
-        if (collectItems.storeItems[4].owned == 0) { buyGeneralItem5.setHidden(true); buyGeneralItem6.setHidden(true); }
-        else { buyGeneralItem6.setHidden(false); }
+        if (collectItems.storeItems[4].owned == 0) { buyGeneralItem5.setHidden(true); buyGeneralItem6.setHidden(true);buyGeneralItem7.setHidden(true);}
+        else { buyGeneralItem6.setHidden(false); buyGeneralItem7.setHidden(false);}
         repositionStoreItems();
         //console.log("item6 is hidden = " + buyGeneralItem6.getHidden() + " position = " + buyGeneralItem6.getPosition().y)
 
         function repositionStoreItems() {
-            if (collectItems.storeItems[4].owned == 0) { buyGeneralItem5.setHidden(true); buyGeneralItem6.setHidden(true); }
-            else { buyGeneralItem6.setHidden(false); }
+            if (collectItems.storeItems[4].owned == 0) { buyGeneralItem5.setHidden(true); buyGeneralItem6.setHidden(true);buyGeneralItem7.setHidden(true);}
+            else { buyGeneralItem6.setHidden(false); buyGeneralItem7.setHidden(false);}
             //move pick
             if (collectItems.storeItems[2].owned == 1) { item3y = 0; }
             else { item3y = 65; }
@@ -12545,36 +12592,36 @@ function checkLandSlide(){
             else { item4y = 130; }
 
             //move Bottles and barrels
-            if (collectItems.storeItems[4].owned == 1) { buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false); }
-            if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item5y = 0; buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false); buyGeneralItem6.setPosition(0, item5y); }
-            else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 1) { item5y = 65; item6y = 130; buyGeneralItem6.setHidden(false); }
-            else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item5y = 65; item6y = 130; buyGeneralItem6.setHidden(false); }
-            else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item5y = 65; item6y = 130; buyGeneralItem4.setHidden(false); buyGeneralItem6.setHidden(true); }
-            else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 1) { item5y = 130; item6y = 195; buyGeneralItem6.setHidden(false); }
-            else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 0) { item5y = 130; item6y = 195; buyGeneralItem4.setHidden(false); buyGeneralItem6.setHidden(true); }
-            else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item5y = 130; item6y = 195; buyGeneralItem4.setHidden(false); buyGeneralItem6.setHidden(true); }
-            if (collectItems.storeItems[4].owned == 1) { buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false); }
+            if (collectItems.storeItems[4].owned == 1) { buyGeneralItem4.setHidden(true); buyGeneralItem5.setHidden(true); buyGeneralItem6.setHidden(false); buyGeneralItem7.setHidden(false);}
+            if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item6y = 0; item7y = 65; buyGeneralItem4.setHidden(true); buyGeneralItem6.setHidden(false).setPosition(0, item5y); buyGeneralItem7.setHidden(false); }
+            else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 1) { item6y = 0; item7y = 65; buyGeneralItem6.setHidden(false); }
+            else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 1) { item6y = 0; item7y = 65; buyGeneralItem6.setHidden(false); }
+            else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item6y = 0; item7y = 65; buyGeneralItem4.setHidden(false); buyGeneralItem6.setHidden(true); }
+            else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 1) { item6y = 130; item7y = 195; buyGeneralItem6.setHidden(false); }
+            else if (collectItems.storeItems[2].owned == 1 && collectItems.storeItems[3].owned == 0 && collectItems.storeItems[4].owned == 0) { item6y = 130; item7y = 195; buyGeneralItem4.setHidden(false); buyGeneralItem6.setHidden(true); buyGeneralItem7.setHidden(true);}
+            else if (collectItems.storeItems[2].owned == 0 && collectItems.storeItems[3].owned == 1 && collectItems.storeItems[4].owned == 0) { item6y = 130; item7y = 195; buyGeneralItem4.setHidden(false); buyGeneralItem6.setHidden(true);  buyGeneralItem7.setHidden(true);}
+            if (collectItems.storeItems[4].owned == 1) { buyGeneralItem4.setHidden(true); buyGeneralItem5.setHidden(true); buyGeneralItem6.setHidden(false);  buyGeneralItem7.setHidden(false);}
             buyGeneralItem3.setPosition(0, item3y);
             buyGeneralItem4.setPosition(0, item4y);
             buyGeneralItem5.setPosition(0, item5y);
-            buyGeneralItem6.setPosition(0, item5y);
+            buyGeneralItem6.setPosition(0, item6y);
+            buyGeneralItem7.setPosition(0, item7y);
             //console.log("item6 is hidden = " + buyGeneralItem6.getHidden() + " position = " + buyGeneralItem6.getPosition().y)
+            if (collectItems.storeItems[7].owned == 1){   buyGeneralItem7.setHidden(true);}
         }
 
 
-
+// console.log(JSON.stringify(collectItems.storeItems))
 
 
         function animateBuyItemNormal(num) {
-            if (num == 0) { storeAnimItemMover.setHidden(false).setFill(imgArrayStore[0].src); storeCountBought.setText("+ 50"); putItemInInventory(); }
-            if (num == 1) { storeAnimItemMover.setHidden(false).setFill(imgArrayStore[1].src); storeCountBought.setText("+ 50"); putItemInInventory(); }
-            if (num == 2) { storeAnimItemMover.setHidden(false).setFill(imgArrayStore[2].src); storeCountBought.setText("+ 1"); putItemInInventory(); }
-            if (num == 3) { storeAnimItemMover.setHidden(false).setFill(imgArrayStore[3].src); storeCountBought.setText("+ 1"); putItemInInventory(); }
-            if (num == 4) { storeAnimItemMover.setHidden(false).setFill(imgArrayStore[4].src); storeCountBought.setText("+ 1"); putItemInInventory(); }
-            if (num == 5) { storeAnimItemMover.setHidden(false).setFill(imgArrayStore[5].src); storeCountBought.setText("+ 50"); putItemInInventory(); }
-            if (num == 6) { storeAnimItemMover.setHidden(false).setFill(imgArrayStore[6].src); storeCountBought.setText("+ 50"); putItemInInventory(); }
+          if (num >= 0 && num <=7){
+            storeAnimItemMover.setHidden(false).setFill(imgArrayStore[num].src);
+          }
+
+          lime.scheduleManager.callAfter(function () { storeAnimItemMover.setHidden(true) }, this, 800);
         }
-        var putItemInInventory = function () { lime.scheduleManager.callAfter(function () { storeAnimItemMover.setHidden(true) }, this, 800); };
+
 
         ///premium layer////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////premium layer///////////////////////////
@@ -13112,7 +13159,7 @@ function checkLandSlide(){
                 });
             }    
         ///found Treasure location Town
-        var foundTreasureT = (new lime.Sprite()).setPosition(30, 344).setSize(60, 60).setFill('images/stars4.png').setHidden(true);
+        var foundTreasureT = (new lime.Sprite()).setPosition(30, 344).setSize(60, 60).setFill(imgArray[119]).setHidden(true);
         townFill1.appendChild(foundTreasureT);
         goog.events.listen(foundTreasureT, ["mousedown", "touchstart"], function (e) {           
             if (foundTreasureT.getHidden() == false){  loadHeirloom('town'); successSound.play(); };
@@ -13143,56 +13190,57 @@ function checkLandSlide(){
             if (townSceneActive == 1) {
                 if (monkAnimCount >= 50) { monkAnimCount = 1; monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]); };
                 //if (monkAnimCount < 14) { monk.setFill(imgArrayTown[parseInt(monkAnimCount)].src); };
-                if (monkAnimCount < 26) {
-                    if (monkAnimCount == 2) { monk.setPosition(46, 161); monk.setFill(imgArrayTown[2]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[8].src); traderInStore.setFill(imgArrayTrader[1].src); gideon.setFill(imgArrayGideon[2]); }
-                    else if (monkAnimCount == 3) { monk.setPosition(46, 165); monk.setFill(imgArrayTown[3]); sara.setPosition(60, a.height - 70); sara.setFill(imgArrayTown2[2]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(225, 242).setFill(imgArrayFelicia[8].src); }
-                    else if (monkAnimCount == 4) { monk.setPosition(51, 165); monk.setFill(imgArrayTown[4]); sara.setPosition(65, a.height - 70); sara.setFill(imgArrayTown2[3]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[16]); felicia.setPosition(220, 242).setFill(imgArrayFelicia[9].src); }
-                    else if (monkAnimCount == 5) { monk.setPosition(56, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(70, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[16]); felicia.setPosition(215, 242).setFill(imgArrayFelicia[10].src); }
-                    else if (monkAnimCount == 6) { monk.setPosition(61, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(75, a.height - 70); sara.setFill(imgArrayTown2[2]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(210, 242).setFill(imgArrayFelicia[11].src); }
-                    else if (monkAnimCount == 7) { monk.setPosition(67, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(80, a.height - 70); sara.setFill(imgArrayTown2[3]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(205, 242).setFill(imgArrayFelicia[8].src); }    //////////
-                    else if (monkAnimCount == 8) { monk.setPosition(73, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(85, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(200, 242).setFill(imgArrayFelicia[9].src); }
-                    else if (monkAnimCount == 9) { monk.setPosition(79, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(90, a.height - 70); sara.setFill(imgArrayTown2[2]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[16]); felicia.setPosition(195, 242).setFill(imgArrayFelicia[10].src); traderInStore.setFill(imgArrayTrader[2].src); gideon.setFill(imgArrayGideon[1]); }
-                    else if (monkAnimCount == 10) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[3]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[8]); felicia.setPosition(190, 242).setFill(imgArrayFelicia[11].src); gideon.setFill(imgArrayGideon[2]); }
-                    else if (monkAnimCount == 11) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[1]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(195, 165); mayor.setFill(imgArrayMayor[9]); felicia.setPosition(185, 242).setFill(imgArrayFelicia[8].src); gideon.setFill(imgArrayGideon[1]); }
-                    else if (monkAnimCount == 12) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[1]); sara.setPosition(90, a.height - 70); sara.setFill(imgArrayTown2[4]); mayor.setPosition(190, 165); mayor.setFill(imgArrayMayor[10]); felicia.setPosition(180, 242).setFill(imgArrayFelicia[9].src); gideon.setFill(imgArrayGideon[2]); }
-                    else if (monkAnimCount == 13) { monk.setPosition(84, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(185, 165); mayor.setFill(imgArrayMayor[11]); felicia.setPosition(175, 242).setFill(imgArrayFelicia[10].src); }
-                    else if (monkAnimCount == 14) { monk.setPosition(79, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(180, 165); mayor.setFill(imgArrayMayor[10]); felicia.setPosition(170, 242).setFill(imgArrayFelicia[11].src); }
-                    else if (monkAnimCount == 15) { monk.setPosition(73, 165); monk.setFill(imgArrayTown[9]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(175, 165); mayor.setFill(imgArrayMayor[9]); felicia.setPosition(165, 242).setFill(imgArrayFelicia[8].src); }
-                    else if (monkAnimCount == 16) { monk.setPosition(67, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[8]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[9].src); }
-                    else if (monkAnimCount == 17) { monk.setPosition(61, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[13].src); }
-                    else if (monkAnimCount == 18) { monk.setPosition(56, 165); monk.setFill(imgArrayTown[9]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[10]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[1]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[12].src); traderInStore.setFill(imgArrayTrader[0].src); gideon.setFill(imgArrayGideon[2]); }
-                    else if (monkAnimCount == 19) { monk.setPosition(51, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[10]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[3]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[13].src); gideon.setFill(imgArrayGideon[1]); }
-                    else if (monkAnimCount == 20) { monk.setPosition(46, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[10]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[4]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[12].src); }
-                    else if (monkAnimCount == 21) { monk.setPosition(46, 161); monk.setFill(imgArrayTown[11]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(170, 165); mayor.setFill(imgArrayMayor[3]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[13].src); gideon.setFill(imgArrayGideon[0]); }
-                    else if (monkAnimCount == 22) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[12]); sara.setPosition(95, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(175, 165); mayor.setFill(imgArrayMayor[5]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[4].src); }
-                    else if (monkAnimCount == 23) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[4]); sara.setPosition(90, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(180, 165); mayor.setFill(imgArrayMayor[6]); felicia.setPosition(165, 242).setFill(imgArrayFelicia[4].src); gideon.setFill(imgArrayGideon[1]); }
-                    else if (monkAnimCount == 24) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[4]); sara.setPosition(85, a.height - 70); sara.setFill(imgArrayTown2[6]); mayor.setPosition(185, 165); mayor.setFill(imgArrayMayor[7]); felicia.setPosition(170, 242).setFill(imgArrayFelicia[5].src); gideon.setFill(imgArrayGideon[2]); }
-                    else if (monkAnimCount == 25) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[2]); sara.setPosition(80, a.height - 70); sara.setFill(imgArrayTown2[7]); mayor.setPosition(190, 165); mayor.setFill(imgArrayMayor[6]); felicia.setPosition(175, 242).setFill(imgArrayFelicia[6].src); gideon.setFill(imgArrayGideon[0]); }
-                }
-                else if (monkAnimCount >= 26) {
-                    if (monkAnimCount == 26) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[2]); sara.setPosition(75, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(195, 165); mayor.setFill(imgArrayMayor[7]); felicia.setPosition(180, 242).setFill(imgArrayFelicia[7].src); traderInStore.setFill(imgArrayTrader[1].src); }
-                    else if (monkAnimCount == 27) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[7]); sara.setPosition(70, a.height - 70); sara.setFill(imgArrayTown2[6]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[6]); felicia.setPosition(185, 242).setFill(imgArrayFelicia[4].src); }
-                    else if (monkAnimCount == 28) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[7]); sara.setPosition(65, a.height - 70); sara.setFill(imgArrayTown2[7]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[3]); felicia.setPosition(190, 242).setFill(imgArrayFelicia[5].src); }
-                    else if (monkAnimCount == 29) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]); sara.setPosition(60, a.height - 70); sara.setFill(imgArrayTown2[5]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[0]); felicia.setPosition(195, 242).setFill(imgArrayFelicia[6].src); gideon.setFill(imgArrayGideon[2]); }
-                    else if (monkAnimCount == 30) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[6]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(200, 242).setFill(imgArrayFelicia[7].src); }
-                    else if (monkAnimCount == 31) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 70); sara.setFill(imgArrayTown2[7]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(205, 242).setFill(imgArrayFelicia[4].src); }
-                    else if (monkAnimCount == 32) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 70); sara.setFill(imgArrayTown2[8]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(210, 242).setFill(imgArrayFelicia[5].src); traderInStore.setFill(imgArrayTrader[2].src); }
-                    else if (monkAnimCount == 33) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 75); sara.setFill(imgArrayTown2[9]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(215, 242).setFill(imgArrayFelicia[6].src); }
-                    else if (monkAnimCount == 34) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(45, a.height - 80); sara.setFill(imgArrayTown2[10]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(220, 242).setFill(imgArrayFelicia[7].src); gideon.setFill(imgArrayGideon[0]); }
-                    else if (monkAnimCount == 35) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(45, a.height - 85); sara.setFill(imgArrayTown2[9]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(225, 242).setFill(imgArrayFelicia[4].src); }
-                    else if (monkAnimCount == 36) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 80); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[5].src); }
-                    else if (monkAnimCount == 37) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 80); sara.setFill(imgArrayTown2[4]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[12].src); gideon.setFill(imgArrayGideon[2]); }
-                    else if (monkAnimCount == 38) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 80); sara.setFill(imgArrayTown2[4]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[13].src); traderInStore.setFill(imgArrayTrader[0].src); gideon.setFill(imgArrayGideon[2]); }
-                    else if (monkAnimCount == 39) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 80); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(235, 242).setFill(imgArrayFelicia[4].src); gideon.setFill(imgArrayGideon[0]); }
-                    else if (monkAnimCount == 40) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 75); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(240, 242).setFill(imgArrayFelicia[5].src); gideon.setFill(imgArrayGideon[2]); }
-                    else if (monkAnimCount == 41) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[6].src); gideon.setFill(imgArrayGideon[0]); }
-                    else if (monkAnimCount == 42) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[12].src); gideon.setFill(imgArrayGideon[2]); }
-                    else if (monkAnimCount == 43) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[1]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[13].src); traderInStore.setFill(imgArrayTrader[1].src); }
-                    else if (monkAnimCount == 46) { mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[8]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[8].src); }
-                    else if (monkAnimCount == 48) { mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(240, 242).setFill(imgArrayFelicia[9].src); }
-                    else if (monkAnimCount == 49) { monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(55, a.height - 70); sara.setFill(imgArrayTown2[0]); mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[1]); felicia.setPosition(210, 242).setFill(imgArrayFelicia[11].src); felicia.setPosition(235, 242).setFill(imgArrayFelicia[10].src); traderInStore.setFill(imgArrayTrader[2].src); };
+                switch(monkAnimCount){
+                    case 1:{ monkAnimCount = 1; monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]); break;}
+                    case 2:{  monk.setPosition(46, 161); monk.setFill(imgArrayTown[2]); sara.setPosition(55, a.height - 70).setFill(imgArrayTown2[1]); mayor.setPosition(200, 165).setFill(imgArrayMayor[0]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[8].src); traderInStore.setFill(imgArrayTrader[1].src); gideon.setFill(imgArrayGideon[2]);break;}
+                    case 3:{  monk.setPosition(46, 165); monk.setFill(imgArrayTown[3]); sara.setPosition(60, a.height - 70).setFill(imgArrayTown2[2]); mayor.setPosition(200, 165).setFill(imgArrayMayor[0]); felicia.setPosition(225, 242).setFill(imgArrayFelicia[8].src);  break;}
+                    case 4:{ monk.setPosition(51, 165); monk.setFill(imgArrayTown[4]); sara.setPosition(65, a.height - 70).setFill(imgArrayTown2[3]); mayor.setPosition(200, 165).setFill(imgArrayMayor[16]); felicia.setPosition(220, 242).setFill(imgArrayFelicia[9].src); break;}
+                    case 5:{ monk.setPosition(56, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(70, a.height - 70).setFill(imgArrayTown2[1]); mayor.setPosition(200, 165).setFill(imgArrayMayor[16]); felicia.setPosition(215, 242).setFill(imgArrayFelicia[10].src); break;}
+                    case 6:{  monk.setPosition(61, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(75, a.height - 70).setFill(imgArrayTown2[2]); mayor.setPosition(200, 165).setFill(imgArrayMayor[0]); felicia.setPosition(210, 242).setFill(imgArrayFelicia[11].src); break;}
+                    case 7:{  monk.setPosition(67, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(80, a.height - 70).setFill(imgArrayTown2[3]); mayor.setPosition(200, 165).setFill(imgArrayMayor[0]); felicia.setPosition(205, 242).setFill(imgArrayFelicia[8].src); break;}
+                    case 8:{  monk.setPosition(73, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(85, a.height - 70).setFill(imgArrayTown2[1]); mayor.setPosition(200, 165).setFill(imgArrayMayor[0]); felicia.setPosition(200, 242).setFill(imgArrayFelicia[9].src); break;}
+                    case 9:{  monk.setPosition(79, 165); monk.setFill(imgArrayTown[5]); sara.setPosition(90, a.height - 70).setFill(imgArrayTown2[2]); mayor.setPosition(200, 165).setFill(imgArrayMayor[16]); felicia.setPosition(195, 242).setFill(imgArrayFelicia[10].src); traderInStore.setFill(imgArrayTrader[2].src); gideon.setFill(imgArrayGideon[1]);  break;}
+                    case 10:{  monk.setPosition(84, 165); monk.setFill(imgArrayTown[6]); sara.setPosition(95, a.height - 70).setFill(imgArrayTown2[3]); mayor.setPosition(200, 165).setFill(imgArrayMayor[8]); felicia.setPosition(190, 242).setFill(imgArrayFelicia[11].src); gideon.setFill(imgArrayGideon[2]); break;}
+                    case 11:{  monk.setPosition(84, 165); monk.setFill(imgArrayTown[1]); sara.setPosition(95, a.height - 70).setFill(imgArrayTown2[0]); mayor.setPosition(195, 165).setFill(imgArrayMayor[9]); felicia.setPosition(185, 242).setFill(imgArrayFelicia[8].src); gideon.setFill(imgArrayGideon[1]); break;}
+                    case 12:{  monk.setPosition(84, 165); monk.setFill(imgArrayTown[1]); sara.setPosition(90, a.height - 70).setFill(imgArrayTown2[4]); mayor.setPosition(190, 165).setFill(imgArrayMayor[10]); felicia.setPosition(180, 242).setFill(imgArrayFelicia[9].src); gideon.setFill(imgArrayGideon[2]); break;}
+                    case 13:{  monk.setPosition(84, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70).setFill(imgArrayTown2[0]); mayor.setPosition(185, 165).setFill(imgArrayMayor[11]); felicia.setPosition(175, 242).setFill(imgArrayFelicia[10].src); break;}
+                    case 14:{  monk.setPosition(79, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70).setFill(imgArrayTown2[1]); mayor.setPosition(180, 165).setFill(imgArrayMayor[10]); felicia.setPosition(170, 242).setFill(imgArrayFelicia[11].src); break;}
+                    case 15:{  monk.setPosition(73, 165); monk.setFill(imgArrayTown[9]); sara.setPosition(95, a.height - 70).setFill(imgArrayTown2[1]); mayor.setPosition(175, 165).setFill(imgArrayMayor[9]); felicia.setPosition(165, 242).setFill(imgArrayFelicia[8].src);  break;}
+                    case 16:{  monk.setPosition(67, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70).setFill(imgArrayTown2[0]); mayor.setPosition(170, 165).setFill(imgArrayMayor[8]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[9].src); break;}
+                    case 17:{ monk.setPosition(61, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70).setFill(imgArrayTown2[0]); mayor.setPosition(170, 165).setFill(imgArrayMayor[0]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[13].src); break;}
+                    case 18:{ monk.setPosition(56, 165); monk.setFill(imgArrayTown[9]); sara.setPosition(95, a.height - 70).setFill(imgArrayTown2[10]); mayor.setPosition(170, 165).setFill(imgArrayMayor[1]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[12].src); traderInStore.setFill(imgArrayTrader[0].src); gideon.setFill(imgArrayGideon[2]); break;}
+                    case 19:{ monk.setPosition(51, 165); monk.setFill(imgArrayTown[8]); sara.setPosition(95, a.height - 70).setFill(imgArrayTown2[10]); mayor.setPosition(170, 165).setFill(imgArrayMayor[3]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[13].src); gideon.setFill(imgArrayGideon[1]); break;}
+                    case 20:{ monk.setPosition(46, 165); monk.setFill(imgArrayTown[7]); sara.setPosition(95, a.height - 70).setFill(imgArrayTown2[10]); mayor.setPosition(170, 165).setFill(imgArrayMayor[4]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[12].src); break;}
+                    case 21:{  monk.setPosition(46, 161); monk.setFill(imgArrayTown[11]); sara.setPosition(95, a.height - 70).setFill(imgArrayTown2[0]); mayor.setPosition(170, 165).setFill(imgArrayMayor[3]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[13].src); gideon.setFill(imgArrayGideon[0]); break;}
+                    case 22:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[12]); sara.setPosition(95, a.height - 70).setFill(imgArrayTown2[5]); mayor.setPosition(175, 165).setFill(imgArrayMayor[5]); felicia.setPosition(160, 242).setFill(imgArrayFelicia[4].src); break;}
+                    case 23:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[4]); sara.setPosition(90, a.height - 70).setFill(imgArrayTown2[5]); mayor.setPosition(180, 165).setFill(imgArrayMayor[6]); felicia.setPosition(165, 242).setFill(imgArrayFelicia[4].src); gideon.setFill(imgArrayGideon[1]); break;}
+                    case 24:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[4]); sara.setPosition(85, a.height - 70).setFill(imgArrayTown2[6]); mayor.setPosition(185, 165).setFill(imgArrayMayor[7]); felicia.setPosition(170, 242).setFill(imgArrayFelicia[5].src); gideon.setFill(imgArrayGideon[2]); break;}
+                    case 25:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[2]); sara.setPosition(80, a.height - 70).setFill(imgArrayTown2[7]); mayor.setPosition(190, 165).setFill(imgArrayMayor[6]); felicia.setPosition(175, 242).setFill(imgArrayFelicia[6].src); gideon.setFill(imgArrayGideon[0]); break;}
+                    case 26:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[2]); sara.setPosition(75, a.height - 70).setFill(imgArrayTown2[5]); mayor.setPosition(195, 165).setFill(imgArrayMayor[7]); felicia.setPosition(180, 242).setFill(imgArrayFelicia[7].src); traderInStore.setFill(imgArrayTrader[1].src); break;}
+                    case 27:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[7]); sara.setPosition(70, a.height - 70).setFill(imgArrayTown2[6]); mayor.setPosition(200, 165).setFill(imgArrayMayor[6]); felicia.setPosition(185, 242).setFill(imgArrayFelicia[4].src); break;}
+                    case 28:{monk.setPosition(46, 155); monk.setFill(imgArrayTown[7]); sara.setPosition(65, a.height - 70).setFill(imgArrayTown2[7]); mayor.setPosition(200, 165).setFill(imgArrayMayor[3]); felicia.setPosition(190, 242).setFill(imgArrayFelicia[5].src); break;}
+                    case 29:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]); sara.setPosition(60, a.height - 70).setFill(imgArrayTown2[5]); mayor.setPosition(200, 165).setFill(imgArrayMayor[0]); felicia.setPosition(195, 242).setFill(imgArrayFelicia[6].src); gideon.setFill(imgArrayGideon[2]); break;}
+                    case 30:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[1]); sara.setPosition(55, a.height - 70).setFill(imgArrayTown2[6]); mayor.setPosition(200, 165).setFill(imgArrayMayor[15]); felicia.setPosition(200, 242).setFill(imgArrayFelicia[7].src); break;}
+                    case 31:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 70).setFill(imgArrayTown2[7]); mayor.setPosition(200, 165).setFill(imgArrayMayor[15]); felicia.setPosition(205, 242).setFill(imgArrayFelicia[4].src); break;}
+                    case 32:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 70).setFill(imgArrayTown2[8]); mayor.setPosition(200, 165).setFill(imgArrayMayor[15]); felicia.setPosition(210, 242).setFill(imgArrayFelicia[5].src); traderInStore.setFill(imgArrayTrader[2].src); break;}
+                    case 33:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 75).setFill(imgArrayTown2[9]); mayor.setPosition(200, 165).setFill(imgArrayMayor[15]); felicia.setPosition(215, 242).setFill(imgArrayFelicia[6].src); break;}
+                    case 34:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(45, a.height - 80).setFill(imgArrayTown2[10]); mayor.setPosition(200, 165).setFill(imgArrayMayor[15]); felicia.setPosition(220, 242).setFill(imgArrayFelicia[7].src); gideon.setFill(imgArrayGideon[0]); break;}
+                    case 35:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(45, a.height - 85).setFill(imgArrayTown2[9]); mayor.setPosition(200, 165).setFill(imgArrayMayor[15]); felicia.setPosition(225, 242).setFill(imgArrayFelicia[4].src); break;}
+                    case 36:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 80).setFill(imgArrayTown2[0]); mayor.setPosition(200, 165).setFill(imgArrayMayor[15]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[5].src); break;}
+                    case 37:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(45, a.height - 80).setFill(imgArrayTown2[4]); mayor.setPosition(200, 165).setFill(imgArrayMayor[15]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[12].src); gideon.setFill(imgArrayGideon[2]); break;}
+                    case 38:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 80).setFill(imgArrayTown2[4]); mayor.setPosition(200, 165).setFill(imgArrayMayor[15]); felicia.setPosition(230, 242).setFill(imgArrayFelicia[13].src); traderInStore.setFill(imgArrayTrader[0].src); gideon.setFill(imgArrayGideon[2]); break;}
+                    case 39:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 80).setFill(imgArrayTown2[0]); mayor.setPosition(200, 165).setFill(imgArrayMayor[15]); felicia.setPosition(235, 242).setFill(imgArrayFelicia[4].src); gideon.setFill(imgArrayGideon[0]); break;}
+                    case 40:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 75).setFill(imgArrayTown2[0]); mayor.setPosition(200, 165).setFill(imgArrayMayor[15]); felicia.setPosition(240, 242).setFill(imgArrayFelicia[5].src); gideon.setFill(imgArrayGideon[2]); break;}
+                    case 41:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(50, a.height - 70).setFill(imgArrayTown2[0]); mayor.setPosition(200, 165).setFill(imgArrayMayor[15]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[6].src); gideon.setFill(imgArrayGideon[0]); break;}
+                    case 42:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(55, a.height - 70).setFill(imgArrayTown2[1]); mayor.setPosition(200, 165).setFill(imgArrayMayor[15]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[12].src); gideon.setFill(imgArrayGideon[2]); break;}
+                    case 43:{monk.setPosition(46, 155); monk.setFill(imgArrayTown[13]); sara.setPosition(55, a.height - 70).setFill(imgArrayTown2[1]); mayor.setPosition(200, 165).setFill(imgArrayMayor[15]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[13].src); traderInStore.setFill(imgArrayTrader[1].src);break;} 
+                    case 44:{ mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[8]); felicia.setPosition(245, 242).setFill(imgArrayFelicia[8].src); break;}
+                    case 45:{ mayor.setPosition(200, 165); mayor.setFill(imgArrayMayor[15]); felicia.setPosition(240, 242).setFill(imgArrayFelicia[9].src); break;}
+                    case 46:{ monk.setPosition(46, 155); monk.setFill(imgArrayTown[14]); sara.setPosition(55, a.height - 70).setFill(imgArrayTown2[0]); mayor.setPosition(200, 165).setFill(imgArrayMayor[1]); felicia.setPosition(235, 242).setFill(imgArrayFelicia[10].src); traderInStore.setFill(imgArrayTrader[2].src); break;}
 
+                    default:{ break;}
                 }
+               
                 monkAnimCount = monkAnimCount + 1;
                 if (moneyEver == 0) {
                     if (marketTrigFlipper == 0) {
@@ -13496,7 +13544,7 @@ function checkLandSlide(){
                     }
 
                 } else {     ////first time seeing Gideon
-                    gideonText1.setText("I am Gideon, the royal herald, travelling to all the villages to collect royal tributes for King and Kingdom. The Mayor told me that you have grown a good sized farm.");
+                    gideonText1.setText("I am Gideon, the royal Herald, travelling to all the villages to collect royal tributes for King and Kingdom. The Mayor told me that you have grown a good sized farm.");
                     gideonPanelItemImg.setHidden(true); countTextGideon.setHidden(true);
                     gideonPanelItemImg2.setHidden(true); countTextGideon2.setHidden(true);
                     gideonPanelTokenImg.setHidden(true);
@@ -14383,7 +14431,7 @@ function checkLandSlide(){
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         var marketSellScene = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
             marketLayer = (new lime.Layer).setAnchorPoint(0, 0),
-            marketFill1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill("images/grass.png").setHidden(false);
+            marketFill1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height).setFill(imgArray[84]).setHidden(false);
         marketSellScene.appendChild(marketFill1);
         marketSellScene.appendChild(marketLayer);
 
@@ -14404,7 +14452,7 @@ function checkLandSlide(){
         // market Tiles
         var marketFelicia = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(4, 62).setSize(65, 65).setFill(imgArrayFelicia[0]);
         marketLayer.appendChild(marketFelicia);
-        var feliciaBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(4, -35).setSize(150, 65).setFill("images/UI/speechBubble2.png");
+        var feliciaBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(4, -35).setSize(150, 65).setFill(imgArray[116]);
         marketFelicia.appendChild(feliciaBubble);
         var feliciaBubbleTxt = (new lime.Label()).setAnchorPoint(0, 0).setText("Hit a tile to sell a crop").setFontSize(16).setFontColor("#000000").setFontFamily("Proxima Nova").setPosition(5, 10).setSize(140, 80);
         feliciaBubble.appendChild(feliciaBubbleTxt);
@@ -14425,7 +14473,7 @@ function checkLandSlide(){
                 if (feliciaTick  == 4){marketFelicia.setFill(imgArrayFelicia[1]);};
                 feliciaTick += 1;
                 if (feliciaTick > 4){feliciaTick = 0; marketFelicia.setFill(imgArrayFelicia[1]);};
-                if (feliciaBubbleTick >= 5){ feliciaBubble.setHidden(true);};
+                if (feliciaBubbleTick == 5){ feliciaBubble.setHidden(true);};
                 if (feliciaBubbleTick >= 6 && timeSeenBubbleF == 0){ feliciaBubble.setHidden(false); feliciaBubbleTxt.setText('I am always looking for new foods');timeSeenBubbleF = 1;}
                 if (feliciaBubbleTick >= 12){feliciaBubbleTick = 0; feliciaBubble.setHidden(true);}
             };
@@ -15653,7 +15701,7 @@ function checkLandSlide(){
 
         var soldierBlock = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(262, 421).setSize(38, 38).setFill(imgArray3[34]);
         liveStockLayer.appendChild(soldierBlock);
-        var soldierBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-109,-105).setSize(156, 105).setFill("images/UI/speechBubble3.png").setHidden(true);
+        var soldierBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-109,-105).setSize(156, 105).setFill(imgArray[117]).setHidden(true);
         soldierBlock.appendChild(soldierBubble);
         var soldierText = (new lime.Label()).setText("Coming soon, those with enough Royal Favor can enter the next zone").setPosition(80,60).setSize(145, 100).setFontColor('black').setFontSize(15);
         soldierBubble.appendChild(soldierText);
@@ -17593,74 +17641,67 @@ function checkLandSlide(){
                 vinFarmerI = vinFarmerI + 1;
 
                 if (vinFarmerI > 58) { vinFarmerI = 1 };
-
-
-                if (vinFarmerI < 30) {
-                    if (vinFarmerI < 11) { vinFarmer.setFill("images/vinyard/vinFarmer" + vinFarmerI + ".png"); };
-                    if (vinFarmerI == 2) { vinFarmer.setPosition(65, 350) }
-                    else if (vinFarmerI == 3) { vinFarmer.setPosition(70, 350) }
-                    else if (vinFarmerI == 4) { vinFarmer.setPosition(75, 350); vinFarmer.setFill(imgArrayVin[11]); }
-                    else if (vinFarmerI == 5) { vinFarmer.setPosition(75, 355); }
-                    else if (vinFarmerI == 6) { vinFarmer.setPosition(75, 360); }
-                    else if (vinFarmerI == 7) { vinFarmer.setPosition(75, 365); vinFarmer.setFill(imgArrayVin[11]); }
-                    else if (vinFarmerI == 8) { vinFarmer.setPosition(75, 360); vinFarmer.setFill(imgArrayVin[11]); }
-                    else if (vinFarmerI == 9) { vinFarmer.setPosition(75, 355); }
-                    else if (vinFarmerI == 10) { vinFarmer.setPosition(75, 350); }
-                    else if (vinFarmerI == 11) { vinFarmer.setPosition(80, 350); vinFarmer.setFill(imgArrayVin[8]); }
-                    else if (vinFarmerI == 12) { vinFarmer.setPosition(85, 350); vinFarmer.setFill(imgArrayVin[9]); }
-                    else if (vinFarmerI == 13) { vinFarmer.setPosition(90, 350); vinFarmer.setFill(imgArrayVin[10]); }
-                    else if (vinFarmerI == 14) { vinFarmer.setPosition(95, 350); vinFarmer.setFill(imgArrayVin[8]); }
-                    else if (vinFarmerI == 15) { vinFarmer.setPosition(100, 350); vinFarmer.setFill(imgArrayVin[9]); }
-                    else if (vinFarmerI == 16) { vinFarmer.setPosition(105, 350); vinFarmer.setFill(imgArrayVin[10]); }
-                    else if (vinFarmerI == 17) { vinFarmer.setPosition(110, 350); vinFarmer.setFill(imgArrayVin[8]); }
-                    else if (vinFarmerI == 18) { vinFarmer.setPosition(115, 350); vinFarmer.setFill(imgArrayVin[9]); }
-                    else if (vinFarmerI == 19) { vinFarmer.setPosition(120, 350); vinFarmer.setFill(imgArrayVin[10]); }
-                    else if (vinFarmerI == 20) { vinFarmer.setPosition(125, 350); vinFarmer.setFill(imgArrayVin[8]); }
-                    else if (vinFarmerI == 21) { vinFarmer.setPosition(130, 350); vinFarmer.setFill(imgArrayVin[9]); }
-                    else if (vinFarmerI == 22) { vinFarmer.setPosition(135, 350); vinFarmer.setFill(imgArrayVin[10]); }
-                    else if (vinFarmerI == 23) { vinFarmer.setPosition(140, 350); vinFarmer.setFill(imgArrayVin[9]); }
-                    else if (vinFarmerI == 24) { vinFarmer.setPosition(140, 350); vinFarmer.setFill(imgArrayVin[13]); }
-                    else if (vinFarmerI == 25) { vinFarmer.setPosition(140, 350); vinFarmer.setFill(imgArrayVin[13]); }
-                    else if (vinFarmerI == 26) { vinFarmer.setPosition(140, 350); vinFarmer.setFill(imgArrayVin[16]); }
-                    else if (vinFarmerI == 27) { vinFarmer.setPosition(140, 350); vinFarmer.setFill(imgArrayVin[16]); }
-                    else if (vinFarmerI == 28) { vinFarmer.setPosition(140, 350); vinFarmer.setFill(imgArrayVin[16]); }
-                    else if (vinFarmerI == 29) { vinFarmer.setPosition(140, 350); vinFarmer.setFill(imgArrayVin[14]); };
+                if (vinFarmerI < 11) { vinFarmer.setFill("images/vinyard/vinFarmer" + vinFarmerI + ".png"); };
+                switch(vinFarmerI){                
+                    case  2: { vinFarmer.setPosition(74, 350);  break;}
+                    case  3: { vinFarmer.setPosition(74, 350);  break;}
+                    case  4: { vinFarmer.setPosition(75, 350).setFill(imgArrayVin[11]);  break;}
+                    case   5: { vinFarmer.setPosition(75, 355);  break;}
+                    case  6: { vinFarmer.setPosition(75, 360);  break;}
+                    case  7: { vinFarmer.setPosition(75, 365).setFill(imgArrayVin[11]);  break;}
+                    case   8: { vinFarmer.setPosition(75, 360).setFill(imgArrayVin[11]);  break;}
+                    case   9: { vinFarmer.setPosition(75, 355);  break;}
+                    case  10: { vinFarmer.setPosition(75, 350);  break;}
+                    case  11: { vinFarmer.setPosition(80, 350).setFill(imgArrayVin[8]); break;}
+                    case  12: { vinFarmer.setPosition(85, 350).setFill(imgArrayVin[9]);  break;}
+                    case  13: { vinFarmer.setPosition(90, 350).setFill(imgArrayVin[10]);  break;}
+                    case  14: { vinFarmer.setPosition(95, 350).setFill(imgArrayVin[8]);  break;}
+                    case  15: { vinFarmer.setPosition(100, 350).setFill(imgArrayVin[9]);  break;}
+                    case  16: { vinFarmer.setPosition(105, 350).setFill(imgArrayVin[10]);  break;}
+                    case  17: { vinFarmer.setPosition(110, 350).setFill(imgArrayVin[8]);  break;}
+                    case  18: { vinFarmer.setPosition(115, 350).setFill(imgArrayVin[9]);  break;}
+                    case  19: { vinFarmer.setPosition(120, 350).setFill(imgArrayVin[10]);  break;}
+                    case  20: { vinFarmer.setPosition(125, 350).setFill(imgArrayVin[8]);  break;}
+                    case  21: { vinFarmer.setPosition(130, 350).setFill(imgArrayVin[9]);  break;}
+                    case  22: { vinFarmer.setPosition(135, 350).setFill(imgArrayVin[10]);  break;}
+                    case  23: { vinFarmer.setPosition(140, 350).setFill(imgArrayVin[9]);  break;}
+                    case  24: { vinFarmer.setPosition(140, 350).setFill(imgArrayVin[13]);  break;}
+                    case  25: { vinFarmer.setPosition(140, 350).setFill(imgArrayVin[13]);  break;}
+                    case  26: { vinFarmer.setPosition(140, 350).setFill(imgArrayVin[16]);  break;}
+                    case  27: { vinFarmer.setPosition(140, 350).setFill(imgArrayVin[16]);  break;}
+                    case  28: { vinFarmer.setPosition(140, 350).setFill(imgArrayVin[16]);  break;}
+                    case  29: { vinFarmer.setPosition(140, 350).setFill(imgArrayVin[14]);  break;}          
+                    case  30: { vinFarmer.setPosition(140, 350).setFill(imgArrayVin[10]); break;}
+                    case  31: { vinFarmer.setPosition(140, 350).setFill(imgArrayVin[10]);  break;}
+                    case  32: { vinFarmer.setPosition(140, 350).setFill(imgArrayVin[10]);  break;}
+                    case  33: { vinFarmer.setPosition(145, 350).setFill(imgArrayVin[8]);  break;}
+                    case  34: { vinFarmer.setPosition(150, 350).setFill(imgArrayVin[9]);  break;}
+                    case  35: { vinFarmer.setPosition(155, 350).setFill(imgArrayVin[10]);  break;}
+                    case  36: { vinFarmer.setPosition(160, 350).setFill(imgArrayVin[8]);  break;}
+                    case  37: { vinFarmer.setPosition(165, 350).setFill(imgArrayVin[9]);  break;}
+                    case  38: { vinFarmer.setPosition(165, 350).setFill(imgArrayVin[11]);  break;}
+                    case  39: { vinFarmer.setPosition(160, 350).setFill(imgArrayVin[16]);  break;}
+                    case  40: { vinFarmer.setPosition(155, 350).setFill(imgArrayVin[15]);  break;}
+                    case   41: { vinFarmer.setPosition(150, 350).setFill(imgArrayVin[16]);  break;}
+                    case   42: { vinFarmer.setPosition(145, 350).setFill(imgArrayVin[17]);  break;}
+                    case  43: { vinFarmer.setPosition(140, 350).setFill(imgArrayVin[16]);  break;}
+                    case  44: { vinFarmer.setPosition(135, 350).setFill(imgArrayVin[16]);  break;}
+                    case  45: { vinFarmer.setPosition(130, 350).setFill(imgArrayVin[15]);  break;}
+                    case  46: { vinFarmer.setPosition(125, 350).setFill(imgArrayVin[16]);  break;}
+                    case  47: { vinFarmer.setPosition(120, 350).setFill(imgArrayVin[17]);  break;}
+                    case  48: { vinFarmer.setPosition(115, 350).setFill(imgArrayVin[15]);  break;}
+                    case  49: { vinFarmer.setPosition(110, 350).setFill(imgArrayVin[16]);  break;}
+                    case  50: { vinFarmer.setPosition(105, 350).setFill(imgArrayVin[17]);  break;}
+                    case  51: { vinFarmer.setPosition(100, 350).setFill(imgArrayVin[16]);  break;}
+                    case  52: { vinFarmer.setPosition(95, 350).setFill(imgArrayVin[15]);  break;}
+                    case  53: { vinFarmer.setPosition(90, 350).setFill(imgArrayVin[16]);  break;}
+                    case   54: { vinFarmer.setPosition(85, 350).setFill(imgArrayVin[17]);  break;}
+                    case   55: { vinFarmer.setPosition(80, 350).setFill(imgArrayVin[16]);  break;}
+                    case   56: { vinFarmer.setPosition(75, 350).setFill(imgArrayVin[15]);  break;}
+                    case   57: { vinFarmer.setPosition(74, 350).setFill(imgArrayVin[16]);  break;}
+                    case  58: { vinFarmer.setPosition(74, 350).setFill(imgArrayVin[11]);  break;}
+                    default: { break;}
                 }
-                else if (vinFarmerI >= 30) {
-                    if (vinFarmerI == 30) { vinFarmer.setPosition(140, 350); vinFarmer.setFill(imgArrayVin[10]); }
-                    else if (vinFarmerI == 31) { vinFarmer.setPosition(140, 350); vinFarmer.setFill(imgArrayVin[10]); }
-                    else if (vinFarmerI == 32) { vinFarmer.setPosition(140, 350); vinFarmer.setFill(imgArrayVin[10]); }
-
-                    else if (vinFarmerI == 33) { vinFarmer.setPosition(145, 350); vinFarmer.setFill(imgArrayVin[8]); }
-                    else if (vinFarmerI == 34) { vinFarmer.setPosition(150, 350); vinFarmer.setFill(imgArrayVin[9]); }
-                    else if (vinFarmerI == 35) { vinFarmer.setPosition(155, 350); vinFarmer.setFill(imgArrayVin[10]); }
-                    else if (vinFarmerI == 36) { vinFarmer.setPosition(160, 350); vinFarmer.setFill(imgArrayVin[8]); }
-                    else if (vinFarmerI == 37) { vinFarmer.setPosition(165, 350); vinFarmer.setFill(imgArrayVin[9]); }
-                    else if (vinFarmerI == 38) { vinFarmer.setPosition(165, 350); vinFarmer.setFill(imgArrayVin[11]); }
-
-                    else if (vinFarmerI == 39) { vinFarmer.setPosition(160, 350); vinFarmer.setFill(imgArrayVin[16]); }
-                    else if (vinFarmerI == 40) { vinFarmer.setPosition(155, 350); vinFarmer.setFill(imgArrayVin[15]); }
-                    else if (vinFarmerI == 41) { vinFarmer.setPosition(150, 350); vinFarmer.setFill(imgArrayVin[16]); }
-
-                    else if (vinFarmerI == 42) { vinFarmer.setPosition(145, 350); vinFarmer.setFill(imgArrayVin[17]); }
-                    else if (vinFarmerI == 43) { vinFarmer.setPosition(140, 350); vinFarmer.setFill(imgArrayVin[16]); }
-
-                    else if (vinFarmerI == 44) { vinFarmer.setPosition(135, 350); vinFarmer.setFill(imgArrayVin[16]); }
-                    else if (vinFarmerI == 45) { vinFarmer.setPosition(130, 350); vinFarmer.setFill(imgArrayVin[15]); }
-                    else if (vinFarmerI == 46) { vinFarmer.setPosition(125, 350); vinFarmer.setFill(imgArrayVin[16]); }
-                    else if (vinFarmerI == 47) { vinFarmer.setPosition(120, 350); vinFarmer.setFill(imgArrayVin[17]); }
-                    else if (vinFarmerI == 48) { vinFarmer.setPosition(115, 350); vinFarmer.setFill(imgArrayVin[15]); }
-                    else if (vinFarmerI == 49) { vinFarmer.setPosition(110, 350); vinFarmer.setFill(imgArrayVin[16]); }
-                    else if (vinFarmerI == 50) { vinFarmer.setPosition(105, 350); vinFarmer.setFill(imgArrayVin[17]); }
-                    else if (vinFarmerI == 51) { vinFarmer.setPosition(100, 350); vinFarmer.setFill(imgArrayVin[16]); }
-                    else if (vinFarmerI == 52) { vinFarmer.setPosition(95, 350); vinFarmer.setFill(imgArrayVin[15]); }
-                    else if (vinFarmerI == 53) { vinFarmer.setPosition(90, 350); vinFarmer.setFill(imgArrayVin[16]); }
-                    else if (vinFarmerI == 54) { vinFarmer.setPosition(85, 350); vinFarmer.setFill(imgArrayVin[17]); }
-                    else if (vinFarmerI == 55) { vinFarmer.setPosition(80, 350); vinFarmer.setFill(imgArrayVin[16]); }
-                    else if (vinFarmerI == 56) { vinFarmer.setPosition(75, 350); vinFarmer.setFill(imgArrayVin[15]); }
-                    else if (vinFarmerI == 57) { vinFarmer.setPosition(70, 350); vinFarmer.setFill(imgArrayVin[16]); }
-                    else if (vinFarmerI == 58) { vinFarmer.setPosition(65, 350); vinFarmer.setFill(imgArrayVin[11]); };
-                };
 
 
             };
@@ -19458,7 +19499,7 @@ function checkLandSlide(){
      
             if (want > questParamsHerald.crops.length - 1) {
                 want = (heraldOrderTop % 10);
-                console.log("adjusted want to " + want + " from " + heraldOrderTop);
+                // console.log("adjusted want to " + want + " from " + heraldOrderTop);
 
             };
 
@@ -19760,7 +19801,7 @@ function checkLandSlide(){
                     } else { needWheatBubble.setHidden(false); };
                     flourticker = flourticker + 1;
                     if (flourticker == 1200 && player.cropsStored[22].stored >= 3) {
-                        flourWaiting = flourWaiting + 1;
+                        flourWaiting = flourWaiting + 2;
                         flourticker = 0;
                         player.cropsStored[22].stored = parseInt(player.cropsStored[22].stored) - 3;
                         gLabel22.setText(player.cropsStored[22].stored);
@@ -19814,7 +19855,7 @@ function checkLandSlide(){
         var storeHouseSmoke2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(223, 127).setSize(30, 30).setFill(imgArray[24]);
         windmillLayer.appendChild(storeHouseSmoke2);
 
-        var enterBakery = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(30, 50).setSize(32, 32).setFill(imgArrayWindmill[8]);
+        var enterBakery = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(28, 15).setSize(32, 32).setFill(imgArrayWindmill[8]);
         storeHouseWM.appendChild(enterBakery);
 
 
@@ -19822,64 +19863,59 @@ function checkLandSlide(){
         goog.events.listen(enterBakery, ["mousedown", "touchstart"], function (e) {
             // globalModalBlock = 1;
             sceneActive = 'Bakery';
-            c.replaceScene(bakeryScene);
+            c.replaceScene(bakeryScene, lime.transitions.SlideInUp);
+            setupReqTxt()
+            
         });
 
         var needFlourBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(200, 157).setSize(40, 40).setFill(imgArray[106]).setHidden(true);
         windmillLayer.appendChild(needFlourBubble);
         var breadWaiting = 0;
-        var collectBreadBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(257, 157).setSize(40, 40).setSize(50, 64).setFill(imgArray[90]).setHidden(true);
-        windmillLayer.appendChild(collectBreadBubble);
-        var collectBreadIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(12, 2).setSize(27, 30).setFill("images/" + a.crops[24].harvest);
-        collectBreadBubble.appendChild(collectBreadIcon);
-        var collectBreadLabel = (new lime.Label()).setText("+ " + breadWaiting).setFontWeight(500).setFontColor("#E8FC08").setPosition(23, 42).setSize(30, 18).setFontFamily("Proxima Nova");
-        collectBreadBubble.appendChild(collectBreadLabel);
+        var pieWaiting = 0;
+        var manchetWaiting = 0;
+        var elairWaiting = 0;
+        var donutsWaiting = 0;
+        // var collectBreadBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(257, 157).setSize(40, 40).setSize(50, 64).setFill(imgArray[90]).setHidden(true);
+        // windmillLayer.appendChild(collectBreadBubble);
+        // var collectBreadIcon = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(12, 2).setSize(27, 30).setFill("images/" + a.crops[24].harvest);
+        // collectBreadBubble.appendChild(collectBreadIcon);
+        // var collectBreadLabel = (new lime.Label()).setText("+ " + breadWaiting).setFontWeight(500).setFontColor("#E8FC08").setPosition(23, 42).setSize(30, 18).setFontFamily("Proxima Nova");
+        // collectBreadBubble.appendChild(collectBreadLabel);
 
 
-        lime.scheduleManager.scheduleWithDelay(function () {
-            //add upgrade anim
-            collectBreadBubble.setHidden(true);
-            needFlourBubble.setHidden(true);
-            if (acres[5].owned == 1 && storeHouseUpgraded == 1) {
-                enterBakery.setHidden(false);
-                if (player.cropsStored[23].stored >= 1) {
-                    player.cropsStored[23].stored = parseInt(player.cropsStored[23].stored) - 1;
-                    breadWaiting = breadWaiting + 2;
-                    collectBreadBubble.setHidden(false);
-                    needFlourBubble.setHidden(true);
-                    collectBreadLabel.setText("+ " + breadWaiting);
-                }
-                else {
-                    collectBreadBubble.setHidden(true);
-                    needFlourBubble.setHidden(false);
-                }
-
-            }
-            else { needFlourBubble.setHidden(true); collectBreadBubble.setHidden(true); enterBakery.setHidden(true);}
-
-        }, this, 60000)
-
-        goog.events.listen(collectBreadBubble, ["mousedown", "touchstart"], function () {
-
-            player.cropsStored[24].stored = parseInt(player.cropsStored[24].stored) + breadWaiting;
-            gLabel24.setText(player.cropsStored[24].stored);
-            breadWaiting = 0;
-            purchaseSound.play();
-            collectBreadBubble.setHidden(true);
-            lime.scheduleManager.callAfter(function () { localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player)); }, this, 500);
+    
 
 
-        });
+        // var pieWaiting = 0;
+        // var manchetWaiting = 0;
+        // var elairWaiting = 0;
+        // var donutsWaiting = 0;
+
+        // goog.events.listen(collectBreadBubble, ["mousedown", "touchstart"], function () {
+
+        //     player.cropsStored[24].stored = parseInt(player.cropsStored[24].stored) + breadWaiting;
+        //     gLabel24.setText(player.cropsStored[24].stored);
+        //     breadWaiting = 0;
+        //     purchaseSound.play();
+        //     collectBreadBubble.setHidden(true);
+        //     lime.scheduleManager.callAfter(function () { localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player)); }, this, 500);
+
+
+        // });
 
         function checkStoreHouseUpgrade() {
 
             if (storeHouseUpgraded == 1) {
+                
                 storeHouseWM.setFill(imgArrayWindmill[6]); storeHouseWMUpBtn.setHidden(true); enterBakery.setHidden(false);
                 var opacitySmoke = 1.0;
                 lime.scheduleManager.scheduleWithDelay(function () {
                     //add upgrade anim
 
                     if (sceneActive == 'Windmill') {
+                        enterBakery.setHidden(false);             
+                        
+                      
                         var currentSmokePos = storeHouseSmoke.getPosition();
                         currentSmokePos.y -= 4;
                         opacitySmoke = opacitySmoke - 0.1;
@@ -19897,7 +19933,7 @@ function checkLandSlide(){
             }
             else {
                 storeHouseWM.setFill(imgArrayWindmill[5]);
-
+             enterBakery.setHidden(true);
                 lime.scheduleManager.scheduleWithDelay(function () {
                     //add upgrade anim
 
@@ -20043,7 +20079,7 @@ function checkLandSlide(){
         var cropBoostBtnWM = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(153, 185).setSize(36, 36).setFill(imgArray[92]);
         windmillLayer.appendChild(cropBoostBtnWM);
 
-   //////////HERE
+   //////map
    var mapLocWM1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(10, 260).setSize(18,20).setFill(imgArrayItems[43]);
    windmillLayer.appendChild(mapLocWM1);
    var mapLocWM2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width -40, 83).setSize(18,20).setFill(imgArrayItems[44]);
@@ -20068,15 +20104,14 @@ function checkLandSlide(){
                };
            });
        }
-    if(mapLocations.places[23].found == 1){
-        mapLocWM3.setHidden(true);}
+    if(mapLocations.places[23].found == 1){mapLocWM3.setHidden(true);}    
        else{
            goog.events.listen(mapLocWM3, ["mousedown", "touchstart"], function (e) {
                if(globalModalBlock == 0){  this.setHidden(true); mapLocations.places[23].found = 1; getMapFrag('w3');
                e.event.stopPropagation(); e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { }); 
                };
            });
-       }
+        }   
 
         //begin miller
 
@@ -20487,7 +20522,7 @@ function checkLandSlide(){
         }
 
 
-        var foundTreasureW = (new lime.Sprite()).setPosition(a.width/2 + 10, 160).setSize(60, 60).setFill('images/stars4.png').setHidden(true);
+        var foundTreasureW = (new lime.Sprite()).setPosition(a.width/2 + 10, 160).setSize(60, 60).setFill(imgArray[119]).setHidden(true);
         windmillLayer.appendChild(foundTreasureW);
         goog.events.listen(foundTreasureW, ["mousedown", "touchstart"], function (e) {           
             if (foundTreasureW.getHidden() == false){  loadHeirloom('windmill'); successSound.play(); };
@@ -20875,7 +20910,7 @@ function checkLandSlide(){
         }
 
         goog.events.listen(windmillQuestPanelConfirmBtn2, ["mousedown", "touchstart"], function (e) {
-            var isItHidWMConfirm2 = windmillQuestPanelConfirmBtn2.getHidden();
+            var isItHidWMConfirm2 = windmillQuestPanel3.getHidden();
             if (isItHidWMConfirm2 == false) {
                 //to do windmill upgrade timing
 
@@ -20888,7 +20923,7 @@ function checkLandSlide(){
         });
 
         goog.events.listen(windmillQuestPanelConfirmBtn3, ["mousedown", "touchstart"], function (e) {
-            var isItHidWMConfirm3 = windmillQuestPanelConfirmBtn3.getHidden();
+            var isItHidWMConfirm3 = windmillQuestPanel3.getHidden();
             if (isItHidWMConfirm3 == false) {
                 //to do storehouse upgrade timing
 
@@ -20986,7 +21021,6 @@ function checkLandSlide(){
                     starCash = starCash - 3;
                     boostCropsWM.setHidden(true);
 
-
                 }
                 e.event.stopPropagation();
                 e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
@@ -21034,267 +21068,795 @@ function checkLandSlide(){
         ////////////////////////BakeryScene////////////////////////
         var bakeryScene = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
         bakeryLayer = (new lime.Layer).setAnchorPoint(0, 0),
-        bakeryFill1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height ).setFill(imgArrayWindmill[9]).setHidden(false);
+        bakeryFill1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-19.5, -20).setSize(a.width + 10, a.height ).setFill(imgArrayWindmill[9]).setHidden(false).setScale(1.1);
+        
         bakeryScene.appendChild(bakeryLayer);
         bakeryScene.appendChild(bakeryFill1);
 
 
-        var fireInBakery1 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(49, 55).setFill(imgArray12[4]).setSize(16, 12);
+        var fireInBakery1 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(51, 55).setFill(imgArray12[4]).setSize(16, 12);
         bakeryFill1.appendChild(fireInBakery1);
 
-        var fireInBakery2 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(91, 55).setFill(imgArray12[5]).setSize(16, 12);
+        var fireInBakery2 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(94, 55).setFill(imgArray12[5]).setSize(16, 12);
         bakeryFill1.appendChild(fireInBakery2);
 
-        var fireInBakery3 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(204, 55).setFill(imgArray12[6]).setSize(16, 12);
+        var fireInBakery3 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(209, 55).setFill(imgArray12[6]).setSize(16, 12);
         bakeryFill1.appendChild(fireInBakery3);
 
-        var fireInBakery4 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(245, 55).setFill(imgArray12[4]).setSize(16, 12);
+        var fireInBakery4 = (new lime.Sprite()).setAnchorPoint(0.0).setPosition(252, 55).setFill(imgArray12[4]).setSize(16, 12);
         bakeryFill1.appendChild(fireInBakery4);
-        var bakeryFireState = 4;
-        lime.scheduleManager.scheduleWithDelay(function(){
-            fireInBakery1.setFill(imgArray12[bakeryFireState]);
-            fireInBakery2.setFill(imgArray12[bakeryFireState]);
-            fireInBakery3.setFill(imgArray12[bakeryFireState]);
-            fireInBakery4.setFill(imgArray12[bakeryFireState]);
-            bakeryFireState++;
-            if (bakeryFireState > 6) { bakeryFireState = 4; };
-        }, this, 250)
-        
+        var connieSprite2 = (new lime.Sprite()).setAnchorPoint(0, 0).setSize(43, 43).setPosition(110, 50).setFill(imgArrayConnie[0]);
+        bakeryFill1.appendChild(connieSprite2);
 
-        var bakeryChoiceParent = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(26, 260).setSize(260, 230).setFill('#000000');
+        var bakeryFireState = 4;
+        var connie2Tick = 0;
+        lime.scheduleManager.scheduleWithDelay(function(){
+            if (sceneActive == 'Bakery'){
+                fireInBakery1.setFill(imgArray12[bakeryFireState]);
+                fireInBakery2.setFill(imgArray12[bakeryFireState]);
+                fireInBakery3.setFill(imgArray12[bakeryFireState]);
+                fireInBakery4.setFill(imgArray12[bakeryFireState]);
+                bakeryFireState++;
+                if (bakeryFireState > 6) { bakeryFireState = 4; };
+               
+                switch(connie2Tick){
+                    case 0 :{connieSprite2.setPosition(110, 50).setFill(imgArrayConnie[0]); break;};
+                    case 1 :{connieSprite2.setPosition(105, 50).setFill(imgArrayConnie[6]); break;};
+                    case 2 :{connieSprite2.setPosition(100, 50).setFill(imgArrayConnie[7]); break;};
+                    case 3 :{connieSprite2.setPosition(95, 50).setFill(imgArrayConnie[8]); break;};
+                    case 4 :{connieSprite2.setPosition(90, 50).setFill(imgArrayConnie[9]); break;};
+                    case 5 :{connieSprite2.setPosition(90, 50).setFill(imgArrayConnie[0]); break;};
+                    case 6 :{connieSprite2.setPosition(95, 50).setFill(imgArrayConnie[12]); break;};
+                    case 7 :{connieSprite2.setPosition(100, 50).setFill(imgArrayConnie[13]); break;};
+                    case 8 :{connieSprite2.setPosition(105, 50).setFill(imgArrayConnie[14]); break;};
+                    case 9 :{connieSprite2.setPosition(110, 50).setFill(imgArrayConnie[15]); break;};
+                    case 10 :{connieSprite2.setPosition(110, 50).setFill(imgArrayConnie[0]); break;};
+                    case 21 :{connieSprite2.setPosition(115, 50).setFill(imgArrayConnie[12]); break;};
+                    case 22 :{connieSprite2.setPosition(120, 50).setFill(imgArrayConnie[13]); break;};
+                    case 23 :{connieSprite2.setPosition(125, 50).setFill(imgArrayConnie[14]); break;};
+                    case 24 :{connieSprite2.setPosition(130, 50).setFill(imgArrayConnie[15]); break;};
+                    case 25 :{connieSprite2.setPosition(130, 50).setFill(imgArrayConnie[0]); break;};
+                    case 36 :{connieSprite2.setPosition(135, 50).setFill(imgArrayConnie[12]); break;};
+                    case 37 :{connieSprite2.setPosition(140, 50).setFill(imgArrayConnie[13]); break;};
+                    case 38 :{connieSprite2.setPosition(145, 50).setFill(imgArrayConnie[14]); break;};
+                    case 39 :{connieSprite2.setPosition(150, 50).setFill(imgArrayConnie[15]);  break;};
+                    case 40 :{connieSprite2.setPosition(155, 50).setFill(imgArrayConnie[12]);   break;};
+                    case 41 :{connieSprite2.setPosition(155, 50).setFill(imgArrayConnie[0]);   break;};
+                    case 42 :{connieSprite2.setPosition(155, 50).setFill(imgArrayConnie[0]);   break;};
+                    case 54 :{connieSprite2.setPosition(150, 50).setFill(imgArrayConnie[6]);  break;};
+                    case 55 :{connieSprite2.setPosition(145, 50).setFill(imgArrayConnie[7]);  break;};
+                    case 56 :{connieSprite2.setPosition(140, 50).setFill(imgArrayConnie[8]);  break;};
+                    case 57 :{connieSprite2.setPosition(135, 50).setFill(imgArrayConnie[9]);  break;};
+                    case 58 :{connieSprite2.setPosition(130, 50).setFill(imgArrayConnie[6]);  break;};
+                    case 59 :{connieSprite2.setPosition(125, 50).setFill(imgArrayConnie[7]);  break;};
+                    case 60 :{connieSprite2.setPosition(120, 50).setFill(imgArrayConnie[8]);  break;};
+                    case 61 :{connieSprite2.setPosition(115, 50).setFill(imgArrayConnie[9]);  break;};
+                    case 62 :{connieSprite2.setPosition(110, 50).setFill(imgArrayConnie[9]);  break;};
+                    case 63 :{connieSprite2.setPosition(110, 50).setFill(imgArrayConnie[0]);  break;};
+                    case 64 :{connieSprite2.setPosition(110, 50).setFill(imgArrayConnie[0]);  break;};
+                    case 65 :{connieSprite2.setPosition(110, 50).setFill(imgArrayConnie[0]);  break;};
+                    case 75 :{connieSprite2.setPosition(110, 50).setFill(imgArrayConnie[0]); connie2Tick = 0;  break;};
+                    default :{break;};
+    
+                };
+                connie2Tick = parseInt(connie2Tick) + 1;
+            }
+      
+            // console.log('connietick' + connie2Tick);
+        }, this, 300)
+        
+      
+        var bakeryChoiceParent = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(28, 260).setSize(260, 230).setFill('#000000');
         bakeryFill1.appendChild(bakeryChoiceParent);
 
+      
+       
+        // console.log("checking ovenState " + ovenState.content1)
 
-         var bakeryHeader = (new lime.Label()).setText('Making Simple Bread').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(130, 18).setFontSize(14);
+        /////bakeryOrderedItems
+        var bakeryOrder1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(64, 160).setSize(40, 40).setFill(imgArrayBakery[5]);
+        bakeryFill1.appendChild(bakeryOrder1);
+        
+        var bakeryOrder1Img = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(6,5).setSize(30, 30).setFill(imgArray[56]);
+        bakeryOrder1.appendChild(bakeryOrder1Img);
+        var bakeryOrder1Txt = (new lime.Label()).setText('Idle').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(20, 38).setFontSize(10);
+        bakeryOrder1.appendChild(bakeryOrder1Txt);
+
+        var bakeryOrder2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(120, 160).setSize(40, 40).setFill(imgArrayBakery[5]);
+        bakeryFill1.appendChild(bakeryOrder2);
+        var bakeryOrder2Img = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(6,5).setSize(30, 30).setFill(imgArray[56]);
+        bakeryOrder2.appendChild(bakeryOrder2Img);
+        var bakeryOrder2Txt = (new lime.Label()).setText('Idle').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(20, 38).setFontSize(10);
+        bakeryOrder2.appendChild(bakeryOrder2Txt);
+
+        var bakeryOrder3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(170, 160).setSize(40, 40).setFill(imgArrayBakery[5]);
+        bakeryFill1.appendChild(bakeryOrder3);
+        var bakeryOrder3Img = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(6,5).setSize(30, 30).setFill(imgArray[56]);
+        bakeryOrder3.appendChild(bakeryOrder3Img);
+        var bakeryOrder3Txt = (new lime.Label()).setText('Idle').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(20, 38).setFontSize(10);
+        bakeryOrder3.appendChild(bakeryOrder3Txt);
+
+        var bakeryOrder4 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(220, 160).setSize(40, 40).setFill(imgArrayBakery[5]);
+        bakeryFill1.appendChild(bakeryOrder4);
+        var bakeryOrder4Img = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(6,5).setSize(30, 30).setFill(imgArray[56]);
+        bakeryOrder4.appendChild(bakeryOrder4Img);
+        var bakeryOrder4Txt = (new lime.Label()).setText('Idle').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(20, 38).setFontSize(10);
+        bakeryOrder4.appendChild(bakeryOrder4Txt);
+
+  
+
+         var bakeryHeader = (new lime.Label()).setText('Place Your Order').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(130, 18).setFontSize(14);
          bakeryChoiceParent.appendChild(bakeryHeader);
-         
-         var bakeryLeft = (new lime.Sprite()).setPosition(0, 105).setSize(30, 30).setFill(imgArray[83]).setRotation(90);
+
+         var bakeryTimeText = (new lime.Label()).setText('Time: 1 minute per').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(130, 207).setFontSize(14);
+         bakeryChoiceParent.appendChild(bakeryTimeText);
+
+         var bakeryLeft = (new lime.Sprite()).setPosition(4, 105).setSize(28, 28).setFill(imgArray[83]).setRotation(90).setOpacity(0.4);
          bakeryChoiceParent.appendChild(bakeryLeft);
 
-         var bakeryRight = (new lime.Sprite()).setPosition(259, 105).setSize(30, 30).setFill(imgArray[83]).setRotation(270);
+         var bakeryRight = (new lime.Sprite()).setPosition(257, 105).setSize(28, 28).setFill(imgArray[83]).setRotation(270);
          bakeryChoiceParent.appendChild(bakeryRight);
 
-         var bakerySelectedCheck = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(175, 35).setSize(18, 18).setFill(imgArray[35]);
+        //  var bakerySelectedCheck = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(175, 35).setSize(18, 18).setFill(imgArray[35]);
 
-         var bakeryTimeText = (new lime.Label()).setText('Time: 1 minute').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(120, 210).setFontSize(16);
-         bakeryChoiceParent.appendChild(bakeryTimeText);
+
         
-         var bakeryChoiceChild1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(18, 32).setSize(220, 160).setFill(imgArrayTown[18]);
+
+         var bakeryChoiceChild1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(21, 32).setSize(220, 160).setFill(imgArrayTown[18]);
          bakeryChoiceParent.appendChild(bakeryChoiceChild1);
          var bakeryChild1Txt = (new lime.Label()).setText('Simple Bread').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(110, 26).setFontSize(22);
          bakeryChoiceChild1.appendChild(bakeryChild1Txt);
-         var bakeryBread = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(80, 45).setSize(55, 55).setFill('images/bread.png');
+         var bakeryBread = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(80, 45).setSize(55, 55).setFill(imgArrayBakery[0]);
          bakeryChoiceChild1.appendChild(bakeryBread);
 
          var bakeryChild1reqText = (new lime.Label()).setText('Requires').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(55, 127).setFontSize(16);
          bakeryChoiceChild1.appendChild(bakeryChild1reqText);
 
-         var bread1req1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(98, 110).setSize(25, 25).setFill('images/flour.png');
+         var bread1req1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(98, 107).setSize(25, 25).setFill('images/flour.png');
          bakeryChoiceChild1.appendChild(bread1req1);
-         var bread1req1Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(130, 135).setFontSize(16);
+         var bread1req1Txt= (new lime.Label()).setText(player.cropsStored[23].stored + '/1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(115, 142).setFontSize(12);
          bakeryChoiceChild1.appendChild(bread1req1Txt);
-         var bread1req2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(143, 110).setSize(18, 25).setFill(imgArray[110]);
+         var bread1req2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(143, 107).setSize(18, 25).setFill(imgArray[110]);
          bakeryChoiceChild1.appendChild(bread1req2);
-         var bread1req2Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(168, 135).setFontSize(16);
+         var bread1req2Txt= (new lime.Label()).setText(waterStored +'/1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(158, 142).setFontSize(12);
          bakeryChoiceChild1.appendChild(bread1req2Txt);
         
 
 
  
-         var bakeryChoiceChild2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition( a.width + 18, 32).setSize(220, 160).setFill(imgArrayTown[18]);
+         var bakeryChoiceChild2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition( a.width + 21, 32).setSize(220, 160).setFill(imgArrayTown[18]);
          bakeryChoiceParent.appendChild(bakeryChoiceChild2);
          var bakeryChild2Txt = (new lime.Label()).setText('Apple Pie').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(110, 26).setFontSize(22);
          bakeryChoiceChild2.appendChild(bakeryChild2Txt);
-         var bakeryPie = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(80, 45).setSize(55, 55).setFill('images/items/pie1.png');
+         var bakeryPie = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(80, 45).setSize(55, 55).setFill(imgArrayBakery[1]);
          bakeryChoiceChild2.appendChild(bakeryPie);
 
          var bakeryChild2reqText = (new lime.Label()).setText('Requires').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(55, 127).setFontSize(16);
          bakeryChoiceChild2.appendChild(bakeryChild2reqText);
 
-         var pie1req1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(95, 108).setSize(25, 25).setFill('images/flour.png');
+         var pie1req1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(95, 107).setSize(25, 25).setFill('images/flour.png');
          bakeryChoiceChild2.appendChild(pie1req1);
-         var pie1req1Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(120, 135).setFontSize(16);
+         var pie1req1Txt= (new lime.Label()).setText(player.cropsStored[23].stored + '/1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(110, 142).setFontSize(12);
          bakeryChoiceChild2.appendChild(pie1req1Txt);
          var pie1req2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(130, 108).setSize(25, 25).setFill('images/apple.png');
          bakeryChoiceChild2.appendChild(pie1req2);
-         var pie1req2Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(153, 135).setFontSize(16);
+         var pie1req2Txt= (new lime.Label()).setText(player.cropsStored[8].stored + '/2').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(145, 142).setFontSize(12);
          bakeryChoiceChild2.appendChild(pie1req2Txt);
          var pie1req3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(170, 108).setSize(18, 25).setFill(imgArray[110]);
          bakeryChoiceChild2.appendChild(pie1req3);
-         var pie1req3Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(192, 135).setFontSize(16);
+         var pie1req3Txt= (new lime.Label()).setText(waterStored +'/1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(180, 142).setFontSize(12);
          bakeryChoiceChild2.appendChild(pie1req3Txt);
 
+        var bakeryCostCover1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition( 0, 0).setSize(220, 160).setFill(imgArrayTown[18]);
+        bakeryChoiceChild2.appendChild(bakeryCostCover1);
+        var costTxt1= (new lime.Label()).setText('Apple Pie').setAnchorPoint(0,0).setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(65, 18).setFontSize(22);
+        bakeryCostCover1.appendChild(costTxt1);
+        var costTxt2= (new lime.Label()).setText('Unlock now?').setAnchorPoint(0,0).setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(65, 130).setFontSize(16);
+        bakeryCostCover1.appendChild(costTxt2);
+        var bakeryCostImg1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(85 , 40).setSize(50, 50).setFill(imgArrayBakery[1]);
+        bakeryCostCover1.appendChild(bakeryCostImg1);
+        var bakeryViewAdBtn1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(65, 85).setSize(90, 35).setFill(imgArray[108]);
+        bakeryCostCover1.appendChild(bakeryViewAdBtn1);
 
+        if (localStorage.getItem('pieUnlocked') == 1){bakeryCostCover1.setHidden(true).setPosition(-1000, -1000);};
 
-         var bakeryChoiceChild3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition( a.width * 2 + 18, 32).setSize(220, 160).setFill(imgArrayTown[18]);
+         var bakeryChoiceChild3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition( a.width * 2 + 21, 32).setSize(220, 160).setFill(imgArrayTown[18]);
          bakeryChoiceParent.appendChild(bakeryChoiceChild3);
          var bakeryChild3Txt = (new lime.Label()).setText('Manchet Loaf').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(110, 26).setFontSize(22);
          bakeryChoiceChild3.appendChild(bakeryChild3Txt);
-         var bakeryManchet = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(80, 45).setSize(55, 55).setFill('images/items/manchetLoaf.png');
+         var bakeryManchet = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(80, 45).setSize(55, 55).setFill(imgArrayBakery[2]);
          bakeryChoiceChild3.appendChild(bakeryManchet);
          
          var bakeryChild3reqText = (new lime.Label()).setText('Requires').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(55, 127).setFontSize(16);
          bakeryChoiceChild3.appendChild(bakeryChild3reqText);
          var bunsReq1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(95, 108).setSize(25, 25).setFill('images/flour.png');
          bakeryChoiceChild3.appendChild(bunsReq1);
-         var bunsReq1Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(120, 135).setFontSize(16);
+         var bunsReq1Txt= (new lime.Label()).setText(player.cropsStored[23].stored + '/2').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(110, 142).setFontSize(12);
          bakeryChoiceChild3.appendChild(bunsReq1Txt);
-         var bunsReq2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(170, 108).setSize(18, 25).setFill(imgArray[110]);
+         var bunsReq2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(132, 108).setSize(22, 25).setFill(imgArray3[19]);
          bakeryChoiceChild3.appendChild(bunsReq2);
-         var bunsReq2Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(192, 135).setFontSize(16);
+         var bunsReq2Txt= (new lime.Label()).setText(player.cropsStored[11].stored + '/2').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(145, 142).setFontSize(12);
          bakeryChoiceChild3.appendChild(bunsReq2Txt); 
+         var bunsReq3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(170, 108).setSize(18, 25).setFill(imgArray[110]);
+         bakeryChoiceChild3.appendChild(bunsReq3);
+         var bunsReq3Txt= (new lime.Label()).setText(waterStored +'/2').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(180, 142).setFontSize(12);
+         bakeryChoiceChild3.appendChild(bunsReq3Txt); 
     
+         var bakeryCostCover2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition( 0, 0).setSize(220, 160).setFill(imgArrayTown[18]);
+         bakeryChoiceChild3.appendChild(bakeryCostCover2);
+         var costTxt12= (new lime.Label()).setText('Manchet Loaf').setAnchorPoint(0,0).setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(50, 25).setFontSize(22);
+         bakeryCostCover2.appendChild(costTxt12);
+         var costTxt22= (new lime.Label()).setText('Unlock now?').setAnchorPoint(0,0).setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(65, 130).setFontSize(16);
+         bakeryCostCover2.appendChild(costTxt22);
+         var bakeryCostImg2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(85 , 40).setSize(50, 50).setFill(imgArrayBakery[2]);
+         bakeryCostCover2.appendChild(bakeryCostImg2);
+         var bakeryViewAdBtn2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(65, 85).setSize(90, 35).setFill(imgArray[108]);
+         bakeryCostCover2.appendChild(bakeryViewAdBtn2);
+ 
+         if (localStorage.getItem('manchetUnlocked') == 1){bakeryCostCover2.setHidden(true).setPosition(-1000, -1000);};
    
-         var bakeryChoiceChild4 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition( a.width * 3 + 18, 32).setSize(220, 160).setFill(imgArrayTown[18]);
+         var bakeryChoiceChild4 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition( a.width * 3 + 21, 32).setSize(220, 160).setFill(imgArrayTown[18]);
          bakeryChoiceParent.appendChild(bakeryChoiceChild4);
          var bakeryChild4Txt = (new lime.Label()).setText('Cream Filled Eclair').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(110, 26).setFontSize(22);
          bakeryChoiceChild4.appendChild(bakeryChild4Txt);
-         var bakeryEclair = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(80, 45).setSize(55, 55).setFill('images/items/eclair.png');
+         var bakeryEclair = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(80, 45).setSize(55, 55).setFill(imgArrayBakery[3]);
          bakeryChoiceChild4.appendChild(bakeryEclair);
          
          var bakeryChild4reqText = (new lime.Label()).setText('Requires').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(55, 127).setFontSize(16);
          bakeryChoiceChild4.appendChild(bakeryChild4reqText);
          var eclairReq1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(95, 108).setSize(25, 25).setFill('images/flour.png');
          bakeryChoiceChild4.appendChild(eclairReq1);
-         var eclairReq1Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(120, 135).setFontSize(16);
+         var eclairReq1Txt= (new lime.Label()).setText(player.cropsStored[23].stored + '/2').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(110, 142).setFontSize(12);
          bakeryChoiceChild4.appendChild(eclairReq1Txt);
-         var eclairReq2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(130, 108).setSize(25, 25).setFill('images/pasture/bucket.png');
+         var eclairReq2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(130, 108).setSize(25, 25).setFill(imgArray[89]);
          bakeryChoiceChild4.appendChild(eclairReq2);
-         var eclairReq2Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(153, 135).setFontSize(16);
+         var eclairReq2Txt= (new lime.Label()).setText(player.cropsStored[7].stored + '/1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(145, 142).setFontSize(12);
          bakeryChoiceChild4.appendChild(eclairReq2Txt);
-         var eclairReq3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(170, 108).setSize(18, 25).setFill(imgArray[110]);
+         var eclairReq3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(168, 108).setSize(22, 25).setFill(imgArray3[19]);
          bakeryChoiceChild4.appendChild(eclairReq3);
-         var eclairReq3Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(192, 135).setFontSize(16);
+         var eclairReq3Txt= (new lime.Label()).setText(player.cropsStored[11].stored + '/3').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(180, 142).setFontSize(12);
          bakeryChoiceChild4.appendChild(eclairReq3Txt);
 
+         var bakeryCostCover3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition( 0, 0).setSize(220, 160).setFill(imgArrayTown[18]);
+         bakeryChoiceChild4.appendChild(bakeryCostCover3);
+         var costTxt31= (new lime.Label()).setText('Cream Filled Eclair').setAnchorPoint(0,0).setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(20, 25).setFontSize(22);
+         bakeryCostCover3.appendChild(costTxt31);
+         var costTxt32= (new lime.Label()).setText('Unlock now?').setAnchorPoint(0,0).setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(65, 130).setFontSize(16);
+         bakeryCostCover3.appendChild(costTxt32);
+         var bakeryCostImg3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(85 , 40).setSize(50, 50).setFill(imgArrayBakery[3]);
+         bakeryCostCover3.appendChild(bakeryCostImg3);
+         var bakeryViewAdBtn3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(65, 85).setSize(90, 35).setFill(imgArray[108]);
+         bakeryCostCover3.appendChild(bakeryViewAdBtn3);
+         if (localStorage.getItem('eclairUnlocked') == 1){bakeryCostCover3.setHidden(true).setPosition(-1000, -1000);};
 
-
-         var bakeryChoiceChild5 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition( a.width * 4 + 18, 32).setSize(220, 160).setFill(imgArrayTown[18]);
+         var bakeryChoiceChild5 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition( a.width * 4 + 21, 32).setSize(220, 160).setFill(imgArrayTown[18]);
          bakeryChoiceParent.appendChild(bakeryChoiceChild5);
          var bakeryChild5Txt = (new lime.Label()).setText('Jelly Donuts').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(110, 26).setFontSize(22);
          bakeryChoiceChild5.appendChild(bakeryChild5Txt);
-         var bakeryDonuts = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(80, 45).setSize(55, 55).setFill('images/items/donuts.png');
+         var bakeryDonuts = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(80, 45).setSize(55, 55).setFill(imgArrayBakery[4]);
          bakeryChoiceChild5.appendChild(bakeryDonuts);
          
          var bakeryChild5reqText = (new lime.Label()).setText('Requires').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(55, 127).setFontSize(16);
          bakeryChoiceChild5.appendChild(bakeryChild5reqText);
          var donutReq1 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(95, 108).setSize(25, 25).setFill('images/flour.png');
          bakeryChoiceChild5.appendChild(donutReq1);
-         var donutReq1Txt= (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(120, 135).setFontSize(16);
+         var donutReq1Txt= (new lime.Label()).setText(player.cropsStored[23].stored + '/2').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(110, 142).setFontSize(12);
          bakeryChoiceChild5.appendChild(donutReq1Txt);
          var donutReq2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(130, 108).setSize(25, 25).setFill('images/vinyard/jelly.png');
          bakeryChoiceChild5.appendChild(donutReq2);
-         var donutReq2Txt = (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(153, 135).setFontSize(16);
+         var donutReq2Txt = (new lime.Label()).setText(player.cropsStored[13].stored + '/2').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(145, 142).setFontSize(12);
          bakeryChoiceChild5.appendChild(donutReq2Txt);
-         var donutReq3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(170, 108).setSize(18, 25).setFill(imgArray[110]);
+         var donutReq3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(170, 108).setSize(25, 25).setFill(imgArray[89]);
          bakeryChoiceChild5.appendChild(donutReq3);
-         var donutReq3Txt = (new lime.Label()).setText('1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(192, 135).setFontSize(16);
+         var donutReq3Txt = (new lime.Label()).setText(player.cropsStored[7].stored + '/1').setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(180, 142).setFontSize(12);
          bakeryChoiceChild5.appendChild(donutReq3Txt);
-
+         
+         var bakeryCostCover4 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition( 0, 0).setSize(220, 160).setFill(imgArrayTown[18]);
+         bakeryChoiceChild5.appendChild(bakeryCostCover4);
+         var costTxt41= (new lime.Label()).setText('Jelly Donuts').setAnchorPoint(0,0).setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(50, 25).setFontSize(22);
+         bakeryCostCover4.appendChild(costTxt41);
+         var costTxt42= (new lime.Label()).setText('Unlock now?').setAnchorPoint(0,0).setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(65, 130).setFontSize(16);
+         bakeryCostCover4.appendChild(costTxt42);
+         var bakeryCostImg4 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(85 , 40).setSize(50, 50).setFill(imgArrayBakery[4]);
+         bakeryCostCover4.appendChild(bakeryCostImg4);
+         var bakeryViewAdBtn4 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(65, 85).setSize(90, 35).setFill(imgArray[108]);
+         bakeryCostCover4.appendChild(bakeryViewAdBtn4);
 
          bakeryOptionSelected = localStorage.getItem('bakeryOptionSelected');
-         bakeryChoiceChild1.appendChild(bakerySelectedCheck);
+         let howManyBake = 0;
+       
+        function howManyBaker(){
+            localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+            console.log("oven  props" + JSON.stringify(ovenState.ovens) + " bakery option " + bakeryOptionSelected)
+            if (howManyBake <= 3) {
+                
+                if (ovenState.ovens[0].filled + ovenState.ovens[1].filled + ovenState.ovens[2].filled + ovenState.ovens[3].filled == 4) {
+                    bakeryHeader.setText('Ovens Full');
+                     return;}
+                // bakeryQuantityText.setText( howManyBake +'/4')
+                //find emptyOven
+         
+                var firstOpenOven = -1;
+                for (i = 0; i <= ovenState.ovens.length; i++ ){
+                    if (ovenState.ovens[i].filled == 0){ 
+                        firstOpenOven = i; console.log("firstOpenOven = " + firstOpenOven);
+                     howManyBake = firstOpenOven; break;
+                    }
+                    else{console.log(' filled oven ' + i +" - " + ovenState.ovens[i].filled);}
+
+                }
+                let timeThis1 = 60; 
+                if(bakeryOptionSelected == 1 || bakeryOptionSelected == 2){timeThis1 = 90;};
+                 if(bakeryOptionSelected == 3 || bakeryOptionSelected == 4){timeThis1 = 120;}   
+                 
+                 switch(howManyBake){
+                 
+                    case 0:{   ovenState.ovens[0].time = timeThis1;
+
+                        console.log("oven 0 props" + JSON.stringify(ovenState.ovens) + " bakery option " + bakeryOptionSelected)
+                        bakeryOrder1Img.setFill(imgArrayBakery[bakeryOptionSelected]); bakeryOrder1Txt.setText(timeThis1); 
+                        ovenState.ovens[0].content = bakeryOptionSelected;
+                        ovenState.ovens[0].filled = 1;
+                        tickerReady1 = 0;
+                        lime.scheduleManager.scheduleWithDelay(function(){ 
+                            if (timeThis1 <= 0){
+                                if(sceneActive == 'Bakery'){ 
+                                    bakeryOrder1Txt.setText('Ready');
+                                    if(tickerReady1 == 0){
+                                        bakeryOrder1Img.setPosition(6,5).setSize(36, 36); 
+                                        tickerReady1 = 1;  
+                                    }else{
+                                        bakeryOrder1Img.setPosition(8,5).setSize(30, 30);
+                                        tickerReady1 = 0;
+                                    }
+                                } 
+                                timeThis1 = 0;
+                            } 
+                            else{
+                                timeThis1 = parseInt(timeThis1) - 1; ovenState.ovens[0].time = timeThis1;
+                                if(sceneActive == 'Bakery'){ bakeryOrder1Txt.setText(timeThis1); }
+                            };
+                            localStorage.setItem('ovenState', JSON.stringify(ovenState));
+                        }, this, 1000, timeThis1  + 10);
+                        
+                         return;}; 
+                    case 1: {  ovenState.ovens[1].time = timeThis1;
+                        bakeryOrder2Img.setFill(imgArrayBakery[bakeryOptionSelected]); bakeryOrder2Txt.setText(timeThis1); 
+                        ovenState.ovens[1].content = bakeryOptionSelected;
+                        ovenState.ovens[1].filled = 1;
+                        tickerReady2 = 0;
+                        lime.scheduleManager.scheduleWithDelay(function(){ 
+                            if (timeThis1 <= 0){
+                                if(sceneActive == 'Bakery'){bakeryOrder2Txt.setText('Ready');
+                                    if(tickerReady2 == 0){
+                                        bakeryOrder2Img.setPosition(6,5).setSize(36, 36); 
+                                        tickerReady2 = 1;  
+                                    }else{
+                                        bakeryOrder2Img.setPosition(8,5).setSize(30, 30);
+                                        tickerReady2 = 0; 
+                                    }
+                                } timeThis1 = 0;
+                            }else{
+                                timeThis1 = parseInt(timeThis1) - 1; ovenState.ovens[1].time = timeThis1;
+                                if(sceneActive == 'Bakery'){bakeryOrder2Txt.setText(timeThis1);}
+                            };
+                            localStorage.setItem('ovenState', JSON.stringify(ovenState));
+                        }, this, 1000, timeThis1  + 10);
+                       
+                        return;}; 
+                    case 2: {  ovenState.ovens[2].time = timeThis1;
+                        bakeryOrder3Img.setFill(imgArrayBakery[bakeryOptionSelected]); bakeryOrder3Txt.setText(timeThis1); 
+                        ovenState.ovens[2].content = bakeryOptionSelected;
+                        ovenState.ovens[2].filled = 1;
+                        tickerReady3 = 0;
+                        lime.scheduleManager.scheduleWithDelay(function(){ 
+                            if (timeThis1 <= 0){ 
+                                    if(sceneActive == 'Bakery'){bakeryOrder3Txt.setText('Ready');
+                                        if(tickerReady3 == 0){
+                                            bakeryOrder3Img.setPosition(6,5).setSize(36, 36); 
+                                            tickerReady3 = 1;  
+                                        }else{
+                                            bakeryOrder3Img.setPosition(8,5).setSize(30, 30);
+                                            tickerReady3 = 0;  
+                                        }
+                                    };
+                                    timeThis1 = 0; } 
+                            else{
+                                timeThis1 = parseInt(timeThis1) - 1; ovenState.ovens[2].time = timeThis1;
+                                if(sceneActive == 'Bakery'){ bakeryOrder3Txt.setText(timeThis1);}
+                            };
+                            localStorage.setItem('ovenState', JSON.stringify(ovenState));
+                        }, this, 1000, timeThis1  + 10);
+                        
+                        return;}; 
+                    case 3: {    ovenState.ovens[3].time = timeThis1;
+                        ovenState.ovens[3].content = bakeryOptionSelected;
+                        ovenState.ovens[3].filled = 1;
+                        bakeryOrder4Img.setFill(imgArrayBakery[bakeryOptionSelected]); bakeryOrder4Txt.setText(timeThis1); 
+                        let tickerReady4 = 0; 
+                        lime.scheduleManager.scheduleWithDelay(function(){ 
+                            localStorage.setItem('ovenState', JSON.stringify(ovenState));
+                            if (timeThis1 <= 0){
+                                if(sceneActive == 'Bakery'){bakeryOrder4Txt.setText('Ready');
+                                    if(tickerReady4 == 0){
+                                        bakeryOrder4Img.setPosition(6,5).setSize(36, 36); 
+                                        tickerReady4 = 1;  
+                                    }else{
+                                        bakeryOrder4Img.setPosition(8,5).setSize(30, 30);
+                                        tickerReady4 = 0;  
+                                    }
+                                } 
+                            }else{
+                                timeThis1 = parseInt(timeThis1) - 1; ovenState.ovens[3].time = timeThis1;
+                                if(sceneActive == 'Bakery'){bakeryOrder4Txt.setText(timeThis1);}
+                            };
+                        }, this, 1000, timeThis1 + 10);
+                         
+                        return;}; 
+                    default:{ console.log('default'); return;}; 
+                }
+            }else{incorrectSound.play(); bakeryHeader.setText('Ovens Full');}
+        }
+
+        function harvestOven(what){
+            switch(what){
+                case 0: {player.cropsStored[24].stored = parseInt(player.cropsStored[24].stored) + 1; 
+                      showMFToast("+ 1",'images/'+ a.crops[24].harvest + '', 'bakery', 2000,'left','bottom'); return;};
+                case 1: {emptyOven(0); player.cropsStored[26].stored = parseInt(player.cropsStored[26].stored) + 1;   showMFToast("+ 1",'/images/'+ a.crops[26].harvest + '', 'bakery', 1000,'right','bottom'); return;};
+                case 2: {emptyOven(1); player.cropsStored[27].stored = parseInt(player.cropsStored[27].stored) + 1;    showMFToast("+ 1",'/images/'+ a.crops[27].harvest + '', 'bakery', 1000,'left','bottom');return;};
+                case 3: {emptyOven(2); player.cropsStored[28].stored = parseInt(player.cropsStored[28].stored) + 1;    showMFToast("+ 1",'/images/'+ a.crops[28].harvest + '', 'bakery', 1000, 'left','bottom');return;};
+                case 4: {emptyOven(3); player.cropsStored[29].stored = parseInt(player.cropsStored[29].stored) + 1;    showMFToast("+ 1",'/images/'+ a.crops[29].harvest + '', 'bakery', 1000, 'left');return;};
+                default:{return;};
+            }
+        }
+        function emptyOven(num){
+            ovenState.ovens[num].filled = 0; ovenState.ovens[num].time = 60; ovenState.ovens[num].content = -1;
+        }
+        function setupReqTxt(){
+            bread1req1Txt.setText(player.cropsStored[23].stored + '/1');    bread1req2Txt.setText(waterStored + '/1');
+            pie1req1Txt.setText(player.cropsStored[23].stored + '/1');    pie1req2Txt.setText(player.cropsStored[8].stored + '/2');    pie1req3Txt.setText(waterStored + '/1');
+            bunsReq1Txt.setText(player.cropsStored[23].stored + '/2');    bunsReq2Txt.setText(player.cropsStored[11].stored + '/2');
+            eclairReq1Txt.setText(player.cropsStored[23].stored +'/2');    eclairReq2Txt.setText(player.cropsStored[7].stored +'/1');    eclairReq3Txt.setText(player.cropsStored[11].stored +'/3');
+            donutReq1Txt.setText( player.cropsStored[23].stored + '/2');    donutReq2Txt.setText( player.cropsStored[13].stored + '/2');    donutReq3Txt.setText( player.cropsStored[7].stored + '/1');
+        };
+        goog.events.listen(bakeryOrder1Img, ["mousedown", "touchstart"], function () {   
+            if (ovenState.ovens[0].content > -1 && ovenState.ovens[0].time <= 0){
+                harvestOven(ovenState.ovens[0].content);
+                ovenState.ovens[0].content = -1; ovenState.ovens[0].time = 60; ovenState.ovens[0].filled = 0;
+                localStorage.setItem('ovenState', JSON.stringify(ovenState));
+                bakeryOrder1Img.setFill(imgArray[56]);
+                bakeryOrder1Txt.setText('Idle')
+                howManyBake = parseInt(howManyBake) -1;
+            }
+        });
+        goog.events.listen(bakeryOrder2Img, ["mousedown", "touchstart"], function () {   
+            if (ovenState.ovens[1].content > -1 && ovenState.ovens[1].time <= 0){
+                harvestOven(ovenState.ovens[1].content);
+                ovenState.ovens[1].content = -1; ovenState.ovens[1].time = 60; ovenState.ovens[1].filled = 0;
+                localStorage.setItem('ovenState', JSON.stringify(ovenState));
+                bakeryOrder2Img.setFill(imgArray[56]);
+                bakeryOrder2Txt.setText('Idle');
+                howManyBake = parseInt(howManyBake) -1;
+            }
+        });
+        goog.events.listen(bakeryOrder3Img, ["mousedown", "touchstart"], function () {   
+            if (ovenState.ovens[2].content > -1 && ovenState.ovens[2].time <= 0){
+                harvestOven(ovenState.ovens[2].content);
+                ovenState.ovens[2].content = -1; ovenState.ovens[2].time = 60; ovenState.ovens[2].filled = 0;
+                localStorage.setItem('ovenState', JSON.stringify(ovenState));
+                bakeryOrder3Img.setFill(imgArray[56]);
+                bakeryOrder3Txt.setText('Idle');
+                howManyBake = parseInt(howManyBake) -1;
+            }
+        });
+        goog.events.listen(bakeryOrder4Img, ["mousedown", "touchstart"], function () {   
+            if (ovenState.ovens[3].content> -1 && ovenState.ovens[3].time <= 0){
+                harvestOven(ovenState.ovens[3].content);
+                ovenState.ovens[3].content = -1; ovenState.ovens[3].time = 60;  ovenState.ovens[3].filled = 0;
+                localStorage.setItem('ovenState', JSON.stringify(ovenState));
+                bakeryOrder4Img.setFill(imgArray[56]);
+                bakeryOrder4Txt.setText('Idle');
+                howManyBake = parseInt(howManyBake) -1;
+            }
+        });
+
 
          goog.events.listen(bakeryChoiceChild1, ["mousedown", "touchstart"], function () {   
-            bakeryOptionSelected = 0;
-            bakeryTimeText.setText('Time: 1 minute per');
-           try{bakeryChoiceChild2.removeChild(bakerySelectedCheck);bakeryChoiceChild3.removeChild(bakerySelectedCheck);bakeryChoiceChild4.removeChild(bakerySelectedCheck);
-            bakeryChoiceChild5.removeChild(bakerySelectedCheck);
-           }catch(err){console.log(err);}
-            bakeryChoiceChild1.appendChild(bakerySelectedCheck);bakeryHeader.setText('Making Simple Bread');
+            if (howManyBake <= 3){
+                if (player.cropsStored[23].stored  >=1 && waterStored >= 1 ){
+                    player.cropsStored[23].stored = parseInt(player.cropsStored[23].stored) -1;
+                    waterStored = parseInt(waterStored) - 1;
+                    bread1req1Txt.setText(player.cropsStored[23].stored + '/1')
+                    bread1req2Txt.setText(waterStored + '/1');
+                    bakeryOptionSelected = 0;
+                    localStorage.setItem('bakeryOptionSelected',0);
+                    bakeryTimeText.setText('Time: 1 minute per');
+                    bakeryHeader.setText('Making Simple Bread');
+                    howManyBaker();
+                }else{ lackResource();}
+            }else{incorrectSound.play();}
+         
         });
          goog.events.listen(bakeryChoiceChild2, ["mousedown", "touchstart"], function () {
-            bakeryOptionSelected = 1;
-            bakeryTimeText.setText('Time: 1.5 minutes per');
-            try{bakeryChoiceChild1.removeChild(bakerySelectedCheck);bakeryChoiceChild3.removeChild(bakerySelectedCheck);bakeryChoiceChild4.removeChild(bakerySelectedCheck);
-                bakeryChoiceChild5.removeChild(bakerySelectedCheck);
-            }catch(err){console.log(err);}   
-            bakeryChoiceChild2.appendChild(bakerySelectedCheck);bakeryHeader.setText('Making Apple Pie');
+            if (howManyBake <= 3){
+                if (player.cropsStored[23].stored  >= 1 && player.cropsStored[8].stored  >= 2 && waterStored >= 1 ){
+                    player.cropsStored[23].stored = parseInt(player.cropsStored[23].stored) -1;
+                    player.cropsStored[8].stored = parseInt(player.cropsStored[8].stored) -1;
+                    pie1req1Txt.setText(player.cropsStored[23].stored + '/1')
+                    pie1req2Txt.setText(player.cropsStored[8].stored + '/2')
+                    pie1req3Txt.setText(waterStored + '/1');
+                    waterStored = parseInt(waterStored) - 1;
+                    bakeryOptionSelected = 1;
+                    localStorage.setItem('bakeryOptionSelected',1);
+                    bakeryTimeText.setText('Time: 1.5 minutes per');
+                    bakeryHeader.setText('Making Apple Pie');
+                    howManyBaker(); 
+                }else{lackResource();}
+            }else{incorrectSound.play();}
+            
         });
         goog.events.listen(bakeryChoiceChild3, ["mousedown", "touchstart"], function () {
-            bakeryOptionSelected = 2;
-            bakeryTimeText.setText('Time: 1.5 minutes per');
-            try{bakeryChoiceChild1.removeChild(bakerySelectedCheck);bakeryChoiceChild2.removeChild(bakerySelectedCheck);bakeryChoiceChild4.removeChild(bakerySelectedCheck);
-                bakeryChoiceChild5.removeChild(bakerySelectedCheck);
-            }catch(err){console.log(err);}   
-            bakeryChoiceChild3.appendChild(bakerySelectedCheck);bakeryHeader.setText('Making Manchet Loaf');
+            if (howManyBake <= 3){
+                if (player.cropsStored[23].stored  >= 2 && player.cropsStored[11].stored >= 2 && waterStored >= 2 && howManyBake <= 3){
+                    waterStored = parseInt(waterStored) - 2;
+                    player.cropsStored[23].stored = parseInt(player.cropsStored[23].stored) -2;
+                    player.cropsStored[11].stored = parseInt(player.cropsStored[11].stored) -2;
+                    bunsReq1Txt.setText(player.cropsStored[23].stored + '/2');
+                    bunsReq2Txt.setText(player.cropsStored[11].stored + '/2');
+                    bakeryOptionSelected = 2;
+                    localStorage.setItem('bakeryOptionSelected',2);
+                    bakeryTimeText.setText('Time: 1.5 minutes per');
+                    bakeryHeader.setText('Making Manchet Loaf');
+                    howManyBaker();
+                }else{lackResource();}
+            }else{incorrectSound.play();}
+        
         });
 
         goog.events.listen(bakeryChoiceChild4, ["mousedown", "touchstart"], function () {
-            bakeryOptionSelected = 3;
-            bakeryTimeText.setText('Time: 2 minutes per');
-            try{bakeryChoiceChild1.removeChild(bakerySelectedCheck);bakeryChoiceChild2.removeChild(bakerySelectedCheck);bakeryChoiceChild3.removeChild(bakerySelectedCheck);
-                bakeryChoiceChild5.removeChild(bakerySelectedCheck);
-            }catch(err){console.log(err);}   
-            bakeryChoiceChild4.appendChild(bakerySelectedCheck);bakeryHeader.setText('Making Cream Eclair');
+            if (howManyBake <= 3){
+                if (player.cropsStored[23].stored  >=2 && player.cropsStored[7].stored >= 1 && player.cropsStored[11].stored >= 3 && howManyBake <= 3){
+
+                    player.cropsStored[23].stored = parseInt(player.cropsStored[23].stored) - 2;
+                    player.cropsStored[7].stored = parseInt(player.cropsStored[7].stored) - 1;
+                    player.cropsStored[11].stored = parseInt(player.cropsStored[11].stored) - 3;
+                    eclairReq1Txt.setText(player.cropsStored[23].stored +'/2');
+                    eclairReq2Txt.setText(player.cropsStored[7].stored +'/1');
+                    eclairReq3Txt.setText(player.cropsStored[11].stored +'/3');
+                    bakeryOptionSelected = 3;
+                    localStorage.setItem('bakeryOptionSelected',3);
+                    bakeryTimeText.setText('Time: 2 minutes per');
+                    bakeryHeader.setText('Making Cream Eclair');
+                    howManyBaker();
+                } else{lackResource();}
+            }else{incorrectSound.play();}
+        
         }); 
           goog.events.listen(bakeryChoiceChild5, ["mousedown", "touchstart"], function () {
-            bakeryOptionSelected = 4;
-            bakeryTimeText.setText('Time: 2 minutes per batch');
-            try{bakeryChoiceChild1.removeChild(bakerySelectedCheck);bakeryChoiceChild2.removeChild(bakerySelectedCheck);bakeryChoiceChild3.removeChild(bakerySelectedCheck);
-                bakeryChoiceChild4.removeChild(bakerySelectedCheck);
-            }catch(err){console.log(err);}   
-            bakeryChoiceChild5.appendChild(bakerySelectedCheck);bakeryHeader.setText('Making Jelly Donuts');
+            if (howManyBake <= 3){
+                if (player.cropsStored[23].stored >=2  && player.cropsStored[13].stored >=2 && player.cropsStored[7].stored >= 1){
+                    bakeryOptionSelected = 4;
+                    localStorage.setItem('bakeryOptionSelected',4);
+                    player.cropsStored[23].stored = parseInt(player.cropsStored[23].stored) - 2;
+                    player.cropsStored[13].stored = parseInt(player.cropsStored[13].stored) - 2;
+                    player.cropsStored[7].stored = parseInt(player.cropsStored[7].stored) - 1;
+                    donutReq1Txt.setText( player.cropsStored[23].stored + '/2');
+                    donutReq2Txt.setText( player.cropsStored[13].stored + '/2');
+                    donutReq3Txt.setText( player.cropsStored[7].stored + '/1');
+                    bakeryTimeText.setText('Time: 2 minutes per batch');
+                    bakeryHeader.setText('Making Jelly Donuts');
+                    howManyBaker();  
+                }else{lackResource();}
+            }else{incorrectSound.play();}
+      
         });
-       
+        function lackResource(){
+            incorrectSound.play();  bakeryHeader.setText('Lacking Ingredients').setFontColor('red');
+            lime.scheduleManager.callAfter(function (){
+                bakeryHeader.setText('Select a Recipe').setFontColor('#FFFFFF');
+            },this, 2500);
+        }
+        
+        goog.events.listen(bakeryViewAdBtn1, ["mousedown", "touchstart"], function (e) { 
+           
+           
+            localStorage.setItem('MedFarm_StarCashBoost', 1);
+            lime.scheduleManager.callAfter(function(){
+                bakeryCostCover1.setHidden(true);
+               
+                localStorage.setItem('pieUnlocked', 1);
+            },this, 3000)
+
+            e.event.stopPropagation();
+             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+        });
+        if (parseInt(localStorage.getItem('pieUnlocked')) == 1){
+            bakeryCostCover1.setHidden(true).setPosition(-1000, -1000);
+            try {
+               goog.events.removeAll(bakeryViewAdBtn1);        
+           }
+           catch (err) { console.log("failedremovelistener") }
+        };
+        goog.events.listen(bakeryViewAdBtn2, ["mousedown", "touchstart"], function (e) { 
+           
+           
+            localStorage.setItem('MedFarm_StarCashBoost', 1);
+            lime.scheduleManager.callAfter(function(){
+                bakeryCostCover2.setHidden(true);
+               
+                localStorage.setItem('manchetUnlocked', 1);
+            },this, 3000)
+
+            e.event.stopPropagation();
+             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+        });
+        if (parseInt(localStorage.getItem('manchetUnlocked')) == 1){
+            bakeryCostCover2.setHidden(true).setPosition(-1000, -1000);
+            try {
+               goog.events.removeAll(bakeryViewAdBtn2);        
+           }
+           catch (err) { console.log("failedremovelistener") }
+        };
+        goog.events.listen(bakeryViewAdBtn3, ["mousedown", "touchstart"], function (e) { 
+           
+           
+            localStorage.setItem('MedFarm_StarCashBoost', 1);
+            lime.scheduleManager.callAfter(function(){
+                bakeryCostCover3.setHidden(true);
+               
+                localStorage.setItem('eclairUnlocked', 1);
+            },this, 3000)
+
+            e.event.stopPropagation();
+             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+        });
+        if (parseInt(localStorage.getItem('eclairUnlocked')) == 1){
+            bakeryCostCover3.setHidden(true).setPosition(-1000, -1000);
+            try {
+               goog.events.removeAll(bakeryViewAdBtn3);        
+           }
+           catch (err) { console.log("failedremovelistener") }
+        };
+        goog.events.listen(bakeryViewAdBtn4, ["mousedown", "touchstart"], function (e) { 
+           
+           
+            localStorage.setItem('MedFarm_StarCashBoost', 1);
+            lime.scheduleManager.callAfter(function(){
+                bakeryCostCover4.setHidden(true);
+               
+                localStorage.setItem('donutsUnlocked', 1);
+            },this, 3000)
+
+            e.event.stopPropagation();
+             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
+        });
+        if (parseInt(localStorage.getItem('donutsUnlocked')) == 1){
+            bakeryCostCover4.setHidden(true).setPosition(-1000, -1000);
+            try {
+               goog.events.removeAll(bakeryViewAdBtn4);        
+           }
+           catch (err) { console.log("failedremovelistener") }
+        };
         goog.events.listen(bakeryRight, ["mousedown", "touchstart"], function () { moveBakeryR(); });
         goog.events.listen(bakeryLeft, ["mousedown", "touchstart"], function () {  moveBakeryL(); });
 
-function moveBakeryL(){
-    let posbak1 = bakeryChoiceChild1.getPosition(); 
-    let posbak2 = bakeryChoiceChild2.getPosition();
-    let posbak3 = bakeryChoiceChild3.getPosition();
-    let posbak4 = bakeryChoiceChild4.getPosition();
-    let posbak5 = bakeryChoiceChild5.getPosition();
-
-  if(bakeryOptionVisible <= 0){ 
-        bakeryChoiceChild1.setPosition(18, 32);
-        bakeryChoiceChild2.setPosition( a.width + 18, 32);
-        bakeryChoiceChild3.setPosition( a.width * 2  + 18, 32);
-        bakeryChoiceChild4.setPosition( a.width * 3 + 18, 32);
-        bakeryChoiceChild5.setPosition( a.width * 4 + 18, 32);
+        function moveBakeryL(){
       
-        bakeryOptionVisible = 0;
-   };
-   if(bakeryOptionVisible > 0){ 
-    bakeryChoiceChild1.setPosition( posbak1.x + a.width , 32);
-    bakeryChoiceChild2.setPosition( posbak2.x + a.width , 32);
-    bakeryChoiceChild3.setPosition(  posbak3.x + a.width , 32);
-    bakeryChoiceChild4.setPosition(  posbak4.x + a.width , 32);
-    bakeryChoiceChild5.setPosition(  posbak5.x + a.width , 32);
+            let posbak1 = bakeryChoiceChild1.getPosition(); 
+            let posbak2 = bakeryChoiceChild2.getPosition();
+            let posbak3 = bakeryChoiceChild3.getPosition();
+            let posbak4 = bakeryChoiceChild4.getPosition();
+            let posbak5 = bakeryChoiceChild5.getPosition();
 
-    bakeryOptionVisible =  bakeryOptionVisible - 1;
-};
-console.log(bakeryOptionVisible)
-};
-function moveBakeryR(){
-    let posbak1 = bakeryChoiceChild1.getPosition(); 
-    let posbak2 = bakeryChoiceChild2.getPosition();
-    let posbak3 = bakeryChoiceChild3.getPosition();
-    let posbak4 = bakeryChoiceChild4.getPosition();
-    let posbak5 = bakeryChoiceChild5.getPosition();
-   
-   
+            if(bakeryOptionVisible <= 0){ 
+                bakeryLeft.setOpacity(0.5);bakeryRight.setOpacity(1.0);
+                    bakeryChoiceChild1.setPosition(21, 32);
+                    bakeryChoiceChild2.setPosition( a.width + 21, 32);
+                    bakeryChoiceChild3.setPosition( a.width * 2  + 21, 32);
+                    bakeryChoiceChild4.setPosition( a.width * 3 + 21, 32);
+                    bakeryChoiceChild5.setPosition( a.width * 4 + 21, 32);
+                
+                    bakeryOptionVisible = 0;
+            };
+            if(bakeryOptionVisible > 0){ 
+                bakeryLeft.setOpacity(1.0);bakeryRight.setOpacity(1.0);
+                bakeryChoiceChild1.setPosition( posbak1.x + a.width , 32);
+                bakeryChoiceChild2.setPosition( posbak2.x + a.width , 32);
+                bakeryChoiceChild3.setPosition(  posbak3.x + a.width , 32);
+                bakeryChoiceChild4.setPosition(  posbak4.x + a.width , 32);
+                bakeryChoiceChild5.setPosition(  posbak5.x + a.width , 32);
+
+                bakeryOptionVisible =  bakeryOptionVisible - 1;
+                
+            
+            };
+            console.log(bakeryOptionVisible)
+            if(bakeryOptionVisible == 0){bakeryRight.setOpacity(1.0); bakeryLeft.setOpacity(0.4);}
+            setBakeryText(bakeryOptionVisible);
+        };
+        function moveBakeryR(){
+            bakeryLeft.setOpacity(1.0);
+            let posbak1 = bakeryChoiceChild1.getPosition(); 
+            let posbak2 = bakeryChoiceChild2.getPosition();
+            let posbak3 = bakeryChoiceChild3.getPosition();
+            let posbak4 = bakeryChoiceChild4.getPosition();
+            let posbak5 = bakeryChoiceChild5.getPosition();  
+
+            if(bakeryOptionVisible >= 0 && bakeryOptionVisible < 4){ 
+                bakeryChoiceChild1.setPosition( posbak1.x - a.width, 32);
+                bakeryChoiceChild2.setPosition( posbak2.x  - a.width, 32);
+                bakeryChoiceChild3.setPosition(  posbak3.x  - a.width, 32);
+                bakeryChoiceChild4.setPosition(  posbak4.x  - a.width, 32);
+                bakeryChoiceChild5.setPosition(  posbak5.x   - a.width, 32);
+                bakeryOptionVisible =  bakeryOptionVisible + 1;
+                
+            };
+            // console.log(bakeryOptionVisible);
+            setBakeryText(bakeryOptionVisible);
+            if(bakeryOptionVisible == 4){bakeryRight.setOpacity(0.4);} else{bakeryRight.setOpacity(1.0);}
+        }
+        function setBakeryText(bakeryOptionVisible){
+           
+            switch(bakeryOptionVisible){
+                case 0:{ bakeryTimeText.setText('Time: 1 minute per');return;};
+                case 1:{ bakeryTimeText.setText('Time: 1.5 minutes per');return;};
+                case 2:{ bakeryTimeText.setText('Time: 1.5 minutes per');return;};
+                case 3:{ bakeryTimeText.setText('Time: 2 minutes per'); return;};
+                case 4:{ bakeryTimeText.setText('Time: 2 minutes per batch'); return;};
+                default: return;
+            }
+        }
 
 
-   if(bakeryOptionVisible >= 0 && bakeryOptionVisible < 4){ 
-    bakeryChoiceChild1.setPosition( posbak1.x - a.width, 32);
-    bakeryChoiceChild2.setPosition( posbak2.x  - a.width, 32);
-    bakeryChoiceChild3.setPosition(  posbak3.x  - a.width, 32);
-    bakeryChoiceChild4.setPosition(  posbak4.x  - a.width, 32);
-    bakeryChoiceChild5.setPosition(  posbak5.x   - a.width, 32);
- 
-    bakeryOptionVisible =  bakeryOptionVisible + 1;
-};
-console.log(bakeryOptionVisible)
 
-}
+    function loadSavedBakery(){
+        ovenState = JSON.parse(localStorage.getItem('ovenState'));
+        // console.log(' inside loadsaved bakery with ' + JSON.stringify(ovenState));
+        if (ovenState.ovens[0].content > -1){  
+            console.log(' inside loadsaved bakery1');
+             bakeryOrder1Img.setFill(imgArrayBakery[ovenState.ovens[0].content]); bakeryOrder1Txt.setText("Ready"); 
+             ovenState.ovens[0].filled = 1;
+             ovenState.ovens[0].time = 0;
+    
+        } else {  ovenState.ovens[0].filled = 0;ovenState.ovens[0].time = 60;};
+        if (ovenState.ovens[1].content > -1){
+            console.log(' inside loadsaved bakery2');
+            
+            bakeryOrder2Img.setFill(imgArrayBakery[ovenState.ovens[1].content ]); bakeryOrder2Txt.setText("Ready"); 
+      
+           ovenState.ovens[1].filled = 1;
+           ovenState.ovens[1].time = 0;
 
-        var bakeryClose = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(134, 490).setSize(40, 40).setFill(imgArray[21].src);
+        } else {  ovenState.ovens[1].filled = 0;ovenState.ovens[1].time = 60;};;
+        if (ovenState.ovens[2].content > -1){ 
+            let timeThis32 =  ovenState.time3;
+            bakeryOrder3Img.setFill(imgArrayBakery[ovenState.ovens[2].content ]); bakeryOrder3Txt.setText('Ready'); 
+            ovenState.ovens[2].filled = 1;
+            ovenState.ovens[2].time = 0;
+         
+        } else {  ovenState.ovens[2].filled = 0;ovenState.ovens[2].time = 60;};;
+        if (ovenState.ovens[3].content > -1){
+            
+            bakeryOrder4Img.setFill(imgArrayBakery[ovenState.ovens[3].content ]); bakeryOrder4Txt.setText('Ready'); 
+            ovenState.ovens[3].filled = 1;
+            ovenState.ovens[3].time = 0;
+           
+        } else {  ovenState.ovens[3].filled = 0;ovenState.ovens[3].time = 60;};;
+    };
+    console.log('storehousecheck = ' + storeHouseUpgraded );
+    if(storeHouseUpgraded > 0){
+        
+        loadSavedBakery();
+    };
+
+
+
+
+        var bakeryClose = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(145, 479).setSize(30, 30).setFill(imgArray[21].src);
         bakeryFill1.appendChild(bakeryClose);
         goog.events.listen(bakeryClose, ["mousedown", "touchstart"], function () {
-            sceneActive = 'Windmill'
-            c.replaceScene(windmillScene);
+            sceneActive = 'Windmill';
+            c.replaceScene(windmillScene, lime.transitions.SlideInDown);
 
         });
 
@@ -21524,17 +22086,31 @@ console.log(bakeryOptionVisible)
             console.log("code tried is " + code);
             if(code.toString() == 'resetQuake'){localStorage.setItem('landSlideDone', 0); landSlideDone = 1;};
             if(code.toString() == 'resetStory'){localStorage.setItem('showStory', 1); showStory = 1;};
-            if(code.toString() == 'resetMaps'){mapsComplete = 0; localStorage.setItem("mapsComplete", 0); mapPieces = 0; localStorage.setItem("mapPieces", 0);
-             chests_Complete = 0; localStorage.setItem("chests_Complete", 0); showStory = 1;
-             for(k = 0; k < 31; k++){
-                mapLocations.places[k].found = 0;
-             };
-             localStorage.setItem('mapLocations', JSON.stringify(mapLocations));
-             for(l = 0; l < 8; l++){
-                collectItems.digUpCollect[l].owned = 0;
-             };
-             localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
+            if(code.toString() == 'resetMaps'){
+                mapsComplete = 0; localStorage.setItem("mapsComplete", 0); mapPieces = 0; localStorage.setItem("mapPieces", 0);
+                chests_Complete = 0; localStorage.setItem("chests_Complete", 0); showStory = 1;
+                for(k = 0; k < 31; k++){
+                    mapLocations.places[k].found = 0;
+                };
+                localStorage.setItem('mapLocations', JSON.stringify(mapLocations));
+                for(l = 0; l < 8; l++){
+                    collectItems.digUpCollect[l].owned = 0;
+                };
+                localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
             };
+            if(code.toString() == 'resetOvens'){
+                ovenState =
+                {   ovens:[
+                        {index: 0, content: -1, time: 60, filled: 0},
+                        {index: 1, content: -1, time: 60, filled: 0},
+                        {index: 2, content: -1, time: 60, filled: 0},
+                        {index: 3, content: -1, time: 60, filled: 0}
+                    ]
+                    
+                }
+                localStorage.setItem('ovenState', JSON.stringify(ovenState));
+            }
+            if(code.toString() == 'resetLantern'){collectItems.storeItems[7].owned = 0; localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));}
             if(code.toString() == 'resetPrize'){
                 document.getElementById('weeklyPrize').style.display = 'block'; 
                 var adjustMe = localStorage.getItem("lastLoginDay"); adjustMe = adjustMe - 1;
@@ -21925,7 +22501,7 @@ console.log(bakeryOptionVisible)
             localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
        };
 
-        function showMFToast(tmessage, imagePassed, exDetail, dur1, position) {
+        function showMFToast(tmessage, imagePassed, exDetail, dur1, position, grav) {
             
             try{
                 if(exDetail != 'neediron'){
@@ -21933,12 +22509,13 @@ console.log(bakeryOptionVisible)
                 }
                 let customDur = dur1 || 4000;
                let positionThis = position || 'right'
+               let gravThis = grav || 'top'
             Toastify({
                 text: tmessage,
                 avatar: imagePassed,
                 duration: customDur,
                 close: false,
-                gravity: "top", // `top` or `bottom`
+                gravity: gravThis, // `top` or `bottom`
                 position: positionThis, // `left`, `center` or `right`
                 style: {background: 'linear-gradient(to right, #00b06d, #1f2c07, #86ef6f)'},
                 stopOnFocus: true, // Prevents dismissing of toast on hover
@@ -22008,7 +22585,7 @@ console.log(bakeryOptionVisible)
     var storyMe = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(100, 240).setSize(65, 65).setFill(imgArrayPlayer[0]);
     storyGround1.appendChild(storyMe);
     
-    var storyMeBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-12,-15).setSize(200, 75).setFill("images/UI/speechBubble2.png");
+    var storyMeBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-12,-15).setSize(200, 75).setFill(imgArray[116]);
     storyMe.appendChild(storyMeBubble);
     var storyText1 = (new lime.Label()).setText("Hi - I am Fordwin and I am 18 years old").setPosition(100,0).setSize(180, 115).setFontColor('black').setFontSize(15);
     storyMeBubble.appendChild(storyText1);
@@ -22027,14 +22604,14 @@ console.log(bakeryOptionVisible)
     }, this, 200, 1000);
     var storyWife = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(260, 380).setSize(65, 65).setFill(imgArrayDenise[8]);
     storyGround1.appendChild(storyWife);
-    var storyWifeBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-125,-75).setSize(175, 75).setFill("images/UI/speechBubble3.png");
+    var storyWifeBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-125,-75).setSize(175, 75).setFill(imgArray[117]);
     storyWife.appendChild(storyWifeBubble);
     var storyTextWife = (new lime.Label()).setText("Fordwin.... WAIT!").setPosition(87,75).setSize(180, 100).setFontColor('black').setFontSize(18);
     storyWifeBubble.appendChild(storyTextWife);
 
     var storyDad = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(140, 80).setSize(36, 48).setFill("images/UI/oldMan.png");
     storyGround1.appendChild(storyDad);
-    var storyDadBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-9,-75).setSize(175, 85).setFill("images/UI/speechBubble2.png");
+    var storyDadBubble = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(-9,-75).setSize(175, 85).setFill(imgArray[116]);
     storyDad.appendChild(storyDadBubble);
     var storyTextDad = (new lime.Label()).setText("Son - take these supplies to help you get started").setPosition(87,52).setSize(160, 100).setFontColor('black').setFontSize(16);
     storyDadBubble.appendChild(storyTextDad);

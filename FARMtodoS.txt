@@ -36,3 +36,37 @@ Farther out
 	patricia quests
 
 	wife food quests
+	
+	
+	cropsStored: [
+        { index: 0, name: "Tomatoes", stored: 0 },
+        { index: 1, name: "Carrots", stored: 0 },
+        { index: 2, name: "Broccoli ", stored: 0 },
+        { index: 3, name: "Eggplant", stored: 0 },
+        { index: 4, name: "Peppers", stored: 0 },
+        { index: 5, name: "Corn", stored: 0 },
+        { index: 6, name: "Hay", stored: 0 },
+        { index: 7, name: "Milk", stored: 0 },
+        { index: 8, name: "Apple", stored: 0 },
+        { index: 9, name: "Pear", stored: 0 },
+        { index: 10, name: "Pork", stored: 0 },
+        { index: 11, name: "Eggs", stored: 0 },
+        { index: 12, name: "Grapes", stored: 0 },
+        { index: 13, name: "Jelly", stored: 0 },
+        { index: 14, name: "Wood", stored: 100 },
+        { index: 15, name: "Iron", stored: 200 },
+        { index: 16, name: "Jars", stored: 0 },
+        { index: 17, name: "Barrels", stored: 0 },
+        { index: 18, name: "Cider", stored: 0 },
+        { index: 19, name: "Grape Juice", stored: 0 },
+        { index: 20, name: "Bottles", stored: 0 },
+        { index: 21, name: "Planks", stored: 0 },
+        { index: 22, name: "Wheat", stored: 0 },
+        { index: 23, name: "Flour", stored: 0 },
+         { index: 24, name: "Bread", stored: 0 },
+         {index: 25, name: "Mushrooms", stored: 0},
+         {index: 26, name: "Apple Pie", stored: 0},
+         {index: 27, name: "Manchet Loaf", stored: 0},
+         {index: 28, name: "Creme Eclair", stored: 0},
+         {index: 29, name: "Jelly Donuts", stored: 0}
+    ]
