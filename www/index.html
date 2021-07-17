@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
@@ -19,7 +19,7 @@
         body {
             background-color: black;
             background-image: url(images/UI/introBackNew2.png);
-            background-size: cover;
+            background-size: contain;
             background-repeat: no-repeat;
             text-size-adjust: none;
             -webkit-text-size-adjust: none;
@@ -114,7 +114,7 @@
             /*background-color: #8a2be2;*/
             
             position: absolute;
-            left: 48%;
+            left: 49%;
             top: 2.5%;
             transform: translate(-60%,-50%);
             display: none;
@@ -261,6 +261,9 @@
         #lowerStarCashImg3,#lowerStarCashImg4 {
             width: 45px;
             transform: translate(0px,16px);
+        }
+        #lowerStarCashImg3{
+            transform: translate(8px,16px);
         }
         #lowerStarCashImg5 {
             width: 45px;
@@ -643,11 +646,12 @@
         #foundHeirClose {
             transform: translate(-25px, -45px);
         }
+
         @media (max-width: 800px) {
             .alignleft, .alignright {
                 display: none;
-            }
-
+            }  
+           
             /*#inter1 {
                 width: 98%;
                 left: 1%;
@@ -662,7 +666,7 @@
                 top: 50%;
                 min-width: 720px;
             min-height: 1080px;
-                transform:  translate(-50%,-50%);
+                transform:  translate(-49%,-50%);
 
             }
         }
@@ -858,14 +862,7 @@
             padding-top: 15px;
             text-align: center;
         } */
-        #copyBtn{
-           width: 90px; 
-           height: 25px;
-           font-size: 20px;
-            background-color:darkgreen;
-            color: azure;
-            margin-top: 8px;
-        }
+
         #rateMeBtnWrap {
             position: absolute;
             bottom: 5px;
@@ -1486,7 +1483,7 @@ table.power
 
                 <div id='prizeCodeThisTime' class="prizeCodeStyle"> </div>
                 
-                <button id='copyBtn' onclick="copyToClipboard()">Copy</button>
+              
                 <br>
                 <h3>View an Ad to get your code above</h3>
             </div>
@@ -1502,13 +1499,13 @@ table.power
 
     </div>
     
-    <script type="text/javascript" src="farming_1.8.js"></script>
+    <script type="text/javascript" src="farming_2.0.js"></script>
     <script src="js/tweenMax.min.js"></script>
     <script src='js/Winwheel.js'></script>
     <script defer type="text/javascript" src="loader.js"></script>
 
     <script type=text/javascript>
-        
+      /*jshint esversion: 6 */
         var deviceType = (navigator.userAgent.match(/iPad/i)) == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i)) == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
         if (localStorage.getItem("rateMeNever") == null) { localStorage.setItem("rateMeNever", 0); }
         if (localStorage.getItem("MedFarms_boughtMasterPack") == null) { localStorage.setItem("MedFarms_boughtMasterPack", 0); }
@@ -1522,20 +1519,20 @@ table.power
         ////rate me
         var rateMeBtnYes = document.getElementById("rateMeBtnYes");
         rateMeBtnYes.addEventListener("click", openRateOnPlay);
-        rateMeBtnYes.addEventListener("touchstart", openRateOnPlay);
+        rateMeBtnYes.addEventListener("touchstart", openRateOnPlay, {passive: true});
 
 
         var rateMeBtnNo = document.getElementById("rateMeBtnNo");
         rateMeBtnNo.addEventListener("click", closeRate1);
-        rateMeBtnNo.addEventListener("touchstart", closeRate1);
+        rateMeBtnNo.addEventListener("touchstart", closeRate1, {passive: true});
 
         var rateMeBtnLater = document.getElementById("rateMeBtnLater");
         rateMeBtnLater.addEventListener("click", closeRate2);
-        rateMeBtnLater.addEventListener("touchstart", closeRate2);
+        rateMeBtnLater.addEventListener("touchstart", closeRate2, {passive: true});
 
         var rateImage = document.getElementById("rateImage");
         rateImage.addEventListener("click", openRateOnPlay);
-        rateImage.addEventListener("touchstart", openRateOnPlay);
+        rateImage.addEventListener("touchstart", openRateOnPlay, {passive: true});
 
 
         function closeFBShare() {
@@ -1795,7 +1792,7 @@ table.power
             }catch(err){console.log('consume failed');}
         try{
             Enhance.purchases.attemptPurchase('master_pack', onPurchaseSuccess, onPurchaseFailed);
-         }catch(err){alert("purchase failed try again soon - error " + err)};
+         }catch(err){alert("purchase failed try again soon - error " + err);}
             
         };
 
@@ -1804,13 +1801,9 @@ table.power
         var buyingStarterPack = 0;
         var buyingMasterPack = 0;
 
-
         localStorage.setItem('MedFarms_buyingSmallStars', 0);
-
         localStorage.setItem('MedFarms_buyingLargeStars', 0);
-
         localStorage.setItem('MedFarms_buyingStarterPack', 0);
-
         localStorage.setItem('MedFarms_buyingMasterPack', 0);
 
         var purchaseCheck = function (){
@@ -1862,9 +1855,9 @@ table.power
                 try{
                     Enhance.isInterstitialReady(callbackAdInter);
                 localStorage.setItem('MedFarm_LoadAd',0) ;
-                }catch(err){console.console.log(err);}
+                }catch(err){console.log(err);}
                
-             };
+             }
 
 
 
@@ -1900,14 +1893,14 @@ table.power
                     Enhance.isRewardedAdReady(callbackRewarded); 
                     localStorage.setItem('MedFarm_StarCashBoost', 0);
                 }catch(err){console.console.log(err);}
-            };
+            }
             
 
            
             setTimeout(() => {
                 purchaseCheck();
             }, 500);
-        }
+        };
 
 
         window.addEventListener('load', function (event) {
@@ -1999,35 +1992,53 @@ table.power
 
         });
         //open prize entry
-        document.getElementById("OpenPrizeBtn").addEventListener("touchstart", function (event) {
-            localStorage.setItem('enteredPrizeToday', 1);       
-           document.getElementById("prizeMe").style.display = 'none';               
-           window.open('https://forms.gle/eYfjBHiJK7UU7MHW7', '_blank');
-           document.getElementById("weeklyPrize").style.display = 'none';
-           try{Enhance.logEvent('contestEntry');}catch(err){console.log(err);}
-           event.stopPropagation();
-           
-
-        }, false);
         document.getElementById("OpenPrizeBtn").addEventListener("click", function (event) {
+            var isVisPrize3 = document.getElementById("prizeMe").style.display ;    
+            if (isVisPrize3 == 'block') {
                     localStorage.setItem('enteredPrizeToday', 1);
-                    document.getElementById("prizeMe").style.display = 'none';               
-                    window.open('https://forms.gle/eYfjBHiJK7UU7MHW7', '_blank');
-                    document.getElementById("weeklyPrize").style.display = 'none';
+                    document.getElementById("prizeMe").style.display = 'none';   
+                    var copyText = document.getElementById("prizeCodeThisTime");
+                    console.log("copyText is " + copyText.innerHTML);       
+                    let codeThis =    copyText.innerHTML;
+                    var entryPath = 'https://docs.google.com/forms/d/e/1FAIpQLScagsRtI1r-CBXdXevU4PFL83Oo7jTcavyfxUssgr7PJsmQqg/viewform?usp=pp_url&entry.1167240952=' + codeThis + ' ';
+                    window.open(entryPath, '_blank');
+                    document.getElementById("currentStarCashBackPrize").style.display = 'none';
                     try{Enhance.logEvent('contestEntry');}catch(err){console.log(err);}
                     event.stopPropagation();
-                
+            }
+         
+                 }, false);
+        document.getElementById("OpenPrizeBtn").addEventListener("touchend", function (event) {
+            var isVisPrize3 = document.getElementById("prizeMe").style.display ;    
+            if (isVisPrize3 == 'block') {
+                    localStorage.setItem('enteredPrizeToday', 1);
+                    document.getElementById("prizeMe").style.display = 'none';   
+                    var copyText = document.getElementById("prizeCodeThisTime");
+                    console.log("copyText is " + copyText.innerHTML);       
+                    let codeThis =    copyText.innerHTML;
+                    var entryPath = 'https://docs.google.com/forms/d/e/1FAIpQLScagsRtI1r-CBXdXevU4PFL83Oo7jTcavyfxUssgr7PJsmQqg/viewform?usp=pp_url&entry.1167240952=' + codeThis + ' ';
+                    window.open(entryPath, '_blank');
+                    document.getElementById("currentStarCashBackPrize").style.display = 'none';
+                    try{Enhance.logEvent('contestEntry');}catch(err){console.log(err);}
+                    event.stopPropagation();
+            }
          
                  }, false);
    //closePrize
-        document.getElementById("closePrize").addEventListener("touchstart", function (event) {         
+        document.getElementById("closePrize").addEventListener("touchstart", function (event) {
+            var isVisPrize1 = document.getElementById("prizeMe").style.display ;    
+            if (isVisPrize1 == 'block') {
             document.getElementById("prizeMe").style.display = 'none';
-           event.stopPropagation();       
+           event.stopPropagation();    
+            }   
 
         }, false);
         document.getElementById("closePrize").addEventListener("click", function (event) {         
+            var isVisPrize2 = document.getElementById("prizeMe").style.display ;    
+            if (isVisPrize2 == 'block') {
             document.getElementById("prizeMe").style.display = 'none';
-           event.stopPropagation();       
+           event.stopPropagation();    
+            }    
 
         }, false);
         document.getElementById("weeklyPrize").addEventListener("touchstart", function (event) {
@@ -2050,8 +2061,34 @@ table.power
             Enhance.enableLocalNotification('Crops are Ready', 'Pick your Crops before they Wither!', 86400);
 
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
+
+
+
+    function copyToClipboard() {
+        // console.log("in copy func");
+        var copyText = document.getElementById("prizeCodeThisTime");
+        console.log("copyText is " + copyText.innerHTML);
+        /* Select the text field */
+        // copyText.select();
+        var range = document.createRange();
+        range.selectNode(copyText);
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+        // window.getSelection().addRange(range);
+        /* Copy the text inside the text field */
+        try {
+            var successful = document.execCommand('copy');
+            var msg = successful ? 'successful' : 'unsuccessful';
+            console.log('Copying text command was ' + msg);
+        } catch (err) {
+            console.log('Oops, unable to copy');
+        }
+
+        /* Alert the copied text */
+        alert("Copied the text: " + copyText.value);
+    }
+
     </script>
  <script async type="text/javascript" src="js/toastify.js"></script>
 </body>
