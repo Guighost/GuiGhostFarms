@@ -42,8 +42,17 @@
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-           
+           text-align: center;
 			align-content: center;
+        }
+        #loadingText1{
+            width: 100%;
+            height: 100%;
+            margin-left:auto;
+            margin-top: 10%;
+            color:azure;
+            font-size: large;
+
         }
 	#startLogo{
         position: absolute;
@@ -646,71 +655,6 @@
         #foundHeirClose {
             transform: translate(-25px, -45px);
         }
-
-        @media (max-width: 800px) {
-            .alignleft, .alignright {
-                display: none;
-            }  
-            body {
-                background-color: black;
-                background-image: url(images/UI/introBackNew2.png);
-            background-size: cover;
-            background-repeat: no-repeat;
-            text-size-adjust: none;
-            -webkit-text-size-adjust: none;
-            background-position: center;
-            overflow: none;
-            touch-action: none;
-            }
-            /*#inter1 {
-                width: 98%;
-                left: 1%;
-            }*/
-        }
-
-        @media (max-width: 760px) {
-            .alignleft, .alignright {
-                display: none;
-            }
-            #fbShare{
-                top: 50%;
-                min-width: 720px;
-            min-height: 1080px;
-                transform:  translate(-49%,-50%);
-
-            }
-        }
-
-        @media (max-width: 320px) {
-
-
-            #gPlayImg {
-                width: 200px;
-                margin-left: 50%;
-                transform: translate(-100px,0px);
-            }
-            #fbShare{
-                top: 10px;
-                min-width: 360px;
-            min-height: 540px;
-                transform:  translate(-50%,-50%);
-
-            }
-         
-        }
-
-        @media (max-width: 320px) and (max-height:480px) {
-
-
-            #gPlayImg {
-                width: 200px;
-                margin-left: 50%;
-                transform: translate(-100px,50px);
-            }
-
-      
-        }
-
         /*/////rate me*/
         #rateMe, #prizeMe {
             position: absolute;
@@ -934,6 +878,76 @@
             -webkit-animation: tilt-in-fwd-tr 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
             animation: tilt-in-fwd-tr 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
             opacity: 1;
+        }
+
+
+        @media (max-width: 800px) {
+            .alignleft, .alignright {
+                display: none;
+            }  
+            body {
+                background-color: black;
+                background-image: url(images/UI/introBackNew2.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-size-adjust: none;
+            -webkit-text-size-adjust: none;
+            background-position: center;
+            overflow: none;
+            touch-action: none;
+            }
+            /*#inter1 {
+                width: 98%;
+                left: 1%;
+            }*/
+        }
+
+        @media (max-width: 760px) {
+            .alignleft, .alignright {
+                display: none;
+            }
+            #fbShare{
+                top: 50%;
+                min-width: 720px;
+            min-height: 1080px;
+                transform:  translate(-49%,-50%);
+
+            }
+        }
+         @media (max-width: 400px) {
+            #amazonCardLarge{
+                margin-top: 10px;
+            height: 175px;
+            }             
+         }
+        @media (max-width: 320px) {
+
+
+            #gPlayImg {
+                width: 200px;
+                margin-left: 50%;
+                transform: translate(-100px,0px);
+            }
+            #fbShare{
+                top: 10px;
+                min-width: 360px;
+            min-height: 540px;
+                transform:  translate(-50%,-50%);
+
+            }
+         
+        }
+
+        @media (max-width: 320px) and (max-height:480px) {
+
+
+            #gPlayImg {
+                width: 200px;
+                margin-left: 50%;
+                transform: translate(-100px,50px);
+            }
+
+      
         }
 
 
@@ -1306,7 +1320,18 @@ table.power
 	animation-iteration-count: infinite; 
 	animation-timing-function: linear;
 }
+@media (max-width: 400px){
+    #spin_button{
+    width: 250px;
+    height: 80px;
+    margin-left: 50%;
+    margin-top:-5px;
+    transform:translateX(-135px);
+  
+    
+}
 
+}
 
     </style>
 
@@ -1328,7 +1353,10 @@ table.power
 
 	
     <div id="loadingGG"> 
+       
           <img id="startLogo" src="images/UI/MenuTop2.png"  width="300" alt="StarCashImg" /> 
+          <p id="loadingText1">...Loading...</p>
+          
     </div>
 
   
@@ -1510,7 +1538,7 @@ table.power
     </div>
     
 
-    <script type="text/javascript" src="farming_2.0.js"></script>
+    <script type="text/javascript" src="farming_2.0_Min.js"></script>
     <script src="js/tweenMax.min.js"></script>
     <script src='js/Winwheel.js'></script>
     <script defer type="text/javascript" src="loader.js"></script>
@@ -1546,21 +1574,10 @@ table.power
         rateImage.addEventListener("touchstart", openRateOnPlay, {passive: true});
 
 
-        function closeFBShare() {
+        function closeFBShare() { document.getElementById("fbshare").style.display = 'none'; }
 
-            document.getElementById("fbshare").style.display = 'none';
-        }
-
-        function closeRate1() {
-            document.getElementById("rateMe").style.display = 'none';
-            localStorage.setItem("rateMeNever", 1);
-
-        }
-        function closeRate2() {
-            document.getElementById("rateMe").style.display = 'none';
-            localStorage.setItem("rateMeNever", 0);
-
-        }
+        function closeRate1() { document.getElementById("rateMe").style.display = 'none'; localStorage.setItem("rateMeNever", 1); }
+        function closeRate2() { document.getElementById("rateMe").style.display = 'none'; localStorage.setItem("rateMeNever", 0); }
 
         function openRateOnPlay() {
             document.getElementById("rateMe").style.display = 'none';
@@ -1571,48 +1588,23 @@ table.power
         }
 
   
-        var whichMore = 'stack';
-        ///more games button function
-        function openLink() {
-            console.log("clicked more games");
-            localStorage.setItem("moreGamesClicked", 0);
-            if (deviceType == "Android") {
-                if (whichMore == 'stack') {
-                    whichMore = 'star';
-                    try {
-                        cordova.plugins.market.open('com.GuiGhostGames.StackerBoB');
-                        //cordova.plugins.market.search('guighost')
-                    }
-                    catch (err) { console.log("caught = " + err); }
-                }
-                else if (whichMore == 'star') {
-                    whichMore = 'stack';
-                    try {
-                        cordova.plugins.market.open('com.GuiGhostGames.StarMatch2048');
-                        //cordova.plugins.market.search('guighost')
-                    }
-                    catch (err) { console.log("caught = " + err); }
-                }
-            }
 
-
-
-        }
-
+        var onceSmallStars = false;
+        var onceLargeStars = false;
+        var onceSmallStarter = false;
+        var onceLargeStarter = false;
         ///In App Payments
         var callback_SmallSP = function () {
             var onPurchaseSuccess = function () {
                 Enhance.purchases.getDisplayTitle('starpack_small', '50 Stars', function (result) {
                     localStorage.setItem('MedFarms_boughtSmallStars', 1);
                     alert("You have sucessfully purchased " + result);
-
                 });
                 starCash = parseInt(localStorage.getItem('starCash'));
                 //console.log("before starcash = " + starCash);
                 starCash = parseInt(starCash) + 50;
                 //console.log("after buy small starcash = " + starCash);
                 localStorage.setItem('starCash', starCash);
-
                 buySmallStars.owned = 1;
                 try { Enhance.purchases.consume('starpack_small', onConsumeSuccessCallback, onConsumeFailedCallback); }
                 catch (err) { console.log(err); }
@@ -1627,30 +1619,23 @@ table.power
                         try { Enhance.purchases.consume('starpack_small', onConsumeSuccessCallback, onConsumeFailedCallback); }
                         catch (err) { console.log(err); }
                     }
-                }
-                );
-                alert('Purchased failed');
+                });
+                if (onceSmallStars == false){onceSmallStars = true; 
+                    try {Enhance.purchases.attemptPurchase('starpack_small', onPurchaseSuccess, onPurchaseFailed);}
+                        catch (err) { console.log(err);}}
+               else{alert('Purchased failed - try again later');} 
             };
-            var onConsumeSuccessCallback = function () {
-                //consumed
-                console.log('product consumed');
-            };
-            var onConsumeFailedCallback = function () {
-                // consume failee Failure
-                console.log('consume failed');
-            };
+            var onConsumeSuccessCallback = function () { console.log('product consumed'); };
+            var onConsumeFailedCallback = function () {  console.log('consume failed'); };
             try{
                 Enhance.purchases.isItemOwned('starpack_small', function (result) {
                         if (result == true) {
                             try { Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
                             catch (err) { console.log(err);}
-                        }
-                        
+                        }                        
                 });
             }catch(err){console.log('consume failed');}
             Enhance.purchases.attemptPurchase('starpack_small', onPurchaseSuccess, onPurchaseFailed);
-
-
         };
 
 
@@ -1682,45 +1667,33 @@ table.power
                     }
                 }
                 );
-                alert('purchased failed');
+                if (onceLargeStars == false){ onceLargeStars = true; 
+                    try{Enhance.purchases.attemptPurchase('starpack_large', onPurchaseSuccessLSP, onPurchaseFailedLSP);}
+                        catch (err) { console.log(err);}}
+                else{alert('purchased failed - try again later');}
             };
-            var onConsumeSuccessCallback = function () {
-                //consumed
-                console.log('product consumed');
-            };
-            var onConsumeFailedCallback = function () {
-                // consume failee Failure
-                console.log('consume failed');
-            };
+            var onConsumeSuccessCallback = function () { console.log('product consumed'); };
+            var onConsumeFailedCallback = function () {  console.log('consume failed'); };
+         
             try{
                 Enhance.purchases.isItemOwned('starpack_large', function (result) {
                         if (result == true) {
                             try { Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
                             catch (err) { console.log(err);}
-                        }
-                        
+                        }                        
                 });
             }catch(err){console.log('consume failed');}
             Enhance.purchases.attemptPurchase('starpack_large', onPurchaseSuccessLSP, onPurchaseFailedLSP);
         };
-
-
-
-
-
         var callback_starterPack = function () {
             var onPurchaseSuccess = function () {
                 Enhance.purchases.getDisplayTitle('starter_pack', 'Resource Starter Pack', function (result) {
                     localStorage.setItem('MedFarms_boughtStarterPack', 1);
                     alert("You have sucessfully purchased " + result);
-                });
-               
-            
+                });           
                 try { Enhance.purchases.consume('starter_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                catch (err) { console.log(err); }
-            
+                catch (err) { console.log(err); }            
             };
-
             var onPurchaseFailed = function () {
                 // Failure
                 localStorage.setItem('MedFarms_boughtStarterPack', 0);
@@ -1730,46 +1703,34 @@ table.power
                         try { Enhance.purchases.consume('starter_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
                         catch (err) { console.log(err); }
                     }
-
                 });
-                alert('Purchased failed');
+                if(onceSmallStarter == false){ onceSmallStarter = true;
+                     try{ Enhance.purchases.attemptPurchase('starter_pack', onPurchaseSuccess, onPurchaseFailed);}
+                        catch (err) { console.log(err);}}
+                else{alert('Purchased failed - try again later');}                
             };
-            var onConsumeSuccessCallback = function () {
-                //consumed
-                console.log('product consumed');
-            };
-            var onConsumeFailedCallback = function () {
-                // consume failee Failure
-                console.log('consume failed');
-            };
+            var onConsumeSuccessCallback = function () { console.log('product consumed');};
+            var onConsumeFailedCallback = function () { console.log('consume failed'); };
             try{
                 Enhance.purchases.isItemOwned('starter_pack', function (result) {
                         if (result == true) {
                             try { Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
                             catch (err) { console.log(err);}
-                        }
-                        
+                        }                        
                 });
             }catch(err){console.log('consume failed');}
             Enhance.purchases.attemptPurchase('starter_pack', onPurchaseSuccess, onPurchaseFailed);
         };
 
-
-
         var callback_masterPack = function () {
             var onPurchaseSuccess = function () {
-                Enhance.purchases.getDisplayTitle('master_pack', 'Resource Master Pack', function (result) {
-                   
+                Enhance.purchases.getDisplayTitle('master_pack', 'Resource Master Pack', function (result) {                   
                     alert("You have sucessfully purchased " + result);
                     localStorage.setItem('MedFarms_boughtMasterPack', 1);
-                });
-          
-            
+                });     
                 try { Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
-                catch (err) { console.log(err); }
-             
+                catch (err) { console.log(err); }             
             };
-
             var onPurchaseFailed = function () {
                 // Failure
                 localStorage.setItem('MedFarms_boughtMasterPack', 0);
@@ -1777,34 +1738,26 @@ table.power
                     if (result == true) {
                         try { Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
                         catch (err) { console.log(err);}
-                    }
-                    
-                }
-                );
-                alert('Purchased failed- try again soon');
+                    }                    
+                });
+                if(onceLargeStarter == false){onceLargeStarter = true; 
+                    try {  Enhance.purchases.attemptPurchase('master_pack', onPurchaseSuccess, onPurchaseFailed);}
+                        catch (err) { console.log(err);}}
+                else{alert('Purchased failed- try again soon'); }
             };
-            var onConsumeSuccessCallback = function () {
-                //consumed
-                console.log('product consumed');
-            };
-            var onConsumeFailedCallback = function () {
-                // consume failee Failure
-                console.log('consume failed');
-            };
+            var onConsumeSuccessCallback = function () {console.log('product consumed');};
+            var onConsumeFailedCallback = function () {console.log('consume failed');};
             try{
             Enhance.purchases.isItemOwned('master_pack', function (result) {
                     if (result == true) {
                         try { Enhance.purchases.consume('master_pack', onConsumeSuccessCallback, onConsumeFailedCallback); }
                         catch (err) { console.log(err);}
-                    }
-                    
-                }
-                );
+                    }                    
+                });
             }catch(err){console.log('consume failed');}
-        try{
-            Enhance.purchases.attemptPurchase('master_pack', onPurchaseSuccess, onPurchaseFailed);
-         }catch(err){alert("purchase failed try again soon - error " + err);}
-            
+            try{
+                Enhance.purchases.attemptPurchase('master_pack', onPurchaseSuccess, onPurchaseFailed);
+            }catch(err){console("purchase failed " + err);}            
         };
 
         var buyingSmallStars = 0;
@@ -1824,95 +1777,63 @@ table.power
             buyingStarterPack = localStorage.getItem('MedFarms_buyingStarterPack');
             buyingMasterPack = localStorage.getItem('MedFarms_buyingMasterPack');
             if (buyingSmallStars == 1) {
-                //console.log("in IF buying small stars");
-               
                 try { Enhance.purchases.isSupported(callback_SmallSP); }
                 catch (err) { console.log("failed small stars"); alert('Purchase failed - try again soon'); }
                 localStorage.setItem('MedFarms_buyingSmallStars', 0);
-
             }
-            else if (buyingLargeStars == 1) {
-            
+            else if (buyingLargeStars == 1) {            
                 try { Enhance.purchases.isSupported(callback_LargeSP); }
                 catch (err) { console.log("failed large stars "); }
                 localStorage.setItem('MedFarms_buyingLargeStars', 0);
-
             }
             else if (buyingStarterPack == 1) {
                 try { Enhance.purchases.isSupported(callback_starterPack); }
                 catch (err) { console.log("failed buystarter"); }
                 localStorage.setItem('MedFarms_buyingStarterPack', 0);
-
             }
             else if (buyingMasterPack == 1) {
                 try { Enhance.purchases.isSupported(callback_masterPack); }
                 catch (err) { console.log("failedBuyMaster"); }
                 localStorage.setItem('MedFarms_buyingMasterPack', 0);
-
-
             }
-
-
             //interstatial
             var callbackAdInter = function (result) {
-                if (!result) {
-                    app.writeLog('Interstitial ad is not ready');
-                    return;
-                }
-
+                if (!result) { app.writeLog('Interstitial ad is not ready'); return; }
                 Enhance.showInterstitialAd();
             };
             if (localStorage.getItem('MedFarm_LoadAd') == 1 && localStorage.getItem('MedFarm_StarCashBoost') == 0) {
                 try{
                     Enhance.isInterstitialReady(callbackAdInter);
                 localStorage.setItem('MedFarm_LoadAd',0) ;
-                }catch(err){console.log(err);}
-               
+                }catch(err){console.log(err);}               
              }
-
-
 
             ///rewarded
             var callbackRewarded = function (result) {
-                if (!result) {
-                    app.writeLog('Rewarded ad is not ready');
-                    return;
-                }
+                if (!result) { app.writeLog('Rewarded ad is not ready'); return;  }
 
                 // The ad is ready
                 var onRewardGranted = function (rewardValue, rewardType) {
+                    localStorage.setItem('rewardWatched', 1);
                     if (rewardType == Enhance.RewardType.ITEM)
                         app.writeLog("Reward granted (item)");
-
                     else if (rewardType == Enhance.RewardType.COINS)
                         app.writeLog("Reward granted (coins), value: " + rewardValue);
                 };
-
-                var onRewardDeclined = function () {
-                    app.writeLog('Reward declined');
-                };
-
-                var onRewardUnavailable = function () {
-                    app.writeLog('Reward unavailable');
-                };
-
+                var onRewardDeclined = function () {app.writeLog('Reward declined'); };
+                var onRewardUnavailable = function () { app.writeLog('Reward unavailable'); };
                 Enhance.showRewardedAd(onRewardGranted, onRewardDeclined, onRewardUnavailable);
             };
-
             if (localStorage.getItem('MedFarm_StarCashBoost') == 1) {
               try{
                     Enhance.isRewardedAdReady(callbackRewarded); 
                     localStorage.setItem('MedFarm_StarCashBoost', 0);
                 }catch(err){console.console.log(err);}
-            }
-            
-
-           
+            }          
             setTimeout(() => {
                 purchaseCheck();
             }, 500);
         };
-
 
         window.addEventListener('load', function (event) {
             setTimeout(() => {
@@ -1957,7 +1878,6 @@ table.power
 
             var shareUs = document.getElementById("sharedBtnImg");
             var shareUs2 = document.getElementById("shareUs2");
-
             shareUs.addEventListener("click", function (event) { SocialShareGG(1); });
             shareUs.addEventListener("touchend", function (event) { SocialShareGG(1); });
             shareUs2.addEventListener("click", function (event) { SocialShareGG(2); });
@@ -1996,11 +1916,6 @@ table.power
                     }  catch (err) { console.log(err); }
                 }
             }
-
-
-
-
-
         });
         //open prize entry
         document.getElementById("OpenPrizeBtn").addEventListener("click", function (event) {
@@ -2016,9 +1931,8 @@ table.power
                     document.getElementById("currentStarCashBackPrize").style.display = 'none';
                     try{Enhance.logEvent('contestEntry');}catch(err){console.log(err);}
                     event.stopPropagation();
-            }
-         
-                 }, false);
+            }         
+        }, false);
         document.getElementById("OpenPrizeBtn").addEventListener("touchend", function (event) {
             var isVisPrize3 = document.getElementById("prizeMe").style.display ;    
             if (isVisPrize3 == 'block') {
@@ -2032,17 +1946,15 @@ table.power
                     document.getElementById("currentStarCashBackPrize").style.display = 'none';
                     try{Enhance.logEvent('contestEntry');}catch(err){console.log(err);}
                     event.stopPropagation();
-            }
-         
-                 }, false);
+            }         
+        }, false);
    //closePrize
         document.getElementById("closePrize").addEventListener("touchstart", function (event) {
             var isVisPrize1 = document.getElementById("prizeMe").style.display ;    
             if (isVisPrize1 == 'block') {
             document.getElementById("prizeMe").style.display = 'none';
            event.stopPropagation();    
-            }   
-
+            }  
         }, false);
         document.getElementById("closePrize").addEventListener("click", function (event) {         
             var isVisPrize2 = document.getElementById("prizeMe").style.display ;    
@@ -2050,7 +1962,6 @@ table.power
             document.getElementById("prizeMe").style.display = 'none';
            event.stopPropagation();    
             }    
-
         }, false);
         document.getElementById("weeklyPrize").addEventListener("touchstart", function (event) {
             var isVisFBe = document.getElementById("fbshare").style.display;
@@ -2058,7 +1969,6 @@ table.power
                 document.getElementById("prizeMe").style.display = 'block';
                  event.stopPropagation();
             }
-
         }, false);
         document.getElementById("weeklyPrize").addEventListener("click", function (event) {
             var isVisFBe = document.getElementById("fbshare").style.display;
@@ -2066,17 +1976,12 @@ table.power
                 document.getElementById("prizeMe").style.display = 'block';
                  event.stopPropagation();
             }
-
         }, false);
         try {
             Enhance.enableLocalNotification('Crops are Ready', 'Pick your Crops before they Wither!', 86400);
-
         } catch (error) {
             console.log(error);
         }
-
-
-
     function copyToClipboard() {
         // console.log("in copy func");
         var copyText = document.getElementById("prizeCodeThisTime");
@@ -2085,9 +1990,7 @@ table.power
         // copyText.select();
         var range = document.createRange();
         range.selectNode(copyText);
-        copyText.setSelectionRange(0, 99999); /* For mobile devices */
-        // window.getSelection().addRange(range);
-        /* Copy the text inside the text field */
+        copyText.setSelectionRange(0, 99999);
         try {
             var successful = document.execCommand('copy');
             var msg = successful ? 'successful' : 'unsuccessful';
@@ -2095,7 +1998,6 @@ table.power
         } catch (err) {
             console.log('Oops, unable to copy');
         }
-
         /* Alert the copied text */
         alert("Copied the text: " + copyText.value);
     }

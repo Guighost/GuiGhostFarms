@@ -119,29 +119,13 @@ var app = {
     if(popOnceBackBtn == 0) {alert("Press Back again to Quit"); popOnceBackBtn = 1;}else{app_1.App.exitApp();}
     
   };
-  const hapticsImpactMedium = async () => {
-    await haptics.Haptics.impact({ style: haptics.ImpactStyle.Medium });
-  };
-  
-  const hapticsImpactLight = async () => {
-    await haptics.Haptics.impact({ style: haptics.ImpactStyle.Light });
-  };
+
   
   const hapticsVibrate = async () => {
     await haptics.Haptics.vibrate();
   };
   
-  const hapticsSelectionStart = async () => {
-    await haptics.Haptics.selectionStart();
-  };
-  
-  const hapticsSelectionChanged = async () => {
-    await haptics.Haptics.selectionChanged();
-  };
-  
-  const hapticsSelectionEnd = async () => {
-    await haptics.Haptics.selectionEnd();
-  };
+ 
 
 
 app.initialize();
