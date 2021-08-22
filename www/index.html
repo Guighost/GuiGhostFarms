@@ -1200,9 +1200,10 @@ table.power
     cursor: pointer;
 }
 #resetViewAd{
-  
-    width: 200px;
-    height: 50px;
+  position: absolute;
+    width: 150px;
+    height: 35px;
+    transform: translate(-75px, -150px);
     
    
    
@@ -1252,7 +1253,7 @@ table.power
 }
 #viewAdWheel{
     margin-left: 50%;
-    width:300px;
+    width:200px;
     transform:translate(-50%, 25%);
 }
 #wheelReward{
@@ -1482,11 +1483,8 @@ table.power
         </form>
     </div>
   
-    <div  id="wheelDiv" align="center">
-      
-        
+    <div  id="wheelDiv" align="center">    
         <div id="spinHeader" ><h1>Spin to Win</h1></div>
-             
         <div width="401" height="554" class="the_wheel" align="center" valign="center">
              </br>
               <div id="wheelArrow"></div>
@@ -1506,22 +1504,16 @@ table.power
             <h1 id="wheelRewardTxt1" >You Win</h1>
             
             <img id="wheelRewardImg" src="images/UI/coin4.png" alt="Spin"  />
-            
-           
+                      
             <h1 id="wheelRewardTxt2"> 50 Gold</h1>
-        </div>
-        
+        </div>       
     </div>
     <div id="prizeMe">
         <div  id="prizeMeInner">
             <div><h1>Your Prize Code</h1>
                <br>
-
 <!-- The button used to copy the text -->
-
-                <div id='prizeCodeThisTime' class="prizeCodeStyle"> </div>
-                
-              
+                <div id='prizeCodeThisTime' class="prizeCodeStyle"> </div>              
                 <br>
                 <h3>View an Ad to get your code above</h3>
             </div>
@@ -1532,9 +1524,7 @@ table.power
         <div id='OpenPrizeBtn'>Open the Site</div>
         <!-- <div id='OpenPrizeBtnAuto'>Enter by Email</div> -->
         <div id='closePrize'> </div>
-        </div>
-       
-
+        </div>     
     </div>
     
 
@@ -1559,8 +1549,6 @@ table.power
         var rateMeBtnYes = document.getElementById("rateMeBtnYes");
         rateMeBtnYes.addEventListener("click", openRateOnPlay);
         rateMeBtnYes.addEventListener("touchstart", openRateOnPlay, {passive: true});
-
-
         var rateMeBtnNo = document.getElementById("rateMeBtnNo");
         rateMeBtnNo.addEventListener("click", closeRate1);
         rateMeBtnNo.addEventListener("touchstart", closeRate1, {passive: true});
@@ -1657,7 +1645,7 @@ table.power
                 catch (err) { console.log(err); }
             };
 
-            var onPurchaseFailedLSP = function () {
+            var onPurchaseFailed = function () {
                 // Failure
                 localStorage.setItem('MedFarms_boughtLargeStars', 0);
                 Enhance.purchases.isItemOwned('starpack_large', function (result) {
@@ -1668,7 +1656,7 @@ table.power
                 }
                 );
                 if (onceLargeStars == false){ onceLargeStars = true; 
-                    try{Enhance.purchases.attemptPurchase('starpack_large', onPurchaseSuccessLSP, onPurchaseFailedLSP);}
+                    try{Enhance.purchases.attemptPurchase('starpack_large', onPurchaseSuccess, onPurchaseFailed);}
                         catch (err) { console.log(err);}}
                 else{alert('purchased failed - try again later');}
             };
@@ -1683,7 +1671,7 @@ table.power
                         }                        
                 });
             }catch(err){console.log('consume failed');}
-            Enhance.purchases.attemptPurchase('starpack_large', onPurchaseSuccessLSP, onPurchaseFailedLSP);
+            Enhance.purchases.attemptPurchase('starpack_large', onPurchaseSuccess, onPurchaseFailed);
         };
         var callback_starterPack = function () {
             var onPurchaseSuccess = function () {
@@ -1828,7 +1816,7 @@ table.power
               try{
                     Enhance.isRewardedAdReady(callbackRewarded); 
                     localStorage.setItem('MedFarm_StarCashBoost', 0);
-                }catch(err){console.console.log(err);}
+                }catch(err){console.log(err);}
             }          
             setTimeout(() => {
                 purchaseCheck();
