@@ -1882,7 +1882,7 @@ landSlideDone = localStorage.getItem('landSlideDone') || 0;
 
 var tutStep = 1;
 if (localStorage.getItem("GuiGhostFarms_tutStep") ===  null) { localStorage.setItem('GuiGhostFarms_tutStep', 1); }
-tutStep = localStorage.getItem('GuiGhostFarms_tutStep') || 1;
+tutStep = localStorage.getItem('GuiGhostFarms_tutStep') || 0;
 
 var tutSeen = 0;
 if (localStorage.getItem("GuiGhostFarms_tutSeen") === null) { localStorage.setItem('GuiGhostFarms_tutSeen', 0); }
@@ -2032,8 +2032,8 @@ var farming = {
                 }
             }
         });
-        goog.events.listen(this, ["mouseup", "touchend"], function (d) {  startedMove = 0; firstPick = 0; });
-        // goog.events.listen(this, ["touchend"], function (d) { startedMove = 0;firstPick = 0;  });
+        goog.events.listen(this, ["mouseup"], function (d) {  startedMove = 0; firstPick = 0; });
+        goog.events.listen(this, ["touchend"], function (d) { startedMove = 0;firstPick = 0;  });
 
         var arrayIndex = findWithAttr(landStateMaster, 'name', landIdent);
         //var existAlready = landStateMaster[arrayIndex].name;
@@ -2081,7 +2081,7 @@ var farming = {
             if (scene == 10) { b.currentCrop = 22; }
             b.currentCrop = Math.abs(b.currentCrop);
             var toPlant = a.crops[b.currentCrop].grow1;
-            // var toWithered = a.crops[b.currentCrop].withered;
+            var toWithered = a.crops[b.currentCrop].withered;
             // console.log("beforevals scene= " +scene +' hometreesright =' + homeTreesRight + " landIdent= " + landIdent + " collectItemOwned = " + collectItems.digUpCollect[0].owned )
             if (scene == 1 && homeTreesRight == 1 && landIdent == 't10' && collectItems.digUpCollect[1].owned != 1) { heirloom1Chest.setHidden(false); }
             var quickGrow = 0;
@@ -2132,7 +2132,7 @@ var farming = {
                             (
                                 incorrectSound.play(),
                                 waterStored = 0,
-                                waterPopNotif = 1
+                                waterPopNotif++
                             )
                             : c.state == farming.PLOWED && player.money >= a.crops[b.currentCrop].cost ?
                                 (
@@ -2263,7 +2263,7 @@ var farming = {
                     this.appendChild(timerDisplayCrop),
                     timerDisplayCrop.setText(Math.round((this.ripeTime / 1000) / 2)).setHidden(false),
                     onlyOnceWater = 1,
-                    120000 >= this.ripeTime && 119000 <= this.ripeTime ?
+                    60000 >= this.ripeTime && 59000 <= this.ripeTime ?
                         (
                             this.setFill("images/" + a.crops[this.crop].grow2).appendChild(timerDisplayCrop),
                             timerDisplayCrop.setText(Math.round((this.ripeTime / 1000) / 2)).setHidden(false).setOpacity(0.9),
@@ -2280,12 +2280,12 @@ var farming = {
                                 timerDisplayCrop.setText(Math.round((this.ripeTime / 1000) / 2)).setHidden(false).setOpacity(1.0)
 
                             ) :
-                        this.thirdTime >= this.ripeTime ?
+                            this.thirdTime >= this.ripeTime ?
                                 (
                                     this.setFill("images/" + a.crops[this.crop].grow2).appendChild(timerDisplayCrop),
                                     timerDisplayCrop.setText(Math.round((this.ripeTime / 1000) / 2)).setHidden(false).setOpacity(0.8)
                                 )
-                            : this.deathTime -= 1
+                                : this.deathTime -= 1
                 );
             if (scene == 2 && c.state == farming.GROWING) {
                 if (15000 >= this.ripeTime) { c.setFill("images/" + a.crops[6].grow3); }
@@ -4116,28 +4116,28 @@ farming.start = function () {
         { index: 28, name: "Cream Eclair", cost: 0, revenue: 26, time_to_ripe: 50, time_to_death: 10000, image: "items/eclair.png", harvest: "items/eclair.png", grow1: "items/eclair.png", grow2: "items/eclair.png", grow3: "items/eclair.png", stored: 0, withered: "items/eclair.png" },
         { index: 29, name: "Jelly Donuts", cost: 0, revenue: 30, time_to_ripe: 50, time_to_death: 10000, image: "items/donuts.png", harvest: "items/donuts.png", grow1: "items/donuts.png", grow2: "items/donuts.png", grow3: "items/donuts.png", stored: 0, withered: "items/donuts.png" },
     ];
-    // a.barnyard = [
-    //     { index: 0, name: "yard", image: "grass.png" },
-    //     { index: 1, name: "road", image: "vertRoad.png" },
-    //     { index: 2, name: "sacks", image: "sacks.png" },
-    //     { index: 3, name: "market", image: "marketCoin2.png" },
-    //     { index: 4, name: "vertFence", image: "vertFence.png" },
-    //     { index: 5, name: "horizFence", image: "horizFence.png" },
-    //     { index: 6, name: "shelter1", image: "shelter1.png" },
-    //     { index: 7, name: "shelter2", image: "shelter2.png" },
-    //     { index: 8, name: "crate1", image: "eggplantCrate.png" },
-    //     { index: 9, name: "crate2", image: "cornCrate.png" },
-    //     { index: 10, name: "well", image: "well2.png" },
-    //     { index: 11, name: "anvil", image: "anvil2.png" },
-    //     { index: 12, name: "anvil2", image: "anvil2.png" },
-    //     { index: 13, name: "trees1", image: "leftTrees.png" },
-    //     { index: 14, name: "trees2", image: "rightTrees.png" },
-    //     { index: 15, name: "horizRoad", image: "horizRoad.png" },
-    //     { index: 16, name: "toolTable", image: "toolTable.png" },
-    //     { index: 17, name: "forge", image: "forge4.png" },
-    //     { index: 18, name: "gateFence", image: "gateFence.png" },
-    //     { index: 19, name: "marketArrow", image: "marketCoinArrow2.png" },
-    // ];
+    a.barnyard = [
+        { index: 0, name: "yard", image: "grass.png" },
+        { index: 1, name: "road", image: "vertRoad.png" },
+        { index: 2, name: "sacks", image: "sacks.png" },
+        { index: 3, name: "market", image: "marketCoin2.png" },
+        { index: 4, name: "vertFence", image: "vertFence.png" },
+        { index: 5, name: "horizFence", image: "horizFence.png" },
+        { index: 6, name: "shelter1", image: "shelter1.png" },
+        { index: 7, name: "shelter2", image: "shelter2.png" },
+        { index: 8, name: "crate1", image: "eggplantCrate.png" },
+        { index: 9, name: "crate2", image: "cornCrate.png" },
+        { index: 10, name: "well", image: "well2.png" },
+        { index: 11, name: "anvil", image: "anvil2.png" },
+        { index: 12, name: "anvil2", image: "anvil2.png" },
+        { index: 13, name: "trees1", image: "leftTrees.png" },
+        { index: 14, name: "trees2", image: "rightTrees.png" },
+        { index: 15, name: "horizRoad", image: "horizRoad.png" },
+        { index: 16, name: "toolTable", image: "toolTable.png" },
+        { index: 17, name: "forge", image: "forge4.png" },
+        { index: 18, name: "gateFence", image: "gateFence.png" },
+        { index: 19, name: "marketArrow", image: "marketCoinArrow2.png" },
+    ];
     // a.barnlevelImg = [
     //     { name: "Basic Shed", image: imgArray6[0].src },
     //     { name: "Small Barn", image: imgArray6[1].src },
@@ -4146,27 +4146,27 @@ farming.start = function () {
     //     { name: "Double Silo Barn", image: imgArray6[4].src },
     //     { name: "Pasture", image: "pasture.png" }
     // ];
-    // a.pasture = [
-    //     { name: "pond1", image: "water.png" },
-    //     { name: "dairyBarnP", image: "dairyBarn.png" },
-    //     { name: "vertBridge", image: "bridgeVert.png" },
-    //     { name: "pTree1", image: "pTree1.png" },
-    //     { name: "pTree2", image: "pTree2.png" },
-    //     { name: "dirtRoad", image: "dirt.png" },
-    //     { name: "cowEatR4", image: "cow_eatR4.png" },
-    //     { name: "cowForward1", image: "cow_eatF3.png" },
-    //     { name: "rocks1", image: "rocks.png" },
-    //     { name: "treeBlockP", image: "treeBlockP.png" },
-    //     { name: "cowEatR1", image: "cow_eatR1.png" },
-    //     { name: "cowEatR2", image: "cow_eatR2.png" },
-    //     { name: "cowEatR4", image: "cow_eatR4.png" },
-    //     { name: "cowWalkLeft1", image: "cowLeft1.png" },
-    //     { name: "cowWalkLeft2", image: "cowLeft2.png" },
-    //     { name: "cowWalkLeft3", image: "cowLeft3.png" },
-    //     { name: "cowWalkLeft4", image: "cowLeft4.png" },
-    //     { name: "cowRight1", image: "cowRight1.png" },
-    //     { name: "cowRight2", image: "cowRight2.png" },
-    // ];
+    a.pasture = [
+        { name: "pond1", image: "water.png" },
+        { name: "dairyBarnP", image: "dairyBarn.png" },
+        { name: "vertBridge", image: "bridgeVert.png" },
+        { name: "pTree1", image: "pTree1.png" },
+        { name: "pTree2", image: "pTree2.png" },
+        { name: "dirtRoad", image: "dirt.png" },
+        { name: "cowEatR4", image: "cow_eatR4.png" },
+        { name: "cowForward1", image: "cow_eatF3.png" },
+        { name: "rocks1", image: "rocks.png" },
+        { name: "treeBlockP", image: "treeBlockP.png" },
+        { name: "cowEatR1", image: "cow_eatR1.png" },
+        { name: "cowEatR2", image: "cow_eatR2.png" },
+        { name: "cowEatR4", image: "cow_eatR4.png" },
+        { name: "cowWalkLeft1", image: "cowLeft1.png" },
+        { name: "cowWalkLeft2", image: "cowLeft2.png" },
+        { name: "cowWalkLeft3", image: "cowLeft3.png" },
+        { name: "cowWalkLeft4", image: "cowLeft4.png" },
+        { name: "cowRight1", image: "cowRight1.png" },
+        { name: "cowRight2", image: "cowRight2.png" },
+    ];
     a.orchard = [
         { name: "waterfallMtn", image: "Orchard/OrchardBack4.png" },
         { name: "waterfallMtn", image: "Orchard/OrchardLandslide.png" },
@@ -4517,7 +4517,7 @@ farming.start = function () {
 
         //to do - windmill check
         if (acres[5].owned == 0) { windmillNavWM.setFill(imgArray[57]); windmillNavH.setFill(imgArray[57]); windmillNavO.setFill(imgArray[57]); windmillNavP.setFill(imgArray[57]); windmillNavV.setFill(imgArray[57]); windmillNavLS.setFill(imgArray[57]); }
-        else if (acres[5].owned == 1) { windmillNavWM.setFill(imgArray[59]); windmillNavH.setFill(imgArray[59]); windmillNavO.setFill(imgArray[59]); windmillNavP.setFill(imgArray[59]); windmillNavV.setFill(imgArray[59]); windmillNavLS.setFill(imgArray[59]); };
+        else if (acres[5].owned == 1) { windmillNavWM.setFill(imgArray[59]); windmillNavH.setFill(imgArray[59]); windmillNavO.setFill(imgArray[59]); windmillNavP.setFill(imgArray[59]); windmillNavV.setFill(imgArray[59]); windmillNavLS.setFill(imgArray[49]); };
 
         compassHBack.setHidden(false); compassOBack.setHidden(false); compassPBack.setHidden(false); compassVBack.setHidden(false); compassLSBack.setHidden(false); compassWMBack.setHidden(false);
         treesImgV.setHidden(true);
@@ -4572,8 +4572,7 @@ farming.start = function () {
     }
     document.addEventListener("visibilitychange", handleVisibilityChange, false);
     goog.events.listen(achieveBtn, ["mousedown", "touchstart"], function () {
-        sceneBefore = 1;
-        if (globalModalBlock == 0) {  sceneBefore = 1; achieve(sceneBefore);  }
+        if (globalModalBlock == 0) {  a.sceneBefore = 1; achieve(sceneBefore);  }
     });
     goog.events.listen(fbBtnH, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {  openStarMenu();
@@ -4606,7 +4605,7 @@ farming.start = function () {
     };
 
     var acresOwned4 = 0;
-    lime.scheduleManager.scheduleWithDelay(function () {        a.updateDates(); soundCheck();   }, this, 30000);
+    lime.scheduleManager.scheduleWithDelay(function () {        a.updateDates(); soundCheck();   }, this, 3000);
     a.updateDates = async function () {
         dayCount = dayCount + 1;
         if (daysTillHerald >= 1) { daysTillHerald = parseInt(daysTillHerald) - 1; }
@@ -5062,7 +5061,7 @@ farming.start = function () {
             }
             if (sparkleStarMenu >= 4) { sparkleStarMenu = 0; };
             if (waterPopNotif == 1) {
-                showMFToast("Out of Water", imgArray[111].src, 'home', 2000,'right','top' );
+                showMFToast("Out of Water", imgArray[111].src, 'home', 2000);
                 lime.scheduleManager.callAfter(function () { waterPopNotif = 0; }, this, 275);
             };
             if(sceneActive == 'Home'){
@@ -5382,18 +5381,17 @@ farming.start = function () {
         //console.log("visibleLink = " + visibleLink);
         if (visibleLink == false) {
             adWatched2 = 1;
-            stopSound4Ad();
             localStorage.setItem('adWatched', 1);
             localStorage.setItem('MedFarm_LoadAd', 1);
             localStorage.setItem('MedFarm_StarCashBoost', 0);
-            
+            lime.audio.setMute(true);
             setTimeout(function () {
                 changeSeeds.setHidden(false);
                 boostCrops.setHidden(true);
                 homeBlock.setHidden(true);
                 globalModalBlock = 0;
             }, 500);
-                        
+            lime.scheduleManager.callAfter(function () { soundCheck(); }, this, 20000);            
             e.event.stopPropagation();
             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
         }
@@ -5452,7 +5450,7 @@ farming.start = function () {
     e.appendChild(glassCover);
     var tutModal = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(48, 130).setSize(210, 220).setFill(imgArray5[0]).setHidden(true);
     e.appendChild(tutModal);
-    if (tutStep <= 3) { tutModal.setHidden(false);  try{Enhance.logEvent('TUTORIAL_BEGIN');} catch(err){console.log(err)}}
+    if (tutStep <= 3) { tutModal.setHidden(false) }
     var nextBtn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(90, 210).setSize(35, 35).setFill(imgArray[104]);
     tutModal.appendChild(nextBtn);
     var swipeRightHint2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 125).setSize(44, 44).setFill(imgArray[103]);
@@ -5475,7 +5473,7 @@ farming.start = function () {
         swipeRightHint.setHidden(true);
         homeBlock.setHidden(true);
         tutSeen = localStorage.getItem('GuiGhostFarms_tutSeen')  || 0;
-        tutStep = parseInt(localStorage.getItem('GuiGhostFarms_tutStep'))  || 1;
+        tutStep = parseInt(localStorage.getItem('GuiGhostFarms_tutStep'))  || 0;
         console.log("tutstep IN = " + tutStep);
         if (tutStep != 1) { swipeRightHint2.setHidden(true); }
         if (tutStep >= 15) {
@@ -5592,10 +5590,10 @@ farming.start = function () {
             outOfCash.setHidden(true); outOfCashV.setHidden(true); outOfCashO.setHidden(true); outOfCashP.setHidden(true);
             homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
             warningSeen = 1;
-            stopSound4Ad();
             localStorage.setItem("acreDiscount1", 0);
             localStorage.setItem('MedFarm_LoadAd', 0);
             localStorage.setItem('MedFarm_StarCashBoost', 1);
+            lime.audio.setMute(true);
             lime.scheduleManager.callAfter(function () {
                 player.money = parseInt(player.money) + 200;
                 a.updateMoney();
@@ -5676,10 +5674,10 @@ farming.start = function () {
         //for sale pasture ad discount
         var salevis2 = confirmSale.getHidden();
         if (!salevis2) {
-            stopSound4Ad();
+         
             localStorage.setItem('MedFarm_LoadAd', 0);
             localStorage.setItem('MedFarm_StarCashBoost', 1);
-       
+            lime.audio.setMute(true);
             lime.scheduleManager.callAfter(function () {
                 if (currentAcre4Sale == 1) {
                     localStorage.setItem("acreDiscount1", 1);   //dairyDiscount
@@ -5704,7 +5702,6 @@ farming.start = function () {
                     confirmText.setText("Fruit Orchard 4500");
                 }
             }, this, 2500);
-          
         }
     });
 
@@ -6002,11 +5999,10 @@ farming.start = function () {
         var isVisSpeedAd = scaffoldH.getHidden();
         if (isVisSpeedAd == false) {
             adBoostBarn = 1; speedBarnAdBtn.setHidden(true);
-             hammerSound.stop();
-             stopSound4Ad();
+            lime.audio.setMute(true);
             localStorage.setItem('MedFarm_LoadAd', 1);
             localStorage.setItem('MedFarm_StarCashBoost', 0);
-         
+            lime.scheduleManager.callAfter(function () {  soundCheck();  }, this, 20000);
         }
     });
     function upgradeHomeBarn(barnUpgradeCostTools, barnUpgradeCostWood) {          //barnUpgrades    barn Upgrades
@@ -6052,7 +6048,7 @@ farming.start = function () {
 
                 function homeBarnUpScheduled() {
                     if (adBoostBarn == 1 && adBoostBarnOnce == 0) {
-                        secondsToUpgrade = 10;
+                        secondsToUpgrade = 15;
                         if (secondsToUpgrade < 0) { secondsToUpgrade = 2; };
                         adBoostBarnOnce = 1;
                     }
@@ -6255,11 +6251,9 @@ farming.start = function () {
         if (!adVisDaily) {
             console.log("visible detected try show ad")
             dailyDouble = 2;
-            lime.audio.setMute(true);
-            stopSound4Ad();
             localStorage.setItem('MedFarm_LoadAd', 0);
             localStorage.setItem('MedFarm_StarCashBoost', 1);
-         
+            lime.audio.setMute(true);
             lime.scheduleManager.callAfter(function () {
 
                 switch (daysInRow) {
@@ -6294,9 +6288,8 @@ farming.start = function () {
                     default: console.log("none");
 
                 }
-                
             }, this, 3000);
-        
+
             dailyAdViewBtn.setOpacity(0.3);
         }
     });
@@ -6305,7 +6298,7 @@ farming.start = function () {
 
 
 
-    var collectDaily = (new lime.GlossyButton()).setColor("#00ff00").setText("Collect Rewards").setPosition(150, a.height - 150).setSize(160, 28);
+    var collectDaily = (new lime.GlossyButton()).setColor("#00ff00").setText("Collect Rewards").setPosition(150, a.height - 145).setSize(160, 28);
     dailyRewardLayer.appendChild(collectDaily);
 
     var closeDailyLayer = (new lime.GlossyButton()).setColor("#663300").setText("Close").setPosition(150, a.height - 105).setSize(100, 20);
@@ -6330,25 +6323,20 @@ farming.start = function () {
 
     goog.events.listen(collectDaily, ["mousedown", "touchstart"], function (e) {
         var isHidDW1 = dailyRewardLayer.getHidden();
-        if (isHidDW1 == false) {
+        if (!isHidDW1) {
+            collectDailyLogin();
             collectDaily.setHidden(true);
             dailyRewardLayer.setHidden(true);
-            try {
-                collectDailyLogin();
-          
-             goog.events.removeAll(collectDaily); 
-            } catch (err) { }
+            try { goog.events.removeAll(collectDaily); } catch (err) { }
             e.event.stopPropagation();
             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
             });
         }
-        collectDaily.setHidden(true);
-        dailyRewardLayer.setHidden(true);
     });
 
     goog.events.listen(closeDailyLayer, ["mousedown", "touchstart"], function (e) {
         var isHidDW2 = dailyRewardLayer.getHidden();
-        if (isHidDW2 == false)  {
+        if (!isHidDW2) {
             dailyRewardLayer.setHidden(true);
             try { goog.events.removeAll(collectDaily); } catch (err) { }
             e.event.stopPropagation();
@@ -6391,6 +6379,7 @@ farming.start = function () {
                 dailyRewardLayer.setHidden(true);
                 enteredPrizeToday = localStorage.getItem('enteredPrizeToday') || 0;
                 if (enteredPrizeToday == 1) { document.getElementById('currentStarCashBackPrize').style.display = 'none'; } else { document.getElementById('currentStarCashBackPrize').style.display = 'block'; };
+
             } else if (lastLoginDay < (today - 1)) {
                 console.log("more than 1 day ago");
                 sparkleStarBtn.setHidden(false);
@@ -6458,7 +6447,7 @@ farming.start = function () {
     //clickReward2.addEventListener("touchend", function (event) { checkDailyLogin2(); event.preventDefault(); }, { passive: false });
     function collectDailyLogin() {
         purchaseSound.play();
-        daysInRow = localStorage.getItem("daysInRow") || 0;
+
         switch (daysInRow) {
             case 0: player.money = parseInt(player.money) + (100 * dailyDouble); a.updateMoney(); break;
             case 1: player.tools = parseInt(player.tools) + (150 * dailyDouble); a.updateTools(); break;
@@ -6468,12 +6457,13 @@ farming.start = function () {
             case 5: player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) + (150 * dailyDouble); a.updateStored(); break;
             case 6: player.money = parseInt(player.money) + (1000 * dailyDouble); a.updateMoney(); break;
             default: console.log("none");
+
         }
         daysInRow = parseInt(daysInRow) + 1;
         localStorage.setItem("daysInRow", daysInRow);
         starCash = parseInt(starCash) + dailyStars;        
     }
- 
+
     //////////seed scene///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     var l = (new lime.Scene).setRenderer(lime.Renderer.CANVAS),
@@ -6684,8 +6674,8 @@ farming.start = function () {
 
     goog.events.listen(achieveBtnP, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
-            sceneBefore = 2;
-            achieve(sceneBefore);
+            a.sceneBefore = 2;
+            achieve(a.sceneBefore);
         }
     });
 
@@ -7344,22 +7334,18 @@ farming.start = function () {
         if (isHidoChP == false) {
             outOfCashP.setHidden(true); outOfCash.setHidden(true); outOfCashV.setHidden(true); outOfCashO.setHidden(true);
             homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
-            lime.audio.setMute(true);
-            stopSound4Ad()
-            warningSeen = 1;
-           
 
+            warningSeen = 1;
             localStorage.setItem("acreDiscount1", 0);
             localStorage.setItem('MedFarm_LoadAd', 0);
             localStorage.setItem('MedFarm_StarCashBoost', 1);
-        
+            lime.audio.setMute(true);
             lime.scheduleManager.callAfter(function () {
                 player.money = parseInt(player.money) + 200;
                 a.updateMoney();
                 globalModalBlock = 0;
                 localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
             }, this, 5000);
-           
 
         }
     });
@@ -7439,13 +7425,12 @@ farming.start = function () {
         var salevisV = confirmSaleV.getHidden();
         if (!salevisV) {
             console.log("visible detected try show ad")
-            lime.audio.setMute(true);
-            themeSongNew.stop();
-            stopSound4Ad();
+
             localStorage.setItem("acreDiscount4", 1);  try { Enhance.logEvent('acreDiscount4'); } catch (err) { console.log("logging failed") };
             localStorage.setItem('MedFarm_LoadAd', 0);
             localStorage.setItem('MedFarm_StarCashBoost', 1);
-       
+            lime.audio.setMute(true);
+
             lime.scheduleManager.callAfter(function () {
                 if (player.money >= 11250) {
                     confirmTextSubV.setHidden(true);
@@ -7455,7 +7440,6 @@ farming.start = function () {
                 adVinyardBuyText.setText("Discount Applied!")
                 confirmTextV.setText("Vineyard 11,250");
             }, this, 2500);
-            
 
         }
     });
@@ -7702,7 +7686,6 @@ farming.start = function () {
             hideAndDelayNavIcons();
             ///from pature to Market
             c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
-            checkShortage();
             sceneActive = 'LS';
             waterfallSound.stop();
             chickenSound.play();
@@ -9091,13 +9074,13 @@ farming.start = function () {
         var salevis2 = confirmSaleLS.getHidden();
         if (!salevis2) {
             console.log("visible detected try show ad")
+
             localStorage.setItem("acreDiscount3", 1);
             try { Enhance.logEvent('acreDiscount3'); } catch (err) { console.log("logging failed") };
-            stopSound4Ad();
             localStorage.setItem('MedFarm_LoadAd', 0);
             localStorage.setItem('MedFarm_StarCashBoost', 1);
-     
-        
+            lime.audio.setMute(true);
+
             lime.scheduleManager.callAfter(function () {
                 discountLS = localStorage.getItem('acreDiscount3') || 0;
 
@@ -9273,18 +9256,16 @@ farming.start = function () {
             homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
 
             warningSeen = 1;
-            stopSound4Ad();
             localStorage.setItem("acreDiscount1", 0);
             localStorage.setItem('MedFarm_LoadAd', 0);
             localStorage.setItem('MedFarm_StarCashBoost', 1);
-       
+            lime.audio.setMute(true);
             lime.scheduleManager.callAfter(function () {
                 player.money = parseInt(player.money) + 200;
                 a.updateMoney();
                 globalModalBlock = 0;
                 localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
             }, this, 5000);
-        
 
         }
     });
@@ -9828,7 +9809,6 @@ farming.start = function () {
         // console.log("in cave shift from " + caveActive + " to direction " + where);
         cavePlyrText.setText("The path is blocked. There must be another way");
         var origPos = caveFill1.getPosition();
-        themeSongNew.stop(); 
         switch (where) {
             case 'up': {
                 switch (caveActive) {
@@ -9893,7 +9873,7 @@ farming.start = function () {
             }
             case 'right': {
                 switch (caveActive) {
-                    case "LeftB": { caveActive = "CenterB"; caveNum = 4; themeSongNew.stop(); waterfallSound.stop(); caveLoop.play(true); caveGoUp.setHidden(false); caveGoLeft.setHidden(false); caveGoRight.setHidden(false); caveGoDown.setHidden(true); } break;
+                    case "LeftB": { caveActive = "CenterB"; caveNum = 4; caveGoUp.setHidden(false); caveGoLeft.setHidden(false); caveGoRight.setHidden(false); caveGoDown.setHidden(true); } break;
                     case "LeftM": { caveActive = "CenterM"; showPlayerCave(); caveNum = 5; caveGoUp.setHidden(true); caveGoLeft.setHidden(false); caveGoRight.setHidden(true); caveGoDown.setHidden(true); } break;
                     case "LeftT": { caveGoUp.setHidden(false); caveGoLeft.setHidden(false); caveGoRight.setHidden(true); caveGoDown.setHidden(true); } break;
                     case "CenterB": { caveActive = "RightB"; caveNum = 7; caveGoUp.setHidden(false); caveGoLeft.setHidden(false); caveGoRight.setHidden(true); caveGoDown.setHidden(true); } break;
@@ -10004,7 +9984,7 @@ farming.start = function () {
             themeSongNew.stop();
             waterfallSound.stop();
             caveLoop.play(true);
-            caveActive = "Hidden";
+            caveActive = "Hidden"
             caveShift('up');
             caveFill1.setHidden(false);
             caveLayer1.setHidden(false);
@@ -10361,8 +10341,7 @@ farming.start = function () {
                 lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 1000);
                 checkAchieves2();
                 showMFToast('+ 500', imgArray11[0].src, "stars", 2000, 'left');
-                try{   Enhance.logEvent('SPEND_VIRTUAL_CURRENCY');}catch(err){console.log(err);}
-             
+
             }
             event.stopPropagation();
         }
@@ -10444,10 +10423,9 @@ farming.start = function () {
     }, false);
 
     function starCashViewAd() {
-        stopSound4Ad();
         localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
         localStorage.setItem('MedFarm_StarCashBoost', 1);
-        
+         lime.audio.setMute(true);
         lime.scheduleManager.callAfter(function () {
             //document.getElementById("sucessbuyTxt").style.display = 'block';
             let starCash2 = parseInt(localStorage.getItem('starCash')) || 0;
@@ -10458,17 +10436,11 @@ farming.start = function () {
 
         lime.scheduleManager.callAfter(function () { sucessText.style.display = 'none'; }, this, 33000);
         var adImg = document.getElementById("viewAdImg");
-        adImg.classList.add("hidden");
         sucessText.innerHTML = 'Wait time is required before you can boost again';
         ////hide boost for 2 min
-
+        adImg.style.display = 'none';
         lime.scheduleManager.callAfter(function () {
-            // 
-            adImg.classList.remove("viewAdCls");
-            adImg.classList.remove("hidden");
-            // adImg.classList.add("visible");
-            adImg.classList.add("viewAdImg");
-            // adImg.style.display = 'block';
+            adImg.style.display = 'block';
             document.getElementById("waitText").innerHTML = '';
         }, this, 120000)
     }
@@ -10516,7 +10488,7 @@ farming.start = function () {
         }
     }, {passive: true});
     document.getElementById("buyStarsFromModal").addEventListener("click", function (event) {
-        var isVisFB5 = document.getElementById("fbshare").style.display;
+        var isVisFB4 = document.getElementById("fbshare").style.display;
         if (isVisFB5 == 'block') {
             document.getElementById("fbshare").style.display = 'none';
             homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
@@ -13953,15 +13925,15 @@ farming.start = function () {
     introLayer.appendChild(introFill1);
 
     //var playGameBtn = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(a.width / 2 - 50, 510).setSize(50, 50).setFill("#663300");
-    playGameBtn = (new lime.GlossyButton()).setColor("#126423").setText("").setPosition(155, 340).setSize(a.width / 2 - 35, 60);
+    playGameBtn = (new lime.GlossyButton()).setColor("#126423").setText("").setPosition(155, 340).setSize(a.width / 2 - 35, 45);
     introLayer.appendChild(playGameBtn);
-    var playButtonLabel = (new lime.Label()).setText("PLAY").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(0, 5).setFontSize(36);
-    playGameBtn.appendChild(playButtonLabel);
-    // var moreGameBtn = (new lime.GlossyButton()).setColor("#663300").setText("").setPosition(150, 340).setSize(a.width / 2 - 5, 50);
-    // introLayer.appendChild(moreGameBtn);
-    // var moreGameBtnLabel = (new lime.Label()).setText("MORE GAMES").setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(150, 346).setFontSize(20);
-    // introLayer.appendChild(moreGameBtnLabel);
-    // moreGameBtn.setHidden(true); moreGameBtnLabel.setHidden(true);
+    var playButtonLabel = (new lime.Label()).setText("PLAY").setFontFamily("Proxima Nova").setFontColor("#ffffff").setPosition(155, 346).setFontSize(36);
+    introLayer.appendChild(playButtonLabel);
+    var moreGameBtn = (new lime.GlossyButton()).setColor("#663300").setText("").setPosition(150, 340).setSize(a.width / 2 - 5, 50);
+    introLayer.appendChild(moreGameBtn);
+    var moreGameBtnLabel = (new lime.Label()).setText("MORE GAMES").setFontFamily("Proxima Nova").setFontColor("#FFFFFF").setPosition(150, 346).setFontSize(20);
+    introLayer.appendChild(moreGameBtnLabel);
+    moreGameBtn.setHidden(true); moreGameBtnLabel.setHidden(true);
   
     playGameBtn.setHidden(true);
     var textload = 'Loading.'
@@ -14002,7 +13974,7 @@ farming.start = function () {
             sceneActive = 'Home'; sceneBefore = 1;
             lime.scheduleManager.callAfter(function () {
                 checkDailyLogin(); validCropsStored();
-            }, this, 1500);
+            }, this, 3000);
         }
     });
     var storyPanel = 0;
@@ -14041,12 +14013,12 @@ farming.start = function () {
                     break;
                 }
                 case 9: {
-                    storyWifeBubble.setHidden(false); storyMeBubble.setHidden(true); storyWife.setHidden(false).setFill(imgArrayDenise[9]);
+                    storyWifeBubble.setHidden(false); storyMeBubble.setHidden(true); storyWife.setHidden(false);
                     storyTextWife.setText("You're not getting away from me that easy!"); storyWifeBubble.setPosition(-125, -125).setSize(175, 125);
                     break;
                 }
                 case 10: {
-                    storyWifeBubble.setHidden(false); storyMeBubble.setHidden(true); storyWife.setHidden(false).setFill(imgArrayDenise[8]);;
+                    storyWifeBubble.setHidden(false); storyMeBubble.setHidden(true); storyWife.setHidden(false);
                     storyTextWife.setText("I'm coming with you!"); storyWifeBubble.setPosition(-130, -95).setSize(180, 105);
                     break;
                 }
@@ -14079,8 +14051,6 @@ farming.start = function () {
                     break;
                 }
                 case 13: {
-                    
-                    storyDad.setHidden(false);
                     storyDadBubble.setHidden(true); storyText1.setText("Thank's Dad, Now let's go!").setFontSize(18).setPosition(100, 60); storyMeBubble.setPosition(-12, -74).setHidden(false);
                     storyWifeBubble.setHidden(true); 
                     storyWife.setHidden(false);
@@ -14137,7 +14107,6 @@ farming.start = function () {
                 successSound.play();
                 c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
                 sceneActive = 'LS'; waterfallSound.stop(); chickenSound.play(); pig1Sound.play();
-                checkShortage();
             }, this, 4000);
             storySceneCloseBtn.setHidden(true);
         }
@@ -15801,7 +15770,10 @@ farming.start = function () {
         }
     });
     goog.events.listen(achieveBtnV, ["mousedown", "touchstart"], function () {
-        if (globalModalBlock == 0) { sceneBefore = 4;   achieve(sceneBefore);       }
+        if (globalModalBlock == 0) {
+            sceneBefore = 4;
+            achieve(sceneBefore);
+        }
     });
     goog.events.listen(menuV, ["mousedown", "touchstart"], function () {
         if (globalModalBlock == 0) {
@@ -15900,13 +15872,10 @@ farming.start = function () {
             homeBlock.setHidden(true); pastureBlock.setHidden(true); orchardBlock.setHidden(true); lsBlock.setHidden(true); vinyardBlock.setHidden(true);
 
             warningSeen = 1;
-            stopSound4Ad();
-
             localStorage.setItem("acreDiscount1", 0);
             localStorage.setItem('MedFarm_LoadAd', 0);
             localStorage.setItem('MedFarm_StarCashBoost', 1);
-        
-            lime.scheduleManager.callAfter(function () { soundCheck();}, this, 25000);
+            lime.audio.setMute(true);
             lime.scheduleManager.callAfter(function () {
                 player.money = parseInt(player.money) + 200;
                 a.updateMoney();
@@ -17608,8 +17577,7 @@ farming.start = function () {
 
     goog.events.listen(backBtnAchieve, ["mousedown", "touchstart"], function (e) {
         //setTimeout(function () { validCropsStored(); }, 0);
-        try{hideAndDelayNavIcons();}catch(err){console.log(err)}
-        
+        hideAndDelayNavIcons();
         if (sceneBefore == 1) {
             sceneActive = 'Home';
             b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop")) || 0;
@@ -17620,22 +17588,10 @@ farming.start = function () {
             homeCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop")) || 0;
             c.replaceScene(d, lime.transitions.SlideInUp); sceneBefore = 1;
         }
-        else if (sceneBefore == 2) { c.replaceScene(pastureScene, lime.transitions.SlideInUp); sceneBefore = 2; b.currentCrop = 6; sceneActive = 'Pasture'; cowSound.play(); }
-        else if (sceneBefore == 3) { sceneActive = 'Orchard'; c.replaceScene(orchardScene, lime.transitions.SlideInUp); sceneBefore = 3; b.currentCrop = 8;  }
-        else if (sceneBefore == 4) { c.replaceScene(vinyardScene, lime.transitions.SlideInUp); sceneBefore = 4; sceneActive = 'Vineyard'; }
-        else if (sceneBefore == 5) { c.replaceScene(liveStockScene, lime.transitions.SlideInUp); sceneBefore = 5; sceneActive = 'LS';  }
-        else if (sceneBefore == 6) { c.replaceScene(windmillScene, lime.transitions.SlideInUp); sceneBefore = 6; sceneActive = 'Windmill'; }
-        else{
-            sceneActive = 'Home';
-            b.currentCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop")) || 0;
-            b.currentCrop = Math.abs(b.currentCrop);
-            if (b.currentCrop > 5 || isNaN(b.currentCrop)) {
-                b.currentCrop = 0; w.setText("Plant " + a.crops[b.currentCrop].name); z.setFill("images/" + a.crops[b.currentCrop].harvest);
-            };
-            homeCrop = parseInt(localStorage.getItem("MedFarms_selectedHomeCrop")) || 0;
-            c.replaceScene(d, lime.transitions.SlideInUp); sceneBefore = 1;
-        }
-        checkShortage();
+        if (sceneBefore == 2) { c.replaceScene(pastureScene, lime.transitions.SlideInUp); sceneBefore = 2; b.currentCrop = 6; sceneActive = 'Pasture'; cowSound.play(); }
+        if (sceneBefore == 3) { sceneActive = 'Orchard'; c.replaceScene(orchardScene, lime.transitions.SlideInUp); sceneBefore = 3; b.currentCrop = 8;  }
+        if (sceneBefore == 4) { c.replaceScene(vinyardScene, lime.transitions.SlideInUp); sceneBefore = 4; sceneActive = 'Vineyard'; }
+        if (sceneBefore == 5) { c.replaceScene(liveStockScene, lime.transitions.SlideInUp); sceneBefore = 5; sceneActive = 'LS'; }
         e.event.stopPropagation();
         e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
     });
@@ -18273,13 +18229,6 @@ farming.start = function () {
     var fbBtnWM = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(45, a.height - 67).setSize(56, 56).setFill(imgArray[72]); windmillScene.appendChild(fbBtnWM)
     var compassWM = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(133, 448).setSize(38, 38).setFill(imgArray[73]); windmillScene.appendChild(compassWM)
 
-    goog.events.listen(achieveBtnWM, ["mousedown", "touchstart"], function (e) {
-        if (globalModalBlock == 0) { sceneBefore = 6;   achieve(sceneBefore);  }
-        e.event.stopPropagation();
-        e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
-    });
-
-
     //scaffold windmill
     var scaffoldWM = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(11, 200).setSize(110, 80).setFill(imgArray[26]);
     windmillScene.appendChild(scaffoldWM);
@@ -18541,6 +18490,8 @@ farming.start = function () {
             c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
             b.currentCrop = 12;
             sceneActive = 'Vineyard';
+
+
             oldCrop = localStorage.getItem("MedFarms_selectedHomeCrop") || 0;
             b.currentCrop = 12;
             lime.scheduleManager.callAfter(function () { checkShortage(); }, this, 500);
@@ -18551,6 +18502,7 @@ farming.start = function () {
             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
             //a.sceneBefore = 5;
         }
+
     });
     goog.events.listen(lsNavWM, ["mousedown", "touchstart"], function (e) {
         if (acres[4].owned == 1 && compassVisible) {
@@ -18571,6 +18523,7 @@ farming.start = function () {
             e.event.stopPropagation();
             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
         }
+
     });
     goog.events.listen(windmillNavWM, ["mousedown", "touchstart"], function (e) {
         if (compassVisible) {
@@ -18578,6 +18531,7 @@ farming.start = function () {
             e.event.stopPropagation();
             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
         }
+
     });
 
     var hammerSoundWM = hammerSound;
@@ -18592,13 +18546,19 @@ farming.start = function () {
         var tickerSecondsWM = timeLeft;
         var tickerForTimerWM = tickerSecondsWM * 4;
         windmillBldgUpgradeBtn.setHidden(true);
+
         //cost section
         player.tools = player.tools - costToolsWM;
         player.cropsStored[14].stored = parseInt(player.cropsStored[14].stored) - costWoodWM;
+
         toolCountWM.setText(player.tools);
         gLabel14.setText(player.cropsStored[14].stored);
         countTools.setText(player.tools);
         //--cost
+
+
+
+
         lime.scheduleManager.scheduleWithDelay(function () {
             //add upgrade anim
             tickerwm = tickerwm + 1;
@@ -18611,8 +18571,10 @@ farming.start = function () {
                 upgradesInProgress.buildings[6].timeLeft = tickerSecondsWM;
                 upgradesInProgress.buildings[6].currentBarnLevel = 1;
                 localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
+
             }
             upgradeCloudWM.setPosition(upCloudXm, upCloudYm).setSize(upCloudWm, 200);
+
             upCloudWm = upCloudWm + 10;
             upCloudXm = upCloudXm - 5;
             upCloudYm = upCloudYm - 5;
@@ -18620,12 +18582,14 @@ farming.start = function () {
             currentRotateWM = currentRotateWM + 10;
             if (currentRotateWM > 35) { currentRotateWM = -10; };
             toolMoverWM.setRotation(currentRotateWM);
+
             if (tickerSecondsWM <= 0) {
                 //times up hide upgrade stuff
                 scaffoldWM.setHidden(true);
                 windmillUpgraded = 1;
                 showMFToast("WindMill Upgraded", imgArray[30].src, 'windmill', 3000);
                 hammerSoundWM.stop();
+
                 localStorage.setItem("wmUpgraded", 1);
                 windMillBldg.setFill(imgArrayWindmill[2]); windMillSail.setHidden(false);
                 windmillBldgUpgradeBtn.setHidden(true);
@@ -18633,8 +18597,13 @@ farming.start = function () {
                 upgradesInProgress.buildings[6].timeLeft = 0;
                 upgradesInProgress.buildings[6].currentBarnLevel = 2;
                 localStorage.setItem('MedFarm_upgradesInProgress', JSON.stringify(upgradesInProgress));
+
             }
+
         }, this, 250, tickerForTimerWM)
+
+
+
     }
 
     ///upgrade storehouse
@@ -18706,7 +18675,11 @@ farming.start = function () {
             }
 
         }, this, 250, tickerForTimerWM3)
+
+
+
     }
+
 
     var foundTreasureW = (new lime.Sprite()).setPosition(a.width / 2 + 10, 160).setSize(60, 60).setFill(imgArray[119]).setHidden(true);
     windmillLayer.appendChild(foundTreasureW);
@@ -18852,8 +18825,10 @@ farming.start = function () {
         //console.log(" randommiller " + randomMiller)
         questText1miller.setText(questParamsMiller.speech[randomMiller].Text);
         millerSound.play();
+
         lime.scheduleManager.callAfter(function () {
             millerQuestBtn.setHidden(false); millerQuest.setHidden(false);
+
         }, this, 10000)
 
     }
@@ -18861,6 +18836,8 @@ farming.start = function () {
         var isHid123x = millerQuestPanel.getHidden();
         if (isHid123x == false) {
             millerQuestPanel.setHidden(true);
+
+
             e.stopPropagation();
             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
         }
@@ -18889,8 +18866,11 @@ farming.start = function () {
         if (randomConnie == 0) { randomConnie = 4; };
         //console.log(" randomconnnie " + randomConnie)
         questText1Connie.setText(questParamsConnie.speech[randomConnie].Text);
+
+
         lime.scheduleManager.callAfter(function () {
             connieQuestBtn.setHidden(false); connieQuest.setHidden(false);
+
         }, this, 10000)
 
     }
@@ -18899,6 +18879,8 @@ farming.start = function () {
         var isHid124x = connieQuestPanel.getHidden();
         if (isHid124x == false) {
             connieQuestPanel.setHidden(true);
+
+
             e.stopPropagation();
             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
         }
@@ -18924,8 +18906,8 @@ farming.start = function () {
         var isHid12x = windmillQuestPanel.getHidden();
         if (isHid12x == false) {
             windmillQuestPanel.setHidden(true);
+
             clearWheatField();
-            try { goog.events.removeAll(windmillQuestPanelConfirmBtn); } catch (err) { console.log(err) }
             e.stopPropagation();
             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
         }
@@ -19072,27 +19054,26 @@ farming.start = function () {
         questText1windmill2CostTools.setText(player.tools + "/2000");
         questText1windmill2CostWood.setText(player.cropsStored[14].stored + "/250");
     }
-var windMill1time = 0
+
     goog.events.listen(windmillQuestPanelConfirmBtn2, ["mousedown", "touchstart"], function (e) {
-        var isItHidWMConfirm2 = windmillQuestPanel2.getHidden();
-        if (isItHidWMConfirm2 == false && windMill1time == 0) {
-            windMill1time = 1;
+        var isItHidWMConfirm2 = windmillQuestPanel3.getHidden();
+        if (isItHidWMConfirm2 == false) {
             //to do windmill upgrade timing
-            windmillQuestPanel2.setHidden(true);
+
             fnUpgradeWindMillBldg(90, 250, 1000);
-            try { goog.events.removeAll(windmillQuestPanelConfirmBtn2); } catch (err) { console.log(err) }
+            windmillQuestPanel2.setHidden(true);
+
             e.event.stopPropagation();
             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
         }
     });
-    var storehouse1time = 0;
+
     goog.events.listen(windmillQuestPanelConfirmBtn3, ["mousedown", "touchstart"], function (e) {
         var isItHidWMConfirm3 = windmillQuestPanel3.getHidden();
-        if (isItHidWMConfirm3 == false && storehouse1time == 0) {
+        if (isItHidWMConfirm3 == false) {
             //to do storehouse upgrade timing
-            storehouse1time = 1;
+
             fnUpgradeStoreHouse(90, 250, 1000);
-            try { goog.events.removeAll(windmillQuestPanelConfirmBtn3); } catch (err) { console.log(err) }
             windmillQuestPanel3.setHidden(true);
 
             e.event.stopPropagation();
@@ -19164,12 +19145,11 @@ var windMill1time = 0
 
         //console.log("visibleLinkWM = " + visibleLinkWM);
         if (visibleLinkWM == false) {
-            stopSound4Ad();
             localStorage.setItem('MedFarm_LoadAd', 1);
             localStorage.setItem('MedFarm_StarCashBoost', 0);
-  
+            lime.audio.setMute(true);
             lime.scheduleManager.callAfter(function () { localStorage.setItem('adWatched', 1); }, this, 5000);
-            
+            lime.scheduleManager.callAfter(function () { soundCheck(); }, this, 20000);
             e.event.stopPropagation();
             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () { });
         }
@@ -19187,6 +19167,7 @@ var windMill1time = 0
                 localStorage.setItem('MedFarm_StarCashBoost', 0);
                 starCash = starCash - 3;
                 boostCropsWM.setHidden(true);
+
             }
             e.event.stopPropagation();
             e.swallow(['mouseup', 'touchend', 'touchcancel'], function () {
@@ -19530,7 +19511,7 @@ var windMill1time = 0
     function howManyBaker() {
         localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
         console.log("oven  props" + JSON.stringify(ovenState.ovens) + " bakery option " + bakeryOptionSelected)
-        if (howManyBake < 3) {
+        if (howManyBake <= 3) {
 
             if (ovenState.ovens[0].filled + ovenState.ovens[1].filled + ovenState.ovens[2].filled + ovenState.ovens[3].filled == 4) {
                 bakeryHeader.setText('Ovens Full');
@@ -19543,8 +19524,7 @@ var windMill1time = 0
             for (i = 0; i <= ovenState.ovens.length; i++) {
                 if (ovenState.ovens[i].filled == 0) {
                     firstOpenOven = i; console.log("firstOpenOven = " + firstOpenOven);
-                    // howManyBake = firstOpenOven; 
-                    break;
+                    howManyBake = firstOpenOven; break;
                 }
                 else { console.log(' filled oven ' + i + " - " + ovenState.ovens[i].filled); }
 
@@ -19553,7 +19533,7 @@ var windMill1time = 0
             if (bakeryOptionSelected == 1 || bakeryOptionSelected == 2) { timeThis1 = 90; };
             if (bakeryOptionSelected == 3 || bakeryOptionSelected == 4) { timeThis1 = 120; }
 
-            switch (firstOpenOven) {
+            switch (howManyBake) {
 
                 case 0: {
                     ovenState.ovens[0].time = timeThis1;
@@ -19740,7 +19720,7 @@ var windMill1time = 0
 
 
     goog.events.listen(bakeryChoiceChild1, ["mousedown", "touchstart"], function () {
-        if (howManyBake < 3) {
+        if (howManyBake <= 3) {
             if (player.cropsStored[23].stored >= 1 && waterStored >= 1) {
                 player.cropsStored[23].stored = parseInt(player.cropsStored[23].stored) - 1;
                 waterStored = parseInt(waterStored) - 1;
@@ -19756,7 +19736,7 @@ var windMill1time = 0
 
     });
     goog.events.listen(bakeryChoiceChild2, ["mousedown", "touchstart"], function () {
-        if (howManyBake < 3) {
+        if (howManyBake <= 3) {
             if (player.cropsStored[23].stored >= 1 && player.cropsStored[8].stored >= 2 && waterStored >= 1) {
                 player.cropsStored[23].stored = parseInt(player.cropsStored[23].stored) - 1;
                 player.cropsStored[8].stored = parseInt(player.cropsStored[8].stored) - 1;
@@ -19774,7 +19754,7 @@ var windMill1time = 0
 
     });
     goog.events.listen(bakeryChoiceChild3, ["mousedown", "touchstart"], function () {
-        if (howManyBake < 3) {
+        if (howManyBake <= 3) {
             if (player.cropsStored[23].stored >= 2 && player.cropsStored[11].stored >= 2 && waterStored >= 2 && howManyBake <= 3) {
                 waterStored = parseInt(waterStored) - 2;
                 player.cropsStored[23].stored = parseInt(player.cropsStored[23].stored) - 2;
@@ -19792,7 +19772,7 @@ var windMill1time = 0
     });
 
     goog.events.listen(bakeryChoiceChild4, ["mousedown", "touchstart"], function () {
-        if (howManyBake < 3) {
+        if (howManyBake <= 3) {
             if (player.cropsStored[23].stored >= 2 && player.cropsStored[7].stored >= 1 && player.cropsStored[11].stored >= 3 && howManyBake <= 3) {
 
                 player.cropsStored[23].stored = parseInt(player.cropsStored[23].stored) - 2;
@@ -19811,7 +19791,7 @@ var windMill1time = 0
 
     });
     goog.events.listen(bakeryChoiceChild5, ["mousedown", "touchstart"], function () {
-        if (howManyBake < 3) {
+        if (howManyBake <= 3) {
             if (player.cropsStored[23].stored >= 2 && player.cropsStored[13].stored >= 2 && player.cropsStored[7].stored >= 1) {
                 bakeryOptionSelected = 4;
                 localStorage.setItem('bakeryOptionSelected', 4);
@@ -19837,7 +19817,6 @@ var windMill1time = 0
 
     goog.events.listen(bakeryViewAdBtn1, ["mousedown", "touchstart"], function (e) {
 
-        stopSound4Ad();
 
         localStorage.setItem('MedFarm_StarCashBoost', 1);
         lime.scheduleManager.callAfter(function () {
@@ -19858,7 +19837,7 @@ var windMill1time = 0
     };
     goog.events.listen(bakeryViewAdBtn2, ["mousedown", "touchstart"], function (e) {
 
-        stopSound4Ad();
+
         localStorage.setItem('MedFarm_StarCashBoost', 1);
         lime.scheduleManager.callAfter(function () {
             bakeryCostCover2.setHidden(true);
@@ -19878,8 +19857,8 @@ var windMill1time = 0
     };
     goog.events.listen(bakeryViewAdBtn3, ["mousedown", "touchstart"], function (e) {
 
-        stopSound4Ad();
-                localStorage.setItem('MedFarm_StarCashBoost', 1);
+
+        localStorage.setItem('MedFarm_StarCashBoost', 1);
         lime.scheduleManager.callAfter(function () {
             bakeryCostCover3.setHidden(true);
 
@@ -19898,7 +19877,7 @@ var windMill1time = 0
     };
     goog.events.listen(bakeryViewAdBtn4, ["mousedown", "touchstart"], function (e) {
 
-        stopSound4Ad();
+
         localStorage.setItem('MedFarm_StarCashBoost', 1);
         lime.scheduleManager.callAfter(function () {
             bakeryCostCover4.setHidden(true);
@@ -20399,12 +20378,13 @@ var windMill1time = 0
         return 1;
     }
 
-var wheelRewardImg = document.getElementById("wheelRewardImg");
-var wheelRewardBack = document.getElementById("wheelReward");
+
     window.onload = loadWinWheel();
-    function loadWinWheel() {
-        console.log('loading ww')
+     function loadWinWheel() {
+    console.log('loading ww')
         setTimeout(function () {
+
+
             //////WinWheel of Fortune//////
             let theWheel = new Winwheel({
                 'canvasId': 'canvasWheel',
@@ -20456,14 +20436,40 @@ var wheelRewardBack = document.getElementById("wheelReward");
                 // console.log(isMute);
                     if (!isMuteWheel) {audioWheel.play();}
                 }
+            function powerSelected(powerLevel) {
+                // Ensure that power can't be changed while wheel is spinning.
+                if (wheelSpinning == false) {
 
-            var viewAdWheel = document.getElementById("viewAdWheel");
-            viewAdWheel.addEventListener("click", function (event) {
+                    // Set wheelPower var used when spin button is clicked.
+                    wheelPower = powerLevel;
+
+                    // Light up the spin button by changing it's source image and adding a clickable class to it.
+                    document.getElementById('spin_button').src = "spin_on.png";
+                    document.getElementById('spin_button').className = "clickable";
+                }
+            }
+            document.getElementById("rewardAdHider").addEventListener("click", function (event) {
+
+                event.stopPropagation();
+            });
+            document.getElementById("rewardAdHider").addEventListener("touchend", function (event) {
+
+                event.stopPropagation();
+            });
+            document.getElementById("wheelDiv").addEventListener("click", function (event) {
+
+                event.stopPropagation();
+            });
+            document.getElementById("wheelDiv").addEventListener("touchend", function (event) {
+
+                event.stopPropagation();
+            });
+            document.getElementById("viewAdWheel").addEventListener("click", function (event) {
                 resetWheel();
                 event.stopPropagation();
                  return false;
             });
-            viewAdWheel.addEventListener("touchend", function (event) {
+            document.getElementById("viewAdWheel").addEventListener("touchend", function (event) {
                 resetWheel();
                 event.stopPropagation();
                  return false;
@@ -20472,14 +20478,16 @@ var wheelRewardBack = document.getElementById("wheelReward");
             // Click handler for spin button.
             // -------------------------------------------------------
             document.getElementById("spin_button").addEventListener("click", function (event) {
+
+                event.stopPropagation();
                 startSpin();
                 document.getElementById("spin_button").style.display = 'none';
-                event.stopPropagation();
             });
             document.getElementById("spin_button").addEventListener("touchend", function (event) {
+
+                event.stopPropagation();
                 startSpin();
-                document.getElementById("spin_button").style.display = 'none';
-                event.stopPropagation();          
+
             });
 
             function startSpin() {
@@ -20512,7 +20520,7 @@ var wheelRewardBack = document.getElementById("wheelReward");
                     wheelSpinning = true;
                 }
             }
-            wheelRewardBack.style.display = 'none';
+            document.getElementById("wheelReward").style.display = 'none';
             document.getElementById('rewardAdHider').style.display = 'none';
             // -------------------------------------------------------
             // Function for reset button.
@@ -20521,9 +20529,8 @@ var wheelRewardBack = document.getElementById("wheelReward");
                 theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
                 theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
                 theWheel.draw();                // Call draw to render changes to the wheel.
-                stopSound4Ad();
                 localStorage.setItem('MedFarm_StarCashBoost', 1);
-
+                lime.audio.setMute(true);
                 lime.scheduleManager.callAfter(function () {
                     document.getElementById('spin_button').src = "images/spin_on.png";
                     document.getElementById('spin_button').style = 'width: 300px; height: 130px; margin-left: 50%; margin-top:-65px; transform:translateX(-135px);'
@@ -20547,48 +20554,44 @@ var wheelRewardBack = document.getElementById("wheelReward");
                 else { document.getElementById("rays").style.display = 'block'; successSound.play(); }
 
 
-                wheelRewardBack.style.display = 'block';
-                wheelRewardImg.src = indicatedSegment.image;
+                document.getElementById("wheelReward").style.display = 'block';
+                document.getElementById("wheelRewardImg").src = indicatedSegment.image;
                 document.getElementById("wheelRewardTxt2").innerHTML = indicatedSegment.text;
                 grantAwardFromWheel(indicatedSegment.text);
                 a.updateMoney();
                 a.updateTools();
                 localStorage.setItem('starCash', starCash);
                 localStorage.setItem('GuiGhostFarms_player', JSON.stringify(player));
+
+
+
             }
         }, 600);
-        // wheelRewardImg.addEventListener("click", function (event) {
-        //     wheelRewardBack.style.display = 'none';
-        //     document.getElementById("anotherSpin").style.display = 'block';
-        //     viewAdWheel.style.display = 'block';
-        //     document.getElementById('rewardAdHider').style.display = 'block';
-        //     document.getElementById('canvasWheel').style.opacity = 0.3;
-        //     event.stopPropagation();
-        // });
-        // wheelRewardImg.addEventListener("touchend", function (event) {
-        //     wheelRewardBack.style.display = 'none';
-        //     document.getElementById("anotherSpin").style.display = 'block';
-        //     viewAdWheel.style.display = 'block';
-        //     document.getElementById('rewardAdHider').style.display = 'block';
-        //     document.getElementById('canvasWheel').style.opacity = 0.3;
-        //     event.stopPropagation();
-        // });
-        goog.events.listen(wheelRewardImg, ["mousedown", "touchstart"], function () {closeRewardPop();});
-        goog.events.listen(wheelRewardBack, ["mousedown", "touchstart"], function () {closeRewardPop();});
-        // wheelRewardBack.addEventListener("touchend", function (event) {closeRewardPop();  });
-        function closeRewardPop(){
-            wheelRewardBack.style.display = 'none';
+        document.getElementById("wheelRewardImg").addEventListener("click", function (event) {
+            document.getElementById("wheelReward").style.display = 'none';
             document.getElementById("anotherSpin").style.display = 'block';
-            viewAdWheel.style.display = 'block';
+            document.getElementById("viewAdWheel").style.display = 'block';
+            document.getElementById('rewardAdHider').style.display = 'block';
+            document.getElementById('canvasWheel').style.opacity = 0.3;
+
+            event.stopPropagation();
+
+        });
+        document.getElementById("wheelRewardImg").addEventListener("touchend", function (event) {
+            document.getElementById("wheelReward").style.display = 'none';
+            document.getElementById("anotherSpin").style.display = 'block';
+            document.getElementById("viewAdWheel").style.display = 'block';
             document.getElementById('rewardAdHider').style.display = 'block';
             document.getElementById('canvasWheel').style.opacity = 0.3;
             event.stopPropagation();
-        }
+
+        });
         document.getElementById("rewardCloseBtn").addEventListener("click", function (event) {
             document.getElementById("wheelDiv").style.display = 'none';
             event.stopPropagation();
             lime.scheduleManager.callAfter(function () { globalModalBlock = 0; }, this, 500);
             lime.scheduleManager.callAfter(function () { showMFToast("Get Loot!", imgArrayItems[25].src, 'luckyWheel', 20000); }, this, 300000);
+
         });
         document.getElementById("rewardCloseBtn").addEventListener("touchend", function (event) {
             document.getElementById("wheelDiv").style.display = 'none';
@@ -20596,10 +20599,8 @@ var wheelRewardBack = document.getElementById("wheelReward");
             lime.scheduleManager.callAfter(function () { globalModalBlock = 0; }, this, 500);
             lime.scheduleManager.callAfter(function () { showMFToast("Get Loot!", imgArrayItems[25].src, 'luckyWheel', 20000); }, this, 300000);
         });
-        document.getElementById("rewardAdHider").addEventListener("click", function (event) {event.stopPropagation();});
-        document.getElementById("rewardAdHider").addEventListener("touchend", function (event) {event.stopPropagation();});
-        document.getElementById("wheelDiv").addEventListener("click", function (event) {event.stopPropagation();});
-        document.getElementById("wheelDiv").addEventListener("touchend", function (event) {event.stopPropagation();});
+
+        
     }
     function grantAwardFromWheel(which1) {
         console.log("which1 reward= " + which1);
@@ -20657,12 +20658,15 @@ var wheelRewardBack = document.getElementById("wheelReward");
             }
             default: { return; }
         };
-
+        localStorage.setItem('GuiGhostFarms_playerItems', JSON.stringify(collectItems));
     };
 
     async function showMFToast(tmessage, imagePassed, exDetail, dur1, position, grav) {
+
         try {
-            if (exDetail != 'neediron') { purchaseSound.play(); }
+            if (exDetail != 'neediron') {
+                purchaseSound.play();
+            }
             let customDur = dur1 || 4000;
             let positionThis = position || 'right'
             let gravThis = grav || 'top'
@@ -20683,7 +20687,7 @@ var wheelRewardBack = document.getElementById("wheelReward");
         return 1;
     }
     function toastClicked(exDetail2) {
-        // console.log("toast clicked with exDetail " + exDetail2)
+        console.log("toast clicked with exDetail " + exDetail2)
         waterfallSound.stop();
         if (exDetail2 == 'luckyWheel') {
             globalModalBlock = 1;
@@ -20703,7 +20707,7 @@ var wheelRewardBack = document.getElementById("wheelReward");
         } else if (exDetail2 == 'orchard') {
             if (sceneActive != 'Orchard') {  sceneActive = 'Orchard'; c.replaceScene(orchardScene, lime.transitions.SlideInRight);  b.currentCrop = 8; };
         } else if (exDetail2 == 'livestock') {
-            if (sceneActive != 'LS') { c.replaceScene(liveStockScene, lime.transitions.SlideInRight); sceneActive = 'LS'; pig1Sound.play(); chickenSound.play(); checkShortage();};
+            if (sceneActive != 'LS') { c.replaceScene(liveStockScene, lime.transitions.SlideInRight); sceneActive = 'LS'; pig1Sound.play(); chickenSound.play(); };
         }
         else { console.log('no action on toast click') };
 
@@ -20730,21 +20734,10 @@ var wheelRewardBack = document.getElementById("wheelReward");
     storyFill1.appendChild(storyGround1);
     var storyGround2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(0, 0).setSize(a.width, a.height - 80).setFill(imgArray[84]);
     storyGround1.appendChild(storyGround2);
-    var storyGround3 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(125, 0).setSize(25, 25).setFill(imgArrayGround[2]);
-    storyGround1.appendChild(storyGround3);
-    var storyGround4 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(150, 0).setSize(25, 25).setFill(imgArrayGround[1]);
-    storyGround1.appendChild(storyGround4);
-    var storyGround5 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(125, 25).setSize(25, 25).setFill(imgArrayGround[4]);
-    storyGround1.appendChild(storyGround5);
-    var storyGround6 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(150, 25).setSize(25, 25).setFill(imgArrayGround[3]);
-    storyGround1.appendChild(storyGround6);
-    var storyRocks = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(5, 8).setSize(64, 32).setFill(imgArrayPasture[8]);
-    storyGround1.appendChild(storyRocks);
     var storyHouse = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(1, 10).setSize(308, 374).setFill("images/storyScene/homePlace.png");
     storyGround1.appendChild(storyHouse);
-
-    var storyRocks2 = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(20, 350).setSize(64, 32).setFill(imgArrayPasture[8]);
-    storyGround1.appendChild(storyRocks2);
+    var storyRocks = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(20, 350).setSize(64, 32).setFill(imgArrayPasture[8]);
+    storyGround1.appendChild(storyRocks);
     var storyPine = (new lime.Sprite()).setAnchorPoint(0, 0).setPosition(250, 10).setSize(57, 76).setFill(imgArrayPasture[3]);
     storyGround1.appendChild(storyPine);
 
@@ -20898,7 +20891,7 @@ var wheelRewardBack = document.getElementById("wheelReward");
         switch (sceneActive) {
             case 'Home': { c.replaceScene(d); } break;
             case 'Pasture': { c.replaceScene(pastureScene);; } break;
-            case 'LS': { c.replaceScene(liveStockScene); checkShortage();} break;
+            case 'LS': { c.replaceScene(liveStockScene); } break;
             case 'Vineyard': { c.replaceScene(vinyardScene); } break;
             case 'Orchard': {
                 c.replaceScene(orchardScene);
@@ -20959,7 +20952,6 @@ var wheelRewardBack = document.getElementById("wheelReward");
             }
         }, false);
         goog.events.listen(viewAdImgHeir, ["mousedown", "touchstart"], function () {
-        
             localStorage.setItem('MedFarm_StarCashBoost', 1);
             lime.scheduleManager.callAfter(function () {
                 openHeirloom(where);
@@ -21032,24 +21024,14 @@ var wheelRewardBack = document.getElementById("wheelReward");
     }
 
 
-    async function  soundCheck(){
-            console.log("soundCheck in IF")
-
-            let isMuted = localStorage.getItem('GuiGhostFarms_muted') || 0;
-                    if (isMuted == 0) {
-                        lime.audio.setMute(false); themeSongNew.play(true); localStorage.setItem('GuiGhostFarms_muted', 0)
-                        setMute(2);
-                    } else { lime.audio.setMute(true); setMute(1); localStorage.setItem('GuiGhostFarms_muted', 1) }
-                    return 1;
-                };
-        
-    
-    function stopSound4Ad(){
-        let playerMutedO = playerMuted || 0; playerMuted = 1;
-        themeSongNew.stop(); lime.audio.setMute(true); hammerSound.stop();
-        lime.scheduleManager.callAfter(function () {playerMuted = playerMutedO || 0; soundCheck(); }, this, 30000);
-
-    }
+    async function soundCheck(){
+        let isMuted = localStorage.getItem('GuiGhostFarms_muted') || 0;
+            if (isMuted == 0) {
+                lime.audio.setMute(false); themeSongNew.play(true); localStorage.setItem('GuiGhostFarms_muted', 0)
+                setMute(2);
+            } else { lime.audio.setMute(true); setMute(1); localStorage.setItem('GuiGhostFarms_muted', 1) }
+            return 1;
+        };
 ///end of farming.start
 };
 ///end of farming.start
@@ -21114,7 +21096,6 @@ function getPrizeClick(event) {
     console.log('in getPrizeClick ');
     var isVisPrize = document.getElementById("prizeMe").style.display;
     if (isVisPrize == 'block') {
-        stopSound4Ad();
         console.log('in getPrizeClick Inner');
         localStorage.setItem('MedFarm_StarCashBoost', 1);
 

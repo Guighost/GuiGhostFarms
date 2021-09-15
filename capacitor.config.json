@@ -6,7 +6,7 @@
   "webDir": "www",
   "plugins": {
     "SplashScreen": {
-      "launchShowDuration": 3500,
+      "launchShowDuration": 4000,
       "splashFullScreen": true,
       "androidSpinnerStyle": "large",
       "spinnerColor": "#999999",
