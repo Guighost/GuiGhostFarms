@@ -47,11 +47,11 @@
         }
         #loadingText1{
             width: 100%;
-            height: 100%;
+            height: 90%;
             margin-left:auto;
-            margin-top: 10%;
+            margin-top: 60%;
             color:azure;
-            font-size: large;
+            font-size: x-large;
 
         }
 	#startLogo{
@@ -59,7 +59,7 @@
         top: 50%;
         left: 50%;
         width: 50%;
-        transform: translate(-50%, -40%);
+        transform: translate(-50%, -50%);
 
     }
 
@@ -125,7 +125,7 @@
             position: absolute;
             left: 49%;
             top: 2.5%;
-            transform: translate(-60%,-50%);
+            transform: translate(-62%,-50%);
             display: none;
             font-family: 'Proxima Nova';
             font-size: 14px;
@@ -133,7 +133,7 @@
             background-image: url( "images/UI/blankBack5.png");
             background-size: contain;
             background-repeat: no-repeat;
-            min-width: 360px;
+            min-width: 365px;
             min-height: 540px;
             overflow-x: hidden;
             overflow-y: hidden;
@@ -197,17 +197,17 @@
         }
 
         #currentStarCashBack, #currentStarCashBack2, #currentStarCashBack4, #currentStarCashBack3, #currentStarCashShare, #currentStarCashBackPrize {
-            width: 280px;
+            width: 288px;
             height: 50px;
             font-family: 'Proxima Nova';
             font-size: 18px;
-            color: yellow;
+            color: azure;
             margin-left: 9%;
             margin-top: 15px;
             /*transform: translate(0px,-10px);*/
             border: 2px groove brown;
             border-radius: 5px;
-            background-color: darkgreen;
+            background-image: radial-gradient(circle, rgb(4, 83, 53) 0%, rgba(2,0,36,1) 35%,  rgb(2, 36, 23) 90%);
         }
         #currentStarCashBack {
             margin-top: 3px;
@@ -217,33 +217,38 @@
             margin-top: 8px;
         }
         #currentStarCashBack3 {
-            width: 280px;
+            /* width: 280px;
             height: 50px;
             text-align: left;
             padding-left: 2px;
             padding-top: -20px;
             margin-top: 8px;
-            margin-left: 9%;
+            margin-left: 9%; */
             /*display: none;*/
-        }
-        #currentStarCashBack4 {
-            width: 280px;
-            margin-top: 5px;
+            width: 285px;
+            height: 50px;
+            margin-top: 12px;
             margin-left: 18px;
             padding-top: 2px;
             padding-left: 2px;
             text-align: left;
             margin-left: 9%;
-            
         }
-        #currentStarCashBack4 p{
+        #currentStarCashBack4 {
+            width: 288px;
+            margin-top: 5px;
+            margin-left: 18px;
+            padding-top: 2px;
+            padding-left: 2px;
+            text-align: left;
+            margin-left: 9%;            
+        }
+        #currentStarCashBack4 p, #currentStarCashBack3 p{
             width: 267px;
-            margin-top: 8px;
-            
-                       
+            margin-top: 12px;              
         }
         #currentStarCashShare {
-            width: 280px;
+            width: 288px;
             height: 50px;
             text-align: start;
             padding-left: 2px;
@@ -256,74 +261,94 @@
            
             margin-top: 15px;
         } 
-        #starCashRow3 {
+        /* #starCashRow3 {
             width: 100%;
             height: 100%;
             transform: translate3d(1px,-15px, 0px);
             touch-action: none;
+        } */
+        #currentStarCashBackPrize p{
+        margin-top: 15px;
+        margin-left:2px;
         }
-
-        #lowerStarCashImg, #lowerStarCashImg2, #lowerStarCashImg5 {
-            width: 50px;
-            
+        #lowerStarCashImg, #lowerStarCashImg2{
+            width: 50px;            
         }
-        #lowerStarCashImg3,#lowerStarCashImg4 {
+        #lowerStarCashImg3,#lowerStarCashImg5 {
             width: 45px;
-            transform: translate(0px,16px);
+            transform: translate3d(120px,-35px,0px);
         }
-        #lowerStarCashImg3{
-            transform: translate(8px,16px);
-        }
+         /* #lowerStarCashImg3{
+           transform: translate3d(120px,-33px,0px);
+        } */
+        /*
         #lowerStarCashImg5 {
             width: 45px;
-            transform: translate3d(123px,-35px,0px);
-        } 
+         
+        }  */
         #lowerArrow, #lowerArrow2, #lowerArrow3 {
             width: 35px;
             height: 35px;
-            transform: translate(0px, -5px);
+            transform: translate(5px, -5px);
         }
 
         #lowerStarCashCoin {
             width: 50px;
             height: 50px;
             margin-left: 5%;
-            transform: translate(-5px, 0px);
+            transform: translate(5px, 0px);
         }
 
-        #buyWithStarCash, #buyWithStarCashTools, #viewAdImg, #buyStarsFromModal, #sharedBtnImg, #weeklyPrize {
+        #buyWithStarCash, #buyWithStarCashTools,  #buyStarsFromModal, #sharedBtnImg, #weeklyPrize {
             width: 90px;
             height: 40px;
             margin-left: 50%;
-            transform: translate3d(37px, -47px, 0px);
+            transform: translate3d(42px, -47px, 0px);
             touch-action: none;
         }
         #weeklyPrize {
-            width: 95px;
-            height: 50px;
+            width: 90px;
+            height: 45px;
             margin-left: 50%;
-            transform: translate3d(36px, -22px, 0px);
+            transform: translate3d(39px, -34px, 0px);
         }
         #sharedBtnImg {
             width: 90px;
             height: 40px;
-            transform: translate3d(-15px, -35px, 0px);
+            transform: translate3d(-11px, -35px, 0px);
         }
-        #viewAdImg {
+        .viewAdCls {
             width: 90px;
-            height: 42px;
+            height: 45px;
             margin-left: 50%;
-            transform: translate(35px, -26px);
+            transform: translate(-9px, -28px);
             touch-action: none;
         }
-
+        .viewAdImg {
+            width: 90px;
+            height: 45px;
+            margin-left: 50%;
+            transform: translate(-9px, -31px);
+            touch-action: none;
+           
+        }
+        .viewAdCls {
+            width: 90px;
+            height: 45px;
+            margin-left: 50%;
+            transform: translate(30px, -76px);
+            touch-action: none;
+           
+        }
+        .hidden{ display: none;}
+        .visible{ display: block;}
         #row2label {
             transform: translate(75px, -50px);
         }
         #buyStarsFromModal {
             width: 80px;
-            height: 48px;
-            transform: translate(38px, -29px);
+            height: 47px;
+            transform: translate(44px, -32px);
         }
         /*#currentStarCashBack2 {
             width: 280px;
@@ -359,7 +384,7 @@
 
         #sucessbuyTxt {
                        
-            width: 180px;
+            width: 230px;
             color: darkgreen;
             font-family: 'Proxima Nova';
             margin-left: 50%;
@@ -367,7 +392,7 @@
             font-size: xx-large;
             font-weight: 500;
             display: none;
-            transform: translate(-85px, 0px);
+            transform: translate(-115px, 0px);
         }
         #waitText {
             margin-left: 0%;
@@ -610,14 +635,14 @@
         #viewAdImgHeir{
             float: left;
             margin-left:40px;
-            transform: translateY(-20px);
+            transform: translateY(-22px);
             width: 39%;
         }
         #heirStars{
             float: right;
             margin-right:50px;
             width:60px;
-            transform: translateY(-28px);
+            transform: translateY(-30px);
             
             border-radius: 20px;
             box-shadow: 0px 0px 20vh rgba(255, 255, 0,1);
@@ -627,7 +652,7 @@
             font-size: 14px;
             display: block;
             clear: both;
-            transform: translateY(-64px);
+            transform: translateY(-73px);
             width:70%;
         }
         #foundItSubText, #foundHeirSubText {
@@ -637,7 +662,7 @@
             transform: translateY(-30px);
         }
         #foundHeirSubText{
-            transform: translateY(-68px); 
+            transform: translateY(-72px); 
             width: 80%; 
             font-size: 22px;
         }
@@ -910,9 +935,17 @@
                 top: 50%;
                 min-width: 720px;
             min-height: 1080px;
-                transform:  translate(-49%,-50%);
+                transform:  translate(-55%,-50%);
 
             }
+            #startLogo{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60%;
+            transform: translate(-50%, -50%);
+
+        }
         }
          @media (max-width: 400px) {
             #amazonCardLarge{
@@ -932,7 +965,7 @@
                 top: 10px;
                 min-width: 360px;
             min-height: 540px;
-                transform:  translate(-50%,-50%);
+                transform:  translate(-52%,-50%);
 
             }
          
@@ -1254,7 +1287,7 @@ table.power
 #viewAdWheel{
     margin-left: 50%;
     width:200px;
-    transform:translate(-50%, 25%);
+    transform:translate(-50%, 10%);
 }
 #wheelReward{
     position:absolute;
@@ -1321,15 +1354,13 @@ table.power
 	animation-iteration-count: infinite; 
 	animation-timing-function: linear;
 }
-@media (max-width: 400px){
+@media only screen and (max-width: 600px){
     #spin_button{
     width: 250px;
-    height: 80px;
+    height: 75px;
     margin-left: 50%;
     margin-top:-5px;
-    transform:translateX(-135px);
-  
-    
+    transform:translateX(-122px);     
 }
 
 }
@@ -1343,7 +1374,9 @@ table.power
   
         <script   src="js/enhance.js"></script>
         <script  src="js/capacitor.js"></script>
-        <script  type="module" src="js/index.js"></script>
+        <!-- <script  type="module" src="js/index.js"></script> -->
+
+   
    
 </head>
 
@@ -1356,10 +1389,10 @@ table.power
     <div id="loadingGG"> 
        
           <img id="startLogo" src="images/UI/MenuTop2.png"  width="300" alt="StarCashImg" /> 
-          <p id="loadingText1">...Loading...</p>
+          <p id="loadingText1">Welcome...</p>
           
     </div>
-
+    <div id="firebaseui-auth-container"></div>
   
 
     <div id="fbshare" >
@@ -1384,26 +1417,26 @@ table.power
                     <img id="lowerStarCashCoin" src="images/tools500.png" loading="lazy" width="50" alt="tools500" /><img id="buyWithStarCashTools" src="images/UI/buyNowBtn.png" alt="StarCashBuyImg" />
                 </div>
                 <div id="currentStarCashBack3">
-                    <div id="starCashRow3">
-                        Watch to Earn <img id="lowerStarCashImg3" src="images/UI/plus3StarCash.png" loading="lazy" width="45" alt="StarCashImg" />
-                        <img id="viewAdImg" src="images/UI/viewAd2.png" loading="lazy" width="88" alt="View Ad" />
-                    </div>
+                    
+                        <p>Watch & Earn </p> <img id="lowerStarCashImg3" src="images/UI/plus3StarCash.png" loading="lazy" width="45" alt="StarCashImg" />
+                        <img id="viewAdImg" class="viewAdImg" src="images/UI/viewAd2.png" loading="lazy" width="88" alt="View Ad" />
+                    
                 </div>
                 <div>
                     <div id="currentStarCashShare">
-                        <p>Share to Earn</p> <img id="lowerStarCashImg5" src="images/UI/plus5StarCash.png" loading="lazy" width="45" alt="StarCashImg" />
+                        <p>Share & Earn</p> <img id="lowerStarCashImg5" src="images/UI/plus5StarCash.png" loading="lazy" width="45" alt="StarCashImg" />
                         <img id="sharedBtnImg" src="images/UI/shareBtn.png" loading="lazy" width="88" alt="share" />
                     </div>
 
                 </div>
                 <div>
                     <div id="currentStarCashBack4">
-                        <p> Buy Stars in Town</p> <img id="buyStarsFromModal" src="images/UI/shopIcon.png" loading="lazy" width="80" alt="buyStars" />
+                        <p>Buy Stars in Town</p> <img id="buyStarsFromModal" src="images/UI/shopIcon.png" loading="lazy" width="80" alt="buyStars" />
                     </div>
                 </div>
                 <div>
                     <div id="currentStarCashBackPrize">
-                        <p> Enter to Win </p> <img id="weeklyPrize" src="images/UI/amazon-gift-card-20-dollar.png"  width="100" height="61"alt="buyStars" />
+                        <p> Enter to Win Daily</p> <img id="weeklyPrize" src="images/UI/amazon-gift-card-20-dollar.png"  width="100" height="61"alt="buyStars" />
                     </div>
                 </div>
 
@@ -1527,11 +1560,11 @@ table.power
         </div>     
     </div>
     
-
     <script type="text/javascript" src="farming_2.0_Min.js"></script>
     <script src="js/tweenMax.min.js"></script>
-    <script src='js/Winwheel.js'></script>
-    <script defer type="text/javascript" src="loader.js"></script>
+    <script src='js/Winwheel.min.js'></script>
+    <script defer src='js/toastify.js'></script>
+    <script defer type="module" src="loader.js"></script>
    
     <script type=text/javascript>
       /*jshint esversion: 6 */
@@ -1574,8 +1607,6 @@ table.power
             try { Enhance.logEvent('app_rate_clicked'); } catch (err) { console.log("logging failed"); }
 
         }
-
-  
 
         var onceSmallStars = false;
         var onceLargeStars = false;
@@ -1625,8 +1656,6 @@ table.power
             }catch(err){console.log('consume failed');}
             Enhance.purchases.attemptPurchase('starpack_small', onPurchaseSuccess, onPurchaseFailed);
         };
-
-
 
         var callback_LargeSP = function () {
             var onPurchaseSuccess = function () {
@@ -1752,7 +1781,8 @@ table.power
         var buyingLargeStars = 0;
         var buyingStarterPack = 0;
         var buyingMasterPack = 0;
-
+        let interTries = 0;
+        let rewardedTries = 0;
         localStorage.setItem('MedFarms_buyingSmallStars', 0);
         localStorage.setItem('MedFarms_buyingLargeStars', 0);
         localStorage.setItem('MedFarms_buyingStarterPack', 0);
@@ -1785,15 +1815,19 @@ table.power
                 localStorage.setItem('MedFarms_buyingMasterPack', 0);
             }
             //interstatial
+        
             var callbackAdInter = function (result) {
-                if (!result) { app.writeLog('Interstitial ad is not ready'); return; }
+                
+
+                if (!result) { app.writeLog('Interstitial ad is not ready');  return;}
                 Enhance.showInterstitialAd();
             };
             if (localStorage.getItem('MedFarm_LoadAd') == 1 && localStorage.getItem('MedFarm_StarCashBoost') == 0) {
-                try{
-                    Enhance.isInterstitialReady(callbackAdInter);
-                localStorage.setItem('MedFarm_LoadAd',0) ;
-                }catch(err){console.log(err);}               
+                interTries = interTries + 1;
+                // console.log("tries = " + interTries);
+                if (interTries > 3){localStorage.setItem('MedFarm_LoadAd',0); interTries = 0; }
+                try{ Enhance.isInterstitialReady(callbackAdInter);localStorage.setItem('MedFarm_LoadAd',0);interTries = 0;
+                }catch(err){console.log(err); }               
              }
 
             ///rewarded
@@ -1813,14 +1847,18 @@ table.power
                 Enhance.showRewardedAd(onRewardGranted, onRewardDeclined, onRewardUnavailable);
             };
             if (localStorage.getItem('MedFarm_StarCashBoost') == 1) {
+                rewardedTries = rewardedTries + 1;
+                console.log("tries = " + rewardedTries);
+                if (rewardedTries > 3){localStorage.setItem('MedFarm_StarCashBoost',0); rewardedTries = 0;}
               try{
                     Enhance.isRewardedAdReady(callbackRewarded); 
                     localStorage.setItem('MedFarm_StarCashBoost', 0);
+                    rewardedTries = 0;
                 }catch(err){console.log(err);}
             }          
             setTimeout(() => {
                 purchaseCheck();
-            }, 500);
+            },500);
         };
 
         window.addEventListener('load', function (event) {
@@ -1967,8 +2005,7 @@ table.power
         }, false);
         try {
             Enhance.enableLocalNotification('Crops are Ready', 'Pick your Crops before they Wither!', 86400);
-        } catch (error) {
-            console.log(error);
+        } catch (error) { 
         }
     function copyToClipboard() {
         // console.log("in copy func");
@@ -1991,7 +2028,63 @@ table.power
     }
 
     </script>
- <script async type="text/javascript" src="js/toastify.js"></script>
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script> -->
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script> -->
+
+  <!-- Add Firebase products that you want to use -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script> -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script> -->
+
+  <!-- <script> -->
+    <!-- // TODO: Replace the following with your app's Firebase project configuration
+    // For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
+    //     var firebaseConfig = {
+    //     apiKey: "AIzaSyCAS0whe96Vu2DdmRTLk5lfRy1Yqbxj2GE",
+    //     authDomain: "guighost-farms.firebaseapp.com",
+    //     databaseURL: "https://guighost-farms.firebaseio.com",
+    //     projectId: "guighost-farms",
+    //     storageBucket: "guighost-farms.appspot.com",
+    //     messagingSenderId: "809085131389",
+    //     appId: "1:809085131389:web:2042d3c51ed6e75fd96f14",
+    //     measurementId: "G-6T0QWX2K48"
+    // };
+    // Initialize Firebase
+//     firebase.initializeApp(firebaseConfig);
+//     firebase.analytics();
+
+//     var provider = new firebase.auth.GoogleAuthProvider();
+//     firebase.auth().signInWithRedirect(provider);
+//     firebase.auth()
+//   .getRedirectResult()
+//   .then((result) => {
+//     if (result.credential) {
+//       /** @type {firebase.auth.OAuthCredential} */
+//       var credential = result.credential;
+
+      // This gives you a Google Access Token. You can use it to access the Google API.
+    //   var token = credential.accessToken;
+    //   console.log(token + " is the token")
+    //   // ...
+    // }
+    // The signed-in user info.
+//     var user = result.user;
+//     console.log(user + " is the user")
+//   }).catch((error) => {
+//     // Handle Errors here.
+//     var errorCode = error.code;
+//     var errorMessage = error.message;
+//     // The email of the user's account used.
+//     var email = error.email;
+//     // The firebase.auth.AuthCredential type that was used.
+//     var credential = error.credential;
+//     // ...
+//   }); -->
+
+  <!-- </script> -->
+
 </body>
 
 </html>

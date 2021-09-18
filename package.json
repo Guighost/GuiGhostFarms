@@ -5,10 +5,10 @@
   "main": "index.js",
   "author": "GuiGhostGames",
   "devDependencies": {
-    "@capacitor/cli": "^3.0.0",
+    "@capacitor/cli": "^3.2.2",
     "@ionic/v1-toolkit": "3.2.15",
     "cordova-plugin-device": "2.0.2",
-    "cordova-plugin-ionic": "^5.4.7",
+    "cordova-plugin-ionic": "^5.5.0",
     "cordova-plugin-x-socialsharing": "^6.0.3",
     "enhance-cordova-connector": "^3.0.1",
     "fitatu-cordova-plugin-market": "^1.2.0",
