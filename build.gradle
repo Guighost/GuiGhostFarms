@@ -2,3 +2,10 @@
 android {
     useLibrary 'org.apache.http.legacy'
 }
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+
+    }
+}

@@ -1,7 +1,7 @@
 {
   "appId": "com.wMedievalFarms_GuiGhostGames",
   "appName": "Medieval-Farms",
-  "bundledWebRuntime": false,
+  "bundledWebRuntime": true,
   "npmClient": "npm",
   "webDir": "www",
   "plugins": {

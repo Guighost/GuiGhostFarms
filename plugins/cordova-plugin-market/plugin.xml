@@ -15,6 +15,10 @@
                 <param name="android-package" value="com.xmartlabs.cordova.market.Market"/>
             </feature>
         </config-file>
+        <config-file target="config.xml" parent="/*">
+    <preference name="GradlePluginGoogleServicesEnabled" value="true" />
+    <preference name="GradlePluginGoogleServicesVersion" value="4.2.0" />
+</config-file>
         <source-file src="src/android/Market.java" target-dir="src/com/xmartlabs/cordova/market" />
     </platform>
 
