@@ -935,7 +935,7 @@
                 top: 50%;
                 min-width: 720px;
             min-height: 1080px;
-                transform:  translate(-55%,-50%);
+                transform:  translate(-60%,-50%);
 
             }
             #startLogo{
@@ -965,7 +965,7 @@
                 top: 10px;
                 min-width: 360px;
             min-height: 540px;
-                transform:  translate(-52%,-50%);
+                transform:  translate(-60%,-50%);
 
             }
          
@@ -1560,10 +1560,154 @@ table.power
     <script src="js/tweenMax.min.js"></script>
     <script src='js/Winwheel.min.js'></script>
     <script defer src='js/toastify.js'></script>
-    <script defer src='js/applovinLoader2.js'></script>
+    <script  src='js/applovinLoader2.js'></script>
     <script defer type="module" src="loader.js"></script>
   
+ <script>
+        //  var optionsShare = {
+        //     message: 'Join me playing Medieval Farms', // not supported on some apps (Facebook, Instagram)
+        //     subject: 'Medieval Farms', // fi. for email
+        //     files: ['https://guighostgames.com/MedievalFarms/images/ads/promo580x400.png'], // an array of filenames either locally or remotely
+        //     url: 'https://bit.ly/SharingMedFarms',
+        //     chooserTitle: 'Pick an app to share with' // Android only, you can override the default share sheet title
+        // };
+        // var optionsShare2 = {
+        //     message: 'Use Reward Code "StarBoost" for free stars in Medieval Farms ', // not supported on some apps (Facebook, Instagram)
+        //     subject: 'Medieval Farms', // fi. for email
+        //     files: ['https://guighostgames.com/MedievalFarms/images/ads/rewardImg.png'], // an array of filenames either locally or remotely
+        //     url: 'https://bit.ly/Stars4MedFarm',
+        //     chooserTitle: 'Pick an app to share with' // Android only, you can override the default share sheet title
+        // };
+        // var onSuccessShare = function (result) {
 
+        //     starCash = parseInt(localStorage.getItem('starCash'));
+        //     starCash = parseInt(starCash) + 5;
+        //     localStorage.setItem('starCash', starCash);
+
+        //     document.getElementById("starCashOuterLabel").innerHTML = starCash;
+        //     document.getElementById("currentStarCashShare").style.display = 'none';
+
+        //     console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
+        //     console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+        //     try {
+        //         Enhance.logEvent('app_shared', 'result', result.app);
+
+        //     } catch (err) { console.log("share failed"); }
+        // };
+
+        // var onErrorShare = function (msg) {
+        //     try { Enhance.logEvent('app_shared', 'result', 'false'); } catch (err) { console.log("share failed"); }
+        //     console.log("Sharing failed with message: " + msg);
+        // };
+
+        var shareUs = document.getElementById('sharedBtnImg');
+        var shareUs2 = document.getElementById('shareUs2');
+        var sucessbuyTxt = document.getElementById('sucessbuyTxt');
+        document.getElementById('sharedBtnImg').addEventListener("click", function () { SocialShareGG(1); });
+        document.getElementById('sharedBtnImg').addEventListener("touchstart", function () { SocialShareGG(1); });
+        shareUs2.addEventListener("click", function () { SocialShareGG(2); });
+        shareUs2.addEventListener("touchstart", function () { SocialShareGG(2); });
+        function SocialShareGG(num) {
+            sucessbuyTxt.innerText = "Sharing"
+            sucessbuyTxt.style.display = 'block' 
+            if (num == 1) {
+                try {
+                  
+                navigator.share({
+                    title: 'Share GuiGhostGames',
+                    text: 'Check out Medieval Farms retro farming sim',
+                    url: 'https://guighostgames.com/MedievalFarms/',
+                })
+                    .then(() => starCash = parseInt(localStorage.getItem('starCash')), 
+                    starCash = parseInt(starCash + 5),localStorage.setItem('starCash', starCash),
+                    document.getElementById("starCashOuterLabel").innerText = starCash,  shareUs.style.display = 'none',sucessbuyTxt.style.display = 'none' 
+                    )
+                    .catch((error) => console.log('Error sharing', error), sucessbuyTxt.innerText = "Share failed with " + error);         
+         
+                } catch (err) { console.log(err); }
+            }
+            else if (num == 2) {
+                try {
+                    console.log("clicked share from reward");
+                    
+                        navigator.share({
+                        title: 'Share GuiGhostGames',
+                        text: 'I got free rewards on Medieval Farms retro farming sim',
+                        url: 'https://guighostgames.com/MedievalFarms/images/ads/rewardImg.png',
+                        })
+                    .then(() => console.log('Successful share'))
+                    .catch((error) => console.log('Error sharing', error));
+                    
+                }  catch (err) { console.log(err); }
+            }
+            try {
+                Enhance.logEvent('app_shared');
+            } catch (error) {console.log('share failed')
+                
+            }
+        }
+      
+    //open prize entry
+      document.getElementById("OpenPrizeBtn").addEventListener("click", function (event) {
+          var isVisPrize3 = document.getElementById("prizeMe").style.display ;    
+          if (isVisPrize3 == 'block') {
+                  localStorage.setItem('enteredPrizeToday', 1);
+                  document.getElementById("prizeMe").style.display = 'none';   
+                  var copyText = document.getElementById("prizeCodeThisTime");
+                  console.log("copyText is " + copyText.innerHTML);       
+                  let codeThis =    copyText.innerHTML;
+                  var entryPath = 'https://docs.google.com/forms/d/e/1FAIpQLScagsRtI1r-CBXdXevU4PFL83Oo7jTcavyfxUssgr7PJsmQqg/viewform?usp=pp_url&entry.1167240952=' + codeThis + ' ';
+                  window.open(entryPath, '_blank');
+                  document.getElementById("currentStarCashBackPrize").style.display = 'none';
+                  try{Enhance.logEvent('contestEntry');}catch(err){console.log(err);}
+                  event.stopPropagation();
+          }         
+      }, false);
+      document.getElementById("OpenPrizeBtn").addEventListener("touchend", function (event) {
+          var isVisPrize3 = document.getElementById("prizeMe").style.display ;    
+          if (isVisPrize3 == 'block') {
+                  localStorage.setItem('enteredPrizeToday', 1);
+                  document.getElementById("prizeMe").style.display = 'none';   
+                  var copyText = document.getElementById("prizeCodeThisTime");
+                  console.log("copyText is " + copyText.innerHTML);       
+                  let codeThis =    copyText.innerHTML;
+                  var entryPath = 'https://docs.google.com/forms/d/e/1FAIpQLScagsRtI1r-CBXdXevU4PFL83Oo7jTcavyfxUssgr7PJsmQqg/viewform?usp=pp_url&entry.1167240952=' + codeThis + ' ';
+                  window.open(entryPath, '_blank');
+                  document.getElementById("currentStarCashBackPrize").style.display = 'none';
+                  try{Enhance.logEvent('contestEntry');}catch(err){console.log(err);}
+                  event.stopPropagation();
+          }         
+      }, false);
+    //closePrize
+      document.getElementById("closePrize").addEventListener("touchstart", function (event) {
+          var isVisPrize1 = document.getElementById("prizeMe").style.display ;    
+          if (isVisPrize1 == 'block') {
+          document.getElementById("prizeMe").style.display = 'none';
+        event.stopPropagation();    
+          }  
+      }, false);
+      document.getElementById("closePrize").addEventListener("click", function (event) {         
+          var isVisPrize2 = document.getElementById("prizeMe").style.display ;    
+          if (isVisPrize2 == 'block') {
+          document.getElementById("prizeMe").style.display = 'none';
+        event.stopPropagation();    
+          }    
+      }, false);
+      document.getElementById("weeklyPrize").addEventListener("touchstart", function (event) {
+          var isVisFBe = document.getElementById("fbshare").style.display;
+          if (isVisFBe == 'block') {
+              document.getElementById("prizeMe").style.display = 'block';
+              event.stopPropagation();
+          }
+      }, false);
+      document.getElementById("weeklyPrize").addEventListener("click", function (event) {
+          var isVisFBe = document.getElementById("fbshare").style.display;
+          if (isVisFBe == 'block') {
+              document.getElementById("prizeMe").style.display = 'block';
+              event.stopPropagation();
+          }
+      }, false);
+ </script>
 
 </body>
 

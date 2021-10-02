@@ -6,37 +6,37 @@ window.addEventListener('load', (event) => {
       
       setTimeout(function(){    loadTextStart.innerText = 'Building World...'; startLogo.style.scale = '1.1';  }, 2000); 
       setTimeout(function(){    
-        try {
-                  Enhance.purchases.isSupported(function(result){
+        try { Enhance.purchases.isSupported(function(result){
                     if (result == true){loadTextStart.innerText = 'Purchases Enabled';}
-                    else {loadTextStart.innerText = 'Purchases are NOT supported';}
-                  
-          });
-        } catch (error) {
-          loadTextStart.innerText = 'Purchases check failed with ' + error;
-        }
+                    else {loadTextStart.innerText = 'Purchases are not supported';}                  
+                });
+        } catch (error) { loadTextStart.innerText = 'Purchases check failed with ' + error; }
 
       }, 3000);  
-      setTimeout(function(){    
-        let spackOwned = 0;
+      let spackOwned = 0;
+      setTimeout(function(){            
           try {
-            Enhance.purchases.getOwnedItemCount('starter_pack',function(){spackOwned = spackOwned + parseInt(result);  } );
-            Enhance.purchases.getOwnedItemCount('master_pack',function(){spackOwned = spackOwned + parseInt(result);  } );
-            Enhance.purchases.getOwnedItemCount('starpack_small',function(){spackOwned = spackOwned + parseInt(result);  } );
-            Enhance.purchases.getOwnedItemCount('starpack_large',function(){spackOwned = spackOwned + parseInt(result); loadTextStart.innerText = 'Premium Items Bought = ' + spackOwned; } );
-          } catch (error) { loadTextStart.innerText = 'getOwnedItemCount startPack failed ' + error; }      
-      }, 4500);  
-
-
+            Enhance.purchases.isItemOwned('starter_pack',function(result){ if (result){spackOwned = spackOwned + 1;}  } );
+            Enhance.purchases.isItemOwned('master_pack',function(result){if (result){spackOwned = spackOwned + 1;}   } );
+            Enhance.purchases.isItemOwned('starpack_small',function(result){if (result){spackOwned = spackOwned + 1;}  } );
+            Enhance.purchases.isItemOwned('starpack_large',function(result){if (result){spackOwned = spackOwned + 1;}  } );
+          } catch (error) { loadTextStart.innerText = 'Premium Item Check failed with ' + error; }      
+         
+      }, 3500);  
+      setTimeout(function(){            
+   
+        loadTextStart.innerText = 'Premium Items Owned = ' + spackOwned; 
+    }, 4000);  
+      //start Applovin
+      
+      setTimeout(function(){     loadTextStart.innerText = 'Starting Game '; }, 5000);
+      setTimeout(function(){loadTextStart.innerText = 'Loading ad providers'; try{onDeviceReadyAL();}catch(err){loadTextStart.innerText = 'Loading ads failed ' + err;}  },6250);
       setTimeout(function(){ loadTextStart.innerText = 'Loading Data...'; 
         ///////////////////////START THE GAME/////////////////////////////////////////////////////////////////////
         try{ farming.start();  }
         catch(err){ alert("Error Loading ---   " + err ); console.log(err);    }
-      }, 7000); 
-
-     
-      setTimeout(function(){     loadTextStart.innerText = 'Starting Game '; }, 7500);
-            
+      }, 7500);   
+      
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////moved from index.html//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -262,8 +262,7 @@ window.addEventListener('load', (event) => {
     var buyingLargeStars = 0;
     var buyingStarterPack = 0;
     var buyingMasterPack = 0;
-    let interTries = 0;
-    let rewardedTries = 0;
+
     localStorage.setItem('MedFarms_buyingSmallStars', 0);
     localStorage.setItem('MedFarms_buyingLargeStars', 0);
     localStorage.setItem('MedFarms_buyingStarterPack', 0);
@@ -303,143 +302,7 @@ window.addEventListener('load', (event) => {
 
 
       
-        var optionsShare = {
-            message: 'Join me playing Medieval Farms', // not supported on some apps (Facebook, Instagram)
-            subject: 'Medieval Farms', // fi. for email
-            files: ['https://guighostgames.com/MedievalFarms/images/ads/promo580x400.png'], // an array of filenames either locally or remotely
-            url: 'https://bit.ly/SharingMedFarms',
-            chooserTitle: 'Pick an app to share with' // Android only, you can override the default share sheet title
-        };
-        var optionsShare2 = {
-            message: 'Use Reward Code "StarBoost" for free stars in Medieval Farms ', // not supported on some apps (Facebook, Instagram)
-            subject: 'Medieval Farms', // fi. for email
-            files: ['https://guighostgames.com/MedievalFarms/images/ads/rewardImg.png'], // an array of filenames either locally or remotely
-            url: 'https://bit.ly/Stars4MedFarm',
-            chooserTitle: 'Pick an app to share with' // Android only, you can override the default share sheet title
-        };
-        var onSuccessShare = function (result) {
-
-            starCash = parseInt(localStorage.getItem('starCash'));
-            starCash = parseInt(starCash) + 5;
-            localStorage.setItem('starCash', starCash);
-
-            document.getElementById("starCashOuterLabel").innerHTML = starCash;
-            document.getElementById("currentStarCashShare").style.display = 'none';
-
-            console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
-            console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
-            try {
-                Enhance.logEvent('app_shared', 'result', result.app);
-
-            } catch (err) { console.log("share failed"); }
-        };
-
-        var onErrorShare = function (msg) {
-            try { Enhance.logEvent('app_shared', 'result', 'false'); } catch (err) { console.log("share failed"); }
-            console.log("Sharing failed with message: " + msg);
-        };
-
-        var shareUs = document.getElementById("sharedBtnImg");
-        var shareUs2 = document.getElementById("shareUs2");
-        shareUs.addEventListener("click", function (event) { SocialShareGG(1); });
-        shareUs.addEventListener("touchend", function (event) { SocialShareGG(1); });
-        shareUs2.addEventListener("click", function (event) { SocialShareGG(2); });
-        shareUs2.addEventListener("touchend", function (event) { SocialShareGG(2); });
-        function SocialShareGG(num) {
-            if (num == 1) {
-                try {
-                    if (navigator.share) {
-                navigator.share({
-                    title: 'Share GuiGhostGames',
-                    text: 'Check out Medieval Farms retro farming sim',
-                    url: 'https://guighostgames.com/MedievalFarms/',
-                })
-                    .then(() => console.log('Successful share'))
-                    .catch((error) => console.log('Error sharing', error));
-            }
-            starCash = parseInt(localStorage.getItem('starCash'));
-            starCash = parseInt(starCash + 5) ;
-            localStorage.setItem('starCash', starCash);
-            document.getElementById("starCashOuterLabel").innerHTML = starCash;
-            shareUs.style.display = 'none';
-                } catch (err) { console.log(err); }
-            }
-            else if (num == 2) {
-                try {
-                    console.log("clicked share from reward");
-                    if (navigator.share) {
-                        navigator.share({
-                        title: 'Share GuiGhostGames',
-                        text: 'I got free rewards on Medieval Farms retro farming sim',
-                        url: 'https://guighostgames.com/MedievalFarms/images/ads/rewardImg.png',
-                        })
-                    .then(() => console.log('Successful share'))
-                    .catch((error) => console.log('Error sharing', error));
-                    }
-                }  catch (err) { console.log(err); }
-            }
-        }
-      
-    //open prize entry
-      document.getElementById("OpenPrizeBtn").addEventListener("click", function (event) {
-          var isVisPrize3 = document.getElementById("prizeMe").style.display ;    
-          if (isVisPrize3 == 'block') {
-                  localStorage.setItem('enteredPrizeToday', 1);
-                  document.getElementById("prizeMe").style.display = 'none';   
-                  var copyText = document.getElementById("prizeCodeThisTime");
-                  console.log("copyText is " + copyText.innerHTML);       
-                  let codeThis =    copyText.innerHTML;
-                  var entryPath = 'https://docs.google.com/forms/d/e/1FAIpQLScagsRtI1r-CBXdXevU4PFL83Oo7jTcavyfxUssgr7PJsmQqg/viewform?usp=pp_url&entry.1167240952=' + codeThis + ' ';
-                  window.open(entryPath, '_blank');
-                  document.getElementById("currentStarCashBackPrize").style.display = 'none';
-                  try{Enhance.logEvent('contestEntry');}catch(err){console.log(err);}
-                  event.stopPropagation();
-          }         
-      }, false);
-      document.getElementById("OpenPrizeBtn").addEventListener("touchend", function (event) {
-          var isVisPrize3 = document.getElementById("prizeMe").style.display ;    
-          if (isVisPrize3 == 'block') {
-                  localStorage.setItem('enteredPrizeToday', 1);
-                  document.getElementById("prizeMe").style.display = 'none';   
-                  var copyText = document.getElementById("prizeCodeThisTime");
-                  console.log("copyText is " + copyText.innerHTML);       
-                  let codeThis =    copyText.innerHTML;
-                  var entryPath = 'https://docs.google.com/forms/d/e/1FAIpQLScagsRtI1r-CBXdXevU4PFL83Oo7jTcavyfxUssgr7PJsmQqg/viewform?usp=pp_url&entry.1167240952=' + codeThis + ' ';
-                  window.open(entryPath, '_blank');
-                  document.getElementById("currentStarCashBackPrize").style.display = 'none';
-                  try{Enhance.logEvent('contestEntry');}catch(err){console.log(err);}
-                  event.stopPropagation();
-          }         
-      }, false);
-    //closePrize
-      document.getElementById("closePrize").addEventListener("touchstart", function (event) {
-          var isVisPrize1 = document.getElementById("prizeMe").style.display ;    
-          if (isVisPrize1 == 'block') {
-          document.getElementById("prizeMe").style.display = 'none';
-        event.stopPropagation();    
-          }  
-      }, false);
-      document.getElementById("closePrize").addEventListener("click", function (event) {         
-          var isVisPrize2 = document.getElementById("prizeMe").style.display ;    
-          if (isVisPrize2 == 'block') {
-          document.getElementById("prizeMe").style.display = 'none';
-        event.stopPropagation();    
-          }    
-      }, false);
-      document.getElementById("weeklyPrize").addEventListener("touchstart", function (event) {
-          var isVisFBe = document.getElementById("fbshare").style.display;
-          if (isVisFBe == 'block') {
-              document.getElementById("prizeMe").style.display = 'block';
-              event.stopPropagation();
-          }
-      }, false);
-      document.getElementById("weeklyPrize").addEventListener("click", function (event) {
-          var isVisFBe = document.getElementById("fbshare").style.display;
-          if (isVisFBe == 'block') {
-              document.getElementById("prizeMe").style.display = 'block';
-              event.stopPropagation();
-          }
-      }, false);
+    
       try {
           Enhance.enableLocalNotification('Crops are Ready', 'Pick your Crops before they Wither!', 86400);
       } catch (error) {  alert('enable notification failed - ' + err);
@@ -463,7 +326,7 @@ window.addEventListener('load', (event) => {
           /* Alert the copied text */
           alert("Copied the text: " + copyText.value);
         }
-        setTimeout(function(){  purchaseCheck();  loadTextStart.innerText = 'Game loop running'; }, 7750);
+    setTimeout(function(){  purchaseCheck();  loadTextStart.innerText = 'Game loaded - time to play!'; }, 7750);
 
 
    ///end of window.load
