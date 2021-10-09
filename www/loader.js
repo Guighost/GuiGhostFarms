@@ -1,10 +1,16 @@
 /*jshint esversion: 6 */
-window.addEventListener('load', (event) => {             
+
+
+
+window.addEventListener('load', (event) => {           
+    const start = Date.now();  
       let loadTextStart = document.getElementById('loadingText1');
       let startLogo = document.getElementById('startLogo');
-      setTimeout(function(){    loadTextStart.innerText = 'Getting Images...'; startLogo.style.scale = '1.1'; }, 1000); 
+      setTimeout(function(){    loadTextStart.innerText = 'Loading Images...'; console.log("Loading Images..." ); startLogo.style.scale = '1.1';
+     
+    }, 1000); 
       
-      setTimeout(function(){    loadTextStart.innerText = 'Building World...'; startLogo.style.scale = '1.1';  }, 2000); 
+      setTimeout(function(){    loadTextStart.innerText = 'Loading Sounds...'; console.log("Loading Sounds..." ); startLogo.style.scale = '1.';  }, 2500); 
       setTimeout(function(){    
         try { Enhance.purchases.isSupported(function(result){
                     if (result == true){loadTextStart.innerText = 'Purchases Enabled';}
@@ -12,30 +18,16 @@ window.addEventListener('load', (event) => {
                 });
         } catch (error) { loadTextStart.innerText = 'Purchases check failed with ' + error; }
 
-      }, 3000);  
-      let spackOwned = 0;
-      setTimeout(function(){            
-          try {
-            Enhance.purchases.isItemOwned('starter_pack',function(result){ if (result){spackOwned = spackOwned + 1;}  } );
-            Enhance.purchases.isItemOwned('master_pack',function(result){if (result){spackOwned = spackOwned + 1;}   } );
-            Enhance.purchases.isItemOwned('starpack_small',function(result){if (result){spackOwned = spackOwned + 1;}  } );
-            Enhance.purchases.isItemOwned('starpack_large',function(result){if (result){spackOwned = spackOwned + 1;}  } );
-          } catch (error) { loadTextStart.innerText = 'Premium Item Check failed with ' + error; }      
-         
-      }, 3500);  
-      setTimeout(function(){            
-   
-        loadTextStart.innerText = 'Premium Items Owned = ' + spackOwned; 
-    }, 4000);  
-      //start Applovin
+      }, 2750);  
       
-      setTimeout(function(){     loadTextStart.innerText = 'Starting Game '; }, 5000);
-      setTimeout(function(){loadTextStart.innerText = 'Loading ad providers'; try{onDeviceReadyAL();}catch(err){loadTextStart.innerText = 'Loading ads failed ' + err;}  },6250);
-      setTimeout(function(){ loadTextStart.innerText = 'Loading Data...'; 
+
+      setTimeout(function(){  console.log("checking Applovin..." );    if(AppLovinMAX){loadTextStart.innerText = "Loaded the Love";}else{ console.log("Applovin failed" );}}, 3750);
+      setTimeout(function(){     loadTextStart.innerText = 'Building World...'; }, 4750);
+      setTimeout(function(){ 
         ///////////////////////START THE GAME/////////////////////////////////////////////////////////////////////
         try{ farming.start();  }
         catch(err){ alert("Error Loading ---   " + err ); console.log(err);    }
-      }, 7500);   
+      }, 6250);   
       
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////moved from index.html//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -305,7 +297,7 @@ window.addEventListener('load', (event) => {
     
       try {
           Enhance.enableLocalNotification('Crops are Ready', 'Pick your Crops before they Wither!', 86400);
-      } catch (error) {  alert('enable notification failed - ' + err);
+      } catch (error) {  console.log('enable notification failed - ' + error);
       }
       function copyToClipboard() {
           // console.log("in copy func");
@@ -326,8 +318,14 @@ window.addEventListener('load', (event) => {
           /* Alert the copied text */
           alert("Copied the text: " + copyText.value);
         }
-    setTimeout(function(){  purchaseCheck();  loadTextStart.innerText = 'Game loaded - time to play!'; }, 7750);
+    setTimeout(function(){  purchaseCheck();  }, 15000);
 
+    document.addEventListener('ionBackButton', (ev) => {
+        ev.detail.register(10, () => {
+          console.log('Handler was called!');
+          confirm('Do you want to quit playing?');
+        });
+      });
 
    ///end of window.load
 });

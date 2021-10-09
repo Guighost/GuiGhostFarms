@@ -26,10 +26,17 @@
             background-position: center;
             overflow: none;
             touch-action: none;
-
+            
         }
-	
-
+	#canvasGame{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        margin: 0,0,0,0;
+        display: block !important;
+        height: 95%;
+        width: 100%;
+    }
         #loadingGG {
             position: fixed;
             width: 100%;
@@ -49,7 +56,7 @@
             width: 100%;
             height: 90%;
             margin-left:auto;
-            margin-top: 60%;
+            margin-top: 10%;
             color:azure;
             font-size: x-large;
 
@@ -125,7 +132,7 @@
             position: absolute;
             left: 49%;
             top: 2.5%;
-            transform: translate(-62%,-50%);
+            transform: translate(-64%,-50%);
             display: none;
             font-family: 'Proxima Nova';
             font-size: 14px;
@@ -134,13 +141,11 @@
             background-size: contain;
             background-repeat: no-repeat;
             min-width: 365px;
-            min-height: 540px;
+            max-width: 95%;
+            min-height: 560px;
             overflow-x: hidden;
-            overflow-y: hidden;
-             
-            
-           
-
+            overflow-y: hidden;           
+                      
         }
 
         #closeFB {
@@ -245,7 +250,7 @@
         }
         #currentStarCashBack4 p, #currentStarCashBack3 p{
             width: 267px;
-            margin-top: 12px;              
+            margin-top: 10px;              
         }
         #currentStarCashShare {
             width: 288px;
@@ -254,7 +259,7 @@
             padding-left: 2px;
             padding-top: 0px;
             transform: translate3d(0px,-5px, 0px);
-            margin-top: 15px;
+            margin-top: 12px;
             margin-left: 9%;
         } 
         #currentStarCashShare p {
@@ -307,15 +312,15 @@
             touch-action: none;
         }
         #weeklyPrize {
-            width: 90px;
+            width: 45px;
             height: 45px;
             margin-left: 50%;
-            transform: translate3d(39px, -34px, 0px);
+            transform: translate3d(-19px, -34px, 0px);
         }
         #sharedBtnImg {
-            width: 90px;
-            height: 40px;
-            transform: translate3d(-11px, -35px, 0px);
+            width: 45px;
+            height: 45px;
+            transform: translate3d(-19px, -35px, 0px);
         }
         .viewAdCls {
             width: 90px;
@@ -329,6 +334,14 @@
             height: 45px;
             margin-left: 50%;
             transform: translate(-9px, -31px);
+            touch-action: none;
+           
+        }
+        #viewAdImgG, #viewAdImgT {
+            width: 90px;
+            height: 45px;
+            margin-left: 50%;
+            transform: translate(42px, -80px);
             touch-action: none;
            
         }
@@ -935,7 +948,7 @@
                 top: 50%;
                 min-width: 720px;
             min-height: 1080px;
-                transform:  translate(-60%,-50%);
+                transform:  translate(-64%,-50%);
 
             }
             #startLogo{
@@ -965,7 +978,7 @@
                 top: 10px;
                 min-width: 360px;
             min-height: 540px;
-                transform:  translate(-60%,-50%);
+                transform:  translate(-64%,-50%);
 
             }
          
@@ -1326,7 +1339,7 @@ table.power
     height: 75px;
     left: 50%;
     bottom:3px;
-    transform: translate(-50%, 10%);
+    transform: translate(-50%, 5%);
     padding-top: 10px;
 }
 #rewardAdHider{
@@ -1364,7 +1377,15 @@ table.power
 }
 
 }
-
+#canvasGame{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        margin: 0,0,0,0;
+       
+        min-height: 95%;
+        width: 100%;
+    }
     </style>
 
 
@@ -1379,7 +1400,7 @@ table.power
 
 
 <body>
-
+<div id="canvasGame"></div>
     
 
 	
@@ -1421,21 +1442,24 @@ table.power
                 </div>
                 <div>
                     <div id="currentStarCashShare">
-                        <p>Share & Earn</p> <img id="lowerStarCashImg5" src="images/UI/plus5StarCash.png" loading="lazy" width="45" alt="StarCashImg" />
-                        <img id="sharedBtnImg" src="images/UI/shareBtn.png" loading="lazy" width="88" alt="share" />
+                        <p>Watch & Earn</p> 
+                        <img id="sharedBtnImg" src="images/UI/coin4.png"  loading="lazy" width="88" alt="share" />
+                        <img id="viewAdImgG" class="viewAdImg" src="images/UI/viewAd2.png" loading="lazy" width="88" alt="View Ad" />
                     </div>
 
+                </div>
+                <div>
+                <div id="currentStarCashBackPrize">
+                        <p>Watch & Earn</p> <img id="weeklyPrize" src="images/UI/toolsIcon2.png"  width="100" height="61"alt="buyStars" />
+                        <img id="viewAdImgT" class="viewAdImg" src="images/UI/viewAd2.png" loading="lazy" width="88" alt="View Ad" />
+                    </div>
                 </div>
                 <div>
                     <div id="currentStarCashBack4">
                         <p>Buy Stars in Town</p> <img id="buyStarsFromModal" src="images/UI/shopIcon.png" loading="lazy" width="80" alt="buyStars" />
                     </div>
                 </div>
-                <div>
-                    <div id="currentStarCashBackPrize">
-                        <p> Enter to Win Daily</p> <img id="weeklyPrize" src="images/UI/amazon-gift-card-20-dollar.png"  width="100" height="61"alt="buyStars" />
-                    </div>
-                </div>
+         
 
             </div>
             <p id="waitText"></p>
@@ -1556,14 +1580,18 @@ table.power
         <div id='closePrize'> </div>
         </div>     
     </div>
-    <script type="text/javascript" src="farming_2.0_Min.js"></script>
+    
+    <script  src='js/applovinLoader2.js'></script>
+    <script type="text/javascript" src="farming_2.1_Min.js"></script>
     <script src="js/tweenMax.min.js"></script>
     <script src='js/Winwheel.min.js'></script>
     <script defer src='js/toastify.js'></script>
-    <script  src='js/applovinLoader2.js'></script>
+    
     <script defer type="module" src="loader.js"></script>
   
  <script>
+
+
         //  var optionsShare = {
         //     message: 'Join me playing Medieval Farms', // not supported on some apps (Facebook, Instagram)
         //     subject: 'Medieval Farms', // fi. for email
@@ -1572,8 +1600,7 @@ table.power
         //     chooserTitle: 'Pick an app to share with' // Android only, you can override the default share sheet title
         // };
         // var optionsShare2 = {
-        //     message: 'Use Reward Code "StarBoost" for free stars in Medieval Farms ', // not supported on some apps (Facebook, Instagram)
-        //     subject: 'Medieval Farms', // fi. for email
+        //     message: 'Use Reward Code "StarBoost" for free stars in Medieval Fa  
         //     files: ['https://guighostgames.com/MedievalFarms/images/ads/rewardImg.png'], // an array of filenames either locally or remotely
         //     url: 'https://bit.ly/Stars4MedFarm',
         //     chooserTitle: 'Pick an app to share with' // Android only, you can override the default share sheet title
@@ -1603,13 +1630,13 @@ table.power
         var shareUs = document.getElementById('sharedBtnImg');
         var shareUs2 = document.getElementById('shareUs2');
         var sucessbuyTxt = document.getElementById('sucessbuyTxt');
-        document.getElementById('sharedBtnImg').addEventListener("click", function () { SocialShareGG(1); });
-        document.getElementById('sharedBtnImg').addEventListener("touchstart", function () { SocialShareGG(1); });
+
         shareUs2.addEventListener("click", function () { SocialShareGG(2); });
         shareUs2.addEventListener("touchstart", function () { SocialShareGG(2); });
+ 
+
         function SocialShareGG(num) {
-            sucessbuyTxt.innerText = "Sharing"
-            sucessbuyTxt.style.display = 'block' 
+
             if (num == 1) {
                 try {
                   
@@ -1693,20 +1720,21 @@ table.power
         event.stopPropagation();    
           }    
       }, false);
-      document.getElementById("weeklyPrize").addEventListener("touchstart", function (event) {
-          var isVisFBe = document.getElementById("fbshare").style.display;
-          if (isVisFBe == 'block') {
-              document.getElementById("prizeMe").style.display = 'block';
-              event.stopPropagation();
-          }
-      }, false);
-      document.getElementById("weeklyPrize").addEventListener("click", function (event) {
-          var isVisFBe = document.getElementById("fbshare").style.display;
-          if (isVisFBe == 'block') {
-              document.getElementById("prizeMe").style.display = 'block';
-              event.stopPropagation();
-          }
-      }, false);
+    //   document.getElementById("weeklyPrize").addEventListener("touchstart", function (event) {
+    //       var isVisFBe = document.getElementById("fbshare").style.display;
+    //       if (isVisFBe == 'block') {
+    //           document.getElementById("prizeMe").style.display = 'block';
+    //           event.stopPropagation();
+    //       }
+    //   }, false);
+    //   document.getElementById("weeklyPrize").addEventListener("click", function (event) {
+    //       var isVisFBe = document.getElementById("fbshare").style.display;
+    //       if (isVisFBe == 'block') {
+    //           document.getElementById("prizeMe").style.display = 'block';
+    //           event.stopPropagation();
+    //       }
+    //   }, false);
+    
  </script>
 
 </body>
