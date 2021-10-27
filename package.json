@@ -5,8 +5,8 @@
   "main": "index.js",
   "author": "GuiGhostGames",
   "devDependencies": {
-    "@capacitor/cli": "^3.2.2",
-    "@ionic/v1-toolkit": "^3.2.3",
+    "@capacitor/cli": "^3.2.4",
+    "@ionic/v1-toolkit": "^3.2.15",
     "android": "^0.0.8",
     "cordova-android": "^10.1.1",
     "cordova-browser": "^6.0.0",
@@ -31,12 +31,13 @@
     ]
   },
   "dependencies": {
-    "@capacitor/android": "^3.2.3",
+    "@capacitor/android": "^3.2.4",
     "@capacitor/app": "^1.0.3",
-    "@capacitor/core": "^3.2.3",
+    "@capacitor/core": "^3.2.4",
     "@capacitor/local-notifications": "^1.0.6",
-    "@capacitor/splash-screen": "^1.1.2",
+    "@capacitor/splash-screen": "^1.1.3",
     "@ionic-native/core": "^5.36.0",
+    "cap": "^0.2.1",
     "cordova": "^10.0.0",
     "cordova-android-support-gradle-release": "^3.0.1",
     "cordova-browser": "^6.0.0",
@@ -46,8 +47,11 @@
     "cordova-plugin-network-information": "^3.0.0",
     "install": "^0.13.0",
     "jetifier": "^2.0.0",
+    "npx": "^10.2.2",
     "react-native-applovin-max": "^2.3.1",
-    "rxjs": "^5.5.12"
+    "rxjs": "^7.4.0",
+    "set-value": "^4.1.0",
+    "sync": "^0.2.5"
   },
   "scripts": {
     "build": "gradle"

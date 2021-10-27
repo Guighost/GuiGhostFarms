@@ -11,7 +11,7 @@
 
    
   <title>Medieval Farms - Farming Sim by GuiGhost Games</title>
-    <style>
+      <style>
         .lime-scene {
             display: block !important;
         }
@@ -19,7 +19,7 @@
         body {
             background-color: black;
             background-image: url(images/UI/introBackNew2.png);
-            background-size: contain;
+            background-size: cover;
             background-repeat: no-repeat;
             text-size-adjust: none;
             -webkit-text-size-adjust: none;
@@ -29,14 +29,14 @@
             
         }
 	#canvasGame{
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        margin: 0,0,0,0;
-        display: block !important;
-        height: 95%;
-        width: 100%;
-    }
+        position: fixed;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            align-content: center;
+            z-index: 15;
+        }
         #loadingGG {
             position: fixed;
             width: 100%;
@@ -130,7 +130,7 @@
             /*background-color: #8a2be2;*/
             
             position: absolute;
-            left: 49%;
+            left: 45%;
             top: 2.5%;
             transform: translate(-64%,-50%);
             display: none;
@@ -777,13 +777,13 @@
             z-index: 3100;
             /*display: none;*/
         }
-        #prizeMeInner{
+        /* #prizeMeInner{
             margin-top: 10%;
             font-size: large;
             align-items: center;
             width: 100%;
             height: 85%;
-        }
+        } */
         /* #prizeCodeThisTime{
             font-size: 45px;
             margin-top: 25px;
@@ -793,7 +793,7 @@
             font-size: 32px;
             min-height:40px;
         } */
-        .prizeCodeStyle{
+        /* .prizeCodeStyle{
             background-image: url(images/UI/viewAd2.png);
             background-size: cover;
             background-repeat: no-repeat;
@@ -839,7 +839,7 @@
             margin-top: 2%;
             padding-top: 15px;
             text-align: center;
-        }
+        } */
         /* #OpenPrizeBtnAuto{
             position: absolute;
             width: 40%;
@@ -964,7 +964,18 @@
             #amazonCardLarge{
                 margin-top: 10px;
             height: 175px;
-            }             
+            }   
+            body {
+                background-color: black;
+                background-image: url(images/UI/introBackNew2.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-size-adjust: none;
+            -webkit-text-size-adjust: none;
+            background-position: center;
+            overflow: none;
+            touch-action: none;
+            }          
          }
         @media (max-width: 320px) {
 
@@ -981,7 +992,17 @@
                 transform:  translate(-64%,-50%);
 
             }
-         
+            body {
+                background-color: black;
+                background-image: url(images/UI/introBackNew2.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-size-adjust: none;
+            -webkit-text-size-adjust: none;
+            background-position: center;
+            overflow: none;
+            touch-action: none;
+            }
         }
 
         @media (max-width: 320px) and (max-height:480px) {
@@ -1258,16 +1279,16 @@ table.power
 
 #spinHeader{
     font-family: 'Proxima Nova';
-    font-size: 24px;
+    font-size: 20px;
    height: 80px;
     border-radius: 0.2em;
-    transform:translate(2%,18%);
+    transform:translate(3%,18%);
     width: 97%;
     text-align: center;
     align-content: center;
     box-shadow: 0px 5px 2.5px 5px #111f;
     color: azure;
-    
+    padding-left: 5px;
     z-index: 4000;
  
    
@@ -1279,7 +1300,8 @@ table.power
     height: 130px;
     margin-left: 50%;
     margin-top:-5px;
-    transform:translateX(-135px);
+    transform:translate(-122px, -60px);     
+
   
     
 }
@@ -1335,11 +1357,11 @@ table.power
 }
 #rewardCloseBtn{
     position: absolute;
-    width: 75px;
-    height: 75px;
-    left: 50%;
-    bottom:3px;
-    transform: translate(-50%, 5%);
+    width: 40px;
+    height: 40px;
+    left: 1px;
+    top: 1px;
+    /* transform: translate(-50%, 5%); */
     padding-top: 10px;
 }
 #rewardAdHider{
@@ -1373,11 +1395,11 @@ table.power
     height: 75px;
     margin-left: 50%;
     margin-top:-5px;
-    transform:translateX(-122px);     
+    transform:translate(-122px, -60px);     
 }
 
 }
-#canvasGame{
+/* #canvasGame{
         position: absolute;
         top: 0px;
         left: 0px;
@@ -1385,7 +1407,7 @@ table.power
        
         min-height: 95%;
         width: 100%;
-    }
+    } */
     </style>
 
 
@@ -1394,30 +1416,22 @@ table.power
     
         <script src="js/enhance.js"></script>
         <script src="js/capacitor.js"></script>
-   
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+      
    
 </head>
 
 
 <body>
-<div id="canvasGame"></div>
-    
+    <div id="canvasGame"></div>
 
-	
-    <div id="loadingGG"> 
-       
+    <div id="loadingGG">        
           <img id="startLogo" src="images/UI/MenuTop2.png"  width="300" alt="StarCashImg" /> 
           <p id="loadingText1">Welcome...</p>
           
     </div>
-    <div id="firebaseui-auth-container"></div>
-  
-
     <div id="fbshare" >
-        <div id="descShare">
-
-            <!--<img id="logoImg3" src="images/UI/MenuTop2.png" alt="FarmImg" />-->
-                         
+        <div id="descShare">                        
                 <p id="starCashOuterLabel">50</p>
                 <img id="outerStarCashImg" src="images/UI/starCashBack.png" loading="lazy" width="150" alt="StarCashImg" />
             </div>
@@ -1458,42 +1472,28 @@ table.power
                     <div id="currentStarCashBack4">
                         <p>Buy Stars in Town</p> <img id="buyStarsFromModal" src="images/UI/shopIcon.png" loading="lazy" width="80" alt="buyStars" />
                     </div>
-                </div>
-         
-
+                </div>         
             </div>
             <p id="waitText"></p>
             <p id="sucessbuyTxt"> + </p>
             <div id="fbshareFooter"> <a id="closeFB"></a></div>
-		</div>
-        
-       
-       
+		</div>            
     </div>
-
-
 
     <div id="rateMe">
         <div id="rateMeInner">
             <div id="rateMeTopWrap">
-
                 <div id="rateMeText">
                     <h2>Please Rate Our App</h2> 
                     <p>It takes only a moment and helps alot</p>
                 </div>
-
             </div>
             <div id="rateMeImage"> <img id="rateImage" alt='Rate on Google Play' src='images/ratingstars.png' loading="lazy" width="300"/>   </div>
-
             <div id="rateMeBtnWrap">
-
                 <div id="rateMeBtnNo" class="rateBtn">No Thanks</div>
-
                 <div id="rateMeBtnYes" class="rateBtn"> <b>Rate Now</b>  </div>
                 <div id="rateMeBtnLater" class="rateBtn">Later</div>
             </div>
-
-
         </div>
 
     </div>
@@ -1539,6 +1539,7 @@ table.power
   
     <div  id="wheelDiv" align="center">    
         <div id="spinHeader" ><h1>Spin to Win</h1></div>
+        <img id="rewardCloseBtn" src="images/UI/XButton.png" alt="Close"  />
         <div width="401" height="554" class="the_wheel" align="center" valign="center">
              </br>
               <div id="wheelArrow"></div>
@@ -1550,7 +1551,7 @@ table.power
             <div id="rewardAdHider">
                 <div id="anotherSpin"><strong>Get Another Spin</strong></div>
                 <a id="resetViewAd" href="#" > <img id="viewAdWheel" src="images/UI/viewAd2.png" alt="View Ad for spins"  /></a> 
-                <img id="rewardCloseBtn" src="images/UI/XButton.png" alt="Close"  />
+             
             </div> 
         </div>
         <div id="wheelReward"> 
@@ -1562,11 +1563,11 @@ table.power
             <h1 id="wheelRewardTxt2"> 50 Gold</h1>
         </div>       
     </div>
-    <div id="prizeMe">
+    <!-- <div id="prizeMe">
         <div  id="prizeMeInner">
             <div><h1>Your Prize Code</h1>
                <br>
-<!-- The button used to copy the text -->
+
                 <div id='prizeCodeThisTime' class="prizeCodeStyle"> </div>              
                 <br>
                 <h3>View an Ad to get your code above</h3>
@@ -1576,10 +1577,10 @@ table.power
             <img id="amazonCardLarge" src="images/UI/amazon-gift-card-20-dollar.png" loading="lazy" alt="buyStars" />
          </div>
         <div id='OpenPrizeBtn'>Open the Site</div>
-        <!-- <div id='OpenPrizeBtnAuto'>Enter by Email</div> -->
+   
         <div id='closePrize'> </div>
         </div>     
-    </div>
+    </div> -->
     
     <script  src='js/applovinLoader2.js'></script>
     <script type="text/javascript" src="farming_2.1_Min.js"></script>
@@ -1589,57 +1590,17 @@ table.power
     
     <script defer type="module" src="loader.js"></script>
   
- <script>
-
-
-        //  var optionsShare = {
-        //     message: 'Join me playing Medieval Farms', // not supported on some apps (Facebook, Instagram)
-        //     subject: 'Medieval Farms', // fi. for email
-        //     files: ['https://guighostgames.com/MedievalFarms/images/ads/promo580x400.png'], // an array of filenames either locally or remotely
-        //     url: 'https://bit.ly/SharingMedFarms',
-        //     chooserTitle: 'Pick an app to share with' // Android only, you can override the default share sheet title
-        // };
-        // var optionsShare2 = {
-        //     message: 'Use Reward Code "StarBoost" for free stars in Medieval Fa  
-        //     files: ['https://guighostgames.com/MedievalFarms/images/ads/rewardImg.png'], // an array of filenames either locally or remotely
-        //     url: 'https://bit.ly/Stars4MedFarm',
-        //     chooserTitle: 'Pick an app to share with' // Android only, you can override the default share sheet title
-        // };
-        // var onSuccessShare = function (result) {
-
-        //     starCash = parseInt(localStorage.getItem('starCash'));
-        //     starCash = parseInt(starCash) + 5;
-        //     localStorage.setItem('starCash', starCash);
-
-        //     document.getElementById("starCashOuterLabel").innerHTML = starCash;
-        //     document.getElementById("currentStarCashShare").style.display = 'none';
-
-        //     console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
-        //     console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
-        //     try {
-        //         Enhance.logEvent('app_shared', 'result', result.app);
-
-        //     } catch (err) { console.log("share failed"); }
-        // };
-
-        // var onErrorShare = function (msg) {
-        //     try { Enhance.logEvent('app_shared', 'result', 'false'); } catch (err) { console.log("share failed"); }
-        //     console.log("Sharing failed with message: " + msg);
-        // };
-
+ <script>    
         var shareUs = document.getElementById('sharedBtnImg');
         var shareUs2 = document.getElementById('shareUs2');
         var sucessbuyTxt = document.getElementById('sucessbuyTxt');
 
         shareUs2.addEventListener("click", function () { SocialShareGG(2); });
-        shareUs2.addEventListener("touchstart", function () { SocialShareGG(2); });
- 
+        shareUs2.addEventListener("touchstart", function () { SocialShareGG(2); }); 
 
         function SocialShareGG(num) {
-
             if (num == 1) {
-                try {
-                  
+                try {                  
                 navigator.share({
                     title: 'Share GuiGhostGames',
                     text: 'Check out Medieval Farms retro farming sim',
@@ -1675,51 +1636,51 @@ table.power
         }
       
     //open prize entry
-      document.getElementById("OpenPrizeBtn").addEventListener("click", function (event) {
-          var isVisPrize3 = document.getElementById("prizeMe").style.display ;    
-          if (isVisPrize3 == 'block') {
-                  localStorage.setItem('enteredPrizeToday', 1);
-                  document.getElementById("prizeMe").style.display = 'none';   
-                  var copyText = document.getElementById("prizeCodeThisTime");
-                  console.log("copyText is " + copyText.innerHTML);       
-                  let codeThis =    copyText.innerHTML;
-                  var entryPath = 'https://docs.google.com/forms/d/e/1FAIpQLScagsRtI1r-CBXdXevU4PFL83Oo7jTcavyfxUssgr7PJsmQqg/viewform?usp=pp_url&entry.1167240952=' + codeThis + ' ';
-                  window.open(entryPath, '_blank');
-                  document.getElementById("currentStarCashBackPrize").style.display = 'none';
-                  try{Enhance.logEvent('contestEntry');}catch(err){console.log(err);}
-                  event.stopPropagation();
-          }         
-      }, false);
-      document.getElementById("OpenPrizeBtn").addEventListener("touchend", function (event) {
-          var isVisPrize3 = document.getElementById("prizeMe").style.display ;    
-          if (isVisPrize3 == 'block') {
-                  localStorage.setItem('enteredPrizeToday', 1);
-                  document.getElementById("prizeMe").style.display = 'none';   
-                  var copyText = document.getElementById("prizeCodeThisTime");
-                  console.log("copyText is " + copyText.innerHTML);       
-                  let codeThis =    copyText.innerHTML;
-                  var entryPath = 'https://docs.google.com/forms/d/e/1FAIpQLScagsRtI1r-CBXdXevU4PFL83Oo7jTcavyfxUssgr7PJsmQqg/viewform?usp=pp_url&entry.1167240952=' + codeThis + ' ';
-                  window.open(entryPath, '_blank');
-                  document.getElementById("currentStarCashBackPrize").style.display = 'none';
-                  try{Enhance.logEvent('contestEntry');}catch(err){console.log(err);}
-                  event.stopPropagation();
-          }         
-      }, false);
+    //   document.getElementById("OpenPrizeBtn").addEventListener("click", function (event) {
+    //       var isVisPrize3 = document.getElementById("prizeMe").style.display ;    
+    //       if (isVisPrize3 == 'block') {
+    //               localStorage.setItem('enteredPrizeToday', 1);
+    //               document.getElementById("prizeMe").style.display = 'none';   
+    //               var copyText = document.getElementById("prizeCodeThisTime");
+    //               console.log("copyText is " + copyText.innerHTML);       
+    //               let codeThis =    copyText.innerHTML;
+    //               var entryPath = 'https://docs.google.com/forms/d/e/1FAIpQLScagsRtI1r-CBXdXevU4PFL83Oo7jTcavyfxUssgr7PJsmQqg/viewform?usp=pp_url&entry.1167240952=' + codeThis + ' ';
+    //               window.open(entryPath, '_blank');
+    //               document.getElementById("currentStarCashBackPrize").style.display = 'none';
+    //               try{Enhance.logEvent('contestEntry');}catch(err){console.log(err);}
+    //               event.stopPropagation();
+    //       }         
+    //   }, false);
+    //   document.getElementById("OpenPrizeBtn").addEventListener("touchend", function (event) {
+    //       var isVisPrize3 = document.getElementById("prizeMe").style.display ;    
+    //       if (isVisPrize3 == 'block') {
+    //               localStorage.setItem('enteredPrizeToday', 1);
+    //               document.getElementById("prizeMe").style.display = 'none';   
+    //               var copyText = document.getElementById("prizeCodeThisTime");
+    //               console.log("copyText is " + copyText.innerHTML);       
+    //               let codeThis =    copyText.innerHTML;
+    //               var entryPath = 'https://docs.google.com/forms/d/e/1FAIpQLScagsRtI1r-CBXdXevU4PFL83Oo7jTcavyfxUssgr7PJsmQqg/viewform?usp=pp_url&entry.1167240952=' + codeThis + ' ';
+    //               window.open(entryPath, '_blank');
+    //               document.getElementById("currentStarCashBackPrize").style.display = 'none';
+    //               try{Enhance.logEvent('contestEntry');}catch(err){console.log(err);}
+    //               event.stopPropagation();
+    //       }         
+    //   }, false);
     //closePrize
-      document.getElementById("closePrize").addEventListener("touchstart", function (event) {
-          var isVisPrize1 = document.getElementById("prizeMe").style.display ;    
-          if (isVisPrize1 == 'block') {
-          document.getElementById("prizeMe").style.display = 'none';
-        event.stopPropagation();    
-          }  
-      }, false);
-      document.getElementById("closePrize").addEventListener("click", function (event) {         
-          var isVisPrize2 = document.getElementById("prizeMe").style.display ;    
-          if (isVisPrize2 == 'block') {
-          document.getElementById("prizeMe").style.display = 'none';
-        event.stopPropagation();    
-          }    
-      }, false);
+    //   document.getElementById("closePrize").addEventListener("touchstart", function (event) {
+    //       var isVisPrize1 = document.getElementById("prizeMe").style.display ;    
+    //       if (isVisPrize1 == 'block') {
+    //       document.getElementById("prizeMe").style.display = 'none';
+    //     event.stopPropagation();    
+    //       }  
+    //   }, false);
+    //   document.getElementById("closePrize").addEventListener("click", function (event) {         
+    //       var isVisPrize2 = document.getElementById("prizeMe").style.display ;    
+    //       if (isVisPrize2 == 'block') {
+    //       document.getElementById("prizeMe").style.display = 'none';
+    //     event.stopPropagation();    
+    //       }    
+    //   }, false);
     //   document.getElementById("weeklyPrize").addEventListener("touchstart", function (event) {
     //       var isVisFBe = document.getElementById("fbshare").style.display;
     //       if (isVisFBe == 'block') {

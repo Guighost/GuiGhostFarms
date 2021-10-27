@@ -17,14 +17,17 @@ function onDeviceReadyAL() {
 
     try { AppLovinMAX.initialize(SDK_KEY, function (configuration) {
         loadTextStart2.innerText = "Villagers Loading...";  
-        // initializeBannerAds();       
+        initializeBannerAds();       
         initializeInterstitialAds();
                 initializeRewardedAds();  
-                
+                setTimeout(function(){ showBannerMF();}, 500); 
+               
+           
                 loadTextStart2.innerText = "Villagers Loaded";
             });
     } catch (error) {loadTextStart2.innerText = loadTextStart2.innerText +   "  -----INITALIZE Appplovin  failed with " + error; }
         //   function showMediationDebugger() {  AppLovinMAX.showMediationDebugger(); }
+     
 }
 
 function onInterButtonClicked() {
@@ -60,7 +63,12 @@ function initializeInterstitialAds() {
         setTimeout( function (){ onInterButtonClicked();}, 200);  
     });
     window.addEventListener('OnInterstitialHiddenEvent', function (adInfo) {
-        localStorage.setItem('adWatched', 1);
+        let boosted = localStorage.getItem('MedFarm_NoBoost');
+        if (boosted){  localStorage.setItem('MedFarm_NoBoost', 0);        }
+        else{   localStorage.setItem('adWatched', 1);}
+
+     
+        try {   soundCheck();    } catch (error) {   console.log('soundcheck failed');      }
         setTimeout( function (){  loadInterstitial(); localStorage.setItem('adWatched', 0);}, 3000);
     });
     // Load the first interstitial
@@ -102,6 +110,7 @@ function initializeRewardedAds() {
     window.addEventListener('OnRewardedAdAdFailedToDisplayEvent', function (adInfo) { setTimeout( function (){ onRewardedAdButtonClicked();}, 200);});
     window.addEventListener('OnRewardedAdHiddenEvent', function (adInfo) {
         setTimeout( function (){ loadRewardedAd(); localStorage.setItem('rewardWatched', 0);}, 3000);
+        try {   soundCheck();    } catch (error) {   console.log('soundcheck failed');      }
     });
     window.addEventListener('OnRewardedAdReceivedRewardEvent', function (adInfo) { console.log("rewarded ad succeed"); });
 
@@ -166,9 +175,18 @@ function AppLovinCheck(){
 // }
 // else{  enableBanner = 0;}
 
-function showBannerMF(){ try { AppLovinMAX.showBanner(BANNER_AD_UNIT_ID);} catch (error) {console.log(error); } }
+function showBannerMF(){
+     try { AppLovinMAX.showBanner(BANNER_AD_UNIT_ID);} catch (error) {console.log(error); } 
+    try{   Enhance.logEvent('bannerAd_shown');}catch(err){console.log(err);}
+   
+}
 
 
+
+try{
+    AppLovinMAX.setIsAgeRestrictedUser(false);
+    AppLovinMAX.setDoNotSell(false);
+}catch(err){console.log(err);}
 
 //start the loop
 setTimeout(() => { onDeviceReadyAL(); 

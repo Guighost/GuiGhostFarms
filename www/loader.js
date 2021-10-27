@@ -22,8 +22,10 @@ window.addEventListener('load', (event) => {
       
 
       setTimeout(function(){  console.log("checking Applovin..." );    if(AppLovinMAX){loadTextStart.innerText = "Loaded the Love";}else{ console.log("Applovin failed" );}}, 3750);
-      setTimeout(function(){     loadTextStart.innerText = 'Building World...'; }, 4750);
-      setTimeout(function(){ 
+      setTimeout(function(){     loadTextStart.innerText = 'Building World.'; }, 4750);
+      setTimeout(function(){     loadTextStart.innerText = 'Building World..'; }, 5250);
+      setTimeout(function(){     loadTextStart.innerText = 'Building World...'; }, 5750);
+      setTimeout(function(){     loadTextStart.innerText = 'Time to Play!';
         ///////////////////////START THE GAME/////////////////////////////////////////////////////////////////////
         try{ farming.start();  }
         catch(err){ alert("Error Loading ---   " + err ); console.log(err);    }
