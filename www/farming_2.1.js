@@ -6029,6 +6029,8 @@ farming.start = function () {
             homeBlock.setHidden(true);
             var confirmIsHid = confirmBtn.getHidden();
             if (confirmIsHid == false) {
+                    try { AppLovinMAX.showBanner(BANNER_AD_UNIT_ID);} catch (error) {console.log(error); } 
+                    try{   Enhance.logEvent('bannerAd_shown');}catch(err){console.log(err);}
                 if (fsClicked == 1) {
                     acres[1].owned = 1;
                     var baseprice = 2500;
@@ -6047,6 +6049,7 @@ farming.start = function () {
                     homeBlock.setHidden(true);
                     hideAndDelayNavIcons();
                     ////go to story scene and then pasture
+  
                     c.replaceScene(storyScene);
                     storyChapterText1.setText("The Dairy Pasture").setOpacity(1.0).setHidden(false);
                     storyChapterText2.setText("This dairy has seen better days, but if we grow hay, the cows will make milk").setOpacity(1.0).setHidden(false);
@@ -7684,6 +7687,8 @@ farming.start = function () {
             globalModalBlock = 0;
             scenebefore = 4;
             hideAndDelayNavIcons();
+            try { AppLovinMAX.showBanner(BANNER_AD_UNIT_ID);} catch (error) {console.log(error); } 
+            try{   Enhance.logEvent('bannerAd_shown');}catch(err){console.log(err);}
             ///go to story
             c.replaceScene(storyScene);
             storyChapterText1.setText("The Vineyard").setOpacity(1.0).setHidden(false);
@@ -9365,6 +9370,8 @@ farming.start = function () {
             fsClicked = 0;
             scenebefore = 5;
             oldCrop = b.currentCrop; b.currentCrop = 12;
+            try { AppLovinMAX.showBanner(BANNER_AD_UNIT_ID);} catch (error) {console.log(error); } 
+            try{   Enhance.logEvent('bannerAd_shown');}catch(err){console.log(err);}
             ///go to story
             c.replaceScene(storyScene);
             storyChapterText1.setText("The Stockpens").setOpacity(1.0).setHidden(false);
@@ -14498,7 +14505,8 @@ farming.start = function () {
                 storyHeadText2.setHidden(true);
                 sceneActive = 'Pasture';
                 cowSound.play();
-            }, this, 4000);
+                lime.scheduleManager.callAfter(function () {try {AppLovinMAX.hideBanner(BANNER_AD_UNIT_ID);} catch (error) {console.log(error); }  }, this, 2000);
+            }, this, 5000);
             storySceneCloseBtn.setHidden(true);
         };
         if (from == 'Orchard') {
@@ -14507,9 +14515,9 @@ farming.start = function () {
                 sceneActive = 'Orchard';
                 c.replaceScene(orchardScene, lime.transitions.SlideInRight);
                 lime.scheduleManager.callAfter(function () { validCropsStored(); }, this, 1000);
-                
+                lime.scheduleManager.callAfter(function () {try {AppLovinMAX.hideBanner(BANNER_AD_UNIT_ID);} catch (error) {console.log(error); }  }, this, 2000);
                 waterfallSound.play(true);
-            }, this, 4000);
+            }, this, 5000);
             storySceneCloseBtn.setHidden(true);
         }
         if (from == 'Vineyard') {
@@ -14517,17 +14525,20 @@ farming.start = function () {
             lime.scheduleManager.callAfter(function () {
                 c.replaceScene(vinyardScene, lime.transitions.SlideInLeft);
                 sceneActive = 'Vineyard';
-            }, this, 4000);
+                lime.scheduleManager.callAfter(function () {try {AppLovinMAX.hideBanner(BANNER_AD_UNIT_ID);} catch (error) {console.log(error); }  }, this, 2000);
+            }, this, 5000);
             storySceneCloseBtn.setHidden(true);
         }
         if (from == 'LiveStock') {
+            successSound.play();
             lime.scheduleManager.callAfter(function () {
                 hideAndDelayNavIcons();
-                successSound.play();
+                
                 c.replaceScene(liveStockScene, lime.transitions.SlideInRight);
                 sceneActive = 'LS'; waterfallSound.stop(); chickenSound.play(); pig1Sound.play();
                 checkShortage();
-            }, this, 4000);
+                lime.scheduleManager.callAfter(function () {try {AppLovinMAX.hideBanner(BANNER_AD_UNIT_ID);} catch (error) {console.log(error); }  }, this, 2000);
+            }, this, 5000);
             storySceneCloseBtn.setHidden(true);
         }
     };
@@ -21705,89 +21716,89 @@ function getRandomInt(max) {    return Math.floor(Math.random() * max);}
 
 ///prize
 //prize divs
-var prizeCodeDiv = document.getElementById("prizeCodeThisTime");
-// var openPrizeAutoDiv = document.getElementById("OpenPrizeBtnAuto");
-var openSitePrizeDiv = document.getElementById("OpenPrizeBtn");
-var weeklyPrizeDiv = document.getElementById("weeklyPrize");
-var prizeCodeNow = '';
-// weeklyPrizeDiv.addEventListener("touchstart", function (event) {
-//     var isVisFBe = document.getElementById("fbshare").style.display;
-//     if (isVisFBe == 'block') {
-//         adViewEarn('money');
+// var prizeCodeDiv = document.getElementById("prizeCodeThisTime");
+// // var openPrizeAutoDiv = document.getElementById("OpenPrizeBtnAuto");
+// var openSitePrizeDiv = document.getElementById("OpenPrizeBtn");
+// var weeklyPrizeDiv = document.getElementById("weeklyPrize");
+// var prizeCodeNow = '';
+// // weeklyPrizeDiv.addEventListener("touchstart", function (event) {
+// //     var isVisFBe = document.getElementById("fbshare").style.display;
+// //     if (isVisFBe == 'block') {
+// //         adViewEarn('money');
+// //         event.stopPropagation();
+// //     };
+
+// // }, false);
+// // weeklyPrizeDiv.addEventListener("touchstart", function (event) {
+// //     var isVisFBe = document.getElementById("fbshare").style.display;
+// //     if (isVisFBe == 'block') {
+// //         adViewEarn('money');
+// //         event.stopPropagation();
+// //     };
+// // }, false);
+
+// async function populatePrizeCode() {
+//     openCodes();
+//     lime.scheduleManager.callAfter(function () {
+//         var prizeCodeBlob = myRewards.toString();
+//         var prizeCodeSplit = prizeCodeBlob.split(',');
+//         var NumforThis = getRandomInt(2400);
+//         prizeCodeNow = prizeCodeSplit[NumforThis] || 'none';
+//         prizeCodeDiv.innerText = prizeCodeSplit[NumforThis];
+//         prizeCodeDiv.style.backgroundImage = 'none';
+//         prizeCodeDiv.style.fontSize = '32px';
+//     }, this, 800);
+//     return 1;
+// };
+// function getPrizeClick(event) {
+//     console.log('in getPrizeClick ');
+//     var isVisPrize = document.getElementById("prizeMe").style.display;
+//     if (isVisPrize == 'block') {
+//         stopSound4Ad();
+//         console.log('in getPrizeClick Inner');
+//         stopSound4Ad();
+//         localStorage.setItem('MedFarm_StarCashBoost', 1);
+//         try { Enhance.logEvent('adView_Prize'); } catch (err) { console.log("logging failed") };
+
+//         lime.scheduleManager.callAfter(function () {
+//             populatePrizeCode();
+//             prizeCodeDiv.style.backgroundImage = 'none';
+//             // openPrizeAutoDiv.style.display = 'block';
+//             openSitePrizeDiv.style.display = 'block';
+//         }, this, 5000);
+//         prizeCodeDiv.removeEventListener("click", getPrizeClick, false);
+//         prizeCodeDiv.removeEventListener("touchstart", getPrizeClick, false);
 //         event.stopPropagation();
-//     };
-
+//     }
+// }
+// prizeCodeDiv.addEventListener("touchstart", function (event) {
+//     getPrizeClick(event);
+//     prizeCodeDiv.style.backgroundImage = 'none';
+//     console.log('touchstart getPrizeClick ');
 // }, false);
-// weeklyPrizeDiv.addEventListener("touchstart", function (event) {
-//     var isVisFBe = document.getElementById("fbshare").style.display;
-//     if (isVisFBe == 'block') {
-//         adViewEarn('money');
-//         event.stopPropagation();
-//     };
+// prizeCodeDiv.addEventListener("click", function (event) {
+//     getPrizeClick(event);
+//     prizeCodeDiv.style.backgroundImage = 'none';
+//     console.log('click getPrizeClick ');
 // }, false);
 
-async function populatePrizeCode() {
-    openCodes();
-    lime.scheduleManager.callAfter(function () {
-        var prizeCodeBlob = myRewards.toString();
-        var prizeCodeSplit = prizeCodeBlob.split(',');
-        var NumforThis = getRandomInt(2400);
-        prizeCodeNow = prizeCodeSplit[NumforThis] || 'none';
-        prizeCodeDiv.innerText = prizeCodeSplit[NumforThis];
-        prizeCodeDiv.style.backgroundImage = 'none';
-        prizeCodeDiv.style.fontSize = '32px';
-    }, this, 800);
-    return 1;
-};
-function getPrizeClick(event) {
-    console.log('in getPrizeClick ');
-    var isVisPrize = document.getElementById("prizeMe").style.display;
-    if (isVisPrize == 'block') {
-        stopSound4Ad();
-        console.log('in getPrizeClick Inner');
-        stopSound4Ad();
-        localStorage.setItem('MedFarm_StarCashBoost', 1);
-        try { Enhance.logEvent('adView_Prize'); } catch (err) { console.log("logging failed") };
-
-        lime.scheduleManager.callAfter(function () {
-            populatePrizeCode();
-            prizeCodeDiv.style.backgroundImage = 'none';
-            // openPrizeAutoDiv.style.display = 'block';
-            openSitePrizeDiv.style.display = 'block';
-        }, this, 5000);
-        prizeCodeDiv.removeEventListener("click", getPrizeClick, false);
-        prizeCodeDiv.removeEventListener("touchstart", getPrizeClick, false);
-        event.stopPropagation();
-    }
-}
-prizeCodeDiv.addEventListener("touchstart", function (event) {
-    getPrizeClick(event);
-    prizeCodeDiv.style.backgroundImage = 'none';
-    console.log('touchstart getPrizeClick ');
-}, false);
-prizeCodeDiv.addEventListener("click", function (event) {
-    getPrizeClick(event);
-    prizeCodeDiv.style.backgroundImage = 'none';
-    console.log('click getPrizeClick ');
-}, false);
-
-async function enterWeekly(codeSent) {
-    try {
-        var versionOf = '';
-        try { versionOf = device.version.toString() || ' unknown'; } catch (err) { console.log(err); };
-        window.plugins.socialsharing.shareViaEmail(
-            'Hi GuiGhost - This is my entry for the $20 amazon Gift card            Sent from Android ' + versionOf, // text  
-            'Medieval farms weekly code ' + codeSent,
-            ['info@guighost.com'], // TO: must be null or an array
-            null, // CC: must be null or an array
-            null, // BCC: must be null or an array
-            null, // FILES: can be null, a string, or an array
-            function () { return }, // called when sharing worked
-            function () { alert("Entry failed to open email - Please enter via the site"); } // called when sh*t hits the fan
-        );
-    } catch (err) { console.log("email failed with " + err); };
-    return 1;
-}
+// async function enterWeekly(codeSent) {
+//     try {
+//         var versionOf = '';
+//         try { versionOf = device.version.toString() || ' unknown'; } catch (err) { console.log(err); };
+//         window.plugins.socialsharing.shareViaEmail(
+//             'Hi GuiGhost - This is my entry for the $20 amazon Gift card            Sent from Android ' + versionOf, // text  
+//             'Medieval farms weekly code ' + codeSent,
+//             ['info@guighost.com'], // TO: must be null or an array
+//             null, // CC: must be null or an array
+//             null, // BCC: must be null or an array
+//             null, // FILES: can be null, a string, or an array
+//             function () { return }, // called when sharing worked
+//             function () { alert("Entry failed to open email - Please enter via the site"); } // called when sh*t hits the fan
+//         );
+//     } catch (err) { console.log("email failed with " + err); };
+//     return 1;
+// }
 
 function getLocalStorage() {    return JSON.stringify(localStorage);}
 
