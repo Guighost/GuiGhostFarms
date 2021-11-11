@@ -174,8 +174,24 @@
             font-size: large;
             text-align: center;
         }
-        #fbshareContent{  overflow-x: hidden;
-    overflow-y: hidden;
+        #fbshareContent{ 
+             overflow-x: hidden;
+            overflow-y: hidden;
+       
+        }
+        .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+       
+        }
+
+        .flexrow {
+        background-color: #f1f1f1;
+        width: 300px;
+        margin: 10px;
+        text-align: center;
+        line-height: 75px;
+        font-size: 30px;
         }
         #logoImg3 {
             transform: translate(5px,5px);
@@ -1423,19 +1439,19 @@ table.power
 
 
 <body>
-    <div id="canvasGame"></div>
+    <!-- <div id="canvasGame"></div> -->
 
     <div id="loadingGG">        
           <img id="startLogo" src="images/UI/MenuTop2.png"  width="300" alt="StarCashImg" /> 
           <p id="loadingText1">Welcome...</p>
           
     </div>
-    <div id="fbshare" >
+    <div id="fbshare">
         <div id="descShare">                        
                 <p id="starCashOuterLabel">50</p>
                 <img id="outerStarCashImg" src="images/UI/starCashBack.png" loading="lazy" width="150" alt="StarCashImg" />
             </div>
-        <div id="fbshareContent">
+        <div id="fbshareContent" >
         
 
                 <div id="currentStarCashBack">
@@ -1583,7 +1599,7 @@ table.power
     </div> -->
     
     <script  src='js/applovinLoader2.js'></script>
-    <script type="text/javascript" src="farming_2.1_Min.js"></script>
+    <script type="text/javascript" src="farming_2.1.js"></script>
     <script src="js/tweenMax.min.js"></script>
     <script src='js/Winwheel.min.js'></script>
     <script defer src='js/toastify.js'></script>
